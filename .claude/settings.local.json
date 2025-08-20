@@ -31,7 +31,13 @@
       "Bash(git merge:*)",
       "Bash(npm ci:*)",
       "Bash(npx eslint:*)",
-      "Bash(gh pr list:*)"
+      "Bash(gh pr list:*)",
+      "Bash(npm test)",
+      "Bash(npx jest:*)",
+      "Bash(rm:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(true)"
     ],
     "deny": []
   }
