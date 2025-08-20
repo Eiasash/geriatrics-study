@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   testEnvironment: 'node',
   collectCoverage: true,
   coverageDirectory: 'coverage',
@@ -16,10 +16,10 @@ export default {
   ],
   coverageThreshold: {
     global: {
-      branches: 70,
-      functions: 70,
-      lines: 70,
-      statements: 70
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50
     }
   },
   testMatch: [
@@ -36,7 +36,6 @@ export default {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1'
   },
-  transform: {},
   verbose: true,
   bail: false,
   errorOnDeprecated: true

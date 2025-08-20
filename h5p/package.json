@@ -1,7 +1,6 @@
 {
   "name": "geriatrics-h5p",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "node build-h5p.js",
     "build:qset": "node build-h5p-questionset.js",
@@ -17,6 +16,11 @@
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "h5p-cli": "^1.1.4"
+    "h5p-cli": "^1.1.4",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "jest": "^29.7.0",
+    "@jest/globals": "^29.7.0",
+    "audit-ci": "^7.0.1"
   }
 }
