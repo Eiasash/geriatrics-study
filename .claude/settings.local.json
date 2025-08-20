@@ -26,7 +26,11 @@
       "Bash(git reset:*)",
       "Bash(git commit:*)",
       "Bash(git rm:*)",
-      "Bash(git tag:*)"
+      "Bash(git tag:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(npm ci:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": []
   }

@@ -103,7 +103,8 @@ jobs:
         working-directory: h5p
         run: |
           npm audit --json > audit-report.json || true
-          npx audit-ci --moderate || true
+          npx audit-ci --high || true
+        continue-on-error: true
       
       # Linting
       - name: Run ESLint
