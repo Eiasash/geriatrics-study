@@ -12,7 +12,8 @@ module.exports = {
     '!**/temp/**',
     '!**/uploads/**',
     '!jest.config.js',
-    '!coverage/**'
+    '!coverage/**',
+    '!__mocks__/**'
   ],
   coverageThreshold: {
     global: {
@@ -36,6 +37,8 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1'
   },
+  // Ensure mocks directory is picked up for fs-extra
+  moduleDirectories: ['node_modules', '.'],
   verbose: true,
   bail: false,
   errorOnDeprecated: true
