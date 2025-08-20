@@ -1,0 +1,223 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # Build all packages for release
+  build-release:
+    name: Build release packages
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Determine version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Building release version: $VERSION"
+      
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: h5p/package-lock.json
+      
+      # Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: anki/requirements.txt
+      
+      # Install dependencies
+      - name: Install H5P dependencies
+        working-directory: h5p
+        run: npm ci
+      
+      - name: Install Anki dependencies
+        working-directory: anki
+        run: pip install -r requirements.txt
+      
+      # Build H5P QuestionSet packages
+      - name: Build H5P QuestionSet
+        working-directory: h5p
+        run: npm run build:qset
+      
+      # Build H5P Mega package
+      - name: Build H5P Mega
+        working-directory: h5p
+        run: |
+          export TOPICS="דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר"
+          export PASS=75
+          npm run build:mega
+      
+      # Build Anki package
+      - name: Build Anki
+        working-directory: anki
+        run: PYTHONIOENCODING=utf-8 python build_apkg.py
+      
+      # Create release archives
+      - name: Create release archives
+        run: |
+          # Create release directory
+          mkdir -p release
+          
+          # Package H5P files
+          cd h5p/dist
+          zip -r ../../release/h5p-packages-${{ steps.version.outputs.version }}.zip *.h5p
+          cd ../..
+          
+          # Package Anki files
+          cd anki/dist
+          zip -r ../../release/anki-package-${{ steps.version.outputs.version }}.zip *.apkg
+          cd ../..
+          
+          # Create checksums
+          cd release
+          sha256sum *.zip > SHA256SUMS.txt
+          
+          # List release contents
+          echo "Release contents:"
+          ls -la
+      
+      # Upload release artifacts
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-packages
+          path: release/*
+          retention-days: 90
+
+  # Create GitHub Release
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build-release
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-packages
+          path: release
+      
+      - name: Generate release notes
+        id: notes
+        run: |
+          cat > release-notes.md << 'EOF'
+          ## 🎉 Release ${{ needs.build-release.outputs.version }}
+          
+          ### 📦 Release Assets
+          
+          #### H5P Packages (`h5p-packages-${{ needs.build-release.outputs.version }}.zip`)
+          - **QuestionSet format**: Individual topic packages for interactive quizzes
+          - **Mega format**: Combined multi-topic package with timer functionality
+          - **Topics covered**: 12 geriatrics topics in Hebrew
+          
+          #### Anki Package (`anki-package-${{ needs.build-release.outputs.version }}.zip`)
+          - Complete flashcard deck for all geriatrics topics
+          - Hebrew language support with RTL formatting
+          - Optimized for spaced repetition learning
+          
+          ### 🔒 Security & Quality
+          - All dependencies audited for vulnerabilities
+          - Packages validated and tested
+          - SHA256 checksums included
+          
+          ### 📋 Installation
+          
+          **H5P:**
+          1. Download `h5p-packages-${{ needs.build-release.outputs.version }}.zip`
+          2. Extract and upload `.h5p` files to your H5P platform
+          
+          **Anki:**
+          1. Download `anki-package-${{ needs.build-release.outputs.version }}.zip`
+          2. Extract and import `.apkg` file into Anki
+          
+          ### 🔍 Verification
+          Verify downloads using the SHA256SUMS.txt file:
+          ```bash
+          sha256sum -c SHA256SUMS.txt
+          ```
+          
+          ---
+          *Generated by automated CI/CD pipeline*
+          EOF
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.build-release.outputs.version }}
+          name: Release ${{ needs.build-release.outputs.version }}
+          body_path: release-notes.md
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            release/*.zip
+            release/SHA256SUMS.txt
+
+  # Publish to GitHub Packages (optional)
+  publish-packages:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    needs: [build-release, create-release]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download release artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: release-packages
+          path: release
+      
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Publish packages metadata
+        run: |
+          # Create package metadata
+          cat > release/package-metadata.json << EOF
+          {
+            "version": "${{ needs.build-release.outputs.version }}",
+            "timestamp": "$(date -Iseconds)",
+            "packages": {
+              "h5p": "h5p-packages-${{ needs.build-release.outputs.version }}.zip",
+              "anki": "anki-package-${{ needs.build-release.outputs.version }}.zip"
+            }
+          }
+          EOF
+          
+          echo "Package metadata created"

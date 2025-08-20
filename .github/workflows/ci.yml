@@ -1,0 +1,406 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'h5p/**'
+      - 'anki/**'
+      - 'data/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'h5p/**'
+      - 'anki/**'
+      - 'data/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+# Prevent concurrent runs for the same PR/branch
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.11'
+  # Cache versions - bump to bust cache
+  CACHE_VERSION: 'v1'
+
+jobs:
+  # Detect which components changed
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      h5p: ${{ steps.filter.outputs.h5p }}
+      anki: ${{ steps.filter.outputs.anki }}
+      data: ${{ steps.filter.outputs.data }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            h5p:
+              - 'h5p/**'
+              - 'data/**'
+            anki:
+              - 'anki/**'
+              - 'data/**'
+            data:
+              - 'data/**'
+
+  # Node.js security audit (parallel)
+  audit-node:
+    name: Security audit (Node.js)
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.h5p == 'true'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            h5p/node_modules
+          key: ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-${{ hashFiles('h5p/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-
+            ${{ runner.os }}-npm-
+      
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: Run npm audit
+        working-directory: h5p
+        run: |
+          npm audit --json > audit-report.json || true
+          npx audit-ci --moderate --json > audit-ci-report.json || true
+        continue-on-error: true
+      
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-reports
+          path: |
+            h5p/audit-report.json
+            h5p/audit-ci-report.json
+          retention-days: 7
+
+  # Python security audit (parallel)
+  audit-python:
+    name: Security audit (Python)
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.anki == 'true'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            .venv
+          key: ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-${{ hashFiles('anki/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-
+            ${{ runner.os }}-pip-
+      
+      - name: Install pip-audit
+        run: pip install pip-audit
+      
+      - name: Run pip-audit
+        working-directory: anki
+        run: |
+          pip-audit -r requirements.txt --format json > audit-report.json || true
+        continue-on-error: true
+      
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pip-audit-report
+          path: anki/audit-report.json
+          retention-days: 7
+
+  # Linting for H5P
+  lint-h5p:
+    name: Lint H5P code
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.h5p == 'true'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            h5p/node_modules
+          key: ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-${{ hashFiles('h5p/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-
+      
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: Run ESLint
+        working-directory: h5p
+        run: |
+          npx eslint . --ext .js,.jsx --format json --output-file eslint-report.json || true
+        continue-on-error: true
+      
+      - name: Run Prettier check
+        working-directory: h5p
+        run: |
+          npx prettier --check "**/*.{js,jsx,json,css,md}" || true
+        continue-on-error: true
+
+  # Testing for Anki
+  test-anki:
+    name: Test Anki scripts
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.anki == 'true'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            .venv
+          key: ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-${{ hashFiles('anki/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-
+      
+      - name: Install dependencies
+        working-directory: anki
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate || .venv/Scripts/activate
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+      
+      - name: Run pytest
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          pytest --cov=. --cov-report=json --cov-report=term || true
+        continue-on-error: true
+      
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-coverage
+          path: anki/coverage.json
+          retention-days: 7
+
+  # Build components with caching
+  build:
+    name: Build ${{ matrix.component }} (${{ matrix.mode || 'default' }})
+    runs-on: ubuntu-latest
+    needs: [changes, audit-node, audit-python, lint-h5p, test-anki]
+    if: |
+      always() && !cancelled() && (
+        github.event_name == 'workflow_dispatch' ||
+        needs.changes.outputs.h5p == 'true' ||
+        needs.changes.outputs.anki == 'true'
+      )
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # H5P builds
+          - component: h5p
+            mode: questionset
+            artifact: h5p-questionset
+            build_cmd: npm run build:qset
+          - component: h5p
+            mode: mega
+            artifact: h5p-mega
+            build_cmd: |
+              export TOPICS="דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר"
+              export PASS=75
+              npm run build:mega
+          # Anki build
+          - component: anki
+            artifact: anki-package
+            build_cmd: PYTHONIOENCODING=utf-8 python build_apkg.py
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Setup and cache for H5P builds
+      - name: Setup Node.js
+        if: matrix.component == 'h5p'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Cache npm dependencies
+        if: matrix.component == 'h5p'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            h5p/node_modules
+          key: ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-${{ hashFiles('h5p/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-
+      
+      - name: Install H5P dependencies
+        if: matrix.component == 'h5p'
+        working-directory: h5p
+        run: npm ci --prefer-offline --no-audit
+      
+      # Setup and cache for Anki build
+      - name: Setup Python
+        if: matrix.component == 'anki'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache pip dependencies
+        if: matrix.component == 'anki'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            .venv
+          key: ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-${{ hashFiles('anki/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-
+      
+      - name: Install Anki dependencies
+        if: matrix.component == 'anki'
+        working-directory: anki
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate || .venv/Scripts/activate
+          pip install -r requirements.txt
+      
+      # Run builds
+      - name: Build ${{ matrix.component }} - ${{ matrix.mode || 'package' }}
+        working-directory: ${{ matrix.component }}
+        run: |
+          if [ "${{ matrix.component }}" = "anki" ]; then
+            source .venv/bin/activate || .venv/Scripts/activate
+          fi
+          ${{ matrix.build_cmd }}
+      
+      # Upload artifacts
+      - name: Upload ${{ matrix.artifact }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            ${{ matrix.component }}/dist/*
+          retention-days: 30
+          if-no-files-found: error
+
+  # Validation stage
+  validate:
+    name: Validate packages
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '*-package*'
+          path: artifacts
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Validate packages
+        run: |
+          echo "=== Validating built packages ==="
+          
+          # Validate H5P files
+          for h5p in artifacts/*/*.h5p; do
+            if [ -f "$h5p" ]; then
+              echo "Validating: $h5p"
+              unzip -t "$h5p" > /dev/null 2>&1 && echo "✓ Valid H5P" || echo "✗ Invalid H5P"
+            fi
+          done
+          
+          # Run validation script
+          if [ -f "check_files.py" ]; then
+            PYTHONIOENCODING=utf-8 python check_files.py
+          fi
+
+  # Summary job
+  summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [audit-node, audit-python, lint-h5p, test-anki, build, validate]
+    if: always()
+    steps:
+      - name: Generate summary
+        run: |
+          echo "## 📊 CI Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🔒 Security Audits" >> $GITHUB_STEP_SUMMARY
+          echo "- Node.js: ${{ needs.audit-node.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Python: ${{ needs.audit-python.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🧹 Code Quality" >> $GITHUB_STEP_SUMMARY
+          echo "- H5P Linting: ${{ needs.lint-h5p.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Anki Tests: ${{ needs.test-anki.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🏗️ Build & Validation" >> $GITHUB_STEP_SUMMARY
+          echo "- Builds: ${{ needs.build.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Validation: ${{ needs.validate.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 📦 Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "[View all artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY

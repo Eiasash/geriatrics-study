@@ -1,0 +1,63 @@
+version: 2
+updates:
+  # Node.js dependencies for H5P
+  - package-ecosystem: npm
+    directory: "/h5p"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Eiasash"
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      development:
+        patterns:
+          - "*eslint*"
+          - "*prettier*"
+          - "*test*"
+      production:
+        exclude-patterns:
+          - "*eslint*"
+          - "*prettier*"
+          - "*test*"
+
+  # Python dependencies for Anki
+  - package-ecosystem: pip
+    directory: "/anki"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Eiasash"
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Eiasash"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"

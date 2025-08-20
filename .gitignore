@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+*.pyc
+__pycache__/
+
+# Build outputs
+dist/
+*.h5p
+*.apkg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+temp/
+tmp/
+*.tmp
+*.log
+
+# Test coverage
+coverage/
+.coverage
+*.coverage
+htmlcov/
+
+# Environment
+.env
+.env.local
+
+# Cloned repositories
+pack-h5p-action/
