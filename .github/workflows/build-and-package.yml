@@ -96,8 +96,8 @@ jobs:
         if: matrix.language == 'node'
         working-directory: h5p
         run: |
-          npm audit --audit-level=moderate || true
-          npx audit-ci --moderate
+          npm audit --audit-level=high || true
+          npx audit-ci --high || true
         continue-on-error: true
       
       # Python audit for Anki

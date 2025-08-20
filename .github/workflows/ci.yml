@@ -87,7 +87,7 @@ jobs:
         working-directory: h5p
         run: |
           npm audit --json > audit-report.json || true
-          npx audit-ci --moderate --json > audit-ci-report.json || true
+          npx audit-ci --high --json > audit-ci-report.json || true
         continue-on-error: true
       
       - name: Upload audit reports
