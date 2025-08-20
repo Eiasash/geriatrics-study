@@ -1,0 +1,28 @@
+# Default code owners for the entire repository
+* @Eiasash
+
+# H5P specific files
+/h5p/ @Eiasash
+*.h5p @Eiasash
+
+# Anki specific files
+/anki/ @Eiasash
+*.apkg @Eiasash
+
+# Data files
+/data/ @Eiasash
+*.json @Eiasash
+
+# CI/CD and GitHub configuration
+/.github/ @Eiasash
+*.yml @Eiasash
+*.yaml @Eiasash
+
+# Documentation
+*.md @Eiasash
+README.md @Eiasash
+
+# Dependencies
+package.json @Eiasash
+package-lock.json @Eiasash
+requirements.txt @Eiasash
