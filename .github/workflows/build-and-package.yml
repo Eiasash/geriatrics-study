@@ -3,12 +3,12 @@ name: Build, Audit & Release
 on:
   push:
     branches: [main]
-    tags: ['v*']
     paths:
       - 'h5p/**'
       - 'anki/**'
       - 'data/**'
       - '.github/workflows/build-and-package.yml'
+    tags: ['v*']  # Tags trigger regardless of paths
   pull_request:
     branches: [main]
     paths:
@@ -63,10 +63,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: changes
     if: |
-      github.event_name == 'push' || 
       github.event_name == 'workflow_dispatch' ||
-      (matrix.component == 'h5p' && needs.changes.outputs.h5p == 'true') ||
-      (matrix.component == 'anki' && needs.changes.outputs.anki == 'true')
+      startsWith(github.ref, 'refs/tags/') ||
+      needs.changes.outputs.h5p == 'true' ||
+      needs.changes.outputs.anki == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -122,10 +122,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [changes, audit]
     if: |
-      github.event_name == 'push' || 
       github.event_name == 'workflow_dispatch' ||
-      (matrix.component == 'h5p' && needs.changes.outputs.h5p == 'true') ||
-      (matrix.component == 'anki' && needs.changes.outputs.anki == 'true')
+      startsWith(github.ref, 'refs/tags/') ||
+      needs.changes.outputs.h5p == 'true' ||
+      needs.changes.outputs.anki == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -219,22 +219,22 @@ jobs:
           # Check H5P packages
           if [ -d "artifacts/h5p-questionset" ]; then
             echo "QuestionSet H5P files:"
-            ls -la artifacts/h5p-questionset/dist/*.h5p 2>/dev/null || echo "No QuestionSet files found"
+            ls -la artifacts/h5p-questionset/*.h5p 2>/dev/null || echo "No QuestionSet files found"
           fi
           
           if [ -d "artifacts/h5p-mega" ]; then
             echo "Mega H5P files:"
-            ls -la artifacts/h5p-mega/dist/*.h5p 2>/dev/null || echo "No Mega files found"
+            ls -la artifacts/h5p-mega/*.h5p 2>/dev/null || echo "No Mega files found"
           fi
           
           # Check Anki package
           if [ -d "artifacts/anki-package" ]; then
             echo "Anki packages:"
-            ls -la artifacts/anki-package/dist/*.apkg 2>/dev/null || echo "No Anki files found"
+            ls -la artifacts/anki-package/*.apkg 2>/dev/null || echo "No Anki files found"
           fi
           
           # Validate H5P files are valid zip archives
-          for h5p in artifacts/*/dist/*.h5p; do
+          for h5p in artifacts/*/*.h5p; do
             if [ -f "$h5p" ]; then
               echo "Validating: $h5p"
               unzip -t "$h5p" > /dev/null 2>&1 && echo "✓ Valid H5P archive" || echo "✗ Invalid H5P archive"
