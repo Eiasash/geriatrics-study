@@ -1,0 +1,82 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Text files (explicit LF line endings)
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Documentation
+*.rst text eol=lf
+README* text eol=lf
+LICENSE text eol=lf
+CHANGELOG* text eol=lf
+
+# Config files
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.eslintrc* text eol=lf
+.prettierrc* text eol=lf
+.prettierignore text eol=lf
+.editorconfig text eol=lf
+requirements.txt text eol=lf
+package.json text eol=lf
+package-lock.json text eol=lf
+
+# Binary files
+*.h5p binary
+*.apkg binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.rar binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+
+# Fonts
+*.ttf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+
+# Audio/Video
+*.mp3 binary
+*.mp4 binary
+*.ogg binary
+*.webm binary
+
+# Documents
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+
+# Compiled/Generated
+*.pyc binary
+*.pyo binary
+*.pyd binary
+*.so binary
+*.dll binary
+*.exe binary
+*.out binary
+*.app binary
