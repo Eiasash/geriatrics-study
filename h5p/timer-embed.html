@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>מבחן מדומה – H5P + טיימר</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 20px; background:#f7f7f9; color:#111; }
+    .bar { display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid #ddd; padding:10px 14px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,.05); margin-bottom:12px; }
+    .timer { font-weight:700; }
+    iframe { width:100%; height:80vh; border:0; background:#fff; border-radius:10px; }
+    .hidden { display:none; }
+    .danger { color:#b00020; }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <div>מבחן מדומה (H5P Question Set)</div>
+    <div class="timer">זמן נותר: <span id="t">--:--:--</span></div>
+  </div>
+
+  <iframe id="h5p" src="PUT-YOUR-H5P-IFRAME-URL-HERE" allowfullscreen="allowfullscreen"></iframe>
+
+  <script>
+  // totalSeconds: adjust for exam simulation (e.g., 4 שעות = 14400)
+  var totalSeconds = 1800; // 30 דקות לדוגמה
+  var tEl = document.getElementById('t');
+  var iframe = document.getElementById('h5p');
+
+  function fmt(s){
+    var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), c = s%60;
+    const pad = n => String(n).padStart(2,'0');
+    return pad(h)+':'+pad(m)+':'+pad(c);
+  }
+
+  function tick(){
+    tEl.textContent = fmt(totalSeconds);
+    if (totalSeconds <= 0){
+      clearInterval(iv);
+      // Time's up – hide/disable H5P
+      iframe.classList.add('hidden');
+      document.body.insertAdjacentHTML('beforeend','<div class="bar danger">נגמר הזמן</div>');
+      return;
+    }
+    totalSeconds--;
+  }
+  var iv = setInterval(tick, 1000); tick();
+  </script>
+</body>
+</html>

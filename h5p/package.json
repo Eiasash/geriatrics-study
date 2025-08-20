@@ -1,0 +1,18 @@
+{
+  "name": "geriatrics-h5p",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build-h5p.js",
+    "build:qset": "node build-h5p-questionset.js",
+    "build:mega": "node build-h5p-mega.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "h5p-cli": "^1.1.4"
+  }
+}

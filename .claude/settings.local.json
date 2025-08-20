@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run build:qset:*)",
+      "Bash(dir dist)",
+      "Bash(dir:*)",
+      "Bash(TOPICS=\"דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר\" PASS=75 npm run build:mega)",
+      "Bash(python:*)",
+      "Bash(.venv\\Scripts\\activate)",
+      "Bash(.venv\\Scripts\\activate.bat)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python build_apkg.py)",
+      "Bash(echo:*)",
+      "Bash(npx h5p:*)",
+      "Bash(powershell:*)",
+      "Bash(mkdir:*)",
+      "Bash(TOPICS=\"Test\" PASS=75 npm run build:mega)",
+      "Bash(export TOPICS=\"Test\")",
+      "Bash(export PASS=75)",
+      "Bash(npm run build:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python check_files.py)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}
