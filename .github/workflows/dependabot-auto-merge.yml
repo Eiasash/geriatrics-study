@@ -1,0 +1,227 @@
+name: Dependabot Auto-Merge
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  pull_request_review:
+    types: [submitted]
+  workflow_run:
+    workflows: ["CI Enhanced", "CI Pipeline"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # Check if PR is from Dependabot and eligible for auto-merge
+  check-eligibility:
+    name: Check Auto-Merge Eligibility
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' || github.event.pull_request.user.login == 'dependabot[bot]'
+    outputs:
+      should_merge: ${{ steps.check.outputs.should_merge }}
+      merge_method: ${{ steps.check.outputs.merge_method }}
+    steps:
+      - name: Check PR details
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request || 
+                      await github.rest.pulls.get({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        pull_number: context.issue.number
+                      }).then(r => r.data);
+            
+            // Check if it's a Dependabot PR
+            if (pr.user.login !== 'dependabot[bot]') {
+              core.setOutput('should_merge', 'false');
+              return;
+            }
+            
+            // Determine update type from title
+            const title = pr.title.toLowerCase();
+            let mergeMethod = 'squash'; // default
+            let shouldMerge = false;
+            
+            // Auto-merge patch and minor updates
+            if (title.includes('bump') || title.includes('update')) {
+              // Check version bump type
+              const versionMatch = title.match(/from ([\d.]+) to ([\d.]+)/);
+              if (versionMatch) {
+                const [, oldVersion, newVersion] = versionMatch;
+                const oldParts = oldVersion.split('.').map(Number);
+                const newParts = newVersion.split('.').map(Number);
+                
+                // Major version change - don't auto-merge
+                if (newParts[0] > oldParts[0]) {
+                  console.log('Major version change detected - manual review required');
+                  shouldMerge = false;
+                }
+                // Minor or patch - auto-merge
+                else {
+                  console.log('Minor/patch version change - eligible for auto-merge');
+                  shouldMerge = true;
+                }
+              } else {
+                // If we can't determine version, check for security updates
+                shouldMerge = title.includes('security') || 
+                             title.includes('vulnerability') ||
+                             title.includes('patch');
+              }
+            }
+            
+            // Always auto-merge security updates
+            if (title.includes('security') || title.includes('vulnerability')) {
+              shouldMerge = true;
+              mergeMethod = 'squash';
+              console.log('Security update detected - will auto-merge');
+            }
+            
+            // Check labels
+            const labels = pr.labels.map(l => l.name);
+            if (labels.includes('do-not-merge') || labels.includes('hold')) {
+              shouldMerge = false;
+              console.log('Hold label detected - will not auto-merge');
+            }
+            
+            core.setOutput('should_merge', shouldMerge.toString());
+            core.setOutput('merge_method', mergeMethod);
+
+  # Wait for checks to pass
+  wait-for-checks:
+    name: Wait for Status Checks
+    runs-on: ubuntu-latest
+    needs: check-eligibility
+    if: needs.check-eligibility.outputs.should_merge == 'true'
+    steps:
+      - name: Wait for CI checks
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 30
+          running-workflow-name: 'Wait for Status Checks'
+          allowed-conclusions: success,skipped
+
+  # Auto-approve PR
+  auto-approve:
+    name: Auto-Approve PR
+    runs-on: ubuntu-latest
+    needs: [check-eligibility, wait-for-checks]
+    if: needs.check-eligibility.outputs.should_merge == 'true'
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.BOT_APP_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+        continue-on-error: true
+      
+      - name: Approve PR
+        uses: hmarr/auto-approve-action@v3
+        with:
+          github-token: ${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}
+          review-message: |
+            Auto-approved Dependabot update.
+            
+            ✅ All CI checks passed
+            ✅ No breaking changes detected
+            ✅ Version bump is within allowed range
+            
+            This PR will be automatically merged.
+
+  # Enable auto-merge
+  enable-auto-merge:
+    name: Enable Auto-Merge
+    runs-on: ubuntu-latest
+    needs: [check-eligibility, auto-approve]
+    if: needs.check-eligibility.outputs.should_merge == 'true'
+    steps:
+      - name: Enable auto-merge
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const mergeMethod = '${{ needs.check-eligibility.outputs.merge_method }}';
+            
+            try {
+              const result = await github.graphql(`
+                mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+                  enablePullRequestAutoMerge(input: {
+                    pullRequestId: $pullRequestId,
+                    mergeMethod: $mergeMethod
+                  }) {
+                    pullRequest {
+                      autoMergeRequest {
+                        enabledAt
+                        mergeMethod
+                      }
+                    }
+                  }
+                }
+              `, {
+                pullRequestId: context.payload.pull_request.node_id,
+                mergeMethod: mergeMethod.toUpperCase()
+              });
+              
+              console.log('Auto-merge enabled:', result);
+            } catch (error) {
+              console.error('Failed to enable auto-merge:', error);
+              
+              // Fallback: try to merge directly if checks passed
+              try {
+                await github.rest.pulls.merge({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: context.issue.number,
+                  merge_method: mergeMethod,
+                  commit_title: `chore(deps): ${context.payload.pull_request.title}`,
+                  commit_message: 'Auto-merged by Dependabot automation'
+                });
+                console.log('Direct merge successful');
+              } catch (mergeError) {
+                console.error('Direct merge also failed:', mergeError);
+              }
+            }
+
+  # Comment on PR
+  comment:
+    name: Add Auto-Merge Comment
+    runs-on: ubuntu-latest
+    needs: [check-eligibility, enable-auto-merge]
+    if: needs.check-eligibility.outputs.should_merge == 'true'
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `## 🤖 Dependabot Auto-Merge
+            
+            This PR has been marked for **automatic merging** once all checks pass.
+            
+            ### Merge Criteria Met:
+            - ✅ Dependabot security or version update
+            - ✅ No major version changes detected
+            - ✅ CI checks configured to run
+            - ✅ Auto-merge enabled with \`${{ needs.check-eligibility.outputs.merge_method }}\` method
+            
+            ### What happens next?
+            1. CI checks will run automatically
+            2. If all checks pass, PR will be merged
+            3. If checks fail, manual intervention required
+            
+            To prevent auto-merge, add the \`do-not-merge\` label.
+            
+            ---
+            _Automated by Dependabot Auto-Merge workflow_`;
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

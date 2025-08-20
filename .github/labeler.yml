@@ -1,0 +1,133 @@
+# Configuration for GitHub Labeler Action
+# Automatically applies labels based on file paths
+
+# Component labels
+'component: h5p':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'h5p/**'
+      - 'package*.json'
+      - '.eslint*'
+      - '.prettier*'
+
+'component: anki':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'anki/**'
+      - 'requirements*.txt'
+      - 'pytest.ini'
+      - 'setup.cfg'
+
+'component: data':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'data/**'
+      - '**/*.json'
+
+# Type labels
+'type: ci/cd':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/workflows/**'
+      - '.github/actions/**'
+      - '.github/*.yml'
+      - '.github/*.yaml'
+
+'type: documentation':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.md'
+      - '**/*.rst'
+      - 'docs/**'
+      - '.github/**/*.md'
+      - 'LICENSE*'
+
+'type: dependencies':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'package*.json'
+      - 'requirements*.txt'
+      - 'Pipfile*'
+      - 'poetry.lock'
+      - 'yarn.lock'
+      - '.github/dependabot.yml'
+
+'type: test':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*test*.py'
+      - '**/*test*.js'
+      - '**/test/**'
+      - '**/tests/**'
+      - '**/__tests__/**'
+      - 'pytest.ini'
+      - 'jest.config.*'
+
+'type: config':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.*rc'
+      - '.*rc.*'
+      - '*.config.*'
+      - '.gitignore'
+      - '.gitattributes'
+      - '.editorconfig'
+      - 'tsconfig.json'
+      - 'babel.config.*'
+
+# Size labels (based on lines changed)
+'size: XS':
+  - changed-files:
+    - all-globs-to-all-files:
+      - '**/*'
+    - head-branch:
+      - '^(?!.*(main|master)).*$'
+  - base-branch: ['main']
+  - draft: false
+  - size-below: 10
+
+'size: S':
+  - changed-files:
+    - all-globs-to-all-files:
+      - '**/*'
+  - size-above: 9
+  - size-below: 30
+
+'size: M':
+  - changed-files:
+    - all-globs-to-all-files:
+      - '**/*'
+  - size-above: 29
+  - size-below: 100
+
+'size: L':
+  - changed-files:
+    - all-globs-to-all-files:
+      - '**/*'
+  - size-above: 99
+  - size-below: 500
+
+'size: XL':
+  - changed-files:
+    - all-globs-to-all-files:
+      - '**/*'
+  - size-above: 499
+
+# Priority labels
+'priority: high':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'anki/build_apkg.py'
+      - 'h5p/build-*.js'
+      - 'data/content.json'
+
+'security':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*auth*'
+      - '**/*security*'
+      - '**/*secret*'
+      - '**/*token*'
+      - '.github/workflows/*security*'
+      - '**/requirements*.txt'
+      - '**/package*.json'
