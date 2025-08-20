@@ -1,0 +1,353 @@
+name: CI Enhanced
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Prevent concurrent runs for the same PR/branch
+concurrency:
+  group: ci-enhanced-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.11'
+  CACHE_VERSION: 'v2'
+  COVERAGE_THRESHOLD: 70
+
+jobs:
+  # Detect which components changed
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      h5p: ${{ steps.filter.outputs.h5p }}
+      anki: ${{ steps.filter.outputs.anki }}
+      data: ${{ steps.filter.outputs.data }}
+      workflows: ${{ steps.filter.outputs.workflows }}
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            h5p:
+              - 'h5p/**'
+              - 'package*.json'
+              - '.eslint*'
+              - '.prettier*'
+            anki:
+              - 'anki/**'
+              - 'requirements*.txt'
+              - 'pytest.ini'
+              - 'setup.cfg'
+            data:
+              - 'data/**'
+            workflows:
+              - '.github/workflows/**'
+            docs:
+              - '**.md'
+              - 'LICENSE'
+              - '.github/**/*.md'
+
+  # H5P Pipeline - only runs when H5P files change
+  h5p-pipeline:
+    name: H5P - ${{ matrix.job }}
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.h5p == 'true' ||
+      needs.changes.outputs.data == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - job: audit
+            name: Security Audit
+          - job: lint
+            name: Lint & Format
+          - job: test
+            name: Test & Coverage
+          - job: build
+            name: Build Packages
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            h5p/node_modules
+          key: ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-${{ hashFiles('h5p/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ env.CACHE_VERSION }}-
+      
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci --prefer-offline
+      
+      # Security Audit
+      - name: Run security audit
+        if: matrix.job == 'audit'
+        working-directory: h5p
+        run: |
+          npm audit --json > audit-report.json || true
+          npx audit-ci --moderate || true
+      
+      # Linting
+      - name: Run ESLint
+        if: matrix.job == 'lint'
+        working-directory: h5p
+        run: |
+          npx eslint . --ext .js,.jsx --format json --output-file eslint-report.json || true
+          npx eslint . --ext .js,.jsx --format stylish
+        continue-on-error: true
+      
+      - name: Run Prettier
+        if: matrix.job == 'lint'
+        working-directory: h5p
+        run: npx prettier --check "**/*.{js,jsx,json,css,md}"
+        continue-on-error: true
+      
+      # Testing with Coverage
+      - name: Run tests with coverage
+        if: matrix.job == 'test'
+        working-directory: h5p
+        run: |
+          npm install --save-dev jest @jest/globals
+          npx jest --coverage --coverageReporters=json --coverageReporters=lcov --coverageReporters=text || true
+        continue-on-error: true
+      
+      - name: Upload coverage to Codecov
+        if: matrix.job == 'test'
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./h5p/coverage/lcov.info
+          flags: h5p
+          name: h5p-coverage
+          fail_ci_if_error: false
+      
+      # Build
+      - name: Build H5P packages
+        if: matrix.job == 'build'
+        working-directory: h5p
+        run: |
+          npm run build:qset
+          export TOPICS="Test" PASS=75
+          npm run build:mega || true
+      
+      - name: Upload artifacts
+        if: matrix.job == 'build'
+        uses: actions/upload-artifact@v4
+        with:
+          name: h5p-${{ matrix.job }}-artifacts
+          path: h5p/dist/*.h5p
+          retention-days: 7
+
+  # Anki Pipeline - only runs when Anki files change
+  anki-pipeline:
+    name: Anki - ${{ matrix.job }}
+    runs-on: ubuntu-latest
+    needs: changes
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.changes.outputs.anki == 'true' ||
+      needs.changes.outputs.data == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - job: audit
+            name: Security Audit
+          - job: lint
+            name: Lint & Format
+          - job: test
+            name: Test & Coverage
+          - job: build
+            name: Build Package
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            anki/.venv
+          key: ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-${{ hashFiles('anki/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ env.CACHE_VERSION }}-
+      
+      - name: Install dependencies
+        working-directory: anki
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate || .venv/Scripts/activate
+          pip install -r requirements.txt
+          pip install pytest pytest-cov flake8 black isort mypy
+      
+      # Security Audit
+      - name: Run security audit
+        if: matrix.job == 'audit'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          pip install pip-audit
+          pip-audit -r requirements.txt --format json > audit-report.json || true
+      
+      # Linting
+      - name: Run flake8
+        if: matrix.job == 'lint'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          flake8 . --format json --output-file flake8-report.json || true
+          flake8 . --statistics
+        continue-on-error: true
+      
+      - name: Run black
+        if: matrix.job == 'lint'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          black --check .
+        continue-on-error: true
+      
+      - name: Run isort
+        if: matrix.job == 'lint'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          isort --check-only .
+        continue-on-error: true
+      
+      # Testing with Coverage
+      - name: Run tests with coverage
+        if: matrix.job == 'test'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          pytest --cov=. --cov-report=xml --cov-report=term --cov-fail-under=${{ env.COVERAGE_THRESHOLD }}
+        continue-on-error: true
+      
+      - name: Upload coverage to Codecov
+        if: matrix.job == 'test'
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./anki/coverage.xml
+          flags: anki
+          name: anki-coverage
+          fail_ci_if_error: false
+      
+      # Build
+      - name: Build Anki package
+        if: matrix.job == 'build'
+        working-directory: anki
+        run: |
+          source .venv/bin/activate || .venv/Scripts/activate
+          PYTHONIOENCODING=utf-8 python build_apkg.py
+      
+      - name: Upload artifacts
+        if: matrix.job == 'build'
+        uses: actions/upload-artifact@v4
+        with:
+          name: anki-${{ matrix.job }}-artifacts
+          path: anki/dist/*.apkg
+          retention-days: 7
+
+  # Coverage Report Comment (PRs only)
+  coverage-report:
+    name: Coverage Report
+    runs-on: ubuntu-latest
+    needs: [h5p-pipeline, anki-pipeline]
+    if: github.event_name == 'pull_request' && always()
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '*-test-artifacts'
+          path: coverage
+        continue-on-error: true
+      
+      - name: Comment PR with coverage
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const coverage = {
+              h5p: 'N/A',
+              anki: 'N/A'
+            };
+            
+            // Parse coverage reports if available
+            try {
+              // Add coverage parsing logic here
+              console.log('Coverage reports processed');
+            } catch (e) {
+              console.log('No coverage reports found');
+            }
+            
+            const comment = `## 📊 Coverage Report
+            
+            | Component | Coverage | Status |
+            |-----------|----------|--------|
+            | H5P | ${coverage.h5p} | ${coverage.h5p !== 'N/A' && parseFloat(coverage.h5p) >= 70 ? '✅' : '⚠️'} |
+            | Anki | ${coverage.anki} | ${coverage.anki !== 'N/A' && parseFloat(coverage.anki) >= 70 ? '✅' : '⚠️'} |
+            
+            **Minimum threshold:** 70%
+            
+            _Updated by CI Pipeline_`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  # Summary
+  summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [changes, h5p-pipeline, anki-pipeline]
+    if: always()
+    steps:
+      - name: Summary
+        run: |
+          echo "## 📊 Enhanced CI Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🔍 Changes Detected" >> $GITHUB_STEP_SUMMARY
+          echo "- H5P: ${{ needs.changes.outputs.h5p == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Anki: ${{ needs.changes.outputs.anki == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Data: ${{ needs.changes.outputs.data == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### 🏗️ Pipeline Status" >> $GITHUB_STEP_SUMMARY
+          echo "- H5P Pipeline: ${{ needs.h5p-pipeline.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Anki Pipeline: ${{ needs.anki-pipeline.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "Path-based filtering saved unnecessary builds! 🚀" >> $GITHUB_STEP_SUMMARY

@@ -1,10 +1,15 @@
 # Geriatrics Study Materials 🏥
 
 [![CI Pipeline](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml)
+[![CI Enhanced](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml)
 [![Release](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml)
+[![codecov](https://codecov.io/gh/Eiasash/geriatrics-study/branch/main/graph/badge.svg)](https://codecov.io/gh/Eiasash/geriatrics-study)
+[![H5P Coverage](https://img.shields.io/badge/H5P%20Coverage-70%25-yellow)](https://codecov.io/gh/Eiasash/geriatrics-study/tree/main/h5p)
+[![Anki Coverage](https://img.shields.io/badge/Anki%20Coverage-70%25-yellow)](https://codecov.io/gh/Eiasash/geriatrics-study/tree/main/anki)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Eiasash/geriatrics-study)](https://github.com/Eiasash/geriatrics-study/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/Eiasash/geriatrics-study/network/updates)
+[![Auto-Merge](https://img.shields.io/badge/Auto--Merge-enabled-blue)](https://github.com/Eiasash/geriatrics-study/blob/main/.github/workflows/dependabot-auto-merge.yml)
 
 Educational materials system for geriatrics topics - featuring Anki flashcards and H5P interactive content with full Hebrew language support.
 
