@@ -1,0 +1,56 @@
+name: build-and-test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate exam bank (100 MCQs for selected domains)
+        run: |
+          python -m pip install --upgrade pip
+          python scripts/validate_exam.py
+
+      - name: Build H5P (Question Sets & Mega Quiz)
+        working-directory: h5p
+        run: |
+          npm ci || npm i
+          npm run build:qset || echo "build:qset not present or already built"
+          TOPICS="דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר" MAX_Q=100 PASS=70 npm run build:mega
+
+      - name: Upload H5P artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: h5p-build
+          path: |
+            h5p/dist/*.h5p
+
+      - name: Build Anki deck (.apkg)
+        working-directory: anki
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python build_apkg.py
+
+      - name: Upload Anki deck
+        uses: actions/upload-artifact@v4
+        with:
+          name: anki-deck
+          path: anki/dist/*.apkg
