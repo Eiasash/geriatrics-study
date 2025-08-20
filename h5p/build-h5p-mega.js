@@ -8,15 +8,27 @@ const __dirname = path.dirname(__filename);
 
 const ROOT = path.join(__dirname, '..');
 const DATA = path.join(ROOT, 'data', 'content.json');
-const ASSETS = path.join(__dirname, 'assets');
 const OUT = path.join(__dirname, 'dist');
 await fs.ensureDir(OUT);
 
-// Helpers
-const readJson = async p => JSON.parse(await fs.readFile(p, 'utf8'));
+function pickBalanced(itemsByDomain, maxQ) {
+  const domains = Object.keys(itemsByDomain);
+  const queues = domains.map(d => ({ d, arr: [...itemsByDomain[d]] }));
+  const res = [];
+  while (res.length < maxQ) {
+    let progressed = false;
+    for (const q of queues) {
+      if (!q.arr.length) continue;
+      res.push({ _topic: q.d, ...q.arr.shift() });
+      progressed = true;
+      if (res.length >= maxQ) break;
+    }
+    if (!progressed) break;
+  }
+  return res;
+}
 
-// Build QuestionSet payload from selected topics' mcqs
-function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercentage, logoPath }) {
+function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercentage }) {
   const questions = mcqs.map(m => ({
     library: { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 },
     params: {
@@ -36,7 +48,7 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
 
   const introPage = {
     showIntroPage: true,
-    title: title,
+    title,
     introduction: `<div dir="rtl" style="text-align:right">${introHtml || ''}</div>`
   };
 
@@ -45,10 +57,7 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
     showSummary: true,
     retryButtonText: "נסה שוב",
     finishButtonText: "סיום",
-    override: {
-      showSolutionButton: "enabled",
-      retryButton: "enabled"
-    },
+    override: { showSolutionButton: "enabled", retryButton: "enabled" },
     message: `<div dir="rtl" style="text-align:right">${endHtml || ''}</div>`
   };
 
@@ -74,47 +83,39 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
   };
 }
 
-const topics = await readJson(DATA);
-
-// Selection via env var TOPICS (comma-separated, exact match) or fallback to all topics
+const topics = JSON.parse(await fs.readFile(DATA, 'utf8'));
 const sel = process.env.TOPICS ? process.env.TOPICS.split(',').map(s => s.trim()) : null;
-const passPct = process.env.PASS || 70;
+const maxQ = Number(process.env.MAX_Q || 100);
+const passPct = Number(process.env.PASS || 70);
 
-// Collect MCQs from selected topics
 let picked = topics.filter(t => !sel || sel.includes(t.topic));
-const allMcqs = picked.flatMap(t => (t.mcqs || []).map(m => ({ ...m, _topic: t.topic })));
+const itemsByDomain = {};
+for (const t of picked) {
+  const domain = t.topic;
+  const list = (t.mcqs || []).map(m => ({ ...m, _topic: domain }));
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+  itemsByDomain[domain] = list;
+}
+const selected = pickBalanced(itemsByDomain, maxQ);
 
-// Basic intro/end with placeholders and logo
-let introText = 'מגה-מבחן גריאטריה — שאלות נבחרות לפי תכנית ה-IMA. בהצלחה!';
-let endText = 'תודה! ניתן לעיין בפתרונות או לנסות שוב. ציון המעבר מוגדר לפי אחוז המינימום שהוגדר.';
-
-// Prepare temp dir
 const tmpDir = path.join(__dirname, `.tmp_mega_${Date.now()}`);
 await fs.ensureDir(tmpDir);
 await fs.ensureDir(path.join(tmpDir, 'content'));
 
-// Try to include logo if exists
-const logoPath = path.join(ASSETS, 'logo.png');
-const hasLogo = await fs.pathExists(logoPath);
-if (hasLogo) {
-  // Place logo in content folder and prepend to intro
-  const logoName = 'logo.png';
-  await fs.copy(logoPath, path.join(tmpDir, 'content', logoName));
-  const imgTag = `<div style="text-align:center"><img src="${logoName}" alt="logo" style="max-width:220px;"/></div>`;
-  introText = imgTag + '<br/>' + introText;
-  endText += '<br/>' + imgTag;
-}
+let introText = 'מגה-מבחן גריאטריה — שאלות נבחרות לפי תכנית ה-IMA. בהצלחה!';
+let endText = 'תודה! ניתן לעיין בפתרונות או לנסות שוב. ציון המעבר מוגדר במבנה החידון.';
 
-// Build payload and files
 const payload = buildQuestionSetPayload({
-  title: 'מגה-חידון גריאטריה (Question Set)',
-  mcqs: allMcqs,
+  title: `מגה-חידון גריאטריה (${selected.length} שאלות)`,
+  mcqs: selected,
   introHtml: introText,
   endHtml: endText,
-  passPercentage: Number(passPct)
+  passPercentage: passPct
 });
 
-// h5p.json
 const h5pJson = {
   title: payload.title,
   language: payload.language,
@@ -123,14 +124,11 @@ const h5pJson = {
   preloadedDependencies: payload.preloadedDependencies
 };
 await fs.writeJson(path.join(tmpDir, 'h5p.json'), h5pJson, { spaces: 2 });
-
-// content.json
 await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), payload.content, { spaces: 2 });
 
-// pack
 const outFile = path.join(OUT, 'Mega_QuestionSet.h5p');
 execSync(`npx h5p pack "${tmpDir}" "${outFile}"`, { stdio: 'inherit' });
 await fs.remove(tmpDir);
 console.log('✔ Built', outFile);
-console.log('Use env TOPICS and PASS to select topics and pass threshold, e.g.:');
-console.log('TOPICS="דליריום,דמנציה ומחלת אלצהיימר" PASS=75 npm run build:mega');
+console.log('Selected domains:', Object.keys(itemsByDomain));
+console.log('Total questions included:', selected.length);

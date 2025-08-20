@@ -1,0 +1,88 @@
+name: build-and-package
+
+on:
+  push:
+    branches: [ main, stage-a-ci ]
+    tags: [ 'v*' ]   # when you push a tag like v1.0.0, we’ll also publish a Release
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'   # LTS
+      # docs: https://github.com/actions/setup-node
+      # :contentReference[oaicite:2]{index=2}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # docs: https://github.com/actions/setup-python
+      # :contentReference[oaicite:3]{index=3}
+
+      - name: Validate exam bank (100 MCQs for selected domains)
+        run: |
+          python -m pip install --upgrade pip
+          python scripts/validate_exam.py
+
+      - name: Build H5P (Question Sets & Mega Quiz)
+        working-directory: h5p
+        run: |
+          npm ci || npm i
+          npm run build:qset || echo "build:qset skipped"
+          TOPICS="דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר" MAX_Q=100 PASS=70 npm run build:mega
+
+      - name: Zip H5P outputs
+        if: always()
+        run: |
+          mkdir -p artifacts
+          zip -r artifacts/h5p-dist.zip h5p/dist || true
+
+      - name: Build Anki deck (.apkg)
+        working-directory: anki
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python build_apkg.py
+
+      - name: Zip Anki outputs
+        if: always()
+        run: |
+          zip -r artifacts/anki-dist.zip anki/dist || true
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: study-build
+          path: artifacts/
+      # Official upload-artifact v4 (faster, stable). :contentReference[oaicite:4]{index=4}
+
+  release:
+    # Only run on tag pushes (vX.Y.Z)
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download packaged artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: study-build
+          path: artifacts
+
+      - name: Create GitHub Release & upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/h5p-dist.zip
+            artifacts/anki-dist.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Alternative release/upload actions exist if you prefer: meeDamian/github-release or actions/upload-release-asset. :contentReference[oaicite:5]{index=5}
