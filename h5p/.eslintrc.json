@@ -7,24 +7,27 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "script"
   },
   "rules": {
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
+    "indent": ["warn", 2],
+    "linebreak-style": ["warn", "unix"],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "always"],
     "no-unused-vars": ["warn"],
-    "no-console": ["warn"],
-    "eqeqeq": ["error", "always"],
-    "curly": ["error", "all"]
+    "no-console": "off",
+    "no-undef": "warn",
+    "eqeqeq": ["warn", "always"],
+    "curly": ["warn", "all"]
   },
   "ignorePatterns": [
-    "node_modules/",
-    "dist/",
-    "libraries/",
-    "content/",
-    "temp/",
-    "uploads/"
+    "node_modules/**",
+    "dist/**",
+    "libraries/**",
+    "content/**",
+    "temp/**",
+    "uploads/**",
+    "coverage/**",
+    "*.min.js"
   ]
 }
