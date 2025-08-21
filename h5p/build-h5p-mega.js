@@ -127,7 +127,16 @@ async function main() {
   
   // pack
   const outFile = path.join(OUT, 'Mega_QuestionSet.h5p');
-  execSync(`npx h5p pack "${tmpDir}" "${outFile}"`, { stdio: 'inherit' });
+  
+  // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
+  if (process.platform === 'win32') {
+    execSync(`powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`, { stdio: 'inherit' });
+    // Rename .zip to .h5p
+    await fs.rename(`${outFile}.zip`, outFile);
+  } else {
+    execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, { stdio: 'inherit' });
+  }
+  
   await fs.remove(tmpDir);
   console.log('✔ Built', outFile);
   console.log('Use env TOPICS and PASS to select topics and pass threshold, e.g.:');

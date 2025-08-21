@@ -88,8 +88,18 @@ async function main() {
     // content/content.json with QuestionSet params
     await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), payload.content, { spaces: 2 });
 
-    const outFile = path.join(OUT, `${title.replace(/\s+/g, '_')}_QuestionSet.h5p`);
-    execSync(`npx h5p pack "${tmpDir}" "${outFile}"`, { stdio: 'inherit' });
+    // Sanitize filename: replace spaces and problematic characters
+    const safeTitle = title.replace(/[\s\/\\:*?"<>|]/g, '_');
+    const outFile = path.join(OUT, `${safeTitle}_QuestionSet.h5p`);
+    
+    // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
+    if (process.platform === 'win32') {
+      execSync(`powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`, { stdio: 'inherit' });
+      // Rename .zip to .h5p
+      await fs.rename(`${outFile}.zip`, outFile);
+    } else {
+      execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, { stdio: 'inherit' });
+    }
 
     await fs.remove(tmpDir);
     console.log(`✔ Built ${outFile}`);
