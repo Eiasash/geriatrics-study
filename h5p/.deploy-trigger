@@ -1,0 +1,4 @@
+# Deploy Trigger
+Timestamp: 2025-08-21T14:00:00Z
+Purpose: Trigger GitHub Actions deployment workflow
+Branch: feat/advanced-cicd
