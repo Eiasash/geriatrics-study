@@ -4,10 +4,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-
 jobs:
   fetch-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # ← ADD THIS LINE!
+      pages: write     # ← AND THIS!
+      id-token: write  # ← AND THIS!
     
     steps:
       - uses: actions/checkout@v3
