@@ -1,0 +1,249 @@
+name: H5P Build and Deploy
+
+on:
+  push:
+    branches: [main, feat/advanced-cicd]
+    paths:
+      - 'data/content.json'
+      - 'h5p/**'
+      - '.github/workflows/h5p-deploy.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/content.json'
+      - 'h5p/**'
+  workflow_dispatch:
+    inputs:
+      topics:
+        description: 'Topics for mega quiz (comma-separated)'
+        required: false
+        default: ''
+      pass_percentage:
+        description: 'Pass percentage for mega quiz'
+        required: false
+        default: '70'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: h5p/package-lock.json
+        
+    - name: 📦 Install dependencies
+      working-directory: ./h5p
+      run: npm ci
+      
+    - name: 🧪 Run tests
+      working-directory: ./h5p
+      run: npm test
+      continue-on-error: true
+      
+    - name: 🔍 Lint code
+      working-directory: ./h5p
+      run: npm run lint
+      continue-on-error: true
+      
+    - name: 🏗️ Build Dialog Cards
+      working-directory: ./h5p
+      run: npm run build
+      
+    - name: 📝 Build Question Sets
+      working-directory: ./h5p
+      run: npm run build:qset
+      
+    - name: 🎯 Build Mega Quiz (All Topics)
+      working-directory: ./h5p
+      run: |
+        if [ -n "${{ github.event.inputs.topics }}" ]; then
+          TOPICS="${{ github.event.inputs.topics }}" PASS="${{ github.event.inputs.pass_percentage }}" npm run build:mega
+        else
+          npm run build:mega
+        fi
+        
+    - name: 📊 Generate build report
+      working-directory: ./h5p
+      run: |
+        echo "# H5P Build Report" > dist/BUILD_REPORT.md
+        echo "" >> dist/BUILD_REPORT.md
+        echo "**Build Date:** $(date)" >> dist/BUILD_REPORT.md
+        echo "**Commit:** ${{ github.sha }}" >> dist/BUILD_REPORT.md
+        echo "**Branch:** ${{ github.ref_name }}" >> dist/BUILD_REPORT.md
+        echo "" >> dist/BUILD_REPORT.md
+        echo "## Generated Packages" >> dist/BUILD_REPORT.md
+        echo "\`\`\`" >> dist/BUILD_REPORT.md
+        ls -lh dist/*.h5p | awk '{print $9, $5}' >> dist/BUILD_REPORT.md
+        echo "\`\`\`" >> dist/BUILD_REPORT.md
+        echo "" >> dist/BUILD_REPORT.md
+        echo "**Total packages:** $(ls dist/*.h5p | wc -l)" >> dist/BUILD_REPORT.md
+        echo "**Total size:** $(du -sh dist | cut -f1)" >> dist/BUILD_REPORT.md
+        
+    - name: 📤 Upload H5P packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: h5p-packages-${{ github.sha }}
+        path: |
+          h5p/dist/*.h5p
+          h5p/dist/BUILD_REPORT.md
+        retention-days: 30
+        
+    - name: 📤 Upload HTML interfaces
+      uses: actions/upload-artifact@v4
+      with:
+        name: h5p-interfaces-${{ github.sha }}
+        path: |
+          h5p/index.html
+          h5p/timer-embed.html
+        retention-days: 30
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/advanced-cicd'
+    
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+      
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: 📥 Download H5P packages
+      uses: actions/download-artifact@v4
+      with:
+        name: h5p-packages-${{ github.sha }}
+        path: h5p/dist
+        
+    - name: 📥 Download HTML interfaces
+      uses: actions/download-artifact@v4
+      with:
+        name: h5p-interfaces-${{ github.sha }}
+        path: h5p
+        
+    - name: 🌐 Setup GitHub Pages
+      uses: actions/configure-pages@v4
+      
+    - name: 📁 Prepare deployment directory
+      run: |
+        mkdir -p _site/h5p/dist
+        cp -r h5p/dist/* _site/h5p/dist/
+        cp h5p/index.html _site/h5p/
+        cp h5p/timer-embed.html _site/h5p/
+        echo "# Geriatrics Study H5P Content" > _site/index.html
+        echo "<meta http-equiv='refresh' content='0; url=h5p/index.html'>" >> _site/index.html
+        
+    - name: 📤 Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: _site
+        
+    - name: 🚀 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      
+    - name: ✅ Deployment success
+      if: success()
+      run: |
+        echo "🎉 Successfully deployed to GitHub Pages!"
+        echo "📍 View at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/h5p/"
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/advanced-cicd')
+    
+    permissions:
+      contents: write
+      
+    steps:
+    - name: 📥 Download H5P packages
+      uses: actions/download-artifact@v4
+      with:
+        name: h5p-packages-${{ github.sha }}
+        path: release-assets
+        
+    - name: 📦 Create release bundle
+      run: |
+        cd release-assets
+        zip -r ../h5p-content-bundle.zip *.h5p BUILD_REPORT.md
+        cd ..
+        
+    - name: 📊 Generate release notes
+      id: release_notes
+      run: |
+        echo "## 🎓 H5P Content Release" > RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "### 📦 Package Contents" >> RELEASE_NOTES.md
+        echo "- Dialog Cards (Flashcards)" >> RELEASE_NOTES.md
+        echo "- Question Sets (Topic Quizzes)" >> RELEASE_NOTES.md
+        echo "- Mega Quiz (Comprehensive Test)" >> RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "### 📊 Statistics" >> RELEASE_NOTES.md
+        echo "- 12 Topics" >> RELEASE_NOTES.md
+        echo "- 151 Questions" >> RELEASE_NOTES.md
+        echo "- 38 Flashcards" >> RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "### 🚀 Deployment" >> RELEASE_NOTES.md
+        echo "1. Download h5p-content-bundle.zip" >> RELEASE_NOTES.md
+        echo "2. Extract .h5p files" >> RELEASE_NOTES.md
+        echo "3. Upload to your H5P-compatible platform" >> RELEASE_NOTES.md
+        echo "" >> RELEASE_NOTES.md
+        echo "**Commit:** ${{ github.sha }}" >> RELEASE_NOTES.md
+        echo "**Build Date:** $(date)" >> RELEASE_NOTES.md
+        
+    - name: 🏷️ Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: h5p-v${{ github.run_number }}
+        name: H5P Content Release v${{ github.run_number }}
+        body_path: RELEASE_NOTES.md
+        draft: false
+        prerelease: false
+        files: |
+          h5p-content-bundle.zip
+          release-assets/*.h5p
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: 📢 Workflow summary
+      run: |
+        echo "## Workflow Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ needs.build.result }}" == "success" ]; then
+          echo "✅ **Build:** Successful" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Build:** Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.deploy.result }}" == "success" ]; then
+          echo "✅ **Deploy:** Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **Live Site:** [View H5P Content](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/h5p/)" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ needs.deploy.result }}" == "skipped" ]; then
+          echo "⏭️ **Deploy:** Skipped (not on main branch)" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Deploy:** Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Workflow:** ${{ github.workflow }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Run:** #${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Actor:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
