@@ -13,7 +13,7 @@ jobs:
       id-token: write  # ← AND THIS!
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       
       - name: Setup Python
         uses: actions/setup-python@v4
