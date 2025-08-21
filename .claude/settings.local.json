@@ -40,7 +40,8 @@
       "Bash(true)",
       "WebFetch(domain:eiasash.github.io)",
       "Bash(npm run:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
