@@ -1,49 +1,584 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title>מבחן מדומה – H5P + טיימר</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מבחן מדומה גריאטריה - Shaare Tzedek Exam Simulator</title>
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 20px; background:#f7f7f9; color:#111; }
-    .bar { display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid #ddd; padding:10px 14px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,.05); margin-bottom:12px; }
-    .timer { font-weight:700; }
-    iframe { width:100%; height:80vh; border:0; background:#fff; border-radius:10px; }
-    .hidden { display:none; }
-    .danger { color:#b00020; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+      overflow: hidden;
+    }
+    
+    .control-panel {
+      background: rgba(255,255,255,0.98);
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      animation: slideDown 0.5s ease;
+    }
+    
+    .exam-info {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .exam-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .timer-display {
+      background: #f7fafc;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      border: 2px solid #e2e8f0;
+      font-weight: bold;
+      font-size: 1.2rem;
+      min-width: 140px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .timer-display.warning {
+      background: #fef5e7;
+      border-color: #f39c12;
+      color: #e67e22;
+      animation: pulse 2s infinite;
+    }
+    
+    .timer-display.danger {
+      background: #fadbd8;
+      border-color: #e74c3c;
+      color: #c0392b;
+      animation: pulse 1s infinite;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #5a67d8;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: #48bb78;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #38a169;
+      transform: translateY(-2px);
+    }
+    
+    .btn-danger {
+      background: #f56565;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #e53e3e;
+    }
+    
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .iframe-container {
+      height: calc(100vh - 80px);
+      position: relative;
+      background: white;
+      overflow: hidden;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .overlay.show {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .modal {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 500px;
+      text-align: center;
+      animation: scaleIn 0.3s ease;
+    }
+    
+    .modal h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .modal p {
+      margin-bottom: 1.5rem;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .time-selector {
+      margin: 1.5rem 0;
+    }
+    
+    .time-selector label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .time-selector select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    
+    .stats-bar {
+      background: rgba(255,255,255,0.9);
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #e2e8f0;
+      display: none;
+    }
+    
+    .stats-bar.show {
+      display: flex;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #666;
+    }
+    
+    .stat-value {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #e2e8f0;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transition: width 1s linear;
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .control-panel {
+        padding: 0.8rem;
+      }
+      
+      .exam-title {
+        font-size: 1rem;
+      }
+      
+      .timer-display {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="bar">
-    <div>מבחן מדומה (H5P Question Set)</div>
-    <div class="timer">זמן נותר: <span id="t">--:--:--</span></div>
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <div class="exam-info">
+      <div class="exam-title">
+        <span>🏥</span>
+        <span>מבחן מדומה - גריאטריה</span>
+      </div>
+      <div class="timer-display" id="timer">
+        <span id="timeDisplay">--:--:--</span>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button class="btn btn-primary" id="startBtn" onclick="showSetupModal()">
+        <span>⚙️</span>
+        <span>הגדרות</span>
+      </button>
+      <button class="btn btn-secondary" id="pauseBtn" onclick="togglePause()" disabled>
+        <span>⏸️</span>
+        <span>השהה</span>
+      </button>
+      <button class="btn btn-danger" id="endBtn" onclick="endExam()" disabled>
+        <span>🏁</span>
+        <span>סיים מבחן</span>
+      </button>
+    </div>
   </div>
-
-  <iframe id="h5p" src="https://eiasash.github.io/geriatrics-study/" allowfullscreen="allowfullscreen"></iframe>
-
+  
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat">
+      <span class="stat-label">זמן שחלף:</span>
+      <span class="stat-value" id="elapsedTime">00:00</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">אחוז הזמן:</span>
+      <span class="stat-value" id="percentComplete">0%</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">מצב:</span>
+      <span class="stat-value" id="examStatus">ממתין</span>
+    </div>
+  </div>
+  
+  <!-- iframe Container -->
+  <div class="iframe-container">
+    <iframe id="examFrame" src="https://eiasash.github.io/geriatrics-study/"></iframe>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar"></div>
+    </div>
+  </div>
+  
+  <!-- Setup Modal -->
+  <div class="overlay" id="setupModal">
+    <div class="modal">
+      <h2>⚙️ הגדרת מבחן מדומה</h2>
+      <p>בחר את משך הזמן למבחן המדומה. המערכת תדמה תנאי מבחן אמיתיים עם טיימר וחיווי התקדמות.</p>
+      
+      <div class="time-selector">
+        <label for="examDuration">משך המבחן:</label>
+        <select id="examDuration">
+          <option value="300">5 דקות (בדיקה מהירה)</option>
+          <option value="900">15 דקות (מבחן קצר)</option>
+          <option value="1800" selected>30 דקות (מבחן רגיל)</option>
+          <option value="3600">60 דקות (מבחן מלא)</option>
+          <option value="5400">90 דקות (מבחן מורחב)</option>
+          <option value="7200">120 דקות (מבחן מקיף)</option>
+          <option value="14400">4 שעות (סימולציית IMA)</option>
+        </select>
+      </div>
+      
+      <div class="controls">
+        <button class="btn btn-primary" onclick="startExam()">
+          <span>🚀</span>
+          <span>התחל מבחן</span>
+        </button>
+        <button class="btn btn-secondary" onclick="closeSetupModal()">
+          <span>❌</span>
+          <span>ביטול</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Time's Up Modal -->
+  <div class="overlay" id="timeupModal">
+    <div class="modal">
+      <h2 style="color: #e74c3c;">⏰ נגמר הזמן!</h2>
+      <p>זמן המבחן הסתיים. המבחן נעצר אוטומטית.</p>
+      <p style="font-size: 1.2rem; margin: 1rem 0;">
+        זמן כולל: <strong id="finalTime">--:--:--</strong>
+      </p>
+      <button class="btn btn-primary" onclick="resetExam()">
+        <span>🔄</span>
+        <span>מבחן חדש</span>
+      </button>
+    </div>
+  </div>
+  
   <script>
-  // totalSeconds: adjust for exam simulation (e.g., 4 שעות = 14400)
-  var totalSeconds = 1800; // 30 דקות לדוגמה
-  var tEl = document.getElementById('t');
-  var iframe = document.getElementById('h5p');
-
-  function fmt(s){
-    var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), c = s%60;
-    const pad = n => String(n).padStart(2,'0');
-    return pad(h)+':'+pad(m)+':'+pad(c);
-  }
-
-  function tick(){
-    tEl.textContent = fmt(totalSeconds);
-    if (totalSeconds <= 0){
-      clearInterval(iv);
-      // Time's up – hide/disable H5P
-      iframe.classList.add('hidden');
-      document.body.insertAdjacentHTML('beforeend','<div class="bar danger">נגמר הזמן</div>');
-      return;
+    let totalSeconds = 0;
+    let elapsedSeconds = 0;
+    let interval = null;
+    let isPaused = false;
+    let examStarted = false;
+    
+    // Format time helper
+    function formatTime(seconds) {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      return [hours, minutes, secs].map(n => String(n).padStart(2, '0')).join(':');
     }
-    totalSeconds--;
-  }
-  var iv = setInterval(tick, 1000); tick();
+    
+    // Show setup modal
+    function showSetupModal() {
+      document.getElementById('setupModal').classList.add('show');
+    }
+    
+    // Close setup modal
+    function closeSetupModal() {
+      document.getElementById('setupModal').classList.remove('show');
+    }
+    
+    // Start exam
+    function startExam() {
+      totalSeconds = parseInt(document.getElementById('examDuration').value);
+      elapsedSeconds = 0;
+      examStarted = true;
+      isPaused = false;
+      
+      // Close modal
+      closeSetupModal();
+      
+      // Enable controls
+      document.getElementById('pauseBtn').disabled = false;
+      document.getElementById('endBtn').disabled = false;
+      document.getElementById('startBtn').disabled = true;
+      
+      // Show stats bar
+      document.getElementById('statsBar').classList.add('show');
+      document.getElementById('examStatus').textContent = 'פעיל';
+      
+      // Start timer
+      startTimer();
+    }
+    
+    // Start timer
+    function startTimer() {
+      if (interval) clearInterval(interval);
+      
+      interval = setInterval(() => {
+        if (!isPaused) {
+          if (elapsedSeconds >= totalSeconds) {
+            timeUp();
+            return;
+          }
+          
+          elapsedSeconds++;
+          updateDisplay();
+        }
+      }, 1000);
+      
+      updateDisplay();
+    }
+    
+    // Update display
+    function updateDisplay() {
+      const remaining = totalSeconds - elapsedSeconds;
+      const timeDisplay = document.getElementById('timeDisplay');
+      const timerElement = document.getElementById('timer');
+      
+      // Update time
+      timeDisplay.textContent = formatTime(remaining);
+      
+      // Update elapsed time
+      document.getElementById('elapsedTime').textContent = formatTime(elapsedSeconds);
+      
+      // Update percentage
+      const percent = Math.round((elapsedSeconds / totalSeconds) * 100);
+      document.getElementById('percentComplete').textContent = percent + '%';
+      
+      // Update progress bar
+      document.getElementById('progressBar').style.width = (100 - percent) + '%';
+      
+      // Change timer color based on remaining time
+      timerElement.classList.remove('warning', 'danger');
+      if (remaining <= 60) {
+        timerElement.classList.add('danger');
+      } else if (remaining <= 300) {
+        timerElement.classList.add('warning');
+      }
+    }
+    
+    // Toggle pause
+    function togglePause() {
+      isPaused = !isPaused;
+      const pauseBtn = document.getElementById('pauseBtn');
+      
+      if (isPaused) {
+        pauseBtn.innerHTML = '<span>▶️</span><span>המשך</span>';
+        pauseBtn.classList.remove('btn-secondary');
+        pauseBtn.classList.add('btn-primary');
+        document.getElementById('examStatus').textContent = 'מושהה';
+      } else {
+        pauseBtn.innerHTML = '<span>⏸️</span><span>השהה</span>';
+        pauseBtn.classList.remove('btn-primary');
+        pauseBtn.classList.add('btn-secondary');
+        document.getElementById('examStatus').textContent = 'פעיל';
+      }
+    }
+    
+    // End exam
+    function endExam() {
+      if (confirm('האם אתה בטוח שברצונך לסיים את המבחן?')) {
+        clearInterval(interval);
+        document.getElementById('finalTime').textContent = formatTime(elapsedSeconds);
+        document.getElementById('timeupModal').classList.add('show');
+        document.getElementById('examStatus').textContent = 'הסתיים';
+      }
+    }
+    
+    // Time's up
+    function timeUp() {
+      clearInterval(interval);
+      document.getElementById('finalTime').textContent = formatTime(totalSeconds);
+      document.getElementById('timeupModal').classList.add('show');
+      document.getElementById('examStatus').textContent = 'נגמר הזמן';
+      
+      // Hide iframe
+      document.getElementById('examFrame').style.opacity = '0.3';
+    }
+    
+    // Reset exam
+    function resetExam() {
+      clearInterval(interval);
+      totalSeconds = 0;
+      elapsedSeconds = 0;
+      examStarted = false;
+      isPaused = false;
+      
+      // Reset UI
+      document.getElementById('timeDisplay').textContent = '--:--:--';
+      document.getElementById('timer').classList.remove('warning', 'danger');
+      document.getElementById('pauseBtn').disabled = true;
+      document.getElementById('endBtn').disabled = true;
+      document.getElementById('startBtn').disabled = false;
+      document.getElementById('statsBar').classList.remove('show');
+      document.getElementById('timeupModal').classList.remove('show');
+      document.getElementById('examFrame').style.opacity = '1';
+      document.getElementById('progressBar').style.width = '100%';
+      
+      // Reset pause button
+      const pauseBtn = document.getElementById('pauseBtn');
+      pauseBtn.innerHTML = '<span>⏸️</span><span>השהה</span>';
+      pauseBtn.classList.remove('btn-primary');
+      pauseBtn.classList.add('btn-secondary');
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && examStarted) {
+        togglePause();
+      } else if (e.key === 'F2' && !examStarted) {
+        showSetupModal();
+      }
+    });
+    
+    // Prevent accidental navigation
+    window.addEventListener('beforeunload', (e) => {
+      if (examStarted && !isPaused) {
+        e.preventDefault();
+        e.returnValue = 'המבחן עדיין פעיל. האם אתה בטוח שברצונך לעזוב?';
+      }
+    });
+    
+    // Show setup modal on load
+    window.addEventListener('load', () => {
+      setTimeout(showSetupModal, 500);
+    });
   </script>
 </body>
 </html>
