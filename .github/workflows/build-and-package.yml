@@ -43,7 +43,7 @@ jobs:
       anki: ${{ steps.filter.outputs.anki }}
       data: ${{ steps.filter.outputs.data }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: dorny/paths-filter@v2
         id: filter
         with:
@@ -76,7 +76,7 @@ jobs:
           - component: anki
             language: python
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       # Node.js audit for H5P
       - name: Setup Node.js
@@ -148,7 +148,7 @@ jobs:
             build_cmd: PYTHONIOENCODING=utf-8 python build_apkg.py
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       # Setup for H5P builds
       - name: Setup Node.js
@@ -200,7 +200,7 @@ jobs:
     needs: build
     if: success()
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       - name: Download all artifacts
         uses: actions/download-artifact@v5
@@ -261,7 +261,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       - name: Download all artifacts
         uses: actions/download-artifact@v5
