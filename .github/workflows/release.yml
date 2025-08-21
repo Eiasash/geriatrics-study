@@ -173,7 +173,7 @@ jobs:
           EOF
       
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.build-release.outputs.version }}
           name: Release ${{ needs.build-release.outputs.version }}

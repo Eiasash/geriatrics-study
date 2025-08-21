@@ -202,7 +202,7 @@ jobs:
         echo "**Build Date:** $(date)" >> RELEASE_NOTES.md
         
     - name: 🏷️ Create GitHub Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         tag_name: h5p-v${{ github.run_number }}
         name: H5P Content Release v${{ github.run_number }}
