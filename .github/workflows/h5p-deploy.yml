@@ -143,7 +143,7 @@ jobs:
         echo "<meta http-equiv='refresh' content='0; url=h5p/index.html'>" >> _site/index.html
         
     - name: 📤 Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: _site
         
