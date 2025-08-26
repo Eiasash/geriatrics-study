@@ -1170,24 +1170,59 @@
             topicsConfig.forEach(topic => {
                 const topicCard = document.createElement('div');
                 topicCard.className = 'topic-card';
-                topicCard.innerHTML = `
-                    <div class="topic-header">
-                        <div class="topic-title">${topic.title}</div>
-                        <div class="question-count">${topic.questionCount}</div>
-                    </div>
-                    <div class="topic-description">${topic.description}</div>
-                    <div class="topic-features">
-                        ${topic.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
-                    </div>
-                    <div class="action-buttons">
-                        <button class="btn btn-start" onclick="startTopicQuiz('${topic.id}', 'practice'); return false;">
-                            <span>📚</span> תרגול
-                        </button>
-                        <button class="btn btn-practice" onclick="startTopicQuiz('${topic.id}', 'exam'); return false;">
-                            <span>⏱️</span> מבחן
-                        </button>
-                    </div>
+                
+                // Create elements separately to avoid HTML parsing issues
+                const header = document.createElement('div');
+                header.className = 'topic-header';
+                header.innerHTML = `
+                    <div class="topic-title">${topic.title}</div>
+                    <div class="question-count">${topic.questionCount}</div>
                 `;
+                
+                const description = document.createElement('div');
+                description.className = 'topic-description';
+                description.textContent = topic.description;
+                
+                const features = document.createElement('div');
+                features.className = 'topic-features';
+                topic.features.forEach(feature => {
+                    const tag = document.createElement('span');
+                    tag.className = 'feature-tag';
+                    tag.textContent = feature;
+                    features.appendChild(tag);
+                });
+                
+                const buttons = document.createElement('div');
+                buttons.className = 'action-buttons';
+                
+                // Create practice button
+                const practiceBtn = document.createElement('button');
+                practiceBtn.className = 'btn btn-start';
+                practiceBtn.innerHTML = '<span>📚</span> תרגול';
+                practiceBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    startTopicQuiz(topic.id, 'practice');
+                });
+                
+                // Create exam button  
+                const examBtn = document.createElement('button');
+                examBtn.className = 'btn btn-practice';
+                examBtn.innerHTML = '<span>⏱️</span> מבחן';
+                examBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    startTopicQuiz(topic.id, 'exam');
+                });
+                
+                buttons.appendChild(practiceBtn);
+                buttons.appendChild(examBtn);
+                
+                topicCard.appendChild(header);
+                topicCard.appendChild(description);
+                topicCard.appendChild(features);
+                topicCard.appendChild(buttons);
+                
                 topicsGrid.appendChild(topicCard);
             });
         }
