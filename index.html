@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geriatrics Study Portal</title>
+    <style>
+        body {
+            font-family: -apple-system, system-ui, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #333; }
+        .status { 
+            background: #48bb78; 
+            color: white; 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .links {
+            margin-top: 30px;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .links a:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 מערכת לימוד גריאטריה</h1>
+        <h2>Shaare Tzedek Fellowship</h2>
+        <div class="status">✅ System Online</div>
+        <p>The automated study system is being built...</p>
+        <div class="links">
+            <a href="https://github.com/Eiasash/geriatrics-study">📚 Repository</a>
+            <a href="https://github.com/Eiasash/geriatrics-study/actions">⚡ Build Status</a>
+        </div>
+        <p style="margin-top: 30px; color: #666;">
+            Last updated: $(date +'%Y-%m-%d %H:%M')
+        </p>
+    </div>
+</body>
+</html>
