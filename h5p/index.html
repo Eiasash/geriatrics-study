@@ -1180,10 +1180,10 @@
                         ${topic.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
                     </div>
                     <div class="action-buttons">
-                        <button class="btn btn-start" onclick="startQuiz('${topic.id}', 'practice')">
+                        <button class="btn btn-start" onclick="startTopicQuiz('${topic.id}', 'practice'); return false;">
                             <span>📚</span> תרגול
                         </button>
-                        <button class="btn btn-practice" onclick="startQuiz('${topic.id}', 'exam')">
+                        <button class="btn btn-practice" onclick="startTopicQuiz('${topic.id}', 'exam'); return false;">
                             <span>⏱️</span> מבחן
                         </button>
                     </div>
@@ -1196,17 +1196,27 @@
         // QUIZ SYSTEM
         // ====================================
         
-        function startQuiz(topicId, mode) {
+        // ====================================
+        // QUIZ SYSTEM FIX - PREVENT DOWNLOADS
+        // ====================================
+        
+        function startTopicQuiz(topicId, mode) {
+            console.log('Starting quiz:', topicId, mode);
+            
+            // Prevent any default link behavior
+            event.preventDefault();
+            event.stopPropagation();
+            
             const topic = topicsConfig.find(t => t.id === topicId);
             if (!topic) {
                 showNotification('נושא לא נמצא', 'error');
-                return;
+                return false;
             }
 
             const questions = questionBanks[topicId] || [];
             if (questions.length === 0) {
                 showNotification('אין שאלות זמינות לנושא זה', 'warning');
-                return;
+                return false;
             }
 
             // Initialize quiz state
@@ -1237,6 +1247,7 @@
             // Start timer if exam mode
             if (mode === 'exam') {
                 startTimer();
+                document.getElementById('timer').style.display = 'flex';
             } else {
                 document.getElementById('timer').style.display = 'none';
             }
@@ -1245,6 +1256,7 @@
             loadQuestion();
             
             showNotification(`התחיל ${mode === 'exam' ? 'מבחן' : 'תרגול'} בנושא ${topic.title}`, 'success');
+            return false;
         }
 
         function loadQuestion() {
