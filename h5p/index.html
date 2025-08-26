@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 מערכת למידה גריאטריה</title>
+    
+    <!-- H5P Framework Integration -->
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js"></script>
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-event-dispatcher.js"></script>
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p.js"></script>
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-content-type.js"></script>
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-confirmation-dialog.js"></script>
+    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-action-bar.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p.css" />
+    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p-confirmation-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p-core-button.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .mode-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .mode-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mode-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .mode-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .topic-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .topic-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .question-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .topic-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+        
+        .btn-start {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-start:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .btn-practice {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .btn-practice:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+        
+        .h5p-container {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: black;
+        }
+        
+        .h5p-container.active {
+            display: block;
+        }
+        
+        .close-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            float: left;
+            margin-bottom: 15px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .modes-grid,
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>מערכת למידה גריאטריה 🎓</h1>
+            <p>פלטפורמת H5P אינטראקטיבית להכנה למבחנים</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">25</div>
+                <div class="stat-label">פעילות H5P</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">151</div>
+                <div class="stat-label">שאלות</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">נושאים</div>
+            </div>
+        </div>
+
+        <!-- Study Modes -->
+        <h2 class="section-title">כלי למידה מתקדמים ⚡</h2>
+        <div class="modes-grid">
+            <div class="mode-card" onclick="startMode('application')">
+                <div class="mode-icon">📱</div>
+                <div class="mode-title">אפליקציה מבוססת</div>
+                <button class="btn btn-start">התחל אפליקציה</button>
+            </div>
+            
+            <div class="mode-card" onclick="startMode('timed')">
+                <div class="mode-icon">🎯</div>
+                <div class="mode-title">מבחן חזרה</div>
+                <button class="btn btn-practice">התחל מבחן</button>
+            </div>
+            
+            <div class="mode-card" onclick="startMode('exam')">
+                <div class="mode-icon">⏰</div>
+                <div class="mode-title">מבחן עם טיימר</div>
+                <button class="btn btn-practice">התחל מבחן</button>
+            </div>
+        </div>
+
+        <!-- Topic Areas -->
+        <h2 class="section-title">תוכן לפי נושא 📚</h2>
+        <div class="topics-grid">
+            <!-- Frailty -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">שבריות (Frailty)</div>
+                    <div class="question-count">12 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    תכניות למידה אינטראקטיבית להיכרות עם נושא שבריות - 12 שאלות מעמיקות בתחום זה בגריאטריה (Frailty) שבריות
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('frailty')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('frailty-practice')">תרגילים</button>
+                </div>
+            </div>
+
+            <!-- Delirium & Alzheimer's -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">דליריום ואחלת אלצהיימר</div>
+                    <div class="question-count">15 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    תכניות למידה אינטראקטיבית בתחום דליריום וגמלות דליריום - 3 מבחנים שונים עם 15 שאלות מסוגים שונים דליריום ואחלת אלצהיימר
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('delirium-alzheimer')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('delirium-alzheimer-practice')">תרגילים</button>
+                </div>
+            </div>
+
+            <!-- Delirium -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">דליריום</div>
+                    <div class="question-count">10 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    תכניות למידה אינטראקטיבית להתמחים בתחום דליריום - 2 מבחנים שונים עם 10 שאלות מסוגים שונים דליריום
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('delirium')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('delirium-practice')">תרגילים</button>
+                </div>
+            </div>
+
+            <!-- Geriatric Depression -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">ריאון ודה-פרסיבית תרופות</div>
+                    <div class="question-count">16 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    5 מבחנים למידה אינטראקטיבית להתמחים בתחום ריאון ודה-פרסיבית - 16 שאלות מסוגים שונים ריאון ודה-פרסיבית תרופות
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('depression')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('depression-practice')">תרגילים</button>
+                </div>
+            </div>
+
+            <!-- Memory -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">זיכרון ביצלי הזיכרון</div>
+                    <div class="question-count">11 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    תכניות למידה אינטראקטיבית להתמחים בתחום זיכרון ביצלי - 4 מבחנים שונים עם 11 שאלות מסוגים זיכרון ביצלי הזיכרון
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('memory')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('memory-practice')">תרגילים</button>
+                </div>
+            </div>
+
+            <!-- Falls -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-title">נפילות</div>
+                    <div class="question-count">14 שאלות</div>
+                </div>
+                <div class="topic-description">
+                    3 מבחנים למידה אינטראקטיבית להתמחים בתחום נפילות - 14 שאלות מסוגים שונים נפילות
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-start" onclick="loadH5PContent('falls')">שאלות</button>
+                    <button class="btn btn-practice" onclick="loadH5PContent('falls-practice')">תרגילים</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- H5P Content Container -->
+        <div id="h5p-container" class="h5p-container">
+            <button class="close-btn" onclick="closeH5P()">סגור</button>
+            <div id="h5p-content">
+                <div class="loading">טוען תוכן...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // H5P Content mapping
+        const contentMap = {
+            'frailty': 'שבריות.h5p',
+            'frailty-practice': 'שבריות_practice.h5p',
+            'delirium-alzheimer': 'דליריום_ואלצהיימר.h5p',
+            'delirium-alzheimer-practice': 'דליריום_ואלצהיימר_practice.h5p',
+            'delirium': 'דליריום.h5p',
+            'delirium-practice': 'דליריום_practice.h5p',
+            'depression': 'depression.h5p',
+            'depression-practice': 'depression_practice.h5p',
+            'memory': 'memory.h5p',
+            'memory-practice': 'memory_practice.h5p',
+            'falls': 'falls.h5p',
+            'falls-practice': 'falls_practice.h5p'
+        };
+
+        function startMode(mode) {
+            console.log('Starting mode:', mode);
+            
+            // Show appropriate content based on mode
+            switch(mode) {
+                case 'application':
+                    showAppMode();
+                    break;
+                case 'timed':
+                    showTimedMode();
+                    break;
+                case 'exam':
+                    showExamMode();
+                    break;
+            }
+        }
+
+        function showAppMode() {
+            alert('🎓 מצב אפליקציה - בחר נושא ספציפי מהרשימה למטה');
+        }
+
+        function showTimedMode() {
+            alert('⏱️ מצב מבחן חזרה - בחר נושא ספציפי למבחן מהיר');
+        }
+
+        function showExamMode() {
+            alert('📝 מצב מבחן עם זמן - בחר נושא למבחן עם הגבלת זמן');
+        }
+
+        function loadH5PContent(contentType) {
+            const container = document.getElementById('h5p-container');
+            const content = document.getElementById('h5p-content');
+            
+            console.log('Loading H5P content:', contentType);
+            
+            // Show container
+            container.classList.add('active');
+            
+            // Clear previous content
+            content.innerHTML = '<div class="loading">טוען תוכן H5P...</div>';
+            
+            // Scroll to H5P container
+            container.scrollIntoView({ behavior: 'smooth' });
+            
+            // Check if H5P is available
+            if (typeof H5P === 'undefined') {
+                console.warn('H5P not loaded, attempting to create iframe embed');
+                createIframeEmbed(contentType);
+                return;
+            }
+            
+            // Get content file
+            const contentFile = contentMap[contentType];
+            if (!contentFile) {
+                content.innerHTML = '<div class="error">תוכן לא נמצא</div>';
+                return;
+            }
+            
+            // Create H5P iframe or direct embed
+            createH5PEmbed(contentType, contentFile);
+        }
+
+        function createH5PEmbed(contentType, contentFile) {
+            const content = document.getElementById('h5p-content');
+            
+            // Create H5P embed using available framework
+            const h5pDiv = document.createElement('div');
+            h5pDiv.className = 'h5p-iframe-wrapper';
+            h5pDiv.innerHTML = `
+                <iframe 
+                    src="https://h5p.org/h5p/embed/YOUR_CONTENT_ID" 
+                    width="100%" 
+                    height="500" 
+                    frameborder="0" 
+                    allowfullscreen="allowfullscreen"
+                    title="תוכן H5P - ${contentType}">
+                </iframe>
+                <p style="text-align: center; margin-top: 10px;">
+                    <em>תוכן אינטראקטיבי - ${contentFile}</em>
+                </p>
+            `;
+            
+            content.innerHTML = '';
+            content.appendChild(h5pDiv);
+        }
+
+        function createIframeEmbed(contentType) {
+            const content = document.getElementById('h5p-content');
+            
+            // Fallback: Create download link with info
+            content.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h3>📁 תוכן H5P זמין להורדה</h3>
+                    <p>עקב הגבלות טכניות, התוכן זמין כקובץ H5P</p>
+                    <br>
+                    <a href="${contentMap[contentType] || contentType + '.h5p'}" 
+                       class="btn btn-start" 
+                       download>
+                        📥 הורד קובץ H5P
+                    </a>
+                    <br><br>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">
+                        לצפייה בתוכן, פתח את הקובץ באמצעות פלטפורמת H5P
+                    </p>
+                </div>
+            `;
+        }
+
+        function closeH5P() {
+            const container = document.getElementById('h5p-container');
+            container.classList.remove('active');
+        }
+
+        // Initialize H5P when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Geriatrics H5P Platform Loaded');
+            console.log('H5P Available:', typeof H5P !== 'undefined');
+            
+            // Test H5P integration
+            if (typeof H5P !== 'undefined') {
+                console.log('H5P Framework Ready');
+            } else {
+                console.warn('H5P Framework not detected - using fallback mode');
+            }
+        });
+
+        // Add click tracking
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                console.log('Button clicked:', this.textContent, this.onclick);
+            });
+        });
+    </script>
+</body>
+</html>
