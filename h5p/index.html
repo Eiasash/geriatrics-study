@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מערכת למידה גריאטריה - H5P Content Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease;
+    }
+    
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: rgba(255,255,255,0.95);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #667eea;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .content-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease;
+      cursor: pointer;
+    }
+    
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .card-badge {
+      background: #667eea;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .card-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #5a67d8;
+    }
+    
+    .btn-secondary {
+      background: #48bb78;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #38a169;
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+    
+    .btn-outline:hover {
+      background: #667eea;
+      color: white;
+    }
+    
+    .section-title {
+      color: white;
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+    }
+    
+    .tools-section {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .tool-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .tool-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .tool-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer {
+      text-align: center;
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .loading {
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+    
+    .error {
+      background: #fc8181;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎓 מערכת למידה גריאטריה</h1>
+      <p class="subtitle">פלטפורמת H5P אינטראקטיבית להכנה למבחנים</p>
+      
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="topicCount">12</div>
+          <div class="stat-label">נושאים</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="questionCount">0</div>
+          <div class="stat-label">שאלות</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="packageCount">0</div>
+          <div class="stat-label">חבילות H5P</div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="tools-section">
+      <h2 class="section-title">🛠️ כלי למידה מתקדמים</h2>
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-icon">⏱️</div>
+          <h3>מבחן עם טיימר</h3>
+          <a href="timer-embed.html" class="btn btn-primary">התחל מבחן</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">🎯</div>
+          <h3>מגה-חידון</h3>
+          <button onclick="downloadMega()" class="btn btn-secondary">הורד מגה-חידון</button>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">📱</div>
+          <h3>אפליקציה מקוונת</h3>
+          <a href="https://eiasash.github.io/geriatrics-study/" target="_blank" class="btn btn-outline">פתח אפליקציה</a>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="section-title">📚 חבילות תוכן לפי נושא</h2>
+    <div id="contentGrid" class="content-grid">
+      <div class="loading">טוען תוכן...</div>
+    </div>
+    
+    <footer class="footer">
+      <p>פותח עבור מערכת הבריאות שערי צדק</p>
+      <p style="margin-top: 0.5rem; opacity: 0.8;">Powered by H5P & Claude Code</p>
+    </footer>
+  </div>
+  
+  <script>
+    // Content data
+    const topics = [
+      { id: 'delirium', name: 'דליריום', questions: 10, flashcards: 2 },
+      { id: 'dementia', name: 'דמנציה ומחלת אלצהיימר', questions: 15, flashcards: 3 },
+      { id: 'frailty', name: 'שבריריות (Frailty)', questions: 12, flashcards: 4 },
+      { id: 'falls', name: 'נפילות', questions: 14, flashcards: 3 },
+      { id: 'depression', name: 'דיכאון בגיל המבוגר', questions: 11, flashcards: 2 },
+      { id: 'medications', name: 'רישום ודה-פרסקייבינג תרופות', questions: 16, flashcards: 5 },
+      { id: 'continence', name: 'אי שליטה בסוגרים', questions: 10, flashcards: 3 },
+      { id: 'nutrition', name: 'סרקופניה ותזונה', questions: 13, flashcards: 4 },
+      { id: 'endoflife', name: 'טיפול סוף-חיים', questions: 9, flashcards: 2 },
+      { id: 'stroke', name: 'שבץ מוחי (Stroke/TIA)', questions: 15, flashcards: 3 },
+      { id: 'heart', name: 'אי ספיקת לב / יתר לחץ דם', questions: 14, flashcards: 4 },
+      { id: 'parkinson', name: 'פרקינסון ותסמונות', questions: 12, flashcards: 3 }
+    ];
+    
+    // Calculate totals
+    const totalQuestions = topics.reduce((sum, t) => sum + t.questions, 0);
+    const totalPackages = topics.length * 2 + 1; // Each topic has 2 packages + 1 mega
+    
+    // Update stats
+    document.getElementById('questionCount').textContent = totalQuestions;
+    document.getElementById('packageCount').textContent = totalPackages;
+    
+    // Generate content cards
+    function generateCards() {
+      const grid = document.getElementById('contentGrid');
+      grid.innerHTML = '';
+      
+      topics.forEach((topic, index) => {
+        const card = document.createElement('div');
+        card.className = 'content-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        const fileName = topic.name.replace(/[\s\/\\:*?"<>|]/g, '_');
+        
+        card.innerHTML = `
+          <div class="card-header">
+            <div class="card-title">${topic.name}</div>
+            <div class="card-badge">${topic.questions} שאלות</div>
+          </div>
+          <div class="card-description">
+            חבילת למידה אינטראקטיבית הכוללת ${topic.flashcards} כרטיסיות 
+            ו-${topic.questions} שאלות רב-ברירה בנושא ${topic.name}.
+          </div>
+          <div class="card-actions">
+            <button onclick="downloadPackage('${fileName}.h5p')" class="btn btn-primary">
+              💾 כרטיסיות
+            </button>
+            <button onclick="downloadPackage('${fileName}_QuestionSet.h5p')" class="btn btn-secondary">
+              📝 שאלות
+            </button>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+    }
+    
+    // Download function
+    function downloadPackage(filename) {
+      const link = document.createElement('a');
+      link.href = `dist/${filename}`;
+      link.download = filename;
+      link.click();
+    }
+    
+    function downloadMega() {
+      downloadPackage('Mega_QuestionSet.h5p');
+    }
+    
+    // Initialize
+    generateCards();
+    
+    // Add smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
