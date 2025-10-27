@@ -119,13 +119,13 @@ jobs:
       uses: actions/checkout@v4
       
     - name: 📥 Download H5P packages
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: h5p-packages-${{ github.sha }}
         path: h5p/dist
         
     - name: 📥 Download HTML interfaces
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: h5p-interfaces-${{ github.sha }}
         path: h5p
@@ -167,7 +167,7 @@ jobs:
       
     steps:
     - name: 📥 Download H5P packages
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: h5p-packages-${{ github.sha }}
         path: release-assets
