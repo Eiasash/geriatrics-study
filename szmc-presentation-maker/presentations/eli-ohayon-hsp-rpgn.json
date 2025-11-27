@@ -1,0 +1,388 @@
+{
+  "title": "IgA Vasculitis (HSP) with Rapidly Progressive Glomerulonephritis in the Elderly",
+  "type": "case-presentation",
+  "created": "2025-11-27",
+  "author": "SZMC Geriatrics Department",
+  "theme": "navy-gold",
+  "slides": [
+    {
+      "id": "slide-001",
+      "type": "title",
+      "order": 0,
+      "data": {
+        "title": "IgA Vasculitis (Henoch-Schönlein Purpura) with RPGN",
+        "subtitle": "A Diagnostic Odyssey in a 78-Year-Old with Respiratory Compromise",
+        "presenter": "SZMC Geriatrics Department",
+        "date": "November 2025"
+      }
+    },
+    {
+      "id": "slide-002",
+      "type": "toc",
+      "order": 1,
+      "data": {}
+    },
+    {
+      "id": "slide-003",
+      "type": "section-header",
+      "order": 2,
+      "data": {
+        "sectionTitle": "Patient Profile: The Vulnerable Host",
+        "sectionNumber": "1"
+      }
+    },
+    {
+      "id": "slide-004",
+      "type": "content",
+      "order": 3,
+      "data": {
+        "title": "Patient Introduction: Mr. Eli Ohayon",
+        "content": "<div class='callout callout-info'><div class='callout-title'><i class='fas fa-user'></i> Patient Overview</div><div class='callout-content'><strong>Eli Ohayon</strong> | 78-year-old Male | DOB: 25/08/1947</div></div><h3>The \"Respiratory Cripple\" – Baseline Status (2018-2025)</h3><ul><li><strong>Primary Phenotype:</strong> Chronic respiratory disease with recurrent exacerbations</li><li><strong>Bronchiectasis:</strong> Structural lung damage with chronic mucus production</li><li><strong>Steroid-Dependent Asthma:</strong> Severe asthma requiring chronic corticosteroid therapy</li><li><strong>Occupational Exposure:</strong> History of turpentine/linseed oil exposure</li><li><strong>Chronic Sinusitis:</strong> Prior FESS (Functional Endoscopic Sinus Surgery)</li></ul><h3>Historical Admissions Pattern</h3><table class='medications-table'><thead><tr><th>Date</th><th>Presentation</th><th>Treatment</th></tr></thead><tbody><tr><td>May 2018</td><td>Respiratory exacerbation</td><td>IV antibiotics, steroids</td></tr><tr><td>July 2018</td><td>Respiratory exacerbation</td><td>IV antibiotics, steroids</td></tr><tr><td>February 2019</td><td>Respiratory exacerbation</td><td>IV antibiotics, steroids</td></tr><tr><td>September 2023</td><td>Respiratory exacerbation</td><td>IV antibiotics, steroids</td></tr></tbody></table><div class='callout callout-info'><div class='callout-content'><strong>Key Point:</strong> Through all these septic insults and aminoglycoside/contrast exposures, baseline creatinine remained <strong>stable at 1.1-1.2 mg/dL</strong></div></div>"
+      }
+    },
+    {
+      "id": "slide-005",
+      "type": "statistics-visual",
+      "order": 4,
+      "data": {
+        "stat1Value": "78",
+        "stat1Label": "Age (Years)",
+        "stat1Sub": "High-risk population",
+        "stat2Value": "1.1-1.2",
+        "stat2Label": "Baseline Creatinine",
+        "stat2Sub": "mg/dL (Stable for years)",
+        "stat3Value": "4+",
+        "stat3Label": "Prior Admissions",
+        "stat3Sub": "Respiratory exacerbations",
+        "stat4Value": "651",
+        "stat4Label": "Serum IgA",
+        "stat4Sub": "mg/dL (Normal: 70-400)",
+        "statsCitations": "Patient historical data 2018-2025"
+      }
+    },
+    {
+      "id": "slide-006",
+      "type": "section-header",
+      "order": 5,
+      "data": {
+        "sectionTitle": "Act I: The Trigger Event (October 2025)",
+        "sectionNumber": "2"
+      }
+    },
+    {
+      "id": "slide-007",
+      "type": "content",
+      "order": 6,
+      "data": {
+        "title": "The Infection That Changed Everything",
+        "content": "<div class='callout callout-warning'><div class='callout-title'><i class='fas fa-lungs-virus'></i> Mid-October 2025</div><div class='callout-content'>Community-acquired respiratory infection triggers a cascade of autoimmune events</div></div><h3>Initial Treatment</h3><ul><li><strong>Antibiotics Administered:</strong><ul><li>Cefuroxime (Zinnat) – 2nd generation cephalosporin</li><li>Ceftriaxone (Rocephin) – 3rd generation cephalosporin</li></ul></li><li><strong>Clinical Response:</strong> Infection appeared to clear</li></ul><h3>The \"Warning Shot\" – October 29, 2025</h3><div class='callout callout-danger'><div class='callout-title'><i class='fas fa-exclamation-triangle'></i> ER Presentation</div><div class='callout-content'>Instead of recovering, patient develops a new and ominous sign: <strong>Diffuse purpuric rash</strong> on lower extremities</div></div><h3>Initial Assessment</h3><table class='medications-table'><thead><tr><th>Finding</th><th>Value</th><th>Interpretation</th></tr></thead><tbody><tr><td>Rash Type</td><td>Palpable Purpura</td><td>Classic for small vessel vasculitis</td></tr><tr><td>Creatinine</td><td>1.21 mg/dL</td><td style='color: var(--success);'>Still normal!</td></tr><tr><td>Urinalysis</td><td>Microhematuria</td><td style='color: var(--warning);'>Early warning sign</td></tr></tbody></table>"
+      }
+    },
+    {
+      "id": "slide-008",
+      "type": "two-column",
+      "order": 7,
+      "data": {
+        "title": "The Missed Signal: HSP Diagnosis",
+        "leftColumn": "<h3><i class='fas fa-diagnoses'></i> October 30, 2025</h3><div class='callout callout-info'><div class='callout-content'><strong>Diagnosis:</strong> Henoch-Schönlein Purpura (HSP)</div></div><h4>Clinical Features</h4><ul><li>Palpable purpura on lower extremities</li><li>No joint involvement documented</li><li>No abdominal pain</li><li>Preserved renal function</li></ul><h4>Discharge Treatment</h4><ul><li><strong>Prednisone 20 mg daily</strong></li><li>Follow-up arranged</li></ul>",
+        "rightColumn": "<h3><i class='fas fa-exclamation-circle'></i> Critical Retrospective Analysis</h3><div class='callout callout-danger'><div class='callout-title'>The Missed Opportunity</div><div class='callout-content'><strong>Microhematuria</strong> was already present – indicating early renal involvement!</div></div><h4>Why This Matters</h4><ul><li>Prednisone 20mg is adequate for <strong>cutaneous HSP</strong></li><li>However, it may be <strong>insufficient</strong> for:<ul><li>Renal HSP (IgA nephritis)</li><li>Prevention of RPGN progression</li></ul></li></ul><h4>Guideline Consideration</h4><ul><li>HSP with renal involvement may require:<ul><li>Higher dose steroids (1 mg/kg)</li><li>Earlier nephrology involvement</li><li>Close creatinine monitoring</li></ul></li></ul>"
+      }
+    },
+    {
+      "id": "slide-009",
+      "type": "section-header",
+      "order": 8,
+      "data": {
+        "sectionTitle": "Act II: The Collapse (November 20-24, 2025)",
+        "sectionNumber": "3"
+      }
+    },
+    {
+      "id": "slide-010",
+      "type": "content",
+      "order": 9,
+      "data": {
+        "title": "The Catastrophic Return",
+        "content": "<div class='callout callout-danger'><div class='callout-title'><i class='fas fa-hospital'></i> Admission: November 20, 2025</div><div class='callout-content'>Three weeks after HSP diagnosis, the autoimmune pathology explodes</div></div><h3>Presenting Symptoms</h3><ul><li><strong>Chills</strong> (צמרמורת/Tzmarmoret)</li><li><strong>Cloudy urine</strong></li><li><strong>Failure to thrive</strong></li></ul><h3>The Shock: Laboratory Findings</h3><table class='medications-table'><thead><tr><th>Parameter</th><th>Oct 29 Value</th><th>Nov 20 Value</th><th>Change</th></tr></thead><tbody><tr><td><strong>Creatinine</strong></td><td>1.21 mg/dL</td><td class='stat-significant'>2.57 mg/dL</td><td style='color: var(--secondary);'>↑ 112%</td></tr><tr><td><strong>eGFR</strong></td><td>~55 mL/min</td><td class='stat-significant'>24 mL/min</td><td style='color: var(--secondary);'>↓ 56%</td></tr><tr><td><strong>CRP</strong></td><td>—</td><td>28.89 mg/dL</td><td>Marked inflammation</td></tr></tbody></table><div class='callout callout-warning'><div class='callout-content'><strong>Acute Kidney Injury:</strong> From baseline to AKI Stage 2 in less than 3 weeks!</div></div>"
+      }
+    },
+    {
+      "id": "slide-011",
+      "type": "content",
+      "order": 10,
+      "data": {
+        "title": "The \"Red Herring\": UTI Diagnosis",
+        "content": "<h3><i class='fas fa-bacteria'></i> Urine Culture Results</h3><table class='medications-table'><thead><tr><th>Organism</th><th>Clinical Significance</th></tr></thead><tbody><tr><td><strong>Pseudomonas aeruginosa</strong></td><td>Gram-negative rod, often healthcare-associated</td></tr><tr><td><strong>Enterobacter species</strong></td><td>Gram-negative rod, opportunistic pathogen</td></tr></tbody></table><div class='callout callout-info'><div class='callout-title'><i class='fas fa-lightbulb'></i> Initial Working Diagnosis</div><div class='callout-content'>Sepsis/Pyelonephritis with secondary AKI → Antibiotics initiated</div></div><h3>The Clinical Conundrum: Plan vs. Reality</h3><ul><li><strong>Expected:</strong> Treat infection → Inflammation resolves → Kidney function recovers</li><li><strong>What Happened:</strong><table class='medications-table'><thead><tr><th>Date</th><th>CRP</th><th>Creatinine</th></tr></thead><tbody><tr><td>Nov 20</td><td>28.89 mg/dL</td><td>2.57 mg/dL</td></tr><tr><td>Nov 23</td><td style='color: var(--success);'>↓ Improving</td><td style='color: var(--secondary);'>2.78 mg/dL ↑</td></tr><tr><td>Nov 24</td><td style='color: var(--success);'>5.24 mg/dL ↓</td><td class='stat-significant'>3.63 mg/dL ↑</td></tr></tbody></table></li></ul><div class='callout callout-danger'><div class='callout-content'><strong>The Divergence:</strong> Infection markers improved while kidney function <strong>continued to worsen!</strong></div></div>"
+      }
+    },
+    {
+      "id": "slide-012",
+      "type": "pathophysiology",
+      "order": 11,
+      "data": {
+        "pathTitle": "Why UTI Treatment Didn't Fix the Kidneys",
+        "trigger": "<strong>Two Separate Pathologies:</strong><br>1. Bacterial UTI (Pseudomonas/Enterobacter)<br>2. Autoimmune glomerulonephritis (IgA deposition)",
+        "mechanism": "<strong>The Dissociation Explained:</strong><br>• Antibiotics ✓ killed bacteria → CRP ↓<br>• Antibiotics ✗ do NOT stop IgA immune complexes<br>• Glomerular damage continued unchecked<br>• Creatinine continued to rise",
+        "effects": "• Progressive glomerular inflammation<br>• Crescent formation in glomeruli<br>• Rapid loss of filtration capacity<br>• Progression toward irreversible fibrosis",
+        "clinical": "• Rising creatinine despite infection control<br>• Persistent proteinuria and hematuria<br>• \"Active sediment\" in urinalysis<br>• Oliguria development",
+        "geriatricFactors": "<strong>Geriatric Challenges:</strong><br>• UTI often triggers/unmasks underlying conditions<br>• Polypharmacy risk during treatment<br>• Age-related nephron loss compounds injury<br>• Slower recognition due to atypical presentations",
+        "pathCitation": "Clinical correlation Nov 2025"
+      }
+    },
+    {
+      "id": "slide-013",
+      "type": "section-header",
+      "order": 12,
+      "data": {
+        "sectionTitle": "Act III: Unmasking the Enemy (Nov 25-26)",
+        "sectionNumber": "4"
+      }
+    },
+    {
+      "id": "slide-014",
+      "type": "content",
+      "order": 13,
+      "data": {
+        "title": "The Diagnostic Pivot: From Sepsis to Glomerulonephritis",
+        "content": "<div class='callout callout-info'><div class='callout-title'><i class='fas fa-search'></i> Forcing the Question</div><div class='callout-content'>The dissociation between improving infection and worsening kidney function demands a new diagnostic framework</div></div><h3>The \"Liquid Biopsy\" – 24-Hour Urine Collection</h3><table class='medications-table'><thead><tr><th>Parameter</th><th>Result</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>Protein Excretion</strong></td><td class='stat-significant'>874 mg/24h</td><td>Significant proteinuria (nephrotic approaching)</td></tr><tr><td><strong>Creatinine Clearance</strong></td><td class='stat-significant'>15.6 mL/min</td><td>Severely reduced GFR (CKD Stage 4-5)</td></tr></tbody></table><h3>Urinalysis: The \"Active Sediment\"</h3><ul><li><strong>Heavy blood</strong> – glomerular source</li><li><strong>Heavy protein</strong> – glomerular damage</li><li><strong>RBC Casts</strong> – <em>pathognomonic for glomerulonephritis!</em></li></ul><div class='callout callout-warning'><div class='callout-content'><strong>Clinical Pearl:</strong> RBC casts form when red blood cells become trapped in the renal tubules within a protein matrix. They indicate <strong>active glomerular bleeding</strong> – not UTI!</div></div>"
+      }
+    },
+    {
+      "id": "slide-015",
+      "type": "content",
+      "order": 14,
+      "data": {
+        "title": "The Immunological Smoking Gun",
+        "content": "<h3><i class='fas fa-vial'></i> Serology Panel Results</h3><table class='medications-table'><thead><tr><th>Marker</th><th>Result</th><th>Normal Range</th><th>Clinical Significance</th></tr></thead><tbody><tr class='med-beers'><td><strong>IgA</strong></td><td class='stat-significant'>651 mg/dL</td><td>70-400 mg/dL</td><td><strong>STRONGLY suggestive of IgA Vasculitis!</strong></td></tr><tr><td><strong>IgE</strong></td><td>308 IU/ml</td><td>0.5-180 IU/ml</td><td>Consistent with atopic/asthma history</td></tr><tr class='med-normal'><td><strong>ANCA</strong></td><td>Negative</td><td>Negative</td><td>Rules out Wegener's/Microscopic Polyangiitis</td></tr><tr class='med-normal'><td><strong>ANA</strong></td><td>Negative</td><td>Negative</td><td>Rules out Lupus Nephritis</td></tr><tr class='med-normal'><td><strong>C3 / C4</strong></td><td>Normal</td><td>Normal</td><td>Rules out Post-Strep GN, SLE</td></tr><tr class='med-normal'><td><strong>Anti-GBM</strong></td><td>Negative</td><td>Negative</td><td>Rules out Goodpasture's Syndrome</td></tr></tbody></table><div class='callout callout-info'><div class='callout-title'><i class='fas fa-check-circle'></i> Diagnosis Crystallizes</div><div class='callout-content'><strong>IgA Vasculitis (Henoch-Schönlein Purpura) with Nephritis</strong><br>Presenting as Rapidly Progressive Glomerulonephritis (RPGN)</div></div>"
+      }
+    },
+    {
+      "id": "slide-016",
+      "type": "algorithm",
+      "order": 15,
+      "data": {
+        "algoTitle": "RPGN Diagnostic Algorithm",
+        "algoStart": "AKI with \"Active Sediment\"<br>(Proteinuria + Hematuria + RBC Casts)",
+        "algoDecision": "Check Serological Panel:<br>ANCA, ANA, Anti-GBM, Complements, IgA",
+        "algoYes": "<strong>ANCA Positive:</strong><br>• PR3-ANCA → GPA (Wegener's)<br>• MPO-ANCA → MPA or EGPA<br><br><strong>Anti-GBM Positive:</strong><br>• Goodpasture's Syndrome<br><br><strong>Low C3/C4:</strong><br>• Post-Strep GN, Lupus, MPGN",
+        "algoNo": "<strong>All Negative + Elevated IgA:</strong><br>• IgA Vasculitis (HSP) Nephritis ✓<br>• IgA Nephropathy (Berger's)<br><br><strong>All Negative + Normal IgA:</strong><br>• Pauci-immune GN<br>• Consider biopsy-only diagnosis",
+        "algoEnd": "<strong>Mr. Ohayon's Profile:</strong><br>ANCA ⊖ | ANA ⊖ | Anti-GBM ⊖ | C3/C4 Normal | IgA ↑↑<br>+ History of Palpable Purpura = <strong>HSP Nephritis</strong>",
+        "algoCitation": "KDIGO GN Guidelines; Clinical correlation Nov 2025"
+      }
+    },
+    {
+      "id": "slide-017",
+      "type": "content",
+      "order": 16,
+      "data": {
+        "title": "Imaging: The Pulmonary Component",
+        "content": "<h3><i class='fas fa-x-ray'></i> CT Chest – November 27, 2025</h3><div class='callout callout-warning'><div class='callout-title'><i class='fas fa-lungs'></i> Finding</div><div class='callout-content'><strong>Ground Glass Opacities</strong> – raising concern for alveolar hemorrhage</div></div><h3>Differential Diagnosis of Ground Glass + RPGN</h3><table class='medications-table'><thead><tr><th>Condition</th><th>Likelihood in This Patient</th><th>Reasoning</th></tr></thead><tbody><tr><td><strong>HSP with Pulmonary Involvement</strong></td><td style='color: var(--success);'>Most Likely</td><td>Fits clinical picture; IgA elevated</td></tr><tr><td><strong>DAH (Diffuse Alveolar Hemorrhage)</strong></td><td>Possible</td><td>Would indicate severe vasculitis</td></tr><tr><td><strong>Underlying Infection/Pneumonitis</strong></td><td>Possible</td><td>History of respiratory disease</td></tr><tr><td><strong>Goodpasture's Syndrome</strong></td><td style='color: var(--secondary);'>Ruled Out</td><td>Anti-GBM negative</td></tr></tbody></table><h3>Pulmonary-Renal Syndrome Consideration</h3><ul><li>Ground glass + RPGN = <strong>Pulmonary-Renal Syndrome</strong></li><li>Classic triad: Hemoptysis + Renal failure + Systemic vasculitis</li><li>In HSP: Pulmonary involvement is rare but reported</li><li>Management: Same as renal HSP (immunosuppression)</li></ul>"
+      }
+    },
+    {
+      "id": "slide-018",
+      "type": "section-header",
+      "order": 17,
+      "data": {
+        "sectionTitle": "The Creatinine Trajectory: Visual Analysis",
+        "sectionNumber": "5"
+      }
+    },
+    {
+      "id": "slide-019",
+      "type": "content",
+      "order": 18,
+      "data": {
+        "title": "Creatinine Trend: The RPGN Trajectory",
+        "content": "<h3><i class='fas fa-chart-line'></i> Longitudinal Creatinine Analysis</h3><table class='medications-table'><thead><tr><th>Date</th><th>Creatinine (mg/dL)</th><th>Clinical Context</th><th>Trend</th></tr></thead><tbody><tr><td>31/05/2018</td><td>0.97</td><td>Historical baseline</td><td>—</td></tr><tr><td>05/09/2023</td><td>1.27</td><td>Mild baseline impairment</td><td>—</td></tr><tr><td>30/09/2025</td><td>1.19</td><td>Pre-crisis baseline</td><td style='color: var(--success);'>Stable</td></tr><tr style='background: rgba(var(--warning-rgb), 0.1);'><td><strong>29/10/2025</strong></td><td>1.21</td><td><strong>HSP Diagnosis (Rash Onset)</strong></td><td style='color: var(--warning);'>⚠️ Watch</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.1);'><td><strong>20/11/2025</strong></td><td class='stat-significant'>2.57</td><td><strong>Acute Admission (AKI)</strong></td><td style='color: var(--secondary);'>↑↑ CRISIS</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.15);'><td>23/11/2025</td><td class='stat-significant'>2.78</td><td>Worsening despite antibiotics</td><td style='color: var(--secondary);'>↑ Rising</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.2);'><td><strong>24/11/2025</strong></td><td class='stat-significant'>3.63</td><td><strong>PEAK TOXICITY</strong></td><td style='color: var(--secondary);'>↑↑ Peak</td></tr><tr><td>27/11/2025</td><td>3.41</td><td>Post-biopsy status</td><td style='color: var(--warning);'>Slight ↓</td></tr></tbody></table><div class='callout callout-danger'><div class='callout-content'><strong>Rate of Decline:</strong> From 1.21 → 3.63 mg/dL in <strong>26 days</strong> = Classic RPGN kinetics</div></div>"
+      }
+    },
+    {
+      "id": "slide-020",
+      "type": "content",
+      "order": 19,
+      "data": {
+        "title": "Hemoglobin Trend: The Inflammatory Drop",
+        "content": "<h3><i class='fas fa-tint'></i> Hemoglobin Analysis</h3><table class='medications-table'><thead><tr><th>Date</th><th>Hemoglobin (g/dL)</th><th>Clinical Context</th></tr></thead><tbody><tr><td>14/02/2019</td><td>15.0</td><td>Historical baseline</td></tr><tr><td>05/09/2023</td><td>14.1</td><td>Historical baseline</td></tr><tr style='background: rgba(var(--warning-rgb), 0.1);'><td><strong>20/11/2025</strong></td><td>13.8</td><td>Admission</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.1);'><td><strong>21/11/2025</strong></td><td class='stat-significant'>11.5</td><td><strong>ACUTE DROP (Δ2.3 g/dL)</strong></td></tr><tr style='background: rgba(var(--secondary-rgb), 0.15);'><td><strong>23/11/2025</strong></td><td class='stat-significant'>10.6</td><td><strong>NADIR</strong></td></tr><tr><td>27/11/2025</td><td>12.5</td><td>Stabilization</td></tr></tbody></table><h3>Causes of Acute Hemoglobin Drop</h3><ul><li><strong>Inflammation-related:</strong> Anemia of chronic disease (rapid onset variant)</li><li><strong>Renal-related:</strong> Decreased erythropoietin production</li><li><strong>Possible occult hemorrhage:</strong> Pulmonary (ground glass opacities)</li><li><strong>Dilutional:</strong> Fluid resuscitation effect</li></ul>"
+      }
+    },
+    {
+      "id": "slide-021",
+      "type": "section-header",
+      "order": 20,
+      "data": {
+        "sectionTitle": "Act IV: The Complication (November 27)",
+        "sectionNumber": "6"
+      }
+    },
+    {
+      "id": "slide-022",
+      "type": "content",
+      "order": 21,
+      "data": {
+        "title": "The Hepatitis B Bombshell",
+        "content": "<div class='callout callout-danger'><div class='callout-title'><i class='fas fa-virus'></i> November 27, 2025 – A Major Barrier Emerges</div><div class='callout-content'>Just as the team prepared for aggressive rescue therapy...</div></div><h3>Events of November 27</h3><ul><li><strong>Morning:</strong> Kidney biopsy performed to confirm crescentic GN</li><li><strong>Afternoon:</strong> Immunology results flagged a critical finding</li></ul><h3>The Unexpected Discovery</h3><table class='medications-table'><thead><tr><th>Test</th><th>Result</th><th>Interpretation</th></tr></thead><tbody><tr class='med-beers'><td><strong>Hepatitis B Surface Antigen (HBsAg)</strong></td><td class='stat-significant'>REACTIVE</td><td>Active HBV infection or carrier state</td></tr><tr><td>Hepatitis B Core Antibody (Anti-HBc)</td><td>Negative</td><td>Unusual pattern</td></tr><tr><td>Hepatitis B Surface Antibody (Anti-HBs)</td><td>Negative</td><td>No immunity</td></tr></tbody></table><div class='callout callout-warning'><div class='callout-title'><i class='fas fa-exclamation-triangle'></i> The Clinical Dilemma</div><div class='callout-content'><strong>RPGN</strong> requires high-dose pulse steroids to save the kidneys<br><br><strong>BUT</strong><br><br>Giving pulse steroids to a <strong>Hepatitis B positive</strong> patient risks <strong>fatal liver failure</strong> from HBV reactivation!</div></div>"
+      }
+    },
+    {
+      "id": "slide-023",
+      "type": "two-column",
+      "order": 22,
+      "data": {
+        "title": "The Treatment Dilemma: Steroids vs. HBV Risk",
+        "leftColumn": "<h3><i class='fas fa-kidneys'></i> Renal Emergency</h3><div class='callout callout-danger'><div class='callout-content'><strong>Without Treatment:</strong><br>RPGN → End-Stage Renal Disease (weeks)</div></div><h4>Why Pulse Steroids Are Critical</h4><ul><li><strong>RPGN mechanism:</strong> Crescents forming in glomeruli</li><li><strong>Crescents =</strong> Inflammatory cell infiltration</li><li><strong>Untreated:</strong> Crescents → Fibrosis → Permanent damage</li><li><strong>Window:</strong> Days to weeks before irreversibility</li></ul><h4>Standard Treatment</h4><ul><li>IV Methylprednisolone (Solu-Medrol)</li><li>1g daily × 3 days (pulse)</li><li>Then oral taper</li><li>± Cyclophosphamide or Rituximab</li></ul>",
+        "rightColumn": "<h3><i class='fas fa-liver'></i> Hepatic Risk</h3><div class='callout callout-danger'><div class='callout-content'><strong>With Steroids + Active HBV:</strong><br>HBV Reactivation → Fulminant Hepatitis</div></div><h4>HBV Reactivation Pathophysiology</h4><ul><li><strong>Steroids</strong> suppress immune surveillance</li><li><strong>HBV replication</strong> increases unchecked</li><li><strong>When steroids stop:</strong> Immune reconstitution</li><li><strong>Result:</strong> Massive hepatocyte destruction</li></ul><h4>Risk Factors</h4><ul><li>HBsAg positive (highest risk)</li><li>High-dose steroids</li><li>Prolonged immunosuppression</li><li>No antiviral prophylaxis</li></ul><div class='callout callout-warning'><div class='callout-content'>Mortality from HBV reactivation: <strong>5-40%</strong></div></div>"
+      }
+    },
+    {
+      "id": "slide-024",
+      "type": "content",
+      "order": 23,
+      "data": {
+        "title": "The Solution: Antiviral Prophylaxis",
+        "content": "<div class='callout callout-info'><div class='callout-title'><i class='fas fa-shield-virus'></i> The Bridge Strategy</div><div class='callout-content'>Initiate antiviral prophylaxis BEFORE immunosuppression to prevent HBV reactivation</div></div><h3>Entecavir: The Protective Shield</h3><table class='medications-table'><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td><strong>Drug Class</strong></td><td>Nucleoside analogue reverse transcriptase inhibitor</td></tr><tr><td><strong>Mechanism</strong></td><td>Inhibits HBV DNA polymerase, suppresses viral replication</td></tr><tr><td><strong>Efficacy</strong></td><td>Reduces HBV reactivation risk by >90%</td></tr><tr><td><strong>Timing</strong></td><td>Start ≥1 week before immunosuppression (ideally 2-4 weeks)</td></tr><tr><td><strong>Duration</strong></td><td>Continue 6-12 months after stopping immunosuppression</td></tr></tbody></table><h3>Protocol for Mr. Ohayon</h3><ol><li><strong>Immediate:</strong> Start Entecavir 0.5mg daily</li><li><strong>Urgent:</strong> Check HBV DNA viral load</li><li><strong>Day 2-3:</strong> If stable, proceed with IV Solu-Medrol pulse</li><li><strong>Ongoing:</strong> Monitor LFTs weekly during steroid therapy</li><li><strong>Long-term:</strong> Continue Entecavir throughout immunosuppression</li></ol>"
+      }
+    },
+    {
+      "id": "slide-025",
+      "type": "section-header",
+      "order": 24,
+      "data": {
+        "sectionTitle": "Differential Diagnosis: HSP vs. Churg-Strauss",
+        "sectionNumber": "7"
+      }
+    },
+    {
+      "id": "slide-026",
+      "type": "two-column",
+      "order": 25,
+      "data": {
+        "title": "The Diagnostic Question: HSP or EGPA?",
+        "leftColumn": "<h3><i class='fas fa-question-circle'></i> Evidence FOR Churg-Strauss (EGPA)</h3><div class='callout callout-warning'><div class='callout-content'>The patient has the \"Lung Phenotype\" of EGPA</div></div><h4>Supporting Features</h4><ul><li>✓ <strong>Severe Asthma</strong> – steroid-dependent</li><li>✓ <strong>Chronic Sinusitis</strong> – history of nasal polyps, polypectomy</li><li>✓ <strong>Historic Eosinophilia</strong> – documented peak of 1,800 cells/µL</li><li>✓ <strong>Lung Opacities</strong> – migratory infiltrates on CT</li></ul><h4>Classic EGPA Triad</h4><ol><li>Asthma ✓</li><li>Eosinophilia ✓ (historically)</li><li>Vasculitis ✓</li></ol>",
+        "rightColumn": "<h3><i class='fas fa-times-circle'></i> Evidence AGAINST EGPA (Favoring HSP)</h3><div class='callout callout-info'><div class='callout-content'>The \"Renal Phenotype\" and serology confirm HSP</div></div><h4>Refuting Features</h4><ul><li>✗ <strong>Current Eosinophils:</strong> SUPPRESSED/Normal (0.00-0.09 K/µL)</li><li>✗ <strong>ANCA Negative:</strong> Anti-MPO negative (usually positive in renal EGPA)</li><li>✓ <strong>IgA Spike:</strong> 651 mg/dL – specific to HSP, not EGPA</li><li>✓ <strong>Palpable Purpura:</strong> Classic HSP presentation</li><li>✓ <strong>Renal Pattern:</strong> Gross hematuria + nephrotic proteinuria more typical for IgA nephritis</li></ul><div class='callout callout-info'><div class='callout-content'><strong>Verdict:</strong> HSP (IgA Vasculitis) is primary diagnosis. EGPA ruled out by negative ANCA and suppressed eosinophils.</div></div>"
+      }
+    },
+    {
+      "id": "slide-027",
+      "type": "content",
+      "order": 26,
+      "data": {
+        "title": "Why Eosinophils Are Suppressed",
+        "content": "<h3><i class='fas fa-pills'></i> The Steroid Effect</h3><div class='callout callout-info'><div class='callout-title'><i class='fas fa-lightbulb'></i> Key Insight</div><div class='callout-content'>Mr. Ohayon has been on <strong>Prednisone 20mg</strong> since October 30 for HSP</div></div><h3>Steroid Effects on Eosinophils</h3><table class='medications-table'><thead><tr><th>Mechanism</th><th>Effect</th><th>Clinical Implication</th></tr></thead><tbody><tr><td>Eosinophil apoptosis</td><td>Rapid eosinophil death</td><td>Count drops within hours</td></tr><tr><td>Bone marrow suppression</td><td>Reduced production</td><td>Sustained low counts</td></tr><tr><td>Sequestration</td><td>Tissue redistribution</td><td>Peripheral count falls</td></tr></tbody></table><h3>Diagnostic Implications</h3><ul><li><strong>Cannot rely on eosinophil count</strong> in patient on steroids</li><li><strong>Historical eosinophilia</strong> (1,800/µL) is more informative</li><li><strong>ANCA remains the key differentiator:</strong><ul><li>EGPA: Usually MPO-ANCA positive (50-70%)</li><li>HSP: ANCA negative</li></ul></li></ul><div class='callout callout-warning'><div class='callout-content'><strong>Teaching Point:</strong> Always review historical labs before steroid initiation when evaluating eosinophilic conditions!</div></div>"
+      }
+    },
+    {
+      "id": "slide-028",
+      "type": "section-header",
+      "order": 27,
+      "data": {
+        "sectionTitle": "Current Status & Management Plan",
+        "sectionNumber": "8"
+      }
+    },
+    {
+      "id": "slide-029",
+      "type": "key-points-visual",
+      "order": 28,
+      "data": {
+        "kpTitle": "Current Clinical Status (November 27, 2025)",
+        "kp1": "<strong>PROVEN VASCULITIS</strong><br>Henoch-Schönlein Purpura (IgA Vasculitis) confirmed by:<br>• Palpable purpura + Elevated IgA (651) + Negative ANCA",
+        "kp2": "<strong>PRESUMED CRESCENTIC GN</strong><br>Rapidly Progressive Glomerulonephritis (RPGN):<br>• Creatinine 3.63 mg/dL (from 1.21 in 26 days)<br>• Active sediment with RBC casts",
+        "kp3": "<strong>ACTIVE UTI</strong><br>Pseudomonas aeruginosa + Enterobacter infection:<br>• On appropriate antibiotic therapy<br>• CRP improving (28.89 → 5.24)",
+        "kp4": "<strong>HEPATITIS B POSITIVE</strong><br>HBsAg Reactive:<br>• Major complication for immunosuppression<br>• Requires antiviral prophylaxis",
+        "kp5": "<strong>KIDNEY BIOPSY</strong><br>Performed November 27:<br>• Awaiting pathology results<br>• Will confirm crescents and guide therapy",
+        "kp6": "<strong>RESPIRATORY DISEASE</strong><br>Underlying bronchiectasis + asthma:<br>• Ground glass opacities on CT<br>• Possible pulmonary involvement"
+      }
+    },
+    {
+      "id": "slide-030",
+      "type": "algorithm",
+      "order": 29,
+      "data": {
+        "algoTitle": "Immediate Management Algorithm",
+        "algoStart": "HSP-Associated RPGN + HBV Positive<br>Creatinine 3.63 mg/dL, falling GFR",
+        "algoDecision": "Can we safely initiate immunosuppression?",
+        "algoYes": "<strong>Step 1: Antiviral Protection</strong><br>• Start Entecavir 0.5mg daily IMMEDIATELY<br>• Check HBV DNA viral load<br>• Monitor LFTs baseline<br><br><strong>Step 2: Pulse Steroids (Day 2-3)</strong><br>• IV Methylprednisolone 500-1000mg × 3 days<br>• Then oral prednisone 1mg/kg taper<br><br><strong>Step 3: Consider Additional Agents</strong><br>• Await biopsy results<br>• If severe crescents: Cyclophosphamide vs Rituximab",
+        "algoNo": "<strong>If Unable to Start Entecavir:</strong><br>• Alternative: Tenofovir<br>• Cannot proceed with pulse steroids safely<br><br><strong>If Biopsy Shows Fibrosis > Active:</strong><br>• Aggressive immunosuppression futile<br>• Prepare for RRT discussion",
+        "algoEnd": "<strong>Goal:</strong> Salvage remaining kidney function before fibrosis sets in<br><strong>Timeline:</strong> Days to weeks – RPGN is a medical emergency",
+        "algoCitation": "KDIGO GN Guidelines; AASLD HBV Guidelines"
+      }
+    },
+    {
+      "id": "slide-031",
+      "type": "medications-detailed",
+      "order": 30,
+      "data": {
+        "medTable": "<tr class='med-normal'><td colspan='5' style='background: var(--success); color: white; font-weight: 600;'><i class='fas fa-shield-virus'></i> HEPATITIS B PROPHYLAXIS</td></tr><tr class='med-normal'><td>Entecavir <span class='med-flag'>INITIATED</span></td><td>0.5mg</td><td>Daily</td><td>HBV prophylaxis</td><td>Continue throughout immunosuppression + 6-12 months after</td></tr><tr class='med-caution'><td colspan='5' style='background: var(--primary); color: white; font-weight: 600;'><i class='fas fa-syringe'></i> IMMUNOSUPPRESSION</td></tr><tr class='med-caution'><td>IV Methylprednisolone <span class='med-flag interaction'>PENDING</span></td><td>500-1000mg</td><td>Daily × 3</td><td>RPGN rescue</td><td>Initiate after 24-48h of Entecavir</td></tr><tr class='med-caution'><td>Prednisone (oral taper)</td><td>1mg/kg</td><td>Daily → taper</td><td>Maintenance</td><td>Following pulse steroids</td></tr><tr class='med-beers'><td colspan='5' style='background: var(--secondary); color: white; font-weight: 600;'><i class='fas fa-lungs'></i> RESPIRATORY SUPPORT</td></tr><tr><td>Inhalers</td><td>Per usual</td><td>As directed</td><td>Asthma/COPD</td><td>Continue home regimen</td></tr><tr><td>N-Acetylcysteine (NAC)</td><td>600mg</td><td>BID</td><td>Mucolytic</td><td>For bronchiectasis secretion management</td></tr><tr class='med-normal'><td colspan='5' style='background: var(--info); color: white; font-weight: 600;'><i class='fas fa-bacteria'></i> INFECTION TREATMENT</td></tr><tr><td>Antibiotics</td><td>Per culture</td><td>As directed</td><td>Pseudomonas UTI</td><td>Continue until course complete</td></tr>",
+        "medCount": "6+",
+        "beersCount": "Monitor steroids",
+        "ddiCount": "LFT monitoring",
+        "medCitation": "Current medication plan Nov 27, 2025"
+      }
+    },
+    {
+      "id": "slide-032",
+      "type": "section-header",
+      "order": 31,
+      "data": {
+        "sectionTitle": "Teaching Points & Clinical Pearls",
+        "sectionNumber": "9"
+      }
+    },
+    {
+      "id": "slide-033",
+      "type": "teaching-points",
+      "order": 32,
+      "data": {
+        "teachingPoints": "<div class='teaching-point'><div class='teaching-point-number'>1</div><div class='teaching-point-content'><h4>HSP in the Elderly is Different</h4><p>While HSP is classically a pediatric disease, adult-onset HSP (especially >65 years) has <strong>higher renal involvement rates</strong> and <strong>worse prognosis</strong>. Always screen aggressively for nephritis!</p></div></div><div class='teaching-point'><div class='teaching-point-number'>2</div><div class='teaching-point-content'><h4>Microhematuria is Never Benign in Vasculitis</h4><p>In Mr. Ohayon, microhematuria at initial HSP diagnosis was the harbinger of RPGN. Early nephrology referral and close creatinine monitoring could have caught the decline earlier.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>3</div><div class='teaching-point-content'><h4>The Dissociation Sign</h4><p>When infection markers (CRP, WBC) improve but kidney function continues to decline, <strong>stop and reconsider the diagnosis</strong>. This pattern suggests an autoimmune process independent of infection.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>4</div><div class='teaching-point-content'><h4>Always Screen for HBV Before Immunosuppression</h4><p>HBsAg, Anti-HBc, and Anti-HBs should be checked in ALL patients before initiating steroids or cytotoxic therapy. Reactivation can be fatal.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>5</div><div class='teaching-point-content'><h4>Elevated IgA + Negative ANCA = IgA Vasculitis</h4><p>The serological profile is diagnostic. Elevated serum IgA with negative ANCA, ANA, and Anti-GBM strongly supports HSP over other ANCA-associated vasculitides.</p></div></div>"
+      }
+    },
+    {
+      "id": "slide-034",
+      "type": "content",
+      "order": 33,
+      "data": {
+        "title": "Prognostic Considerations",
+        "content": "<h3><i class='fas fa-chart-bar'></i> Renal Prognosis in HSP Nephritis</h3><table class='medications-table'><thead><tr><th>Biopsy Finding</th><th>Prognosis</th><th>Treatment Response</th></tr></thead><tbody><tr><td>Mesangial proliferation only</td><td style='color: var(--success);'>Excellent</td><td>Often resolves spontaneously</td></tr><tr><td>Focal/segmental lesions</td><td style='color: var(--success);'>Good</td><td>Responds to steroids</td></tr><tr><td><strong>Crescents <50% glomeruli</strong></td><td style='color: var(--warning);'>Guarded</td><td>May respond to aggressive Rx</td></tr><tr><td><strong>Crescents >50% glomeruli</strong></td><td style='color: var(--secondary);'>Poor</td><td>High risk of ESRD</td></tr><tr><td>Fibrosis/sclerosis</td><td style='color: var(--secondary);'>Irreversible</td><td>Immunosuppression futile</td></tr></tbody></table><h3>Awaiting Biopsy Results</h3><div class='callout callout-warning'><div class='callout-content'><strong>The Biopsy Will Answer:</strong><ul><li>Percentage of glomeruli with crescents</li><li>Active inflammation vs. chronic scarring</li><li>IgA deposition pattern (mesangial)</li><li>Tubular and interstitial damage</li></ul></div></div><h3>Best Case vs. Worst Case</h3><ul><li><strong>Best:</strong> Active crescents, minimal fibrosis → Aggressive treatment can salvage function</li><li><strong>Worst:</strong> Extensive fibrosis, >50% crescents → Prepare for dialysis, consider goals of care</li></ul>"
+      }
+    },
+    {
+      "id": "slide-035",
+      "type": "take-home",
+      "order": 34,
+      "data": {
+        "message1": "<strong>RECOGNIZE THE PATTERN</strong><br>Post-infectious purpura + AKI with active sediment = Think IgA Vasculitis (HSP) Nephritis, not just UTI!",
+        "message2": "<strong>ACT ON WARNING SIGNS</strong><br>Microhematuria at HSP diagnosis is an early warning of renal involvement. Don't dismiss it – refer to nephrology early.",
+        "message3": "<strong>THE DISSOCIATION SIGN</strong><br>Improving infection markers + Worsening kidney function = Autoimmune process. Pivot your differential immediately.",
+        "message4": "<strong>SCREEN BEFORE YOU SUPPRESS</strong><br>HBV status MUST be known before initiating steroids. Entecavir prophylaxis allows safe immunosuppression in HBsAg+ patients.",
+        "bottomLine": "Mr. Ohayon's case illustrates how a common infection can trigger a rare but devastating autoimmune cascade – and how the intersection of RPGN and HBV creates a complex therapeutic challenge requiring meticulous risk-benefit analysis."
+      }
+    },
+    {
+      "id": "slide-036",
+      "type": "content",
+      "order": 35,
+      "data": {
+        "title": "Summary: The Clinical Timeline",
+        "content": "<h3><i class='fas fa-history'></i> The Five Acts of Mr. Ohayon's Journey</h3><table class='medications-table'><thead><tr><th>Act</th><th>Timeframe</th><th>Key Events</th><th>Lesson</th></tr></thead><tbody><tr style='background: rgba(var(--info-rgb), 0.1);'><td><strong>I: Vulnerable Host</strong></td><td>2018-Early 2025</td><td>Chronic respiratory disease, stable renal function</td><td>Baseline matters</td></tr><tr style='background: rgba(var(--warning-rgb), 0.1);'><td><strong>II: Trigger Event</strong></td><td>Oct 2025</td><td>Respiratory infection → Cephalosporins → Purpuric rash</td><td>Infections trigger autoimmunity</td></tr><tr style='background: rgba(var(--warning-rgb), 0.15);'><td><strong>III: Warning Shot</strong></td><td>Oct 29-30</td><td>HSP diagnosed, Prednisone 20mg, microhematuria noted</td><td>Early signs missed</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.1);'><td><strong>IV: The Collapse</strong></td><td>Nov 20-24</td><td>AKI, Cr 1.21→3.63, UTI treated but kidneys fail</td><td>Look beyond infection</td></tr><tr style='background: rgba(var(--secondary-rgb), 0.15);'><td><strong>V: Unmasking</strong></td><td>Nov 25-27</td><td>RPGN confirmed, HBV discovered, biopsy performed</td><td>Comprehensive workup essential</td></tr></tbody></table><div class='callout callout-info'><div class='callout-title'><i class='fas fa-hourglass-half'></i> Current Status</div><div class='callout-content'><strong>The Cliffhanger:</strong> Awaiting biopsy results to guide definitive therapy. Entecavir initiated, pulse steroids imminent. Race against fibrosis.</div></div>"
+      }
+    },
+    {
+      "id": "slide-037",
+      "type": "references-formatted",
+      "order": 36,
+      "data": {
+        "references": "<div class='reference-entry'><span class='ref-num'>1.</span><span class='ref-text'>KDIGO Clinical Practice Guideline for Glomerulonephritis. Kidney Int Suppl. 2021.</span></div><div class='reference-entry'><span class='ref-num'>2.</span><span class='ref-text'>Pillebout E, et al. Henoch-Schönlein Purpura in adults: outcome and prognostic factors. J Am Soc Nephrol. 2002;13(5):1271-8.</span></div><div class='reference-entry'><span class='ref-num'>3.</span><span class='ref-text'>Audemard-Verger A, et al. IgA vasculitis (Henoch-Shönlein purpura) in adults: Diagnostic and therapeutic aspects. Autoimmun Rev. 2015;14(7):579-85.</span></div><div class='reference-entry'><span class='ref-num'>4.</span><span class='ref-text'>Terreri MT, et al. EULAR/PRINTO/PRES criteria for Henoch-Schönlein purpura, childhood polyarteritis nodosa, childhood Wegener granulomatosis and childhood Takayasu arteritis. Ann Rheum Dis. 2010;69(5):798-806.</span></div><div class='reference-entry'><span class='ref-num'>5.</span><span class='ref-text'>Perez GO, et al. IgA nephropathy and Henoch-Schönlein purpura nephritis. Semin Nephrol. 2008;28(1):45-55.</span></div><div class='reference-entry'><span class='ref-num'>6.</span><span class='ref-text'>AASLD Guidelines for Treatment of Chronic Hepatitis B. Hepatology. 2018;67(4):1560-1599.</span></div><div class='reference-entry'><span class='ref-num'>7.</span><span class='ref-text'>Perrillo RP, et al. American Gastroenterological Association Institute Technical Review on Prevention and Treatment of Hepatitis B Virus Reactivation During Immunosuppressive Drug Therapy. Gastroenterology. 2015;148(1):221-244.</span></div><div class='reference-entry'><span class='ref-num'>8.</span><span class='ref-text'>Kitching AR, et al. ANCA-associated vasculitis. Nat Rev Dis Primers. 2020;6(1):71.</span></div><div class='reference-entry'><span class='ref-num'>9.</span><span class='ref-text'>Jennette JC, et al. 2012 revised International Chapel Hill Consensus Conference Nomenclature of Vasculitides. Arthritis Rheum. 2013;65(1):1-11.</span></div><div class='reference-entry'><span class='ref-num'>10.</span><span class='ref-text'>Patient clinical records, Shaare Zedek Medical Center, October-November 2025.</span></div>"
+      }
+    },
+    {
+      "id": "slide-038",
+      "type": "questions",
+      "order": 37,
+      "data": {
+        "subtitle": "Questions & Discussion",
+        "contact": "SZMC Geriatrics Department<br>Case: Eli Ohayon – IgA Vasculitis with RPGN"
+      }
+    }
+  ]
+}
