@@ -1,0 +1,193 @@
+{
+  "name": "Geriatric Case Presentation",
+  "version": "1.0.0",
+  "description": "Structured template for geriatric case presentations at SZMC",
+  "category": "medical-education",
+  "sections": [
+    {
+      "id": "patient-info",
+      "title": "Patient Information",
+      "required": true,
+      "fields": [
+        { "id": "patient-id", "label": "Patient ID/Initials", "type": "text", "required": true },
+        { "id": "age", "label": "Age", "type": "number", "required": true },
+        { "id": "sex", "label": "Sex", "type": "select", "options": ["Male", "Female", "Other"], "required": true },
+        { "id": "chief-complaint", "label": "Chief Complaint", "type": "text", "required": true },
+        { "id": "source", "label": "History Source", "type": "text" },
+        { "id": "setting", "label": "Setting", "type": "select", "options": ["Emergency Department", "Inpatient Ward", "Outpatient Clinic", "Nursing Home", "Home Visit"] },
+        { "id": "living-situation", "label": "Living Situation", "type": "text" },
+        { "id": "baseline-function", "label": "Baseline Functional Status", "type": "textarea" },
+        { "id": "code-status", "label": "Code Status", "type": "select", "options": ["Full Code", "DNR", "DNR/DNI", "Comfort Care Only", "Unknown"] }
+      ]
+    },
+    {
+      "id": "hpi",
+      "title": "History of Present Illness",
+      "required": true,
+      "fields": [
+        { "id": "hpi-narrative", "label": "HPI Narrative", "type": "richtext", "required": true, "hint": "Include onset, location, duration, character, aggravating/alleviating factors, radiation, timing, severity" },
+        { "id": "ros", "label": "Review of Systems", "type": "checklist", "options": ["Constitutional", "HEENT", "Cardiovascular", "Respiratory", "GI", "GU", "Musculoskeletal", "Skin", "Neurological", "Psychiatric", "Endocrine", "Heme/Lymph", "Allergic/Immunologic"] }
+      ]
+    },
+    {
+      "id": "pmh",
+      "title": "Past Medical History",
+      "fields": [
+        { "id": "medical-conditions", "label": "Medical Conditions", "type": "list", "hint": "List all chronic conditions" },
+        { "id": "surgical-history", "label": "Surgical History", "type": "list" },
+        { "id": "allergies", "label": "Allergies", "type": "list", "hint": "Include reaction type" },
+        { "id": "immunizations", "label": "Immunizations", "type": "checklist", "options": ["Influenza", "Pneumococcal (PCV13)", "Pneumococcal (PPSV23)", "Tdap", "Shingrix", "COVID-19"] }
+      ]
+    },
+    {
+      "id": "medications",
+      "title": "Medications",
+      "fields": [
+        { "id": "current-medications", "label": "Current Medications", "type": "medication-list", "columns": ["Name", "Dose", "Frequency", "Route", "Indication"] },
+        { "id": "beers-criteria", "label": "Beers Criteria Medications", "type": "list", "hint": "Potentially inappropriate medications for elderly" },
+        { "id": "polypharmacy-notes", "label": "Polypharmacy Considerations", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "social-history",
+      "title": "Social History",
+      "fields": [
+        { "id": "living-arrangement", "label": "Living Arrangement", "type": "text" },
+        { "id": "caregivers", "label": "Caregivers/Support", "type": "text" },
+        { "id": "adls", "label": "ADLs (Bathing, Dressing, Toileting, Transferring, Continence, Feeding)", "type": "adl-scale" },
+        { "id": "iadls", "label": "IADLs (Phone, Shopping, Food Prep, Housekeeping, Laundry, Transportation, Medications, Finances)", "type": "iadl-scale" },
+        { "id": "mobility", "label": "Mobility/Assistive Devices", "type": "text" },
+        { "id": "tobacco", "label": "Tobacco Use", "type": "text" },
+        { "id": "alcohol", "label": "Alcohol Use", "type": "text" },
+        { "id": "advance-directives", "label": "Advance Directives", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "physical-exam",
+      "title": "Physical Examination",
+      "fields": [
+        { "id": "vitals", "label": "Vital Signs", "type": "vitals", "fields": ["BP", "HR", "RR", "Temp", "SpO2", "Weight", "BMI"] },
+        { "id": "general", "label": "General Appearance", "type": "text" },
+        { "id": "heent", "label": "HEENT", "type": "text" },
+        { "id": "neck", "label": "Neck", "type": "text" },
+        { "id": "cardiovascular", "label": "Cardiovascular", "type": "text" },
+        { "id": "respiratory", "label": "Respiratory", "type": "text" },
+        { "id": "abdominal", "label": "Abdominal", "type": "text" },
+        { "id": "extremities", "label": "Extremities", "type": "text" },
+        { "id": "neurological", "label": "Neurological", "type": "text" },
+        { "id": "skin", "label": "Skin/Wounds", "type": "text" },
+        { "id": "psychiatric", "label": "Psychiatric", "type": "text" }
+      ]
+    },
+    {
+      "id": "geriatric-assessment",
+      "title": "Comprehensive Geriatric Assessment",
+      "fields": [
+        { "id": "mmse", "label": "MMSE Score", "type": "score", "max": 30, "interpretation": { "27-30": "Normal", "21-26": "Mild impairment", "11-20": "Moderate impairment", "0-10": "Severe impairment" } },
+        { "id": "moca", "label": "MoCA Score", "type": "score", "max": 30, "interpretation": { "26-30": "Normal", "18-25": "Mild cognitive impairment", "10-17": "Moderate impairment", "0-9": "Severe impairment" } },
+        { "id": "gds", "label": "GDS-15 Score", "type": "score", "max": 15, "interpretation": { "0-4": "Normal", "5-9": "Mild depression", "10-15": "Moderate-severe depression" } },
+        { "id": "tug", "label": "Timed Up and Go", "type": "number", "unit": "seconds", "interpretation": { "<10": "Normal", "10-20": "Increased fall risk", ">20": "High fall risk" } },
+        { "id": "mna", "label": "MNA-SF Score", "type": "score", "max": 14, "interpretation": { "12-14": "Normal", "8-11": "At risk of malnutrition", "0-7": "Malnourished" } },
+        { "id": "frailty", "label": "Clinical Frailty Scale", "type": "score", "max": 9 },
+        { "id": "falls-history", "label": "Falls in Past Year", "type": "number" },
+        { "id": "hearing", "label": "Hearing Assessment", "type": "select", "options": ["Normal", "Mild loss", "Moderate loss", "Severe loss", "Uses hearing aids"] },
+        { "id": "vision", "label": "Vision Assessment", "type": "select", "options": ["Normal", "Impaired (corrected)", "Impaired (uncorrected)", "Legally blind"] }
+      ]
+    },
+    {
+      "id": "labs",
+      "title": "Laboratory Results",
+      "fields": [
+        { "id": "cbc", "label": "Complete Blood Count", "type": "lab-panel", "fields": ["WBC", "Hgb", "Hct", "Plt", "MCV"] },
+        { "id": "bmp", "label": "Basic Metabolic Panel", "type": "lab-panel", "fields": ["Na", "K", "Cl", "HCO3", "BUN", "Cr", "Glucose", "Ca"] },
+        { "id": "lft", "label": "Liver Function Tests", "type": "lab-panel", "fields": ["AST", "ALT", "ALP", "Total Bilirubin", "Albumin"] },
+        { "id": "coags", "label": "Coagulation", "type": "lab-panel", "fields": ["PT", "INR", "PTT"] },
+        { "id": "other-labs", "label": "Other Labs", "type": "key-value-list" },
+        { "id": "urinalysis", "label": "Urinalysis", "type": "text" },
+        { "id": "cultures", "label": "Cultures", "type": "text" }
+      ]
+    },
+    {
+      "id": "imaging",
+      "title": "Imaging Studies",
+      "fields": [
+        { "id": "imaging-studies", "label": "Imaging Studies", "type": "imaging-list", "columns": ["Study", "Date", "Findings", "Impression"] }
+      ]
+    },
+    {
+      "id": "differential",
+      "title": "Differential Diagnosis",
+      "required": true,
+      "fields": [
+        { "id": "differential-list", "label": "Differential Diagnoses", "type": "ranked-list", "columns": ["Diagnosis", "Supporting Evidence", "Against", "Probability"] }
+      ]
+    },
+    {
+      "id": "diagnosis",
+      "title": "Assessment/Diagnosis",
+      "required": true,
+      "fields": [
+        { "id": "primary-diagnosis", "label": "Primary Diagnosis", "type": "text", "required": true },
+        { "id": "secondary-diagnoses", "label": "Secondary Diagnoses", "type": "list" },
+        { "id": "supporting-evidence", "label": "Supporting Evidence", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "disease-discussion",
+      "title": "Disease Discussion",
+      "fields": [
+        { "id": "definition", "label": "Definition", "type": "richtext" },
+        { "id": "epidemiology", "label": "Epidemiology", "type": "richtext" },
+        { "id": "pathophysiology", "label": "Pathophysiology", "type": "richtext" },
+        { "id": "clinical-features", "label": "Clinical Features", "type": "richtext" },
+        { "id": "geriatric-considerations", "label": "Geriatric Considerations", "type": "richtext", "hint": "Atypical presentations, age-related changes, special considerations" },
+        { "id": "diagnostic-criteria", "label": "Diagnostic Criteria", "type": "richtext" }
+      ]
+    },
+    {
+      "id": "treatment",
+      "title": "Treatment Plan",
+      "required": true,
+      "fields": [
+        { "id": "pharmacologic", "label": "Pharmacologic Treatment", "type": "richtext" },
+        { "id": "non-pharmacologic", "label": "Non-Pharmacologic Treatment", "type": "richtext" },
+        { "id": "geriatric-dosing", "label": "Geriatric Dosing Considerations", "type": "textarea" },
+        { "id": "drug-interactions", "label": "Drug Interactions to Avoid", "type": "list" },
+        { "id": "monitoring", "label": "Monitoring Parameters", "type": "list" },
+        { "id": "goals-of-care", "label": "Goals of Care Discussion", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "prognosis",
+      "title": "Prognosis & Disposition",
+      "fields": [
+        { "id": "prognosis", "label": "Prognosis", "type": "textarea" },
+        { "id": "disposition", "label": "Disposition", "type": "select", "options": ["Home", "Home with services", "Rehab", "SNF", "LTAC", "Hospice", "Deceased"] },
+        { "id": "follow-up", "label": "Follow-up Plan", "type": "list" },
+        { "id": "patient-education", "label": "Patient/Family Education", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "teaching-points",
+      "title": "Teaching Points",
+      "fields": [
+        { "id": "key-takeaways", "label": "Key Teaching Points", "type": "numbered-list", "min": 3, "max": 5 },
+        { "id": "clinical-pearls", "label": "Clinical Pearls", "type": "list" },
+        { "id": "common-pitfalls", "label": "Common Pitfalls", "type": "list" }
+      ]
+    },
+    {
+      "id": "references",
+      "title": "References",
+      "fields": [
+        { "id": "references", "label": "References", "type": "reference-list" }
+      ]
+    }
+  ],
+  "scoring": {
+    "completeness": {
+      "required-sections": ["patient-info", "hpi", "differential", "diagnosis", "treatment"],
+      "recommended-sections": ["geriatric-assessment", "disease-discussion", "teaching-points"]
+    }
+  }
+}
