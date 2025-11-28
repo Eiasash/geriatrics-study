@@ -1,0 +1,680 @@
+/* SZMC Geriatrics Presentation Maker - RTL (Right-to-Left) Support for Hebrew */
+
+/* Base RTL Rules */
+html[dir="rtl"],
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Landing Page RTL */
+body.rtl .landing-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .logo {
+    flex-direction: row-reverse;
+}
+
+body.rtl .template-card {
+    text-align: right;
+}
+
+body.rtl .template-features li {
+    flex-direction: row-reverse;
+}
+
+body.rtl .template-features i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Editor Header RTL */
+body.rtl .editor-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .header-left {
+    flex-direction: row-reverse;
+}
+
+body.rtl .header-right {
+    flex-direction: row-reverse;
+}
+
+body.rtl .logo-small {
+    flex-direction: row-reverse;
+}
+
+body.rtl .btn-back {
+    transform: scaleX(-1);
+}
+
+body.rtl .autosave-indicator {
+    flex-direction: row-reverse;
+}
+
+/* Editor Layout RTL */
+body.rtl .editor-container {
+    grid-template-columns: 280px 1fr 200px;
+}
+
+body.rtl .slide-navigator {
+    order: 3;
+    border-right: none;
+    border-left: 1px solid var(--gray-200);
+}
+
+body.rtl .properties-panel {
+    order: 1;
+    border-left: none;
+    border-right: 1px solid var(--gray-200);
+}
+
+body.rtl .slide-editor {
+    order: 2;
+}
+
+/* Slide Navigator RTL */
+body.rtl .navigator-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .slide-thumbnail-number {
+    left: auto;
+    right: 4px;
+}
+
+body.rtl .slide-thumbnail-delete {
+    right: auto;
+    left: 4px;
+}
+
+/* Properties Panel RTL */
+body.rtl .panel-section {
+    text-align: right;
+}
+
+body.rtl .slide-actions {
+    flex-direction: row-reverse;
+}
+
+body.rtl .btn-action {
+    flex-direction: row-reverse;
+}
+
+body.rtl .btn-action i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Buttons RTL */
+body.rtl .btn-primary,
+body.rtl .btn-secondary {
+    flex-direction: row-reverse;
+}
+
+body.rtl .btn-primary i,
+body.rtl .btn-secondary i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Slide Content RTL */
+body.rtl .slide {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .slide-content {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .slide-content h2 {
+    border-bottom: none;
+    border-right: 4px solid var(--primary);
+    padding-right: var(--spacing-md);
+    padding-left: 0;
+}
+
+body.rtl .slide-content ul,
+body.rtl .slide-content ol {
+    padding-right: 24px;
+    padding-left: 0;
+}
+
+/* Detail Cards RTL */
+body.rtl .detail-card {
+    border-left: none;
+    border-right: 3px solid var(--secondary);
+}
+
+body.rtl .detail-card label {
+    text-align: right;
+}
+
+/* Patient Details Grid RTL */
+body.rtl .patient-details {
+    direction: rtl;
+}
+
+/* Treatment Columns RTL */
+body.rtl .treatment-columns {
+    flex-direction: row-reverse;
+}
+
+body.rtl .treatment-column {
+    text-align: right;
+}
+
+/* Timeline RTL */
+body.rtl .hpi-timeline {
+    flex-direction: row-reverse;
+}
+
+body.rtl .timeline-item {
+    text-align: right;
+}
+
+body.rtl .timeline-line {
+    left: auto;
+    right: 50%;
+}
+
+/* Differential Diagnosis RTL */
+body.rtl .differential-item {
+    flex-direction: row-reverse;
+}
+
+body.rtl .differential-rank {
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+body.rtl .differential-content {
+    text-align: right;
+}
+
+/* Teaching Points RTL */
+body.rtl .teaching-point {
+    flex-direction: row-reverse;
+    border-left: none;
+    border-right: 4px solid var(--accent);
+}
+
+body.rtl .teaching-point-number {
+    margin-left: var(--spacing-md);
+    margin-right: 0;
+}
+
+/* Take Home Messages RTL */
+body.rtl .take-home-card {
+    flex-direction: row-reverse;
+}
+
+body.rtl .take-home-number {
+    margin-left: var(--spacing-md);
+    margin-right: 0;
+}
+
+/* Key Points RTL */
+body.rtl .key-point-card {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body.rtl .kp-icon {
+    margin-left: var(--spacing-md);
+    margin-right: 0;
+}
+
+/* Statistics Visual RTL */
+body.rtl .stats-visual-grid {
+    direction: rtl;
+}
+
+/* Algorithm RTL */
+body.rtl .algorithm-visual {
+    direction: rtl;
+}
+
+body.rtl .algo-branches {
+    flex-direction: row-reverse;
+}
+
+body.rtl .algo-branch.yes {
+    text-align: right;
+}
+
+body.rtl .algo-branch.no {
+    text-align: right;
+}
+
+/* Pathophysiology RTL */
+body.rtl .pathophysiology-visual {
+    direction: rtl;
+}
+
+body.rtl .path-arrow {
+    transform: scaleX(-1);
+}
+
+/* References RTL */
+body.rtl .reference-entry {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body.rtl .ref-num {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Tables RTL */
+body.rtl table {
+    direction: rtl;
+}
+
+body.rtl th,
+body.rtl td {
+    text-align: right;
+}
+
+/* Assessment Grid RTL */
+body.rtl .assessment-grid {
+    direction: rtl;
+}
+
+body.rtl .assessment-card {
+    text-align: right;
+}
+
+/* PICO Grid RTL */
+body.rtl .pico-grid {
+    direction: rtl;
+}
+
+body.rtl .pico-card {
+    text-align: right;
+    border-left: none;
+    border-right: 4px solid;
+}
+
+/* Callouts RTL */
+body.rtl .callout {
+    border-left: none;
+    border-right: 4px solid;
+}
+
+body.rtl .callout-info {
+    border-right-color: var(--secondary);
+}
+
+body.rtl .callout-warning {
+    border-right-color: var(--accent-warning);
+}
+
+body.rtl .callout-success {
+    border-right-color: var(--accent);
+}
+
+body.rtl .callout-danger {
+    border-right-color: var(--accent-danger);
+}
+
+body.rtl .callout-title {
+    flex-direction: row-reverse;
+}
+
+body.rtl .callout-title i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Vitals Grid RTL */
+body.rtl .vitals-grid {
+    direction: rtl;
+}
+
+/* Geriatric Syndromes RTL */
+body.rtl .syndromes-grid {
+    direction: rtl;
+}
+
+/* Drug Comparison RTL */
+body.rtl .drug-comparison-table {
+    direction: rtl;
+}
+
+/* Modal RTL */
+body.rtl .modal-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .modal-header h2 {
+    flex-direction: row-reverse;
+}
+
+body.rtl .modal-close {
+    left: var(--spacing-md);
+    right: auto;
+}
+
+body.rtl .modal-footer {
+    flex-direction: row-reverse;
+}
+
+/* Generator Modal RTL */
+body.rtl .generator-layout {
+    flex-direction: row-reverse;
+}
+
+body.rtl .checkbox-label,
+body.rtl .radio-label {
+    flex-direction: row-reverse;
+}
+
+body.rtl .checkbox-label input,
+body.rtl .radio-label input {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Shortcuts Modal RTL */
+body.rtl .shortcut-item {
+    flex-direction: row-reverse;
+}
+
+body.rtl .shortcut-keys {
+    margin-left: var(--spacing-md);
+    margin-right: 0;
+}
+
+/* AI Panel RTL */
+body.rtl .ai-panel {
+    right: auto;
+    left: 16px;
+    animation: slideInLeft 0.2s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+body.rtl .ai-panel-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-panel-title {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-panel-actions {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-score-section {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-score-display {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-timing {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-result-header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .ai-result-item {
+    border-left: none;
+    border-right: 3px solid var(--gray-300);
+    text-align: right;
+}
+
+body.rtl .ai-result-item.severity-error {
+    border-right-color: #ef4444;
+}
+
+body.rtl .ai-result-item.severity-warning {
+    border-right-color: #f59e0b;
+}
+
+body.rtl .ai-result-item.severity-info {
+    border-right-color: #3b82f6;
+}
+
+body.rtl .ai-result-item.severity-tip {
+    border-right-color: #10b981;
+}
+
+body.rtl .ai-auto-analyze {
+    flex-direction: row-reverse;
+}
+
+/* Presentation Controls RTL */
+body.rtl .presentation-controls {
+    flex-direction: row-reverse;
+}
+
+body.rtl .presentation-controls button:first-child {
+    transform: scaleX(-1);
+}
+
+body.rtl .presentation-controls button:nth-child(3) {
+    transform: scaleX(-1);
+}
+
+/* Presentation Mode Options RTL */
+body.rtl .presentation-mode-grid {
+    direction: rtl;
+}
+
+body.rtl .mode-option {
+    text-align: right;
+}
+
+body.rtl .keyboard-hints .hint-grid {
+    direction: rtl;
+}
+
+/* Theme Panel RTL */
+body.rtl .theme-panel {
+    right: auto;
+    left: 16px;
+}
+
+/* Toast RTL */
+body.rtl .toast {
+    right: auto;
+    left: 20px;
+    animation: slideInRTL 0.3s ease-out;
+}
+
+@keyframes slideInRTL {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Drag Handle RTL */
+body.rtl .slide-thumbnail .drag-handle {
+    cursor: grab;
+}
+
+/* Quick Insert Grid RTL */
+body.rtl .quick-insert-grid {
+    direction: rtl;
+}
+
+/* Speaker View RTL */
+body.rtl .speaker-view {
+    flex-direction: row-reverse;
+}
+
+body.rtl .speaker-notes-panel {
+    text-align: right;
+}
+
+body.rtl .speaker-preview {
+    text-align: right;
+}
+
+/* Overview Grid RTL */
+body.rtl .overview-grid {
+    direction: rtl;
+}
+
+body.rtl .overview-slide {
+    text-align: right;
+}
+
+body.rtl .overview-number {
+    left: auto;
+    right: 8px;
+}
+
+/* Rehearsal Panel RTL */
+body.rtl .rehearsal-panel {
+    flex-direction: row-reverse;
+}
+
+body.rtl .timer-display {
+    flex-direction: row-reverse;
+}
+
+body.rtl .slide-timing {
+    flex-direction: row-reverse;
+}
+
+/* Responsive RTL Adjustments */
+@media (max-width: 1024px) {
+    body.rtl .editor-container {
+        grid-template-columns: 240px 1fr 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    body.rtl .editor-container {
+        grid-template-columns: 1fr;
+    }
+
+    body.rtl .slide-navigator,
+    body.rtl .properties-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body.rtl .ai-panel {
+        width: calc(100vw - 32px);
+        left: 16px;
+        right: 16px;
+    }
+
+    body.rtl .header-right {
+        flex-wrap: wrap;
+    }
+}
+
+/* Font Adjustments for Hebrew */
+body.rtl {
+    font-family: 'Heebo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body.rtl .slide-title h1,
+body.rtl .slide-questions h1 {
+    font-family: 'Heebo', 'Merriweather', Georgia, serif;
+}
+
+/* Slide Type Specific RTL Fixes */
+body.rtl .slide-title {
+    text-align: center;
+}
+
+body.rtl .slide-questions {
+    text-align: center;
+}
+
+body.rtl .slide-section-header {
+    text-align: center;
+}
+
+body.rtl .slide-section-header .section-number {
+    left: auto;
+    right: 30px;
+}
+
+/* Form Elements RTL */
+body.rtl input[type="text"],
+body.rtl input[type="number"],
+body.rtl textarea,
+body.rtl select {
+    text-align: right;
+}
+
+body.rtl .form-group label {
+    text-align: right;
+    display: block;
+}
+
+/* View Toggle Button RTL */
+body.rtl .view-toggle-btn {
+    flex-direction: row-reverse;
+}
+
+body.rtl .view-toggle-btn i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
+
+/* Language Selector RTL */
+body.rtl .language-selector {
+    flex-direction: row-reverse;
+}
+
+body.rtl .lang-btn {
+    flex-direction: row-reverse;
+}
+
+body.rtl .lang-btn i {
+    margin-left: var(--spacing-xs);
+    margin-right: 0;
+}
+
+/* Toolbar Actions RTL */
+body.rtl .toolbar-actions {
+    flex-direction: row-reverse;
+}
+
+/* Export Menu RTL */
+body.rtl .export-menu {
+    right: auto;
+    left: 0;
+    text-align: right;
+}
+
+body.rtl .export-menu button {
+    flex-direction: row-reverse;
+}
+
+body.rtl .export-menu button i {
+    margin-left: var(--spacing-sm);
+    margin-right: 0;
+}
