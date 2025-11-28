@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(xargs cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nSZMC Presentation Maker with enhanced AI assistant\n\nFeatures:\n- Medical case presentation builder with navy-gold theme\n- AI assistant with sizing/overflow detection\n- Presentation scoring (0-100 scale)\n- Slide timing estimation\n- Medication safety checks (Beers Criteria, drug interactions)\n- Readability, accessibility, and consistency analysis\n- Lab value validation\n- Multiple slide templates (case, timeline, pathophysiology, etc.)\n- Export to PDF/PPTX functionality\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rebase:*)",
+      "Bash(git stash:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(gh api:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh workflow:*)",
+      "Bash(curl:*)",
+      "Bash(git pull:*)",
+      "Bash(git -C \"E:/Downloads/Sniffer/data/geriatrics-study\" pull)",
+      "Bash(git -C \"E:/Downloads/Sniffer/data/geriatrics-study\" pull origin gh-pages)",
+      "Bash(git -C:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
