@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Geriatrics Fellowship</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .patient-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .patient-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .alert-high { border-left: 4px solid #dc3545; }
+        .alert-med { border-left: 4px solid #ffc107; }
+        .alert-low { border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Patient Dashboard</h1>
+                <p class="text-gray-600">Morning Rounds - Shaare Zedek Geriatrics</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="addNewPatient()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    ➕ Add Patient
+                </button>
+                <button onclick="exportReport()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                    📤 Export Report
+                </button>
+                <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                    🏠 Home
+                </button>
+            </div>
+        </header>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-blue-600" id="totalPatients">0</div>
+                <div class="text-sm text-gray-600">Total Patients</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-red-600" id="highRisk">0</div>
+                <div class="text-sm text-gray-600">High Risk</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-yellow-600" id="pendingTasks">0</div>
+                <div class="text-sm text-gray-600">Pending Tasks</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-green-600" id="completedToday">0</div>
+                <div class="text-sm text-gray-600">Completed Today</div>
+            </div>
+        </div>
+
+        <!-- Patient List -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-xl font-semibold">Active Patients</h2>
+                <p class="text-gray-600">Click on a patient to view/edit details</p>
+            </div>
+            <div id="patientList" class="p-6">
+                <!-- Patients will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Add Patient Modal -->
+        <div id="addPatientModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+                <div class="mt-3">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Add New Patient</h3>
+                    <form id="addPatientForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Room Number</label>
+                                <input type="text" id="room" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Initials</label>
+                                <input type="text" id="initials" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Age</label>
+                                <input type="number" id="age" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Sex</label>
+                                <select id="sex" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700">Main Problems (comma separated)</label>
+                            <textarea id="problems" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700">Medications (comma separated)</label>
+                            <textarea id="medications" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                        </div>
+                        <div class="flex justify-end gap-3 mt-6">
+                            <button type="button" onclick="closeAddPatientModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                                Cancel
+                            </button>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                                Add Patient
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Patient Dashboard Script Loading...');
+
+        // Patient data management
+        let patients = [];
+
+        // Safe localStorage operations
+        function loadPatients() {
+            try {
+                const stored = localStorage.getItem('geriatricPatients');
+                patients = stored ? JSON.parse(stored) : [];
+                console.log('Loaded patients:', patients.length);
+            } catch (error) {
+                console.error('Error loading patients:', error);
+                patients = [];
+            }
+        }
+
+        function savePatients() {
+            try {
+                localStorage.setItem('geriatricPatients', JSON.stringify(patients));
+                console.log('Saved patients:', patients.length);
+            } catch (error) {
+                console.error('Error saving patients:', error);
+                alert('Error saving patient data. Please try again.');
+            }
+        }
+
+        // Initialize the dashboard
+        function init() {
+            console.log('Initializing dashboard...');
+            try {
+                loadPatients();
+                renderPatients();
+                updateStats();
+
+                // Add form handler with error handling
+                const form = document.getElementById('addPatientForm');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        addPatient();
+                    });
+                    console.log('Form handler added successfully');
+                } else {
+                    console.error('Form not found!');
+                }
+                console.log('Dashboard initialized successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+                alert('Error initializing dashboard. Please refresh the page.');
+            }
+        }
+
+        function renderPatients() {
+            console.log('Rendering patients...');
+            const patientList = document.getElementById('patientList');
+
+            if (patients.length === 0) {
+                patientList.innerHTML = `
+                    <div class="text-center py-8 text-gray-500">
+                        <div class="text-4xl mb-4">🏥</div>
+                        <p>No patients added yet</p>
+                        <button onclick="addNewPatient()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                            Add Your First Patient
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            patientList.innerHTML = patients.map(patient => `
+                <div class="patient-card bg-gray-50 rounded-lg p-4 mb-4 ${getRiskClass(patient)}" onclick="editPatient('${patient.id}')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">Room ${patient.room} - ${patient.initials}</h3>
+                            <p class="text-gray-600">${patient.age}yo ${patient.sex === 'M' ? 'Male' : 'Female'}</p>
+                            <div class="mt-2">
+                                <span class="text-sm font-medium text-gray-700">Problems:</span>
+                                <p class="text-sm text-gray-600">${patient.problems?.join(', ') || 'None listed'}</p>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-sm font-medium text-gray-700">Medications:</span>
+                                <p class="text-sm text-gray-600">${patient.meds?.slice(0,3).join(', ') || 'None listed'}${patient.meds?.length > 3 ? '...' : ''}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-2 py-1 rounded-full text-xs font-medium ${getRiskBadge(patient)}">
+                                ${getRiskLevel(patient)}
+                            </span>
+                            <div class="mt-2 text-xs text-gray-500">
+                                Added: ${new Date(patient.dateAdded).toLocaleDateString('he-IL')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getRiskClass(patient) {
+            const riskScore = calculateRiskScore(patient);
+            if (riskScore >= 7) return 'alert-high';
+            if (riskScore >= 4) return 'alert-med';
+            return 'alert-low';
+        }
+
+        function getRiskBadge(patient) {
+            const riskScore = calculateRiskScore(patient);
+            if (riskScore >= 7) return 'bg-red-100 text-red-800';
+            if (riskScore >= 4) return 'bg-yellow-100 text-yellow-800';
+            return 'bg-green-100 text-green-800';
+        }
+
+        function getRiskLevel(patient) {
+            const riskScore = calculateRiskScore(patient);
+            if (riskScore >= 7) return 'High Risk';
+            if (riskScore >= 4) return 'Medium Risk';
+            return 'Low Risk';
+        }
+
+        function calculateRiskScore(patient) {
+            let score = 0;
+            if (patient.age >= 85) score += 2;
+            else if (patient.age >= 75) score += 1;
+
+            if (patient.meds && patient.meds.length >= 10) score += 3;
+            else if (patient.meds && patient.meds.length >= 5) score += 2;
+
+            if (patient.problems && patient.problems.length >= 5) score += 2;
+            else if (patient.problems && patient.problems.length >= 3) score += 1;
+
+            return score;
+        }
+
+        function updateStats() {
+            console.log('Updating stats...');
+            document.getElementById('totalPatients').textContent = patients.length;
+            document.getElementById('highRisk').textContent = patients.filter(p => calculateRiskScore(p) >= 7).length;
+            document.getElementById('pendingTasks').textContent = patients.filter(p => !p.completed).length;
+            document.getElementById('completedToday').textContent = patients.filter(p => {
+                const today = new Date().toDateString();
+                return p.lastUpdated && new Date(p.lastUpdated).toDateString() === today;
+            }).length;
+        }
+
+        function addNewPatient() {
+            console.log('Add new patient clicked');
+            document.getElementById('addPatientModal').classList.remove('hidden');
+        }
+
+        function closeAddPatientModal() {
+            console.log('Close modal clicked');
+            document.getElementById('addPatientModal').classList.add('hidden');
+            document.getElementById('addPatientForm').reset();
+        }
+
+        function addPatient() {
+            console.log('Add patient form submitted');
+            try {
+                const room = document.getElementById('room');
+                const initials = document.getElementById('initials');
+                const age = document.getElementById('age');
+                const sex = document.getElementById('sex');
+                const problems = document.getElementById('problems');
+                const medications = document.getElementById('medications');
+
+                if (!room || !initials || !age || !sex) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                if (!room.value.trim() || !initials.value.trim() || !age.value) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                const newPatient = {
+                    id: Date.now().toString(),
+                    room: room.value.trim(),
+                    initials: initials.value.trim(),
+                    age: parseInt(age.value) || 0,
+                    sex: sex.value,
+                    problems: problems.value ? problems.value.split(',').map(p => p.trim()).filter(p => p) : [],
+                    meds: medications.value ? medications.value.split(',').map(m => m.trim()).filter(m => m) : [],
+                    dateAdded: new Date().toISOString(),
+                    lastUpdated: new Date().toISOString(),
+                    completed: false
+                };
+
+                patients.push(newPatient);
+                savePatients();
+
+                closeAddPatientModal();
+                renderPatients();
+                updateStats();
+
+                alert(`Patient ${newPatient.initials} added successfully!`);
+            } catch (error) {
+                console.error('Error adding patient:', error);
+                alert('Error adding patient. Please try again.');
+            }
+        }
+
+        function editPatient(patientId) {
+            console.log('Edit patient clicked:', patientId);
+            try {
+                const patient = patients.find(p => p.id === patientId);
+                if (!patient) {
+                    alert('Patient not found');
+                    return;
+                }
+
+                const action = confirm(`Edit patient ${patient.initials} in Room ${patient.room}?\n\nClick OK to edit, Cancel to mark as completed.`);
+
+                if (action) {
+                    const newRoom = prompt('Room number:', patient.room);
+                    if (newRoom && newRoom.trim()) {
+                        patient.room = newRoom.trim();
+                        patient.lastUpdated = new Date().toISOString();
+                        savePatients();
+                        renderPatients();
+                        updateStats();
+                        alert('Patient updated successfully');
+                    }
+                } else {
+                    patient.completed = true;
+                    patient.lastUpdated = new Date().toISOString();
+                    savePatients();
+                    renderPatients();
+                    updateStats();
+                    alert('Patient marked as completed');
+                }
+            } catch (error) {
+                console.error('Error editing patient:', error);
+                alert('Error updating patient. Please try again.');
+            }
+        }
+
+        function exportReport() {
+            console.log('Export report clicked');
+            try {
+                if (patients.length === 0) {
+                    alert('No patients to export. Add patients first.');
+                    return;
+                }
+
+                const date = new Date().toLocaleDateString('en-US');
+                let report = `MORNING REPORT - Shaare Zedek Geriatrics\n${date}\n\n`;
+
+                patients.forEach(p => {
+                    report += `Room ${p.room}: ${p.initials} (${p.age}yo ${p.sex})\n`;
+                    report += `Problems: ${p.problems && p.problems.length > 0 ? p.problems.join(', ') : 'None listed'}\n`;
+                    report += `Medications: ${p.meds && p.meds.length > 0 ? p.meds.slice(0,5).join(', ') : 'None listed'}${p.meds && p.meds.length > 5 ? '...' : ''}\n`;
+                    report += `Risk Level: ${getRiskLevel(p)}\n`;
+                    report += `Status: ${p.completed ? 'Completed' : 'Pending'}\n`;
+                    report += '---\n';
+                });
+
+                report += `\nSummary:\nTotal: ${patients.length} patients\nHigh Risk: ${patients.filter(p => calculateRiskScore(p) >= 7).length}\nPending: ${patients.filter(p => !p.completed).length}`;
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(report).then(() => {
+                        alert('Morning report copied to clipboard! Paste in WhatsApp/Email.');
+                    }).catch(() => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = report;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        alert('Morning report copied to clipboard! Paste in WhatsApp/Email.');
+                    });
+                } else {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = report;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Morning report copied to clipboard! Paste in WhatsApp/Email.');
+                }
+            } catch (error) {
+                console.error('Error exporting report:', error);
+                alert('Error exporting report. Please try again.');
+            }
+        }
+
+        // Initialize when page loads
+        console.log('Setting up load event listener...');
+        window.addEventListener('load', function() {
+            console.log('Page loaded, initializing...');
+            init();
+        });
+
+        if (document.readyState === 'loading') {
+            console.log('Document still loading, waiting for load event');
+        } else {
+            console.log('Document already loaded, initializing now');
+            init();
+        }
+
+        console.log('Script loaded completely');
+    </script>
+</body>
+</html>
