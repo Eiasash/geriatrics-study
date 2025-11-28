@@ -1,0 +1,378 @@
+{
+  "title": "Advanced Clinical Management of Myasthenic Crisis in the Elderly Inpatient",
+  "type": "educational",
+  "created": "2025-11-27",
+  "author": "SZMC Geriatrics Department",
+  "slides": [
+    {
+      "id": "slide-001",
+      "type": "title",
+      "order": 0,
+      "data": {
+        "title": "Advanced Clinical Management of Myasthenic Crisis in the Elderly Inpatient",
+        "subtitle": "A Comprehensive Geriatric Report",
+        "presenter": "SZMC Geriatrics Department",
+        "date": "November 2025"
+      }
+    },
+    {
+      "id": "slide-002",
+      "type": "toc",
+      "order": 1,
+      "data": {}
+    },
+    {
+      "id": "slide-003",
+      "type": "section-header",
+      "order": 2,
+      "data": {
+        "sectionTitle": "Introduction: The Evolving Landscape of MG in Geriatrics",
+        "sectionNumber": "1"
+      }
+    },
+    {
+      "id": "slide-004",
+      "type": "content",
+      "order": 3,
+      "data": {
+        "title": "The Epidemiological Shift of Myasthenia Gravis",
+        "content": "<div class='callout callout-info'><div class='callout-title'><i class='fas fa-chart-line'></i> Key Paradigm Shift</div><div class='callout-content'>Myasthenia Gravis has evolved from a disease of young women to predominantly affecting elderly patients (Late-Onset MG)</div></div><h3>Historical vs. Contemporary View</h3><ul><li><strong>Historical:</strong> Predominantly young women (20-40 years)</li><li><strong>Contemporary:</strong> Bimodal distribution with larger peak at 60-80 years</li><li><strong>LOMG:</strong> Now accounts for majority of cases in developed nations</li><li><strong>Gender shift:</strong> Male predominance (~53%) in late-onset cases</li></ul><h3>Why This Matters in Geriatrics</h3><ul><li>Elderly rarely present with isolated neuromuscular dysfunction</li><li>Intersection of immunosenescence, polypharmacy, and frailty</li><li>Standard protocols must be rigorously adapted</li><li>\"One-size-fits-all\" approach is hazardous in this population</li></ul>"
+      }
+    },
+    {
+      "id": "slide-005",
+      "type": "statistics-visual",
+      "order": 4,
+      "data": {
+        "stat1Value": "4-6%",
+        "stat1Label": "Current MC Mortality",
+        "stat1Sub": "(down from 42% in 1960s)",
+        "stat2Value": "53%",
+        "stat2Label": "Male Predominance",
+        "stat2Sub": "in LOMG cases",
+        "stat3Value": ">40%",
+        "stat3Label": "Comorbidity Burden",
+        "stat3Sub": "(HTN, DM, CAD)",
+        "stat4Value": "66.7%",
+        "stat4Label": "Achieve MM Status",
+        "stat4Sub": "(vs 74.7% in EOMG)",
+        "statsCitations": "Data: Myasthenia Gravis epidemiological studies [1,3]"
+      }
+    },
+    {
+      "id": "slide-006",
+      "type": "two-column",
+      "order": 5,
+      "data": {
+        "title": "Early-Onset vs Late-Onset MG: Key Differences",
+        "leftColumn": "<h3><i class='fas fa-user'></i> Early-Onset MG (<50 yrs)</h3><ul><li><strong>Gender:</strong> Female predominance</li><li><strong>Thymus:</strong> Hyperplasia common</li><li><strong>Presentation:</strong> Generalized or ocular</li><li><strong>Comorbidities:</strong> Autoimmune (thyroid, lupus)</li><li><strong>Crisis triggers:</strong> Stress, menses, infection</li><li><strong>Prognosis:</strong> 74.7% achieve MM status</li></ul>",
+        "rightColumn": "<h3><i class='fas fa-user-md'></i> Late-Onset MG (>50 yrs)</h3><ul><li><strong>Gender:</strong> Male predominance</li><li><strong>Thymus:</strong> Atrophy or thymoma</li><li><strong>Presentation:</strong> Oculobulbar prominent</li><li><strong>Comorbidities:</strong> Cardiovascular, metabolic</li><li><strong>Crisis triggers:</strong> Infection, drugs, surgery</li><li><strong>Prognosis:</strong> 66.7% achieve MM status</li></ul><div class='callout callout-warning'><div class='callout-content'>Polypharmacy is a major modifiable risk factor in LOMG</div></div>"
+      }
+    },
+    {
+      "id": "slide-007",
+      "type": "pathophysiology",
+      "order": 6,
+      "data": {
+        "pathTitle": "Pathophysiology of Myasthenia Gravis",
+        "trigger": "Autoantibody production against neuromuscular junction components<br>• 80-85% target nicotinic AChR<br>• Subset target MuSK (particularly dangerous in elderly)",
+        "mechanism": "<strong>Three mechanisms of AChR disruption:</strong><br>1. <strong>Complement-mediated lysis:</strong> MAC formation destroys junctional folds<br>2. <strong>Cross-linking:</strong> Accelerates receptor endocytosis/degradation<br>3. <strong>Functional blockade:</strong> Direct blocking of ACh binding site",
+        "effects": "• Reduction in functional AChR density<br>• Decreased safety factor of NMJ transmission<br>• Superimposed on age-related NMJ fragmentation<br>• Progressive postsynaptic membrane damage",
+        "clinical": "• Fatigable muscle weakness<br>• Fluctuating symptoms (worse with activity)<br>• Bulbar dysfunction (dysphagia, dysarthria)<br>• Respiratory muscle weakness → Crisis",
+        "geriatricFactors": "<strong>Age-related NMJ changes:</strong><br>• Natural fragmentation of postsynaptic membrane<br>• Reduced safety factor of transmission<br>• Thymic atrophy (but thymoma risk increases)<br>• MuSK-MG predilection for severe bulbar/respiratory weakness",
+        "pathCitation": "[5]"
+      }
+    },
+    {
+      "id": "slide-008",
+      "type": "section-header",
+      "order": 7,
+      "data": {
+        "sectionTitle": "Clinical Presentation & Diagnostic Challenges",
+        "sectionNumber": "2"
+      }
+    },
+    {
+      "id": "slide-009",
+      "type": "content",
+      "order": 8,
+      "data": {
+        "title": "The Insidious Onset of Crisis in the Elderly",
+        "content": "<div class='callout callout-danger'><div class='callout-title'><i class='fas fa-exclamation-triangle'></i> Definition: Myasthenic Crisis</div><div class='callout-content'>Worsening of muscle weakness resulting in respiratory failure requiring intubation or non-invasive ventilation</div></div><h3>Geriatric-Specific Presentation Challenges</h3><ul><li><strong>Insidious rather than explosive:</strong> Gradual decline may be missed</li><li><strong>Classic fluctuating weakness obscured</strong> by baseline sarcopenia</li><li><strong>Mobility limitations</strong> from osteoarthritis mask weakness</li><li><strong>Atypical presentations common</strong></li></ul><h3>Bulbar Dominance: The Geriatric Signature</h3><ul><li>Predilection for bulbar muscles (speech, swallowing, chewing)</li><li><strong>Upper airway collapse:</strong> Pharyngeal dilator weakness → obstructive apnea</li><li><strong>Silent aspiration:</strong> Dysphagia → pneumonitis/pneumonia → immune response → worsens MG</li></ul><div class='callout callout-warning'><div class='callout-content'><strong>Warning Signs:</strong> \"Coughing while eating,\" \"food sticking,\" nasal voice (rhinolalia), slurring (dysarthria), dropped head syndrome</div></div>"
+      }
+    },
+    {
+      "id": "slide-010",
+      "type": "content",
+      "order": 9,
+      "data": {
+        "title": "The Differential Diagnosis Minefield",
+        "content": "<h3><i class='fas fa-brain'></i> MG: \"The Great Imitator\" in Geriatrics</h3><table class='medications-table'><thead><tr><th>Mimics</th><th>Differentiating Features</th><th>Key Tests</th></tr></thead><tbody><tr><td><strong>Stroke</strong></td><td>• MG: Symptoms fluctuate, no sensory deficits, no UMN signs<br>• Stroke: Fixed deficits, hyperreflexia, Babinski sign</td><td>CT/MRI Brain, AChR Ab</td></tr><tr><td><strong>ALS/Motor Neuron Disease</strong></td><td>• MG: No UMN signs, no profound atrophy<br>• ALS: Fasciculations, UMN signs, progressive atrophy</td><td>EMG, NCS</td></tr><tr><td><strong>Cholinergic Crisis</strong></td><td>• Muscarinic signs: miosis, bradycardia, hypersalivation, hyperactive bowel<br>• Both cause respiratory failure</td><td>Clinical exam, pyridostigmine level</td></tr></tbody></table><div class='callout callout-info'><div class='callout-content'><strong>Clinical Pearl:</strong> In elderly on beta-blockers (masking tachycardia) or with baseline bowel issues, distinguishing cholinergic crisis requires high clinical acumen</div></div>"
+      }
+    },
+    {
+      "id": "slide-011",
+      "type": "section-header",
+      "order": 10,
+      "data": {
+        "sectionTitle": "Ward-Level Assessment & Monitoring",
+        "sectionNumber": "3"
+      }
+    },
+    {
+      "id": "slide-012",
+      "type": "content",
+      "order": 11,
+      "data": {
+        "title": "The \"20/30/40\" Rule: Respiratory Monitoring",
+        "content": "<div class='callout callout-danger'><div class='callout-title'><i class='fas fa-lungs'></i> Critical Warning</div><div class='callout-content'>Pulse oximetry is a LATE indicator of neuromuscular respiratory failure. A patient can maintain normal SpO2 until respiratory arrest due to precipitous hypercapnia!</div></div><h3>Respiratory Function Parameters & Crisis Thresholds</h3><table class='medications-table'><thead><tr><th>Parameter</th><th>Normal</th><th>Warning Zone</th><th>Crisis Threshold</th></tr></thead><tbody><tr><td><strong>FVC</strong></td><td>>60 mL/kg</td><td><30 mL/kg</td><td class='stat-significant'><15-20 mL/kg (<1L)</td></tr><tr><td><strong>NIF</strong></td><td>>-70 cmH2O</td><td>-30 to -60 cmH2O</td><td class='stat-significant'>0 to -30 cmH2O</td></tr><tr><td><strong>MEP</strong></td><td>>100 cmH2O</td><td><50 cmH2O</td><td class='stat-significant'><40 cmH2O</td></tr><tr><td><strong>Single Breath Count</strong></td><td>>50</td><td><25</td><td class='stat-significant'><15</td></tr></tbody></table><div class='callout callout-info'><div class='callout-content'><strong>Geriatric Tip:</strong> Single Breath Count is invaluable when spirometry fails due to poor dentition, cognitive impairment, or facial weakness. Count <15 ≈ FVC <1.0L</div></div>"
+      }
+    },
+    {
+      "id": "slide-013",
+      "type": "algorithm",
+      "order": 12,
+      "data": {
+        "algoTitle": "Respiratory Monitoring Protocol",
+        "algoStart": "Patient with MG admitted to ward<br>Baseline FVC, NIF, SBC documented",
+        "algoDecision": "Is patient in acute phase or newly symptomatic?",
+        "algoYes": "<strong>Acute Phase Protocol:</strong><br>• FVC/NIF q2-4h<br>• Measure at pyridostigmine trough AND peak (1-2h post-dose)<br>• Continuous pulse oximetry<br>• Bedside swallow assessment",
+        "algoNo": "<strong>Stable Phase:</strong><br>• FVC/NIF q8-12h<br>• Daily bedside assessment<br>• \"Do Not Wake\" if sleeping comfortably with normal RR",
+        "algoEnd": "Escalate to ICU if:<br>FVC <20 mL/kg, NIF >-30, SBC <15<br>or severe bulbar dysfunction",
+        "algoCitation": "Adapted from MG crisis monitoring guidelines [7,13,14]"
+      }
+    },
+    {
+      "id": "slide-014",
+      "type": "content",
+      "order": 13,
+      "data": {
+        "title": "Bedside Swallowing Assessment",
+        "content": "<h3><i class='fas fa-utensils'></i> Mandatory Bulbar Function Evaluation</h3><div class='callout callout-warning'><div class='callout-title'><i class='fas fa-exclamation-triangle'></i> High Risk for Silent Aspiration</div><div class='callout-content'>Elderly MG patients with dysarthria, wet voice, or history of choking should be NPO pending formal FEES or videofluoroscopy</div></div><h3>Assessment Protocol</h3><ul><li><strong>Voice Quality Assessment:</strong><ul><li>Nasal twang (rhinolalia) = velopharyngeal weakness</li><li>Slurring (dysarthria) = tongue/lip weakness</li><li>Wet/gurgly voice = pooled secretions</li></ul></li><li><strong>Ice Pack Test:</strong> Primarily for ptosis diagnosis, NOT swallow</li><li><strong>Bedside Water Swallow Test:</strong><ul><li>Minimum requirement if no clear bulbar signs</li><li>Observe for coughing, voice change, delayed swallow</li></ul></li><li><strong>Cough Strength Assessment:</strong> Peak Cough Flow <270 L/min = unable to clear secretions</li></ul><h3>Strict NPO Criteria</h3><ul><li>Any dysarthria or rhinolalia</li><li>Wet/gurgly voice quality</li><li>History of choking episodes</li><li>Dropped head syndrome (complicates airway management)</li></ul>"
+      }
+    },
+    {
+      "id": "slide-015",
+      "type": "section-header",
+      "order": 14,
+      "data": {
+        "sectionTitle": "Precipitating Factors: The Geriatric Triptych",
+        "sectionNumber": "4"
+      }
+    },
+    {
+      "id": "slide-016",
+      "type": "key-points-visual",
+      "order": 15,
+      "data": {
+        "kpTitle": "The Three Major Crisis Triggers in Elderly MG",
+        "kp1": "<strong>INFECTION (~50% of crises)</strong><br>Most often pneumonia or UTI. Cytokine storm worsens NMJ blockade. Treat aggressively but BEWARE antibiotic choice!",
+        "kp2": "<strong>MEDICATION ERRORS</strong><br>Polypharmacy is the #1 modifiable risk factor. New drug introduction is a common precipitant.",
+        "kp3": "<strong>SURGICAL/PHYSIOLOGICAL STRESS</strong><br>Postoperative crisis common after thymectomy or unrelated surgery (e.g., hip fracture repair).",
+        "kp4": "<strong>High-Risk Surgical Factors:</strong><br>• Blood loss >1000mL<br>• Prolonged anesthesia<br>• Pre-existing bulbar symptoms",
+        "kp5": "<strong>Infection Treatment Paradox:</strong><br>Must treat infection aggressively, but many antibiotics worsen MG (fluoroquinolones, aminoglycosides, macrolides)",
+        "kp6": "<strong>Prevention is Key:</strong><br>Medication reconciliation on every admission. Share \"unsafe drug\" list with all specialists."
+      }
+    },
+    {
+      "id": "slide-017",
+      "type": "section-header",
+      "order": 16,
+      "data": {
+        "sectionTitle": "Medication Safety: The \"Dangerous Drug\" List",
+        "sectionNumber": "5"
+      }
+    },
+    {
+      "id": "slide-018",
+      "type": "medications-detailed",
+      "order": 17,
+      "data": {
+        "medTable": "<tr class='med-beers'><td colspan='5' style='background: var(--secondary); color: white; font-weight: 600;'><i class='fas fa-exclamation-triangle'></i> ANTIBIOTICS - HIGH RISK</td></tr><tr class='med-beers'><td>Aminoglycosides <span class='med-flag beers'>AVOID</span><br>(Gentamicin, Tobramycin)</td><td>Any</td><td>Any</td><td>Infection</td><td>Block presynaptic Ca++ channels; reduce ACh release. RAPID weakness.</td></tr><tr class='med-beers'><td>Fluoroquinolones <span class='med-flag beers'>FDA WARNING</span><br>(Ciprofloxacin, Levofloxacin)</td><td>Any</td><td>Any</td><td>UTI/Pneumonia</td><td>FDA black box: reports of DEATH from respiratory failure in MG</td></tr><tr class='med-beers'><td>Macrolides <span class='med-flag beers'>CAUTION</span><br>(Azithromycin, Clarithromycin)</td><td>Any</td><td>Any</td><td>Respiratory</td><td>Can cause immediate, profound weakness</td></tr><tr class='med-normal'><td colspan='5' style='background: var(--success); color: white;'><i class='fas fa-check'></i> SAFER: Cephalosporins, Penicillins, Sulfonamides (Bactrim), Tetracyclines (Doxycycline)</td></tr><tr class='med-caution'><td colspan='5' style='background: var(--warning); color: white; font-weight: 600;'><i class='fas fa-heart'></i> CARDIOVASCULAR - CAUTION</td></tr><tr class='med-caution'><td>Beta-Blockers <span class='med-flag interaction'>CAUTION</span><br>(Metoprolol, Atenolol, Labetalol)</td><td>Variable</td><td>Variable</td><td>HTN/AF</td><td>Block NMJ transmission; can unmask or worsen MG</td></tr><tr class='med-beers'><td>Antiarrhythmics <span class='med-flag beers'>AVOID</span><br>(Procainamide, Quinidine)</td><td>Variable</td><td>Variable</td><td>Arrhythmia</td><td>Potentiate weakness significantly</td></tr><tr class='med-caution'><td>Statins <span class='med-flag interaction'>MONITOR</span><br>(Atorvastatin, Simvastatin)</td><td>Variable</td><td>Daily</td><td>Hyperlipidemia</td><td>Can trigger LOMG or exacerbation. If needed, monitor closely.</td></tr>",
+        "medCount": "Multiple",
+        "beersCount": "5+",
+        "ddiCount": "Many",
+        "medCitation": "FDA warnings, MG medication safety guidelines [23,24,25]"
+      }
+    },
+    {
+      "id": "slide-019",
+      "type": "content",
+      "order": 18,
+      "data": {
+        "title": "Additional High-Risk Medications",
+        "content": "<table class='medications-table'><thead><tr><th>Drug Class</th><th>High Risk (Avoid/Caution)</th><th>Safer Alternative</th></tr></thead><tbody><tr><td><strong>Neuro/Psych</strong></td><td>Lithium, Phenytoin, Carbamazepine<br><em>Presynaptic blockade or membrane stabilization</em></td><td>Valproic Acid, Levetiracetam, Lamotrigine</td></tr><tr><td><strong>Magnesium</strong></td><td><span style='color: var(--secondary); font-weight: 600;'>IV Magnesium Sulfate</span><br><em>Competes with Ca++ at presynaptic terminal</em></td><td>Oral magnesium generally safe<br><strong>Avoid IV loading doses</strong></td></tr><tr class='med-beers'><td><strong>Anticholinergics</strong></td><td><span style='color: var(--secondary); font-weight: 600;'>Oxybutynin, Tolterodine</span><br><em>Direct opposition to MG treatment!</em></td><td>Mirabegron (Beta-3 agonist) for OAB</td></tr></tbody></table><div class='callout callout-danger'><div class='callout-title'><i class='fas fa-skull-crossbones'></i> Critical Alert: Oxybutynin</div><div class='callout-content'>Commonly prescribed for incontinence in elderly. <strong>DIRECTLY CONTRAINDICATED</strong> in MG as it blocks the very receptors that MG treatment aims to stimulate!</div></div>"
+      }
+    },
+    {
+      "id": "slide-020",
+      "type": "section-header",
+      "order": 19,
+      "data": {
+        "sectionTitle": "Acute Pharmacological Management: IVIG vs PLEX",
+        "sectionNumber": "6"
+      }
+    },
+    {
+      "id": "slide-021",
+      "type": "two-column",
+      "order": 20,
+      "data": {
+        "title": "Rapid Immunotherapy Selection in Geriatrics",
+        "leftColumn": "<h3><i class='fas fa-syringe'></i> IVIG</h3><div class='callout callout-info'><div class='callout-content'><strong>Mechanism:</strong> Saturates Fc receptors, neutralizes autoantibodies, modulates complement</div></div><h4>Efficacy</h4><ul><li>Onset: 4-5 days</li><li>Peak effect: 1-2 weeks</li></ul><h4>Geriatric Risks</h4><ul><li><span style='color: var(--secondary);'><strong>Renal Toxicity:</strong></span> Osmotic nephrosis/AKI (sucrose formulations)<br>Risk factors: Age >65, GFR <60, DM, dehydration</li><li><span style='color: var(--secondary);'><strong>Thrombosis:</strong></span> Increased plasma viscosity → stroke, MI, DVT</li><li><span style='color: var(--secondary);'><strong>Volume Overload:</strong></span> Risk of CHF exacerbation</li></ul><h4>Mitigation</h4><ul><li>Use sucrose-FREE formulations</li><li>Reduce infusion rate</li><li>Extend 2g/kg over 5 days (not 2-3)</li></ul>",
+        "rightColumn": "<h3><i class='fas fa-exchange-alt'></i> PLEX</h3><div class='callout callout-info'><div class='callout-content'><strong>Mechanism:</strong> Mechanically removes circulating autoantibodies, cytokines, immune complexes</div></div><h4>Efficacy</h4><ul><li>Onset: 2-3 days</li><li>Faster than IVIG</li><li>Preferred in fulminant crisis</li></ul><h4>Geriatric Risks</h4><ul><li><span style='color: var(--secondary);'><strong>Hemodynamic Instability:</strong></span> Hypotension in ~8% (autonomic dysfunction)</li><li><span style='color: var(--secondary);'><strong>Vascular Access:</strong></span> Central line risks (pneumothorax, CLABSI, thrombosis) elevated in elderly</li><li><span style='color: var(--secondary);'><strong>Citrate Toxicity:</strong></span> Hypocalcemia → paresthesias, arrhythmias</li></ul><h4>When to Choose</h4><ul><li>Severe renal failure (IVIG contraindicated)</li><li>Hemodynamically stable with rapid decline</li></ul>"
+      }
+    },
+    {
+      "id": "slide-022",
+      "type": "content",
+      "order": 21,
+      "data": {
+        "title": "IVIG vs PLEX: Clinical Decision Guide",
+        "content": "<table class='medications-table'><thead><tr><th>Clinical Scenario</th><th>Preferred</th><th>Rationale</th></tr></thead><tbody><tr><td><strong>Renal Failure (GFR <30)</strong></td><td class='stat-significant'>PLEX</td><td>Avoids osmotic nephrosis risk of IVIG</td></tr><tr><td><strong>Congestive Heart Failure</strong></td><td class='stat-significant'>PLEX (with albumin)</td><td>IVIG volume load is high; PLEX allows precise fluid balance</td></tr><tr><td><strong>Poor Venous Access</strong></td><td style='color: var(--success);'>IVIG</td><td>Avoids central line risks required for PLEX</td></tr><tr><td><strong>Hypercoagulable State</strong></td><td class='stat-significant'>PLEX</td><td>IVIG increases viscosity; PLEX removes factors (monitor bleeding)</td></tr><tr><td><strong>Fulminant/Rapid Decline</strong></td><td class='stat-significant'>PLEX</td><td>Faster onset of action (days vs. week)</td></tr><tr><td><strong>Hemodynamic Instability</strong></td><td style='color: var(--success);'>IVIG</td><td>PLEX can cause precipitous hypotension</td></tr></tbody></table><div class='callout callout-info'><div class='callout-title'><i class='fas fa-balance-scale'></i> In General Population</div><div class='callout-content'>IVIG and PLEX are considered therapeutically equivalent. In geriatrics, the choice is dictated by the patient's comorbidity profile.</div></div>"
+      }
+    },
+    {
+      "id": "slide-023",
+      "type": "section-header",
+      "order": 22,
+      "data": {
+        "sectionTitle": "Respiratory Support Strategies",
+        "sectionNumber": "7"
+      }
+    },
+    {
+      "id": "slide-024",
+      "type": "algorithm",
+      "order": 23,
+      "data": {
+        "algoTitle": "Respiratory Support Decision Algorithm",
+        "algoStart": "Patient with respiratory muscle weakness<br>FVC declining, NIF worsening",
+        "algoDecision": "Can patient protect airway?<br>• Intact cough (PCF >270 L/min)<br>• No severe bulbar dysfunction<br>• Alert and cooperative",
+        "algoYes": "<strong>Non-Invasive Ventilation (BiPAP)</strong><br>• First-line intervention<br>• Prevents intubation in up to 70%<br>• IPAP supports tidal volume<br>• EPAP prevents atelectasis<br>• Reduces ICU/hospital LOS",
+        "algoNo": "<strong>Intubation Required</strong><br>• Severe bulbar weakness (aspiration risk)<br>• PCF <270 L/min (can't clear secretions)<br>• Hypercapnic obtundation<br>• Positive pressure would force secretions into lungs",
+        "algoEnd": "Primary Goal: Support respiration while immunotherapies take effect (days to 1-2 weeks)",
+        "algoCitation": "BiPAP outcomes data [4]"
+      }
+    },
+    {
+      "id": "slide-025",
+      "type": "content",
+      "order": 24,
+      "data": {
+        "title": "Airway Clearance & NIV Contraindications",
+        "content": "<h3><i class='fas fa-wind'></i> Active Airway Clearance Techniques</h3><ul><li><strong>Chest Physiotherapy:</strong> Standard percussion and vibration</li><li><strong>Mechanical Insufflation-Exsufflation (MIE):</strong> CoughAssist devices for weak expiratory muscles</li><li><strong>Suctioning:</strong> Frequent oral/nasopharyngeal for bulbar weakness patients</li></ul><h3><i class='fas fa-ban'></i> NIV Contraindications in MG</h3><div class='callout callout-danger'><div class='callout-title'>Bulbar Dysfunction: The Achilles' Heel of NIV</div><div class='callout-content'>Severe bulbar weakness = cannot clear secretions. Positive pressure can FORCE secretions into lungs, causing aspiration!</div></div><table class='medications-table'><thead><tr><th>Contraindication</th><th>Rationale</th><th>Action</th></tr></thead><tbody><tr><td>Severe bulbar dysfunction</td><td>Cannot clear secretions</td><td>Proceed to intubation</td></tr><tr><td>Hypercapnic coma/obtundation</td><td>Cannot protect airway</td><td>Immediate intubation</td></tr><tr><td>PCF <270 L/min</td><td>Ineffective cough</td><td>Intubation for pulmonary toilet</td></tr></tbody></table>"
+      }
+    },
+    {
+      "id": "slide-026",
+      "type": "section-header",
+      "order": 25,
+      "data": {
+        "sectionTitle": "Symptomatic & Chronic Pharmacological Management",
+        "sectionNumber": "8"
+      }
+    },
+    {
+      "id": "slide-027",
+      "type": "two-column",
+      "order": 26,
+      "data": {
+        "title": "Pyridostigmine & Corticosteroid Management",
+        "leftColumn": "<h3><i class='fas fa-pills'></i> Pyridostigmine (Mestinon)</h3><div class='callout callout-info'><div class='callout-content'><strong>Mechanism:</strong> Inhibits AChE breakdown, increases ACh at NMJ</div></div><h4>Crisis Management</h4><ul><li><strong>During intubation:</strong> Often WITHHELD<ul><li>Reduces secretions (prolongs ventilation)</li><li>Avoids confusion with cholinergic crisis</li></ul></li><li><strong>Restart:</strong> Prior to extubation</li></ul><h4>Geriatric Dosing</h4><ul><li>Renal clearance ↓ with age</li><li>May need lower doses/longer intervals</li><li>Precise dosing critical:<ul><li>Missing dose → weakness</li><li>Doubling up → cholinergic crisis</li></ul></li></ul>",
+        "rightColumn": "<h3><i class='fas fa-prescription-bottle'></i> Corticosteroids</h3><div class='callout callout-warning'><div class='callout-title'><i class='fas fa-exclamation-triangle'></i> The \"Steroid Dip\"</div><div class='callout-content'>High-dose steroids (60mg/day) can cause PARADOXICAL WORSENING in ~15% of patients after 5-10 days, potentially precipitating crisis!</div></div><h4>Safe Initiation Strategy</h4><ul><li><strong>Option 1:</strong> \"Start low, go slow\"<ul><li>Begin 10-20mg, titrate up</li></ul></li><li><strong>Option 2:</strong> High-dose ONLY after stabilization with IVIG/PLEX</li></ul><h4>Bone Health (Essential)</h4><ul><li>Calcium + Vitamin D</li><li>Bisphosphonates<ul><li>Note: Rare reports of alendronate worsening MG</li><li>Monitor, but benefit usually outweighs risk</li></ul></li></ul>"
+      }
+    },
+    {
+      "id": "slide-028",
+      "type": "section-header",
+      "order": 27,
+      "data": {
+        "sectionTitle": "Management of Comorbidities & Geriatric Syndromes",
+        "sectionNumber": "9"
+      }
+    },
+    {
+      "id": "slide-029",
+      "type": "content",
+      "order": 28,
+      "data": {
+        "title": "Dysphagia, Nutrition & Delirium Management",
+        "content": "<h3><i class='fas fa-utensils'></i> Nutritional Support</h3><ul><li><strong>Enteral Feeding (NG tube):</strong> Preferred in acute crisis<ul><li>Less invasive than PEG</li><li>Suitable for transient crisis</li><li>Route for medications</li></ul></li><li><strong>PEG Tubes:</strong> Reserved for refractory bulbar weakness post-crisis<ul><li>Does NOT prevent aspiration of saliva</li></ul></li></ul><h3><i class='fas fa-brain'></i> Delirium Management Challenges</h3><div class='callout callout-danger'><div class='callout-title'>Standard Treatments Can Worsen MG!</div><div class='callout-content'><ul><li><strong>Benzodiazepines:</strong> ABSOLUTELY CONTRAINDICATED (respiratory depression)</li><li><strong>Antipsychotics:</strong> Haloperidol, olanzapine, quetiapine have anticholinergic properties<br>Use ONLY if essential for safety, at lowest possible dose</li></ul></div></div><h4>Anxiety Management</h4><ul><li>Anxiety often = \"air hunger\" → treat respiratory failure!</li><li>If anxiolysis essential: ONLY in monitored setting with ventilation available</li></ul>"
+      }
+    },
+    {
+      "id": "slide-030",
+      "type": "content",
+      "order": 29,
+      "data": {
+        "title": "Falls Prevention & Mobility",
+        "content": "<h3><i class='fas fa-walking'></i> Understanding Fatigable Weakness</h3><div class='callout callout-info'><div class='callout-content'>Myasthenic weakness is <strong>fatigable</strong> - worse in the evening or after exertion. This has direct implications for fall risk and therapy timing.</div></div><h3>Fall Risk Patterns</h3><ul><li><strong>Highest risk:</strong> Evening hours</li><li><strong>Highest risk:</strong> Before next pyridostigmine dose (drug trough)</li><li><strong>Lowest risk:</strong> Peak drug effect times</li></ul><h3>Therapy Timing Optimization</h3><table class='medications-table'><thead><tr><th>Activity</th><th>Optimal Timing</th><th>Rationale</th></tr></thead><tbody><tr><td>Physiotherapy</td><td>45-60 min post-pyridostigmine</td><td>Peak drug effect = maximum strength</td></tr><tr><td>Mobilization</td><td>Morning, post-medication</td><td>Least fatigue, best drug effect</td></tr><tr><td>Swallowing therapy</td><td>Peak drug times</td><td>Optimal bulbar function</td></tr><tr><td>ADL practice</td><td>Avoid late afternoon/evening</td><td>Minimize fatigable weakness</td></tr></tbody></table>"
+      }
+    },
+    {
+      "id": "slide-031",
+      "type": "section-header",
+      "order": 30,
+      "data": {
+        "sectionTitle": "Discharge Planning & Long-Term Prevention",
+        "sectionNumber": "10"
+      }
+    },
+    {
+      "id": "slide-032",
+      "type": "content",
+      "order": 31,
+      "data": {
+        "title": "Discharge Planning Essentials",
+        "content": "<div class='callout callout-warning'><div class='callout-title'><i class='fas fa-clipboard-list'></i> Discharge Planning Must Begin on Admission</div><div class='callout-content'>The complexity of LOMG management requires proactive coordination with PCP, specialists, and caregivers</div></div><h3><i class='fas fa-pills'></i> Medication Reconciliation & Education</h3><ul><li><strong>\"Safe\" and \"Unsafe\" Medication List:</strong><ul><li>Patient copy</li><li>PCP notification</li><li>All specialists (urologist, cardiologist) must receive list</li><li>Prevent future prescription of oxybutynin, beta-blockers, fluoroquinolones</li></ul></li></ul><h3><i class='fas fa-syringe'></i> Vaccination Requirements</h3><table class='medications-table'><thead><tr><th>Vaccine</th><th>Recommendation</th><th>Notes</th></tr></thead><tbody><tr><td>Influenza</td><td style='color: var(--success);'>Annual - Required</td><td>Respiratory infection = #1 crisis trigger</td></tr><tr><td>Pneumococcal</td><td style='color: var(--success);'>Required</td><td>Per age-appropriate guidelines</td></tr><tr><td>Shingles (Zostavax - live)</td><td style='color: var(--secondary);'>CONTRAINDICATED</td><td>If on prednisone >20mg, azathioprine, mycophenolate</td></tr><tr><td>Shingles (Shingrix - recombinant)</td><td style='color: var(--success);'>Preferred</td><td>Safe alternative for shingles prevention</td></tr></tbody></table>"
+      }
+    },
+    {
+      "id": "slide-033",
+      "type": "content",
+      "order": 32,
+      "data": {
+        "title": "Home Monitoring & Patient Education",
+        "content": "<h3><i class='fas fa-home'></i> Self-Monitoring Techniques</h3><div class='callout callout-info'><div class='callout-title'><i class='fas fa-lungs'></i> Single Breath Count Self-Test</div><div class='callout-content'>Patient counts out loud on a single breath. A <strong>decrease from baseline count</strong> is an early warning of respiratory decline. Count <15 = seek immediate medical attention!</div></div><h3>Warning Signs Requiring Immediate Attention</h3><ul><li><strong>Swallowing:</strong><ul><li>Difficulty finishing a meal</li><li>Coughing with liquids</li><li>Food \"sticking\" sensation</li></ul></li><li><strong>Breathing:</strong><ul><li>Single breath count decreasing</li><li>Morning headaches (CO2 retention)</li><li>Orthopnea (worse lying flat)</li></ul></li><li><strong>General:</strong><ul><li>Increasing fatigue pattern</li><li>New infection symptoms (fever, cough, dysuria)</li><li>After starting ANY new medication</li></ul></li></ul><h3>Prognosis Discussion</h3><ul><li>Acute mortality of crisis is low (~4-6%)</li><li>Recovery of full strength may take MONTHS</li><li>Focus on optimizing functional status</li><li>Strict medication adherence + infection control = recurrence prevention</li></ul>"
+      }
+    },
+    {
+      "id": "slide-034",
+      "type": "take-home",
+      "order": 33,
+      "data": {
+        "message1": "<strong>EARLY RECOGNITION</strong><br>Use objective respiratory metrics (FVC, NIF, SBC) over subjective symptoms. Pulse oximetry is a LATE indicator!",
+        "message2": "<strong>TARGETED INTERVENTION</strong><br>Select IVIG vs PLEX based on comorbidity profile, not protocol. Renal, cardiac, and vascular status dictate choice.",
+        "message3": "<strong>RIGOROUS PREVENTION</strong><br>Iatrogenic crisis from polypharmacy is the most preventable cause. Know the \"dangerous drug\" list - especially fluoroquinolones and oxybutynin.",
+        "message4": "<strong>MULTIDISCIPLINARY APPROACH</strong><br>Success requires coordination: neurology, pulmonology, geriatrics, pharmacy, PT/OT, speech therapy, and nursing.",
+        "bottomLine": "The management of myasthenic crisis in the elderly demands departure from standard protocols - navigating a narrow therapeutic window between aggressive immunosuppression and the fragility of aging organ systems."
+      }
+    },
+    {
+      "id": "slide-035",
+      "type": "teaching-points",
+      "order": 34,
+      "data": {
+        "teachingPoints": "<div class='teaching-point'><div class='teaching-point-number'>1</div><div class='teaching-point-content'><h4>The \"20/30/40\" Rule</h4><p>FVC <20 mL/kg, NIF >-30 cmH2O, or SBC <15 = impending respiratory failure. Don't wait for desaturation!</p></div></div><div class='teaching-point'><div class='teaching-point-number'>2</div><div class='teaching-point-content'><h4>Bulbar Dysfunction = NIV Contraindication</h4><p>Severe bulbar weakness prevents secretion clearance. BiPAP can force secretions into lungs. These patients need intubation.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>3</div><div class='teaching-point-content'><h4>The Steroid Dip</h4><p>~15% of patients paradoxically worsen 5-10 days after high-dose steroid initiation. Start low-go slow, or start high only after IVIG/PLEX stabilization.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>4</div><div class='teaching-point-content'><h4>Fluoroquinolones: FDA Black Box Warning</h4><p>Reports of DEATH from respiratory failure in MG patients. Consider absolutely contraindicated unless no other option exists.</p></div></div><div class='teaching-point'><div class='teaching-point-number'>5</div><div class='teaching-point-content'><h4>Time Your Therapies</h4><p>Schedule PT, mobilization, and swallowing therapy 45-60 minutes post-pyridostigmine to maximize function and minimize fall risk.</p></div></div>"
+      }
+    },
+    {
+      "id": "slide-036",
+      "type": "references-formatted",
+      "order": 35,
+      "data": {
+        "references": "<div class='reference-entry'><span class='ref-num'>1.</span><span class='ref-text'>Epidemiological studies on Late-Onset Myasthenia Gravis demographics and gender distribution.</span></div><div class='reference-entry'><span class='ref-num'>3.</span><span class='ref-text'>Comorbidity burden and prognosis in LOMG: Cardiovascular, metabolic complications and Minimal Manifestation status outcomes.</span></div><div class='reference-entry'><span class='ref-num'>4.</span><span class='ref-text'>MuSK-MG clinical characteristics and respiratory crisis risk in elderly populations.</span></div><div class='reference-entry'><span class='ref-num'>5.</span><span class='ref-text'>Pathophysiology of MG: AChR antibody mechanisms including complement-mediated lysis, cross-linking, and functional blockade.</span></div><div class='reference-entry'><span class='ref-num'>6.</span><span class='ref-text'>Aspiration pneumonitis as a trigger for myasthenic crisis exacerbation.</span></div><div class='reference-entry'><span class='ref-num'>7.</span><span class='ref-text'>Respiratory monitoring guidelines: Single Breath Count correlation with FVC measurements.</span></div><div class='reference-entry'><span class='ref-num'>13.</span><span class='ref-text'>The \"20/30/40\" Rule: Respiratory function parameters and crisis thresholds.</span></div><div class='reference-entry'><span class='ref-num'>14.</span><span class='ref-text'>FVC monitoring protocols and peak cough flow assessment in MG.</span></div><div class='reference-entry'><span class='ref-num'>19.</span><span class='ref-text'>Pyridostigmine management during intubation and the \"Do Not Wake\" monitoring protocol.</span></div><div class='reference-entry'><span class='ref-num'>22.</span><span class='ref-text'>Infection as precipitating factor in myasthenic crisis (~50% of cases).</span></div><div class='reference-entry'><span class='ref-num'>23.</span><span class='ref-text'>FDA warnings on fluoroquinolones in MG: Black box warning for respiratory failure deaths.</span></div><div class='reference-entry'><span class='ref-num'>24.</span><span class='ref-text'>Beta-blockers and antiarrhythmics: Mechanisms of MG exacerbation.</span></div><div class='reference-entry'><span class='ref-num'>25.</span><span class='ref-text'>Statins as potential triggers for LOMG or exacerbation.</span></div><div class='reference-entry'><span class='ref-num'>27.</span><span class='ref-text'>IVIG vs PLEX therapeutic equivalence in general MG populations.</span></div><div class='reference-entry'><span class='ref-num'>30.</span><span class='ref-text'>IVIG renal toxicity: Osmotic nephrosis risk factors and sucrose-free formulations.</span></div><div class='reference-entry'><span class='ref-num'>34.</span><span class='ref-text'>PLEX onset of action and preference in fulminant crisis.</span></div><div class='reference-entry'><span class='ref-num'>40.</span><span class='ref-text'>Pyridostigmine geriatric dosing and therapy timing optimization.</span></div><div class='reference-entry'><span class='ref-num'>42.</span><span class='ref-text'>IV Magnesium contraindication in MG: Presynaptic ACh release inhibition.</span></div><div class='reference-entry'><span class='ref-num'>43.</span><span class='ref-text'>Anticholinergic medications (oxybutynin) contraindication in MG.</span></div><div class='reference-entry'><span class='ref-num'>49.</span><span class='ref-text'>Vaccination guidelines for immunosuppressed MG patients: Live vs recombinant vaccines.</span></div>"
+      }
+    },
+    {
+      "id": "slide-037",
+      "type": "questions",
+      "order": 36,
+      "data": {
+        "subtitle": "Thank you for your attention",
+        "contact": "SZMC Geriatrics Department<br>For questions about myasthenic crisis management in elderly patients"
+      }
+    }
+  ]
+}
