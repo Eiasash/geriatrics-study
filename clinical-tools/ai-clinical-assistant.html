@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עוזר קליני AI - Geriatrics Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e3a5f 100%); }
+        .glass-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        .ai-glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+        .typing-indicator span {
+            animation: typing 1.4s infinite;
+            animation-fill-mode: both;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        .chat-message { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto p-4 max-w-6xl">
+        <!-- Header -->
+        <header class="glass-card rounded-2xl p-6 mb-6 shadow-xl">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <span class="text-3xl">🤖</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">עוזר קליני AI</h1>
+                        <p class="text-gray-600">אינטגרציה עם מנועי AI מובילים לתמיכה בהחלטות קליניות</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <span class="pulse-dot inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                    <span class="text-sm text-gray-600">מחובר</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- AI Service Selection -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <button onclick="selectAI('openevidence')" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400">
+                <div class="text-3xl mb-2">🔬</div>
+                <div class="font-semibold text-gray-800">OpenEvidence</div>
+                <div class="text-xs text-gray-500">מחקר מבוסס ראיות</div>
+            </button>
+            <button onclick="selectAI('chatgpt')" id="btn-chatgpt" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-green-400">
+                <div class="text-3xl mb-2">💚</div>
+                <div class="font-semibold text-gray-800">ChatGPT</div>
+                <div class="text-xs text-gray-500">OpenAI GPT-4</div>
+            </button>
+            <button onclick="selectAI('claude')" id="btn-claude" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-orange-400">
+                <div class="text-3xl mb-2">🧡</div>
+                <div class="font-semibold text-gray-800">Claude</div>
+                <div class="text-xs text-gray-500">Anthropic AI</div>
+            </button>
+            <button onclick="selectAI('perplexity')" id="btn-perplexity" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-purple-400">
+                <div class="text-3xl mb-2">🔮</div>
+                <div class="font-semibold text-gray-800">Perplexity</div>
+                <div class="text-xs text-gray-500">חיפוש AI</div>
+            </button>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Chat/Query Section -->
+            <div class="lg:col-span-2">
+                <div class="glass-card rounded-2xl shadow-xl overflow-hidden ai-glow">
+                    <!-- Chat Header -->
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl" id="selected-ai-icon">🔬</span>
+                            <div>
+                                <h2 class="font-semibold" id="selected-ai-name">OpenEvidence AI</h2>
+                                <p class="text-sm text-blue-200" id="selected-ai-desc">מחקר רפואי מבוסס ראיות</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div id="chat-container" class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                        <div class="chat-message flex gap-3">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                🤖
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl rounded-tr-none shadow-sm max-w-md">
+                                <p class="text-gray-700">שלום! אני העוזר הקליני שלך. אני יכול לעזור לך עם:</p>
+                                <ul class="mt-2 text-sm text-gray-600 space-y-1">
+                                    <li>• שאלות קליניות גריאטריות</li>
+                                    <li>• אבחנה מבדלת</li>
+                                    <li>• המלצות טיפול מבוססות ראיות</li>
+                                    <li>• חיפוש מאמרים ומחקרים</li>
+                                </ul>
+                                <p class="mt-2 text-gray-700">בחר מנוע AI למעלה והתחל לשאול!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="p-4 bg-white border-t">
+                        <div class="flex gap-3">
+                            <textarea id="user-input" placeholder="הקלד שאלה קלינית..."
+                                class="flex-1 p-3 border rounded-xl resize-none focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                rows="2" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendQuery()}"></textarea>
+                            <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium">
+                                שלח
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <button onclick="useTemplate('delirium')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דליריום בקשיש</button>
+                            <button onclick="useTemplate('falls')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">הערכת נפילות</button>
+                            <button onclick="useTemplate('polypharmacy')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">פוליפרמציה</button>
+                            <button onclick="useTemplate('dementia')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דמנציה</button>
+                            <button onclick="useTemplate('frailty')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">שבריריות</button>
+                            <button onclick="useTemplate('anticoag')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">נוגדי קרישה</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Tools Sidebar -->
+            <div class="space-y-4">
+                <!-- Differential Diagnosis -->
+                <div class="glass-card rounded-xl p-4 shadow-lg">
+                    <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <span class="text-xl">🔍</span>
+                        אבחנה מבדלת AI
+                    </h3>
+                    <textarea id="symptoms-input" placeholder="הקלד תסמינים (מופרדים בפסיקים)..."
+                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3"></textarea>
+                    <button onclick="generateDifferential()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium">
+                        צור אבחנה מבדלת
+                    </button>
+                </div>
+
+                <!-- Drug Interactions -->
+                <div class="glass-card rounded-xl p-4 shadow-lg">
+                    <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <span class="text-xl">💊</span>
+                        בדיקת אינטראקציות
+                    </h3>
+                    <textarea id="drugs-input" placeholder="הקלד תרופות (מופרדות בפסיקים)..."
+                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3"></textarea>
+                    <button onclick="checkInteractions()" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
+                        בדוק אינטראקציות
+                    </button>
+                </div>
+
+                <!-- Geriatric Syndromes Quick Check -->
+                <div class="glass-card rounded-xl p-4 shadow-lg">
+                    <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <span class="text-xl">👴</span>
+                        תסמונות גריאטריות
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="queryGeriatric('delirium')" class="p-2 text-sm bg-yellow-100 hover:bg-yellow-200 rounded-lg text-yellow-800">דליריום</button>
+                        <button onclick="queryGeriatric('dementia')" class="p-2 text-sm bg-blue-100 hover:bg-blue-200 rounded-lg text-blue-800">דמנציה</button>
+                        <button onclick="queryGeriatric('depression')" class="p-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800">דיכאון</button>
+                        <button onclick="queryGeriatric('incontinence')" class="p-2 text-sm bg-purple-100 hover:bg-purple-200 rounded-lg text-purple-800">אי-שליטה</button>
+                        <button onclick="queryGeriatric('malnutrition')" class="p-2 text-sm bg-orange-100 hover:bg-orange-200 rounded-lg text-orange-800">תת-תזונה</button>
+                        <button onclick="queryGeriatric('falls')" class="p-2 text-sm bg-red-100 hover:bg-red-200 rounded-lg text-red-800">נפילות</button>
+                    </div>
+                </div>
+
+                <!-- Evidence Links -->
+                <div class="glass-card rounded-xl p-4 shadow-lg">
+                    <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <span class="text-xl">📚</span>
+                        קישורים מהירים
+                    </h3>
+                    <div class="space-y-2">
+                        <a href="https://openevidence.com" target="_blank" class="block p-2 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 text-sm">
+                            OpenEvidence AI →
+                        </a>
+                        <a href="https://www.uptodate.com/contents/search" target="_blank" class="block p-2 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 text-sm">
+                            UpToDate →
+                        </a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=geriatric" target="_blank" class="block p-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 text-sm">
+                            PubMed Geriatrics →
+                        </a>
+                        <a href="https://www.drugs.com/drug_interactions.html" target="_blank" class="block p-2 bg-red-50 hover:bg-red-100 rounded-lg text-red-700 text-sm">
+                            Drugs.com Interactions →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clinical Guidelines Section -->
+        <div class="glass-card rounded-2xl p-6 mt-6 shadow-xl">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">📋</span>
+                הנחיות קליניות עם AI
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="searchGuideline('AGS Beers Criteria')" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all">
+                    <div class="text-2xl mb-2">🍺</div>
+                    <div class="font-semibold text-gray-800">AGS Beers</div>
+                    <div class="text-xs text-gray-500">תרופות לא מתאימות</div>
+                </button>
+                <button onclick="searchGuideline('STOPP START criteria elderly')" class="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl hover:shadow-md transition-all">
+                    <div class="text-2xl mb-2">🛑</div>
+                    <div class="font-semibold text-gray-800">STOPP/START</div>
+                    <div class="text-xs text-gray-500">קריטריונים לתרופות</div>
+                </button>
+                <button onclick="searchGuideline('frailty assessment CGA')" class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl hover:shadow-md transition-all">
+                    <div class="text-2xl mb-2">🏥</div>
+                    <div class="font-semibold text-gray-800">CGA</div>
+                    <div class="text-xs text-gray-500">הערכה גריאטרית מקיפה</div>
+                </button>
+                <button onclick="searchGuideline('delirium prevention hospital elderly')" class="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl hover:shadow-md transition-all">
+                    <div class="text-2xl mb-2">⚠️</div>
+                    <div class="font-semibold text-gray-800">HELP Protocol</div>
+                    <div class="text-xs text-gray-500">מניעת דליריום</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat History -->
+        <div class="glass-card rounded-2xl p-6 mt-6 shadow-xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                    <span class="text-2xl">💾</span>
+                    היסטוריית שאילתות
+                </h2>
+                <button onclick="clearHistory()" class="text-sm text-red-600 hover:text-red-800">נקה היסטוריה</button>
+            </div>
+            <div id="history-container" class="space-y-2 max-h-48 overflow-y-auto">
+                <p class="text-gray-500 text-sm">עדיין אין שאילתות שמורות</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-white/70 mt-8 pb-4">
+            <p class="text-sm">העוזר הקליני AI - פלטפורמת גריאטריה מתקדמת</p>
+            <a href="../index.html" class="text-white hover:underline text-sm">חזרה לדף הבית</a>
+        </footer>
+    </div>
+
+    <script>
+        let selectedAI = 'openevidence';
+        let chatHistory = JSON.parse(localStorage.getItem('aiChatHistory') || '[]');
+
+        const aiServices = {
+            openevidence: {
+                name: 'OpenEvidence AI',
+                icon: '🔬',
+                desc: 'מחקר רפואי מבוסס ראיות',
+                url: 'https://openevidence.com/search?q=',
+                color: 'blue'
+            },
+            chatgpt: {
+                name: 'ChatGPT (GPT-4)',
+                icon: '💚',
+                desc: 'OpenAI - שאלות קליניות מורכבות',
+                url: 'https://chat.openai.com/?q=',
+                color: 'green'
+            },
+            claude: {
+                name: 'Claude AI',
+                icon: '🧡',
+                desc: 'Anthropic - ניתוח מעמיק',
+                url: 'https://claude.ai/new?q=',
+                color: 'orange'
+            },
+            perplexity: {
+                name: 'Perplexity AI',
+                icon: '🔮',
+                desc: 'חיפוש AI עם מקורות',
+                url: 'https://www.perplexity.ai/search?q=',
+                color: 'purple'
+            }
+        };
+
+        const templates = {
+            delirium: 'מהו הפרוטוקול המומלץ להערכה וטיפול בדליריום בחולה גריאטרי מאושפז? כולל אבחנה מבדלת, בירור וטיפול.',
+            falls: 'מהי הגישה המקיפה להערכת מטופל גריאטרי לאחר נפילה? כולל גורמי סיכון, בירור ומניעה.',
+            polypharmacy: 'כיצד לבצע deprescribing בטוח בחולה גריאטרי עם פוליפרמציה? מהם הקריטריונים של Beers ו-STOPP/START?',
+            dementia: 'מהי הגישה המומלצת לאבחון וטיפול בדמנציה? כולל אבחנה מבדלת בין סוגי דמנציה.',
+            frailty: 'כיצד להעריך ולטפל בשבריריות (frailty) במטופל גריאטרי? מהם הכלים המומלצים להערכה?',
+            anticoag: 'מהן ההמלצות לנוגדי קרישה במטופל גריאטרי עם פרפור פרוזדורים? כיצד לאזן בין סיכון לדימום לסיכון לשבץ?'
+        };
+
+        function selectAI(ai) {
+            selectedAI = ai;
+            const service = aiServices[ai];
+
+            // Update UI
+            document.querySelectorAll('.ai-btn').forEach(btn => {
+                btn.classList.remove('border-blue-400', 'border-green-400', 'border-orange-400', 'border-purple-400', 'ai-glow');
+            });
+            document.getElementById(`btn-${ai}`).classList.add(`border-${service.color}-400`, 'ai-glow');
+
+            document.getElementById('selected-ai-icon').textContent = service.icon;
+            document.getElementById('selected-ai-name').textContent = service.name;
+            document.getElementById('selected-ai-desc').textContent = service.desc;
+        }
+
+        function sendQuery() {
+            const input = document.getElementById('user-input');
+            const query = input.value.trim();
+            if (!query) return;
+
+            // Add user message to chat
+            addMessage(query, 'user');
+
+            // Save to history
+            saveToHistory(query, selectedAI);
+
+            // Open AI service with query
+            const service = aiServices[selectedAI];
+            const encodedQuery = encodeURIComponent(`[Geriatric Medicine Question] ${query}`);
+            window.open(service.url + encodedQuery, '_blank');
+
+            // Add response message
+            setTimeout(() => {
+                addMessage(`השאילתה נשלחה ל-${service.name}. נפתח חלון חדש עם התשובה.`, 'ai');
+            }, 500);
+
+            input.value = '';
+        }
+
+        function addMessage(text, type) {
+            const container = document.getElementById('chat-container');
+            const isUser = type === 'user';
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message flex gap-3 ${isUser ? 'flex-row-reverse' : ''}`;
+            messageDiv.innerHTML = `
+                <div class="w-10 h-10 ${isUser ? 'bg-green-100' : 'bg-blue-100'} rounded-full flex items-center justify-center flex-shrink-0">
+                    ${isUser ? '👤' : '🤖'}
+                </div>
+                <div class="${isUser ? 'bg-green-100' : 'bg-white'} p-4 rounded-2xl ${isUser ? 'rounded-tl-none' : 'rounded-tr-none'} shadow-sm max-w-md">
+                    <p class="text-gray-700">${text}</p>
+                </div>
+            `;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function useTemplate(key) {
+            document.getElementById('user-input').value = templates[key];
+        }
+
+        function generateDifferential() {
+            const symptoms = document.getElementById('symptoms-input').value.trim();
+            if (!symptoms) {
+                alert('נא להזין תסמינים');
+                return;
+            }
+
+            const query = `צור אבחנה מבדלת גריאטרית עבור מטופל עם התסמינים הבאים: ${symptoms}. כלול סיבות שכיחות, פחות שכיחות, ובירור מומלץ.`;
+            document.getElementById('user-input').value = query;
+            sendQuery();
+        }
+
+        function checkInteractions() {
+            const drugs = document.getElementById('drugs-input').value.trim();
+            if (!drugs) {
+                alert('נא להזין תרופות');
+                return;
+            }
+
+            // Open Drugs.com interaction checker
+            const drugList = drugs.split(',').map(d => d.trim()).filter(d => d);
+            if (drugList.length < 2) {
+                alert('נא להזין לפחות 2 תרופות לבדיקת אינטראקציות');
+                return;
+            }
+
+            // Also send to AI
+            const query = `בדוק אינטראקציות בין התרופות הבאות במטופל גריאטרי: ${drugs}. כלול אינטראקציות משמעותיות, התאמות מינון, והמלצות.`;
+            document.getElementById('user-input').value = query;
+
+            // Open drugs.com
+            window.open(`https://www.drugs.com/drug_interactions.html?drug_list=${drugList.join(',')}`, '_blank');
+
+            sendQuery();
+        }
+
+        function queryGeriatric(syndrome) {
+            const queries = {
+                delirium: 'הערכה וטיפול בדליריום חריף במטופל גריאטרי מאושפז - פרוטוקול מלא',
+                dementia: 'אבחנה מבדלת וטיפול בדמנציה - Alzheimer vs Vascular vs Lewy Body vs FTD',
+                depression: 'דיכאון בקשישים - הערכה, אבחנה מבדלת מדמנציה, וטיפול',
+                incontinence: 'אי-שליטה על סוגרים בקשישים - בירור וטיפול',
+                malnutrition: 'תת-תזונה בקשישים - הערכה, גורמי סיכון וטיפול',
+                falls: 'הערכה מקיפה של נפילות בקשישים - גורמי סיכון ומניעה'
+            };
+
+            document.getElementById('user-input').value = queries[syndrome];
+            sendQuery();
+        }
+
+        function searchGuideline(guideline) {
+            const query = `הנחיות קליניות עדכניות: ${guideline} - סיכום המלצות עיקריות`;
+            document.getElementById('user-input').value = query;
+            sendQuery();
+        }
+
+        function saveToHistory(query, ai) {
+            chatHistory.unshift({
+                query: query,
+                ai: ai,
+                timestamp: new Date().toISOString()
+            });
+            chatHistory = chatHistory.slice(0, 50); // Keep last 50
+            localStorage.setItem('aiChatHistory', JSON.stringify(chatHistory));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('history-container');
+            if (chatHistory.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-sm">עדיין אין שאילתות שמורות</p>';
+                return;
+            }
+
+            container.innerHTML = chatHistory.slice(0, 10).map(item => {
+                const service = aiServices[item.ai];
+                const date = new Date(item.timestamp).toLocaleDateString('he-IL');
+                return `
+                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" onclick="reuseQuery('${item.query.replace(/'/g, "\\'")}')">
+                        <span>${service.icon}</span>
+                        <div class="flex-1 truncate text-sm text-gray-700">${item.query}</div>
+                        <span class="text-xs text-gray-400">${date}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function reuseQuery(query) {
+            document.getElementById('user-input').value = query;
+        }
+
+        function clearHistory() {
+            if (confirm('האם למחוק את כל ההיסטוריה?')) {
+                chatHistory = [];
+                localStorage.removeItem('aiChatHistory');
+                renderHistory();
+            }
+        }
+
+        // Initialize
+        selectAI('openevidence');
+        renderHistory();
+    </script>
+</body>
+</html>
