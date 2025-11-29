@@ -1,32 +1,25 @@
 # Geriatrics Study Materials 🏥
 
 [![CI Pipeline](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml)
-[![CI Enhanced](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml)
-[![Release](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml)
-[![codecov](https://codecov.io/gh/Eiasash/geriatrics-study/branch/main/graph/badge.svg)](https://codecov.io/gh/Eiasash/geriatrics-study)
-[![H5P Coverage](https://img.shields.io/badge/H5P%20Coverage-70%25-yellow)](https://codecov.io/gh/Eiasash/geriatrics-study/tree/main/h5p)
-[![Anki Coverage](https://img.shields.io/badge/Anki%20Coverage-70%25-yellow)](https://codecov.io/gh/Eiasash/geriatrics-study/tree/main/anki)
+[![H5P Build](https://github.com/Eiasash/geriatrics-study/actions/workflows/h5p-deploy.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/h5p-deploy.yml)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Eiasash/geriatrics-study)](https://github.com/Eiasash/geriatrics-study/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/Eiasash/geriatrics-study/network/updates)
-[![Auto-Merge](https://img.shields.io/badge/Auto--Merge-enabled-blue)](https://github.com/Eiasash/geriatrics-study/blob/main/.github/workflows/dependabot-auto-merge.yml)
 
-Educational materials system for geriatrics topics - featuring Anki flashcards and H5P interactive content with full Hebrew language support.
+Educational materials system for geriatrics topics - featuring H5P interactive content and the SZMC Presentation Maker with full Hebrew language support.
 
 ## 📚 Features
 
-- **🎴 Anki Flashcards**: Comprehensive spaced repetition decks for 12 geriatrics topics
 - **🎮 H5P Interactive Content**: Question sets and timed mega-quizzes
+- **📊 SZMC Presentation Maker**: Create medical case presentations and journal club slides (PWA - installable)
+- **🏥 Clinical Tools**: Medical calculators and assessment tools
 - **🌐 Hebrew Support**: Full RTL support with proper formatting
 - **🤖 Automated CI/CD**: Build, test, and release automation
-- **🔒 Security First**: Automated dependency audits and updates
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js 20+
-- Python 3.11+
 - Git
 
 ### Installation
@@ -39,10 +32,6 @@ cd geriatrics-study
 # Install H5P dependencies
 cd h5p
 npm install
-
-# Install Anki dependencies
-cd ../anki
-pip install -r requirements.txt
 ```
 
 ### Building Packages
@@ -61,12 +50,17 @@ TOPICS="דליריום,שבריריות (Frailty)" PASS=75 npm run build:mega
 # Output: h5p/dist/geriatrics_mega.h5p
 ```
 
-#### Anki Package
-```bash
-cd anki
-python build_apkg.py
-# Output: anki/dist/geriatrics.apkg
-```
+## 📱 SZMC Presentation Maker
+
+A Progressive Web App for creating professional medical presentations:
+
+- **Case Presentations**: Structure patient cases for conferences
+- **Journal Club**: Create slides for research paper reviews
+- **Medical Snippets**: Quick-insert common geriatric assessments
+- **Offline Support**: Works without internet connection
+- **Export**: PowerPoint, PDF, and HTML formats
+
+**Try it**: [https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/](https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/)
 
 ## 📦 Pre-built Releases
 
@@ -76,19 +70,18 @@ Download ready-to-use packages from the [Releases page](https://github.com/Eiasa
 
 ```
 geriatrics-study/
-├── h5p/                    # H5P interactive content
+├── h5p/                        # H5P interactive content
 │   ├── build-h5p-questionset.js
 │   ├── build-h5p-mega.js
-│   └── dist/              # Built H5P packages
-├── anki/                  # Anki flashcard system
-│   ├── build_apkg.py
-│   └── dist/              # Built Anki packages
-├── data/                  # Source content
-│   └── content.json       # Questions and answers
-└── .github/workflows/     # CI/CD automation
-    ├── ci.yml            # Main CI pipeline
-    ├── release.yml       # Release automation
-    └── dependabot.yml    # Dependency updates
+│   └── dist/                   # Built H5P packages
+├── szmc-presentation-maker/    # PWA Presentation tool
+│   ├── index.html
+│   ├── manifest.json           # PWA manifest
+│   └── sw.js                   # Service worker
+├── clinical-tools/             # Medical calculators
+├── data/                       # Source content
+│   └── content.json            # Questions and answers
+└── .github/workflows/          # CI/CD automation
 ```
 
 ## 📋 Topics Covered
@@ -110,23 +103,15 @@ geriatrics-study/
 
 ### Running Tests
 ```bash
-# H5P linting
 cd h5p
+npm test
 npm run lint
-
-# Anki tests
-cd anki
-pytest
 ```
 
 ### Security Audits
 ```bash
-# Node.js audit
 cd h5p
 npm audit
-
-# Python audit
-pip-audit -r anki/requirements.txt
 ```
 
 ## 🤝 Contributing
@@ -141,20 +126,11 @@ pip-audit -r anki/requirements.txt
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- Medical content reviewed by geriatrics specialists
-- Built with H5P framework for interactive learning
-- Anki spaced repetition system for effective memorization
-
 ## 📞 Support
 
 For issues and questions:
 - [Open an issue](https://github.com/Eiasash/geriatrics-study/issues)
-- [View documentation](https://github.com/Eiasash/geriatrics-study/wiki)
 
 ---
 
 Made with ❤️ for medical education
----
-*Last updated: 2025-08-20 22:21:01*
