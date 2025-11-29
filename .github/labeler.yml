@@ -75,8 +75,16 @@
       - 'tsconfig.json'
       - 'babel.config.*'
 
-# Note: Size labels are handled by codelytv/pr-size-labeler in labeler.yml workflow
-# The actions/labeler action only supports file path-based labeling
+# Size labels (based on lines changed)
+'size: XS':
+  - changed-files:
+      - all-globs-to-all-files:
+        - '**/*'
+  - head-branch:
+      - '^(?!.*(main|master)).*$'
+  - base-branch: ['main']
+  - draft: false
+  - size-below: 10
 
 # Priority labels
 'priority: high':
