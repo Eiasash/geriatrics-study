@@ -8,6 +8,7 @@ const CACHE_NAME = 'szmc-presentation-v2';
 // Throttle background cache updates - track last update time per URL
 const lastCacheUpdate = new Map();
 const CACHE_UPDATE_THROTTLE_MS = 60000; // Only update cache once per minute per URL
+const MAX_CACHE_TRACKING_ENTRIES = 100; // Limit memory usage
 
 // All files to cache for complete offline use
 const CACHE_FILES = [
@@ -49,10 +50,22 @@ const EXTERNAL_ASSETS = [
 
 /**
  * Check if a URL should be updated in the cache (throttled)
+ * Includes cleanup to prevent memory leaks from unbounded Map growth
  */
 function shouldUpdateCache(url) {
-    const lastUpdate = lastCacheUpdate.get(url);
     const now = Date.now();
+    
+    // Cleanup old entries if Map is getting too large
+    if (lastCacheUpdate.size > MAX_CACHE_TRACKING_ENTRIES) {
+        // Remove entries older than throttle period
+        for (const [key, timestamp] of lastCacheUpdate) {
+            if ((now - timestamp) > CACHE_UPDATE_THROTTLE_MS) {
+                lastCacheUpdate.delete(key);
+            }
+        }
+    }
+    
+    const lastUpdate = lastCacheUpdate.get(url);
     if (!lastUpdate || (now - lastUpdate) > CACHE_UPDATE_THROTTLE_MS) {
         lastCacheUpdate.set(url, now);
         return true;

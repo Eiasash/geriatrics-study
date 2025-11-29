@@ -387,19 +387,25 @@
                     return;
                 }
 
+                // Cache risk scores once for all patients
+                const riskScores = patients.map(p => calculateRiskScore(p));
+                
                 const date = new Date().toLocaleDateString('en-US');
                 let report = `MORNING REPORT - Shaare Zedek Geriatrics\n${date}\n\n`;
 
-                patients.forEach(p => {
+                patients.forEach((p, index) => {
+                    const riskScore = riskScores[index];
                     report += `Room ${p.room}: ${p.initials} (${p.age}yo ${p.sex})\n`;
                     report += `Problems: ${p.problems && p.problems.length > 0 ? p.problems.join(', ') : 'None listed'}\n`;
                     report += `Medications: ${p.meds && p.meds.length > 0 ? p.meds.slice(0,5).join(', ') : 'None listed'}${p.meds && p.meds.length > 5 ? '...' : ''}\n`;
-                    report += `Risk Level: ${getRiskLevel(p)}\n`;
+                    report += `Risk Level: ${getRiskLevelFromScore(riskScore)}\n`;
                     report += `Status: ${p.completed ? 'Completed' : 'Pending'}\n`;
                     report += '---\n';
                 });
 
-                report += `\nSummary:\nTotal: ${patients.length} patients\nHigh Risk: ${patients.filter(p => calculateRiskScore(p) >= 7).length}\nPending: ${patients.filter(p => !p.completed).length}`;
+                // Use cached risk scores for summary
+                const highRiskCount = riskScores.filter(score => score >= 7).length;
+                report += `\nSummary:\nTotal: ${patients.length} patients\nHigh Risk: ${highRiskCount}\nPending: ${patients.filter(p => !p.completed).length}`;
 
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(report).then(() => {
