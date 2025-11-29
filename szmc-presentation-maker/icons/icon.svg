@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="80" fill="url(#grad)"/>
+  <g fill="white">
+    <!-- Presentation screen -->
+    <rect x="80" y="100" width="352" height="240" rx="16" fill="none" stroke="white" stroke-width="16"/>
+    <!-- Stand -->
+    <path d="M256 340 L256 400 M200 400 L312 400" stroke="white" stroke-width="16" stroke-linecap="round"/>
+    <!-- Heart/Medical symbol -->
+    <path d="M256 180 C230 150 180 160 180 200 C180 250 256 290 256 290 C256 290 332 250 332 200 C332 160 282 150 256 180Z" fill="white"/>
+    <!-- Plus sign -->
+    <rect x="240" y="195" width="32" height="60" rx="4" fill="#1e3a5f"/>
+    <rect x="226" y="211" width="60" height="28" rx="4" fill="#1e3a5f"/>
+  </g>
+</svg>

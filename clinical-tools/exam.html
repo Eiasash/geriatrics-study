@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Simulator - Shlav Alef Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hebrew { direction: rtl; text-align: right; }
+        .answer-option {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .answer-option:hover {
+            transform: translateX(4px);
+            background-color: #f3f4f6;
+        }
+        .correct { background-color: #d4edda !important; border-color: #28a745 !important; }
+        .incorrect { background-color: #f8d7da !important; border-color: #dc3545 !important; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">📖 Shlav Alef Exam Prep</h1>
+                <p class="text-gray-600">Hebrew & English Geriatrics Questions</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="switchLanguage()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    🌐 Switch Language
+                </button>
+                <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                    🏠 Home
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="bg-white rounded-lg shadow mb-6 p-4">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700">Progress</span>
+                <span class="text-sm text-gray-600"><span id="currentQuestion">1</span> / <span id="totalQuestions">50</span></span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 2%"></div>
+            </div>
+            <div class="flex justify-between mt-2 text-sm text-gray-600">
+                <span>Correct: <span id="correctCount" class="font-bold text-green-600">0</span></span>
+                <span>Incorrect: <span id="incorrectCount" class="font-bold text-red-600">0</span></span>
+                <span>Score: <span id="scorePercent" class="font-bold">0%</span></span>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <div class="flex justify-between items-start mb-4">
+                <span id="questionLanguage" class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">English</span>
+                <span id="questionCategory" class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Geriatric Syndromes</span>
+            </div>
+
+            <div id="questionContainer" class="mb-6">
+                <h2 id="questionText" class="text-xl font-semibold text-gray-900 mb-4">
+                    Loading question...
+                </h2>
+                <div id="answerOptions" class="space-y-3">
+                    <!-- Options will be loaded here -->
+                </div>
+            </div>
+
+            <div id="explanationContainer" class="hidden mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h3 class="font-semibold text-blue-900 mb-2">📚 Explanation:</h3>
+                <p id="explanationText" class="text-blue-800"></p>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button onclick="previousQuestion()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" disabled id="prevBtn">
+                    ← Previous
+                </button>
+                <button onclick="submitAnswer()" id="submitBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                    Submit Answer
+                </button>
+                <button onclick="nextQuestion()" id="nextBtn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hidden">
+                    Next →
+                </button>
+            </div>
+        </div>
+
+        <!-- Review Mode -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold mb-4">📊 Question Review</h3>
+            <div class="grid grid-cols-10 gap-2" id="reviewGrid">
+                <!-- Review grid will be populated here -->
+            </div>
+            <div class="mt-4 flex gap-4 text-sm">
+                <span class="flex items-center"><span class="w-4 h-4 bg-green-200 rounded mr-2"></span> Correct</span>
+                <span class="flex items-center"><span class="w-4 h-4 bg-red-200 rounded mr-2"></span> Incorrect</span>
+                <span class="flex items-center"><span class="w-4 h-4 bg-gray-200 rounded mr-2"></span> Not Attempted</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question database
+        const questions = {
+            hebrew: [
+                {
+                    id: 'HEB-001',
+                    category: 'תסמונות גריאטריות',
+                    question: 'מהו הגורם השכיח ביותר לדליריום בקשישים מאושפזים?',
+                    options: [
+                        'זיהום',
+                        'כאב',
+                        'עצירות',
+                        'דיכאון'
+                    ],
+                    correct: 0,
+                    explanation: 'זיהום (במיוחד דלקת בדרכי השתן ודלקת ריאות) הוא הגורם השכיח ביותר לדליריום בקשישים מאושפזים.'
+                },
+                {
+                    id: 'HEB-002',
+                    category: 'פרמקולוגיה',
+                    question: 'איזו תרופה מהבאות אינה מומלצת לקשישים לפי קריטריוני Beers?',
+                    options: [
+                        'מטפורמין',
+                        'דיאזפאם',
+                        'ליזינופריל',
+                        'אטורבסטטין'
+                    ],
+                    correct: 1,
+                    explanation: 'בנזודיאזפינים ארוכי טווח כמו דיאזפאם אינם מומלצים לקשישים בגלל סיכון מוגבר לנפילות, בלבול וירידה קוגניטיבית.'
+                },
+                {
+                    id: 'HEB-003',
+                    category: 'הערכה גריאטרית',
+                    question: 'מהו ציון MoCA המעיד על ירידה קוגניטיבית קלה?',
+                    options: [
+                        '26-30',
+                        '18-25',
+                        '10-17',
+                        'מתחת ל-10'
+                    ],
+                    correct: 1,
+                    explanation: 'ציון MoCA בין 18-25 מעיד על ירידה קוגניטיבית קלה (MCI). ציון נורמלי הוא 26 ומעלה.'
+                },
+                {
+                    id: 'HEB-004',
+                    category: 'נפילות',
+                    question: 'מהו משך הזמן הנדרש במבחן TUG (Timed Up and Go) המעיד על סיכון מוגבר לנפילות?',
+                    options: [
+                        'מעל 10 שניות',
+                        'מעל 12 שניות',
+                        'מעל 14 שניות',
+                        'מעל 20 שניות'
+                    ],
+                    correct: 2,
+                    explanation: 'TUG מעל 14 שניות מעיד על סיכון מוגבר לנפילות. מעל 20 שניות מצביע על סיכון גבוה מאוד.'
+                },
+                {
+                    id: 'HEB-005',
+                    category: 'תזונה',
+                    question: 'מהו ערך האלבומין המעיד על תת-תזונה בקשישים?',
+                    options: [
+                        'פחות מ-4.0 g/dL',
+                        'פחות מ-3.5 g/dL',
+                        'פחות מ-3.0 g/dL',
+                        'פחות מ-2.5 g/dL'
+                    ],
+                    correct: 1,
+                    explanation: 'אלבומין מתחת ל-3.5 g/dL מעיד על תת-תזונה. יש לזכור שאלבומין הוא סמן מאוחר ומושפע ממצבים דלקתיים.'
+                }
+            ],
+            english: [
+                {
+                    id: 'ENG-001',
+                    category: 'Falls Prevention',
+                    question: 'Which intervention has the strongest evidence for preventing falls in community-dwelling elderly?',
+                    options: [
+                        'Vitamin D supplementation alone',
+                        'Exercise programs including balance training',
+                        'Home safety assessment only',
+                        'Hip protectors'
+                    ],
+                    correct: 1,
+                    explanation: 'Exercise programs that include balance and strength training have the strongest evidence for preventing falls in community-dwelling elderly.'
+                },
+                {
+                    id: 'ENG-002',
+                    category: 'Polypharmacy',
+                    question: 'What is the definition of polypharmacy in geriatrics?',
+                    options: [
+                        'Taking more than 3 medications',
+                        'Taking more than 5 medications',
+                        'Taking more than 10 medications',
+                        'Taking any unnecessary medication'
+                    ],
+                    correct: 1,
+                    explanation: 'Polypharmacy is commonly defined as taking 5 or more medications regularly.'
+                },
+                {
+                    id: 'ENG-003',
+                    category: 'Dementia',
+                    question: 'Which type of dementia typically presents with visual hallucinations early in the disease course?',
+                    options: [
+                        'Alzheimer disease',
+                        'Vascular dementia',
+                        'Lewy body dementia',
+                        'Frontotemporal dementia'
+                    ],
+                    correct: 2,
+                    explanation: 'Lewy body dementia characteristically presents with visual hallucinations early in the disease course, along with fluctuating cognition and parkinsonism.'
+                },
+                {
+                    id: 'ENG-004',
+                    category: 'Frailty',
+                    question: 'According to the Fried Frailty Phenotype, how many criteria are needed for a diagnosis of frailty?',
+                    options: [
+                        '1 or more',
+                        '2 or more',
+                        '3 or more',
+                        '4 or more'
+                    ],
+                    correct: 2,
+                    explanation: 'The Fried Frailty Phenotype requires 3 or more of 5 criteria: unintentional weight loss, exhaustion, weakness (grip strength), slow walking speed, and low physical activity.'
+                },
+                {
+                    id: 'ENG-005',
+                    category: 'Delirium',
+                    question: 'Which CAM (Confusion Assessment Method) features are required for a diagnosis of delirium?',
+                    options: [
+                        'Features 1 and 2 only',
+                        'Features 1, 2, and either 3 or 4',
+                        'All 4 features',
+                        'Any 2 of 4 features'
+                    ],
+                    correct: 1,
+                    explanation: 'CAM requires: (1) Acute onset and fluctuating course AND (2) Inattention AND EITHER (3) Disorganized thinking OR (4) Altered level of consciousness.'
+                },
+                {
+                    id: 'ENG-006',
+                    category: 'Nutrition',
+                    question: 'What is the recommended daily protein intake for older adults to prevent sarcopenia?',
+                    options: [
+                        '0.8 g/kg/day',
+                        '1.0-1.2 g/kg/day',
+                        '1.5-2.0 g/kg/day',
+                        '2.0-2.5 g/kg/day'
+                    ],
+                    correct: 1,
+                    explanation: 'Current guidelines recommend 1.0-1.2 g/kg/day of protein for healthy older adults, higher than the 0.8 g/kg/day RDA for younger adults.'
+                },
+                {
+                    id: 'ENG-007',
+                    category: 'Cardiovascular',
+                    question: 'What is the recommended blood pressure target for most older adults according to recent guidelines?',
+                    options: [
+                        '< 120/80 mmHg',
+                        '< 130/80 mmHg',
+                        '< 140/90 mmHg',
+                        '< 150/90 mmHg'
+                    ],
+                    correct: 1,
+                    explanation: 'Most guidelines now recommend a target of < 130/80 mmHg for most older adults who can tolerate treatment, though targets may be individualized.'
+                },
+                {
+                    id: 'ENG-008',
+                    category: 'Sleep',
+                    question: 'Which medication class should be avoided as first-line treatment for insomnia in older adults?',
+                    options: [
+                        'Melatonin',
+                        'Low-dose trazodone',
+                        'Benzodiazepines',
+                        'CBT-I (Cognitive Behavioral Therapy for Insomnia)'
+                    ],
+                    correct: 2,
+                    explanation: 'Benzodiazepines and other sedative-hypnotics are listed on the Beers Criteria and should be avoided due to increased risk of falls, cognitive impairment, and delirium.'
+                }
+            ]
+        };
+
+        // State management
+        let currentLanguage = 'english';
+        let currentQuestionIndex = 0;
+        let selectedAnswer = null;
+        let answers = [];
+        let correct = 0;
+        let incorrect = 0;
+        let currentQuestionSet = [];
+
+        // Initialize
+        function init() {
+            currentQuestionSet = [...questions.english, ...questions.hebrew];
+            shuffleArray(currentQuestionSet);
+            document.getElementById('totalQuestions').textContent = currentQuestionSet.length;
+            initializeReviewGrid();
+            loadQuestion();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function loadQuestion() {
+            const question = currentQuestionSet[currentQuestionIndex];
+            const isHebrew = question.id.startsWith('HEB');
+
+            document.getElementById('questionLanguage').textContent = isHebrew ? 'עברית' : 'English';
+            document.getElementById('questionCategory').textContent = question.category;
+            document.getElementById('questionText').textContent = question.question;
+
+            if (isHebrew) {
+                document.getElementById('questionText').classList.add('hebrew');
+            } else {
+                document.getElementById('questionText').classList.remove('hebrew');
+            }
+
+            const optionsHtml = question.options.map((option, index) => `
+                <div class="answer-option p-4 border-2 border-gray-200 rounded-lg ${isHebrew ? 'hebrew' : ''}"
+                     onclick="selectAnswer(${index})" id="option-${index}">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="answer" value="${index}" class="mr-3">
+                        <span>${String.fromCharCode(65 + index)}. ${option}</span>
+                    </label>
+                </div>
+            `).join('');
+
+            document.getElementById('answerOptions').innerHTML = optionsHtml;
+
+            // Reset UI
+            selectedAnswer = null;
+            document.getElementById('explanationContainer').classList.add('hidden');
+            document.getElementById('submitBtn').classList.remove('hidden');
+            document.getElementById('nextBtn').classList.add('hidden');
+
+            // Update progress
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            const progress = ((currentQuestionIndex + 1) / currentQuestionSet.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+        }
+
+        function selectAnswer(index) {
+            selectedAnswer = index;
+            document.querySelectorAll('.answer-option').forEach((el, i) => {
+                el.classList.remove('bg-blue-50', 'border-blue-500');
+                if (i === index) {
+                    el.classList.add('bg-blue-50', 'border-blue-500');
+                }
+            });
+            document.querySelector(`input[value="${index}"]`).checked = true;
+        }
+
+        function submitAnswer() {
+            if (selectedAnswer === null) {
+                alert('Please select an answer first');
+                return;
+            }
+
+            const question = currentQuestionSet[currentQuestionIndex];
+            const isCorrect = selectedAnswer === question.correct;
+
+            // Store answer
+            answers[currentQuestionIndex] = {
+                selected: selectedAnswer,
+                correct: question.correct,
+                isCorrect: isCorrect
+            };
+
+            // Update counters
+            if (isCorrect) {
+                correct++;
+                document.getElementById('correctCount').textContent = correct;
+            } else {
+                incorrect++;
+                document.getElementById('incorrectCount').textContent = incorrect;
+            }
+
+            // Update score
+            const score = Math.round((correct / (correct + incorrect)) * 100);
+            document.getElementById('scorePercent').textContent = score + '%';
+
+            // Show correct/incorrect
+            document.getElementById(`option-${selectedAnswer}`).classList.add(isCorrect ? 'correct' : 'incorrect');
+            if (!isCorrect) {
+                document.getElementById(`option-${question.correct}`).classList.add('correct');
+            }
+
+            // Show explanation
+            document.getElementById('explanationText').textContent = question.explanation;
+            document.getElementById('explanationContainer').classList.remove('hidden');
+
+            // Update buttons
+            document.getElementById('submitBtn').classList.add('hidden');
+            document.getElementById('nextBtn').classList.remove('hidden');
+
+            // Update review grid
+            updateReviewGrid();
+
+            // Disable options
+            document.querySelectorAll('.answer-option').forEach(el => {
+                el.style.pointerEvents = 'none';
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuestionSet.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function switchLanguage() {
+            currentLanguage = currentLanguage === 'english' ? 'hebrew' : 'english';
+            currentQuestionSet = questions[currentLanguage];
+            currentQuestionIndex = 0;
+            answers = [];
+            correct = 0;
+            incorrect = 0;
+            document.getElementById('correctCount').textContent = 0;
+            document.getElementById('incorrectCount').textContent = 0;
+            document.getElementById('scorePercent').textContent = '0%';
+            document.getElementById('totalQuestions').textContent = currentQuestionSet.length;
+            initializeReviewGrid();
+            loadQuestion();
+        }
+
+        function initializeReviewGrid() {
+            const grid = document.getElementById('reviewGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < currentQuestionSet.length; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'w-8 h-8 bg-gray-200 rounded flex items-center justify-center text-xs font-semibold cursor-pointer';
+                cell.textContent = i + 1;
+                cell.onclick = () => jumpToQuestion(i);
+                cell.id = `review-${i}`;
+                grid.appendChild(cell);
+            }
+        }
+
+        function updateReviewGrid() {
+            answers.forEach((answer, index) => {
+                const cell = document.getElementById(`review-${index}`);
+                if (cell) {
+                    cell.className = `w-8 h-8 rounded flex items-center justify-center text-xs font-semibold cursor-pointer ${
+                        answer.isCorrect ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'
+                    }`;
+                }
+            });
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestionIndex = index;
+            loadQuestion();
+        }
+
+        function showResults() {
+            const score = Math.round((correct / currentQuestionSet.length) * 100);
+            alert(`Exam Complete!\n\nFinal Score: ${score}%\nCorrect: ${correct}\nIncorrect: ${incorrect}\n\n${
+                score >= 70 ? 'Great job! You passed!' : 'Keep studying and try again!'
+            }`);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

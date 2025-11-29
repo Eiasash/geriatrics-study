@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1e3a5f">
+    <meta name="description" content="Create professional medical presentations for geriatrics case reviews and journal clubs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SZMC Geriatrics Presentation Maker</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/presentation.css">
+    <link rel="stylesheet" href="css/visuals.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/generator.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <header class="landing-header">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span data-i18n="logo">SZMC Geriatrics</span>
+                </div>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English">
+                            <span>EN</span>
+                        </button>
+                        <button class="lang-btn" id="lang-he" onclick="switchLanguage('he')" title="עברית">
+                            <span>עב</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="landing-main">
+                <h1 data-i18n="presentationMaker">Presentation Maker</h1>
+                <p class="subtitle" data-i18n="appSubtitle">Create professional medical presentations for case reviews and journal clubs</p>
+
+                <div class="template-grid">
+                    <div class="template-card" onclick="selectTemplate('case')">
+                        <div class="template-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <h3 data-i18n="casePresentation">Case Presentation</h3>
+                        <p data-i18n="casePresentationDesc">Patient history, physical exam, differentials, workup, diagnosis, and treatment plan</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> 25 slide template</li>
+                            <li><i class="fas fa-check"></i> Table of contents & take-home</li>
+                            <li><i class="fas fa-check"></i> Charts, images & algorithms</li>
+                            <li><i class="fas fa-check"></i> Numbered citations</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card" onclick="selectTemplate('journal')">
+                        <div class="template-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <h3 data-i18n="journalClub">Journal Club</h3>
+                        <p data-i18n="journalClubDesc">Critical appraisal of medical literature with structured analysis</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> 20 slide template</li>
+                            <li><i class="fas fa-check"></i> PICO & statistical analysis</li>
+                            <li><i class="fas fa-check"></i> Data visualizations</li>
+                            <li><i class="fas fa-check"></i> Formatted references</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card template-card-generate" onclick="showGeneratorModal()">
+                        <div class="template-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 data-i18n="generateFromText">Generate from Text</h3>
+                        <p data-i18n="generateFromTextDesc">Paste your case notes or article and auto-generate a structured presentation</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> Auto-detect case vs journal</li>
+                            <li><i class="fas fa-check"></i> Extract key information</li>
+                            <li><i class="fas fa-check"></i> Multiple style themes</li>
+                            <li><i class="fas fa-check"></i> Customizable output</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="load-section">
+                    <button class="btn-secondary" onclick="loadPresentation()">
+                        <i class="fas fa-folder-open"></i> Load Saved Presentation
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Editor Page -->
+        <div id="editor-page" class="page">
+            <header class="editor-header">
+                <div class="header-left">
+                    <button class="btn-back" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="logo-small">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>SZMC Geriatrics</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <input type="text" id="presentation-title" placeholder="Presentation Title" value="Untitled Presentation">
+                </div>
+                <div class="header-right">
+                    <div class="autosave-indicator" id="autosave-indicator" title="Auto-save status">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Saved</span>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <button class="btn-icon" onclick="editor.undo()" title="Undo (Ctrl+Z)" id="btn-undo" disabled>
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button class="btn-icon" onclick="editor.redo()" title="Redo (Ctrl+Y)" id="btn-redo" disabled>
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant">
+                        <i class="fas fa-robot"></i>
+                        <span class="ai-badge" id="ai-issue-badge" style="display: none;">0</span>
+                    </button>
+                    <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme">
+                        <i class="fas fa-palette"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('save-dropdown')">
+                            <i class="fas fa-save"></i> Save <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="save-dropdown" class="dropdown-menu">
+                            <button onclick="savePresentation(); closeDropdowns()"><i class="fas fa-save"></i> Save Local</button>
+                            <button onclick="CloudSave.local.save(getPresentationData()); closeDropdowns()"><i class="fas fa-history"></i> Save Backup</button>
+                            <hr>
+                            <button onclick="CloudSave.googleDrive.save(getPresentationData()); closeDropdowns()"><i class="fab fa-google-drive"></i> Google Drive</button>
+                            <button onclick="CloudSave.dropbox.save(getPresentationData()); closeDropdowns()"><i class="fab fa-dropbox"></i> Dropbox</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('export-dropdown')">
+                            <i class="fas fa-download"></i> Export <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="export-dropdown" class="dropdown-menu">
+                            <button onclick="exportToPowerPoint(); closeDropdowns()"><i class="fas fa-file-powerpoint"></i> PowerPoint (.pptx)</button>
+                            <button onclick="exportToPDF(); closeDropdowns()"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button onclick="exportToHTML(); closeDropdowns()"><i class="fas fa-code"></i> HTML</button>
+                            <button onclick="exportToJSON(); closeDropdowns()"><i class="fas fa-file-code"></i> JSON</button>
+                            <hr>
+                            <button onclick="TemplateSharing.exportTemplate(getPresentationData()); closeDropdowns()"><i class="fas fa-file-export"></i> Export Template</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('share-dropdown')">
+                            <i class="fas fa-share-alt"></i> Share <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="share-dropdown" class="dropdown-menu">
+                            <button onclick="TemplateSharing.copyShareLink(getPresentationData()); closeDropdowns()"><i class="fas fa-link"></i> Copy Link</button>
+                            <button onclick="startCollaboration(); closeDropdowns()"><i class="fas fa-users"></i> Start Collaboration</button>
+                            <button onclick="joinCollaboration(); closeDropdowns()"><i class="fas fa-sign-in-alt"></i> Join Session</button>
+                        </div>
+                    </div>
+                    <div id="collab-users" class="collab-users-bar"></div>
+                    <button class="btn-primary" onclick="showPresentationOptions()">
+                        <i class="fas fa-play"></i> Present
+                    </button>
+                </div>
+            </header>
+
+            <div class="editor-container">
+                <!-- Sidebar - Slide Navigator -->
+                <aside class="slide-navigator">
+                    <div class="navigator-header">
+                        <h3>Slides</h3>
+                        <button class="btn-icon" onclick="addSlide()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div id="slide-thumbnails" class="slide-thumbnails">
+                        <!-- Thumbnails populated by JS -->
+                    </div>
+                </aside>
+
+                <!-- Main Editor -->
+                <main class="slide-editor">
+                    <div id="current-slide" class="slide-canvas">
+                        <!-- Current slide content -->
+                    </div>
+                </main>
+
+                <!-- Properties Panel -->
+                <aside class="properties-panel">
+                    <div class="panel-section">
+                        <h4>Slide Type</h4>
+                        <select id="slide-type" onchange="changeSlideType()">
+                            <optgroup label="Navigation">
+                                <option value="title">Title Slide</option>
+                                <option value="toc">Table of Contents</option>
+                                <option value="section-header">Section Header</option>
+                            </optgroup>
+                            <optgroup label="Case Presentation">
+                                <option value="patient-info">Patient Information</option>
+                                <option value="hpi">History of Present Illness</option>
+                                <option value="timeline-visual">Clinical Timeline</option>
+                                <option value="pmh">Past Medical History</option>
+                                <option value="medications">Medications</option>
+                                <option value="medications-detailed">Medications (Detailed)</option>
+                                <option value="social-history">Social History</option>
+                                <option value="physical-exam">Physical Examination</option>
+                                <option value="labs">Laboratory Results</option>
+                                <option value="imaging">Imaging Studies</option>
+                                <option value="diagnostic-workup">Diagnostic Workup</option>
+                                <option value="geriatric-assessment">Geriatric Assessment</option>
+                                <option value="geriatric-syndromes">Geriatric Syndromes</option>
+                                <option value="differential">Differential Diagnosis</option>
+                                <option value="diagnosis">Final Diagnosis</option>
+                                <option value="disease-overview">Disease Overview</option>
+                                <option value="pathophysiology">Pathophysiology</option>
+                                <option value="risk-factors">Risk Factors</option>
+                                <option value="treatment">Treatment Plan</option>
+                                <option value="algorithm">Treatment Algorithm</option>
+                                <option value="drug-comparison">Drug Comparison</option>
+                                <option value="prognosis">Prognosis & Follow-up</option>
+                                <option value="goals-of-care">Goals of Care</option>
+                                <option value="case-summary">Case Summary</option>
+                            </optgroup>
+                            <optgroup label="Journal Club">
+                                <option value="jc-title">Article Title</option>
+                                <option value="jc-background">Background & Rationale</option>
+                                <option value="jc-pico">PICO Question</option>
+                                <option value="jc-methods">Study Methods</option>
+                                <option value="jc-results">Results</option>
+                                <option value="jc-statistics">Statistical Analysis</option>
+                                <option value="jc-discussion">Discussion</option>
+                                <option value="jc-limitations">Limitations</option>
+                                <option value="jc-applicability">Clinical Applicability</option>
+                                <option value="jc-conclusion">Conclusions</option>
+                                <option value="evidence-summary">Evidence Summary</option>
+                                <option value="forest-plot">Forest Plot</option>
+                            </optgroup>
+                            <optgroup label="Data & Visuals">
+                                <option value="statistics-visual">Statistics Display</option>
+                                <option value="chart-bar">Bar Chart</option>
+                                <option value="chart-pie">Pie Chart</option>
+                                <option value="image-full">Full Image</option>
+                                <option value="image-comparison">Image Comparison</option>
+                                <option value="key-points-visual">Key Points (Visual)</option>
+                            </optgroup>
+                            <optgroup label="Interactive">
+                                <option value="quiz">Quiz Question</option>
+                            </optgroup>
+                            <optgroup label="Conclusion">
+                                <option value="teaching-points">Teaching Points</option>
+                                <option value="take-home">Take-Home Messages</option>
+                                <option value="references">References</option>
+                                <option value="references-formatted">References (Formatted)</option>
+                                <option value="qr-resources">QR Code Resources</option>
+                                <option value="questions">Questions</option>
+                            </optgroup>
+                            <optgroup label="General">
+                                <option value="content">Content Slide</option>
+                                <option value="two-column">Two Column</option>
+                                <option value="comparison">Comparison</option>
+                                <option value="pros-cons">Pros & Cons</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="panel-section" id="slide-properties">
+                        <!-- Dynamic properties based on slide type -->
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Quick Insert</h4>
+                        <div class="quick-insert-grid">
+                            <button onclick="insertElement('table')" title="Table">
+                                <i class="fas fa-table"></i>
+                            </button>
+                            <button onclick="insertElement('list')" title="Bullet List">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button onclick="triggerImageUpload()" title="Upload Image">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button onclick="insertElement('chart')" title="Chart">
+                                <i class="fas fa-chart-bar"></i>
+                            </button>
+                            <button onclick="insertElement('callout')" title="Callout Box">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                            <button onclick="insertElement('reference')" title="Reference">
+                                <i class="fas fa-quote-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Slide Actions</h4>
+                        <div class="slide-actions">
+                            <button class="btn-action" onclick="duplicateCurrentSlide()" title="Duplicate Slide">
+                                <i class="fas fa-copy"></i> Duplicate
+                            </button>
+                            <button class="btn-action" onclick="editor.deleteSlide(editor.currentSlideIndex)" title="Delete Slide">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Help</h4>
+                        <button class="btn-help" onclick="showKeyboardShortcuts()">
+                            <i class="fas fa-keyboard"></i> Keyboard Shortcuts
+                        </button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Presentation Mode -->
+        <div id="presentation-mode" class="page">
+            <div id="presentation-container">
+                <!-- Full screen presentation -->
+            </div>
+            <div class="presentation-controls">
+                <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+                <span id="slide-counter">1 / 1</span>
+                <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+                <button onclick="exitPresentation()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <!-- Generator Modal -->
+        <div id="generator-modal" class="modal">
+            <div class="modal-backdrop" onclick="hideGeneratorModal()"></div>
+            <div class="modal-content generator-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-magic"></i> Generate Presentation from Text</h2>
+                    <button class="modal-close" onclick="hideGeneratorModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="generator-layout">
+                        <div class="generator-input-section">
+                            <div class="form-group">
+                                <label for="paste-text-input">
+                                    <i class="fas fa-paste"></i> Paste Your Text
+                                </label>
+                                <textarea
+                                    id="paste-text-input"
+                                    placeholder="Paste your case notes, discharge summary, or journal article abstract here...
+
+Example for Case:
+78 year old male presents with 3 days of confusion.
+Chief complaint: altered mental status
+HPI: Patient was in usual state of health until...
+PMH: Hypertension, Type 2 Diabetes, CHF
+Medications: Metformin 1000mg BID, Lisinopril 20mg daily...
+
+Example for Journal Club:
+Title: Effects of Intensive Blood Pressure Treatment...
+Authors: SPRINT Research Group
+Background: The optimal systolic blood pressure target...
+Methods: Randomized controlled trial of 9361 participants...
+Results: Primary outcome occurred in 1.65% vs 2.19%..."
+                                    rows="15"
+                                ></textarea>
+                            </div>
+
+                            <div class="detected-type" id="detected-type-display">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Start typing to auto-detect presentation type...</span>
+                            </div>
+                        </div>
+
+                        <div class="generator-options-section">
+                            <h3><i class="fas fa-cog"></i> Options</h3>
+
+                            <div class="form-group">
+                                <label for="gen-title-input">Presentation Title</label>
+                                <input type="text" id="gen-title-input" placeholder="Auto-generated or enter custom title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gen-presenter-input">Presenter Name</label>
+                                <input type="text" id="gen-presenter-input" placeholder="Your name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gen-theme-select"><i class="fas fa-palette"></i> Theme Style</label>
+                                <select id="gen-theme-select">
+                                    <option value="szmc-blue">SZMC Blue (Default)</option>
+                                    <option value="clinical-green">Clinical Green</option>
+                                    <option value="modern-purple">Modern Purple</option>
+                                    <option value="warm-orange">Warm Orange</option>
+                                    <option value="dark-professional">Dark Professional</option>
+                                    <option value="medical-red">Medical Red</option>
+                                    <option value="minimal-gray">Minimal Gray</option>
+                                    <option value="navy-gold">Navy & Gold</option>
+                                </select>
+                            </div>
+
+                            <div class="theme-preview" id="theme-preview">
+                                <div class="preview-colors">
+                                    <div class="preview-color primary"></div>
+                                    <div class="preview-color secondary"></div>
+                                    <div class="preview-color accent"></div>
+                                </div>
+                                <span class="preview-label">Color Preview</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-sliders-h"></i> Additional Options</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-toc" checked>
+                                        <span>Include Table of Contents</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-takehome" checked>
+                                        <span>Include Take-Home Messages</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-refs" checked>
+                                        <span>Include References Slide</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-questions" checked>
+                                        <span>Include Questions Slide</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-expand-arrows-alt"></i> Slide Density</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="compact">
+                                        <span>Compact (15-18 slides)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="standard" checked>
+                                        <span>Standard (20-25 slides)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="detailed">
+                                        <span>Detailed (25-30 slides)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="hideGeneratorModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="btn-primary" onclick="generateFromText()">
+                        <i class="fas fa-magic"></i> Generate Presentation
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Selector Panel (in editor) -->
+        <div id="theme-panel" class="theme-panel">
+            <div class="panel-section">
+                <h4><i class="fas fa-palette"></i> Theme</h4>
+                <select id="editor-theme-select" onchange="applyTheme(this.value)">
+                    <option value="szmc-blue">SZMC Blue</option>
+                    <option value="clinical-green">Clinical Green</option>
+                    <option value="modern-purple">Modern Purple</option>
+                    <option value="warm-orange">Warm Orange</option>
+                    <option value="dark-professional">Dark Professional</option>
+                    <option value="medical-red">Medical Red</option>
+                    <option value="minimal-gray">Minimal Gray</option>
+                    <option value="navy-gold">Navy & Gold</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Presentation Options Modal -->
+        <div id="presentation-options-modal" class="modal">
+            <div class="modal-backdrop" onclick="hidePresentationOptions()"></div>
+            <div class="modal-content presentation-options-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-play-circle"></i> Start Presentation</h2>
+                    <button class="modal-close" onclick="hidePresentationOptions()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <h3>Choose Presentation Mode</h3>
+                    <div class="presentation-mode-grid">
+                        <div class="mode-option" onclick="hidePresentationOptions(); startPresentation('standard');">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Standard</h4>
+                            <p>Full screen presentation mode</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startSpeakerView();">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h4>Speaker View</h4>
+                            <p>See notes and next slide</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startOverview();">
+                            <i class="fas fa-th"></i>
+                            <h4>Overview</h4>
+                            <p>See all slides at once</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startRehearsal();">
+                            <i class="fas fa-stopwatch"></i>
+                            <h4>Rehearsal</h4>
+                            <p>Practice with timer</p>
+                        </div>
+                    </div>
+
+                    <div class="transition-options">
+                        <label>Slide Transition</label>
+                        <select id="transition-select" onchange="setTransitionEffect(this.value)">
+                            <option value="fade">Fade</option>
+                            <option value="slide">Slide</option>
+                            <option value="zoom">Zoom</option>
+                            <option value="none">None (Instant)</option>
+                        </select>
+                    </div>
+
+                    <div class="keyboard-hints">
+                        <h4><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h4>
+                        <div class="hint-grid">
+                            <span><kbd>Space</kbd> / <kbd>→</kbd></span><span>Next slide</span>
+                            <span><kbd>←</kbd></span><span>Previous slide</span>
+                            <span><kbd>O</kbd></span><span>Overview mode</span>
+                            <span><kbd>B</kbd></span><span>Black screen</span>
+                            <span><kbd>W</kbd></span><span>White screen</span>
+                            <span><kbd>Esc</kbd></span><span>Exit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="hidePresentationOptions()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="btn-primary" onclick="hidePresentationOptions(); startPresentation('standard');">
+                        <i class="fas fa-play"></i> Start Standard Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Modal -->
+        <div id="shortcuts-modal" class="modal">
+            <div class="modal-backdrop" onclick="hideKeyboardShortcuts()"></div>
+            <div class="modal-content shortcuts-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h2>
+                    <button class="modal-close" onclick="hideKeyboardShortcuts()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-category">
+                            <h3>Navigation</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>←</kbd> / <kbd>→</kbd></span>
+                                <span class="shortcut-desc">Previous / Next slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Home</kbd> / <kbd>End</kbd></span>
+                                <span class="shortcut-desc">First / Last slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Editing</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Z</kbd></span>
+                                <span class="shortcut-desc">Undo</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd></span>
+                                <span class="shortcut-desc">Redo</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>C</kbd></span>
+                                <span class="shortcut-desc">Copy slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>V</kbd></span>
+                                <span class="shortcut-desc">Paste slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>D</kbd></span>
+                                <span class="shortcut-desc">Duplicate slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Delete</kbd></span>
+                                <span class="shortcut-desc">Delete slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>File</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>S</kbd></span>
+                                <span class="shortcut-desc">Save presentation</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>N</kbd></span>
+                                <span class="shortcut-desc">Add new slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Presentation</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Space</kbd></span>
+                                <span class="shortcut-desc">Next slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>O</kbd></span>
+                                <span class="shortcut-desc">Overview mode</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>B</kbd></span>
+                                <span class="shortcut-desc">Black screen</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>W</kbd></span>
+                                <span class="shortcut-desc">White screen</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Esc</kbd></span>
+                                <span class="shortcut-desc">Exit presentation</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Other</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>?</kbd></span>
+                                <span class="shortcut-desc">Show this help</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shortcuts-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Tip: Drag and drop images directly onto slides to insert them!</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-primary" onclick="hideKeyboardShortcuts()">
+                        <i class="fas fa-check"></i> Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant Panel -->
+        <div id="ai-panel" class="ai-panel">
+            <div class="ai-panel-header">
+                <div class="ai-panel-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </div>
+                <div class="ai-panel-actions">
+                    <button class="btn-icon" onclick="runAIAnalysis()" title="Analyze Presentation">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn-icon" onclick="toggleAIPanel()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ai-panel-body">
+                <!-- Presentation Score & Timing -->
+                <div class="ai-score-section">
+                    <div class="ai-score-display">
+                        <div class="ai-score-circle">
+                            <span class="ai-score-value" id="ai-score">--</span>
+                            <span class="ai-score-label">Score</span>
+                        </div>
+                        <div class="ai-score-bar-container">
+                            <div class="ai-score-bar-fill" id="ai-score-bar"></div>
+                        </div>
+                    </div>
+                    <div class="ai-timing" id="ai-timing">
+                        <i class="fas fa-clock"></i> Est. --:--
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <div class="ai-summary" id="ai-summary">
+                    <div class="ai-stat ai-stat-error">
+                        <i class="fas fa-times-circle"></i>
+                        <span class="stat-count" id="ai-error-count">0</span>
+                        <span class="stat-label">Errors</span>
+                    </div>
+                    <div class="ai-stat ai-stat-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="stat-count" id="ai-warning-count">0</span>
+                        <span class="stat-label">Warnings</span>
+                    </div>
+                    <div class="ai-stat ai-stat-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="stat-count" id="ai-info-count">0</span>
+                        <span class="stat-label">Info</span>
+                    </div>
+                    <div class="ai-stat ai-stat-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span class="stat-count" id="ai-tip-count">0</span>
+                        <span class="stat-label">Tips</span>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="ai-filter-tabs">
+                    <button class="ai-filter-tab active" data-filter="all" onclick="filterAIResults('all')">
+                        All
+                    </button>
+                    <button class="ai-filter-tab" data-filter="issues" onclick="filterAIResults('issues')">
+                        Issues
+                    </button>
+                    <button class="ai-filter-tab" data-filter="suggestions" onclick="filterAIResults('suggestions')">
+                        Suggestions
+                    </button>
+                </div>
+
+                <!-- Results List -->
+                <div class="ai-results" id="ai-results">
+                    <div class="ai-placeholder">
+                        <i class="fas fa-magic"></i>
+                        <p>Click the refresh button to analyze your presentation</p>
+                        <button class="btn-primary btn-sm" onclick="runAIAnalysis()">
+                            <i class="fas fa-play"></i> Analyze Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-panel-footer">
+                <label class="ai-auto-analyze">
+                    <input type="checkbox" id="ai-auto-analyze" onchange="toggleAutoAnalyze()">
+                    <span>Auto-analyze on changes</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/templates-extended.js"></script>
+    <script src="js/templates-extra.js"></script>
+    <script src="js/citations.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/presentation.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/advanced-export.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mobile.js"></script>
+    <script>
+        // Language switching function
+        function switchLanguage(lang) {
+            if (window.i18n) {
+                i18n.setLanguage(lang);
+                updateLanguageButtons(lang);
+            }
+        }
+
+        function updateLanguageButtons(lang) {
+            const enBtn = document.getElementById('lang-en');
+            const heBtn = document.getElementById('lang-he');
+            if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+            if (heBtn) heBtn.classList.toggle('active', lang === 'he');
+        }
+
+        // Dropdown functions
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id).parentElement;
+            const wasOpen = dropdown.classList.contains('open');
+            closeDropdowns();
+            if (!wasOpen) dropdown.classList.add('open');
+        }
+
+        function closeDropdowns() {
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+        }
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) closeDropdowns();
+        });
+
+        // Collaboration helpers
+        function startCollaboration() {
+            const roomId = CollaborativeEditing.createRoom(getPresentationData());
+            const url = CollaborativeEditing.getShareUrl();
+            navigator.clipboard.writeText(url);
+            showToast('Collaboration started! Link copied to clipboard.', 'success');
+        }
+
+        function joinCollaboration() {
+            const roomId = prompt('Enter room ID or paste invite link:');
+            if (roomId) {
+                const id = roomId.includes('room=') ? roomId.split('room=')[1] : roomId;
+                const name = prompt('Enter your name:');
+                CollaborativeEditing.joinRoom(id, name || 'Guest');
+            }
+        }
+
+        // Initialize language buttons on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.i18n) {
+                updateLanguageButtons(i18n.getLanguage());
+            }
+        });
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (e) => {
+            updateLanguageButtons(e.detail.lang);
+        });
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+
+        function showInstallButton() {
+            const btn = document.createElement('button');
+            btn.id = 'install-btn';
+            btn.className = 'install-prompt';
+            btn.innerHTML = '<i class="fas fa-download"></i> Install App';
+            btn.onclick = installApp;
+            document.body.appendChild(btn);
+        }
+
+        async function installApp() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                document.getElementById('install-btn')?.remove();
+            }
+            deferredPrompt = null;
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registered:', reg.scope))
+                    .catch(err => console.error('SW registration failed:', err));
+            });
+        }
+    </script>
+
+    <style>
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: slideUp 0.3s ease;
+        }
+        .install-prompt:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    </style>
+</body>
+</html>

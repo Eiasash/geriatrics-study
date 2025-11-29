@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anticoagulation Synthesizer - CHA₂DS₂-VASc & Dosing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .score-item { transition: all 0.3s ease; }
+        .score-item:hover { background-color: #f3f4f6; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">💊 Anticoagulation Synthesizer</h1>
+                <p class="text-gray-600">CHA₂DS₂-VASc, HAS-BLED & Renal Dosing Calculator</p>
+            </div>
+            <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                🏠 Home
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Patient Information -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4">Patient Information</h2>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Age (years)</label>
+                        <input type="number" id="age" min="18" max="120" class="w-full p-2 border border-gray-300 rounded-lg"
+                            onchange="calculateScores()" placeholder="75">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Sex</label>
+                        <select id="sex" class="w-full p-2 border border-gray-300 rounded-lg" onchange="calculateScores()">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
+                        <input type="number" id="weight" min="30" max="300" class="w-full p-2 border border-gray-300 rounded-lg"
+                            onchange="calculateCrCl()" placeholder="70">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Serum Creatinine (mg/dL)</label>
+                        <input type="number" id="creatinine" step="0.1" min="0.1" max="10" class="w-full p-2 border border-gray-300 rounded-lg"
+                            onchange="calculateCrCl()" placeholder="1.2">
+                    </div>
+                </div>
+
+                <!-- CHA2DS2-VASc Score -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-blue-600">CHA₂DS₂-VASc Score</h3>
+                    <div class="space-y-2">
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="chf" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Congestive Heart Failure</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="hypertension" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Hypertension</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="diabetes" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Diabetes</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="stroke" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Stroke/TIA/Thromboembolism</span>
+                            <span class="text-gray-500">+2</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="vascular" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Vascular Disease (MI, PAD, aortic plaque)</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- HAS-BLED Score -->
+                <div>
+                    <h3 class="font-semibold mb-3 text-red-600">HAS-BLED Score</h3>
+                    <div class="space-y-2">
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="uncontrolledBP" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Hypertension (uncontrolled, >160 systolic)</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="abnormalRenal" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Abnormal Renal Function (Cr >2.3 or dialysis)</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="abnormalLiver" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Abnormal Liver Function (cirrhosis, bili >2x, AST/ALT >3x)</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="strokeHistory" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Stroke History</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="bleeding" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Bleeding History or Predisposition</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="labileINR" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Labile INR (if on warfarin)</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                        <label class="score-item flex items-center p-2 rounded">
+                            <input type="checkbox" id="elderlyMeds" onchange="calculateScores()" class="mr-3">
+                            <span class="flex-1">Elderly (>65) or Drugs/Alcohol</span>
+                            <span class="text-gray-500">+1</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results and Recommendations -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4">Risk Assessment & Recommendations</h2>
+
+                <!-- Score Display -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <div class="text-3xl font-bold text-blue-600" id="chadsScore">0</div>
+                        <div class="text-sm text-blue-800">CHA₂DS₂-VASc Score</div>
+                        <div class="text-xs text-blue-600 mt-1" id="strokeRisk">Low Risk</div>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                        <div class="text-3xl font-bold text-red-600" id="hasbledScore">0</div>
+                        <div class="text-sm text-red-800">HAS-BLED Score</div>
+                        <div class="text-xs text-red-600 mt-1" id="bleedRisk">Low Risk</div>
+                    </div>
+                </div>
+
+                <!-- CrCl Display -->
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200 mb-6">
+                    <div class="text-2xl font-bold text-green-600" id="crclValue">-- mL/min</div>
+                    <div class="text-sm text-green-800">Creatinine Clearance (Cockcroft-Gault)</div>
+                    <div class="text-xs text-green-600 mt-1" id="renalFunction">Enter patient data</div>
+                </div>
+
+                <!-- Clinical Synthesis -->
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200 mb-6">
+                    <h3 class="font-semibold text-purple-900 mb-2">💡 Clinical Synthesis</h3>
+                    <p id="synthesis" class="text-purple-800 text-sm">
+                        Enter patient information to generate personalized anticoagulation recommendations.
+                    </p>
+                </div>
+
+                <!-- Anticoagulation Options -->
+                <div>
+                    <h3 class="font-semibold mb-3">📋 Anticoagulation Options</h3>
+                    <div id="anticoagOptions" class="space-y-3">
+                        <!-- Options will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Export Button -->
+                <button onclick="exportRecommendations()" class="mt-6 w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                    📤 Export Recommendations
+                </button>
+            </div>
+        </div>
+
+        <!-- Reference Tables -->
+        <div class="mt-6 bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">📊 Quick Reference</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-medium mb-2">CHA₂DS₂-VASc Risk</h3>
+                    <table class="w-full text-sm">
+                        <tr class="border-b"><td class="py-1">0</td><td class="py-1">0.2% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">1</td><td class="py-1">0.6% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">2</td><td class="py-1">2.2% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">3</td><td class="py-1">3.2% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">4</td><td class="py-1">4.8% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">5</td><td class="py-1">7.2% per year</td></tr>
+                        <tr><td class="py-1">≥6</td><td class="py-1">>9.0% per year</td></tr>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-2">HAS-BLED Risk</h3>
+                    <table class="w-full text-sm">
+                        <tr class="border-b"><td class="py-1">0</td><td class="py-1">0.9% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">1</td><td class="py-1">3.4% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">2</td><td class="py-1">4.1% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">3</td><td class="py-1">5.8% per year</td></tr>
+                        <tr class="border-b"><td class="py-1">4</td><td class="py-1">8.9% per year</td></tr>
+                        <tr><td class="py-1">≥5</td><td class="py-1">>9.0% per year</td></tr>
+                    </table>
+                </div>
+
+                <div>
+                    <h3 class="font-medium mb-2">DOAC Renal Dosing</h3>
+                    <div class="text-xs space-y-2">
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>Apixaban:</strong> 2.5mg BID if 2 of: age ≥80, weight ≤60kg, Cr ≥1.5
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>Rivaroxaban:</strong> 15mg daily if CrCl 15-50
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>Edoxaban:</strong> 30mg daily if CrCl 15-50
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>Dabigatran:</strong> Avoid if CrCl <30
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateScores() {
+            let chadsScore = 0;
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const sex = document.getElementById('sex').value;
+
+            if (age >= 75) chadsScore += 2;
+            else if (age >= 65) chadsScore += 1;
+
+            if (sex === 'female') chadsScore += 1;
+
+            if (document.getElementById('chf').checked) chadsScore += 1;
+            if (document.getElementById('hypertension').checked) chadsScore += 1;
+            if (document.getElementById('diabetes').checked) chadsScore += 1;
+            if (document.getElementById('stroke').checked) chadsScore += 2;
+            if (document.getElementById('vascular').checked) chadsScore += 1;
+
+            let hasbledScore = 0;
+            if (document.getElementById('uncontrolledBP').checked) hasbledScore += 1;
+            if (document.getElementById('abnormalRenal').checked) hasbledScore += 1;
+            if (document.getElementById('abnormalLiver').checked) hasbledScore += 1;
+            if (document.getElementById('strokeHistory').checked) hasbledScore += 1;
+            if (document.getElementById('bleeding').checked) hasbledScore += 1;
+            if (document.getElementById('labileINR').checked) hasbledScore += 1;
+            if (document.getElementById('elderlyMeds').checked || age > 65) hasbledScore += 1;
+
+            document.getElementById('chadsScore').textContent = chadsScore;
+            document.getElementById('hasbledScore').textContent = hasbledScore;
+
+            let strokeRisk = '';
+            const strokeRates = [0.2, 0.6, 2.2, 3.2, 4.8, 7.2, 9.0, 9.6, 10.0];
+            if (chadsScore === 0) strokeRisk = 'Low Risk (0.2%/year)';
+            else if (chadsScore === 1) strokeRisk = 'Low-Moderate Risk (0.6%/year)';
+            else if (chadsScore === 2) strokeRisk = 'Moderate Risk (2.2%/year)';
+            else if (chadsScore >= 3 && chadsScore < 6) strokeRisk = `High Risk (${strokeRates[chadsScore]}%/year)`;
+            else strokeRisk = 'Very High Risk (>9%/year)';
+
+            let bleedRisk = '';
+            if (hasbledScore <= 1) bleedRisk = 'Low Risk';
+            else if (hasbledScore === 2) bleedRisk = 'Moderate Risk';
+            else bleedRisk = 'High Risk';
+
+            document.getElementById('strokeRisk').textContent = strokeRisk;
+            document.getElementById('bleedRisk').textContent = bleedRisk;
+
+            generateSynthesis(chadsScore, hasbledScore);
+            generateAnticoagOptions(chadsScore, hasbledScore);
+        }
+
+        function calculateCrCl() {
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const weight = parseFloat(document.getElementById('weight').value) || 0;
+            const creatinine = parseFloat(document.getElementById('creatinine').value) || 0;
+            const sex = document.getElementById('sex').value;
+
+            if (age && weight && creatinine) {
+                let crCl = ((140 - age) * weight) / (72 * creatinine);
+                if (sex === 'female') crCl *= 0.85;
+
+                document.getElementById('crclValue').textContent = crCl.toFixed(1) + ' mL/min';
+
+                let renalFunction = '';
+                if (crCl >= 90) renalFunction = 'Normal renal function';
+                else if (crCl >= 60) renalFunction = 'Mild renal impairment';
+                else if (crCl >= 30) renalFunction = 'Moderate renal impairment';
+                else if (crCl >= 15) renalFunction = 'Severe renal impairment';
+                else renalFunction = 'End-stage renal disease';
+
+                document.getElementById('renalFunction').textContent = renalFunction;
+                calculateScores();
+            }
+        }
+
+        function generateSynthesis(chadsScore, hasbledScore) {
+            const age = parseInt(document.getElementById('age').value) || 0;
+            let synthesis = '';
+
+            if (chadsScore === 0) {
+                synthesis = 'Low stroke risk. Anticoagulation generally not recommended unless other indications present.';
+            } else if (chadsScore === 1) {
+                if (hasbledScore <= 2) {
+                    synthesis = 'Low-moderate stroke risk. Consider anticoagulation based on patient preference and bleeding risk.';
+                } else {
+                    synthesis = 'Low-moderate stroke risk but elevated bleeding risk. Careful risk-benefit assessment needed.';
+                }
+            } else if (chadsScore >= 2) {
+                if (hasbledScore <= 2) {
+                    synthesis = `Moderate-high stroke risk (CHA₂DS₂-VASc ${chadsScore}). Anticoagulation strongly recommended unless contraindicated.`;
+                } else {
+                    synthesis = `High stroke risk but also high bleeding risk. Anticoagulation still likely beneficial but requires close monitoring and bleeding risk mitigation.`;
+                }
+            }
+
+            if (age >= 75) {
+                synthesis += ' Consider reduced doses for elderly patient.';
+            }
+
+            document.getElementById('synthesis').textContent = synthesis;
+        }
+
+        function generateAnticoagOptions(chadsScore, hasbledScore) {
+            const crclText = document.getElementById('crclValue').textContent;
+            const crCl = parseFloat(crclText) || 100;
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const weight = parseFloat(document.getElementById('weight').value) || 70;
+            const creatinine = parseFloat(document.getElementById('creatinine').value) || 1.0;
+
+            let options = [];
+
+            if (chadsScore === 0) {
+                options.push({
+                    drug: 'No Anticoagulation',
+                    dose: 'Not indicated',
+                    notes: 'Consider aspirin 81mg daily for vascular disease'
+                });
+            } else if (chadsScore >= 1) {
+                options.push({
+                    drug: 'Warfarin',
+                    dose: 'INR target 2.0-3.0',
+                    notes: 'Requires frequent monitoring, many drug-food interactions'
+                });
+
+                let apixabanDose = '5mg BID';
+                let apixabanCriteria = 0;
+                if (age >= 80) apixabanCriteria++;
+                if (weight <= 60) apixabanCriteria++;
+                if (creatinine >= 1.5) apixabanCriteria++;
+                if (apixabanCriteria >= 2) apixabanDose = '2.5mg BID';
+
+                options.push({
+                    drug: 'Apixaban',
+                    dose: apixabanDose,
+                    notes: crCl < 15 ? 'Not recommended in ESRD' : 'Preferred in elderly, renal impairment'
+                });
+
+                let rivaroxabanDose = '20mg daily with food';
+                if (crCl >= 15 && crCl <= 50) rivaroxabanDose = '15mg daily with food';
+
+                if (crCl >= 15) {
+                    options.push({
+                        drug: 'Rivaroxaban',
+                        dose: rivaroxabanDose,
+                        notes: 'Take with largest meal of the day'
+                    });
+                }
+
+                if (crCl >= 15 && crCl <= 95) {
+                    let edoxabanDose = crCl <= 50 ? '30mg daily' : '60mg daily';
+                    options.push({
+                        drug: 'Edoxaban',
+                        dose: edoxabanDose,
+                        notes: 'Not recommended if CrCl >95 mL/min'
+                    });
+                }
+
+                if (crCl >= 30) {
+                    let dabigatranDose = '150mg BID';
+                    if (crCl >= 30 && crCl < 50) dabigatranDose = '110mg BID (not available in US)';
+                    options.push({
+                        drug: 'Dabigatran',
+                        dose: dabigatranDose,
+                        notes: 'Avoid in mechanical valves, higher GI bleeding risk'
+                    });
+                }
+            }
+
+            const optionsHtml = options.map(option => `
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="font-semibold text-gray-900">${option.drug}</div>
+                    <div class="text-sm text-gray-700">Dose: ${option.dose}</div>
+                    <div class="text-xs text-gray-600 mt-1">${option.notes}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('anticoagOptions').innerHTML = optionsHtml;
+        }
+
+        function exportRecommendations() {
+            const age = document.getElementById('age').value || 'Not specified';
+            const sex = document.getElementById('sex').value;
+            const chadsScore = document.getElementById('chadsScore').textContent;
+            const hasbledScore = document.getElementById('hasbledScore').textContent;
+            const crCl = document.getElementById('crclValue').textContent;
+            const synthesis = document.getElementById('synthesis').textContent;
+
+            const report = `ANTICOAGULATION ASSESSMENT
+Date: ${new Date().toLocaleDateString()}
+
+PATIENT INFORMATION:
+Age: ${age} years
+Sex: ${sex}
+CrCl: ${crCl}
+
+RISK SCORES:
+CHA₂DS₂-VASc: ${chadsScore}
+HAS-BLED: ${hasbledScore}
+
+CLINICAL SYNTHESIS:
+${synthesis}
+
+Generated by Geriatrics Study Platform
+Shaare Zedek Medical Center`;
+
+            navigator.clipboard.writeText(report);
+            alert('Recommendations copied to clipboard!');
+        }
+
+        document.getElementById('age').addEventListener('change', function() {
+            const age = parseInt(this.value) || 0;
+            if (age > 65) {
+                document.getElementById('elderlyMeds').checked = true;
+            }
+            calculateScores();
+        });
+    </script>
+</body>
+</html>

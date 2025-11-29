@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עוזר למידה AI - Geriatric Board Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #059669 0%, #047857 100%); }
+        .topic-card { transition: all 0.3s ease; }
+        .topic-card:hover { transform: scale(1.02); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .flash-animation { animation: flash 0.5s ease-out; }
+        @keyframes flash {
+            0% { background-color: #fef3c7; }
+            100% { background-color: transparent; }
+        }
+        .progress-ring { transform: rotate(-90deg); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto p-4 max-w-6xl">
+        <!-- Header -->
+        <header class="gradient-bg text-white rounded-xl p-6 mb-6 shadow-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                        <span class="text-4xl">🎓</span>
+                        עוזר למידה AI
+                    </h1>
+                    <p class="text-green-100 mt-1">הכנה לבורד גריאטריה עם בינה מלאכותית</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-green-700 rounded-lg hover:bg-gray-100 text-sm font-medium">
+                        דף הבית
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="mt-6 grid grid-cols-3 gap-4">
+                <div class="bg-white/20 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold" id="total-questions">0</div>
+                    <div class="text-sm text-green-100">שאלות נענו</div>
+                </div>
+                <div class="bg-white/20 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold" id="correct-rate">0%</div>
+                    <div class="text-sm text-green-100">אחוז הצלחה</div>
+                </div>
+                <div class="bg-white/20 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold" id="streak">0</div>
+                    <div class="text-sm text-green-100">רצף נכון</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6">
+            <button onclick="showSection('topics')" id="tab-topics" class="tab-btn px-6 py-3 bg-green-600 text-white rounded-lg font-medium">
+                📚 נושאים
+            </button>
+            <button onclick="showSection('quiz')" id="tab-quiz" class="tab-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">
+                ❓ תרגול שאלות
+            </button>
+            <button onclick="showSection('flashcards')" id="tab-flashcards" class="tab-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">
+                🃏 כרטיסיות
+            </button>
+            <button onclick="showSection('ai-tutor')" id="tab-ai-tutor" class="tab-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">
+                🤖 מורה AI
+            </button>
+        </div>
+
+        <!-- Topics Section -->
+        <div id="topics-section" class="section">
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">נושאי לימוד לבורד גריאטריה</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div onclick="selectTopic('dementia')" class="topic-card p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-blue-400">
+                        <div class="text-3xl mb-2">🧠</div>
+                        <h3 class="font-bold text-gray-800">דמנציה ומחלת אלצהיימר</h3>
+                        <p class="text-sm text-gray-600 mt-1">אבחון, טיפול, ניהול תסמינים התנהגותיים</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-blue-200 text-blue-700 rounded">שכיח בבורד</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('delirium')" class="topic-card p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-yellow-400">
+                        <div class="text-3xl mb-2">⚡</div>
+                        <h3 class="font-bold text-gray-800">דליריום</h3>
+                        <p class="text-sm text-gray-600 mt-1">הערכה, אבחנה מבדלת, מניעה וטיפול</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-red-200 text-red-700 rounded">חשוב מאוד</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('falls')" class="topic-card p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-red-400">
+                        <div class="text-3xl mb-2">🦶</div>
+                        <h3 class="font-bold text-gray-800">נפילות</h3>
+                        <p class="text-sm text-gray-600 mt-1">הערכת סיכון, מניעה, Timed Up and Go</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-blue-200 text-blue-700 rounded">שכיח בבורד</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('polypharmacy')" class="topic-card p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-purple-400">
+                        <div class="text-3xl mb-2">💊</div>
+                        <h3 class="font-bold text-gray-800">פוליפרמציה ו-Deprescribing</h3>
+                        <p class="text-sm text-gray-600 mt-1">Beers, STOPP/START, הפחתת תרופות</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-red-200 text-red-700 rounded">חשוב מאוד</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('frailty')" class="topic-card p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-orange-400">
+                        <div class="text-3xl mb-2">🏥</div>
+                        <h3 class="font-bold text-gray-800">שבריריות (Frailty)</h3>
+                        <p class="text-sm text-gray-600 mt-1">הערכה, CGA, התערבויות</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-blue-200 text-blue-700 rounded">נושא חם</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('palliative')" class="topic-card p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-gray-400">
+                        <div class="text-3xl mb-2">🕊️</div>
+                        <h3 class="font-bold text-gray-800">טיפול פליאטיבי וסוף החיים</h3>
+                        <p class="text-sm text-gray-600 mt-1">Goals of care, hospice, symptom management</p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="text-xs px-2 py-1 bg-blue-200 text-blue-700 rounded">שכיח בבורד</span>
+                        </div>
+                    </div>
+
+                    <div onclick="selectTopic('nutrition')" class="topic-card p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-green-400">
+                        <div class="text-3xl mb-2">🥗</div>
+                        <h3 class="font-bold text-gray-800">תזונה ותת-תזונה</h3>
+                        <p class="text-sm text-gray-600 mt-1">הערכה, התערבות, הזנה מלאכותית</p>
+                    </div>
+
+                    <div onclick="selectTopic('incontinence')" class="topic-card p-4 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-cyan-400">
+                        <div class="text-3xl mb-2">💧</div>
+                        <h3 class="font-bold text-gray-800">אי-שליטה על סוגרים</h3>
+                        <p class="text-sm text-gray-600 mt-1">סוגים, בירור, טיפול שמרני ותרופתי</p>
+                    </div>
+
+                    <div onclick="selectTopic('osteoporosis')" class="topic-card p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl cursor-pointer border-2 border-transparent hover:border-pink-400">
+                        <div class="text-3xl mb-2">🦴</div>
+                        <h3 class="font-bold text-gray-800">אוסטאופורוזיס</h3>
+                        <p class="text-sm text-gray-600 mt-1">FRAX, טיפול, מניעת שברים</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick AI Study -->
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    למידה מהירה עם AI
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white/20 rounded-lg p-4">
+                        <h3 class="font-semibold mb-2">שאל את AI על נושא</h3>
+                        <input type="text" id="topic-query" placeholder="למשל: מהם קריטריוני Beers?" class="w-full p-3 rounded-lg text-gray-800 mb-3">
+                        <button onclick="askTopicQuestion()" class="w-full py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-gray-100">
+                            שאל את OpenEvidence
+                        </button>
+                    </div>
+                    <div class="bg-white/20 rounded-lg p-4">
+                        <h3 class="font-semibold mb-2">צור שאלות תרגול</h3>
+                        <select id="ai-topic-select" class="w-full p-3 rounded-lg text-gray-800 mb-3">
+                            <option value="delirium">דליריום</option>
+                            <option value="dementia">דמנציה</option>
+                            <option value="falls">נפילות</option>
+                            <option value="polypharmacy">פוליפרמציה</option>
+                            <option value="frailty">שבריריות</option>
+                        </select>
+                        <button onclick="generateAIQuestions()" class="w-full py-2 bg-white text-purple-700 rounded-lg font-medium hover:bg-gray-100">
+                            צור 5 שאלות עם AI
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="section hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">תרגול שאלות</h2>
+                    <div class="flex gap-2">
+                        <select id="quiz-topic" class="px-4 py-2 border rounded-lg">
+                            <option value="all">כל הנושאים</option>
+                            <option value="delirium">דליריום</option>
+                            <option value="dementia">דמנציה</option>
+                            <option value="falls">נפילות</option>
+                            <option value="polypharmacy">פוליפרמציה</option>
+                            <option value="frailty">שבריריות</option>
+                        </select>
+                        <button onclick="startQuiz()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            התחל
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-content">
+                    <div class="text-center py-12 text-gray-500">
+                        <div class="text-6xl mb-4">📝</div>
+                        <p>בחר נושא ולחץ "התחל" כדי להתחיל תרגול</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flashcards Section -->
+        <div id="flashcards-section" class="section hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">כרטיסיות זיכרון</h2>
+                    <select id="flashcard-topic" onchange="loadFlashcards()" class="px-4 py-2 border rounded-lg">
+                        <option value="delirium">דליריום</option>
+                        <option value="dementia">דמנציה</option>
+                        <option value="beers">Beers Criteria</option>
+                        <option value="assessments">הערכות גריאטריות</option>
+                    </select>
+                </div>
+
+                <div id="flashcard-container" class="flex flex-col items-center">
+                    <div id="flashcard" onclick="flipCard()" class="w-full max-w-lg h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center transition-all duration-300 hover:scale-105">
+                        <div id="card-content" class="text-xl">לחץ על הכרטיסייה לחשיפת התשובה</div>
+                    </div>
+                    <div class="flex gap-4 mt-6">
+                        <button onclick="prevCard()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">
+                            ← הקודם
+                        </button>
+                        <span id="card-counter" class="px-6 py-2 text-gray-600">1 / 10</span>
+                        <button onclick="nextCard()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">
+                            הבא →
+                        </button>
+                    </div>
+                    <div class="flex gap-4 mt-4">
+                        <button onclick="markCard('hard')" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200">
+                            😓 קשה
+                        </button>
+                        <button onclick="markCard('medium')" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200">
+                            🤔 בינוני
+                        </button>
+                        <button onclick="markCard('easy')" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200">
+                            😊 קל
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Tutor Section -->
+        <div id="ai-tutor-section" class="section hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    מורה AI אישי
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Explain Concept -->
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">📖 הסבר מושג</h3>
+                        <input type="text" id="explain-input" placeholder="למשל: CGA, Frailty phenotype, BPSD..."
+                               class="w-full p-3 border rounded-lg mb-3">
+                        <div class="flex gap-2">
+                            <button onclick="explainConcept('simple')" class="flex-1 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200">
+                                הסבר פשוט
+                            </button>
+                            <button onclick="explainConcept('detailed')" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                הסבר מפורט
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Compare Topics -->
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">⚖️ השווה בין</h3>
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                            <input type="text" id="compare-a" placeholder="דליריום" class="p-3 border rounded-lg">
+                            <input type="text" id="compare-b" placeholder="דמנציה" class="p-3 border rounded-lg">
+                        </div>
+                        <button onclick="compareTopics()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                            השווה עם AI
+                        </button>
+                    </div>
+
+                    <!-- Case Discussion -->
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">🏥 דיון מקרה</h3>
+                        <textarea id="case-input" placeholder="תאר מקרה קליני..."
+                                  class="w-full p-3 border rounded-lg mb-3" rows="3"></textarea>
+                        <button onclick="discussCase()" class="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            נתח עם AI
+                        </button>
+                    </div>
+
+                    <!-- Generate Questions -->
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">❓ צור שאלות</h3>
+                        <select id="question-topic" class="w-full p-3 border rounded-lg mb-3">
+                            <option value="delirium in elderly">דליריום</option>
+                            <option value="dementia types and treatment">דמנציה</option>
+                            <option value="fall prevention elderly">נפילות</option>
+                            <option value="Beers criteria medications">Beers Criteria</option>
+                            <option value="frailty assessment">שבריריות</option>
+                            <option value="palliative care elderly">טיפול פליאטיבי</option>
+                        </select>
+                        <button onclick="generateQuestions()" class="w-full py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">
+                            צור 5 שאלות בורד
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Service Selection -->
+                <div class="mt-6 p-4 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl">
+                    <h3 class="font-semibold text-gray-800 mb-3">בחר מנוע AI:</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="flex items-center gap-2 p-3 bg-white rounded-lg cursor-pointer hover:shadow-md">
+                            <input type="radio" name="ai-service" value="openevidence" checked class="w-4 h-4">
+                            <span>🔬 OpenEvidence</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 bg-white rounded-lg cursor-pointer hover:shadow-md">
+                            <input type="radio" name="ai-service" value="chatgpt" class="w-4 h-4">
+                            <span>💚 ChatGPT</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 bg-white rounded-lg cursor-pointer hover:shadow-md">
+                            <input type="radio" name="ai-service" value="claude" class="w-4 h-4">
+                            <span>🧡 Claude</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-3 bg-white rounded-lg cursor-pointer hover:shadow-md">
+                            <input type="radio" name="ai-service" value="perplexity" class="w-4 h-4">
+                            <span>🔮 Perplexity</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-gray-500 mt-8 pb-4">
+            <a href="../index.html" class="hover:text-gray-700">חזרה לדף הבית</a>
+        </footer>
+    </div>
+
+    <script>
+        // Progress tracking
+        let stats = JSON.parse(localStorage.getItem('studyStats') || '{"total": 0, "correct": 0, "streak": 0}');
+
+        // AI Service URLs
+        const aiServices = {
+            openevidence: 'https://openevidence.com/search?q=',
+            chatgpt: 'https://chat.openai.com/?q=',
+            claude: 'https://claude.ai/new?q=',
+            perplexity: 'https://www.perplexity.ai/search?q='
+        };
+
+        // Sample questions database
+        const questionBank = {
+            delirium: [
+                {
+                    question: "מהו הסימן המבדיל העיקרי בין דליריום לדמנציה?",
+                    options: ["התחלה הדרגתית", "הפרעת קשב משתנה", "אובדן זיכרון", "אי-התמצאות במקום"],
+                    correct: 1,
+                    explanation: "דליריום מאופיין בהפרעת קשב משתנה (fluctuating attention) בניגוד לדמנציה שהיא הדרגתית ויציבה."
+                },
+                {
+                    question: "איזה כלי משמש להערכת דליריום?",
+                    options: ["MMSE", "CAM", "GDS", "MoCA"],
+                    correct: 1,
+                    explanation: "CAM (Confusion Assessment Method) הוא הכלי הסטנדרטי להערכת דליריום."
+                }
+            ],
+            dementia: [
+                {
+                    question: "מהו הסימפטום המוקדם ביותר במחלת אלצהיימר?",
+                    options: ["הפרעות שפה", "אובדן זיכרון קצר טווח", "הפרעות התנהגות", "אפרקסיה"],
+                    correct: 1,
+                    explanation: "אובדן זיכרון קצר טווח (episodic memory) הוא הסימפטום המוקדם והאופייני ביותר לאלצהיימר."
+                }
+            ],
+            falls: [
+                {
+                    question: "מה נחשב לתוצאה חריגה ב-Timed Up and Go (TUG)?",
+                    options: ["< 10 שניות", "10-14 שניות", "> 14 שניות", "> 20 שניות"],
+                    correct: 2,
+                    explanation: "TUG > 14 שניות מעיד על סיכון מוגבר לנפילות."
+                }
+            ],
+            polypharmacy: [
+                {
+                    question: "מהו מספר התרופות המגדיר פוליפרמציה?",
+                    options: ["3+", "4+", "5+", "10+"],
+                    correct: 2,
+                    explanation: "פוליפרמציה מוגדרת כ-5 תרופות או יותר."
+                }
+            ]
+        };
+
+        // Flashcards database
+        const flashcards = {
+            delirium: [
+                { front: "מהם 4 המאפיינים של CAM?", back: "1. התחלה חריפה + מהלך משתנה\n2. הפרעת קשב\n3. חשיבה לא מאורגנת\n4. שינוי ברמת ההכרה" },
+                { front: "מהם הגורמים הנפיצים לדליריום (DELIRIUM)?", back: "D-Drugs, E-Eyes/Ears, L-Low O2, I-Infection, R-Retention, I-Ictal, U-Undernutrition, M-Metabolic" },
+                { front: "מהו הטיפול התרופתי בדליריום?", back: "Haloperidol 0.5-1mg PO/IM\nאו Quetiapine 12.5-25mg\nרק כשנדרש! עדיפות לגישה לא תרופתית" }
+            ],
+            dementia: [
+                { front: "מהם 4 סוגי הדמנציה העיקריים?", back: "1. Alzheimer's (60-70%)\n2. Vascular (15-20%)\n3. Lewy Body (10-15%)\n4. Frontotemporal (5-10%)" },
+                { front: "מהו הטיפול התרופתי בדמנציה קלה-בינונית?", back: "Cholinesterase Inhibitors:\n• Donepezil 5-10mg\n• Rivastigmine\n• Galantamine" }
+            ],
+            beers: [
+                { front: "אילו Benzodiazepines יש להימנע מהם?", back: "כל ה-Benzodiazepines!\nבמיוחד ארוכי טווח:\n• Diazepam\n• Clonazepam\n• Flurazepam" },
+                { front: "אילו אנטיהיסטמינים יש להימנע מהם?", back: "דור ראשון (אנטיכולינרגיים):\n• Diphenhydramine\n• Chlorpheniramine\n• Hydroxyzine\n• Promethazine" }
+            ],
+            assessments: [
+                { front: "מהו טווח ניקוד MMSE תקין?", back: "24-30 נקודות = תקין\n20-23 = MCI/דמנציה קלה\n10-19 = דמנציה בינונית\n<10 = דמנציה חמורה" },
+                { front: "מהו Barthel Index?", back: "הערכת ADL (0-100):\n• אכילה, רחצה, טיפוח\n• לבישה, סוגרים\n• שימוש בשירותים\n• העברות, ניידות, מדרגות" }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let currentCard = 0;
+        let isFlipped = false;
+        let currentQuestions = [];
+
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('bg-green-600', 'text-white');
+                b.classList.add('bg-gray-200', 'text-gray-700');
+            });
+
+            document.getElementById(`${section}-section`).classList.remove('hidden');
+            document.getElementById(`tab-${section}`).classList.add('bg-green-600', 'text-white');
+            document.getElementById(`tab-${section}`).classList.remove('bg-gray-200', 'text-gray-700');
+        }
+
+        function selectTopic(topic) {
+            document.getElementById('quiz-topic').value = topic;
+            showSection('quiz');
+            startQuiz();
+        }
+
+        function startQuiz() {
+            const topic = document.getElementById('quiz-topic').value;
+            if (topic === 'all') {
+                currentQuestions = Object.values(questionBank).flat();
+            } else {
+                currentQuestions = questionBank[topic] || [];
+            }
+
+            if (currentQuestions.length === 0) {
+                document.getElementById('quiz-content').innerHTML = `
+                    <div class="text-center py-12">
+                        <p class="text-gray-500 mb-4">אין שאלות זמינות לנושא זה</p>
+                        <button onclick="generateAIQuestions()" class="px-6 py-2 bg-purple-600 text-white rounded-lg">
+                            🤖 צור שאלות עם AI
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            currentQuestion = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= currentQuestions.length) {
+                document.getElementById('quiz-content').innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-4">🎉</div>
+                        <h3 class="text-2xl font-bold text-gray-800">סיימת את כל השאלות!</h3>
+                        <p class="text-gray-600 mt-2">אחוז הצלחה: ${Math.round((stats.correct / stats.total) * 100)}%</p>
+                        <button onclick="startQuiz()" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg">
+                            התחל שוב
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = currentQuestions[currentQuestion];
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="mb-4 text-sm text-gray-500">שאלה ${currentQuestion + 1} מתוך ${currentQuestions.length}</div>
+                <div class="text-xl font-semibold text-gray-800 mb-6">${q.question}</div>
+                <div class="space-y-3">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="checkAnswer(${i})" class="answer-btn w-full p-4 text-right bg-gray-50 hover:bg-gray-100 rounded-lg border transition-all">
+                            <span class="font-medium">${String.fromCharCode(1488 + i)}.</span> ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="explanation" class="hidden mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold text-blue-800">הסבר:</h4>
+                    <p class="text-blue-700">${q.explanation}</p>
+                </div>
+            `;
+        }
+
+        function checkAnswer(selected) {
+            const q = currentQuestions[currentQuestion];
+            const buttons = document.querySelectorAll('.answer-btn');
+            const explanation = document.getElementById('explanation');
+
+            stats.total++;
+
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.correct) {
+                    btn.classList.add('bg-green-100', 'border-green-500');
+                } else if (i === selected && selected !== q.correct) {
+                    btn.classList.add('bg-red-100', 'border-red-500');
+                }
+            });
+
+            if (selected === q.correct) {
+                stats.correct++;
+                stats.streak++;
+            } else {
+                stats.streak = 0;
+            }
+
+            updateStats();
+            explanation.classList.remove('hidden');
+
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion();
+            }, 3000);
+        }
+
+        function updateStats() {
+            localStorage.setItem('studyStats', JSON.stringify(stats));
+            document.getElementById('total-questions').textContent = stats.total;
+            document.getElementById('correct-rate').textContent = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) + '%' : '0%';
+            document.getElementById('streak').textContent = stats.streak;
+        }
+
+        // Flashcards
+        function loadFlashcards() {
+            const topic = document.getElementById('flashcard-topic').value;
+            currentCard = 0;
+            isFlipped = false;
+            showCard();
+        }
+
+        function showCard() {
+            const topic = document.getElementById('flashcard-topic').value;
+            const cards = flashcards[topic] || [];
+
+            if (cards.length === 0) return;
+
+            const card = cards[currentCard];
+            document.getElementById('card-content').textContent = isFlipped ? card.back : card.front;
+            document.getElementById('card-counter').textContent = `${currentCard + 1} / ${cards.length}`;
+
+            const cardEl = document.getElementById('flashcard');
+            cardEl.className = isFlipped
+                ? 'w-full max-w-lg h-64 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center transition-all duration-300 hover:scale-105'
+                : 'w-full max-w-lg h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center transition-all duration-300 hover:scale-105';
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            showCard();
+        }
+
+        function nextCard() {
+            const topic = document.getElementById('flashcard-topic').value;
+            const cards = flashcards[topic] || [];
+            currentCard = (currentCard + 1) % cards.length;
+            isFlipped = false;
+            showCard();
+        }
+
+        function prevCard() {
+            const topic = document.getElementById('flashcard-topic').value;
+            const cards = flashcards[topic] || [];
+            currentCard = (currentCard - 1 + cards.length) % cards.length;
+            isFlipped = false;
+            showCard();
+        }
+
+        function markCard(difficulty) {
+            // Could save to localStorage for spaced repetition
+            nextCard();
+        }
+
+        // AI Functions
+        function getSelectedAI() {
+            return document.querySelector('input[name="ai-service"]:checked')?.value || 'openevidence';
+        }
+
+        function openAI(query) {
+            const ai = getSelectedAI();
+            const url = aiServices[ai] + encodeURIComponent(query);
+            window.open(url, '_blank');
+        }
+
+        function askTopicQuestion() {
+            const query = document.getElementById('topic-query').value;
+            if (query) {
+                openAI(`[Geriatric Medicine] ${query}`);
+            }
+        }
+
+        function generateAIQuestions() {
+            const topic = document.getElementById('ai-topic-select')?.value || document.getElementById('question-topic')?.value || 'geriatrics';
+            openAI(`Generate 5 board-style multiple choice questions about ${topic} in geriatric medicine. Include explanations for correct answers.`);
+        }
+
+        function explainConcept(level) {
+            const concept = document.getElementById('explain-input').value;
+            if (!concept) {
+                alert('נא להזין מושג');
+                return;
+            }
+            const prompt = level === 'simple'
+                ? `Explain ${concept} in geriatric medicine simply in 2-3 sentences`
+                : `Provide a detailed explanation of ${concept} in geriatric medicine, including clinical relevance, assessment, and management`;
+            openAI(prompt);
+        }
+
+        function compareTopics() {
+            const a = document.getElementById('compare-a').value;
+            const b = document.getElementById('compare-b').value;
+            if (!a || !b) {
+                alert('נא למלא את שני השדות');
+                return;
+            }
+            openAI(`Compare and contrast ${a} vs ${b} in geriatric medicine. Create a table showing differences in: etiology, presentation, diagnosis, treatment, and prognosis.`);
+        }
+
+        function discussCase() {
+            const caseText = document.getElementById('case-input').value;
+            if (!caseText) {
+                alert('נא לתאר מקרה');
+                return;
+            }
+            openAI(`[Geriatric Case Discussion]\n${caseText}\n\nPlease provide:\n1. Differential diagnosis\n2. Key history and physical exam findings to look for\n3. Recommended workup\n4. Management approach\n5. Geriatric-specific considerations`);
+        }
+
+        function generateQuestions() {
+            const topic = document.getElementById('question-topic').value;
+            openAI(`Generate 5 USMLE/board-style multiple choice questions about ${topic}. Include:\n- Clinical vignette format\n- 5 answer choices\n- Explanation for correct answer\n- High-yield teaching point`);
+        }
+
+        // Initialize
+        updateStats();
+        loadFlashcards();
+    </script>
+</body>
+</html>
