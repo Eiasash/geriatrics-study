@@ -16,6 +16,16 @@ class PresentationEditor {
         this.clipboard = null;
     }
 
+    /**
+     * Update the order property of all slides to match their array index.
+     * Centralizes the slide ordering logic for consistency across methods.
+     */
+    updateSlideOrders() {
+        for (let i = 0; i < this.slides.length; i++) {
+            this.slides[i].order = i;
+        }
+    }
+
     initialize(type) {
         this.presentationType = type;
         const preset = TemplatePresets[type];
@@ -65,9 +75,7 @@ class PresentationEditor {
         this.slides.splice(afterIndex + 1, 0, newSlide);
 
         // Update order for all slides
-        this.slides.forEach((slide, index) => {
-            slide.order = index;
-        });
+        this.updateSlideOrders();
 
         this.currentSlideIndex = afterIndex + 1;
         this.isDirty = true;
@@ -91,9 +99,7 @@ class PresentationEditor {
         this.slides.splice(index, 1);
 
         // Update order
-        this.slides.forEach((slide, i) => {
-            slide.order = i;
-        });
+        this.updateSlideOrders();
 
         // Adjust current index if needed
         if (this.currentSlideIndex >= this.slides.length) {
@@ -123,9 +129,7 @@ class PresentationEditor {
         this.slides.splice(index + 1, 0, duplicatedSlide);
 
         // Update order
-        this.slides.forEach((slide, i) => {
-            slide.order = i;
-        });
+        this.updateSlideOrders();
 
         this.isDirty = true;
         this.renderThumbnails();
@@ -143,9 +147,7 @@ class PresentationEditor {
         this.slides.splice(toIndex, 0, slide);
 
         // Update order
-        this.slides.forEach((s, i) => {
-            s.order = i;
-        });
+        this.updateSlideOrders();
 
         if (this.currentSlideIndex === fromIndex) {
             this.currentSlideIndex = toIndex;

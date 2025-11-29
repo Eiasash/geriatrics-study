@@ -6,11 +6,21 @@ Automatically fetches latest geriatrics research and generates Anki cards
 
 import requests
 import json
+import re
 from datetime import datetime, timedelta
 from typing import List, Dict
 import xml.etree.ElementTree as ET
 import time
 import hashlib
+
+# Pre-compiled regex for key findings extraction (improves performance)
+KEY_FINDINGS_PATTERNS = [
+    'concluded that', 'found that', 'demonstrated that',
+    'showed that', 'revealed that', 'suggest that',
+    'indicates that', 'associated with', 'significantly'
+]
+KEY_FINDINGS_REGEX = re.compile('|'.join(KEY_FINDINGS_PATTERNS), re.IGNORECASE)
+
 
 class PubMedFetcher:
     def __init__(self):
@@ -113,20 +123,13 @@ class PubMedFetcher:
             return {}
     
     def extract_key_findings(self, abstract: str) -> List[str]:
-        """Extract key findings from abstract using simple patterns"""
+        """Extract key findings from abstract using pre-compiled regex pattern"""
         findings = []
-        
-        # Look for conclusion/results patterns
-        patterns = [
-            'concluded that', 'found that', 'demonstrated that',
-            'showed that', 'revealed that', 'suggest that',
-            'indicates that', 'associated with', 'significantly'
-        ]
         
         sentences = abstract.split('. ')
         for sentence in sentences:
-            lower_sent = sentence.lower()
-            if any(pattern in lower_sent for pattern in patterns):
+            # Use pre-compiled regex for faster matching
+            if KEY_FINDINGS_REGEX.search(sentence):
                 # Clean and add if not too long
                 clean_sent = sentence.strip()
                 if 20 < len(clean_sent) < 200:

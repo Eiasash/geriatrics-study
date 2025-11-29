@@ -39,3 +39,9 @@ htmlcov/
 
 # Cloned repositories
 pack-h5p-action/
+
+# Database files
+*.db
+
+# Test/coverage artifacts  
+coverage.xml

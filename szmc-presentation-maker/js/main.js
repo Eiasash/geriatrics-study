@@ -1,5 +1,26 @@
 // SZMC Geriatrics Presentation Maker - Main Application
 
+// Shared theme definitions (used across applyTheme and updateThemePreview)
+const THEMES = Object.freeze({
+    'szmc-blue': { primary: '#1e40af', light: '#3b82f6', accent: '#60a5fa' },
+    'clinical-green': { primary: '#047857', light: '#059669', accent: '#34d399' },
+    'modern-purple': { primary: '#5b21b6', light: '#7c3aed', accent: '#a78bfa' },
+    'warm-orange': { primary: '#c2410c', light: '#ea580c', accent: '#fb923c' },
+    'dark-professional': { primary: '#1f2937', light: '#374151', accent: '#60a5fa' },
+    'medical-red': { primary: '#b91c1c', light: '#dc2626', accent: '#f87171' },
+    'minimal-gray': { primary: '#374151', light: '#6b7280', accent: '#9ca3af' },
+    'navy-gold': { primary: '#1e3a5f', light: '#2563eb', accent: '#fbbf24' }
+});
+
+// Utility: Debounce function for performance optimization
+function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
 // Page Navigation
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
@@ -263,19 +284,8 @@ function applyTheme(themeName) {
     document.documentElement.setAttribute('data-theme', themeName);
     localStorage.setItem('szmc_current_theme', themeName);
 
-    // Update CSS variables based on theme
-    const themes = {
-        'szmc-blue': { primary: '#1e40af', light: '#3b82f6', accent: '#60a5fa' },
-        'clinical-green': { primary: '#047857', light: '#059669', accent: '#34d399' },
-        'modern-purple': { primary: '#5b21b6', light: '#7c3aed', accent: '#a78bfa' },
-        'warm-orange': { primary: '#c2410c', light: '#ea580c', accent: '#fb923c' },
-        'dark-professional': { primary: '#1f2937', light: '#374151', accent: '#60a5fa' },
-        'medical-red': { primary: '#b91c1c', light: '#dc2626', accent: '#f87171' },
-        'minimal-gray': { primary: '#374151', light: '#6b7280', accent: '#9ca3af' },
-        'navy-gold': { primary: '#1e3a5f', light: '#2563eb', accent: '#fbbf24' }
-    };
-
-    const theme = themes[themeName];
+    // Update CSS variables based on theme (use shared THEMES constant)
+    const theme = THEMES[themeName];
     if (theme) {
         document.documentElement.style.setProperty('--primary-color', theme.primary);
         document.documentElement.style.setProperty('--primary-light', theme.light);
@@ -401,24 +411,14 @@ function updateDetectedTypeDisplay(type, element) {
 }
 
 function updateThemePreview(themeName) {
-    const themes = {
-        'szmc-blue': { primary: '#1e40af', secondary: '#3b82f6', accent: '#60a5fa' },
-        'clinical-green': { primary: '#047857', secondary: '#059669', accent: '#34d399' },
-        'modern-purple': { primary: '#5b21b6', secondary: '#7c3aed', accent: '#a78bfa' },
-        'warm-orange': { primary: '#c2410c', secondary: '#ea580c', accent: '#fb923c' },
-        'dark-professional': { primary: '#1f2937', secondary: '#374151', accent: '#60a5fa' },
-        'medical-red': { primary: '#b91c1c', secondary: '#dc2626', accent: '#f87171' },
-        'minimal-gray': { primary: '#374151', secondary: '#6b7280', accent: '#9ca3af' },
-        'navy-gold': { primary: '#1e3a5f', secondary: '#2563eb', accent: '#fbbf24' }
-    };
-
-    const theme = themes[themeName];
+    // Use shared THEMES constant (secondary = light for preview)
+    const theme = THEMES[themeName];
     if (theme) {
         const preview = document.getElementById('theme-preview');
         if (preview) {
             const colors = preview.querySelectorAll('.preview-color');
             if (colors[0]) colors[0].style.background = theme.primary;
-            if (colors[1]) colors[1].style.background = theme.secondary;
+            if (colors[1]) colors[1].style.background = theme.light;
             if (colors[2]) colors[2].style.background = theme.accent;
         }
     }

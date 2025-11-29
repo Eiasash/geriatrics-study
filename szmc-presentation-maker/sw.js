@@ -5,6 +5,11 @@
 
 const CACHE_NAME = 'szmc-presentation-v2';
 
+// Throttle background cache updates - track last update time per URL
+const lastCacheUpdate = new Map();
+const CACHE_UPDATE_THROTTLE_MS = 60000; // Only update cache once per minute per URL
+const MAX_CACHE_TRACKING_ENTRIES = 100; // Limit memory usage
+
 // All files to cache for complete offline use
 const CACHE_FILES = [
     './',
@@ -42,6 +47,31 @@ const EXTERNAL_ASSETS = [
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
+
+/**
+ * Check if a URL should be updated in the cache (throttled)
+ * Includes cleanup to prevent memory leaks from unbounded Map growth
+ */
+function shouldUpdateCache(url) {
+    const now = Date.now();
+    
+    // Cleanup old entries if Map is getting too large
+    if (lastCacheUpdate.size > MAX_CACHE_TRACKING_ENTRIES) {
+        // Remove entries older than throttle period
+        for (const [key, timestamp] of lastCacheUpdate) {
+            if ((now - timestamp) > CACHE_UPDATE_THROTTLE_MS) {
+                lastCacheUpdate.delete(key);
+            }
+        }
+    }
+    
+    const lastUpdate = lastCacheUpdate.get(url);
+    if (!lastUpdate || (now - lastUpdate) > CACHE_UPDATE_THROTTLE_MS) {
+        lastCacheUpdate.set(url, now);
+        return true;
+    }
+    return false;
+}
 
 // Install event - cache all files
 self.addEventListener('install', (event) => {
@@ -92,7 +122,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch event - cache first, network fallback
+// Fetch event - cache first, network fallback with throttled background updates
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
     if (!event.request.url.startsWith('http')) return;
@@ -101,14 +131,16 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
             .then((cached) => {
                 if (cached) {
-                    // Update cache in background
-                    fetch(event.request)
-                        .then(res => {
-                            if (res.ok) {
-                                caches.open(CACHE_NAME).then(c => c.put(event.request, res));
-                            }
-                        })
-                        .catch(() => {});
+                    // Only update cache in background if throttle allows
+                    if (shouldUpdateCache(event.request.url)) {
+                        fetch(event.request)
+                            .then(res => {
+                                if (res.ok) {
+                                    caches.open(CACHE_NAME).then(c => c.put(event.request, res));
+                                }
+                            })
+                            .catch(() => {});
+                    }
                     return cached;
                 }
 

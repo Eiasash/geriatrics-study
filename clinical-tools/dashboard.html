@@ -192,8 +192,15 @@
                 return;
             }
 
-            patientList.innerHTML = patients.map(patient => `
-                <div class="patient-card bg-gray-50 rounded-lg p-4 mb-4 ${getRiskClass(patient)}" onclick="editPatient('${patient.id}')">
+            patientList.innerHTML = patients.map(patient => {
+                // Calculate risk score once per patient to avoid redundant calculations
+                const riskScore = calculateRiskScore(patient);
+                const riskClass = getRiskClassFromScore(riskScore);
+                const riskBadge = getRiskBadgeFromScore(riskScore);
+                const riskLevel = getRiskLevelFromScore(riskScore);
+                
+                return `
+                <div class="patient-card bg-gray-50 rounded-lg p-4 mb-4 ${riskClass}" onclick="editPatient('${patient.id}')">
                     <div class="flex justify-between items-start">
                         <div>
                             <h3 class="font-bold text-lg">Room ${patient.room} - ${patient.initials}</h3>
@@ -208,8 +215,8 @@
                             </div>
                         </div>
                         <div class="flex flex-col items-end">
-                            <span class="px-2 py-1 rounded-full text-xs font-medium ${getRiskBadge(patient)}">
-                                ${getRiskLevel(patient)}
+                            <span class="px-2 py-1 rounded-full text-xs font-medium ${riskBadge}">
+                                ${riskLevel}
                             </span>
                             <div class="mt-2 text-xs text-gray-500">
                                 Added: ${new Date(patient.dateAdded).toLocaleDateString('he-IL')}
@@ -217,28 +224,39 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
-        function getRiskClass(patient) {
-            const riskScore = calculateRiskScore(patient);
+        // Optimized: These functions now accept a pre-calculated score to avoid redundant calculations
+        function getRiskClassFromScore(riskScore) {
             if (riskScore >= 7) return 'alert-high';
             if (riskScore >= 4) return 'alert-med';
             return 'alert-low';
         }
 
-        function getRiskBadge(patient) {
-            const riskScore = calculateRiskScore(patient);
+        function getRiskBadgeFromScore(riskScore) {
             if (riskScore >= 7) return 'bg-red-100 text-red-800';
             if (riskScore >= 4) return 'bg-yellow-100 text-yellow-800';
             return 'bg-green-100 text-green-800';
         }
 
-        function getRiskLevel(patient) {
-            const riskScore = calculateRiskScore(patient);
+        function getRiskLevelFromScore(riskScore) {
             if (riskScore >= 7) return 'High Risk';
             if (riskScore >= 4) return 'Medium Risk';
             return 'Low Risk';
+        }
+
+        // Keep original functions for backward compatibility (used elsewhere)
+        function getRiskClass(patient) {
+            return getRiskClassFromScore(calculateRiskScore(patient));
+        }
+
+        function getRiskBadge(patient) {
+            return getRiskBadgeFromScore(calculateRiskScore(patient));
+        }
+
+        function getRiskLevel(patient) {
+            return getRiskLevelFromScore(calculateRiskScore(patient));
         }
 
         function calculateRiskScore(patient) {
@@ -258,7 +276,9 @@
         function updateStats() {
             console.log('Updating stats...');
             document.getElementById('totalPatients').textContent = patients.length;
-            document.getElementById('highRisk').textContent = patients.filter(p => calculateRiskScore(p) >= 7).length;
+            // Cache risk scores to avoid redundant calculations in filter
+            const riskScores = patients.map(p => calculateRiskScore(p));
+            document.getElementById('highRisk').textContent = riskScores.filter(score => score >= 7).length;
             document.getElementById('pendingTasks').textContent = patients.filter(p => !p.completed).length;
             document.getElementById('completedToday').textContent = patients.filter(p => {
                 const today = new Date().toDateString();
@@ -367,19 +387,25 @@
                     return;
                 }
 
+                // Cache risk scores once for all patients
+                const riskScores = patients.map(p => calculateRiskScore(p));
+                
                 const date = new Date().toLocaleDateString('en-US');
                 let report = `MORNING REPORT - Shaare Zedek Geriatrics\n${date}\n\n`;
 
-                patients.forEach(p => {
+                patients.forEach((p, index) => {
+                    const riskScore = riskScores[index];
                     report += `Room ${p.room}: ${p.initials} (${p.age}yo ${p.sex})\n`;
                     report += `Problems: ${p.problems && p.problems.length > 0 ? p.problems.join(', ') : 'None listed'}\n`;
                     report += `Medications: ${p.meds && p.meds.length > 0 ? p.meds.slice(0,5).join(', ') : 'None listed'}${p.meds && p.meds.length > 5 ? '...' : ''}\n`;
-                    report += `Risk Level: ${getRiskLevel(p)}\n`;
+                    report += `Risk Level: ${getRiskLevelFromScore(riskScore)}\n`;
                     report += `Status: ${p.completed ? 'Completed' : 'Pending'}\n`;
                     report += '---\n';
                 });
 
-                report += `\nSummary:\nTotal: ${patients.length} patients\nHigh Risk: ${patients.filter(p => calculateRiskScore(p) >= 7).length}\nPending: ${patients.filter(p => !p.completed).length}`;
+                // Use cached risk scores for summary
+                const highRiskCount = riskScores.filter(score => score >= 7).length;
+                report += `\nSummary:\nTotal: ${patients.length} patients\nHigh Risk: ${highRiskCount}\nPending: ${patients.filter(p => !p.completed).length}`;
 
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(report).then(() => {
