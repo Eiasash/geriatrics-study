@@ -18,7 +18,7 @@ class VersionHistoryManager {
      * @returns {Promise} Resolves when database is ready
      */
     async init() {
-        if (this.isInitialized) return;
+        if (this.isInitialized) return Promise.resolve();
 
         return new Promise((resolve, reject) => {
             const request = indexedDB.open(this.dbName, this.dbVersion);
@@ -279,7 +279,7 @@ class VersionHistoryManager {
         for (let i = 0; i < str.length; i++) {
             const char = str.charCodeAt(i);
             hash = ((hash << 5) - hash) + char;
-            hash = hash & hash;
+            hash = hash & 0xffffffff; // Ensure 32-bit integer behavior
         }
         return hash.toString(16);
     }

@@ -669,9 +669,27 @@ class MedicalSnippetsLibrary {
         // Find an editable area
         const editableArea = slideCanvas.querySelector('[contenteditable="true"]');
         if (editableArea) {
-            // Insert at cursor or at end
+            // Insert at cursor or at end using modern API
             editableArea.focus();
-            document.execCommand('insertHTML', false, content);
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = content;
+                const frag = document.createDocumentFragment();
+                while (tempDiv.firstChild) {
+                    frag.appendChild(tempDiv.firstChild);
+                }
+                range.insertNode(frag);
+                // Move cursor to end of inserted content
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else {
+                // Fallback: append to end
+                editableArea.innerHTML += content;
+            }
             
             // Mark editor as dirty
             if (window.editor) {
