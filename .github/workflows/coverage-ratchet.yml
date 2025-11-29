@@ -1,0 +1,356 @@
+name: Coverage Ratchet
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'h5p/**/*.js'
+      - 'h5p/package*.json'
+      - 'anki/**/*.py'
+      - 'anki/requirements.txt'
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force threshold update even if coverage decreased'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.11'
+  RATCHET_INCREMENT: 2  # Minimum improvement before updating threshold
+
+jobs:
+  h5p-coverage:
+    name: H5P Coverage Check
+    runs-on: ubuntu-latest
+    outputs:
+      current_coverage: ${{ steps.coverage.outputs.coverage }}
+      threshold_updated: ${{ steps.update.outputs.updated }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: h5p/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci
+      
+      - name: Run tests with coverage
+        id: coverage
+        working-directory: h5p
+        run: |
+          npm test -- --coverage --coverageReporters=json-summary 2>/dev/null || true
+          
+          # Extract coverage percentage
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(node -e "
+              const summary = require('./coverage/coverage-summary.json');
+              const total = summary.total;
+              const avg = (total.lines.pct + total.statements.pct + total.branches.pct + total.functions.pct) / 4;
+              console.log(Math.floor(avg));
+            ")
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "📊 Current H5P coverage: ${COVERAGE}%"
+          else
+            echo "coverage=0" >> $GITHUB_OUTPUT
+            echo "⚠️ No coverage report generated"
+          fi
+      
+      - name: Check and update threshold
+        id: update
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            const coverage = parseInt('${{ steps.coverage.outputs.coverage }}') || 0;
+            const increment = parseInt('${{ env.RATCHET_INCREMENT }}');
+            const forceUpdate = '${{ inputs.force_update }}' === 'true';
+            
+            // Read current jest.config.js
+            const configPath = path.join(process.cwd(), 'h5p', 'jest.config.js');
+            let configContent = fs.readFileSync(configPath, 'utf8');
+            
+            // Extract current threshold
+            const thresholdMatch = configContent.match(/lines:\s*(\d+)/);
+            const currentThreshold = thresholdMatch ? parseInt(thresholdMatch[1]) : 50;
+            
+            console.log(`📊 Current coverage: ${coverage}%`);
+            console.log(`📏 Current threshold: ${currentThreshold}%`);
+            console.log(`📈 Increment requirement: ${increment}%`);
+            
+            // Only update if coverage exceeds threshold by increment
+            if (coverage >= currentThreshold + increment || forceUpdate) {
+              const newThreshold = Math.min(coverage, 100);
+              
+              // Update all threshold values
+              configContent = configContent
+                .replace(/branches:\s*\d+/g, `branches: ${newThreshold}`)
+                .replace(/functions:\s*\d+/g, `functions: ${newThreshold}`)
+                .replace(/lines:\s*\d+/g, `lines: ${newThreshold}`)
+                .replace(/statements:\s*\d+/g, `statements: ${newThreshold}`);
+              
+              fs.writeFileSync(configPath, configContent);
+              
+              console.log(`✅ Threshold updated: ${currentThreshold}% → ${newThreshold}%`);
+              core.setOutput('updated', 'true');
+              core.setOutput('new_threshold', newThreshold);
+              core.setOutput('old_threshold', currentThreshold);
+            } else {
+              console.log('ℹ️ Coverage not high enough to update threshold');
+              core.setOutput('updated', 'false');
+            }
+
+  anki-coverage:
+    name: Anki Coverage Check
+    runs-on: ubuntu-latest
+    outputs:
+      current_coverage: ${{ steps.coverage.outputs.coverage }}
+      threshold_updated: ${{ steps.update.outputs.updated }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: anki/requirements.txt
+      
+      - name: Install dependencies
+        working-directory: anki
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+      
+      - name: Run tests with coverage
+        id: coverage
+        working-directory: anki
+        run: |
+          pytest --cov=. --cov-report=json 2>/dev/null || true
+          
+          # Extract coverage percentage
+          if [ -f coverage.json ]; then
+            COVERAGE=$(python -c "import json; f=open('coverage.json'); data=json.load(f); print(int(data.get('totals', {}).get('percent_covered', 0)))")
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "📊 Current Anki coverage: ${COVERAGE}%"
+          else
+            echo "coverage=0" >> $GITHUB_OUTPUT
+            echo "⚠️ No coverage report generated"
+          fi
+      
+      - name: Check and update threshold
+        id: update
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            const coverage = parseInt('${{ steps.coverage.outputs.coverage }}') || 0;
+            const increment = parseInt('${{ env.RATCHET_INCREMENT }}');
+            const forceUpdate = '${{ inputs.force_update }}' === 'true';
+            
+            // Read current pyproject.toml
+            const configPath = path.join(process.cwd(), 'anki', 'pyproject.toml');
+            let configContent = fs.readFileSync(configPath, 'utf8');
+            
+            // Extract current threshold (fail_under)
+            const thresholdMatch = configContent.match(/fail_under\s*=\s*(\d+)/);
+            const currentThreshold = thresholdMatch ? parseInt(thresholdMatch[1]) : 70;
+            
+            console.log(`📊 Current coverage: ${coverage}%`);
+            console.log(`📏 Current threshold: ${currentThreshold}%`);
+            console.log(`📈 Increment requirement: ${increment}%`);
+            
+            // Only update if coverage exceeds threshold by increment
+            if (coverage >= currentThreshold + increment || forceUpdate) {
+              const newThreshold = Math.min(coverage, 100);
+              
+              // Update fail_under value
+              configContent = configContent.replace(
+                /fail_under\s*=\s*\d+/g,
+                `fail_under = ${newThreshold}`
+              );
+              
+              fs.writeFileSync(configPath, configContent);
+              
+              console.log(`✅ Threshold updated: ${currentThreshold}% → ${newThreshold}%`);
+              core.setOutput('updated', 'true');
+              core.setOutput('new_threshold', newThreshold);
+              core.setOutput('old_threshold', currentThreshold);
+            } else {
+              console.log('ℹ️ Coverage not high enough to update threshold');
+              core.setOutput('updated', 'false');
+            }
+
+  create-pr:
+    name: Create Threshold Update PR
+    runs-on: ubuntu-latest
+    needs: [h5p-coverage, anki-coverage]
+    if: needs.h5p-coverage.outputs.threshold_updated == 'true' || needs.anki-coverage.outputs.threshold_updated == 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Create branch and commit
+        id: commit
+        run: |
+          BRANCH="coverage-ratchet-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH"
+          
+          # Re-run the threshold updates
+          echo "Branch created: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Update H5P threshold
+        if: needs.h5p-coverage.outputs.threshold_updated == 'true'
+        working-directory: h5p
+        run: |
+          npm ci
+          npm test -- --coverage --coverageReporters=json-summary 2>/dev/null || true
+          
+          node -e "
+            const fs = require('fs');
+            const coverage = parseInt('${{ needs.h5p-coverage.outputs.current_coverage }}') || 0;
+            const configPath = './jest.config.js';
+            let content = fs.readFileSync(configPath, 'utf8');
+            
+            if (coverage > 0) {
+              content = content
+                .replace(/branches:\s*\d+/g, 'branches: ' + coverage)
+                .replace(/functions:\s*\d+/g, 'functions: ' + coverage)
+                .replace(/lines:\s*\d+/g, 'lines: ' + coverage)
+                .replace(/statements:\s*\d+/g, 'statements: ' + coverage);
+              
+              fs.writeFileSync(configPath, content);
+              console.log('H5P threshold updated to: ' + coverage + '%');
+            }
+          "
+      
+      - name: Update Anki threshold
+        if: needs.anki-coverage.outputs.threshold_updated == 'true'
+        working-directory: anki
+        run: |
+          COVERAGE="${{ needs.anki-coverage.outputs.current_coverage }}"
+          if [ -n "$COVERAGE" ] && [ "$COVERAGE" -gt 0 ]; then
+            sed -i "s/fail_under = [0-9]*/fail_under = $COVERAGE/" pyproject.toml
+            echo "Anki threshold updated to: ${COVERAGE}%"
+          fi
+      
+      - name: Commit and push
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          git commit -m "chore: ratchet coverage thresholds
+
+          H5P: ${{ needs.h5p-coverage.outputs.current_coverage }}%
+          Anki: ${{ needs.anki-coverage.outputs.current_coverage }}%
+          
+          Automatically updated by Coverage Ratchet workflow"
+          
+          git push origin "${{ steps.commit.outputs.branch }}"
+      
+      - name: Create Pull Request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const h5pCoverage = '${{ needs.h5p-coverage.outputs.current_coverage }}';
+            const ankiCoverage = '${{ needs.anki-coverage.outputs.current_coverage }}';
+            const h5pUpdated = '${{ needs.h5p-coverage.outputs.threshold_updated }}' === 'true';
+            const ankiUpdated = '${{ needs.anki-coverage.outputs.threshold_updated }}' === 'true';
+            
+            const body = `## 📈 Coverage Threshold Update
+
+            This PR automatically updates coverage thresholds based on current test coverage.
+
+            ### Coverage Summary
+
+            | Component | Coverage | Updated |
+            |-----------|----------|---------|
+            | H5P | ${h5pCoverage}% | ${h5pUpdated ? '✅' : '➖'} |
+            | Anki | ${ankiCoverage}% | ${ankiUpdated ? '✅' : '➖'} |
+
+            ### What Changed
+
+            ${h5pUpdated ? '- **H5P**: jest.config.js threshold updated to ' + h5pCoverage + '%' : ''}
+            ${ankiUpdated ? '- **Anki**: pyproject.toml fail_under updated to ' + ankiCoverage + '%' : ''}
+
+            ### Why This Matters
+
+            Coverage ratcheting prevents regression by automatically increasing thresholds when coverage improves.
+            Once a higher coverage level is achieved, the threshold is raised to maintain that level.
+
+            ---
+            _Automated by Coverage Ratchet workflow_`;
+            
+            try {
+              const pr = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: 'chore: ratchet coverage thresholds',
+                body: body,
+                head: '${{ steps.commit.outputs.branch }}',
+                base: 'main'
+              });
+              
+              // Add labels
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.data.number,
+                labels: ['type: ci/cd', 'type: test', 'size: XS']
+              });
+              
+              console.log(`Created PR #${pr.data.number}`);
+            } catch (error) {
+              console.error('Failed to create PR:', error);
+            }
+
+  summary:
+    name: Coverage Summary
+    runs-on: ubuntu-latest
+    needs: [h5p-coverage, anki-coverage]
+    if: always()
+    steps:
+      - name: Generate Summary
+        run: |
+          echo "## 📊 Coverage Ratchet Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Component | Coverage | Threshold Updated |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|----------|-------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| H5P | ${{ needs.h5p-coverage.outputs.current_coverage }}% | ${{ needs.h5p-coverage.outputs.threshold_updated == 'true' && '✅ Yes' || '➖ No' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Anki | ${{ needs.anki-coverage.outputs.current_coverage }}% | ${{ needs.anki-coverage.outputs.threshold_updated == 'true' && '✅ Yes' || '➖ No' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Coverage thresholds are automatically ratcheted up when coverage improves by at least ${{ env.RATCHET_INCREMENT }}%." >> $GITHUB_STEP_SUMMARY

@@ -110,13 +110,23 @@ geriatrics-study/
 
 ### Running Tests
 ```bash
-# H5P linting
+# H5P tests with coverage
 cd h5p
-npm run lint
+npm run test:coverage
 
 # Anki tests
 cd anki
 pytest
+```
+
+### Coverage Reports
+```bash
+# Generate HTML coverage report
+cd h5p
+npm run coverage:report
+
+# Check coverage thresholds
+npm run test:coverage:check
 ```
 
 ### Security Audits
@@ -128,6 +138,14 @@ npm audit
 # Python audit
 pip-audit -r anki/requirements.txt
 ```
+
+## 🤖 Copilot Integration
+
+This repository is optimized for GitHub Copilot. See the [Copilot Automation Guide](COPILOT_AUTOMATION_GUIDE.md) for:
+- Automation opportunities and implementation status
+- Copilot-ready code snippets and test templates
+- Workflow automation examples
+- Best practices for contributing with Copilot
 
 ## 🤝 Contributing
 
