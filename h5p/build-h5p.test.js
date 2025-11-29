@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const nativeFs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
@@ -12,7 +13,7 @@ describe('H5P Build Scripts', () => {
 
   describe('Configuration', () => {
     test('should have valid package.json', () => {
-      const packageJson = fs.readJsonSync(path.join(__dirname, 'package.json'));
+      const packageJson = JSON.parse(nativeFs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
       expect(packageJson).toBeDefined();
       expect(packageJson.scripts).toBeDefined();
       expect(packageJson.scripts['build:qset']).toBeDefined();
@@ -21,9 +22,9 @@ describe('H5P Build Scripts', () => {
     });
 
     test('should have all build scripts', () => {
-      expect(fs.existsSync(path.join(__dirname, 'build-h5p-questionset.js'))).toBe(true);
-      expect(fs.existsSync(path.join(__dirname, 'build-h5p-mega.js'))).toBe(true);
-      expect(fs.existsSync(path.join(__dirname, 'build-h5p.js'))).toBe(true);
+      expect(nativeFs.existsSync(path.join(__dirname, 'build-h5p-questionset.js'))).toBe(true);
+      expect(nativeFs.existsSync(path.join(__dirname, 'build-h5p-mega.js'))).toBe(true);
+      expect(nativeFs.existsSync(path.join(__dirname, 'build-h5p.js'))).toBe(true);
     });
   });
 
@@ -31,9 +32,9 @@ describe('H5P Build Scripts', () => {
     let contentData;
 
     beforeAll(() => {
-      const contentPath = path.join('..', 'data', 'content.json');
-      if (fs.existsSync(contentPath)) {
-        contentData = fs.readJsonSync(contentPath);
+      const contentPath = path.join(__dirname, '..', 'data', 'content.json');
+      if (nativeFs.existsSync(contentPath)) {
+        contentData = JSON.parse(nativeFs.readFileSync(contentPath, 'utf8'));
       }
     });
 
@@ -79,18 +80,18 @@ describe('H5P Build Scripts', () => {
 
   describe('Build Output', () => {
     test('should create dist directory', () => {
-      expect(fs.existsSync(distPath)).toBe(true);
+      expect(nativeFs.existsSync(distPath)).toBe(true);
     });
 
     test('should handle Windows platform-specific code', () => {
-      const buildScript = fs.readFileSync(path.join(__dirname, 'build-h5p.js'), 'utf8');
+      const buildScript = nativeFs.readFileSync(path.join(__dirname, 'build-h5p.js'), 'utf8');
       expect(buildScript).toContain('process.platform');
       expect(buildScript).toContain('Compress-Archive');
       expect(buildScript).toContain('zip -r');
     });
 
     test('should sanitize filenames properly', () => {
-      const buildScript = fs.readFileSync(path.join(__dirname, 'build-h5p-questionset.js'), 'utf8');
+      const buildScript = nativeFs.readFileSync(path.join(__dirname, 'build-h5p-questionset.js'), 'utf8');
       expect(buildScript).toContain('replace');
       expect(buildScript).toContain('safeTitle');
     });
@@ -104,13 +105,13 @@ describe('H5P Build Scripts', () => {
     });
 
     test('should include Hebrew language support', () => {
-      const buildScript = fs.readFileSync(path.join(__dirname, 'build-h5p.js'), 'utf8');
+      const buildScript = nativeFs.readFileSync(path.join(__dirname, 'build-h5p.js'), 'utf8');
       expect(buildScript).toContain('language');
       expect(buildScript).toContain('he');
     });
 
     test('should support environment variables for mega build', () => {
-      const buildScript = fs.readFileSync(path.join(__dirname, 'build-h5p-mega.js'), 'utf8');
+      const buildScript = nativeFs.readFileSync(path.join(__dirname, 'build-h5p-mega.js'), 'utf8');
       expect(buildScript).toContain('process.env.TOPICS');
       expect(buildScript).toContain('process.env.PASS');
     });
