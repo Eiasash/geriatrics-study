@@ -6,6 +6,16 @@ function showPage(pageId) {
         page.classList.remove('active');
     });
     document.getElementById(pageId).classList.add('active');
+
+    // Update body class for mobile toolbar visibility
+    document.body.classList.remove('on-landing', 'on-editor', 'on-presentation');
+    if (pageId === 'landing-page') {
+        document.body.classList.add('on-landing');
+    } else if (pageId === 'editor-page') {
+        document.body.classList.add('on-editor');
+    } else if (pageId === 'presentation-mode') {
+        document.body.classList.add('on-presentation');
+    }
 }
 
 function goBack() {
@@ -280,6 +290,9 @@ function applyTheme(themeName) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    // Set initial body class for page state (landing page is default active)
+    document.body.classList.add('on-landing');
+
     // Check for auto-saved content
     checkAutoSave();
 
