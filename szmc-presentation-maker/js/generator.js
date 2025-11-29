@@ -64,7 +64,8 @@ class PresentationGenerator {
 
     parseCasePresentation(text) {
         // Extract patient demographics
-        const ageMatch = text.match(/(\d+)[\s-]*(year|yr|y\/o|yo)/i);
+        // Match various age formats: "75 year old", "75 years old", "75-year-old", "75 yo", "75 y/o", "75 yrs", etc.
+        const ageMatch = text.match(/(\d+)[\s-]*(years?|yrs?|y\.?o\.?|y\/o)(?:[\s-]*old)?/i);
         const genderMatch = text.match(/\b(male|female|man|woman|m|f)\b/i);
 
         this.sections.demographics = {
