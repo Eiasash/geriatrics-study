@@ -1,14 +1,28 @@
-// SZMC Geriatrics Presentation Maker - Service Worker for Offline Support
+/**
+ * SZMC Presentation Maker - Service Worker
+ * Full offline support for PWA
+ */
 
-const CACHE_NAME = 'szmc-presentation-v1';
-const STATIC_ASSETS = [
+const CACHE_NAME = 'szmc-presentation-v2';
+
+// All files to cache for complete offline use
+const CACHE_FILES = [
     './',
     './index.html',
+    './manifest.json',
+    './offline.html',
+
+    // CSS
     './css/main.css',
     './css/presentation.css',
     './css/visuals.css',
     './css/resources.css',
     './css/generator.css',
+    './css/rtl.css',
+    './css/mobile.css',
+
+    // JavaScript
+    './js/i18n.js',
     './js/templates.js',
     './js/templates-extended.js',
     './js/templates-extra.js',
@@ -18,111 +32,97 @@ const STATIC_ASSETS = [
     './js/editor.js',
     './js/presentation.js',
     './js/export.js',
+    './js/advanced-export.js',
     './js/ai-assistant.js',
-    './js/main.js'
+    './js/main.js',
+    './js/mobile.js'
 ];
 
 const EXTERNAL_ASSETS = [
-    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap',
+    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
 
-// Install event - cache static assets
+// Install event - cache all files
 self.addEventListener('install', (event) => {
+    console.log('[SW] Installing v2...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('Caching static assets');
-                // Cache local assets
-                return cache.addAll(STATIC_ASSETS.map(url => {
-                    // Handle relative paths
-                    return url.startsWith('/') ? url : '/' + url;
-                }));
+                console.log('[SW] Caching app files...');
+                // Cache local files
+                const localPromise = Promise.allSettled(
+                    CACHE_FILES.map(url =>
+                        cache.add(url).catch(err => {
+                            console.warn(`[SW] Failed to cache: ${url}`);
+                        })
+                    )
+                );
+
+                // Cache external files
+                const externalPromise = Promise.allSettled(
+                    EXTERNAL_ASSETS.map(url =>
+                        fetch(url, { mode: 'cors' })
+                            .then(res => res.ok ? cache.put(url, res) : null)
+                            .catch(() => console.warn(`[SW] Failed to cache external: ${url}`))
+                    )
+                );
+
+                return Promise.all([localPromise, externalPromise]);
             })
             .then(() => {
-                // Try to cache external assets (non-blocking)
-                return caches.open(CACHE_NAME).then(cache => {
-                    return Promise.allSettled(
-                        EXTERNAL_ASSETS.map(url =>
-                            fetch(url, { mode: 'cors' })
-                                .then(response => {
-                                    if (response.ok) {
-                                        return cache.put(url, response);
-                                    }
-                                })
-                                .catch(() => {
-                                    console.log('Could not cache external asset:', url);
-                                })
-                        )
-                    );
-                });
+                console.log('[SW] Install complete');
+                return self.skipWaiting();
             })
-            .then(() => self.skipWaiting())
     );
 });
 
-// Activate event - clean up old caches
+// Activate event - clean old caches
 self.addEventListener('activate', (event) => {
+    console.log('[SW] Activating...');
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
-                    .map((name) => caches.delete(name))
-            );
-        }).then(() => self.clients.claim())
+        caches.keys()
+            .then((names) => Promise.all(
+                names.filter(n => n !== CACHE_NAME).map(n => caches.delete(n))
+            ))
+            .then(() => {
+                console.log('[SW] Now active');
+                return self.clients.claim();
+            })
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - cache first, network fallback
 self.addEventListener('fetch', (event) => {
-    const request = event.request;
-
-    // Skip non-GET requests
-    if (request.method !== 'GET') {
-        return;
-    }
-
-    // Skip chrome-extension and other non-http(s) requests
-    if (!request.url.startsWith('http')) {
-        return;
-    }
+    if (event.request.method !== 'GET') return;
+    if (!event.request.url.startsWith('http')) return;
 
     event.respondWith(
-        caches.match(request)
-            .then((cachedResponse) => {
-                // Return cached response if available
-                if (cachedResponse) {
-                    // Fetch in background to update cache
-                    fetch(request)
-                        .then((networkResponse) => {
-                            if (networkResponse.ok) {
-                                caches.open(CACHE_NAME).then((cache) => {
-                                    cache.put(request, networkResponse.clone());
-                                });
+        caches.match(event.request)
+            .then((cached) => {
+                if (cached) {
+                    // Update cache in background
+                    fetch(event.request)
+                        .then(res => {
+                            if (res.ok) {
+                                caches.open(CACHE_NAME).then(c => c.put(event.request, res));
                             }
                         })
                         .catch(() => {});
-
-                    return cachedResponse;
+                    return cached;
                 }
 
-                // Fetch from network
-                return fetch(request)
-                    .then((networkResponse) => {
-                        // Cache successful responses
-                        if (networkResponse.ok) {
-                            const responseToCache = networkResponse.clone();
-                            caches.open(CACHE_NAME).then((cache) => {
-                                cache.put(request, responseToCache);
-                            });
+                return fetch(event.request)
+                    .then((res) => {
+                        if (res.ok) {
+                            const clone = res.clone();
+                            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
                         }
-                        return networkResponse;
+                        return res;
                     })
                     .catch(() => {
-                        // Return offline fallback for navigation requests
-                        if (request.mode === 'navigate') {
-                            return caches.match('/index.html');
+                        if (event.request.mode === 'navigate') {
+                            return caches.match('./offline.html') || caches.match('./index.html');
                         }
                         return new Response('Offline', { status: 503 });
                     });
@@ -130,9 +130,20 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Handle messages from the main thread
+// Message handler
 self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
+    if (event.data?.type === 'SKIP_WAITING') {
         self.skipWaiting();
     }
 });
+
+// Background sync for offline saves
+self.addEventListener('sync', (event) => {
+    if (event.tag === 'sync-saves') {
+        event.waitUntil(syncOfflineSaves());
+    }
+});
+
+async function syncOfflineSaves() {
+    console.log('[SW] Syncing offline saves...');
+}
