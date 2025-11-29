@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-29 12:07*
+*Generated: 2025-11-29 14:56*
 
 
 ## Delirium (דליריום)
@@ -24,15 +24,15 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).
-- **Authors**: Han Yaxin, Zhang Haohao, Tian Jiajing et al.
-- **Journal**: Nutrients (2025)
-- **Link**: [41305592](https://pubmed.ncbi.nlm.nih.gov/41305592/)
-
 ### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
 - **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
 - **Journal**: Journal of affective disorders (2025)
 - **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
+
+### 📄 Long-term changes in frailty and incident atrial fibrillation, heart failure, coronary heart disease, and stroke: A prospective follow-up study.
+- **Authors**: Cai Lingli, Sun Ying, Zhu Jingjing et al.
+- **Journal**: Heart rhythm (2025)
+- **Link**: [39798683](https://pubmed.ncbi.nlm.nih.gov/39798683/)
 
 ### 📄 Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.
 - **Authors**: Ye Xin, Wang Xinfeng, Hu Mingzheng et al.
@@ -53,11 +53,10 @@
 - **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
 - **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
-### 📄 [Importance of vision in old age].
-- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
-- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
-- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
-- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
 
 
 ## Dementia (דמנציה)

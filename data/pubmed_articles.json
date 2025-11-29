@@ -35,16 +35,6 @@
   ],
   "frailty": [
     {
-      "pmid": "41305592",
-      "title": "Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).",
-      "abstract": "",
-      "authors": "Han Yaxin, Zhang Haohao, Tian Jiajing et al.",
-      "journal": "Nutrients",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41305592/"
-    },
-    {
       "pmid": "40738335",
       "title": "Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.",
       "abstract": "Sleep disorders-including daytime sleepiness (DS), insomnia, and sleep apnea (SA)-have been linked to aging-related phenotypes, but their causal roles remain unclear. This study aimed to examine the potential causal effects of these sleep traits on biological aging using a Mendelian randomization (MR) approach.",
@@ -53,6 +43,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
+    },
+    {
+      "pmid": "39798683",
+      "title": "Long-term changes in frailty and incident atrial fibrillation, heart failure, coronary heart disease, and stroke: A prospective follow-up study.",
+      "abstract": "People with frailty have increased prevalence and incidence of atrial fibrillation (AF).",
+      "authors": "Cai Lingli, Sun Ying, Zhu Jingjing et al.",
+      "journal": "Heart rhythm",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39798683/"
     },
     {
       "pmid": "40921305",
@@ -89,16 +89,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
     },
     {
-      "pmid": "41168499",
-      "title": "[Importance of vision in old age].",
-      "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
-      "authors": "Fink David J, Finger Robert P, Terheyden Jan H",
-      "journal": "Zeitschrift fur Gerontologie und Geriatrie",
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
       "year": "2025",
-      "key_findings": [
-        "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
     }
   ],
   "dementia": [
