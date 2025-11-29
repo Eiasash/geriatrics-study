@@ -79,16 +79,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "41291457",
-      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
-      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
-      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
-      "journal": "BMC geriatrics",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
-    },
-    {
       "pmid": "40110801",
       "title": "Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.",
       "abstract": "Falls are an important health concern among older persons. This study attempted to evaluate the characteristics and risk factors of falls in older persons attending a geriatric falls clinic in Qatar, with a particular emphasis on the impact of the COVID-19 epidemic.",
@@ -97,6 +87,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
+    },
+    {
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
     }
   ],
   "dementia": [
