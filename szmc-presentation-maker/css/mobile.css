@@ -9,6 +9,11 @@
     z-index: 1000;
 }
 
+/* When on editor page, position above toolbar */
+body.on-editor .view-mode-container {
+    bottom: 90px;
+}
+
 .view-toggle-btn {
     display: flex;
     align-items: center;
@@ -182,10 +187,17 @@ body.rtl .mobile-nav-drawer.active {
 }
 
 @media (max-width: 768px) {
-    .mobile-toolbar {
+    /* Only show toolbar when on editor page */
+    body.on-editor .mobile-toolbar {
         display: flex;
         justify-content: space-around;
         align-items: center;
+    }
+
+    /* Hide on landing and presentation pages */
+    body.on-landing .mobile-toolbar,
+    body.on-presentation .mobile-toolbar {
+        display: none !important;
     }
 }
 
