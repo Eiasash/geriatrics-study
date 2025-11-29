@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - SZMC Presentation Maker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+        }
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        button {
+            background: white;
+            color: #1e3a5f;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .saved-work {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .saved-work h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+        .saved-item {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            text-align: left;
+            cursor: pointer;
+        }
+        .saved-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .saved-item .title {
+            font-weight: 600;
+        }
+        .saved-item .date {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        .no-saves {
+            opacity: 0.5;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">📡</div>
+        <h1>You're Offline</h1>
+        <p>Don't worry! Your presentations are saved locally. You can continue working offline.</p>
+        <button onclick="tryReconnect()">Try Again</button>
+
+        <div class="saved-work">
+            <h3>Saved Presentations</h3>
+            <div id="saved-list">
+                <p class="no-saves">Checking local storage...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function tryReconnect() {
+            window.location.reload();
+        }
+
+        function loadSavedPresentations() {
+            const container = document.getElementById('saved-list');
+            const saves = [];
+
+            // Get all saved presentations from localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('presentation_') || key.startsWith('szmc_')) {
+                    try {
+                        const data = JSON.parse(localStorage.getItem(key));
+                        saves.push({
+                            key: key,
+                            title: data.title || 'Untitled',
+                            date: data.savedAt || data.lastModified || 'Unknown'
+                        });
+                    } catch (e) {}
+                }
+            }
+
+            if (saves.length === 0) {
+                container.innerHTML = '<p class="no-saves">No saved presentations found</p>';
+                return;
+            }
+
+            container.innerHTML = saves
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 5)
+                .map(s => `
+                    <div class="saved-item" onclick="loadPresentation('${s.key}')">
+                        <div class="title">${s.title}</div>
+                        <div class="date">${new Date(s.date).toLocaleDateString()}</div>
+                    </div>
+                `).join('');
+        }
+
+        function loadPresentation(key) {
+            // Store the key to load when back online
+            sessionStorage.setItem('loadOnReconnect', key);
+            alert('This presentation will be loaded when you reconnect.');
+        }
+
+        loadSavedPresentations();
+
+        // Auto-retry connection every 30 seconds
+        setInterval(() => {
+            fetch('./', { method: 'HEAD' })
+                .then(() => window.location.reload())
+                .catch(() => {});
+        }, 30000);
+    </script>
+</body>
+</html>

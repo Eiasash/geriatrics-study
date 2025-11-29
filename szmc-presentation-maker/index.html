@@ -6,7 +6,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1e3a5f">
+    <meta name="description" content="Create professional medical presentations for geriatrics case reviews and journal clubs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>SZMC Geriatrics Presentation Maker</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/presentation.css">
     <link rel="stylesheet" href="css/visuals.css">
@@ -834,6 +842,73 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         window.addEventListener('languageChanged', (e) => {
             updateLanguageButtons(e.detail.lang);
         });
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+
+        function showInstallButton() {
+            const btn = document.createElement('button');
+            btn.id = 'install-btn';
+            btn.className = 'install-prompt';
+            btn.innerHTML = '<i class="fas fa-download"></i> Install App';
+            btn.onclick = installApp;
+            document.body.appendChild(btn);
+        }
+
+        async function installApp() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                document.getElementById('install-btn')?.remove();
+            }
+            deferredPrompt = null;
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registered:', reg.scope))
+                    .catch(err => console.error('SW registration failed:', err));
+            });
+        }
     </script>
+
+    <style>
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: slideUp 0.3s ease;
+        }
+        .install-prompt:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    </style>
 </body>
 </html>
