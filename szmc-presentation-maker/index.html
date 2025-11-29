@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="css/generator.css">
     <link rel="stylesheet" href="css/rtl.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/formatting-toolbar.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -128,6 +130,19 @@
                     </button>
                     <button class="btn-icon" onclick="editor.redo()" title="Redo (Ctrl+Y)" id="btn-redo" disabled>
                         <i class="fas fa-redo"></i>
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button class="btn-icon btn-search" onclick="searchManager.open()" title="Search (Ctrl+F)">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn-icon" onclick="medicalSnippets.openModal()" title="Medical Snippets (Ctrl+M)">
+                        <i class="fas fa-hospital-symbol"></i>
+                    </button>
+                    <button class="btn-icon" onclick="presentationAnalytics.openModal()" title="Analytics">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" onclick="versionHistory.openModal()" title="Version History">
+                        <i class="fas fa-history"></i>
                     </button>
                     <div class="toolbar-divider"></div>
                     <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant">
@@ -534,7 +549,11 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                         <select id="transition-select" onchange="setTransitionEffect(this.value)">
                             <option value="fade">Fade</option>
                             <option value="slide">Slide</option>
+                            <option value="slideLeft">Slide Left</option>
+                            <option value="slideRight">Slide Right</option>
                             <option value="zoom">Zoom</option>
+                            <option value="flip">Flip</option>
+                            <option value="dissolve">Dissolve</option>
                             <option value="none">None (Instant)</option>
                         </select>
                     </div>
@@ -654,6 +673,14 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
 
                         <div class="shortcut-category">
                             <h3>Other</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>F</kbd></span>
+                                <span class="shortcut-desc">Find & Replace</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>M</kbd></span>
+                                <span class="shortcut-desc">Medical Snippets</span>
+                            </div>
                             <div class="shortcut-item">
                                 <span class="shortcut-keys"><kbd>?</kbd></span>
                                 <span class="shortcut-desc">Show this help</span>
@@ -779,6 +806,12 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/export.js"></script>
     <script src="js/advanced-export.js"></script>
     <script src="js/ai-assistant.js"></script>
+    <script src="js/speaker-notes.js"></script>
+    <script src="js/medical-snippets.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/version-history.js"></script>
+    <script src="js/analytics.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mobile.js"></script>
     <script>
