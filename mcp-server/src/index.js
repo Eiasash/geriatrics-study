@@ -24,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 // Request logging middleware
 app.use((req, res, next) => {
     const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] ${req.method} ${req.path}`);
+    const safePath = req.path.replace(/\r?\n|\r/g, "");
+    console.log(`[${timestamp}] ${req.method} ${safePath}`);
     next();
 });
 
