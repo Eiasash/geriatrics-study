@@ -10,7 +10,7 @@ module.exports = {
   copySync: () => {},
   removeSync: () => {},
   writeFileSync: () => {},
-  readFileSync: () => Buffer.from(""),
+  readFileSync: () => Buffer.from(''),
   readJsonSync: () => ({}),
   writeJsonSync: (p, obj) => mem.set(p, JSON.stringify(obj)),
   // Async shapes if any script imports them:
