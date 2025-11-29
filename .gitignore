@@ -29,6 +29,7 @@ tmp/
 
 # Test coverage
 coverage/
+coverage.xml
 .coverage
 *.coverage
 htmlcov/
