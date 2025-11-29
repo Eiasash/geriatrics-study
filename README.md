@@ -20,6 +20,7 @@ Educational materials system for geriatrics topics - featuring Anki flashcards a
 - **🌐 Hebrew Support**: Full RTL support with proper formatting
 - **🤖 Automated CI/CD**: Build, test, and release automation
 - **🔒 Security First**: Automated dependency audits and updates
+- **🚀 MCP Server**: Automation server for CI management, presentation analysis, and AI-driven improvements
 
 ## 🚀 Quick Start
 
@@ -83,11 +84,17 @@ geriatrics-study/
 ├── anki/                  # Anki flashcard system
 │   ├── build_apkg.py
 │   └── dist/              # Built Anki packages
+├── mcp-server/            # MCP automation server
+│   ├── src/               # Server source code
+│   └── __tests__/         # Server tests
+├── szmc-presentation-maker/ # SZMC Presentation Maker app
+│   └── js/ai-assistant.js   # AI-powered presentation analysis
 ├── data/                  # Source content
 │   └── content.json       # Questions and answers
 └── .github/workflows/     # CI/CD automation
     ├── ci.yml            # Main CI pipeline
     ├── release.yml       # Release automation
+    ├── mcp-server.yml    # MCP server CI
     └── dependabot.yml    # Dependency updates
 ```
 
@@ -117,7 +124,30 @@ npm run lint
 # Anki tests
 cd anki
 pytest
+
+# MCP Server tests
+cd mcp-server
+npm test
 ```
+
+### MCP Server
+
+The MCP Server provides automation endpoints for CI management, presentation analysis, and code suggestions:
+
+```bash
+# Start MCP server
+cd mcp-server
+npm install
+npm start
+
+# Server endpoints:
+# - /review-dependabot - Analyze Dependabot PRs
+# - /analyze-presentation - SZMC presentation analysis
+# - /coverage-report - Coverage enforcement
+# - /suggest-code - AI-powered code suggestions
+```
+
+See [mcp-server/README.md](mcp-server/README.md) for full API documentation.
 
 ### Security Audits
 ```bash
