@@ -50,7 +50,7 @@ async function main() {
     await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), content, { spaces: 2 });
   
     // Sanitize filename: replace spaces and problematic characters
-    const safeTitle = title.replace(/[\s\/\\:*?"<>|]/g, '_');
+    const safeTitle = title.replace(/[\s/\\:*?"<>|]/g, '_');
     const outFile = path.join(OUT, `${safeTitle}.h5p`);
     
     // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
