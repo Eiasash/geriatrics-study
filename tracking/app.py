@@ -1,14 +1,26 @@
+from contextlib import contextmanager
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from datetime import datetime, timedelta
 import sqlite3
-import json
 from pathlib import Path
 
 app = Flask(__name__)
 CORS(app)
 
 DB_PATH = Path(__file__).parent / 'progress.db'
+
+
+@contextmanager
+def get_db_connection():
+    """Context manager for database connections - ensures proper cleanup."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    try:
+        yield conn
+    finally:
+        conn.close()
+
 
 def init_db():
     """Initialize database with tracking tables"""
@@ -63,35 +75,34 @@ def track_progress(topic):
     total = data.get('total', 0)
     correct = data.get('correct', 0)
     
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    # Insert progress record
-    c.execute('''
-        INSERT INTO progress (topic, score, total_questions, correct_answers, review_needed)
-        VALUES (?, ?, ?, ?, ?)
-    ''', (topic, score, total, correct, 1 if score < 75 else 0))
-    
-    # Update weak areas if score is low
-    if score < 75:
+    with get_db_connection() as conn:
+        c = conn.cursor()
+        
+        # Insert progress record
         c.execute('''
-            INSERT INTO weak_areas (topic, error_count)
-            VALUES (?, 1)
-            ON CONFLICT(topic) DO UPDATE SET
-                error_count = error_count + 1,
-                last_error = CURRENT_TIMESTAMP,
-                mastery_level = mastery_level * 0.8
-        ''')
-    else:
-        # Improve mastery level for good performance
-        c.execute('''
-            UPDATE weak_areas 
-            SET mastery_level = MIN(mastery_level * 1.2 + 0.1, 1.0)
-            WHERE topic = ?
-        ''', (topic,))
-    
-    conn.commit()
-    conn.close()
+            INSERT INTO progress (topic, score, total_questions, correct_answers, review_needed)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (topic, score, total, correct, 1 if score < 75 else 0))
+        
+        # Update weak areas if score is low
+        if score < 75:
+            c.execute('''
+                INSERT INTO weak_areas (topic, error_count)
+                VALUES (?, 1)
+                ON CONFLICT(topic) DO UPDATE SET
+                    error_count = error_count + 1,
+                    last_error = CURRENT_TIMESTAMP,
+                    mastery_level = mastery_level * 0.8
+            ''')
+        else:
+            # Improve mastery level for good performance
+            c.execute('''
+                UPDATE weak_areas 
+                SET mastery_level = MIN(mastery_level * 1.2 + 0.1, 1.0)
+                WHERE topic = ?
+            ''', (topic,))
+        
+        conn.commit()
     
     return jsonify({
         'status': 'success',
@@ -104,25 +115,23 @@ def track_progress(topic):
 @app.route('/api/weakest-areas', methods=['GET'])
 def get_weakest_areas():
     """Get topics that need the most review"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-    
-    results = c.execute('''
-        SELECT topic, 
-               AVG(score) as avg_score,
-               COUNT(*) as attempts,
-               SUM(CASE WHEN score < 75 THEN 1 ELSE 0 END) as failed_attempts,
-               MAX(timestamp) as last_attempt
-        FROM progress
-        GROUP BY topic
-        HAVING avg_score < 80
-        ORDER BY avg_score ASC, failed_attempts DESC
-        LIMIT 5
-    ''').fetchall()
-    
-    weak_areas = [dict(row) for row in results]
-    conn.close()
+    with get_db_connection() as conn:
+        c = conn.cursor()
+        
+        results = c.execute('''
+            SELECT topic, 
+                   AVG(score) as avg_score,
+                   COUNT(*) as attempts,
+                   SUM(CASE WHEN score < 75 THEN 1 ELSE 0 END) as failed_attempts,
+                   MAX(timestamp) as last_attempt
+            FROM progress
+            GROUP BY topic
+            HAVING avg_score < 80
+            ORDER BY avg_score ASC, failed_attempts DESC
+            LIMIT 5
+        ''').fetchall()
+        
+        weak_areas = [dict(row) for row in results]
     
     return jsonify({
         'weak_areas': weak_areas,
@@ -134,31 +143,28 @@ def get_study_plan():
     """Generate personalized study plan based on performance"""
     days = request.args.get('days', 7, type=int)
     
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-    
-    # Get topics not studied recently
-    overdue = c.execute('''
-        SELECT DISTINCT topic 
-        FROM progress 
-        WHERE timestamp < datetime('now', '-3 days')
-        AND topic NOT IN (
-            SELECT topic FROM progress 
-            WHERE timestamp > datetime('now', '-1 day')
-        )
-    ''').fetchall()
-    
-    # Get weak topics
-    weak = c.execute('''
-        SELECT topic, AVG(score) as avg_score
-        FROM progress
-        GROUP BY topic
-        HAVING avg_score < 75
-        ORDER BY avg_score ASC
-    ''').fetchall()
-    
-    conn.close()
+    with get_db_connection() as conn:
+        c = conn.cursor()
+        
+        # Get topics not studied recently
+        overdue = c.execute('''
+            SELECT DISTINCT topic 
+            FROM progress 
+            WHERE timestamp < datetime('now', '-3 days')
+            AND topic NOT IN (
+                SELECT topic FROM progress 
+                WHERE timestamp > datetime('now', '-1 day')
+            )
+        ''').fetchall()
+        
+        # Get weak topics
+        weak = c.execute('''
+            SELECT topic, AVG(score) as avg_score
+            FROM progress
+            GROUP BY topic
+            HAVING avg_score < 75
+            ORDER BY avg_score ASC
+        ''').fetchall()
     
     plan = []
     topics = [
@@ -208,30 +214,45 @@ def get_study_plan():
 @app.route('/api/stats/overview', methods=['GET'])
 def get_stats_overview():
     """Get comprehensive statistics"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
-    
-    # Overall stats
-    total_sessions = c.execute('SELECT COUNT(*) FROM progress').fetchone()[0]
-    avg_score = c.execute('SELECT AVG(score) FROM progress').fetchone()[0] or 0
-    
-    # Recent performance (last 7 days)
-    recent = c.execute('''
-        SELECT AVG(score) as avg, COUNT(*) as count
-        FROM progress
-        WHERE timestamp > datetime('now', '-7 days')
-    ''').fetchone()
-    
-    # Best and worst topics
-    topic_performance = c.execute('''
-        SELECT topic, AVG(score) as avg_score, COUNT(*) as attempts
-        FROM progress
-        GROUP BY topic
-        ORDER BY avg_score DESC
-    ''').fetchall()
-    
-    conn.close()
+    with get_db_connection() as conn:
+        c = conn.cursor()
+        
+        # Overall stats
+        total_sessions = c.execute('SELECT COUNT(*) FROM progress').fetchone()[0]
+        avg_score = c.execute('SELECT AVG(score) FROM progress').fetchone()[0] or 0
+        
+        # Recent performance (last 7 days)
+        recent = c.execute('''
+            SELECT AVG(score) as avg, COUNT(*) as count
+            FROM progress
+            WHERE timestamp > datetime('now', '-7 days')
+        ''').fetchone()
+        
+        # Best and worst topics
+        topic_performance = c.execute('''
+            SELECT topic, AVG(score) as avg_score, COUNT(*) as attempts
+            FROM progress
+            GROUP BY topic
+            ORDER BY avg_score DESC
+        ''').fetchall()
+        
+        # Calculate streak within the same connection
+        dates = c.execute('''
+            SELECT DISTINCT DATE(timestamp) as study_date
+            FROM progress
+            ORDER BY study_date DESC
+        ''').fetchall()
+        
+        streak = 0
+        if dates:
+            expected_date = datetime.now().date()
+            for date_row in dates:
+                study_date = datetime.strptime(date_row[0], '%Y-%m-%d').date()
+                if study_date == expected_date:
+                    streak += 1
+                    expected_date -= timedelta(days=1)
+                else:
+                    break
     
     return jsonify({
         'total_sessions': total_sessions,
@@ -240,7 +261,7 @@ def get_stats_overview():
         'recent_sessions': recent['count'],
         'best_topic': dict(topic_performance[0]) if topic_performance else None,
         'worst_topic': dict(topic_performance[-1]) if topic_performance else None,
-        'streak_days': calculate_streak()
+        'streak_days': streak
     })
 
 def generate_recommendations(weak_areas):
@@ -257,16 +278,14 @@ def generate_recommendations(weak_areas):
 
 def calculate_streak():
     """Calculate study streak in days"""
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    dates = c.execute('''
-        SELECT DISTINCT DATE(timestamp) as study_date
-        FROM progress
-        ORDER BY study_date DESC
-    ''').fetchall()
-    
-    conn.close()
+    with get_db_connection() as conn:
+        c = conn.cursor()
+        
+        dates = c.execute('''
+            SELECT DISTINCT DATE(timestamp) as study_date
+            FROM progress
+            ORDER BY study_date DESC
+        ''').fetchall()
     
     if not dates:
         return 0
