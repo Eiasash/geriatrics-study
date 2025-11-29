@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הערכות גריאטריות - MMSE, Morse, Barthel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; }
+        .tab-active { background: #1e3a5f; color: white; }
+        .score-box { transition: all 0.3s ease; }
+        .score-box:hover { transform: scale(1.02); }
+        .checkbox-item:has(input:checked) { background: #e0f2fe; border-color: #0284c7; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto p-4 max-w-4xl">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-xl p-6 mb-6 shadow-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold">הערכות גריאטריות מקיפות</h1>
+                    <p class="text-blue-200 mt-1">MMSE | Morse Fall Scale | Barthel Index</p>
+                </div>
+                <div class="flex gap-2 no-print">
+                    <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-blue-900 rounded-lg hover:bg-gray-100 text-sm font-medium">
+                        דף הבית
+                    </button>
+                    <button onclick="window.print()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 text-sm font-medium">
+                        הדפס
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap gap-2 mb-6 no-print">
+            <button onclick="showTab('mmse')" id="tab-mmse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all tab-active">
+                MMSE - מצב קוגניטיבי
+            </button>
+            <button onclick="showTab('morse')" id="tab-morse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                Morse - סיכון נפילות
+            </button>
+            <button onclick="showTab('barthel')" id="tab-barthel" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                Barthel - עצמאות תפקודית
+            </button>
+        </div>
+
+        <!-- MMSE Section -->
+        <div id="mmse-section" class="assessment-section">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Mini-Mental State Examination</h2>
+                        <p class="text-gray-600">מבחן מצב מנטלי מינימלי - הערכה קוגניטיבית</p>
+                    </div>
+                    <div class="score-box bg-blue-100 px-6 py-4 rounded-xl text-center">
+                        <div class="text-4xl font-bold text-blue-900" id="mmse-score">0</div>
+                        <div class="text-sm text-blue-700">/30 נקודות</div>
+                    </div>
+                </div>
+
+                <!-- Patient Info -->
+                <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                    <h3 class="font-semibold text-gray-700 mb-3">פרטי מטופל</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" id="mmse-patient-name" placeholder="שם המטופל" class="px-4 py-2 border rounded-lg">
+                        <input type="number" id="mmse-patient-age" placeholder="גיל" class="px-4 py-2 border rounded-lg">
+                        <input type="number" id="mmse-education" placeholder="שנות השכלה" class="px-4 py-2 border rounded-lg">
+                    </div>
+                </div>
+
+                <!-- Orientation -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        אוריינטציה בזמן (5 נקודות)
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>שנה</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>עונה</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>חודש</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>תאריך</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>יום בשבוע</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        אוריינטציה במקום (5 נקודות)
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>מדינה</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>עיר</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>בניין/מוסד</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>קומה</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>מחלקה/חדר</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Registration -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        רישום - 3 מילים (3 נקודות)
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-3">בקש מהמטופל לחזור על 3 מילים: כדור, דגל, עץ</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>כדור</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>דגל</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>עץ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Attention -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        קשב וחישוב - Serial 7s (5 נקודות)
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-3">הפחת 7 מ-100 וחזור על כך 5 פעמים (93, 86, 79, 72, 65)</p>
+                    <div class="grid grid-cols-5 gap-3">
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>93</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>86</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>79</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>72</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>65</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Recall -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        זיכרון - שחזור 3 מילים (3 נקודות)
+                    </h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>כדור</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>דגל</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>עץ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Language -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3 border-b pb-2">
+                        שפה (9 נקודות)
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                                <span>שם עיפרון (1)</span>
+                            </label>
+                            <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                                <span>שם שעון (1)</span>
+                            </label>
+                        </div>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>חזרה על "אין אם, ואם, ורק אם" (1)</span>
+                        </label>
+                        <div>
+                            <p class="text-gray-600 text-sm mb-2">ביצוע פקודה תלת-שלבית: "קח את הדף ביד ימין, קפל לשניים, והנח על הרצפה"</p>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                                    <span>יד ימין</span>
+                                </label>
+                                <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                                    <span>קיפול</span>
+                                </label>
+                                <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                                    <span>הנחה</span>
+                                </label>
+                            </div>
+                        </div>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>קריאה וביצוע "עצום עיניים" (1)</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>כתיבת משפט (1)</span>
+                        </label>
+                        <label class="checkbox-item flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" class="mmse-item w-5 h-5" data-points="1">
+                            <span>העתקת ציור מחומשים (1)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- MMSE Interpretation -->
+                <div id="mmse-interpretation" class="bg-gray-100 rounded-xl p-6 mt-6">
+                    <h3 class="font-bold text-lg text-gray-800 mb-3">פרשנות התוצאות</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-100 p-4 rounded-lg border-r-4 border-green-500">
+                            <div class="font-semibold text-green-800">24-30: תקין</div>
+                            <div class="text-sm text-green-700">תפקוד קוגניטיבי תקין</div>
+                        </div>
+                        <div class="bg-yellow-100 p-4 rounded-lg border-r-4 border-yellow-500">
+                            <div class="font-semibold text-yellow-800">20-23: ליקוי קל</div>
+                            <div class="text-sm text-yellow-700">MCI או דמנציה קלה</div>
+                        </div>
+                        <div class="bg-orange-100 p-4 rounded-lg border-r-4 border-orange-500">
+                            <div class="font-semibold text-orange-800">10-19: ליקוי בינוני</div>
+                            <div class="text-sm text-orange-700">דמנציה בינונית</div>
+                        </div>
+                        <div class="bg-red-100 p-4 rounded-lg border-r-4 border-red-500">
+                            <div class="font-semibold text-red-800">0-9: ליקוי חמור</div>
+                            <div class="text-sm text-red-700">דמנציה חמורה</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-blue-800">
+                            <strong>התאמה לאוכלוסייה הישראלית:</strong> יש להתחשב בגיל, השכלה ורקע תרבותי.
+                            ציון גבול עשוי להיות 23 לבעלי השכלה נמוכה ו-26 לבעלי השכלה גבוהה.
+                        </p>
+                    </div>
+                </div>
+
+                <button onclick="resetMMSE()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                    אפס הערכה
+                </button>
+            </div>
+        </div>
+
+        <!-- Morse Fall Scale Section -->
+        <div id="morse-section" class="assessment-section hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Morse Fall Scale</h2>
+                        <p class="text-gray-600">סולם מורס להערכת סיכון נפילות</p>
+                    </div>
+                    <div class="score-box bg-orange-100 px-6 py-4 rounded-xl text-center">
+                        <div class="text-4xl font-bold text-orange-900" id="morse-score">0</div>
+                        <div class="text-sm text-orange-700">נקודות</div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- History of Falling -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">1. היסטוריית נפילות (3 חודשים אחרונים)</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-falls" value="0" class="morse-item w-5 h-5" checked>
+                                <span>לא - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-falls" value="25" class="morse-item w-5 h-5">
+                                <span>כן - 25 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Diagnosis -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">2. אבחנה משנית (יותר מאבחנה אחת)</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-diagnosis" value="0" class="morse-item w-5 h-5" checked>
+                                <span>לא - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-diagnosis" value="15" class="morse-item w-5 h-5">
+                                <span>כן - 15 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Ambulatory Aid -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">3. עזר הליכה</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-aid" value="0" class="morse-item w-5 h-5" checked>
+                                <span>ללא / מרותק למיטה / סיעודי - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-aid" value="15" class="morse-item w-5 h-5">
+                                <span>קביים / מקל / הליכון - 15 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-aid" value="30" class="morse-item w-5 h-5">
+                                <span>נאחז בריהוט - 30 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- IV/Heparin Lock -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">4. עירוי IV / נעילת הפרין</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-iv" value="0" class="morse-item w-5 h-5" checked>
+                                <span>לא - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-iv" value="20" class="morse-item w-5 h-5">
+                                <span>כן - 20 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Gait -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">5. הליכה</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-gait" value="0" class="morse-item w-5 h-5" checked>
+                                <span>תקין / מרותק למיטה / כיסא גלגלים - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-gait" value="10" class="morse-item w-5 h-5">
+                                <span>חלש - 10 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-gait" value="20" class="morse-item w-5 h-5">
+                                <span>לקוי - 20 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Mental Status -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">6. מצב מנטלי</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-mental" value="0" class="morse-item w-5 h-5" checked>
+                                <span>מודע ליכולותיו - 0 נקודות</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="morse-mental" value="15" class="morse-item w-5 h-5">
+                                <span>מעריך יתר את יכולותיו / שוכח מגבלות - 15 נקודות</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Morse Interpretation -->
+                <div id="morse-interpretation" class="bg-gray-100 rounded-xl p-6 mt-6">
+                    <h3 class="font-bold text-lg text-gray-800 mb-3">רמת סיכון והמלצות</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-green-100 p-4 rounded-lg border-r-4 border-green-500">
+                            <div class="font-semibold text-green-800">0-24: סיכון נמוך</div>
+                            <div class="text-sm text-green-700">התערבויות בסיסיות</div>
+                        </div>
+                        <div class="bg-yellow-100 p-4 rounded-lg border-r-4 border-yellow-500">
+                            <div class="font-semibold text-yellow-800">25-44: סיכון בינוני</div>
+                            <div class="text-sm text-yellow-700">התערבויות סטנדרטיות</div>
+                        </div>
+                        <div class="bg-red-100 p-4 rounded-lg border-r-4 border-red-500">
+                            <div class="font-semibold text-red-800">≥45: סיכון גבוה</div>
+                            <div class="text-sm text-red-700">התערבויות אינטנסיביות</div>
+                        </div>
+                    </div>
+                    <div id="morse-recommendations" class="mt-4 p-4 bg-blue-50 rounded-lg">
+                        <p class="font-semibold text-blue-800 mb-2">המלצות למניעת נפילות:</p>
+                        <ul class="text-sm text-blue-700 list-disc list-inside space-y-1">
+                            <li>סימון צהוב בתיק המטופל</li>
+                            <li>מעקבים תכופים על המטופל</li>
+                            <li>סידורי מיטה בטוחים</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button onclick="resetMorse()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                    אפס הערכה
+                </button>
+            </div>
+        </div>
+
+        <!-- Barthel Index Section -->
+        <div id="barthel-section" class="assessment-section hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Barthel Index</h2>
+                        <p class="text-gray-600">מדד ברתל - הערכת עצמאות בפעילויות יומיומיות (ADL)</p>
+                    </div>
+                    <div class="score-box bg-purple-100 px-6 py-4 rounded-xl text-center">
+                        <div class="text-4xl font-bold text-purple-900" id="barthel-score">0</div>
+                        <div class="text-sm text-purple-700">/100 נקודות</div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Feeding -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">1. אכילה</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-feeding" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>תלוי לחלוטין - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-feeding" value="5" class="barthel-item w-5 h-5">
+                                <span>זקוק לעזרה (חיתוך, מריחה) - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-feeding" value="10" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Bathing -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">2. רחצה</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bathing" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>תלוי - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bathing" value="5" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 5</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Grooming -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">3. טיפוח (שיניים, גילוח, שיער)</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-grooming" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>זקוק לעזרה - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-grooming" value="5" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 5</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Dressing -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">4. לבישה</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-dressing" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>תלוי - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-dressing" value="5" class="barthel-item w-5 h-5">
+                                <span>זקוק לעזרה חלקית - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-dressing" value="10" class="barthel-item w-5 h-5">
+                                <span>עצמאי (כולל כפתורים, רוכסנים) - 10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Bowels -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">5. שליטה על המעיים</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bowels" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>חוסר שליטה / זקוק לחוקנים - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bowels" value="5" class="barthel-item w-5 h-5">
+                                <span>אירועים מזדמנים - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bowels" value="10" class="barthel-item w-5 h-5">
+                                <span>שליטה מלאה - 10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Bladder -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">6. שליטה על שלפוחית השתן</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bladder" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>חוסר שליטה / קתטר - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bladder" value="5" class="barthel-item w-5 h-5">
+                                <span>אירועים מזדמנים - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-bladder" value="10" class="barthel-item w-5 h-5">
+                                <span>שליטה מלאה - 10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Toilet Use -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">7. שימוש בשירותים</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-toilet" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>תלוי - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-toilet" value="5" class="barthel-item w-5 h-5">
+                                <span>זקוק לעזרה חלקית - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-toilet" value="10" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Transfers -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">8. העברה (מיטה לכיסא)</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-transfers" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>לא מסוגל / אין שיווי משקל בישיבה - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-transfers" value="5" class="barthel-item w-5 h-5">
+                                <span>עזרה משמעותית (1-2 אנשים) - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-transfers" value="10" class="barthel-item w-5 h-5">
+                                <span>עזרה מינימלית (מילולית/פיזית) - 10</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-transfers" value="15" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 15</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Mobility -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">9. ניידות</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-mobility" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>לא נייד - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-mobility" value="5" class="barthel-item w-5 h-5">
+                                <span>עצמאי בכיסא גלגלים (כולל פינות) - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-mobility" value="10" class="barthel-item w-5 h-5">
+                                <span>הולך עם עזרה של אדם אחד - 10</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-mobility" value="15" class="barthel-item w-5 h-5">
+                                <span>עצמאי (יכול להשתמש בעזר) - 15</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Stairs -->
+                    <div class="border rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">10. מדרגות</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-stairs" value="0" class="barthel-item w-5 h-5" checked>
+                                <span>לא מסוגל - 0</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-stairs" value="5" class="barthel-item w-5 h-5">
+                                <span>זקוק לעזרה - 5</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="barthel-stairs" value="10" class="barthel-item w-5 h-5">
+                                <span>עצמאי - 10</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barthel Interpretation -->
+                <div id="barthel-interpretation" class="bg-gray-100 rounded-xl p-6 mt-6">
+                    <h3 class="font-bold text-lg text-gray-800 mb-3">פרשנות התוצאות</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-red-100 p-4 rounded-lg border-r-4 border-red-500">
+                            <div class="font-semibold text-red-800">0-20: תלות מלאה</div>
+                            <div class="text-sm text-red-700">זקוק לסיוע מלא בכל הפעילויות</div>
+                        </div>
+                        <div class="bg-orange-100 p-4 rounded-lg border-r-4 border-orange-500">
+                            <div class="font-semibold text-orange-800">21-60: תלות חמורה</div>
+                            <div class="text-sm text-orange-700">זקוק לסיוע משמעותי</div>
+                        </div>
+                        <div class="bg-yellow-100 p-4 rounded-lg border-r-4 border-yellow-500">
+                            <div class="font-semibold text-yellow-800">61-90: תלות בינונית</div>
+                            <div class="text-sm text-yellow-700">זקוק לסיוע חלקי</div>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-lg border-r-4 border-green-500">
+                            <div class="font-semibold text-green-800">91-100: עצמאי</div>
+                            <div class="text-sm text-green-700">עצמאי או עצמאי עם השגחה</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-blue-800">
+                            <strong>שימו לב:</strong> ציון 100 אינו מעיד בהכרח על יכולת לחיות לבד -
+                            יש להעריך גם IADL (פעילויות אינסטרומנטליות) ומצב קוגניטיבי.
+                        </p>
+                    </div>
+                </div>
+
+                <button onclick="resetBarthel()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                    אפס הערכה
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tab) {
+            document.querySelectorAll('.assessment-section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('tab-active');
+                b.classList.add('bg-gray-200');
+            });
+
+            document.getElementById(`${tab}-section`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${tab}`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('bg-gray-200');
+        }
+
+        // MMSE Score calculation
+        function calculateMMSE() {
+            let score = 0;
+            document.querySelectorAll('.mmse-item:checked').forEach(item => {
+                score += parseInt(item.dataset.points || 0);
+            });
+            document.getElementById('mmse-score').textContent = score;
+            updateMMSEInterpretation(score);
+        }
+
+        function updateMMSEInterpretation(score) {
+            const interpretations = document.querySelectorAll('#mmse-interpretation > div > div');
+            interpretations.forEach(div => {
+                div.classList.remove('ring-4', 'ring-offset-2');
+            });
+
+            let activeIndex;
+            if (score >= 24) activeIndex = 0;
+            else if (score >= 20) activeIndex = 1;
+            else if (score >= 10) activeIndex = 2;
+            else activeIndex = 3;
+
+            const gridDivs = document.querySelectorAll('#mmse-interpretation .grid > div');
+            if (gridDivs[activeIndex]) {
+                gridDivs[activeIndex].classList.add('ring-4', 'ring-offset-2');
+            }
+        }
+
+        function resetMMSE() {
+            document.querySelectorAll('.mmse-item').forEach(item => item.checked = false);
+            calculateMMSE();
+        }
+
+        // Morse Score calculation
+        function calculateMorse() {
+            let score = 0;
+            document.querySelectorAll('.morse-item:checked').forEach(item => {
+                score += parseInt(item.value || 0);
+            });
+            document.getElementById('morse-score').textContent = score;
+            updateMorseInterpretation(score);
+        }
+
+        function updateMorseInterpretation(score) {
+            const gridDivs = document.querySelectorAll('#morse-interpretation .grid > div');
+            gridDivs.forEach(div => div.classList.remove('ring-4', 'ring-offset-2'));
+
+            let activeIndex;
+            let recommendations = [];
+
+            if (score <= 24) {
+                activeIndex = 0;
+                recommendations = [
+                    'סימון צהוב בתיק המטופל',
+                    'הוראות בסיסיות למניעת נפילות',
+                    'נעליים מתאימות'
+                ];
+            } else if (score <= 44) {
+                activeIndex = 1;
+                recommendations = [
+                    'סימון צהוב בתיק המטופל',
+                    'מעקבים תכופים על המטופל',
+                    'סידורי מיטה בטוחים',
+                    'עזרי הליכה זמינים',
+                    'תאורה מתאימה'
+                ];
+            } else {
+                activeIndex = 2;
+                recommendations = [
+                    'סימון אדום בתיק המטופל',
+                    'השגחה צמודה',
+                    'מיטה נמוכה עם מזרן על הרצפה',
+                    'אזעקת מיטה',
+                    'ליווי בכל העברה',
+                    'הערכה לעזרי הליכה',
+                    'סקירת תרופות'
+                ];
+            }
+
+            gridDivs[activeIndex].classList.add('ring-4', 'ring-offset-2');
+
+            const recDiv = document.getElementById('morse-recommendations');
+            recDiv.innerHTML = `
+                <p class="font-semibold text-blue-800 mb-2">המלצות למניעת נפילות:</p>
+                <ul class="text-sm text-blue-700 list-disc list-inside space-y-1">
+                    ${recommendations.map(r => `<li>${r}</li>`).join('')}
+                </ul>
+            `;
+        }
+
+        function resetMorse() {
+            document.querySelectorAll('.morse-item').forEach(item => {
+                if (item.value === '0') item.checked = true;
+            });
+            calculateMorse();
+        }
+
+        // Barthel Score calculation
+        function calculateBarthel() {
+            let score = 0;
+            document.querySelectorAll('.barthel-item:checked').forEach(item => {
+                score += parseInt(item.value || 0);
+            });
+            document.getElementById('barthel-score').textContent = score;
+            updateBarthelInterpretation(score);
+        }
+
+        function updateBarthelInterpretation(score) {
+            const gridDivs = document.querySelectorAll('#barthel-interpretation .grid > div');
+            gridDivs.forEach(div => div.classList.remove('ring-4', 'ring-offset-2'));
+
+            let activeIndex;
+            if (score <= 20) activeIndex = 0;
+            else if (score <= 60) activeIndex = 1;
+            else if (score <= 90) activeIndex = 2;
+            else activeIndex = 3;
+
+            gridDivs[activeIndex].classList.add('ring-4', 'ring-offset-2');
+        }
+
+        function resetBarthel() {
+            document.querySelectorAll('.barthel-item').forEach(item => {
+                if (item.value === '0') item.checked = true;
+            });
+            calculateBarthel();
+        }
+
+        // Event listeners
+        document.querySelectorAll('.mmse-item').forEach(item => {
+            item.addEventListener('change', calculateMMSE);
+        });
+
+        document.querySelectorAll('.morse-item').forEach(item => {
+            item.addEventListener('change', calculateMorse);
+        });
+
+        document.querySelectorAll('.barthel-item').forEach(item => {
+            item.addEventListener('change', calculateBarthel);
+        });
+
+        // Initialize
+        calculateMMSE();
+        calculateMorse();
+        calculateBarthel();
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Call Co-Pilot - Geriatrics Emergency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .protocol-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .protocol-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .emergency { border-left: 4px solid #dc3545; }
+        .urgent { border-left: 4px solid #ffc107; }
+        .routine { border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-6">
+        <!-- Emergency Header -->
+        <header class="bg-red-600 rounded-lg p-6 mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">🚨 On-Call Co-Pilot</h1>
+                    <p class="text-red-100">Geriatrics Emergency Protocols - 24/7 Support</p>
+                    <p class="text-sm text-red-200 mt-1">Current Time: <span id="currentTime"></span></p>
+                </div>
+                <div class="text-right">
+                    <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-red-600 rounded-lg hover:bg-gray-100 mb-2">
+                        🏠 Home
+                    </button>
+                    <div class="text-sm text-red-200">
+                        Emergency: Internal 911<br>
+                        Pharmacy: ext. 2345<br>
+                        Lab: ext. 3456
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <button onclick="showScenario('delirium')" class="emergency protocol-card bg-red-700 rounded-lg p-4 text-left">
+                <div class="text-2xl mb-2">🧠</div>
+                <h3 class="font-bold text-lg">Acute Delirium</h3>
+                <p class="text-red-200 text-sm">Confusion, agitation, altered mental status</p>
+            </button>
+            <button onclick="showScenario('fall')" class="urgent protocol-card bg-yellow-700 rounded-lg p-4 text-left">
+                <div class="text-2xl mb-2">🤕</div>
+                <h3 class="font-bold text-lg">Fall with Injury</h3>
+                <p class="text-yellow-200 text-sm">Head trauma, fracture assessment</p>
+            </button>
+            <button onclick="showScenario('chest-pain')" class="emergency protocol-card bg-red-700 rounded-lg p-4 text-left">
+                <div class="text-2xl mb-2">💔</div>
+                <h3 class="font-bold text-lg">Chest Pain</h3>
+                <p class="text-red-200 text-sm">ACS in elderly - atypical presentation</p>
+            </button>
+        </div>
+
+        <!-- All Protocols -->
+        <div class="bg-gray-800 rounded-lg shadow-lg">
+            <div class="p-6 border-b border-gray-700">
+                <h2 class="text-xl font-semibold">Emergency Protocols</h2>
+                <p class="text-gray-300">Click on any scenario for step-by-step guidance</p>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4" id="protocolList">
+            </div>
+        </div>
+
+        <!-- Protocol Detail Modal -->
+        <div id="protocolModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-90 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-10 mx-auto p-5 border w-11/12 md:w-4/5 lg:w-3/4 shadow-lg rounded-lg bg-gray-800 border-gray-600">
+                <div class="mt-3">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="protocolTitle" class="text-2xl font-bold text-white"></h3>
+                        <button onclick="closeProtocolModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                    </div>
+                    <div id="protocolContent" class="text-gray-300">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const protocols = {
+            delirium: {
+                title: "🧠 Acute Delirium Management",
+                severity: "emergency",
+                steps: [
+                    {
+                        title: "1. IMMEDIATE ASSESSMENT (First 5 minutes)",
+                        content: `<strong>🔍 Quick Vitals & Safety:</strong>
+• Vital signs (especially O2 sat, temp, BP)
+• Blood glucose check immediately
+• Ensure patient safety (bedrails, supervision)
+• Brief neurological check (pupils, motor, speech)
+
+<strong>⚡ RED FLAGS - Call senior immediately:</strong>
+• Focal neurological signs
+• Fever >38.5°C
+• Severe hypoxemia (O2 sat <90%)
+• Hemodynamic instability`
+                    },
+                    {
+                        title: "2. RAPID HISTORY (Next 10 minutes)",
+                        content: `<strong>📋 Key Questions for Family/Staff:</strong>
+• When did confusion start? (hours vs days)
+• Baseline mental status?
+• Any recent medication changes?
+• Recent procedures/falls?
+• Bowel/bladder changes?
+
+<strong>💊 Medication Review - HIGH PRIORITY:</strong>
+• New medications in past 48h?
+• Pain medications, sleep aids, anticholinergics
+• Check for recent steroid use`
+                    },
+                    {
+                        title: "3. WORKUP (Order immediately)",
+                        content: `<strong>🧪 Labs (STAT):</strong>
+• CBC with diff
+• Basic metabolic panel (Na, glucose, urea, creatinine)
+• Liver function tests
+• TSH if not recent
+• Urinalysis + urine culture
+
+<strong>📸 Imaging if indicated:</strong>
+• Chest X-ray (infection, CHF)
+• Head CT if fall/trauma/focal signs
+• Consider EKG if cardiac symptoms`
+                    },
+                    {
+                        title: "4. MANAGEMENT",
+                        content: `<strong>🛡️ Non-Pharmacological (FIRST LINE):</strong>
+• Constant supervision
+• Familiar objects, family presence
+• Adequate lighting
+• Minimize noise and interruptions
+• Regular reorientation
+
+<strong>💊 Pharmacological (LAST RESORT):</strong>
+• Avoid if possible - increases fall risk
+• If severe agitation: Haloperidol 0.25-0.5mg IV/PO
+• NEVER use benzos in elderly (exception: alcohol withdrawal)
+• Monitor for extrapyramidal symptoms`
+                    }
+                ]
+            },
+            fall: {
+                title: "🤕 Fall with Injury Assessment",
+                severity: "urgent",
+                steps: [
+                    {
+                        title: "1. PRIMARY SURVEY (First 2 minutes)",
+                        content: `<strong>🔥 ABCs First:</strong>
+• Airway patent?
+• Breathing adequate?
+• Circulation - pulse, BP
+• Cervical spine precautions if head/neck injury
+
+<strong>⚠️ IMMEDIATE RED FLAGS:</strong>
+• Loss of consciousness
+• Confusion/altered mental status
+• Severe pain
+• Obvious deformity`
+                    },
+                    {
+                        title: "2. HEAD INJURY ASSESSMENT",
+                        content: `<strong>🧠 Neurological Check:</strong>
+• GCS score
+• Pupils (size, reactivity, equal?)
+• Memory of event
+• Any vomiting since fall?
+
+<strong>💊 Anticoagulation Status - CRITICAL:</strong>
+• Warfarin, DOACs, antiplatelets?
+• Last INR if on warfarin
+• If on anticoagulants → LOW THRESHOLD for head CT
+
+<strong>📱 Call Neurosurgery if:</strong>
+• GCS <15
+• Focal neurological deficit
+• On anticoagulation with any head trauma`
+                    },
+                    {
+                        title: "3. FRACTURE ASSESSMENT",
+                        content: `<strong>🦴 Hip Fracture (Most Common):</strong>
+• Pain on hip movement
+• Shortened, externally rotated leg
+• Unable to bear weight
+• X-ray hip/pelvis immediately
+
+<strong>🤲 Wrist/Forearm:</strong>
+• Outstretched hand mechanism
+• Colles fracture common
+• X-ray if tender/swollen
+
+<strong>🫁 Rib Fractures:</strong>
+• Pain on inspiration
+• Risk of pneumothorax in elderly
+• Consider chest X-ray`
+                    },
+                    {
+                        title: "4. PAIN MANAGEMENT & DISPOSITION",
+                        content: `<strong>💊 Pain Control (Elderly-Specific):</strong>
+• Paracetamol 1g QID (reduce if renal impairment)
+• Avoid NSAIDs if possible (GI, renal, cardiac risk)
+• If severe: Tramadol 25-50mg (caution - serotonin syndrome)
+• Last resort: Morphine 1-2mg IV (start low, go slow)
+
+<strong>🏥 Admission Criteria:</strong>
+• Hip fracture
+• Head injury on anticoagulation
+• Multiple injuries
+• Social concerns/inability to cope`
+                    }
+                ]
+            },
+            "chest-pain": {
+                title: "💔 Chest Pain in Elderly",
+                severity: "emergency",
+                steps: [
+                    {
+                        title: "1. ATYPICAL PRESENTATIONS (Remember!)",
+                        content: `<strong>🚨 Elderly ACS Often Presents As:</strong>
+• Dyspnea without chest pain
+• Nausea, vomiting
+• Weakness, fatigue
+• Confusion, delirium
+• Shoulder/jaw/epigastric pain
+
+<strong>⚡ High-Risk Features:</strong>
+• Diabetes (silent MI common)
+• Previous CAD/CVA
+• CKD, PAD
+• Age >75 years`
+                    },
+                    {
+                        title: "2. IMMEDIATE MANAGEMENT",
+                        content: `<strong>📊 STAT Orders:</strong>
+• 12-lead EKG immediately
+• Oxygen if O2 sat <94%
+• IV access
+• Cardiac monitor
+
+<strong>💊 MONA (with elderly modifications):</strong>
+• Morphine: 1-2mg IV (start low)
+• Oxygen: if indicated
+• Nitroglycerin: 0.3mg SL (watch BP!)
+• Aspirin: 81mg if no GI bleeding history
+
+<strong>⚠️ CAUTIONS in Elderly:</strong>
+• Beta-blockers: start low (COPD, CHF)
+• ACE inhibitors: watch for hypotension
+• Contrast: nephrotoxic`
+                    },
+                    {
+                        title: "3. DIAGNOSTIC WORKUP",
+                        content: `<strong>🧪 Laboratory (STAT):</strong>
+• Troponin I (repeat in 6-12h if initial negative)
+• Basic metabolic panel
+• CBC, PT/PTT
+• BNP if heart failure suspected
+
+<strong>📸 Imaging:</strong>
+• Chest X-ray (CHF, pneumonia, aortic dissection)
+• Echo if murmur/CHF suspected
+• CT chest if aortic dissection considered`
+                    },
+                    {
+                        title: "4. RISK STRATIFICATION & NEXT STEPS",
+                        content: `<strong>🎯 HEART Score Modified for Elderly:</strong>
+• History: typical angina (2 pts), atypical (1 pt)
+• EKG: ST deviation (2 pts), LBBB/LVH (1 pt)
+• Age: >75 years (2 pts), 65-75 (1 pt)
+• Risk factors: >3 factors (2 pts), 1-2 factors (1 pt)
+• Troponin: >3x normal (2 pts), 1-3x normal (1 pt)
+
+<strong>🏥 Disposition:</strong>
+• STEMI: Activate cath lab immediately
+• NSTEMI: Cardiology consult, heparin if no bleeding risk
+• High-risk unstable angina: Admit to CCU
+• Low-risk: Consider observation unit vs discharge`
+                    }
+                ]
+            }
+        };
+
+        function init() {
+            updateTime();
+            setInterval(updateTime, 1000);
+            renderProtocols();
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString('he-IL', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function renderProtocols() {
+            const protocolList = document.getElementById('protocolList');
+            const severityClass = {
+                'emergency': 'bg-red-700 text-red-100',
+                'urgent': 'bg-yellow-700 text-yellow-100',
+                'routine': 'bg-green-700 text-green-100'
+            };
+
+            const protocolCards = Object.keys(protocols).map(key => {
+                const protocol = protocols[key];
+                return `
+                    <div onclick="showScenario('${key}')" class="protocol-card ${protocol.severity} bg-gray-700 rounded-lg p-4 hover:bg-gray-600">
+                        <h3 class="font-bold text-lg mb-2">${protocol.title}</h3>
+                        <span class="px-2 py-1 rounded-full text-xs font-medium ${severityClass[protocol.severity]}">
+                            ${protocol.severity.toUpperCase()}
+                        </span>
+                        <p class="text-gray-300 text-sm mt-2">${protocol.steps.length} step protocol</p>
+                    </div>
+                `;
+            }).join('');
+
+            protocolList.innerHTML = protocolCards;
+        }
+
+        function showScenario(scenarioKey) {
+            const protocol = protocols[scenarioKey];
+            if (!protocol) {
+                alert('Protocol not found');
+                return;
+            }
+
+            document.getElementById('protocolTitle').textContent = protocol.title;
+
+            const stepsHtml = protocol.steps.map(step => `
+                <div class="mb-6 p-4 bg-gray-700 rounded-lg">
+                    <h4 class="font-bold text-lg text-yellow-400 mb-3">${step.title}</h4>
+                    <div class="text-gray-300 space-y-2" style="white-space: pre-line;">
+                        ${step.content}
+                    </div>
+                </div>
+            `).join('');
+
+            const severityText = {
+                emergency: '🚨 EMERGENCY',
+                urgent: '⚠️ URGENT',
+                routine: '✅ ROUTINE'
+            };
+
+            document.getElementById('protocolContent').innerHTML = `
+                <div class="mb-4 p-3 bg-red-900 rounded border-l-4 border-red-500">
+                    <p class="text-red-200 font-medium">
+                        ${severityText[protocol.severity]} Protocol
+                    </p>
+                </div>
+                ${stepsHtml}
+                <div class="mt-6 p-4 bg-blue-900 rounded-lg border border-blue-700">
+                    <h4 class="font-bold text-blue-200 mb-2">📞 When to Call Senior/Consultant:</h4>
+                    <ul class="text-blue-300 text-sm space-y-1">
+                        <li>• Any uncertainty in diagnosis or management</li>
+                        <li>• Patient deteriorating despite initial management</li>
+                        <li>• Family concerns or communication issues</li>
+                        <li>• Need for admission or higher level of care</li>
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('protocolModal').classList.remove('hidden');
+        }
+
+        function closeProtocolModal() {
+            document.getElementById('protocolModal').classList.add('hidden');
+        }
+
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

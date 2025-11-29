@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מנהל תרופות חכם - AI Medication Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); }
+        .drug-card { transition: all 0.3s ease; }
+        .drug-card:hover { transform: translateY(-2px); }
+        .risk-high { border-right: 4px solid #dc2626; }
+        .risk-medium { border-right: 4px solid #f59e0b; }
+        .risk-low { border-right: 4px solid #10b981; }
+        @media print { .no-print { display: none !important; } }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto p-4 max-w-6xl">
+        <!-- Header -->
+        <header class="gradient-header text-white rounded-xl p-6 mb-6 shadow-lg">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                        <span class="text-4xl">💊</span>
+                        מנהל תרופות חכם
+                    </h1>
+                    <p class="text-red-100 mt-1">Beers Criteria | STOPP/START | AI Drug Interactions</p>
+                </div>
+                <div class="flex gap-2 no-print">
+                    <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-red-700 rounded-lg hover:bg-gray-100 text-sm font-medium">
+                        דף הבית
+                    </button>
+                    <button onclick="exportReport()" class="px-4 py-2 bg-red-800 text-white rounded-lg hover:bg-red-900 text-sm font-medium">
+                        ייצא דוח
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Patient Info -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">פרטי מטופל</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <input type="text" id="patient-name" placeholder="שם המטופל" class="px-4 py-2 border rounded-lg">
+                <input type="number" id="patient-age" placeholder="גיל" class="px-4 py-2 border rounded-lg" onchange="checkAgeWarnings()">
+                <input type="number" id="patient-crcl" placeholder="CrCl (mL/min)" class="px-4 py-2 border rounded-lg" onchange="checkRenalWarnings()">
+                <select id="patient-frailty" class="px-4 py-2 border rounded-lg">
+                    <option value="">רמת שבריריות</option>
+                    <option value="fit">Fit - חזק</option>
+                    <option value="vulnerable">Vulnerable - פגיע</option>
+                    <option value="frail">Frail - שברירי</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                    <label class="text-sm text-gray-600">מחלות רקע</label>
+                    <input type="text" id="comorbidities" placeholder="סוכרת, יל"ד, CHF..." class="w-full px-4 py-2 border rounded-lg mt-1">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-600">אלרגיות</label>
+                    <input type="text" id="allergies" placeholder="פניצילין, סולפה..." class="w-full px-4 py-2 border rounded-lg mt-1">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-600">משקל (ק"ג)</label>
+                    <input type="number" id="patient-weight" placeholder="70" class="w-full px-4 py-2 border rounded-lg mt-1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Medication -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">הוספת תרופה</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <input type="text" id="drug-name" placeholder="שם התרופה" class="px-4 py-2 border rounded-lg" list="drug-suggestions">
+                <datalist id="drug-suggestions">
+                    <option value="Aspirin"></option>
+                    <option value="Clopidogrel"></option>
+                    <option value="Warfarin"></option>
+                    <option value="Apixaban"></option>
+                    <option value="Rivaroxaban"></option>
+                    <option value="Metoprolol"></option>
+                    <option value="Amlodipine"></option>
+                    <option value="Lisinopril"></option>
+                    <option value="Losartan"></option>
+                    <option value="Furosemide"></option>
+                    <option value="Hydrochlorothiazide"></option>
+                    <option value="Metformin"></option>
+                    <option value="Glimepiride"></option>
+                    <option value="Insulin"></option>
+                    <option value="Atorvastatin"></option>
+                    <option value="Omeprazole"></option>
+                    <option value="Pantoprazole"></option>
+                    <option value="Diazepam"></option>
+                    <option value="Lorazepam"></option>
+                    <option value="Zolpidem"></option>
+                    <option value="Oxybutynin"></option>
+                    <option value="Diphenhydramine"></option>
+                    <option value="Amitriptyline"></option>
+                    <option value="Quetiapine"></option>
+                    <option value="Haloperidol"></option>
+                    <option value="Donepezil"></option>
+                    <option value="Memantine"></option>
+                    <option value="Gabapentin"></option>
+                    <option value="Pregabalin"></option>
+                    <option value="Tramadol"></option>
+                    <option value="Morphine"></option>
+                </datalist>
+                <input type="text" id="drug-dose" placeholder="מינון (למשל 5mg)" class="px-4 py-2 border rounded-lg">
+                <select id="drug-frequency" class="px-4 py-2 border rounded-lg">
+                    <option value="QD">פעם ביום (QD)</option>
+                    <option value="BID">פעמיים ביום (BID)</option>
+                    <option value="TID">3 פעמים ביום (TID)</option>
+                    <option value="QID">4 פעמים ביום (QID)</option>
+                    <option value="PRN">לפי צורך (PRN)</option>
+                    <option value="QHS">לפני השינה (QHS)</option>
+                    <option value="QWeek">פעם בשבוע</option>
+                </select>
+                <input type="text" id="drug-indication" placeholder="התוויה" class="px-4 py-2 border rounded-lg">
+                <button onclick="addMedication()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                    הוסף
+                </button>
+            </div>
+        </div>
+
+        <!-- Medication List -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold text-gray-800">רשימת תרופות (<span id="med-count">0</span>)</h2>
+                <div class="flex gap-2 no-print">
+                    <button onclick="checkAllWarnings()" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 text-sm">
+                        🔍 בדוק אזהרות
+                    </button>
+                    <button onclick="askAI()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm">
+                        🤖 שאל AI
+                    </button>
+                    <button onclick="clearAllMeds()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm">
+                        נקה הכל
+                    </button>
+                </div>
+            </div>
+            <div id="medication-list" class="space-y-3">
+                <p class="text-gray-500 text-center py-8">אין תרופות ברשימה. הוסף תרופה למעלה.</p>
+            </div>
+        </div>
+
+        <!-- Warnings Panel -->
+        <div id="warnings-panel" class="bg-white rounded-xl shadow-lg p-6 mb-6 hidden">
+            <h2 class="text-lg font-bold text-red-700 mb-4 flex items-center gap-2">
+                <span class="text-2xl">⚠️</span>
+                אזהרות והתראות
+            </h2>
+            <div id="warnings-content" class="space-y-4"></div>
+        </div>
+
+        <!-- AI Analysis Panel -->
+        <div id="ai-panel" class="bg-white rounded-xl shadow-lg p-6 mb-6 hidden">
+            <h2 class="text-lg font-bold text-purple-700 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🤖</span>
+                ניתוח AI
+            </h2>
+            <div id="ai-content" class="space-y-4"></div>
+        </div>
+
+        <!-- Quick Reference: Beers Criteria -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="text-2xl">🍺</span>
+                AGS Beers Criteria - תרופות להימנע
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="p-4 bg-red-50 rounded-lg">
+                    <h3 class="font-semibold text-red-800">CNS - מערכת עצבים</h3>
+                    <ul class="text-sm text-red-700 mt-2 space-y-1">
+                        <li>• Benzodiazepines (Diazepam, Lorazepam)</li>
+                        <li>• Z-drugs (Zolpidem, Zopiclone)</li>
+                        <li>• Antipsychotics (מניעת דמנציה)</li>
+                        <li>• TCAs (Amitriptyline, Nortriptyline)</li>
+                        <li>• First-gen antihistamines</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-orange-50 rounded-lg">
+                    <h3 class="font-semibold text-orange-800">אנטיכולינרגיות</h3>
+                    <ul class="text-sm text-orange-700 mt-2 space-y-1">
+                        <li>• Oxybutynin, Tolterodine</li>
+                        <li>• Diphenhydramine</li>
+                        <li>• Promethazine</li>
+                        <li>• Chlorpheniramine</li>
+                        <li>• Scopolamine</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="font-semibold text-yellow-800">לב וכלי דם</h3>
+                    <ul class="text-sm text-yellow-700 mt-2 space-y-1">
+                        <li>• Digoxin >0.125mg (אם אפשר)</li>
+                        <li>• Nifedipine IR</li>
+                        <li>• Alpha-blockers (Doxazosin)</li>
+                        <li>• Amiodarone (first-line)</li>
+                        <li>• Dronedarone עם CHF</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-lg">
+                    <h3 class="font-semibold text-purple-800">כאב ודלקת</h3>
+                    <ul class="text-sm text-purple-700 mt-2 space-y-1">
+                        <li>• NSAIDs (Ibuprofen, Diclofenac)</li>
+                        <li>• Indomethacin</li>
+                        <li>• Ketorolac</li>
+                        <li>• Meperidine</li>
+                        <li>• Muscle relaxants</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold text-blue-800">GI - מערכת עיכול</h3>
+                    <ul class="text-sm text-blue-700 mt-2 space-y-1">
+                        <li>• PPIs >8 weeks (ללא התוויה)</li>
+                        <li>• Metoclopramide</li>
+                        <li>• Mineral oil</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-green-50 rounded-lg">
+                    <h3 class="font-semibold text-green-800">אנדוקריני</h3>
+                    <ul class="text-sm text-green-700 mt-2 space-y-1">
+                        <li>• Sulfonylureas ארוכות (Glibenclamide)</li>
+                        <li>• Sliding scale insulin (בקהילה)</li>
+                        <li>• Megestrol</li>
+                        <li>• Growth hormone</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Integration Links -->
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+            <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">🔗</span>
+                אינטגרציות AI לבדיקת תרופות
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://www.drugs.com/drug_interactions.html" target="_blank"
+                   class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
+                    <div class="text-2xl mb-2">💊</div>
+                    <div class="font-medium">Drugs.com</div>
+                    <div class="text-xs text-white/80">Interaction Checker</div>
+                </a>
+                <a href="https://openevidence.com/search?q=drug%20interactions%20elderly" target="_blank"
+                   class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
+                    <div class="text-2xl mb-2">🔬</div>
+                    <div class="font-medium">OpenEvidence</div>
+                    <div class="text-xs text-white/80">Evidence-based</div>
+                </a>
+                <a href="https://www.epocrates.com/online/drugs" target="_blank"
+                   class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
+                    <div class="text-2xl mb-2">📱</div>
+                    <div class="font-medium">Epocrates</div>
+                    <div class="text-xs text-white/80">Drug Reference</div>
+                </a>
+                <a href="https://www.lexicomp.com" target="_blank"
+                   class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
+                    <div class="text-2xl mb-2">📚</div>
+                    <div class="font-medium">Lexicomp</div>
+                    <div class="text-xs text-white/80">Clinical Info</div>
+                </a>
+            </div>
+        </div>
+
+        <footer class="text-center text-gray-500 mt-8 pb-4">
+            <a href="../index.html" class="hover:text-gray-700">חזרה לדף הבית</a>
+        </footer>
+    </div>
+
+    <script>
+        let medications = JSON.parse(localStorage.getItem('geriatricMeds') || '[]');
+
+        // Beers Criteria Database (simplified)
+        const beersCriteria = {
+            'diazepam': { risk: 'high', reason: 'Increased risk of falls, cognitive impairment, delirium', alternative: 'Consider non-pharmacologic sleep hygiene, if needed short-acting: Lorazepam low dose' },
+            'lorazepam': { risk: 'medium', reason: 'Benzodiazepine - risk of falls, sedation', alternative: 'Use lowest dose, shortest duration' },
+            'zolpidem': { risk: 'high', reason: 'Z-drug - similar risks to benzodiazepines, ER visits', alternative: 'Sleep hygiene, Melatonin, Trazodone low dose' },
+            'diphenhydramine': { risk: 'high', reason: 'Highly anticholinergic - confusion, urinary retention, constipation', alternative: 'Second-gen antihistamines: Loratadine, Cetirizine' },
+            'oxybutynin': { risk: 'high', reason: 'Anticholinergic - cognitive decline, delirium', alternative: 'Mirabegron, behavioral therapy' },
+            'amitriptyline': { risk: 'high', reason: 'TCA - highly anticholinergic, sedating', alternative: 'SSRI, SNRI, Nortriptyline lower dose' },
+            'nortriptyline': { risk: 'medium', reason: 'TCA - less anticholinergic but still risky', alternative: 'SSRI, SNRI' },
+            'ibuprofen': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment, CV risk', alternative: 'Acetaminophen, Topical NSAIDs' },
+            'diclofenac': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment, CV risk', alternative: 'Acetaminophen, Topical diclofenac' },
+            'naproxen': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment', alternative: 'Acetaminophen' },
+            'glibenclamide': { risk: 'high', reason: 'Long-acting sulfonylurea - severe hypoglycemia', alternative: 'Glimepiride, Gliclazide, Metformin' },
+            'glyburide': { risk: 'high', reason: 'Long-acting sulfonylurea - severe hypoglycemia', alternative: 'Shorter-acting sulfonylureas or other classes' },
+            'metoclopramide': { risk: 'high', reason: 'EPS, tardive dyskinesia risk increases with age', alternative: 'Domperidone (with caution), dietary modifications' },
+            'digoxin': { risk: 'medium', reason: 'Toxicity risk if >0.125mg/day, monitor levels', alternative: 'Lower dose, rate control alternatives' },
+            'nifedipine': { risk: 'high', reason: 'Immediate release - hypotension, falls', alternative: 'Extended-release CCBs: Amlodipine' },
+            'doxazosin': { risk: 'high', reason: 'Alpha-blocker - orthostatic hypotension, falls', alternative: 'Tamsulosin if for BPH, other antihypertensives' },
+            'quetiapine': { risk: 'high', reason: 'Antipsychotic in dementia - increased mortality', alternative: 'Non-pharmacologic approaches first' },
+            'haloperidol': { risk: 'high', reason: 'Antipsychotic - EPS, falls, mortality in dementia', alternative: 'Low dose, short duration if absolutely needed' },
+            'omeprazole': { risk: 'medium', reason: 'PPI >8 weeks without indication - C. diff, fractures, B12 deficiency', alternative: 'H2 blockers, step-down therapy' },
+            'pantoprazole': { risk: 'medium', reason: 'PPI - same risks as omeprazole', alternative: 'Review indication, consider discontinuation' },
+            'tramadol': { risk: 'medium', reason: 'Seizure risk, serotonin syndrome, falls', alternative: 'Acetaminophen, careful opioid selection' },
+            'meperidine': { risk: 'high', reason: 'Neurotoxic metabolite, seizures', alternative: 'Other opioids if needed' },
+            'promethazine': { risk: 'high', reason: 'Highly anticholinergic, sedating', alternative: 'Ondansetron for nausea' }
+        };
+
+        // STOPP Criteria (simplified)
+        const stoppCriteria = {
+            'aspirin_no_indication': 'Aspirin without clear CV indication',
+            'ppi_no_indication': 'PPI without peptic ulcer, GERD, or GI bleeding risk',
+            'duplicate_therapy': 'Duplicate drug classes',
+            'nsaid_with_anticoag': 'NSAID with anticoagulant - high bleeding risk',
+            'anticholinergic_with_dementia': 'Anticholinergic with cognitive impairment'
+        };
+
+        function addMedication() {
+            const name = document.getElementById('drug-name').value.trim();
+            const dose = document.getElementById('drug-dose').value.trim();
+            const frequency = document.getElementById('drug-frequency').value;
+            const indication = document.getElementById('drug-indication').value.trim();
+
+            if (!name) {
+                alert('נא להזין שם תרופה');
+                return;
+            }
+
+            const med = {
+                id: Date.now(),
+                name: name,
+                dose: dose,
+                frequency: frequency,
+                indication: indication,
+                addedAt: new Date().toISOString()
+            };
+
+            medications.push(med);
+            saveMedications();
+            renderMedications();
+            clearInputs();
+            checkSingleMedWarning(med);
+        }
+
+        function clearInputs() {
+            document.getElementById('drug-name').value = '';
+            document.getElementById('drug-dose').value = '';
+            document.getElementById('drug-indication').value = '';
+        }
+
+        function removeMedication(id) {
+            medications = medications.filter(m => m.id !== id);
+            saveMedications();
+            renderMedications();
+        }
+
+        function saveMedications() {
+            localStorage.setItem('geriatricMeds', JSON.stringify(medications));
+        }
+
+        function renderMedications() {
+            const container = document.getElementById('medication-list');
+            document.getElementById('med-count').textContent = medications.length;
+
+            if (medications.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">אין תרופות ברשימה. הוסף תרופה למעלה.</p>';
+                return;
+            }
+
+            container.innerHTML = medications.map(med => {
+                const beersInfo = beersCriteria[med.name.toLowerCase()];
+                const riskClass = beersInfo ? (beersInfo.risk === 'high' ? 'risk-high' : 'risk-medium') : 'risk-low';
+
+                return `
+                    <div class="drug-card bg-gray-50 rounded-lg p-4 ${riskClass}">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-semibold text-gray-800 text-lg">${med.name}</div>
+                                <div class="text-sm text-gray-600">${med.dose} - ${med.frequency}</div>
+                                ${med.indication ? `<div class="text-sm text-gray-500">התוויה: ${med.indication}</div>` : ''}
+                                ${beersInfo ? `
+                                    <div class="mt-2 p-2 ${beersInfo.risk === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'} rounded text-sm">
+                                        <strong>⚠️ Beers:</strong> ${beersInfo.reason}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <button onclick="removeMedication(${med.id})" class="text-red-500 hover:text-red-700 text-xl no-print">×</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function checkSingleMedWarning(med) {
+            const beersInfo = beersCriteria[med.name.toLowerCase()];
+            if (beersInfo && beersInfo.risk === 'high') {
+                alert(`⚠️ אזהרה - ${med.name}:\n${beersInfo.reason}\n\nחלופה מומלצת: ${beersInfo.alternative}`);
+            }
+        }
+
+        function checkAllWarnings() {
+            const warnings = [];
+            const age = parseInt(document.getElementById('patient-age').value) || 0;
+            const crcl = parseInt(document.getElementById('patient-crcl').value) || 999;
+
+            // Check Beers criteria
+            medications.forEach(med => {
+                const beersInfo = beersCriteria[med.name.toLowerCase()];
+                if (beersInfo) {
+                    warnings.push({
+                        type: 'beers',
+                        severity: beersInfo.risk,
+                        drug: med.name,
+                        message: beersInfo.reason,
+                        alternative: beersInfo.alternative
+                    });
+                }
+            });
+
+            // Check polypharmacy
+            if (medications.length >= 5) {
+                warnings.push({
+                    type: 'polypharmacy',
+                    severity: medications.length >= 10 ? 'high' : 'medium',
+                    message: `פוליפרמציה: ${medications.length} תרופות. שקול deprescribing.`
+                });
+            }
+
+            // Check anticholinergic burden
+            const anticholinergics = ['diphenhydramine', 'oxybutynin', 'amitriptyline', 'promethazine', 'chlorpheniramine'];
+            const acbCount = medications.filter(m => anticholinergics.includes(m.name.toLowerCase())).length;
+            if (acbCount >= 2) {
+                warnings.push({
+                    type: 'acb',
+                    severity: 'high',
+                    message: `נטל אנטיכולינרגי גבוה: ${acbCount} תרופות אנטיכולינרגיות. סיכון לדליריום ולירידה קוגניטיבית.`
+                });
+            }
+
+            // Check drug interactions
+            const drugNames = medications.map(m => m.name.toLowerCase());
+
+            // NSAID + Anticoagulant
+            const nsaids = ['ibuprofen', 'diclofenac', 'naproxen', 'aspirin'];
+            const anticoags = ['warfarin', 'apixaban', 'rivaroxaban', 'dabigatran', 'edoxaban'];
+            if (drugNames.some(d => nsaids.includes(d)) && drugNames.some(d => anticoags.includes(d))) {
+                warnings.push({
+                    type: 'interaction',
+                    severity: 'high',
+                    message: 'NSAID + נוגד קרישה: סיכון גבוה מאוד לדימום GI!'
+                });
+            }
+
+            // Dual antiplatelet + anticoagulant
+            const antiplatelets = ['aspirin', 'clopidogrel', 'prasugrel', 'ticagrelor'];
+            const hasAntiplatelet = drugNames.filter(d => antiplatelets.includes(d)).length;
+            const hasAnticoag = drugNames.some(d => anticoags.includes(d));
+            if (hasAntiplatelet >= 2 || (hasAntiplatelet >= 1 && hasAnticoag)) {
+                warnings.push({
+                    type: 'interaction',
+                    severity: 'high',
+                    message: 'טיפול משולש או כפול אנטי-טרומבוטי: סיכון דימום גבוה. האם יש התוויה ברורה?'
+                });
+            }
+
+            // Renal dosing
+            if (crcl < 30) {
+                const renalDrugs = medications.filter(m =>
+                    ['metformin', 'gabapentin', 'pregabalin', 'apixaban', 'rivaroxaban', 'dabigatran'].includes(m.name.toLowerCase())
+                );
+                renalDrugs.forEach(drug => {
+                    warnings.push({
+                        type: 'renal',
+                        severity: 'high',
+                        drug: drug.name,
+                        message: `${drug.name} עם CrCl < 30: נדרשת התאמת מינון או הפסקה!`
+                    });
+                });
+            }
+
+            displayWarnings(warnings);
+        }
+
+        function displayWarnings(warnings) {
+            const panel = document.getElementById('warnings-panel');
+            const content = document.getElementById('warnings-content');
+
+            if (warnings.length === 0) {
+                panel.classList.add('hidden');
+                alert('✅ לא נמצאו אזהרות משמעותיות');
+                return;
+            }
+
+            panel.classList.remove('hidden');
+
+            content.innerHTML = warnings.map(w => {
+                const bgColor = w.severity === 'high' ? 'bg-red-50 border-red-200' : 'bg-yellow-50 border-yellow-200';
+                const textColor = w.severity === 'high' ? 'text-red-700' : 'text-yellow-700';
+
+                return `
+                    <div class="p-4 ${bgColor} border rounded-lg">
+                        <div class="font-semibold ${textColor}">
+                            ${w.severity === 'high' ? '🔴' : '🟡'} ${w.drug || w.type.toUpperCase()}
+                        </div>
+                        <div class="text-sm mt-1 ${textColor}">${w.message}</div>
+                        ${w.alternative ? `<div class="text-sm mt-2 text-green-700">💡 חלופה: ${w.alternative}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function askAI() {
+            if (medications.length === 0) {
+                alert('נא להוסיף תרופות לרשימה קודם');
+                return;
+            }
+
+            const age = document.getElementById('patient-age').value || 'לא צוין';
+            const crcl = document.getElementById('patient-crcl').value || 'לא צוין';
+            const comorbidities = document.getElementById('comorbidities').value || 'לא צוין';
+
+            const medList = medications.map(m => `${m.name} ${m.dose} ${m.frequency}`).join(', ');
+
+            const query = encodeURIComponent(
+                `[Geriatric Medication Review]\n` +
+                `Patient: Age ${age}, CrCl ${crcl}\n` +
+                `Comorbidities: ${comorbidities}\n` +
+                `Medications: ${medList}\n\n` +
+                `Please review this medication list for:\n` +
+                `1. Beers Criteria concerns\n` +
+                `2. Drug-drug interactions\n` +
+                `3. Renal dosing adjustments needed\n` +
+                `4. Anticholinergic burden\n` +
+                `5. Deprescribing opportunities\n` +
+                `6. Missing medications (START criteria)`
+            );
+
+            // Show AI panel
+            const aiPanel = document.getElementById('ai-panel');
+            const aiContent = document.getElementById('ai-content');
+            aiPanel.classList.remove('hidden');
+
+            aiContent.innerHTML = `
+                <div class="p-4 bg-purple-50 rounded-lg">
+                    <p class="text-purple-700">🤖 פותח מנועי AI לניתוח רשימת התרופות...</p>
+                    <div class="mt-4 grid grid-cols-2 gap-4">
+                        <a href="https://openevidence.com/search?q=${query}" target="_blank"
+                           class="p-3 bg-blue-100 hover:bg-blue-200 rounded-lg text-center text-blue-700">
+                            🔬 OpenEvidence
+                        </a>
+                        <a href="https://chat.openai.com/?q=${query}" target="_blank"
+                           class="p-3 bg-green-100 hover:bg-green-200 rounded-lg text-center text-green-700">
+                            💚 ChatGPT
+                        </a>
+                        <a href="https://claude.ai/new?q=${query}" target="_blank"
+                           class="p-3 bg-orange-100 hover:bg-orange-200 rounded-lg text-center text-orange-700">
+                            🧡 Claude
+                        </a>
+                        <a href="https://www.perplexity.ai/search?q=${query}" target="_blank"
+                           class="p-3 bg-purple-100 hover:bg-purple-200 rounded-lg text-center text-purple-700">
+                            🔮 Perplexity
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            // Open OpenEvidence by default
+            window.open(`https://openevidence.com/search?q=${query}`, '_blank');
+        }
+
+        function clearAllMeds() {
+            if (confirm('האם למחוק את כל התרופות?')) {
+                medications = [];
+                saveMedications();
+                renderMedications();
+                document.getElementById('warnings-panel').classList.add('hidden');
+                document.getElementById('ai-panel').classList.add('hidden');
+            }
+        }
+
+        function exportReport() {
+            const name = document.getElementById('patient-name').value || 'לא צוין';
+            const age = document.getElementById('patient-age').value || 'לא צוין';
+            const crcl = document.getElementById('patient-crcl').value || 'לא צוין';
+
+            let report = `דוח תרופות - ${new Date().toLocaleDateString('he-IL')}\n`;
+            report += `==========================================\n\n`;
+            report += `מטופל: ${name}\n`;
+            report += `גיל: ${age}\n`;
+            report += `CrCl: ${crcl}\n\n`;
+            report += `רשימת תרופות (${medications.length}):\n`;
+            report += `------------------------------------------\n`;
+
+            medications.forEach((med, i) => {
+                report += `${i + 1}. ${med.name} ${med.dose} ${med.frequency}\n`;
+                if (med.indication) report += `   התוויה: ${med.indication}\n`;
+                const beers = beersCriteria[med.name.toLowerCase()];
+                if (beers) {
+                    report += `   ⚠️ Beers: ${beers.reason}\n`;
+                    report += `   💡 חלופה: ${beers.alternative}\n`;
+                }
+            });
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(report).then(() => {
+                alert('הדוח הועתק ללוח!');
+            });
+        }
+
+        function checkAgeWarnings() {
+            const age = parseInt(document.getElementById('patient-age').value);
+            if (age >= 85) {
+                alert('⚠️ מטופל מבוגר מאוד (85+)\nשקול:\n• הפחתת מינונים\n• הפסקת תרופות מיותרות\n• יעדים מתונים יותר לסוכרת ולחץ דם');
+            }
+        }
+
+        function checkRenalWarnings() {
+            const crcl = parseInt(document.getElementById('patient-crcl').value);
+            if (crcl < 30) {
+                alert('⚠️ אי-ספיקת כליות משמעותית (CrCl < 30)\nנדרשות התאמות מינון לתרופות רבות!');
+            } else if (crcl < 60) {
+                alert('⚠️ ירידה בתפקוד כלייתי (CrCl < 60)\nשקול התאמת מינון לתרופות נבחרות');
+            }
+        }
+
+        // Initialize
+        renderMedications();
+    </script>
+</body>
+</html>

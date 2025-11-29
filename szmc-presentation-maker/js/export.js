@@ -1121,6 +1121,297 @@ class PresentationExporter {
         // Use browser print with PDF destination
         window.print();
     }
+
+    // Enhanced JSON export with metadata
+    exportToJSON(presentation) {
+        const exportData = {
+            ...presentation,
+            exportedAt: new Date().toISOString(),
+            version: '2.0',
+            language: window.i18n ? i18n.getLanguage() : 'en',
+            metadata: {
+                slideCount: presentation.slides.length,
+                presentationType: presentation.type,
+                estimatedDuration: Math.round(presentation.slides.length * 1.5) + ' minutes'
+            }
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${presentation.title.replace(/[^a-z0-9\u0590-\u05FF]/gi, '_')}.json`;
+        a.click();
+
+        URL.revokeObjectURL(url);
+
+        if (typeof showToast === 'function') {
+            const msg = window.i18n ? i18n.t('presentationSaved') : 'Presentation saved successfully!';
+            showToast(msg);
+        }
+    }
+
+    // Import JSON presentation
+    importFromJSON(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+
+                    // Validate required fields
+                    if (!data.slides || !Array.isArray(data.slides)) {
+                        reject(new Error('Invalid presentation file: missing slides array'));
+                        return;
+                    }
+
+                    // Ensure all slides have required properties
+                    data.slides = data.slides.map((slide, index) => ({
+                        id: slide.id || `slide-${Date.now()}-${index}`,
+                        type: slide.type || 'content',
+                        data: slide.data || {},
+                        order: typeof slide.order === 'number' ? slide.order : index
+                    }));
+
+                    resolve(data);
+                } catch (error) {
+                    reject(new Error('Failed to parse presentation file: ' + error.message));
+                }
+            };
+
+            reader.onerror = () => reject(new Error('Failed to read file'));
+            reader.readAsText(file);
+        });
+    }
+
+    // Export to RTL-aware HTML
+    async exportToHTMLWithRTL(presentation) {
+        const isRTL = window.i18n && i18n.isRTL();
+        const lang = window.i18n ? i18n.getLanguage() : 'en';
+
+        let html = `<!DOCTYPE html>
+<html lang="${lang}" dir="${isRTL ? 'rtl' : 'ltr'}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${this.escapeHtml(presentation.title)}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        ${await this.getStyles()}
+        ${isRTL ? await this.getRTLStyles() : ''}
+        body {
+            background: #1e293b;
+            margin: 0;
+            padding: 20px;
+            direction: ${isRTL ? 'rtl' : 'ltr'};
+            font-family: ${isRTL ? "'Heebo', 'Inter', sans-serif" : "'Inter', sans-serif"};
+        }
+        .slide-container { max-width: 960px; margin: 20px auto; }
+        .slide { margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        @media print {
+            body { background: white; padding: 0; }
+            .slide { page-break-after: always; margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body class="${isRTL ? 'rtl' : 'ltr'}">
+`;
+
+        for (const slideData of presentation.slides) {
+            const template = SlideTemplates[slideData.type];
+            if (template) {
+                html += `<div class="slide-container">${template.render(slideData.data)}</div>\n`;
+            }
+        }
+
+        html += `</body></html>`;
+
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${presentation.title.replace(/[^a-z0-9\u0590-\u05FF]/gi, '_')}.html`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    async getRTLStyles() {
+        try {
+            const response = await fetch('css/rtl.css');
+            return await response.text();
+        } catch (e) {
+            console.warn('Could not load RTL styles');
+            return '';
+        }
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Convert JSON to formatted HTML report
+    jsonToHTMLReport(jsonData) {
+        const data = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+        const isRTL = window.i18n && i18n.isRTL();
+
+        let html = `<!DOCTYPE html>
+<html lang="${isRTL ? 'he' : 'en'}" dir="${isRTL ? 'rtl' : 'ltr'}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${this.escapeHtml(data.title || 'Presentation Report')}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: ${isRTL ? "'Heebo', Arial, sans-serif" : "'Inter', Arial, sans-serif"};
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f8fafc;
+            padding: 40px 20px;
+            direction: ${isRTL ? 'rtl' : 'ltr'};
+        }
+        .report-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .report-header {
+            text-align: center;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #1e3a5f;
+            margin-bottom: 32px;
+        }
+        .report-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+        }
+        .report-meta {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .slide-section {
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-${isRTL ? 'right' : 'left'}: 4px solid #3498db;
+        }
+        .slide-number {
+            display: inline-block;
+            background: #1e3a5f;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .slide-type {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 12px;
+        }
+        .slide-content {
+            font-size: 14px;
+            color: #475569;
+        }
+        .slide-content p { margin-bottom: 8px; }
+        .field-group {
+            margin-bottom: 8px;
+        }
+        .field-label {
+            font-weight: 600;
+            color: #1e3a5f;
+            font-size: 13px;
+        }
+        .field-value {
+            color: #334155;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .report-container { box-shadow: none; }
+            .slide-section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <div class="report-header">
+            <h1 class="report-title">${this.escapeHtml(data.title || 'Untitled Presentation')}</h1>
+            <p class="report-meta">
+                ${data.type === 'journal' ? 'Journal Club' : 'Case Presentation'} |
+                ${data.slides ? data.slides.length : 0} slides |
+                Generated: ${new Date().toLocaleDateString()}
+            </p>
+        </div>
+`;
+
+        if (data.slides && Array.isArray(data.slides)) {
+            data.slides.forEach((slide, index) => {
+                const template = SlideTemplates && SlideTemplates[slide.type];
+                const typeName = template ? template.name : slide.type;
+
+                html += `
+        <div class="slide-section">
+            <span class="slide-number">Slide ${index + 1}</span>
+            <h2 class="slide-type">${this.escapeHtml(typeName)}</h2>
+            <div class="slide-content">
+`;
+                // Extract and display slide data
+                if (slide.data) {
+                    Object.entries(slide.data).forEach(([key, value]) => {
+                        if (value && typeof value === 'string' && value.trim()) {
+                            const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                            const cleanValue = value.replace(/<[^>]*>/g, '').trim();
+                            if (cleanValue) {
+                                html += `
+                <div class="field-group">
+                    <span class="field-label">${this.escapeHtml(label)}:</span>
+                    <span class="field-value">${this.escapeHtml(cleanValue)}</span>
+                </div>
+`;
+                            }
+                        }
+                    });
+                }
+
+                html += `
+            </div>
+        </div>
+`;
+            });
+        }
+
+        html += `
+    </div>
+</body>
+</html>`;
+
+        return html;
+    }
+
+    // Download JSON as HTML report
+    downloadJSONAsHTMLReport(jsonData, filename = 'presentation-report.html') {
+        const html = this.jsonToHTMLReport(jsonData);
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
 }
 
 // Create global exporter instance
@@ -1130,11 +1421,18 @@ const exporter = new PresentationExporter();
 async function exportToPPTX() {
     const presentation = editor.getPresentation();
     await exporter.exportToPPTX(presentation);
+    if (typeof showToast === 'function') {
+        showToast('PowerPoint exported successfully!');
+    }
 }
 
 async function exportToHTML() {
     const presentation = editor.getPresentation();
-    await exporter.exportToHTML(presentation);
+    // Use RTL-aware export
+    await exporter.exportToHTMLWithRTL(presentation);
+    if (typeof showToast === 'function') {
+        showToast('HTML exported successfully!');
+    }
 }
 
 function exportToPDF() {
@@ -1142,4 +1440,66 @@ function exportToPDF() {
     setTimeout(() => {
         window.print();
     }, 500);
+}
+
+// Save presentation (JSON export)
+function savePresentation() {
+    const presentation = editor.getPresentation();
+    exporter.exportToJSON(presentation);
+}
+
+// Load presentation from file
+function loadPresentation() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+
+    input.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        try {
+            const data = await exporter.importFromJSON(file);
+            editor.loadPresentation(data);
+
+            if (typeof showToast === 'function') {
+                showToast('Presentation loaded successfully!');
+            }
+
+            // Switch to editor page if not already there
+            document.getElementById('landing-page').classList.remove('active');
+            document.getElementById('editor-page').classList.add('active');
+        } catch (error) {
+            const errorMsg = window.i18n ? i18n.t('errorLoadingPresentation') : 'Error loading presentation: ';
+            alert(errorMsg + error.message);
+        }
+    };
+
+    input.click();
+}
+
+// Convert JSON file to HTML report
+function convertJSONToHTML() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+
+    input.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        try {
+            const data = await exporter.importFromJSON(file);
+            const filename = file.name.replace('.json', '-report.html');
+            exporter.downloadJSONAsHTMLReport(data, filename);
+
+            if (typeof showToast === 'function') {
+                showToast('HTML report generated!');
+            }
+        } catch (error) {
+            alert('Error converting file: ' + error.message);
+        }
+    };
+
+    input.click();
 }
