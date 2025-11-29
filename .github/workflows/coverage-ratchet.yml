@@ -171,9 +171,9 @@ jobs:
             const configPath = path.join(process.cwd(), 'anki', 'pyproject.toml');
             let configContent = fs.readFileSync(configPath, 'utf8');
             
-            // Extract current threshold (fail_under)
-            const thresholdMatch = configContent.match(/fail_under\s*=\s*(\d+)/);
-            const currentThreshold = thresholdMatch ? parseInt(thresholdMatch[1]) : 70;
+            // Extract current threshold (--cov-fail-under)
+            const thresholdMatch = configContent.match(/--cov-fail-under=(\d+)/);
+            const currentThreshold = thresholdMatch ? parseInt(thresholdMatch[1]) : 0;
             
             console.log(`📊 Current coverage: ${coverage}%`);
             console.log(`📏 Current threshold: ${currentThreshold}%`);
@@ -183,10 +183,10 @@ jobs:
             if (coverage >= currentThreshold + increment || forceUpdate) {
               const newThreshold = Math.min(coverage, 100);
               
-              // Update fail_under value
+              // Update --cov-fail-under value
               configContent = configContent.replace(
-                /fail_under\s*=\s*\d+/g,
-                `fail_under = ${newThreshold}`
+                /--cov-fail-under=\d+/g,
+                `--cov-fail-under=${newThreshold}`
               );
               
               fs.writeFileSync(configPath, configContent);
@@ -261,7 +261,7 @@ jobs:
         run: |
           COVERAGE="${{ needs.anki-coverage.outputs.current_coverage }}"
           if [ -n "$COVERAGE" ] && [ "$COVERAGE" -gt 0 ]; then
-            sed -i "s/fail_under = [0-9]*/fail_under = $COVERAGE/" pyproject.toml
+            sed -i "s/--cov-fail-under=[0-9]*/--cov-fail-under=$COVERAGE/" pyproject.toml
             echo "Anki threshold updated to: ${COVERAGE}%"
           fi
       
