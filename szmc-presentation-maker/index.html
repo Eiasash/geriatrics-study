@@ -129,12 +129,42 @@
                     <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme">
                         <i class="fas fa-palette"></i>
                     </button>
-                    <button class="btn-secondary" onclick="savePresentation()">
-                        <i class="fas fa-save"></i> Save
-                    </button>
-                    <button class="btn-secondary" onclick="exportToPPTX()">
-                        <i class="fas fa-file-powerpoint"></i> Export PPTX
-                    </button>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('save-dropdown')">
+                            <i class="fas fa-save"></i> Save <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="save-dropdown" class="dropdown-menu">
+                            <button onclick="savePresentation(); closeDropdowns()"><i class="fas fa-save"></i> Save Local</button>
+                            <button onclick="CloudSave.local.save(getPresentationData()); closeDropdowns()"><i class="fas fa-history"></i> Save Backup</button>
+                            <hr>
+                            <button onclick="CloudSave.googleDrive.save(getPresentationData()); closeDropdowns()"><i class="fab fa-google-drive"></i> Google Drive</button>
+                            <button onclick="CloudSave.dropbox.save(getPresentationData()); closeDropdowns()"><i class="fab fa-dropbox"></i> Dropbox</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('export-dropdown')">
+                            <i class="fas fa-download"></i> Export <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="export-dropdown" class="dropdown-menu">
+                            <button onclick="exportToPowerPoint(); closeDropdowns()"><i class="fas fa-file-powerpoint"></i> PowerPoint (.pptx)</button>
+                            <button onclick="exportToPDF(); closeDropdowns()"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button onclick="exportToHTML(); closeDropdowns()"><i class="fas fa-code"></i> HTML</button>
+                            <button onclick="exportToJSON(); closeDropdowns()"><i class="fas fa-file-code"></i> JSON</button>
+                            <hr>
+                            <button onclick="TemplateSharing.exportTemplate(getPresentationData()); closeDropdowns()"><i class="fas fa-file-export"></i> Export Template</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('share-dropdown')">
+                            <i class="fas fa-share-alt"></i> Share <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="share-dropdown" class="dropdown-menu">
+                            <button onclick="TemplateSharing.copyShareLink(getPresentationData()); closeDropdowns()"><i class="fas fa-link"></i> Copy Link</button>
+                            <button onclick="startCollaboration(); closeDropdowns()"><i class="fas fa-users"></i> Start Collaboration</button>
+                            <button onclick="joinCollaboration(); closeDropdowns()"><i class="fas fa-sign-in-alt"></i> Join Session</button>
+                        </div>
+                    </div>
+                    <div id="collab-users" class="collab-users-bar"></div>
                     <button class="btn-primary" onclick="showPresentationOptions()">
                         <i class="fas fa-play"></i> Present
                     </button>
@@ -739,6 +769,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/editor.js"></script>
     <script src="js/presentation.js"></script>
     <script src="js/export.js"></script>
+    <script src="js/advanced-export.js"></script>
     <script src="js/ai-assistant.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mobile.js"></script>
@@ -756,6 +787,40 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
             const heBtn = document.getElementById('lang-he');
             if (enBtn) enBtn.classList.toggle('active', lang === 'en');
             if (heBtn) heBtn.classList.toggle('active', lang === 'he');
+        }
+
+        // Dropdown functions
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id).parentElement;
+            const wasOpen = dropdown.classList.contains('open');
+            closeDropdowns();
+            if (!wasOpen) dropdown.classList.add('open');
+        }
+
+        function closeDropdowns() {
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+        }
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) closeDropdowns();
+        });
+
+        // Collaboration helpers
+        function startCollaboration() {
+            const roomId = CollaborativeEditing.createRoom(getPresentationData());
+            const url = CollaborativeEditing.getShareUrl();
+            navigator.clipboard.writeText(url);
+            showToast('Collaboration started! Link copied to clipboard.', 'success');
+        }
+
+        function joinCollaboration() {
+            const roomId = prompt('Enter room ID or paste invite link:');
+            if (roomId) {
+                const id = roomId.includes('room=') ? roomId.split('room=')[1] : roomId;
+                const name = prompt('Enter your name:');
+                CollaborativeEditing.joinRoom(id, name || 'Guest');
+            }
         }
 
         // Initialize language buttons on load
