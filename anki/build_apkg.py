@@ -10,7 +10,7 @@ with open(DATA, 'r', encoding='utf-8') as f:
     topics = json.load(f)
 
 def mk_id(seed):
-    import hashlib
+    """Generate a stable numeric ID from a seed string using MD5 hash."""
     return int(hashlib.md5(seed.encode('utf-8')).hexdigest()[:8], 16)
 
 DECK_ID = mk_id('geriatrics-deck')

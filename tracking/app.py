@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, g
 from flask_cors import CORS
 from datetime import datetime, timedelta
 import sqlite3
@@ -10,8 +10,24 @@ CORS(app)
 
 DB_PATH = Path(__file__).parent / 'progress.db'
 
+
+def get_db():
+    """Get database connection with connection reuse within request context."""
+    if 'db' not in g:
+        g.db = sqlite3.connect(DB_PATH)
+        g.db.row_factory = sqlite3.Row
+    return g.db
+
+
+@app.teardown_appcontext
+def close_db(e=None):
+    """Close database connection at the end of request."""
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
 def init_db():
-    """Initialize database with tracking tables"""
+    """Initialize database with tracking tables and performance indexes"""
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     
@@ -52,6 +68,12 @@ def init_db():
         )
     ''')
     
+    # Add indexes for frequently queried columns (improves query performance)
+    c.execute('CREATE INDEX IF NOT EXISTS idx_progress_topic ON progress(topic)')
+    c.execute('CREATE INDEX IF NOT EXISTS idx_progress_timestamp ON progress(timestamp)')
+    c.execute('CREATE INDEX IF NOT EXISTS idx_progress_score ON progress(score)')
+    c.execute('CREATE INDEX IF NOT EXISTS idx_weak_areas_topic ON weak_areas(topic)')
+    
     conn.commit()
     conn.close()
 
@@ -63,7 +85,7 @@ def track_progress(topic):
     total = data.get('total', 0)
     correct = data.get('correct', 0)
     
-    conn = sqlite3.connect(DB_PATH)
+    conn = get_db()
     c = conn.cursor()
     
     # Insert progress record
@@ -91,7 +113,6 @@ def track_progress(topic):
         ''', (topic,))
     
     conn.commit()
-    conn.close()
     
     return jsonify({
         'status': 'success',
@@ -104,8 +125,7 @@ def track_progress(topic):
 @app.route('/api/weakest-areas', methods=['GET'])
 def get_weakest_areas():
     """Get topics that need the most review"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db()
     c = conn.cursor()
     
     results = c.execute('''
@@ -122,7 +142,6 @@ def get_weakest_areas():
     ''').fetchall()
     
     weak_areas = [dict(row) for row in results]
-    conn.close()
     
     return jsonify({
         'weak_areas': weak_areas,
@@ -134,31 +153,34 @@ def get_study_plan():
     """Generate personalized study plan based on performance"""
     days = request.args.get('days', 7, type=int)
     
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db()
     c = conn.cursor()
     
-    # Get topics not studied recently
-    overdue = c.execute('''
-        SELECT DISTINCT topic 
-        FROM progress 
-        WHERE timestamp < datetime('now', '-3 days')
-        AND topic NOT IN (
-            SELECT topic FROM progress 
-            WHERE timestamp > datetime('now', '-1 day')
-        )
-    ''').fetchall()
-    
-    # Get weak topics
-    weak = c.execute('''
-        SELECT topic, AVG(score) as avg_score
+    # Combined query for both overdue topics and weak topics (more efficient)
+    study_data = c.execute('''
+        SELECT topic, 
+               AVG(score) as avg_score,
+               MAX(timestamp) as last_study,
+               CASE 
+                   WHEN MAX(timestamp) < datetime('now', '-3 days') 
+                        AND topic NOT IN (SELECT topic FROM progress WHERE timestamp > datetime('now', '-1 day'))
+                   THEN 'overdue'
+                   WHEN AVG(score) < 75 THEN 'weak'
+                   ELSE 'normal'
+               END as status
         FROM progress
         GROUP BY topic
-        HAVING avg_score < 75
-        ORDER BY avg_score ASC
+        ORDER BY 
+            CASE 
+                WHEN MAX(timestamp) < datetime('now', '-3 days') THEN 0 
+                WHEN AVG(score) < 75 THEN 1
+                ELSE 2 
+            END,
+            avg_score ASC
     ''').fetchall()
     
-    conn.close()
+    overdue = [row for row in study_data if row['status'] == 'overdue']
+    weak = [row for row in study_data if row['status'] == 'weak']
     
     plan = []
     topics = [
@@ -208,22 +230,20 @@ def get_study_plan():
 @app.route('/api/stats/overview', methods=['GET'])
 def get_stats_overview():
     """Get comprehensive statistics"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = get_db()
     c = conn.cursor()
     
-    # Overall stats
-    total_sessions = c.execute('SELECT COUNT(*) FROM progress').fetchone()[0]
-    avg_score = c.execute('SELECT AVG(score) FROM progress').fetchone()[0] or 0
-    
-    # Recent performance (last 7 days)
-    recent = c.execute('''
-        SELECT AVG(score) as avg, COUNT(*) as count
+    # Combined query for overall stats (more efficient than separate queries)
+    stats = c.execute('''
+        SELECT 
+            COUNT(*) as total_sessions,
+            AVG(score) as avg_score,
+            (SELECT AVG(score) FROM progress WHERE timestamp > datetime('now', '-7 days')) as recent_avg,
+            (SELECT COUNT(*) FROM progress WHERE timestamp > datetime('now', '-7 days')) as recent_count
         FROM progress
-        WHERE timestamp > datetime('now', '-7 days')
     ''').fetchone()
     
-    # Best and worst topics
+    # Get topic performance in single query
     topic_performance = c.execute('''
         SELECT topic, AVG(score) as avg_score, COUNT(*) as attempts
         FROM progress
@@ -231,13 +251,11 @@ def get_stats_overview():
         ORDER BY avg_score DESC
     ''').fetchall()
     
-    conn.close()
-    
     return jsonify({
-        'total_sessions': total_sessions,
-        'overall_average': round(avg_score, 1),
-        'recent_average': round(recent['avg'] or 0, 1),
-        'recent_sessions': recent['count'],
+        'total_sessions': stats['total_sessions'] or 0,
+        'overall_average': round(stats['avg_score'] or 0, 1),
+        'recent_average': round(stats['recent_avg'] or 0, 1),
+        'recent_sessions': stats['recent_count'] or 0,
         'best_topic': dict(topic_performance[0]) if topic_performance else None,
         'worst_topic': dict(topic_performance[-1]) if topic_performance else None,
         'streak_days': calculate_streak()
@@ -256,17 +274,17 @@ def generate_recommendations(weak_areas):
     return recs
 
 def calculate_streak():
-    """Calculate study streak in days"""
-    conn = sqlite3.connect(DB_PATH)
+    """Calculate study streak in days using optimized SQL"""
+    conn = get_db()
     c = conn.cursor()
     
+    # Get distinct study dates in descending order
     dates = c.execute('''
         SELECT DISTINCT DATE(timestamp) as study_date
         FROM progress
         ORDER BY study_date DESC
+        LIMIT 365
     ''').fetchall()
-    
-    conn.close()
     
     if not dates:
         return 0
@@ -279,8 +297,13 @@ def calculate_streak():
         if study_date == expected_date:
             streak += 1
             expected_date -= timedelta(days=1)
-        else:
-            break
+        elif study_date < expected_date:
+            # Allow for starting streak from yesterday if today hasn't been studied yet
+            if streak == 0 and study_date == expected_date - timedelta(days=1):
+                streak = 1
+                expected_date = study_date - timedelta(days=1)
+            else:
+                break
     
     return streak
 

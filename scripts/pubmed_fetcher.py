@@ -11,6 +11,7 @@ from typing import List, Dict
 import xml.etree.ElementTree as ET
 import time
 import hashlib
+import re
 
 class PubMedFetcher:
     def __init__(self):
@@ -113,21 +114,23 @@ class PubMedFetcher:
             return {}
     
     def extract_key_findings(self, abstract: str) -> List[str]:
-        """Extract key findings from abstract using simple patterns"""
+        """Extract key findings from abstract using compiled regex pattern"""
         findings = []
         
-        # Look for conclusion/results patterns
-        patterns = [
-            'concluded that', 'found that', 'demonstrated that',
-            'showed that', 'revealed that', 'suggest that',
-            'indicates that', 'associated with', 'significantly'
-        ]
+        if not abstract:
+            return findings
+        
+        # Use compiled regex for faster matching (compile once, use many times)
+        if not hasattr(self, '_findings_pattern'):
+            self._findings_pattern = re.compile(
+                r'(concluded that|found that|demonstrated that|showed that|'
+                r'revealed that|suggest that|indicates that|associated with|significantly)',
+                re.IGNORECASE
+            )
         
         sentences = abstract.split('. ')
         for sentence in sentences:
-            lower_sent = sentence.lower()
-            if any(pattern in lower_sent for pattern in patterns):
-                # Clean and add if not too long
+            if self._findings_pattern.search(sentence):
                 clean_sent = sentence.strip()
                 if 20 < len(clean_sent) < 200:
                     findings.append(clean_sent)
