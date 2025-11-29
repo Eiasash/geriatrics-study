@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-29 21:23*
+*Generated: 2025-11-29 21:30*
 
 
 ## Delirium (דליריום)
@@ -48,15 +48,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
-- **Authors**: Al Hamad Hanadi, Sathian Brijesh
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
-
 ### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
 - **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
 - **Journal**: BMC geriatrics (2025)
 - **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+
+### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
+- **Authors**: Al Hamad Hanadi, Sathian Brijesh
+- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
+- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
 
 ## Dementia (דמנציה)
