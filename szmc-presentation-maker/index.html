@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1e3a5f">
     <title>SZMC Geriatrics Presentation Maker</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/presentation.css">
     <link rel="stylesheet" href="css/visuals.css">
     <link rel="stylesheet" href="css/resources.css">
     <link rel="stylesheet" href="css/generator.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -19,21 +24,31 @@
             <header class="landing-header">
                 <div class="logo">
                     <i class="fas fa-heartbeat"></i>
-                    <span>SZMC Geriatrics</span>
+                    <span data-i18n="logo">SZMC Geriatrics</span>
+                </div>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English">
+                            <span>EN</span>
+                        </button>
+                        <button class="lang-btn" id="lang-he" onclick="switchLanguage('he')" title="עברית">
+                            <span>עב</span>
+                        </button>
+                    </div>
                 </div>
             </header>
 
             <main class="landing-main">
-                <h1>Presentation Maker</h1>
-                <p class="subtitle">Create professional medical presentations for case reviews and journal clubs</p>
+                <h1 data-i18n="presentationMaker">Presentation Maker</h1>
+                <p class="subtitle" data-i18n="appSubtitle">Create professional medical presentations for case reviews and journal clubs</p>
 
                 <div class="template-grid">
                     <div class="template-card" onclick="selectTemplate('case')">
                         <div class="template-icon">
                             <i class="fas fa-user-injured"></i>
                         </div>
-                        <h3>Case Presentation</h3>
-                        <p>Patient history, physical exam, differentials, workup, diagnosis, and treatment plan</p>
+                        <h3 data-i18n="casePresentation">Case Presentation</h3>
+                        <p data-i18n="casePresentationDesc">Patient history, physical exam, differentials, workup, diagnosis, and treatment plan</p>
                         <ul class="template-features">
                             <li><i class="fas fa-check"></i> 25 slide template</li>
                             <li><i class="fas fa-check"></i> Table of contents & take-home</li>
@@ -46,8 +61,8 @@
                         <div class="template-icon">
                             <i class="fas fa-book-medical"></i>
                         </div>
-                        <h3>Journal Club</h3>
-                        <p>Critical appraisal of medical literature with structured analysis</p>
+                        <h3 data-i18n="journalClub">Journal Club</h3>
+                        <p data-i18n="journalClubDesc">Critical appraisal of medical literature with structured analysis</p>
                         <ul class="template-features">
                             <li><i class="fas fa-check"></i> 20 slide template</li>
                             <li><i class="fas fa-check"></i> PICO & statistical analysis</li>
@@ -60,8 +75,8 @@
                         <div class="template-icon">
                             <i class="fas fa-magic"></i>
                         </div>
-                        <h3>Generate from Text</h3>
-                        <p>Paste your case notes or article and auto-generate a structured presentation</p>
+                        <h3 data-i18n="generateFromText">Generate from Text</h3>
+                        <p data-i18n="generateFromTextDesc">Paste your case notes or article and auto-generate a structured presentation</p>
                         <ul class="template-features">
                             <li><i class="fas fa-check"></i> Auto-detect case vs journal</li>
                             <li><i class="fas fa-check"></i> Extract key information</li>
@@ -714,6 +729,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/templates-extended.js"></script>
     <script src="js/templates-extra.js"></script>
@@ -725,5 +741,34 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/export.js"></script>
     <script src="js/ai-assistant.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mobile.js"></script>
+    <script>
+        // Language switching function
+        function switchLanguage(lang) {
+            if (window.i18n) {
+                i18n.setLanguage(lang);
+                updateLanguageButtons(lang);
+            }
+        }
+
+        function updateLanguageButtons(lang) {
+            const enBtn = document.getElementById('lang-en');
+            const heBtn = document.getElementById('lang-he');
+            if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+            if (heBtn) heBtn.classList.toggle('active', lang === 'he');
+        }
+
+        // Initialize language buttons on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.i18n) {
+                updateLanguageButtons(i18n.getLanguage());
+            }
+        });
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (e) => {
+            updateLanguageButtons(e.detail.lang);
+        });
+    </script>
 </body>
 </html>
