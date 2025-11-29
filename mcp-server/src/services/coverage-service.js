@@ -6,6 +6,10 @@
 
 export class CoverageService {
     constructor() {
+        // Configuration constants
+        this.DEFAULT_THRESHOLD = 50;
+        this.RATCHET_THRESHOLD_BUFFER = 2; // Coverage must exceed threshold by this amount to trigger ratchet
+
         // Default thresholds per component
         this.thresholds = {
             h5p: {
@@ -65,7 +69,7 @@ export class CoverageService {
 
         metrics.forEach(metric => {
             const current = coverage[metric] || 0;
-            const required = threshold[metric] || this.thresholds[component]?.[metric] || 50;
+            const required = threshold[metric] || this.thresholds[component]?.[metric] || this.DEFAULT_THRESHOLD;
             const passing = current >= required;
             
             if (!passing) allPassing = false;
@@ -131,7 +135,7 @@ export class CoverageService {
         
         priorityFiles.forEach(file => {
             const fileCoverage = coverageData[file];
-            if (!fileCoverage || fileCoverage.statements < 50) {
+            if (!fileCoverage || fileCoverage.statements < this.DEFAULT_THRESHOLD) {
                 suggestions.push({
                     file,
                     priority: 'high',
@@ -184,10 +188,10 @@ export class CoverageService {
      */
     getDefaultThreshold(component) {
         return this.thresholds[component] || {
-            branches: 50,
-            functions: 50,
-            lines: 50,
-            statements: 50
+            branches: this.DEFAULT_THRESHOLD,
+            functions: this.DEFAULT_THRESHOLD,
+            lines: this.DEFAULT_THRESHOLD,
+            statements: this.DEFAULT_THRESHOLD
         };
     }
 
@@ -202,8 +206,8 @@ export class CoverageService {
 
         ['branches', 'functions', 'lines', 'statements'].forEach(metric => {
             const current = currentCoverage[metric] || 0;
-            // Only increase if coverage exceeds threshold by at least 2%
-            if (current > currentThreshold[metric] + 2) {
+            // Only increase if coverage exceeds threshold by the buffer amount
+            if (current > currentThreshold[metric] + this.RATCHET_THRESHOLD_BUFFER) {
                 newThreshold[metric] = Math.floor(current);
                 updated = true;
             }

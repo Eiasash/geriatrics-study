@@ -11,6 +11,10 @@ on:
       - 'mcp-server/**'
   workflow_dispatch:
 
+# Default permissions for all jobs
+permissions:
+  contents: read
+
 concurrency:
   group: mcp-server-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

@@ -373,7 +373,7 @@ export class PresentationService {
                 });
             }
 
-            if (/<font-size:\s*(8|9|10)px/i.test(html)) {
+            if (/font-size:\s*(8|9|10)px/i.test(html)) {
                 issues.push({
                     severity: this.SEVERITY.WARNING,
                     title: 'Small font size',

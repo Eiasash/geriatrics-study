@@ -250,10 +250,10 @@ export class SuggestionService {
         
         return `def test_${fn.name}():
     # Arrange
-    input_data = None  # test input
+    test_input = None  # test input
     
     # Act
-    result = ${fn.name}(input_data)
+    result = ${fn.name}(test_input)
     
     # Assert
     assert result is not None`;

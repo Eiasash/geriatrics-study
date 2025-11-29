@@ -207,7 +207,7 @@ export class DependabotService {
     getRules() {
         return {
             ...this.rules,
-            blockedPackages: this.rules.blockedPackages.map(p => p.source)
+            blockedPackages: this.rules.blockedPackages.map(p => p.source || String(p))
         };
     }
 }
