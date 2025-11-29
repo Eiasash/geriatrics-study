@@ -693,6 +693,422 @@ const ExtendedSlideTemplates = {
             </div>
         `,
         defaultData: {}
+    },
+
+    // ==================== NEW VISUAL LAYOUTS ====================
+
+    'quote': {
+        name: 'Quote / Statement',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-quote">
+                <div class="quote-container">
+                    <div class="quote-mark">"</div>
+                    <blockquote contenteditable="true" data-field="quote" data-placeholder="Enter an impactful quote or key statement...">${data.quote || ''}</blockquote>
+                    <div class="quote-attribution">
+                        <span contenteditable="true" data-field="author" data-placeholder="— Author Name">${data.author || ''}</span>
+                        <span class="quote-source" contenteditable="true" data-field="source" data-placeholder="Source, Year">${data.source || ''}</span>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: { quote: '', author: '', source: '' }
+    },
+
+    'big-number': {
+        name: 'Big Number / Statistic',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-big-number">
+                <div class="big-number-container">
+                    <div class="big-number-value" contenteditable="true" data-field="number" data-placeholder="85%">${data.number || ''}</div>
+                    <div class="big-number-label" contenteditable="true" data-field="label" data-placeholder="of elderly patients experience...">${data.label || ''}</div>
+                    <div class="big-number-context" contenteditable="true" data-field="context" data-placeholder="Additional context or source">${data.context || ''}</div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: { number: '', label: '', context: '' }
+    },
+
+    'icon-grid': {
+        name: 'Icon Grid (Features)',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-icon-grid">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Key Features">${data.title || ''}</h2>
+                <div class="icon-grid-container">
+                    <div class="icon-grid-item">
+                        <div class="icon-circle" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);"><i class="fas fa-heart"></i></div>
+                        <h4 contenteditable="true" data-field="item1Title" data-placeholder="Feature 1">${data.item1Title || ''}</h4>
+                        <p contenteditable="true" data-field="item1Desc" data-placeholder="Description">${data.item1Desc || ''}</p>
+                    </div>
+                    <div class="icon-grid-item">
+                        <div class="icon-circle" style="background: linear-gradient(135deg, #10b981, #34d399);"><i class="fas fa-pills"></i></div>
+                        <h4 contenteditable="true" data-field="item2Title" data-placeholder="Feature 2">${data.item2Title || ''}</h4>
+                        <p contenteditable="true" data-field="item2Desc" data-placeholder="Description">${data.item2Desc || ''}</p>
+                    </div>
+                    <div class="icon-grid-item">
+                        <div class="icon-circle" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);"><i class="fas fa-user-md"></i></div>
+                        <h4 contenteditable="true" data-field="item3Title" data-placeholder="Feature 3">${data.item3Title || ''}</h4>
+                        <p contenteditable="true" data-field="item3Desc" data-placeholder="Description">${data.item3Desc || ''}</p>
+                    </div>
+                    <div class="icon-grid-item">
+                        <div class="icon-circle" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);"><i class="fas fa-chart-line"></i></div>
+                        <h4 contenteditable="true" data-field="item4Title" data-placeholder="Feature 4">${data.item4Title || ''}</h4>
+                        <p contenteditable="true" data-field="item4Desc" data-placeholder="Description">${data.item4Desc || ''}</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'process-steps': {
+        name: 'Process Steps',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-process-steps">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Process Overview">${data.title || ''}</h2>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 contenteditable="true" data-field="step1Title" data-placeholder="Step 1">${data.step1Title || ''}</h4>
+                            <p contenteditable="true" data-field="step1Desc" data-placeholder="Description">${data.step1Desc || ''}</p>
+                        </div>
+                        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 contenteditable="true" data-field="step2Title" data-placeholder="Step 2">${data.step2Title || ''}</h4>
+                            <p contenteditable="true" data-field="step2Desc" data-placeholder="Description">${data.step2Desc || ''}</p>
+                        </div>
+                        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 contenteditable="true" data-field="step3Title" data-placeholder="Step 3">${data.step3Title || ''}</h4>
+                            <p contenteditable="true" data-field="step3Desc" data-placeholder="Description">${data.step3Desc || ''}</p>
+                        </div>
+                        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4 contenteditable="true" data-field="step4Title" data-placeholder="Step 4">${data.step4Title || ''}</h4>
+                            <p contenteditable="true" data-field="step4Desc" data-placeholder="Description">${data.step4Desc || ''}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'before-after': {
+        name: 'Before / After Comparison',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-before-after">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Comparison">${data.title || ''}</h2>
+                <div class="before-after-container">
+                    <div class="before-section">
+                        <div class="section-header before-header">
+                            <i class="fas fa-times-circle"></i>
+                            <span contenteditable="true" data-field="beforeLabel" data-placeholder="Before / Problem">${data.beforeLabel || 'Before'}</span>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-field="beforeContent" data-placeholder="Describe the before state or problem...">${data.beforeContent || ''}</div>
+                    </div>
+                    <div class="divider-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="after-section">
+                        <div class="section-header after-header">
+                            <i class="fas fa-check-circle"></i>
+                            <span contenteditable="true" data-field="afterLabel" data-placeholder="After / Solution">${data.afterLabel || 'After'}</span>
+                        </div>
+                        <div class="section-content" contenteditable="true" data-field="afterContent" data-placeholder="Describe the after state or solution...">${data.afterContent || ''}</div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: { beforeLabel: 'Before', afterLabel: 'After' }
+    },
+
+    'hero-image': {
+        name: 'Hero Image with Text',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-hero-image" style="background-image: url('${data.imageUrl || 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 450%22><rect fill=%22%231e3a5f%22 width=%22800%22 height=%22450%22/><text x=%22400%22 y=%22225%22 fill=%22%23fff%22 font-size=%2220%22 text-anchor=%22middle%22>Click to add image</text></svg>'}');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 contenteditable="true" data-field="heroTitle" data-placeholder="Hero Title">${data.heroTitle || ''}</h1>
+                    <p contenteditable="true" data-field="heroSubtitle" data-placeholder="Subtitle or key message">${data.heroSubtitle || ''}</p>
+                </div>
+                <div class="image-edit-hint" onclick="promptImageUrl(this.parentElement)" title="Click to change image">
+                    <i class="fas fa-camera"></i> Change Image
+                </div>
+                <div class="slide-footer hero-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: { imageUrl: '', heroTitle: '', heroSubtitle: '' }
+    },
+
+    'cards-grid': {
+        name: 'Info Cards Grid',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-cards-grid">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Overview">${data.title || ''}</h2>
+                <div class="cards-container">
+                    <div class="info-card card-blue">
+                        <div class="card-icon"><i class="fas fa-info-circle"></i></div>
+                        <h4 contenteditable="true" data-field="card1Title" data-placeholder="Card 1">${data.card1Title || ''}</h4>
+                        <p contenteditable="true" data-field="card1Content" data-placeholder="Content...">${data.card1Content || ''}</p>
+                    </div>
+                    <div class="info-card card-green">
+                        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                        <h4 contenteditable="true" data-field="card2Title" data-placeholder="Card 2">${data.card2Title || ''}</h4>
+                        <p contenteditable="true" data-field="card2Content" data-placeholder="Content...">${data.card2Content || ''}</p>
+                    </div>
+                    <div class="info-card card-orange">
+                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h4 contenteditable="true" data-field="card3Title" data-placeholder="Card 3">${data.card3Title || ''}</h4>
+                        <p contenteditable="true" data-field="card3Content" data-placeholder="Content...">${data.card3Content || ''}</p>
+                    </div>
+                    <div class="info-card card-purple">
+                        <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h4 contenteditable="true" data-field="card4Title" data-placeholder="Card 4">${data.card4Title || ''}</h4>
+                        <p contenteditable="true" data-field="card4Content" data-placeholder="Content...">${data.card4Content || ''}</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'gradient-section': {
+        name: 'Gradient Section Header',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-gradient-section">
+                <div class="gradient-background"></div>
+                <div class="section-content-center">
+                    <div class="section-icon">
+                        <i class="${data.icon || 'fas fa-book-medical'}"></i>
+                    </div>
+                    <h1 contenteditable="true" data-field="sectionTitle" data-placeholder="Section Title">${data.sectionTitle || ''}</h1>
+                    <p contenteditable="true" data-field="sectionSubtitle" data-placeholder="Brief description of this section">${data.sectionSubtitle || ''}</p>
+                </div>
+            </div>
+        `,
+        defaultData: { icon: 'fas fa-book-medical' }
+    },
+
+    'checklist': {
+        name: 'Visual Checklist',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-checklist">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Checklist">${data.title || ''}</h2>
+                <div class="checklist-container">
+                    <div class="checklist-item checked">
+                        <div class="check-box"><i class="fas fa-check"></i></div>
+                        <span contenteditable="true" data-field="item1" data-placeholder="Checklist item 1">${data.item1 || ''}</span>
+                    </div>
+                    <div class="checklist-item checked">
+                        <div class="check-box"><i class="fas fa-check"></i></div>
+                        <span contenteditable="true" data-field="item2" data-placeholder="Checklist item 2">${data.item2 || ''}</span>
+                    </div>
+                    <div class="checklist-item checked">
+                        <div class="check-box"><i class="fas fa-check"></i></div>
+                        <span contenteditable="true" data-field="item3" data-placeholder="Checklist item 3">${data.item3 || ''}</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box empty"></div>
+                        <span contenteditable="true" data-field="item4" data-placeholder="Checklist item 4">${data.item4 || ''}</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box empty"></div>
+                        <span contenteditable="true" data-field="item5" data-placeholder="Checklist item 5">${data.item5 || ''}</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box empty"></div>
+                        <span contenteditable="true" data-field="item6" data-placeholder="Checklist item 6">${data.item6 || ''}</span>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'three-column': {
+        name: 'Three Column Layout',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-three-column">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Title">${data.title || ''}</h2>
+                <div class="three-column-container">
+                    <div class="column">
+                        <div class="column-header" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">
+                            <i class="fas fa-1"></i>
+                            <h4 contenteditable="true" data-field="col1Title" data-placeholder="Column 1">${data.col1Title || ''}</h4>
+                        </div>
+                        <div class="column-content" contenteditable="true" data-field="col1Content" data-placeholder="Content...">${data.col1Content || ''}</div>
+                    </div>
+                    <div class="column">
+                        <div class="column-header" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                            <i class="fas fa-2"></i>
+                            <h4 contenteditable="true" data-field="col2Title" data-placeholder="Column 2">${data.col2Title || ''}</h4>
+                        </div>
+                        <div class="column-content" contenteditable="true" data-field="col2Content" data-placeholder="Content...">${data.col2Content || ''}</div>
+                    </div>
+                    <div class="column">
+                        <div class="column-header" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <i class="fas fa-3"></i>
+                            <h4 contenteditable="true" data-field="col3Title" data-placeholder="Column 3">${data.col3Title || ''}</h4>
+                        </div>
+                        <div class="column-content" contenteditable="true" data-field="col3Content" data-placeholder="Content...">${data.col3Content || ''}</div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'pros-cons': {
+        name: 'Pros and Cons',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-pros-cons">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Pros and Cons">${data.title || ''}</h2>
+                <div class="pros-cons-container">
+                    <div class="pros-section">
+                        <div class="pros-header">
+                            <i class="fas fa-thumbs-up"></i>
+                            <h3>Pros</h3>
+                        </div>
+                        <ul class="pros-list" contenteditable="true" data-field="pros" data-placeholder="• Pro 1\n• Pro 2\n• Pro 3">${data.pros || ''}</ul>
+                    </div>
+                    <div class="cons-section">
+                        <div class="cons-header">
+                            <i class="fas fa-thumbs-down"></i>
+                            <h3>Cons</h3>
+                        </div>
+                        <ul class="cons-list" contenteditable="true" data-field="cons" data-placeholder="• Con 1\n• Con 2\n• Con 3">${data.cons || ''}</ul>
+                    </div>
+                </div>
+                <div class="verdict-box">
+                    <strong>Bottom Line:</strong>
+                    <span contenteditable="true" data-field="verdict" data-placeholder="Overall recommendation or conclusion">${data.verdict || ''}</span>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'numbered-list': {
+        name: 'Numbered List (Visual)',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-numbered-list">
+                <h2 contenteditable="true" data-field="title" data-placeholder="Key Points">${data.title || ''}</h2>
+                <div class="numbered-list-container">
+                    <div class="numbered-item">
+                        <div class="number-badge">1</div>
+                        <div class="item-content" contenteditable="true" data-field="point1" data-placeholder="First key point">${data.point1 || ''}</div>
+                    </div>
+                    <div class="numbered-item">
+                        <div class="number-badge">2</div>
+                        <div class="item-content" contenteditable="true" data-field="point2" data-placeholder="Second key point">${data.point2 || ''}</div>
+                    </div>
+                    <div class="numbered-item">
+                        <div class="number-badge">3</div>
+                        <div class="item-content" contenteditable="true" data-field="point3" data-placeholder="Third key point">${data.point3 || ''}</div>
+                    </div>
+                    <div class="numbered-item">
+                        <div class="number-badge">4</div>
+                        <div class="item-content" contenteditable="true" data-field="point4" data-placeholder="Fourth key point">${data.point4 || ''}</div>
+                    </div>
+                    <div class="numbered-item">
+                        <div class="number-badge">5</div>
+                        <div class="item-content" contenteditable="true" data-field="point5" data-placeholder="Fifth key point">${data.point5 || ''}</div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: {}
+    },
+
+    'quiz': {
+        name: 'Quiz Question',
+        category: 'visual',
+        render: (data) => `
+            <div class="slide slide-quiz">
+                <div class="quiz-header">
+                    <i class="fas fa-question-circle"></i>
+                    <h2>Quiz Time!</h2>
+                </div>
+                <div class="quiz-question" contenteditable="true" data-field="question" data-placeholder="Enter your question here...">${data.question || ''}</div>
+                <div class="quiz-options">
+                    <div class="quiz-option option-a">
+                        <span class="option-letter">A</span>
+                        <span class="option-text" contenteditable="true" data-field="optionA" data-placeholder="Option A">${data.optionA || ''}</span>
+                    </div>
+                    <div class="quiz-option option-b">
+                        <span class="option-letter">B</span>
+                        <span class="option-text" contenteditable="true" data-field="optionB" data-placeholder="Option B">${data.optionB || ''}</span>
+                    </div>
+                    <div class="quiz-option option-c">
+                        <span class="option-letter">C</span>
+                        <span class="option-text" contenteditable="true" data-field="optionC" data-placeholder="Option C">${data.optionC || ''}</span>
+                    </div>
+                    <div class="quiz-option option-d">
+                        <span class="option-letter">D</span>
+                        <span class="option-text" contenteditable="true" data-field="optionD" data-placeholder="Option D">${data.optionD || ''}</span>
+                    </div>
+                </div>
+                <div class="quiz-answer" contenteditable="true" data-field="answer" data-placeholder="Answer: (revealed on click)">${data.answer || ''}</div>
+                <div class="slide-footer">
+                    <div class="slide-footer-logo"><i class="fas fa-heartbeat"></i> SZMC Geriatrics</div>
+                </div>
+            </div>
+        `,
+        defaultData: { question: '' }
     }
 };
 
