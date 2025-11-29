@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-29 11:44*
+*Generated: 2025-11-29 12:07*
 
 
 ## Delirium (דליריום)
@@ -24,6 +24,11 @@
 
 ## Frailty (שבריריות)
 
+### 📄 Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).
+- **Authors**: Han Yaxin, Zhang Haohao, Tian Jiajing et al.
+- **Journal**: Nutrients (2025)
+- **Link**: [41305592](https://pubmed.ncbi.nlm.nih.gov/41305592/)
+
 ### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
 - **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
 - **Journal**: Journal of affective disorders (2025)
@@ -34,11 +39,6 @@
 - **Journal**: American journal of preventive medicine (2025)
 - **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
 - **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
-
-### 📄 Nutritional status and cardiac arrest: from background frailty to prognostic and therapeutic target.
-- **Authors**: Mongardon Nicolas, Lê Minh-Pierre, Miard Camille
-- **Journal**: Resuscitation (2025)
-- **Link**: [41082963](https://pubmed.ncbi.nlm.nih.gov/41082963/)
 
 
 ## Falls (נפילות)

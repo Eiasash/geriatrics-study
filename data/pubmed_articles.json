@@ -35,6 +35,16 @@
   ],
   "frailty": [
     {
+      "pmid": "41305592",
+      "title": "Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).",
+      "abstract": "",
+      "authors": "Han Yaxin, Zhang Haohao, Tian Jiajing et al.",
+      "journal": "Nutrients",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41305592/"
+    },
+    {
       "pmid": "40738335",
       "title": "Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.",
       "abstract": "Sleep disorders-including daytime sleepiness (DS), insomnia, and sleep apnea (SA)-have been linked to aging-related phenotypes, but their causal roles remain unclear. This study aimed to examine the potential causal effects of these sleep traits on biological aging using a Mendelian randomization (MR) approach.",
@@ -55,16 +65,6 @@
         "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts."
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40921305/"
-    },
-    {
-      "pmid": "41082963",
-      "title": "Nutritional status and cardiac arrest: from background frailty to prognostic and therapeutic target.",
-      "abstract": "",
-      "authors": "Mongardon Nicolas, Lê Minh-Pierre, Miard Camille",
-      "journal": "Resuscitation",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41082963/"
     }
   ],
   "falls": [
