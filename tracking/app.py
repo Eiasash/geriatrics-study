@@ -93,7 +93,7 @@ def track_progress(topic):
                     error_count = error_count + 1,
                     last_error = CURRENT_TIMESTAMP,
                     mastery_level = mastery_level * 0.8
-            ''')
+            ''', (topic,))
         else:
             # Improve mastery level for good performance
             c.execute('''

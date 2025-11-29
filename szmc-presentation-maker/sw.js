@@ -57,12 +57,15 @@ function shouldUpdateCache(url) {
     
     // Cleanup old entries if Map is getting too large
     if (lastCacheUpdate.size > MAX_CACHE_TRACKING_ENTRIES) {
-        // Remove entries older than throttle period
+        // Collect keys to delete first to avoid modifying Map during iteration
+        const keysToDelete = [];
         for (const [key, timestamp] of lastCacheUpdate) {
             if ((now - timestamp) > CACHE_UPDATE_THROTTLE_MS) {
-                lastCacheUpdate.delete(key);
+                keysToDelete.push(key);
             }
         }
+        // Delete after iteration is complete
+        keysToDelete.forEach(key => lastCacheUpdate.delete(key));
     }
     
     const lastUpdate = lastCacheUpdate.get(url);
