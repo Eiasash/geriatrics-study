@@ -75,43 +75,8 @@
       - 'tsconfig.json'
       - 'babel.config.*'
 
-# Size labels (based on lines changed)
-'size: XS':
-  - changed-files:
-    - all-globs-to-all-files:
-      - '**/*'
-    - head-branch:
-      - '^(?!.*(main|master)).*$'
-  - base-branch: ['main']
-  - draft: false
-  - size-below: 10
-
-'size: S':
-  - changed-files:
-    - all-globs-to-all-files:
-      - '**/*'
-  - size-above: 9
-  - size-below: 30
-
-'size: M':
-  - changed-files:
-    - all-globs-to-all-files:
-      - '**/*'
-  - size-above: 29
-  - size-below: 100
-
-'size: L':
-  - changed-files:
-    - all-globs-to-all-files:
-      - '**/*'
-  - size-above: 99
-  - size-below: 500
-
-'size: XL':
-  - changed-files:
-    - all-globs-to-all-files:
-      - '**/*'
-  - size-above: 499
+# Note: Size labels are handled separately by codelytv/pr-size-labeler@v1
+# in the labeler workflow, not by actions/labeler
 
 # Priority labels
 'priority: high':

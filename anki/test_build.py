@@ -18,8 +18,9 @@ def test_content_json_exists():
     with open(content_path, 'r', encoding='utf-8') as f:
         content = json.load(f)
     
-    assert "topics" in content, "content.json missing 'topics' key"
-    assert len(content["topics"]) > 0, "No topics found in content.json"
+    # content.json is a direct array of topics
+    assert isinstance(content, list), "content.json should be a list of topics"
+    assert len(content) > 0, "No topics found in content.json"
 
 def test_build_script_exists():
     """Test that build_apkg.py exists"""
@@ -57,14 +58,20 @@ def test_content_structure():
     with open(content_path, 'r', encoding='utf-8') as f:
         content = json.load(f)
     
-    for topic in content["topics"]:
-        assert "id" in topic, f"Topic missing 'id' field"
-        assert "title" in topic, f"Topic missing 'title' field"
-        assert "questions" in topic, f"Topic missing 'questions' field"
+    # content.json is a direct array with topic/flashcards/mcqs structure
+    for topic_item in content:
+        assert "topic" in topic_item, "Topic item missing 'topic' field"
+        assert "flashcards" in topic_item, "Topic item missing 'flashcards' field"
+        assert "mcqs" in topic_item, "Topic item missing 'mcqs' field"
         
-        for question in topic["questions"]:
-            assert "q" in question, "Question missing 'q' field"
-            assert "a" in question, "Question missing 'a' field"
+        for flashcard in topic_item["flashcards"]:
+            assert "q" in flashcard, "Flashcard missing 'q' field"
+            assert "a" in flashcard, "Flashcard missing 'a' field"
+        
+        for mcq in topic_item["mcqs"]:
+            assert "q" in mcq, "MCQ missing 'q' field"
+            assert "options" in mcq, "MCQ missing 'options' field"
+            assert "correct" in mcq, "MCQ missing 'correct' field"
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
