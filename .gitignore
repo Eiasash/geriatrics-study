@@ -38,4 +38,7 @@ htmlcov/
 .env.local
 
 # Cloned repositories
-pack-h5p-action/coverage.xml
+pack-h5p-action/
+
+# Coverage reports
+coverage.xml
