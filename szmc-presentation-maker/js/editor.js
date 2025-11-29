@@ -18,7 +18,7 @@ class PresentationEditor {
 
     /**
      * Update the order property of all slides to match their array index.
-     * This is more efficient than using forEach with index for large arrays.
+     * Centralizes the slide ordering logic for consistency across methods.
      */
     updateSlideOrders() {
         for (let i = 0; i < this.slides.length; i++) {

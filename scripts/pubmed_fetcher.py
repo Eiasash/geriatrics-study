@@ -18,6 +18,13 @@ class PubMedFetcher:
         self.base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
         self.email = "eiasash@gmail.com"  # Update with your email
         
+        # Pre-compile regex pattern for key findings extraction (more efficient)
+        self._findings_pattern = re.compile(
+            r'(concluded that|found that|demonstrated that|showed that|'
+            r'revealed that|suggest that|indicates that|associated with|significantly)',
+            re.IGNORECASE
+        )
+        
         # Geriatrics-specific search terms
         self.search_queries = {
             'delirium': '(delirium[Title/Abstract] AND elderly[Title/Abstract]) AND ("last 30 days"[PDat])',
@@ -114,19 +121,11 @@ class PubMedFetcher:
             return {}
     
     def extract_key_findings(self, abstract: str) -> List[str]:
-        """Extract key findings from abstract using compiled regex pattern"""
+        """Extract key findings from abstract using pre-compiled regex pattern"""
         findings = []
         
         if not abstract:
             return findings
-        
-        # Use compiled regex for faster matching (compile once, use many times)
-        if not hasattr(self, '_findings_pattern'):
-            self._findings_pattern = re.compile(
-                r'(concluded that|found that|demonstrated that|showed that|'
-                r'revealed that|suggest that|indicates that|associated with|significantly)',
-                re.IGNORECASE
-            )
         
         sentences = abstract.split('. ')
         for sentence in sentences:

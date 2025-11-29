@@ -112,6 +112,8 @@ def track_progress(topic):
             WHERE topic = ?
         ''', (topic,))
     
+    # Note: commit is handled by the connection context, but we commit here
+    # to ensure immediate persistence before returning response
     conn.commit()
     
     return jsonify({
@@ -278,12 +280,13 @@ def calculate_streak():
     conn = get_db()
     c = conn.cursor()
     
-    # Get distinct study dates in descending order
+    # Get distinct study dates starting from today, going backwards
+    # Limit to reasonable range to avoid processing ancient data
     dates = c.execute('''
         SELECT DISTINCT DATE(timestamp) as study_date
         FROM progress
+        WHERE DATE(timestamp) >= DATE('now', '-180 days')
         ORDER BY study_date DESC
-        LIMIT 365
     ''').fetchall()
     
     if not dates:
