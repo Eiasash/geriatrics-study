@@ -141,7 +141,7 @@ export class SuggestionService {
      * Generate scaffold suggestions for new components
      */
     generateScaffoldSuggestion(options) {
-        const { context, language, componentType } = options;
+        const { language, componentType } = options;
 
         return {
             componentType: componentType || 'module',
