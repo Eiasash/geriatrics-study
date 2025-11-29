@@ -45,16 +45,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
     },
     {
-      "pmid": "39798683",
-      "title": "Long-term changes in frailty and incident atrial fibrillation, heart failure, coronary heart disease, and stroke: A prospective follow-up study.",
-      "abstract": "People with frailty have increased prevalence and incidence of atrial fibrillation (AF).",
-      "authors": "Cai Lingli, Sun Ying, Zhu Jingjing et al.",
-      "journal": "Heart rhythm",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39798683/"
-    },
-    {
       "pmid": "40921305",
       "title": "Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.",
       "abstract": "Frailty and dementia are prevalent, interrelated conditions in aging populations, yet the temporal relationship between frailty progression and dementia risk remains underexplored. This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.",
@@ -65,6 +55,16 @@
         "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts."
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40921305/"
+    },
+    {
+      "pmid": "41082963",
+      "title": "Nutritional status and cardiac arrest: from background frailty to prognostic and therapeutic target.",
+      "abstract": "",
+      "authors": "Mongardon Nicolas, Lê Minh-Pierre, Miard Camille",
+      "journal": "Resuscitation",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41082963/"
     }
   ],
   "falls": [
@@ -193,16 +193,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     },
     {
-      "pmid": "40627343",
-      "title": "The Benefits of Exercise Training in Combination With Weight Loss Therapies.",
-      "abstract": "The primary treatment for obesity involves calorie restriction (CR) to promote dietary weight loss achieved through interventions including behavioral modification, bariatric surgery, and antiobesity medications. In adults with obesity, CR-induced weight loss enhances physical function and improves quality of life, while also reducing the burden of various obesity-related chronic conditions, including hypertension, diabetes, obstructive sleep apnea, and atherosclerotic heart disease. However, it is also associated with a decline in lean mass and bone mineral density, which increases the risk of sarcopenia and osteoporosis. When performed alongside CR, progressive resistance training (RT) attenuates this loss of lean mass and bone mass, while the addition of aerobic training (AT) further improves cardiorespiratory fitness. The individual benefits of RT and AT are complementary, and combining both exercise training modalities during CR provides the most optimal benefits for body composition and physical function. The World Health Organization recommends that adults engage in at least 150 min of moderate-intensity or 75 min of vigorous-intensity AT weekly and participate in RT activities involving major muscle groups at least 2 days per week. While this recommendation applies to the general adult population, regular exercise training that incorporates both RT and AT is particularly crucial for adults with obesity undergoing weight loss interventions. This clinical perspective highlights the benefits of exercise training alongside current weight loss strategies, such as lifestyle changes, bariatric surgery, and pharmacotherapy, with a focus on incretin-based therapies.",
-      "authors": "Jiang Bryan C, Villareal Dennis T",
-      "journal": "Diabetes",
+      "pmid": "41060616",
+      "title": "Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.",
+      "abstract": "Sarcopenia and cachexia are two common and overlapping but distinct muscle wasting syndromes that predict adverse outcomes and undermine quality of life among older adults with cancer. Despite their prognostic value and negative effects on older patients' well-being, sarcopenia and cachexia are not routinely or adequately assessed and managed in clinical oncology practice. However, efforts to recognize and manage sarcopenia and cachexia at diagnosis and during follow-up may have beneficial effects on muscle mass, physical function, and quality of life among older adults with cancer, although evidence on long-term clinical outcomes in response to targeted interventions has yet to be established. This comprehensive review attempts to (i) delineate the differences in the pathophysiology and clinical manifestations between sarcopenia and cachexia, (ii) clarify how sarcopenia and cachexia are defined in the geriatric oncology literature, (iii) describe methods for assessing sarcopenia and cachexia in clinical practice, (iv) review the prognostic value of sarcopenia and cachexia among older patients, particularly those undergoing systemic cancer treatment, and (v) discuss evidence-based strategies aimed at managing sarcopenia and cachexia for older adults with cancer.",
+      "authors": "Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.",
+      "journal": "Drugs & aging",
       "year": "2025",
-      "key_findings": [
-        "However, it is also associated with a decline in lean mass and bone mineral density, which increases the risk of sarcopenia and osteoporosis"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40627343/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41060616/"
     }
   ],
   "end_of_life": [

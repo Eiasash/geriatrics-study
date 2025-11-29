@@ -5,10 +5,12 @@ const { execSync } = require('child_process');
 
 describe('H5P Build Scripts', () => {
   const distPath = path.join(__dirname, 'dist');
-  
+
   beforeAll(() => {
-    // Ensure dist directory exists
-    fs.ensureDirSync(distPath);
+    // Ensure dist directory exists using native fs to avoid mock interference
+    if (!nativeFs.existsSync(distPath)) {
+      nativeFs.mkdirSync(distPath, { recursive: true });
+    }
   });
 
   describe('Configuration', () => {

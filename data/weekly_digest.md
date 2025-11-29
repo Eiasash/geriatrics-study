@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-29 14:56*
+*Generated: 2025-11-29 21:23*
 
 
 ## Delirium (דליריום)
@@ -29,16 +29,16 @@
 - **Journal**: Journal of affective disorders (2025)
 - **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
 
-### 📄 Long-term changes in frailty and incident atrial fibrillation, heart failure, coronary heart disease, and stroke: A prospective follow-up study.
-- **Authors**: Cai Lingli, Sun Ying, Zhu Jingjing et al.
-- **Journal**: Heart rhythm (2025)
-- **Link**: [39798683](https://pubmed.ncbi.nlm.nih.gov/39798683/)
-
 ### 📄 Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.
 - **Authors**: Ye Xin, Wang Xinfeng, Hu Mingzheng et al.
 - **Journal**: American journal of preventive medicine (2025)
 - **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
 - **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
+
+### 📄 Nutritional status and cardiac arrest: from background frailty to prognostic and therapeutic target.
+- **Authors**: Mongardon Nicolas, Lê Minh-Pierre, Miard Camille
+- **Journal**: Resuscitation (2025)
+- **Link**: [41082963](https://pubmed.ncbi.nlm.nih.gov/41082963/)
 
 
 ## Falls (נפילות)
@@ -111,11 +111,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 The Benefits of Exercise Training in Combination With Weight Loss Therapies.
-- **Authors**: Jiang Bryan C, Villareal Dennis T
-- **Journal**: Diabetes (2025)
-- **Link**: [40627343](https://pubmed.ncbi.nlm.nih.gov/40627343/)
-- **Key Finding**: However, it is also associated with a decline in lean mass and bone mineral density, which increases the risk of sarcopenia and osteoporosis...
+### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
+- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
+- **Journal**: Drugs & aging (2025)
+- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
 
 
 ## End Of Life (טיפול סוף-חיים)
