@@ -31,7 +31,7 @@ jobs:
       docs: ${{ steps.filter.outputs.docs }}
     steps:
       - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
@@ -132,7 +132,7 @@ jobs:
       
       - name: Upload coverage to Codecov
         if: matrix.job == 'test'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./h5p/coverage/lcov.info
@@ -250,7 +250,7 @@ jobs:
       
       - name: Upload coverage to Codecov
         if: matrix.job == 'test'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./anki/coverage.xml
