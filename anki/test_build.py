@@ -18,8 +18,9 @@ def test_content_json_exists():
     with open(content_path, 'r', encoding='utf-8') as f:
         content = json.load(f)
     
-    assert "topics" in content, "content.json missing 'topics' key"
-    assert len(content["topics"]) > 0, "No topics found in content.json"
+    # content.json is a direct array of topics
+    assert isinstance(content, list), "content.json should be an array"
+    assert len(content) > 0, "No topics found in content.json"
 
 def test_build_script_exists():
     """Test that build_apkg.py exists"""
@@ -57,14 +58,14 @@ def test_content_structure():
     with open(content_path, 'r', encoding='utf-8') as f:
         content = json.load(f)
     
-    for topic in content["topics"]:
-        assert "id" in topic, f"Topic missing 'id' field"
-        assert "title" in topic, f"Topic missing 'title' field"
-        assert "questions" in topic, f"Topic missing 'questions' field"
+    # content.json is a direct array of topics
+    for topic in content:
+        assert "topic" in topic, f"Topic missing 'topic' field"
+        assert "flashcards" in topic, f"Topic missing 'flashcards' field"
         
-        for question in topic["questions"]:
-            assert "q" in question, "Question missing 'q' field"
-            assert "a" in question, "Question missing 'a' field"
+        for card in topic.get('flashcards', []):
+            assert "q" in card, "Flashcard missing 'q' field"
+            assert "a" in card, "Flashcard missing 'a' field"
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

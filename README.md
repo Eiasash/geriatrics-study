@@ -1,6 +1,5 @@
 # Geriatrics Study Materials 🏥
 
-[![CI Pipeline](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml)
 [![CI Enhanced](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml)
 [![Release](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml)
 [![codecov](https://codecov.io/gh/Eiasash/geriatrics-study/branch/main/graph/badge.svg)](https://codecov.io/gh/Eiasash/geriatrics-study)
@@ -86,7 +85,7 @@ geriatrics-study/
 ├── data/                  # Source content
 │   └── content.json       # Questions and answers
 └── .github/workflows/     # CI/CD automation
-    ├── ci.yml            # Main CI pipeline
+    ├── ci-enhanced.yml   # Main CI pipeline
     ├── release.yml       # Release automation
     └── dependabot.yml    # Dependency updates
 ```

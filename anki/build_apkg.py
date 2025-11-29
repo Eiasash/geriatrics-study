@@ -1,4 +1,5 @@
-import json, hashlib, os
+import json
+import os
 import genanki
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
