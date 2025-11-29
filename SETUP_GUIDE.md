@@ -114,7 +114,7 @@ After first CI run, these should appear in branch protection:
 
 ### Badge Verification
 Check README badges are working:
-- CI Pipeline: ![CI](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg)
+- CI Pipeline: ![CI](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci-enhanced.yml/badge.svg)
 - Release: ![Release](https://github.com/Eiasash/geriatrics-study/actions/workflows/release.yml/badge.svg)
 
 ### Security Scanning
