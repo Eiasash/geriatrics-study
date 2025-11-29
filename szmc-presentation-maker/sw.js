@@ -3,7 +3,7 @@
  * Full offline support for PWA
  */
 
-const CACHE_NAME = 'szmc-presentation-v2';
+const CACHE_NAME = 'szmc-presentation-v3';
 
 // All files to cache for complete offline use
 const CACHE_FILES = [
@@ -20,8 +20,10 @@ const CACHE_FILES = [
     './css/generator.css',
     './css/rtl.css',
     './css/mobile.css',
+    './css/formatting-toolbar.css',
+    './css/animations.css',
 
-    // JavaScript
+    // JavaScript - Core
     './js/i18n.js',
     './js/templates.js',
     './js/templates-extended.js',
@@ -35,7 +37,26 @@ const CACHE_FILES = [
     './js/advanced-export.js',
     './js/ai-assistant.js',
     './js/main.js',
-    './js/mobile.js'
+    './js/mobile.js',
+
+    // JavaScript - New Features
+    './js/speaker-notes.js',
+    './js/medical-snippets.js',
+    './js/search.js',
+    './js/animations.js',
+    './js/version-history.js',
+    './js/analytics.js',
+    './js/pwa-install.js',
+
+    // CSS - PWA
+    './css/pwa-install.css',
+
+    // Icons
+    './icons/icon.svg',
+
+    // Templates
+    './templates/case-presentation.json',
+    './templates/journal-club.json'
 ];
 
 const EXTERNAL_ASSETS = [

@@ -1,11 +1,12 @@
 # Copilot Instructions for Geriatrics Study Repository
 
-This repository contains educational materials for geriatrics topics, including Anki flashcards and H5P interactive content with Hebrew language support.
+This repository contains educational materials for geriatrics topics, including H5P interactive content and the SZMC Presentation Maker with Hebrew language support.
 
 ## Repository Structure
 
 - `h5p/` - H5P interactive content (Node.js/JavaScript)
-- `anki/` - Anki flashcard system (Python)
+- `szmc-presentation-maker/` - PWA for medical presentations
+- `clinical-tools/` - Medical calculators and tools
 - `data/` - Source content data (JSON)
 - `scripts/` - Utility scripts
 - `.github/workflows/` - CI/CD automation
@@ -14,16 +15,12 @@ This repository contains educational materials for geriatrics topics, including 
 
 ### Prerequisites
 - Node.js 20+
-- Python 3.11+
 - Git
 
 ### Setup Commands
 ```bash
 # H5P dependencies
 cd h5p && npm install
-
-# Anki dependencies
-cd anki && pip install -r requirements.txt
 ```
 
 ## Code Style and Standards
@@ -34,11 +31,11 @@ cd anki && pip install -r requirements.txt
 - Run tests with Jest: `npm test` in `h5p/` directory
 - Follow existing code patterns in `build-h5p-*.js` files
 
-### Python (Anki)
-- Use Black for formatting (`black --line-length 100`)
-- Use isort for import sorting (profile: black)
-- Run tests with pytest: `pytest` in `anki/` directory
-- Follow patterns in `build_apkg.py`
+### SZMC Presentation Maker
+- Vanilla JavaScript (no framework)
+- PWA with service worker for offline support
+- Follow existing patterns in `js/` directory
+- CSS organized by component in `css/` directory
 
 ## Testing Requirements
 
@@ -47,13 +44,6 @@ cd anki && pip install -r requirements.txt
 cd h5p
 npm test           # Run unit tests
 npm run lint       # Check code style
-```
-
-### Anki Testing
-```bash
-cd anki
-pytest             # Run unit tests
-pytest --cov=.     # Run with coverage
 ```
 
 ## Building Packages
@@ -74,13 +64,6 @@ TOPICS="דליריום,שבריריות (Frailty)" PASS=75 npm run build:mega
 # Output: h5p/dist/geriatrics_mega.h5p
 ```
 
-### Anki Package
-```bash
-cd anki
-python build_apkg.py
-# Output: anki/dist/geriatrics.apkg
-```
-
 ## Hebrew Language Support
 
 This project has full Hebrew (RTL) language support:
@@ -89,12 +72,27 @@ This project has full Hebrew (RTL) language support:
 - Use UTF-8 encoding for all files containing Hebrew text
 - Test Hebrew rendering after content changes
 
+## SZMC Presentation Maker PWA
+
+The presentation maker is a Progressive Web App:
+- `manifest.json` - PWA manifest with icons and shortcuts
+- `sw.js` - Service worker for offline caching
+- `js/pwa-install.js` - Install prompt handler
+
+Key features:
+- Case presentations and journal club templates
+- Medical snippets library
+- Speaker notes
+- Search and replace
+- Version history (IndexedDB)
+- Export to PowerPoint/PDF/HTML
+
 ## CI/CD Pipeline
 
 The repository uses GitHub Actions for:
-- Security audits (npm audit, pip-audit)
+- Security audits (npm audit)
 - Code linting (ESLint, Prettier)
-- Unit testing (Jest, pytest)
+- Unit testing (Jest)
 - Package building and validation
 - Automated releases
 
@@ -102,9 +100,7 @@ The repository uses GitHub Actions for:
 - CI Summary
 - Build h5p (questionset)
 - Build h5p (mega)
-- Build anki (default)
 - Security audit (Node.js)
-- Security audit (Python)
 - CodeQL analysis
 
 ## When Making Changes
@@ -138,7 +134,7 @@ The repository uses GitHub Actions for:
 
 ## Security Considerations
 
-- Run security audits before merging: `npm audit` and `pip-audit`
+- Run security audits before merging: `npm audit`
 - Keep dependencies up to date via Dependabot
 - Review CodeQL alerts for security vulnerabilities
 - Don't commit sensitive data or credentials
