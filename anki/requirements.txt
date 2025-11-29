@@ -1,4 +1,0 @@
-genanki==0.13.0
-requests==2.32.3
-pytest>=7.0.0
-pytest-cov>=4.0.0
