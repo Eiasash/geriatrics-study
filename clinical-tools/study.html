@@ -350,9 +350,9 @@
 
         // AI Service URLs
         const aiServices = {
-            openevidence: 'https://openevidence.com/search?q=',
-            chatgpt: 'https://chat.openai.com/?q=',
-            claude: 'https://claude.ai/new?q=',
+            openevidence: 'https://www.openevidence.com',
+            chatgpt: 'https://chat.openai.com',
+            claude: 'https://claude.ai',
             perplexity: 'https://www.perplexity.ai/search?q='
         };
 
@@ -595,8 +595,16 @@
 
         function openAI(query) {
             const ai = getSelectedAI();
-            const url = aiServices[ai] + encodeURIComponent(query);
-            window.open(url, '_blank');
+            const baseUrl = aiServices[ai];
+            
+            // Perplexity supports deep linking, others need clipboard copy
+            if (ai === 'perplexity') {
+                window.open(baseUrl + encodeURIComponent(query), '_blank');
+            } else {
+                // Copy query to clipboard and open main site
+                navigator.clipboard.writeText(query).catch(() => {});
+                window.open(baseUrl, '_blank');
+            }
         }
 
         function askTopicQuestion() {

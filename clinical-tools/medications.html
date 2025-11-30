@@ -238,25 +238,25 @@
                 אינטגרציות AI לבדיקת תרופות
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="https://www.drugs.com/drug_interactions.html" target="_blank"
+                <a href="https://www.drugs.com/drug_interactions.html" target="_blank" rel="noopener noreferrer"
                    class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
                     <div class="text-2xl mb-2">💊</div>
                     <div class="font-medium">Drugs.com</div>
                     <div class="text-xs text-white/80">Interaction Checker</div>
                 </a>
-                <a href="https://openevidence.com/search?q=drug%20interactions%20elderly" target="_blank"
+                <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer"
                    class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
                     <div class="text-2xl mb-2">🔬</div>
                     <div class="font-medium">OpenEvidence</div>
                     <div class="text-xs text-white/80">Evidence-based</div>
                 </a>
-                <a href="https://www.epocrates.com/online/drugs" target="_blank"
+                <a href="https://www.epocrates.com/online/drugs" target="_blank" rel="noopener noreferrer"
                    class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
                     <div class="text-2xl mb-2">📱</div>
                     <div class="font-medium">Epocrates</div>
                     <div class="text-xs text-white/80">Drug Reference</div>
                 </a>
-                <a href="https://www.lexicomp.com" target="_blank"
+                <a href="https://www.lexicomp.com" target="_blank" rel="noopener noreferrer"
                    class="p-4 bg-white/20 rounded-xl hover:bg-white/30 transition-all text-center">
                     <div class="text-2xl mb-2">📚</div>
                     <div class="font-medium">Lexicomp</div>
@@ -538,19 +538,19 @@
                 <div class="p-4 bg-purple-50 rounded-lg">
                     <p class="text-purple-700">🤖 פותח מנועי AI לניתוח רשימת התרופות...</p>
                     <div class="mt-4 grid grid-cols-2 gap-4">
-                        <a href="https://openevidence.com/search?q=${query}" target="_blank"
+                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer"
                            class="p-3 bg-blue-100 hover:bg-blue-200 rounded-lg text-center text-blue-700">
                             🔬 OpenEvidence
                         </a>
-                        <a href="https://chat.openai.com/?q=${query}" target="_blank"
+                        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer"
                            class="p-3 bg-green-100 hover:bg-green-200 rounded-lg text-center text-green-700">
                             💚 ChatGPT
                         </a>
-                        <a href="https://claude.ai/new?q=${query}" target="_blank"
+                        <a href="https://claude.ai" target="_blank" rel="noopener noreferrer"
                            class="p-3 bg-orange-100 hover:bg-orange-200 rounded-lg text-center text-orange-700">
                             🧡 Claude
                         </a>
-                        <a href="https://www.perplexity.ai/search?q=${query}" target="_blank"
+                        <a href="https://www.perplexity.ai/search?q=${query}" target="_blank" rel="noopener noreferrer"
                            class="p-3 bg-purple-100 hover:bg-purple-200 rounded-lg text-center text-purple-700">
                             🔮 Perplexity
                         </a>
@@ -558,8 +558,9 @@
                 </div>
             `;
 
-            // Open OpenEvidence by default
-            window.open(`https://openevidence.com/search?q=${query}`, '_blank');
+            // Copy query to clipboard and open OpenEvidence
+            navigator.clipboard.writeText(`[Geriatric Medication Review] ${medList}`).catch(() => {});
+            window.open('https://www.openevidence.com', '_blank');
         }
 
         function clearAllMeds() {
