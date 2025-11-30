@@ -5,12 +5,23 @@
     width: 100%;
     height: 100%;
     padding: 40px;
+    padding-bottom: 50px; /* Extra padding for footer */
     display: flex;
     flex-direction: column;
     font-family: var(--font-sans);
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+}
+
+/* When editing, allow overflow to be visible for better editing experience */
+.slide-canvas .slide {
+    overflow: visible;
+}
+
+/* In presentation mode, clip overflow */
+#presentation-container .slide {
+    overflow: hidden;
 }
 
 /* Content overflow handling */
@@ -71,16 +82,48 @@
     max-width: 100%;
 }
 
+/* Additional text overflow protections */
+.slide * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Ensure lists don't overflow */
+.slide ul,
+.slide ol {
+    padding-left: 1.5em;
+    margin: 0;
+}
+
+.slide li {
+    max-width: 100%;
+    margin-bottom: 0.25em;
+}
+
+/* Ensure grids don't overflow */
+.slide [class*="-grid"] {
+    max-width: 100%;
+    overflow: hidden;
+}
+
 /* Fix for two-column layouts */
 .slide .two-column {
     gap: 20px;
     min-height: 0;
     flex: 1;
+    overflow: hidden;
 }
 
 .slide .two-column .column {
     min-height: 0;
     overflow-y: auto;
+    max-width: 50%;
+}
+
+/* Prevent flexbox children from overflowing */
+.slide [style*="display: flex"],
+.slide [style*="display:flex"] {
+    min-width: 0;
 }
 
 .slide::before {
