@@ -1138,3 +1138,326 @@ body.force-mobile-view .autosave-indicator {
     background: var(--surface-tertiary);
     color: var(--primary-light);
 }
+
+/* ====================================================
+   CRITICAL: Mobile overflow and clipping fixes
+   ==================================================== */
+
+/* Ensure landing page is fully scrollable on mobile */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #landing-page {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        min-height: 100vh;
+        height: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fix template cards overflow */
+    .template-grid {
+        width: calc(100% - 32px);
+        margin: 0 auto;
+        overflow: visible;
+    }
+
+    .template-card {
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    /* Fix header clipping */
+    .landing-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: inherit;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Prevent content from going under notch/status bar */
+    .landing-main {
+        padding-top: max(20px, env(safe-area-inset-top));
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    /* AI Panel fullscreen mobile fix */
+    .ai-panel {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        border-radius: 0 !important;
+    }
+
+    .ai-panel.active {
+        transform: translateX(0);
+    }
+
+    .ai-panel-body {
+        height: calc(100vh - 60px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+        max-height: calc(100vh - 60px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 16px;
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+
+    .ai-results {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .ai-result-item {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Modal fixes for mobile */
+    .modal {
+        padding: 0 !important;
+    }
+
+    .modal-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-body {
+        max-height: calc(100vh - 140px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Generator modal specific fixes */
+    .generator-modal-content {
+        height: 100% !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .generator-layout {
+        flex-direction: column;
+        overflow-y: auto;
+        flex: 1;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .generator-input-section,
+    .generator-options-section {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    #paste-text-input {
+        min-height: 200px;
+        max-height: 300px;
+        resize: vertical;
+    }
+
+    /* Slide editor mobile overflow fixes */
+    .slide-editor {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100vh - 140px) !important;
+        max-height: calc(100vh - 140px) !important;
+    }
+
+    .slide-canvas {
+        overflow: hidden !important;
+        max-width: 100%;
+        min-height: 250px;
+        max-height: calc(100vh - 200px);
+    }
+
+    .slide-canvas .slide {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 100%;
+    }
+
+    /* Fix contenteditable overflow */
+    [contenteditable="true"] {
+        overflow-wrap: break-word;
+        word-break: break-word;
+        max-width: 100%;
+    }
+
+    /* Dropdown and actions sheet fixes */
+    .dropdown-menu {
+        position: fixed !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        max-width: 90vw;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10000;
+    }
+
+    /* Theme panel mobile fix */
+    .theme-panel {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        max-height: 50vh;
+        overflow-y: auto;
+        border-radius: 16px 16px 0 0;
+        z-index: 2000;
+    }
+
+    /* Fix text overflow in UI elements */
+    .ai-panel-title span,
+    .ai-result-item p,
+    .ai-suggestion-text {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Prevent horizontal scroll on body */
+    body {
+        overflow-x: hidden !important;
+    }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .landing-main h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .subtitle {
+        font-size: 0.85rem !important;
+    }
+
+    .template-card {
+        padding: 16px;
+    }
+
+    .template-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .template-icon i {
+        font-size: 1.25rem;
+    }
+
+    .template-card h3 {
+        font-size: 1rem;
+    }
+
+    .template-features {
+        font-size: 0.7rem;
+    }
+
+    /* Smaller buttons for tiny screens */
+    .mobile-toolbar-btn {
+        padding: 6px 2px;
+    }
+
+    .mobile-toolbar-btn i {
+        font-size: 1rem;
+    }
+
+    .mobile-toolbar-btn span {
+        font-size: 0.55rem;
+    }
+
+    /* AI panel adjustments */
+    .ai-score-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ai-score-value {
+        font-size: 1.25rem;
+    }
+}
+
+/* Landscape mode mobile fixes */
+@media (max-width: 896px) and (orientation: landscape) {
+    #landing-page {
+        min-height: auto;
+    }
+
+    .landing-main {
+        padding: 16px;
+    }
+
+    .template-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .template-card {
+        padding: 12px;
+    }
+
+    .template-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+    }
+
+    .template-features {
+        display: none;
+    }
+
+    /* AI panel landscape */
+    .ai-panel-body {
+        height: calc(100vh - 50px) !important;
+    }
+
+    .ai-summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Fix iOS bounce scroll issues */
+    .ai-panel-body,
+    .modal-body,
+    .slide-editor {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fix iOS input zoom */
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+
+    /* Fix iOS safe area */
+    .mobile-toolbar {
+        padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .ai-panel-body {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom)) !important;
+    }
+}
