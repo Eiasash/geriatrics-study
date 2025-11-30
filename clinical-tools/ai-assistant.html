@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Heebo', sans-serif; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
         .gradient-bg { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e3a5f 100%); }
         .glass-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
         .ai-glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3); }
@@ -56,23 +57,23 @@
 
         <!-- AI Service Selection -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <button onclick="selectAI('openevidence')" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400">
-                <div class="text-3xl mb-2">🔬</div>
+            <button onclick="selectAI('openevidence')" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400" aria-label="בחר OpenEvidence למחקר מבוסס ראיות">
+                <div class="text-3xl mb-2" aria-hidden="true">🔬</div>
                 <div class="font-semibold text-gray-800">OpenEvidence</div>
                 <div class="text-xs text-gray-500">מחקר מבוסס ראיות</div>
             </button>
-            <button onclick="selectAI('chatgpt')" id="btn-chatgpt" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-green-400">
-                <div class="text-3xl mb-2">💚</div>
+            <button onclick="selectAI('chatgpt')" id="btn-chatgpt" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-green-400" aria-label="בחר ChatGPT GPT-4">
+                <div class="text-3xl mb-2" aria-hidden="true">💚</div>
                 <div class="font-semibold text-gray-800">ChatGPT</div>
                 <div class="text-xs text-gray-500">OpenAI GPT-4</div>
             </button>
-            <button onclick="selectAI('claude')" id="btn-claude" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-orange-400">
-                <div class="text-3xl mb-2">🧡</div>
+            <button onclick="selectAI('claude')" id="btn-claude" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-orange-400" aria-label="בחר Claude מבית Anthropic">
+                <div class="text-3xl mb-2" aria-hidden="true">🧡</div>
                 <div class="font-semibold text-gray-800">Claude</div>
                 <div class="text-xs text-gray-500">Anthropic AI</div>
             </button>
-            <button onclick="selectAI('perplexity')" id="btn-perplexity" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-purple-400">
-                <div class="text-3xl mb-2">🔮</div>
+            <button onclick="selectAI('perplexity')" id="btn-perplexity" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-purple-400" aria-label="בחר Perplexity לחיפוש AI">
+                <div class="text-3xl mb-2" aria-hidden="true">🔮</div>
                 <div class="font-semibold text-gray-800">Perplexity</div>
                 <div class="text-xs text-gray-500">חיפוש AI</div>
             </button>
@@ -95,7 +96,7 @@
                     </div>
 
                     <!-- Chat Messages -->
-                    <div id="chat-container" class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                    <div id="chat-container" class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50" role="log" aria-live="polite" aria-label="הודעות צ'אט">
                         <div class="chat-message flex gap-3">
                             <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 🤖
@@ -116,10 +117,11 @@
                     <!-- Input Area -->
                     <div class="p-4 bg-white border-t">
                         <div class="flex gap-3">
+                            <label for="user-input" class="sr-only">הקלד שאלה קלינית</label>
                             <textarea id="user-input" placeholder="הקלד שאלה קלינית..."
                                 class="flex-1 p-3 border rounded-xl resize-none focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                rows="2" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendQuery()}"></textarea>
-                            <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium">
+                                rows="2" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendQuery()}" aria-label="הקלד שאלה קלינית"></textarea>
+                            <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium" aria-label="שלח שאלה">
                                 שלח
                             </button>
                         </div>
@@ -143,9 +145,10 @@
                         <span class="text-xl">🔍</span>
                         אבחנה מבדלת AI
                     </h3>
+                    <label for="symptoms-input" class="sr-only">הקלד תסמינים</label>
                     <textarea id="symptoms-input" placeholder="הקלד תסמינים (מופרדים בפסיקים)..."
-                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3"></textarea>
-                    <button onclick="generateDifferential()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium">
+                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3" aria-label="הקלד תסמינים מופרדים בפסיקים"></textarea>
+                    <button onclick="generateDifferential()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium" aria-label="צור אבחנה מבדלת מהתסמינים">
                         צור אבחנה מבדלת
                     </button>
                 </div>
@@ -156,9 +159,10 @@
                         <span class="text-xl">💊</span>
                         בדיקת אינטראקציות
                     </h3>
+                    <label for="drugs-input" class="sr-only">הקלד תרופות</label>
                     <textarea id="drugs-input" placeholder="הקלד תרופות (מופרדות בפסיקים)..."
-                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3"></textarea>
-                    <button onclick="checkInteractions()" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
+                        class="w-full p-3 border rounded-lg text-sm mb-3" rows="3" aria-label="הקלד תרופות מופרדות בפסיקים"></textarea>
+                    <button onclick="checkInteractions()" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium" aria-label="בדוק אינטראקציות בין התרופות">
                         בדוק אינטראקציות
                     </button>
                 </div>
@@ -186,16 +190,16 @@
                         קישורים מהירים
                     </h3>
                     <div class="space-y-2">
-                        <a href="https://openevidence.com" target="_blank" class="block p-2 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 text-sm">
+                        <a href="https://openevidence.com" target="_blank" rel="noopener noreferrer" class="block p-2 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 text-sm" aria-label="OpenEvidence AI - נפתח בחלון חדש">
                             OpenEvidence AI →
                         </a>
-                        <a href="https://www.uptodate.com/contents/search" target="_blank" class="block p-2 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 text-sm">
+                        <a href="https://www.uptodate.com/contents/search" target="_blank" rel="noopener noreferrer" class="block p-2 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 text-sm" aria-label="UpToDate - נפתח בחלון חדש">
                             UpToDate →
                         </a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=geriatric" target="_blank" class="block p-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 text-sm">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=geriatric" target="_blank" rel="noopener noreferrer" class="block p-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 text-sm" aria-label="PubMed Geriatrics - נפתח בחלון חדש">
                             PubMed Geriatrics →
                         </a>
-                        <a href="https://www.drugs.com/drug_interactions.html" target="_blank" class="block p-2 bg-red-50 hover:bg-red-100 rounded-lg text-red-700 text-sm">
+                        <a href="https://www.drugs.com/drug_interactions.html" target="_blank" rel="noopener noreferrer" class="block p-2 bg-red-50 hover:bg-red-100 rounded-lg text-red-700 text-sm" aria-label="Drugs.com אינטראקציות - נפתח בחלון חדש">
                             Drugs.com Interactions →
                         </a>
                     </div>
