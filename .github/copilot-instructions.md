@@ -14,10 +14,12 @@ This repository contains educational materials for geriatrics topics, including 
 ## Development Environment
 
 ### Prerequisites
+
 - Node.js 20+
 - Git
 
 ### Setup Commands
+
 ```bash
 # H5P dependencies
 cd h5p && npm install
@@ -26,12 +28,14 @@ cd h5p && npm install
 ## Code Style and Standards
 
 ### JavaScript/Node.js (H5P)
+
 - Use ESLint for linting: `npm run lint` in `h5p/` directory
 - Use Prettier for formatting: `npm run format` in `h5p/` directory
 - Run tests with Jest: `npm test` in `h5p/` directory
 - Follow existing code patterns in `build-h5p-*.js` files
 
 ### SZMC Presentation Maker
+
 - Vanilla JavaScript (no framework)
 - PWA with service worker for offline support
 - Follow existing patterns in `js/` directory
@@ -40,6 +44,7 @@ cd h5p && npm install
 ## Testing Requirements
 
 ### H5P Testing
+
 ```bash
 cd h5p
 npm test           # Run unit tests
@@ -49,6 +54,7 @@ npm run lint       # Check code style
 ## Building Packages
 
 ### H5P QuestionSet
+
 ```bash
 cd h5p
 npm run build:qset
@@ -56,6 +62,7 @@ npm run build:qset
 ```
 
 ### H5P Mega Package
+
 ```bash
 cd h5p
 # TOPICS: Comma-separated list of topic names (in Hebrew)
@@ -67,6 +74,7 @@ TOPICS="דליריום,שבריריות (Frailty)" PASS=75 npm run build:mega
 ## Hebrew Language Support
 
 This project has full Hebrew (RTL) language support:
+
 - Content is primarily in Hebrew
 - Ensure RTL text direction is maintained when modifying content
 - Use UTF-8 encoding for all files containing Hebrew text
@@ -75,11 +83,13 @@ This project has full Hebrew (RTL) language support:
 ## SZMC Presentation Maker PWA
 
 The presentation maker is a Progressive Web App:
+
 - `manifest.json` - PWA manifest with icons and shortcuts
 - `sw.js` - Service worker for offline caching
 - `js/pwa-install.js` - Install prompt handler
 
 Key features:
+
 - Case presentations and journal club templates
 - Medical snippets library
 - Speaker notes
@@ -90,6 +100,7 @@ Key features:
 ## CI/CD Pipeline
 
 The repository uses GitHub Actions for:
+
 - Security audits (npm audit)
 - Code linting (ESLint, Prettier)
 - Unit testing (Jest)
@@ -97,6 +108,7 @@ The repository uses GitHub Actions for:
 - Automated releases
 
 ### Required Status Checks
+
 - CI Summary
 - Build h5p (questionset)
 - Build h5p (mega)
@@ -114,11 +126,13 @@ The repository uses GitHub Actions for:
 ## Content Guidelines
 
 ### Medical Content
+
 - Medical content should be reviewed by geriatrics specialists before merging
 - Content is structured as questions and answers in `data/content.json`
 - Each topic has a Hebrew name and English equivalent
 
 ### Topics Covered
+
 1. דליריום (Delirium)
 2. דמנציה ומחלת אלצהיימר (Dementia and Alzheimer's)
 3. שבריריות (Frailty)
@@ -138,3 +152,62 @@ The repository uses GitHub Actions for:
 - Keep dependencies up to date via Dependabot
 - Review CodeQL alerts for security vulnerabilities
 - Don't commit sensitive data or credentials
+
+## Git Workflow
+
+### Branch Naming
+
+- Feature branches: `feature/<short-description>` (e.g., `feature/add-hebrew-rtl-support`)
+- Bug fixes: `fix/<short-description>` (e.g., `fix/presentation-maker-offline-mode`)
+- Documentation: `docs/<short-description>` (e.g., `docs/update-readme-badges`)
+
+### Commit Messages
+
+- Use conventional commits format: `type(scope): description`
+- Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- Keep messages concise and descriptive
+
+### Pull Requests
+
+- Reference related issues in PR description
+- Ensure all CI checks pass before requesting review
+- Use the provided PR template
+
+## Boundaries and Restrictions
+
+### Files NOT to Modify
+
+- `.github/workflows/*.yml` - CI/CD workflows (unless specifically requested)
+- `data/content.json` - Medical content requires specialist review
+- `.github/CODEOWNERS` - Repository ownership configuration
+- Dependency lock files (`package-lock.json`) - Committed to repo; avoid manual edits, let npm update them
+
+### Actions to Avoid
+
+- Never commit API keys, tokens, or secrets
+- Don't modify version numbers directly (handled by release workflow)
+- Avoid changing existing test assertions without understanding impact
+- Don't remove or disable security checks
+
+### External Dependencies
+
+- Prefer existing libraries over adding new dependencies
+- If adding dependencies, run security audit first
+- Keep Node.js dependencies in `h5p/package.json`
+
+## Technology Stack
+
+### Versions
+
+- **Node.js**: 20.x (LTS)
+- **npm**: Latest compatible with Node.js 20
+- **Python**: 3.11 (for validation scripts)
+- **Jest**: Testing framework for JavaScript
+- **ESLint**: JavaScript linting
+- **Prettier**: Code formatting
+
+### Frameworks and Libraries
+
+- **H5P**: Interactive content framework
+- **Service Worker API**: PWA offline support
+- **IndexedDB**: Client-side storage for presentation maker
