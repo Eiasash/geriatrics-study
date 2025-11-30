@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/formatting-toolbar.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/pwa-install.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -39,6 +40,10 @@
                     <span data-i18n="logo">SZMC Geriatrics</span>
                 </div>
                 <div class="header-actions">
+                    <button class="dark-mode-toggle" id="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                        <i class="fas fa-sun" aria-hidden="true" style="display: none;"></i>
+                    </button>
                     <div class="language-selector" role="group" aria-label="Language selection">
                         <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English" aria-label="Switch to English" aria-pressed="true">
                             <span>EN</span>
@@ -797,6 +802,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     </div>
 
     <script src="js/i18n.js"></script>
+    <script src="js/dark-mode.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/templates-extended.js"></script>
     <script src="js/templates-extra.js"></script>
