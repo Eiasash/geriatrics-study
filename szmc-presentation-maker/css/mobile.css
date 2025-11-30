@@ -189,7 +189,8 @@ body.rtl .mobile-nav-drawer.active {
 @media (max-width: 768px) {
     /* Only show toolbar when on editor page */
     body.on-editor .mobile-toolbar {
-        display: flex;
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr);
         justify-content: space-around;
         align-items: center;
     }
@@ -736,7 +737,8 @@ body.force-mobile-view .properties-panel {
 }
 
 body.force-mobile-view .mobile-toolbar {
-    display: flex;
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 body.force-mobile-view .header-right .btn-secondary span,
