@@ -613,6 +613,9 @@ class PresentationEditor {
 const editor = new PresentationEditor();
 window.editor = editor; // Expose to window for AI assistant access
 
+// Expose editor to window for AI assistant and other modules
+window.editor = editor;
+
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     const isEditing = e.target.isContentEditable || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA';

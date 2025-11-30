@@ -1192,6 +1192,64 @@ const TemplatePresets = {
             { type: 'references', data: {} },
             { type: 'questions', data: {} }
         ]
+    },
+    lecture: {
+        name: 'Teaching Lecture',
+        description: 'Educational lecture with learning objectives and assessments',
+        slides: [
+            { type: 'title', data: { subtitle: 'Teaching Lecture' } },
+            { type: 'content', data: { title: 'Learning Objectives', content: '<ul><li>Objective 1</li><li>Objective 2</li><li>Objective 3</li></ul>' } },
+            { type: 'content', data: { title: 'Overview', content: '' } },
+            { type: 'content', data: { title: 'Key Concepts', content: '' } },
+            { type: 'two-column', data: { title: 'Comparison', leftTitle: 'Topic A', rightTitle: 'Topic B' } },
+            { type: 'content', data: { title: 'Clinical Pearls', content: '' } },
+            { type: 'content', data: { title: 'Case Example', content: '' } },
+            { type: 'quiz', data: { question: 'Test your knowledge' } },
+            { type: 'teaching-points', data: {} },
+            { type: 'content', data: { title: 'Additional Resources', content: '' } },
+            { type: 'references', data: {} },
+            { type: 'questions', data: {} }
+        ]
+    },
+    grandRounds: {
+        name: 'Grand Rounds',
+        description: 'Comprehensive case with literature review and evidence-based discussion',
+        slides: [
+            { type: 'title', data: { subtitle: 'Grand Rounds Presentation' } },
+            { type: 'patient-info', data: {} },
+            { type: 'hpi', data: {} },
+            { type: 'pmh', data: {} },
+            { type: 'medications', data: {} },
+            { type: 'physical-exam', data: {} },
+            { type: 'labs', data: {} },
+            { type: 'geriatric-assessment', data: {} },
+            { type: 'differential', data: {} },
+            { type: 'diagnosis', data: {} },
+            { type: 'disease-overview', data: {} },
+            { type: 'content', data: { title: 'Literature Review', content: '' } },
+            { type: 'content', data: { title: 'Current Guidelines', content: '' } },
+            { type: 'content', data: { title: 'Evidence Summary', content: '<p><strong>High Quality Evidence:</strong></p><ul><li></li></ul><p><strong>Moderate Quality:</strong></p><ul><li></li></ul>' } },
+            { type: 'treatment', data: {} },
+            { type: 'prognosis', data: {} },
+            { type: 'content', data: { title: 'Discussion Points', content: '<ul><li>Point for panel discussion 1</li><li>Point for panel discussion 2</li></ul>' } },
+            { type: 'teaching-points', data: {} },
+            { type: 'references', data: {} },
+            { type: 'questions', data: {} }
+        ]
+    },
+    quickCase: {
+        name: 'Quick Case',
+        description: '5-minute focused case presentation for morning report',
+        slides: [
+            { type: 'title', data: { subtitle: 'Quick Case Presentation' } },
+            { type: 'content', data: { title: 'One-Liner', content: '<p class="one-liner" style="font-size: 1.3em; font-style: italic;">[Age] year old [sex] with [relevant PMH] presenting with [chief complaint]</p>' } },
+            { type: 'hpi', data: {} },
+            { type: 'content', data: { title: 'Key Findings', content: '<h4>Vitals</h4><p></p><h4>Physical Exam</h4><p></p><h4>Labs/Imaging</h4><p></p>' } },
+            { type: 'differential', data: {} },
+            { type: 'diagnosis', data: {} },
+            { type: 'treatment', data: {} },
+            { type: 'content', data: { title: 'Teaching Point', content: '<div class="teaching-box" style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6;"><p style="font-size: 1.1em;"></p></div>' } }
+        ]
     }
 };
 

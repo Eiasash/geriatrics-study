@@ -87,6 +87,50 @@
                         </ul>
                     </button>
 
+                    <div class="template-card" onclick="selectTemplate('lecture')">
+                        <div class="template-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Teaching Lecture</h3>
+                        <p>Educational lecture with learning objectives, key concepts, and assessments</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> Learning objectives</li>
+                            <li><i class="fas fa-check"></i> Topic overview slides</li>
+                            <li><i class="fas fa-check"></i> Quiz questions</li>
+                            <li><i class="fas fa-check"></i> Summary & resources</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card" onclick="selectTemplate('grandRounds')">
+                        <div class="template-icon" style="background: linear-gradient(135deg, #059669, #34d399);">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <h3>Grand Rounds</h3>
+                        <p>Comprehensive case with literature review and evidence-based discussion</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> Detailed case + literature</li>
+                            <li><i class="fas fa-check"></i> Evidence grading</li>
+                            <li><i class="fas fa-check"></i> Guidelines summary</li>
+                            <li><i class="fas fa-check"></i> Panel discussion points</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card" onclick="selectTemplate('quickCase')">
+                        <div class="template-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Quick Case</h3>
+                        <p>5-minute focused case presentation for morning report or handoff</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> 8 slide template</li>
+                            <li><i class="fas fa-check"></i> Essential info only</li>
+                            <li><i class="fas fa-check"></i> One-liner summary</li>
+                            <li><i class="fas fa-check"></i> Key teaching point</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card template-card-generate" onclick="showGeneratorModal()">
+                        <div class="template-icon">
                     <button class="template-card template-card-generate" onclick="showGeneratorModal()" role="listitem" aria-label="Generate from Text - Auto-generate presentation from pasted notes or article">
                         <div class="template-icon" aria-hidden="true">
                             <i class="fas fa-magic"></i>
