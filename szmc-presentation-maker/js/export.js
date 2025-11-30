@@ -1442,6 +1442,14 @@ function exportToPDF() {
     }, 500);
 }
 
+function exportToJSON() {
+    const presentation = editor.getPresentation();
+    exporter.exportToJSON(presentation);
+    if (typeof showToast === 'function') {
+        showToast('JSON exported successfully!', 'success');
+    }
+}
+
 // Save presentation (JSON export)
 function savePresentation() {
     const presentation = editor.getPresentation();
