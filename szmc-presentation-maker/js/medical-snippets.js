@@ -484,6 +484,190 @@ class MedicalSnippetsLibrary {
 </div>`
                     }
                 ]
+            },
+            geriatricSyndromes: {
+                name: 'Geriatric Syndromes',
+                icon: 'fa-user-md',
+                color: '#8e44ad',
+                snippets: [
+                    {
+                        title: 'Delirium Workup',
+                        description: 'Evaluation and management checklist',
+                        content: `<div class="geriatric-syndrome">
+<h4>Delirium Workup & Management</h4>
+<table>
+<tr><th colspan="2">Precipitating Factors to Investigate</th></tr>
+<tr><td><strong>I</strong>nfection</td><td>UA, CXR, blood cultures</td></tr>
+<tr><td><strong>W</strong>ithdrawal</td><td>Alcohol, benzodiazepines, opioids</td></tr>
+<tr><td><strong>A</strong>cute metabolic</td><td>BMP, glucose, TSH, B12</td></tr>
+<tr><td><strong>T</strong>rauma</td><td>Falls, head injury, pain</td></tr>
+<tr><td><strong>C</strong>NS pathology</td><td>Stroke, seizure, meningitis</td></tr>
+<tr><td><strong>H</strong>ypoxia</td><td>SpO2, ABG if needed</td></tr>
+<tr><td><strong>D</strong>eficiencies</td><td>Thiamine, B12</td></tr>
+<tr><td><strong>E</strong>ndocrine</td><td>Hypo/hyperglycemia, thyroid</td></tr>
+<tr><td><strong>A</strong>cute vascular</td><td>MI, PE, CVA</td></tr>
+<tr><td><strong>T</strong>oxins/Drugs</td><td>Anticholinergics, opioids, benzos</td></tr>
+<tr><td><strong>H</strong>eavy metals</td><td>Rare, consider if unexplained</td></tr>
+</table>
+<p><strong>Non-Pharmacologic Management:</strong></p>
+<ul>
+<li>Reorient frequently (clock, calendar)</li>
+<li>Ensure glasses/hearing aids</li>
+<li>Mobilize early</li>
+<li>Sleep hygiene (minimize nighttime interruptions)</li>
+<li>Hydration and nutrition</li>
+<li>Family presence when possible</li>
+</ul>
+</div>`
+                    },
+                    {
+                        title: 'Falls Assessment',
+                        description: 'Fall risk evaluation framework',
+                        content: `<div class="geriatric-syndrome">
+<h4>Fall Risk Assessment</h4>
+<table>
+<tr><th>Category</th><th>Assessment</th></tr>
+<tr><td><strong>History</strong></td><td>Previous falls, circumstances, injuries</td></tr>
+<tr><td><strong>Gait/Balance</strong></td><td>TUG test, tandem stance, chair rise</td></tr>
+<tr><td><strong>Vision</strong></td><td>Acuity, depth perception, cataracts</td></tr>
+<tr><td><strong>Medications</strong></td><td>Sedatives, antihypertensives, psychotropics</td></tr>
+<tr><td><strong>Orthostatic BP</strong></td><td>Lying, sitting, standing (1 & 3 min)</td></tr>
+<tr><td><strong>Cognition</strong></td><td>MMSE/MoCA, attention, judgment</td></tr>
+<tr><td><strong>Feet/Footwear</strong></td><td>Neuropathy, deformities, shoes</td></tr>
+<tr><td><strong>Environment</strong></td><td>Home hazards, lighting, rugs</td></tr>
+</table>
+<p><strong>Key Interventions:</strong></p>
+<ul>
+<li>Review and reduce medications (especially psychotropics)</li>
+<li>Vitamin D supplementation (800-1000 IU/day)</li>
+<li>Physical therapy for strength and balance</li>
+<li>Home safety evaluation</li>
+<li>Assistive device assessment</li>
+</ul>
+</div>`
+                    },
+                    {
+                        title: 'Polypharmacy Review',
+                        description: 'Deprescribing checklist',
+                        content: `<div class="geriatric-syndrome">
+<h4>Polypharmacy Review & Deprescribing</h4>
+<p><strong>The 5 Rights of Deprescribing:</strong></p>
+<ol>
+<li><strong>Right time</strong> - Clinical stability, life expectancy considerations</li>
+<li><strong>Right drug</strong> - Review indication, time to benefit, PIMs</li>
+<li><strong>Right dose</strong> - Renal/hepatic adjustment needed?</li>
+<li><strong>Right patient</strong> - Goals of care, preferences</li>
+<li><strong>Right monitoring</strong> - Withdrawal symptoms, rebound effects</li>
+</ol>
+<table>
+<tr><th>Consider Stopping</th><th>Reason</th></tr>
+<tr><td>PPIs >8 weeks</td><td>C. diff, fractures, B12, Mg</td></tr>
+<tr><td>Benzodiazepines</td><td>Falls, cognitive impairment</td></tr>
+<tr><td>Anticholinergics</td><td>Delirium, cognitive decline</td></tr>
+<tr><td>Sulfonylureas</td><td>Hypoglycemia risk</td></tr>
+<tr><td>Long-acting opioids</td><td>Falls, constipation, delirium</td></tr>
+<tr><td>NSAIDs (chronic)</td><td>GI bleed, renal, cardiac</td></tr>
+</table>
+</div>`
+                    },
+                    {
+                        title: 'Goals of Care Discussion',
+                        description: 'Framework for advance care planning',
+                        content: `<div class="geriatric-syndrome">
+<h4>Goals of Care Discussion Framework</h4>
+<p><strong>REMAP Framework:</strong></p>
+<table>
+<tr><th>Step</th><th>Questions/Actions</th></tr>
+<tr><td><strong>R</strong>eframe</td><td>"Given changes in your health, I'd like to discuss what matters most to you."</td></tr>
+<tr><td><strong>E</strong>xpect emotion</td><td>Allow silence, acknowledge feelings</td></tr>
+<tr><td><strong>M</strong>ap values</td><td>"What does a good day look like for you?"</td></tr>
+<tr><td><strong>A</strong>lign</td><td>Summarize what you heard, check understanding</td></tr>
+<tr><td><strong>P</strong>lan</td><td>Propose medical plan that fits their values</td></tr>
+</table>
+<p><strong>Key Questions:</strong></p>
+<ul>
+<li>What do you understand about your illness?</li>
+<li>What are you hoping for?</li>
+<li>What are you worried about?</li>
+<li>What abilities are so important that you can't imagine living without them?</li>
+<li>Are there treatments you would not want?</li>
+</ul>
+<p><strong>Document:</strong> Healthcare proxy, POLST/MOLST, code status</p>
+</div>`
+                    }
+                ]
+            },
+            evidenceLevel: {
+                name: 'Evidence & Guidelines',
+                icon: 'fa-graduation-cap',
+                color: '#16a085',
+                snippets: [
+                    {
+                        title: 'GRADE Evidence Levels',
+                        description: 'Quality of evidence rating',
+                        content: `<div class="evidence-table">
+<h4>GRADE Quality of Evidence</h4>
+<table>
+<tr><th>Level</th><th>Symbol</th><th>Meaning</th></tr>
+<tr style="background: #d1fae5;"><td>High</td><td>⊕⊕⊕⊕</td><td>Very confident in effect estimate</td></tr>
+<tr style="background: #fef3c7;"><td>Moderate</td><td>⊕⊕⊕○</td><td>Moderately confident; true effect likely close</td></tr>
+<tr style="background: #fed7aa;"><td>Low</td><td>⊕⊕○○</td><td>Limited confidence; true effect may differ</td></tr>
+<tr style="background: #fecaca;"><td>Very Low</td><td>⊕○○○</td><td>Very little confidence in effect estimate</td></tr>
+</table>
+<p><strong>Factors that lower quality:</strong></p>
+<ul>
+<li>Risk of bias</li>
+<li>Inconsistency</li>
+<li>Indirectness</li>
+<li>Imprecision</li>
+<li>Publication bias</li>
+</ul>
+</div>`
+                    },
+                    {
+                        title: 'NNT/NNH Calculator',
+                        description: 'Number needed to treat/harm',
+                        content: `<div class="evidence-table">
+<h4>NNT/NNH Calculation</h4>
+<table>
+<tr><th>Measure</th><th>Formula</th></tr>
+<tr><td>Absolute Risk Reduction (ARR)</td><td>Control rate - Treatment rate</td></tr>
+<tr><td>Number Needed to Treat (NNT)</td><td>1 / ARR</td></tr>
+<tr><td>Relative Risk Reduction (RRR)</td><td>(Control - Treatment) / Control</td></tr>
+<tr><td>Number Needed to Harm (NNH)</td><td>1 / Absolute Risk Increase</td></tr>
+</table>
+<p><strong>Example:</strong></p>
+<p>Control event rate: 15% | Treatment event rate: 10%</p>
+<p>ARR = 15% - 10% = 5% = 0.05</p>
+<p>NNT = 1/0.05 = <strong>20</strong></p>
+<p><em>Interpretation: Need to treat 20 patients to prevent 1 event</em></p>
+</div>`
+                    },
+                    {
+                        title: 'Study Types Hierarchy',
+                        description: 'Evidence pyramid',
+                        content: `<div class="evidence-table">
+<h4>Evidence Hierarchy</h4>
+<table>
+<tr><th>Level</th><th>Study Type</th><th>Quality</th></tr>
+<tr><td>1</td><td>Systematic Reviews & Meta-analyses</td><td>Highest</td></tr>
+<tr><td>2</td><td>Randomized Controlled Trials (RCTs)</td><td>High</td></tr>
+<tr><td>3</td><td>Cohort Studies</td><td>Moderate</td></tr>
+<tr><td>4</td><td>Case-Control Studies</td><td>Moderate-Low</td></tr>
+<tr><td>5</td><td>Case Series & Case Reports</td><td>Low</td></tr>
+<tr><td>6</td><td>Expert Opinion</td><td>Lowest</td></tr>
+</table>
+<p><strong>Critical Appraisal Questions:</strong></p>
+<ul>
+<li>Was the study design appropriate?</li>
+<li>Were patients similar to mine?</li>
+<li>Were outcomes clinically meaningful?</li>
+<li>Was follow-up adequate?</li>
+<li>Do benefits outweigh harms?</li>
+</ul>
+</div>`
+                    }
+                ]
             }
         };
     }

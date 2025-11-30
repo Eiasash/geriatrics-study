@@ -1,0 +1,469 @@
+/* SZMC Geriatrics Presentation Maker - Dark Mode Styles */
+
+/* Dark mode color variables */
+[data-theme="dark"],
+.dark-mode {
+    --background-color: #0f172a;
+    --text-color: #e2e8f0;
+    --primary: #3b82f6;
+    --primary-dark: #1e40af;
+    --primary-light: #60a5fa;
+    --secondary: #06b6d4;
+    --accent: #22c55e;
+
+    /* Dark mode neutral colors */
+    --white: #1e293b;
+    --gray-50: #1e293b;
+    --gray-100: #334155;
+    --gray-200: #475569;
+    --gray-300: #64748b;
+    --gray-400: #94a3b8;
+    --gray-500: #cbd5e1;
+    --gray-600: #e2e8f0;
+    --gray-700: #f1f5f9;
+    --gray-800: #f8fafc;
+    --gray-900: #ffffff;
+
+    /* Shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Body and main container dark styles */
+[data-theme="dark"] body,
+.dark-mode body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* App container */
+[data-theme="dark"] .app-container,
+.dark-mode .app-container {
+    background-color: var(--background-color);
+}
+
+/* Header styles */
+[data-theme="dark"] .app-header,
+.dark-mode .app-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+/* Cards and panels */
+[data-theme="dark"] .template-card,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .panel,
+.dark-mode .template-card,
+.dark-mode .feature-card,
+.dark-mode .modal-content,
+.dark-mode .panel {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+    color: var(--text-color);
+}
+
+/* Buttons */
+[data-theme="dark"] .btn,
+.dark-mode .btn {
+    background-color: var(--gray-100);
+    color: var(--text-color);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .btn:hover,
+.dark-mode .btn:hover {
+    background-color: var(--gray-200);
+}
+
+[data-theme="dark"] .btn-primary,
+.dark-mode .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .btn-primary:hover,
+.dark-mode .btn-primary:hover {
+    background-color: var(--primary-light);
+}
+
+/* Inputs and form elements */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: var(--gray-100);
+    color: var(--text-color);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+    color: var(--gray-400);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus,
+.dark-mode input:focus,
+.dark-mode textarea:focus,
+.dark-mode select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Slide thumbnails */
+[data-theme="dark"] .slide-thumbnail,
+.dark-mode .slide-thumbnail {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .slide-thumbnail:hover,
+.dark-mode .slide-thumbnail:hover {
+    background-color: var(--gray-200);
+}
+
+[data-theme="dark"] .slide-thumbnail.active,
+.dark-mode .slide-thumbnail.active {
+    border-color: var(--primary);
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Slide canvas */
+[data-theme="dark"] .slide-canvas,
+[data-theme="dark"] #current-slide,
+.dark-mode .slide-canvas,
+.dark-mode #current-slide {
+    background-color: var(--gray-50);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Properties panel */
+[data-theme="dark"] .properties-panel,
+[data-theme="dark"] .slide-navigator,
+.dark-mode .properties-panel,
+.dark-mode .slide-navigator {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+}
+
+/* Navigation and menus */
+[data-theme="dark"] .nav-link,
+.dark-mode .nav-link {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-link:hover,
+.dark-mode .nav-link:hover {
+    color: var(--primary-light);
+}
+
+/* Dropdown menus */
+[data-theme="dark"] .dropdown-menu,
+.dark-mode .dropdown-menu {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .dropdown-item,
+.dark-mode .dropdown-item {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown-item:hover,
+.dark-mode .dropdown-item:hover {
+    background-color: var(--gray-100);
+}
+
+/* Tables */
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td,
+.dark-mode table,
+.dark-mode th,
+.dark-mode td {
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] th,
+.dark-mode th {
+    background-color: var(--gray-100);
+}
+
+[data-theme="dark"] tr:nth-child(even),
+.dark-mode tr:nth-child(even) {
+    background-color: var(--gray-100);
+}
+
+/* Callouts */
+[data-theme="dark"] .callout,
+.dark-mode .callout {
+    background-color: var(--gray-100);
+    border-left-color: var(--primary);
+}
+
+[data-theme="dark"] .callout-info,
+.dark-mode .callout-info {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--primary);
+}
+
+[data-theme="dark"] .callout-warning,
+.dark-mode .callout-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left-color: #f59e0b;
+}
+
+[data-theme="dark"] .callout-danger,
+.dark-mode .callout-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left-color: #ef4444;
+}
+
+[data-theme="dark"] .callout-success,
+.dark-mode .callout-success {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-left-color: #22c55e;
+}
+
+/* Modal backdrop */
+[data-theme="dark"] .modal-backdrop,
+.dark-mode .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Toast notifications */
+[data-theme="dark"] .toast,
+.dark-mode .toast {
+    background-color: var(--gray-100);
+    color: var(--text-color);
+}
+
+/* AI Assistant Panel */
+[data-theme="dark"] .ai-panel,
+[data-theme="dark"] #ai-panel,
+.dark-mode .ai-panel,
+.dark-mode #ai-panel {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .ai-result-item,
+.dark-mode .ai-result-item {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+/* Theme panel */
+[data-theme="dark"] .theme-panel,
+[data-theme="dark"] #theme-panel,
+.dark-mode .theme-panel,
+.dark-mode #theme-panel {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+}
+
+/* Landing page */
+[data-theme="dark"] .landing-page,
+[data-theme="dark"] #landing-page,
+.dark-mode .landing-page,
+.dark-mode #landing-page {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .landing-page h1,
+[data-theme="dark"] .landing-page h2,
+.dark-mode .landing-page h1,
+.dark-mode .landing-page h2 {
+    color: #f1f5f9;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar,
+.dark-mode ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track,
+.dark-mode ::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb,
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover,
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* Code blocks */
+[data-theme="dark"] code,
+[data-theme="dark"] pre,
+.dark-mode code,
+.dark-mode pre {
+    background-color: var(--gray-100);
+    color: #a5f3fc;
+}
+
+/* Links */
+[data-theme="dark"] a,
+.dark-mode a {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] a:hover,
+.dark-mode a:hover {
+    color: var(--primary);
+}
+
+/* Selection */
+[data-theme="dark"] ::selection,
+.dark-mode ::selection {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Dark mode toggle button styling */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--gray-200);
+    transform: scale(1.05);
+}
+
+.dark-mode-toggle i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .dark-mode-toggle i.fa-moon,
+.dark-mode .dark-mode-toggle i.fa-moon {
+    display: none;
+}
+
+[data-theme="dark"] .dark-mode-toggle i.fa-sun,
+.dark-mode .dark-mode-toggle i.fa-sun {
+    display: block;
+    color: #fbbf24;
+}
+
+:not([data-theme="dark"]) .dark-mode-toggle i.fa-sun,
+:not(.dark-mode) .dark-mode-toggle i.fa-sun {
+    display: none;
+}
+
+:not([data-theme="dark"]) .dark-mode-toggle i.fa-moon,
+:not(.dark-mode) .dark-mode-toggle i.fa-moon {
+    display: block;
+    color: var(--gray-600);
+}
+
+/* Slide content in dark mode - keep slides light for readability */
+[data-theme="dark"] .slide,
+.dark-mode .slide {
+    background-color: #ffffff;
+    color: #1f2937;
+}
+
+[data-theme="dark"] .slide h1,
+[data-theme="dark"] .slide h2,
+[data-theme="dark"] .slide h3,
+[data-theme="dark"] .slide h4,
+.dark-mode .slide h1,
+.dark-mode .slide h2,
+.dark-mode .slide h3,
+.dark-mode .slide h4 {
+    color: var(--primary-color, #1e40af);
+}
+
+/* Keep contenteditable areas visible */
+[data-theme="dark"] [contenteditable="true"],
+.dark-mode [contenteditable="true"] {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] [contenteditable="true"]:focus,
+.dark-mode [contenteditable="true"]:focus {
+    background-color: rgba(59, 130, 246, 0.05);
+    outline: 2px solid var(--primary);
+}
+
+/* Medical snippets modal */
+[data-theme="dark"] .medical-snippets-modal-content,
+.dark-mode .medical-snippets-modal-content {
+    background-color: var(--gray-50);
+}
+
+[data-theme="dark"] .snippet-card,
+.dark-mode .snippet-card {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .snippet-card:hover,
+.dark-mode .snippet-card:hover {
+    background-color: var(--gray-200);
+}
+
+/* Quick actions panel for dark mode */
+[data-theme="dark"] .quick-actions-panel,
+.dark-mode .quick-actions-panel {
+    background-color: var(--gray-50);
+    border-color: var(--gray-200);
+}
+
+/* Autosave indicator */
+[data-theme="dark"] #autosave-indicator,
+.dark-mode #autosave-indicator {
+    background-color: var(--gray-100);
+    color: var(--text-color);
+}
+
+/* Generator modal */
+[data-theme="dark"] .generator-modal,
+.dark-mode .generator-modal {
+    background-color: var(--gray-50);
+}
+
+[data-theme="dark"] .detected-type,
+.dark-mode .detected-type {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+/* Print styles - always use light mode */
+@media print {
+    [data-theme="dark"],
+    .dark-mode {
+        --background-color: #ffffff;
+        --text-color: #1f2937;
+        --white: #ffffff;
+        --gray-50: #f8fafc;
+        --gray-100: #f1f5f9;
+    }
+}
