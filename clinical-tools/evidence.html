@@ -208,15 +208,46 @@
     </div>
 
     <script>
+        // Simple toast notification function
+        function showToast(message, duration = 3000) {
+            // Remove existing toast if any
+            const existingToast = document.getElementById('toast-notification');
+            if (existingToast) existingToast.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'toast-notification';
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #1f2937;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                animation: fadeIn 0.3s ease-out;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+
         function searchOpenEvidence() {
             const query = document.getElementById('searchQuery').value;
             // OpenEvidence doesn't support deep-linking search URLs
             // Copy query to clipboard and open main site
             if (query.trim()) {
                 navigator.clipboard.writeText(query).then(() => {
-                    alert('Your question has been copied to clipboard. OpenEvidence will open - paste your question there.');
+                    showToast('Question copied! Paste it in OpenEvidence.');
                 }).catch(() => {
                     // Clipboard failed, just open the site
+                    showToast('Opening OpenEvidence...');
                 });
             }
             window.open('https://www.openevidence.com', '_blank');
@@ -256,5 +287,15 @@
             }
         });
     </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateX(-50%) translateY(0); }
+            to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        }
+    </style>
 </body>
 </html>

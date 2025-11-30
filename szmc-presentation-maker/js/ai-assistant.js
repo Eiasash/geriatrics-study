@@ -1728,6 +1728,18 @@ class AIAssistant {
 // Create global instance
 window.aiAssistant = new AIAssistant();
 
+// Helper function to escape HTML to prevent XSS
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    const div = document.createElement('div');
+    div.textContent = String(text);
+    return div.innerHTML;
+}
+
+// Store analysis results for event delegation
+let lastAnalysisResults = { issues: [], suggestions: [] };
+let lastGeriatricsSuggestions = [];
+
 // Global function for AI analysis - renders results to UI
 function runAIAnalysis() {
     if (!window.editor || !window.editor.slides) {
@@ -1737,6 +1749,10 @@ function runAIAnalysis() {
 
     const results = window.aiAssistant.analyzePresentation(window.editor.slides);
     const geriatricsSuggestions = window.aiAssistant.generateGeriatricsContentSuggestions(window.editor.slides);
+
+    // Store for event delegation
+    lastAnalysisResults = results;
+    lastGeriatricsSuggestions = geriatricsSuggestions;
 
     // Update UI elements
     const scoreEl = document.getElementById('ai-score');
@@ -1788,17 +1804,18 @@ function runAIAnalysis() {
             const icon = window.aiAssistant.getSeverityIcon(item.severity);
             const color = window.aiAssistant.getSeverityColor(item.severity);
             const quickFix = window.aiAssistant.getQuickFix(item);
+            const itemIndex = [...results.issues, ...results.suggestions].indexOf(item);
 
             html += `
-                <div class="ai-result-item ai-result-${item.severity}" style="border-left: 4px solid ${color};">
+                <div class="ai-result-item ai-result-${escapeHtml(item.severity)}" style="border-left: 4px solid ${escapeHtml(color)};">
                     <div class="ai-result-header">
-                        <i class="fas ${icon}" style="color: ${color};"></i>
-                        <strong>${item.title}</strong>
+                        <i class="fas ${escapeHtml(icon)}" style="color: ${escapeHtml(color)};"></i>
+                        <strong>${escapeHtml(item.title)}</strong>
                         ${item.slideIndex !== null ? `<span class="ai-slide-badge">Slide ${item.slideIndex + 1}</span>` : ''}
                     </div>
-                    <p class="ai-result-message">${item.message}</p>
-                    ${quickFix ? `<button class="ai-quick-fix-btn" onclick="window.aiAssistant.getQuickFix(${JSON.stringify(item).replace(/"/g, '&quot;')}).action()">
-                        <i class="fas fa-magic"></i> ${quickFix.label}
+                    <p class="ai-result-message">${escapeHtml(item.message)}</p>
+                    ${quickFix ? `<button class="ai-quick-fix-btn" data-action="quickfix" data-item-index="${itemIndex}" data-severity="${escapeHtml(item.severity)}" data-slide-index="${item.slideIndex !== null ? item.slideIndex : ''}" data-action-type="${escapeHtml(item.action || '')}">
+                        <i class="fas fa-magic"></i> ${escapeHtml(quickFix.label)}
                     </button>` : ''}
                 </div>
             `;
@@ -1807,17 +1824,18 @@ function runAIAnalysis() {
         // Render geriatrics-specific suggestions
         if (geriatricsSuggestions.length > 0) {
             html += `<div class="ai-section-header"><i class="fas fa-user-md"></i> Geriatrics-Specific Suggestions</div>`;
-            geriatricsSuggestions.forEach(suggestion => {
+            geriatricsSuggestions.forEach((suggestion, idx) => {
+                const safeSlideType = suggestion.slideType ? escapeHtml(suggestion.slideType) : '';
                 html += `
                     <div class="ai-result-item ai-result-tip" style="border-left: 4px solid #10b981;">
                         <div class="ai-result-header">
                             <i class="fas fa-lightbulb" style="color: #10b981;"></i>
-                            <strong>${suggestion.title}</strong>
+                            <strong>${escapeHtml(suggestion.title)}</strong>
                         </div>
-                        <p class="ai-result-message">${suggestion.message}</p>
-                        <p class="ai-result-action"><em>${suggestion.action}</em></p>
-                        ${suggestion.slideType ? `<button class="ai-quick-fix-btn" onclick="window.editor.addSlide('${suggestion.slideType}'); window.showToast('Added ${suggestion.slideType} slide', 'success');">
-                            <i class="fas fa-plus"></i> Add ${suggestion.slideType.replace(/-/g, ' ')} Slide
+                        <p class="ai-result-message">${escapeHtml(suggestion.message)}</p>
+                        <p class="ai-result-action"><em>${escapeHtml(suggestion.action)}</em></p>
+                        ${suggestion.slideType ? `<button class="ai-quick-fix-btn" data-action="add-slide" data-slide-type="${safeSlideType}">
+                            <i class="fas fa-plus"></i> Add ${safeSlideType.replace(/-/g, ' ')} Slide
                         </button>` : ''}
                     </div>
                 `;
@@ -1835,9 +1853,50 @@ function runAIAnalysis() {
         }
 
         resultsContainer.innerHTML = html;
+
+        // Set up event delegation for quick fix buttons (only once)
+        if (!resultsContainer.hasAttribute('data-listener-attached')) {
+            resultsContainer.addEventListener('click', handleQuickFixClick);
+            resultsContainer.setAttribute('data-listener-attached', 'true');
+        }
     }
 
     return results;
+}
+
+// Handle quick fix button clicks via event delegation
+function handleQuickFixClick(event) {
+    const button = event.target.closest('.ai-quick-fix-btn');
+    if (!button) return;
+
+    const action = button.dataset.action;
+
+    if (action === 'add-slide') {
+        const slideType = button.dataset.slideType;
+        if (slideType && window.editor) {
+            window.editor.addSlide(slideType);
+            if (window.showToast) {
+                window.showToast(`Added ${slideType.replace(/-/g, ' ')} slide`, 'success');
+            }
+            // Re-run analysis
+            setTimeout(runAIAnalysis, 300);
+        }
+    } else if (action === 'quickfix') {
+        const itemIndex = parseInt(button.dataset.itemIndex, 10);
+        const actionType = button.dataset.actionType;
+        const slideIndex = button.dataset.slideIndex !== '' ? parseInt(button.dataset.slideIndex, 10) : null;
+
+        // Reconstruct the item from stored results
+        const allItems = [...lastAnalysisResults.issues, ...lastAnalysisResults.suggestions];
+        const item = allItems[itemIndex];
+
+        if (item) {
+            const quickFix = window.aiAssistant.getQuickFix(item);
+            if (quickFix && typeof quickFix.action === 'function') {
+                quickFix.action();
+            }
+        }
+    }
 }
 
 // Toggle AI Panel
