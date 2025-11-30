@@ -25,62 +25,67 @@
     <link rel="stylesheet" href="css/formatting-toolbar.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/pwa-install.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div id="app">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="app" role="application" aria-label="SZMC Geriatrics Presentation Maker">
         <!-- Landing Page -->
-        <div id="landing-page" class="page active">
-            <header class="landing-header">
-                <div class="logo">
-                    <i class="fas fa-heartbeat"></i>
+        <div id="landing-page" class="page active" role="region" aria-label="Landing page">
+            <header class="landing-header" role="banner">
+                <div class="logo" aria-label="SZMC Geriatrics logo">
+                    <i class="fas fa-heartbeat" aria-hidden="true"></i>
                     <span data-i18n="logo">SZMC Geriatrics</span>
                 </div>
                 <div class="header-actions">
-                    <div class="language-selector">
-                        <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English">
+                    <button class="dark-mode-toggle" id="dark-mode-toggle-landing" onclick="toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <div class="language-selector" role="group" aria-label="Language selection">
+                        <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English" aria-label="Switch to English" aria-pressed="true">
                             <span>EN</span>
                         </button>
-                        <button class="lang-btn" id="lang-he" onclick="switchLanguage('he')" title="עברית">
+                        <button class="lang-btn" id="lang-he" onclick="switchLanguage('he')" title="עברית" aria-label="Switch to Hebrew" aria-pressed="false">
                             <span>עב</span>
                         </button>
                     </div>
                 </div>
             </header>
 
-            <main class="landing-main">
+            <main id="main-content" class="landing-main" role="main">
                 <h1 data-i18n="presentationMaker">Presentation Maker</h1>
                 <p class="subtitle" data-i18n="appSubtitle">Create professional medical presentations for case reviews and journal clubs</p>
 
-                <div class="template-grid">
-                    <div class="template-card" onclick="selectTemplate('case')">
-                        <div class="template-icon">
+                <div class="template-grid" role="list" aria-label="Presentation templates">
+                    <button class="template-card" onclick="selectTemplate('case')" role="listitem" aria-label="Create Case Presentation - 25 slides with patient history, physical exam, differentials, workup, diagnosis, and treatment plan">
+                        <div class="template-icon" aria-hidden="true">
                             <i class="fas fa-user-injured"></i>
                         </div>
                         <h3 data-i18n="casePresentation">Case Presentation</h3>
                         <p data-i18n="casePresentationDesc">Patient history, physical exam, differentials, workup, diagnosis, and treatment plan</p>
-                        <ul class="template-features">
-                            <li><i class="fas fa-check"></i> 25 slide template</li>
-                            <li><i class="fas fa-check"></i> Table of contents & take-home</li>
-                            <li><i class="fas fa-check"></i> Charts, images & algorithms</li>
-                            <li><i class="fas fa-check"></i> Numbered citations</li>
+                        <ul class="template-features" aria-label="Features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 25 slide template</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Table of contents & take-home</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Charts, images & algorithms</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Numbered citations</li>
                         </ul>
-                    </div>
+                    </button>
 
-                    <div class="template-card" onclick="selectTemplate('journal')">
-                        <div class="template-icon">
+                    <button class="template-card" onclick="selectTemplate('journal')" role="listitem" aria-label="Create Journal Club - 20 slides with critical appraisal of medical literature">
+                        <div class="template-icon" aria-hidden="true">
                             <i class="fas fa-book-medical"></i>
                         </div>
                         <h3 data-i18n="journalClub">Journal Club</h3>
                         <p data-i18n="journalClubDesc">Critical appraisal of medical literature with structured analysis</p>
-                        <ul class="template-features">
-                            <li><i class="fas fa-check"></i> 20 slide template</li>
-                            <li><i class="fas fa-check"></i> PICO & statistical analysis</li>
-                            <li><i class="fas fa-check"></i> Data visualizations</li>
-                            <li><i class="fas fa-check"></i> Formatted references</li>
+                        <ul class="template-features" aria-label="Features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 20 slide template</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> PICO & statistical analysis</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Data visualizations</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Formatted references</li>
                         </ul>
-                    </div>
+                    </button>
 
                     <div class="template-card" onclick="selectTemplate('lecture')">
                         <div class="template-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
@@ -126,113 +131,118 @@
 
                     <div class="template-card template-card-generate" onclick="showGeneratorModal()">
                         <div class="template-icon">
+                    <button class="template-card template-card-generate" onclick="showGeneratorModal()" role="listitem" aria-label="Generate from Text - Auto-generate presentation from pasted notes or article">
+                        <div class="template-icon" aria-hidden="true">
                             <i class="fas fa-magic"></i>
                         </div>
                         <h3 data-i18n="generateFromText">Generate from Text</h3>
                         <p data-i18n="generateFromTextDesc">Paste your case notes or article and auto-generate a structured presentation</p>
-                        <ul class="template-features">
-                            <li><i class="fas fa-check"></i> Auto-detect case vs journal</li>
-                            <li><i class="fas fa-check"></i> Extract key information</li>
-                            <li><i class="fas fa-check"></i> Multiple style themes</li>
-                            <li><i class="fas fa-check"></i> Customizable output</li>
+                        <ul class="template-features" aria-label="Features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Auto-detect case vs journal</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Extract key information</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Multiple style themes</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Customizable output</li>
                         </ul>
-                    </div>
+                    </button>
                 </div>
 
                 <div class="load-section">
-                    <button class="btn-secondary" onclick="loadPresentation()">
-                        <i class="fas fa-folder-open"></i> Load Saved Presentation
+                    <button class="btn-secondary" onclick="loadPresentation()" aria-label="Load a previously saved presentation file">
+                        <i class="fas fa-folder-open" aria-hidden="true"></i> Load Saved Presentation
                     </button>
                 </div>
             </main>
         </div>
 
         <!-- Editor Page -->
-        <div id="editor-page" class="page">
-            <header class="editor-header">
+        <div id="editor-page" class="page" role="region" aria-label="Presentation editor">
+            <header class="editor-header" role="toolbar" aria-label="Editor toolbar">
                 <div class="header-left">
-                    <button class="btn-back" onclick="goBack()">
-                        <i class="fas fa-arrow-left"></i>
+                    <button class="btn-back" onclick="goBack()" aria-label="Go back to home page">
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
                     </button>
-                    <div class="logo-small">
+                    <div class="logo-small" aria-hidden="true">
                         <i class="fas fa-heartbeat"></i>
                         <span>SZMC Geriatrics</span>
                     </div>
                 </div>
                 <div class="header-center">
-                    <input type="text" id="presentation-title" placeholder="Presentation Title" value="Untitled Presentation">
+                    <input type="text" id="presentation-title" placeholder="Presentation Title" value="Untitled Presentation" aria-label="Presentation title">
                 </div>
                 <div class="header-right">
-                    <div class="autosave-indicator" id="autosave-indicator" title="Auto-save status">
-                        <i class="fas fa-cloud-upload-alt"></i>
+                    <div class="autosave-indicator" id="autosave-indicator" title="Auto-save status" role="status" aria-live="polite">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
                         <span>Saved</span>
                     </div>
-                    <div class="toolbar-divider"></div>
-                    <button class="btn-icon" onclick="editor.undo()" title="Undo (Ctrl+Z)" id="btn-undo" disabled>
-                        <i class="fas fa-undo"></i>
+                    <div class="toolbar-divider" aria-hidden="true"></div>
+                    <button class="btn-icon" onclick="editor.undo()" title="Undo (Ctrl+Z)" id="btn-undo" disabled aria-label="Undo last action">
+                        <i class="fas fa-undo" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-icon" onclick="editor.redo()" title="Redo (Ctrl+Y)" id="btn-redo" disabled>
-                        <i class="fas fa-redo"></i>
+                    <button class="btn-icon" onclick="editor.redo()" title="Redo (Ctrl+Y)" id="btn-redo" disabled aria-label="Redo last action">
+                        <i class="fas fa-redo" aria-hidden="true"></i>
                     </button>
-                    <div class="toolbar-divider"></div>
-                    <button class="btn-icon btn-search" onclick="searchManager.open()" title="Search (Ctrl+F)">
-                        <i class="fas fa-search"></i>
+                    <div class="toolbar-divider" aria-hidden="true"></div>
+                    <button class="btn-icon btn-search" onclick="searchManager.open()" title="Search (Ctrl+F)" aria-label="Search and replace">
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-icon" onclick="medicalSnippets.openModal()" title="Medical Snippets (Ctrl+M)">
-                        <i class="fas fa-hospital-symbol"></i>
+                    <button class="btn-icon" onclick="medicalSnippets.openModal()" title="Medical Snippets (Ctrl+M)" aria-label="Insert medical snippets">
+                        <i class="fas fa-hospital-symbol" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-icon" onclick="presentationAnalytics.openModal()" title="Analytics">
-                        <i class="fas fa-chart-bar"></i>
+                    <button class="btn-icon" onclick="presentationAnalytics.openModal()" title="Analytics" aria-label="View presentation analytics">
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-icon" onclick="versionHistory.openModal()" title="Version History">
-                        <i class="fas fa-history"></i>
+                    <button class="btn-icon" onclick="versionHistory.openModal()" title="Version History" aria-label="View version history">
+                        <i class="fas fa-history" aria-hidden="true"></i>
                     </button>
-                    <div class="toolbar-divider"></div>
-                    <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant">
-                        <i class="fas fa-robot"></i>
-                        <span class="ai-badge" id="ai-issue-badge" style="display: none;">0</span>
+                    <div class="toolbar-divider" aria-hidden="true"></div>
+                    <button class="dark-mode-toggle" id="dark-mode-toggle-editor" onclick="toggleDarkMode()" title="Dark Mode" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
-                    <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme">
-                        <i class="fas fa-palette"></i>
+                    <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant" aria-label="Toggle AI Assistant panel" aria-expanded="false" aria-controls="ai-panel">
+                        <i class="fas fa-robot" aria-hidden="true"></i>
+                        <span class="ai-badge" id="ai-issue-badge" style="display: none;" aria-label="Number of issues found">0</span>
+                    </button>
+                    <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme" aria-label="Change presentation theme" aria-expanded="false" aria-controls="theme-panel">
+                        <i class="fas fa-palette" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
-                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('save-dropdown')">
-                            <i class="fas fa-save"></i> Save <i class="fas fa-caret-down"></i>
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('save-dropdown')" aria-haspopup="true" aria-expanded="false" aria-label="Save options">
+                            <i class="fas fa-save" aria-hidden="true"></i> Save <i class="fas fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <div id="save-dropdown" class="dropdown-menu">
-                            <button onclick="savePresentation(); closeDropdowns()"><i class="fas fa-save"></i> Save Local</button>
-                            <button onclick="CloudSave.local.save(getPresentationData()); closeDropdowns()"><i class="fas fa-history"></i> Save Backup</button>
-                            <hr>
-                            <button onclick="CloudSave.googleDrive.save(getPresentationData()); closeDropdowns()"><i class="fab fa-google-drive"></i> Google Drive</button>
-                            <button onclick="CloudSave.dropbox.save(getPresentationData()); closeDropdowns()"><i class="fab fa-dropbox"></i> Dropbox</button>
+                        <div id="save-dropdown" class="dropdown-menu" role="menu">
+                            <button onclick="savePresentation(); closeDropdowns()" role="menuitem"><i class="fas fa-save" aria-hidden="true"></i> Save Local</button>
+                            <button onclick="CloudSave.local.save(getPresentationData()); closeDropdowns()" role="menuitem"><i class="fas fa-history" aria-hidden="true"></i> Save Backup</button>
+                            <hr aria-hidden="true">
+                            <button onclick="CloudSave.googleDrive.save(getPresentationData()); closeDropdowns()" role="menuitem"><i class="fab fa-google-drive" aria-hidden="true"></i> Google Drive</button>
+                            <button onclick="CloudSave.dropbox.save(getPresentationData()); closeDropdowns()" role="menuitem"><i class="fab fa-dropbox" aria-hidden="true"></i> Dropbox</button>
                         </div>
                     </div>
                     <div class="dropdown">
-                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('export-dropdown')">
-                            <i class="fas fa-download"></i> Export <i class="fas fa-caret-down"></i>
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('export-dropdown')" aria-haspopup="true" aria-expanded="false" aria-label="Export options">
+                            <i class="fas fa-download" aria-hidden="true"></i> Export <i class="fas fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <div id="export-dropdown" class="dropdown-menu">
-                            <button onclick="exportToPowerPoint(); closeDropdowns()"><i class="fas fa-file-powerpoint"></i> PowerPoint (.pptx)</button>
-                            <button onclick="exportToPDF(); closeDropdowns()"><i class="fas fa-file-pdf"></i> PDF</button>
-                            <button onclick="exportToHTML(); closeDropdowns()"><i class="fas fa-code"></i> HTML</button>
-                            <button onclick="exportToJSON(); closeDropdowns()"><i class="fas fa-file-code"></i> JSON</button>
-                            <hr>
-                            <button onclick="TemplateSharing.exportTemplate(getPresentationData()); closeDropdowns()"><i class="fas fa-file-export"></i> Export Template</button>
+                        <div id="export-dropdown" class="dropdown-menu" role="menu">
+                            <button onclick="exportToPowerPoint(); closeDropdowns()" role="menuitem"><i class="fas fa-file-powerpoint" aria-hidden="true"></i> PowerPoint (.pptx)</button>
+                            <button onclick="exportToPDF(); closeDropdowns()" role="menuitem"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</button>
+                            <button onclick="exportToHTML(); closeDropdowns()" role="menuitem"><i class="fas fa-code" aria-hidden="true"></i> HTML</button>
+                            <button onclick="exportToJSON(); closeDropdowns()" role="menuitem"><i class="fas fa-file-code" aria-hidden="true"></i> JSON</button>
+                            <hr aria-hidden="true">
+                            <button onclick="TemplateSharing.exportTemplate(getPresentationData()); closeDropdowns()" role="menuitem"><i class="fas fa-file-export" aria-hidden="true"></i> Export Template</button>
                         </div>
                     </div>
                     <div class="dropdown">
-                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('share-dropdown')">
-                            <i class="fas fa-share-alt"></i> Share <i class="fas fa-caret-down"></i>
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('share-dropdown')" aria-haspopup="true" aria-expanded="false" aria-label="Share options">
+                            <i class="fas fa-share-alt" aria-hidden="true"></i> Share <i class="fas fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <div id="share-dropdown" class="dropdown-menu">
-                            <button onclick="TemplateSharing.copyShareLink(getPresentationData()); closeDropdowns()"><i class="fas fa-link"></i> Copy Link</button>
-                            <button onclick="startCollaboration(); closeDropdowns()"><i class="fas fa-users"></i> Start Collaboration</button>
-                            <button onclick="joinCollaboration(); closeDropdowns()"><i class="fas fa-sign-in-alt"></i> Join Session</button>
+                        <div id="share-dropdown" class="dropdown-menu" role="menu">
+                            <button onclick="TemplateSharing.copyShareLink(getPresentationData()); closeDropdowns()" role="menuitem"><i class="fas fa-link" aria-hidden="true"></i> Copy Link</button>
+                            <button onclick="startCollaboration(); closeDropdowns()" role="menuitem"><i class="fas fa-users" aria-hidden="true"></i> Start Collaboration</button>
+                            <button onclick="joinCollaboration(); closeDropdowns()" role="menuitem"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> Join Session</button>
                         </div>
                     </div>
-                    <div id="collab-users" class="collab-users-bar"></div>
-                    <button class="btn-primary" onclick="showPresentationOptions()">
-                        <i class="fas fa-play"></i> Present
+                    <div id="collab-users" class="collab-users-bar" role="status" aria-label="Collaborators"></div>
+                    <button class="btn-primary" onclick="showPresentationOptions()" aria-label="Start presentation">
+                        <i class="fas fa-play" aria-hidden="true"></i> Present
                     </button>
                 </div>
             </header>
@@ -838,6 +848,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     </div>
 
     <script src="js/i18n.js"></script>
+    <script src="js/dark-mode.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/templates-extended.js"></script>
     <script src="js/templates-extra.js"></script>
@@ -858,6 +869,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/pwa-install.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mobile.js"></script>
+    <script src="js/features.js"></script>
     <script>
         // Language switching function
         function switchLanguage(lang) {
@@ -870,25 +882,43 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         function updateLanguageButtons(lang) {
             const enBtn = document.getElementById('lang-en');
             const heBtn = document.getElementById('lang-he');
-            if (enBtn) enBtn.classList.toggle('active', lang === 'en');
-            if (heBtn) heBtn.classList.toggle('active', lang === 'he');
+            if (enBtn) {
+                enBtn.classList.toggle('active', lang === 'en');
+                enBtn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+            }
+            if (heBtn) {
+                heBtn.classList.toggle('active', lang === 'he');
+                heBtn.setAttribute('aria-pressed', lang === 'he' ? 'true' : 'false');
+            }
         }
 
-        // Dropdown functions
+        // Dropdown functions with accessibility
         function toggleDropdown(id) {
             const dropdown = document.getElementById(id).parentElement;
             const wasOpen = dropdown.classList.contains('open');
             closeDropdowns();
-            if (!wasOpen) dropdown.classList.add('open');
+            if (!wasOpen) {
+                dropdown.classList.add('open');
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'true');
+            }
         }
 
         function closeDropdowns() {
-            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('open');
+                const toggle = d.querySelector('.dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            });
         }
 
-        // Close dropdowns on outside click
+        // Close dropdowns on outside click or Escape key
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.dropdown')) closeDropdowns();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDropdowns();
         });
 
         // Collaboration helpers
@@ -960,31 +990,35 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <style>
         .install-prompt {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            background: linear-gradient(135deg, #00b4d8 0%, #0ea5e9 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 14px 28px;
+            border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.35);
             z-index: 10000;
             display: flex;
             align-items: center;
-            gap: 8px;
-            animation: slideUp 0.3s ease;
+            gap: 10px;
+            animation: slideUpBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.2s ease;
         }
         .install-prompt:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 180, 216, 0.45);
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .install-prompt:active {
+            transform: translateX(-50%) translateY(0);
+        }
+        @keyframes slideUpBounce {
+            from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
         }
     </style>
 </body>

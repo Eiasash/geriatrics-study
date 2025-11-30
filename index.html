@@ -21,28 +21,28 @@
     
     <style>
         :root {
-            --primary-blue: #004c8c;
-            --secondary-blue: #0066cc;
-            --accent-gold: #f4d03f;
-            --success-green: #27ae60;
-            --warning-orange: #e67e22;
-            --danger-red: #e74c3c;
-            --dark-bg: #1a1a2e;
-            --card-bg: #16213e;
+            --primary-blue: #0f4c81;
+            --secondary-blue: #1e6eb5;
+            --accent-teal: #00b4d8;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --danger-red: #ef4444;
+            --dark-bg: #0a1628;
+            --card-bg: #0f1f33;
             --text-primary: #ffffff;
-            --text-secondary: #bdc3c7;
-            --border-color: #34495e;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-warning: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --text-secondary: #cbd5e1;
+            --border-color: #2a4560;
+            --gradient-primary: linear-gradient(135deg, #0a3459 0%, #0f4c81 35%, #1e6eb5 70%, #00b4d8 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #00b4d8 100%);
+            --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Hebrew', 'Arial Hebrew', 'Roboto', sans-serif;
             background: var(--gradient-primary);
@@ -51,19 +51,19 @@
             overflow-x: hidden;
             direction: rtl;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 30px;
             position: relative;
         }
-        
+
         .header::before {
             content: '';
             position: absolute;
@@ -75,30 +75,31 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><path d="M30,50 Q50,20 70,50 Q50,80 30,50" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center;
             background-size: contain;
         }
-        
+
         .header h1 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #f4d03f, #fff);
+            background: linear-gradient(45deg, #fff, #00b4d8, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: shimmer 3s infinite linear;
+            background-size: 200% auto;
         }
-        
+
         @keyframes shimmer {
             0% { background-position: -200% center; }
             100% { background-position: 200% center; }
         }
-        
+
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-bottom: 20px;
         }
-        
+
         .hospital-badge {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -110,26 +111,26 @@
             gap: 10px;
             font-weight: 600;
         }
-        
+
         .stats-dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
-        
+
         .stat-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
+
         .stat-card::before {
             content: '';
             position: absolute;
@@ -139,12 +140,12 @@
             height: 3px;
             background: var(--gradient-success);
         }
-        
+
         .stat-card:hover {
             transform: translateY(-5px) scale(1.02);
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.18);
         }
-        
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
@@ -154,13 +155,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .stat-label {
             font-size: 1rem;
             opacity: 0.9;
             font-weight: 500;
         }
-        
+
         .stat-progress {
             width: 100%;
             height: 6px;
@@ -169,13 +170,13 @@
             margin-top: 10px;
             overflow: hidden;
         }
-        
+
         .stat-progress-bar {
             height: 100%;
             background: var(--gradient-success);
             transition: width 1s ease;
         }
-        
+
         .section-title {
             font-size: 2rem;
             text-align: center;
@@ -183,7 +184,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             position: relative;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -195,27 +196,27 @@
             background: var(--gradient-success);
             border-radius: 2px;
         }
-        
+
         .modes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 20px;
             margin-bottom: 50px;
         }
-        
+
         .mode-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             padding: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        
+
         .mode-card::before {
             content: '';
             position: absolute;
@@ -223,21 +224,21 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
             transform: scale(0);
             transition: transform 0.6s ease;
         }
-        
+
         .mode-card:hover::before {
             transform: scale(1);
         }
-        
+
         .mode-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: translateY(-10px) scale(1.03);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
-        
+
         .mode-icon {
             font-size: 3.5rem;
             margin-bottom: 15px;
@@ -245,7 +246,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .mode-title {
             font-size: 1.4rem;
             font-weight: bold;
@@ -253,7 +254,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .mode-description {
             font-size: 0.9rem;
             opacity: 0.8;
@@ -261,7 +262,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .mode-btn {
             background: var(--gradient-success);
             border: none;
@@ -274,30 +275,30 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .mode-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        
+
         .topics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
             gap: 25px;
             margin-bottom: 50px;
         }
-        
+
         .topic-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-        
+
         .topic-card::before {
             content: '';
             position: absolute;
@@ -305,12 +306,12 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: var(--gradient-warning);
+            background: var(--gradient-success);
         }
-        
+
         .topic-card:hover {
             transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
@@ -1068,11 +1069,11 @@
                 <button class="mode-btn">פתח כלי</button>
             </a>
 
-            <a href="clinical-tools/ai-assistant.html" class="mode-card" style="text-decoration: none; color: inherit; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <a href="clinical-tools/ai-assistant.html" class="mode-card" style="text-decoration: none; color: inherit; background: linear-gradient(135deg, #0f4c81 0%, #00b4d8 100%);">
                 <div class="mode-icon">🤖</div>
                 <div class="mode-title" style="color: white;">עוזר קליני AI</div>
                 <div class="mode-description" style="color: rgba(255,255,255,0.9);">OpenEvidence, ChatGPT, Claude, Perplexity - אינטגרציה עם מנועי AI</div>
-                <button class="mode-btn" style="background: white; color: #764ba2;">פתח AI</button>
+                <button class="mode-btn" style="background: white; color: #0f4c81;">פתח AI</button>
             </a>
 
             <a href="clinical-tools/medications.html" class="mode-card" style="text-decoration: none; color: inherit;">
@@ -1820,7 +1821,7 @@
             const topicId = currentQuiz.topicId;
             const mode = currentQuiz.mode;
             closeQuiz();
-            setTimeout(() => startQuiz(topicId, mode), 300);
+            setTimeout(() => startTopicQuiz(topicId, mode), 300);
         }
 
         function closeQuiz() {
@@ -1909,7 +1910,7 @@
 
         function startQuizFromModal(topicId, mode, modal) {
             modal.remove();
-            startQuiz(topicId, mode);
+            startTopicQuiz(topicId, mode);
         }
 
         // ====================================

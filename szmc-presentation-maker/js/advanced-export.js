@@ -703,25 +703,19 @@ function saveCloudConfig(provider) {
     showToast('Cloud config saved!', 'success');
 }
 
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed; bottom: 20px; right: 20px; padding: 12px 24px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white; border-radius: 8px; z-index: 10000; animation: slideIn 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-}
+// Uses window.showToast from main.js
 
 // Get presentation data helper
 function getPresentationData() {
-    // Try to get from current editor state
+    // Use the editor's getPresentation method (most reliable)
+    if (window.editor && typeof window.editor.getPresentation === 'function') {
+        return window.editor.getPresentation();
+    }
+
+    // Try to get from current presentation state
     if (window.currentPresentation) return window.currentPresentation;
 
-    // Fallback: collect from DOM
+    // Fallback: collect from DOM (least reliable)
     const slides = [];
     document.querySelectorAll('.slide-item, .slide').forEach((el, i) => {
         slides.push({
@@ -820,6 +814,7 @@ document.head.appendChild(style);
 // Export functions globally
 window.exportToPowerPoint = exportToPowerPoint;
 window.exportToPDF = exportToPDF;
+window.getPresentationData = getPresentationData;
 window.CloudSave = CloudSave;
 window.TemplateSharing = TemplateSharing;
 window.CollaborativeEditing = CollaborativeEditing;
