@@ -2065,7 +2065,46 @@ function handleQuickFixClick(event) {
         if (item) {
             const quickFix = window.aiAssistant.getQuickFix(item);
             if (quickFix && typeof quickFix.action === 'function') {
-                quickFix.action();
+                try {
+                    // Visual feedback - disable button during action
+                    button.disabled = true;
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Working...';
+
+                    quickFix.action();
+
+                    // Mark as successful
+                    button.classList.add('success');
+                    button.innerHTML = '<i class="fas fa-check"></i> Done';
+
+                    // Remove the item from the list after a short delay
+                    setTimeout(() => {
+                        const resultItem = button.closest('.ai-result-item');
+                        if (resultItem) {
+                            resultItem.style.opacity = '0.5';
+                            resultItem.style.transition = 'opacity 0.3s';
+                            setTimeout(() => {
+                                resultItem.remove();
+                            }, 300);
+                        }
+                    }, 500);
+                } catch (error) {
+                    console.error('Quick fix error:', error);
+                    button.disabled = false;
+                    button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed';
+                    if (window.showToast) {
+                        window.showToast('Quick fix failed: ' + error.message, 'error');
+                    }
+                }
+            } else {
+                console.warn('No quick fix available for item:', item);
+                if (window.showToast) {
+                    window.showToast('No automatic fix available for this item', 'warning');
+                }
+            }
+        } else {
+            console.warn('Item not found at index:', itemIndex);
+            if (window.showToast) {
+                window.showToast('Could not find the issue. Please re-run analysis.', 'warning');
             }
         }
     }
