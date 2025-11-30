@@ -694,11 +694,10 @@ class AIAssistant {
         switch (issue.action) {
             case 'editSlide':
                 return {
-                    label: 'Edit Slide',
+                    label: 'Go to Slide',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
-                            // Focus on the slide canvas for editing
                             const canvas = document.getElementById('current-slide');
                             if (canvas) {
                                 const editable = canvas.querySelector('[contenteditable="true"]');
@@ -709,53 +708,81 @@ class AIAssistant {
                 };
             case 'deleteSlide':
                 return {
-                    label: 'Delete Slide',
+                    label: 'Delete Empty Slide',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
-                            if (confirm('Are you sure you want to delete this slide?')) {
+                            if (confirm('Delete this empty slide?')) {
                                 window.editor.deleteSlide(issue.slideIndex);
+                                window.showToast('Empty slide deleted', 'success');
+                                this.refreshAnalysis();
                             }
                         }
                     }
                 };
             case 'addSlide':
                 return {
-                    label: 'Add Slide',
+                    label: 'Add Missing Slide',
                     action: () => {
-                        // Scroll to add slide section
-                        const typeSelect = document.getElementById('slide-type');
-                        if (typeSelect) {
-                            typeSelect.scrollIntoView({ behavior: 'smooth' });
-                            typeSelect.focus();
+                        if (window.editor && issue.suggestedType) {
+                            window.editor.addSlide(issue.suggestedType);
+                            window.showToast(`Added ${issue.suggestedType} slide`, 'success');
+                            this.refreshAnalysis();
+                        } else {
+                            const typeSelect = document.getElementById('slide-type');
+                            if (typeSelect) {
+                                typeSelect.scrollIntoView({ behavior: 'smooth' });
+                                typeSelect.focus();
+                            }
                         }
                     }
                 };
             case 'moveSlide':
                 return {
-                    label: 'Move Slide',
+                    label: 'Fix Slide Order',
                     action: () => {
-                        if (window.editor && issue.slideIndex !== null) {
+                        if (window.editor && issue.slideIndex !== null && issue.targetIndex !== undefined) {
+                            window.editor.moveSlide(issue.slideIndex, issue.targetIndex);
+                            window.showToast('Slide moved to correct position', 'success');
+                            this.refreshAnalysis();
+                        } else {
                             window.editor.selectSlide(issue.slideIndex);
-                            window.showToast('Use drag and drop to reorder slides', 'info');
+                            window.showToast('Drag slide to reorder', 'info');
                         }
                     }
                 };
             case 'splitSlide':
                 return {
-                    label: 'Split Slide',
+                    label: 'Split Slide Now',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
-                            this.suggestSplitSlide(issue.slideIndex);
+                            this.performSplitSlide(issue.slideIndex);
                         }
                     }
                 };
             case 'simplifySlide':
                 return {
-                    label: 'Simplify Content',
+                    label: 'Auto-Simplify',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
-                            window.editor.selectSlide(issue.slideIndex);
-                            window.showToast('Tip: Remove complex HTML, reduce list items, or split into multiple slides', 'info');
+                            this.performSimplifySlide(issue.slideIndex);
+                        }
+                    }
+                };
+            case 'addContent':
+                return {
+                    label: 'Add Template Content',
+                    action: () => {
+                        if (window.editor && issue.slideIndex !== null) {
+                            this.addTemplateContent(issue.slideIndex);
+                        }
+                    }
+                };
+            case 'fixAbbreviation':
+                return {
+                    label: 'Expand Abbreviations',
+                    action: () => {
+                        if (window.editor && issue.slideIndex !== null) {
+                            this.expandAbbreviations(issue.slideIndex);
                         }
                     }
                 };
@@ -764,25 +791,199 @@ class AIAssistant {
         }
     }
 
-    // Suggest how to split a dense slide
-    suggestSplitSlide(slideIndex) {
+    // Refresh analysis after a fix
+    refreshAnalysis() {
+        setTimeout(() => {
+            if (typeof runAIAnalysis === 'function') {
+                runAIAnalysis();
+            }
+        }, 300);
+    }
+
+    // Actually split a dense slide into two
+    performSplitSlide(slideIndex) {
         const slide = window.editor?.slides[slideIndex];
         if (!slide) return;
 
-        const data = slide.data || slide;
-        const suggestions = [];
+        const data = slide.data || {};
 
-        if (slide.type === 'bullet-points' && data.points && data.points.length > 5) {
-            suggestions.push(`Split ${data.points.length} bullet points across 2 slides`);
+        // Handle content-based slides
+        if (data.content && data.content.length > 300) {
+            const content = data.content;
+            const midPoint = Math.floor(content.length / 2);
+            const splitIndex = content.lastIndexOf('.', midPoint) + 1 || midPoint;
+
+            // Update current slide with first half
+            slide.data.content = content.substring(0, splitIndex).trim();
+
+            // Create new slide with second half
+            window.editor.addSlide(slide.type, slideIndex);
+            const newSlide = window.editor.slides[slideIndex + 1];
+            if (newSlide) {
+                newSlide.data.content = content.substring(splitIndex).trim();
+                newSlide.data.title = (data.title || 'Content') + ' (continued)';
+            }
+
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast('Slide split successfully', 'success');
+            this.refreshAnalysis();
+            return;
         }
 
-        if (data.content && data.content.length > 500) {
-            suggestions.push('Create a new slide for additional details');
+        // Handle bullet point slides
+        if (data.points && Array.isArray(data.points) && data.points.length > 4) {
+            const points = data.points;
+            const midPoint = Math.ceil(points.length / 2);
+
+            slide.data.points = points.slice(0, midPoint);
+
+            window.editor.addSlide(slide.type, slideIndex);
+            const newSlide = window.editor.slides[slideIndex + 1];
+            if (newSlide) {
+                newSlide.data.points = points.slice(midPoint);
+                newSlide.data.title = (data.title || 'Points') + ' (continued)';
+            }
+
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast('Bullet points split across two slides', 'success');
+            this.refreshAnalysis();
+            return;
         }
 
-        if (suggestions.length > 0) {
-            window.showToast(`Suggestion: ${suggestions[0]}`, 'info');
+        window.showToast('Unable to auto-split. Please manually edit.', 'warning');
+    }
+
+    // Simplify a complex slide
+    performSimplifySlide(slideIndex) {
+        const slide = window.editor?.slides[slideIndex];
+        if (!slide || !slide.data) return;
+
+        let changed = false;
+
+        // Strip complex HTML from content fields
+        const textFields = ['content', 'text', 'description', 'notes'];
+        textFields.forEach(field => {
+            if (slide.data[field] && typeof slide.data[field] === 'string') {
+                // Remove nested divs, spans with styles, etc.
+                let cleaned = slide.data[field]
+                    .replace(/<div[^>]*>/gi, '<p>')
+                    .replace(/<\/div>/gi, '</p>')
+                    .replace(/<span[^>]*>/gi, '')
+                    .replace(/<\/span>/gi, '')
+                    .replace(/style="[^"]*"/gi, '')
+                    .replace(/<p><\/p>/gi, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+
+                if (cleaned !== slide.data[field]) {
+                    slide.data[field] = cleaned;
+                    changed = true;
+                }
+            }
+        });
+
+        // Truncate very long bullet points
+        if (slide.data.points && Array.isArray(slide.data.points)) {
+            slide.data.points = slide.data.points.slice(0, 6).map(point => {
+                if (typeof point === 'string' && point.length > 150) {
+                    return point.substring(0, 147) + '...';
+                }
+                return point;
+            });
+            changed = true;
         }
+
+        if (changed) {
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast('Slide simplified', 'success');
+            this.refreshAnalysis();
+        } else {
+            window.showToast('Slide already simplified', 'info');
+        }
+    }
+
+    // Add template content to empty slide
+    addTemplateContent(slideIndex) {
+        const slide = window.editor?.slides[slideIndex];
+        if (!slide) return;
+
+        const template = SlideTemplates?.[slide.type];
+        if (template && template.defaultData) {
+            // Merge default data with existing
+            slide.data = { ...template.defaultData, ...slide.data };
+
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast('Template content added', 'success');
+            this.refreshAnalysis();
+        }
+    }
+
+    // Expand common medical abbreviations
+    expandAbbreviations(slideIndex) {
+        const slide = window.editor?.slides[slideIndex];
+        if (!slide || !slide.data) return;
+
+        const abbreviations = {
+            'HTN': 'hypertension',
+            'DM': 'diabetes mellitus',
+            'CAD': 'coronary artery disease',
+            'CHF': 'congestive heart failure',
+            'COPD': 'chronic obstructive pulmonary disease',
+            'CVA': 'cerebrovascular accident',
+            'DVT': 'deep vein thrombosis',
+            'PE': 'pulmonary embolism',
+            'UTI': 'urinary tract infection',
+            'AKI': 'acute kidney injury',
+            'CKD': 'chronic kidney disease',
+            'MI': 'myocardial infarction',
+            'Afib': 'atrial fibrillation',
+            'BPH': 'benign prostatic hyperplasia'
+        };
+
+        let changed = false;
+        const textFields = ['content', 'text', 'description', 'assessment', 'plan', 'history'];
+
+        textFields.forEach(field => {
+            if (slide.data[field] && typeof slide.data[field] === 'string') {
+                let text = slide.data[field];
+                let firstOccurrenceExpanded = {};
+
+                Object.entries(abbreviations).forEach(([abbrev, full]) => {
+                    // Only expand first occurrence, add abbreviation in parentheses
+                    const regex = new RegExp(`\\b${abbrev}\\b(?! \\()`, 'g');
+                    if (regex.test(text) && !firstOccurrenceExpanded[abbrev]) {
+                        text = text.replace(regex, (match, offset) => {
+                            if (!firstOccurrenceExpanded[abbrev]) {
+                                firstOccurrenceExpanded[abbrev] = true;
+                                return `${full} (${abbrev})`;
+                            }
+                            return match;
+                        });
+                        changed = true;
+                    }
+                });
+
+                slide.data[field] = text;
+            }
+        });
+
+        if (changed) {
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast('Abbreviations expanded', 'success');
+            this.refreshAnalysis();
+        } else {
+            window.showToast('No abbreviations to expand', 'info');
+        }
+    }
+
+    // Legacy method for backward compatibility
+    suggestSplitSlide(slideIndex) {
+        this.performSplitSlide(slideIndex);
     }
 
     // Helper functions
