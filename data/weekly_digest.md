@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 19:23*
+*Generated: 2025-11-30 20:01*
 
 
 ## Delirium (דליריום)
@@ -53,10 +53,11 @@
 - **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
 - **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
-### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
-- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
-- **Journal**: BMC geriatrics (2025)
-- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+### 📄 [Importance of vision in old age].
+- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
+- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
+- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
+- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
 
 
 ## Dementia (דמנציה)
@@ -111,10 +112,11 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
-- **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
-- **Journal**: Nature aging (2025)
-- **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
+### 📄 The Benefits of Exercise Training in Combination With Weight Loss Therapies.
+- **Authors**: Jiang Bryan C, Villareal Dennis T
+- **Journal**: Diabetes (2025)
+- **Link**: [40627343](https://pubmed.ncbi.nlm.nih.gov/40627343/)
+- **Key Finding**: However, it is also associated with a decline in lean mass and bone mineral density, which increases the risk of sarcopenia and osteoporosis...
 
 
 ## End Of Life (טיפול סוף-חיים)
