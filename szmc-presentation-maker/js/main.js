@@ -54,46 +54,119 @@ function changeSlideType() {
     editor.changeSlideType(selector.value);
 }
 
-// Save/Load
+// Save/Load with improved error handling
 function savePresentation() {
-    const presentation = editor.getPresentation();
+    try {
+        const presentation = editor.getPresentation();
 
-    // Save to localStorage
-    const saves = JSON.parse(localStorage.getItem('szmc_presentations') || '{}');
-    const saveId = presentation.title.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Date.now();
-    saves[saveId] = presentation;
-    localStorage.setItem('szmc_presentations', JSON.stringify(saves));
+        // Validate presentation data
+        if (!presentation || !presentation.slides || presentation.slides.length === 0) {
+            showToast('Cannot save empty presentation', 'error');
+            return;
+        }
 
-    // Also download as JSON
-    editor.exportToJSON();
+        // Save to localStorage
+        const saves = JSON.parse(localStorage.getItem('szmc_presentations') || '{}');
+        const saveId = presentation.title.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Date.now();
+        saves[saveId] = presentation;
+        
+        try {
+            localStorage.setItem('szmc_presentations', JSON.stringify(saves));
+        } catch (storageError) {
+            // Handle quota exceeded error
+            if (storageError.name === 'QuotaExceededError') {
+                showToast('Storage full. Downloading file instead.', 'warning');
+            } else {
+                throw storageError;
+            }
+        }
 
-    editor.isDirty = false;
-    alert('Presentation saved successfully!');
+        // Also download as JSON
+        editor.exportToJSON();
+
+        editor.isDirty = false;
+        showToast('Presentation saved successfully!', 'success');
+    } catch (error) {
+        console.error('Save error:', error);
+        showToast('Error saving presentation: ' + error.message, 'error');
+    }
 }
 
 function loadPresentation() {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.json';
+    input.setAttribute('aria-label', 'Select presentation file');
 
     input.onchange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
+        // Validate file size (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+            showToast('File too large. Maximum size is 10MB.', 'error');
+            return;
+        }
+
+        // Show loading indicator
+        showLoadingOverlay('Loading presentation...');
+
         const reader = new FileReader();
         reader.onload = (event) => {
             try {
                 const data = JSON.parse(event.target.result);
+                
+                // Validate presentation structure
+                if (!data.slides || !Array.isArray(data.slides)) {
+                    throw new Error('Invalid presentation format');
+                }
+
                 editor.loadPresentation(data);
                 showPage('editor-page');
+                hideLoadingOverlay();
+                showToast('Presentation loaded successfully!', 'success');
             } catch (error) {
-                alert('Error loading presentation: ' + error.message);
+                hideLoadingOverlay();
+                showToast('Error loading presentation: ' + error.message, 'error');
             }
+        };
+        reader.onerror = () => {
+            hideLoadingOverlay();
+            showToast('Error reading file', 'error');
         };
         reader.readAsText(file);
     };
 
     input.click();
+}
+
+// Loading overlay functions
+function showLoadingOverlay(message = 'Loading...') {
+    let overlay = document.getElementById('loading-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'loading-overlay';
+        overlay.className = 'loading-overlay';
+        overlay.setAttribute('role', 'alert');
+        overlay.setAttribute('aria-live', 'assertive');
+        overlay.innerHTML = `
+            <div class="loading-content">
+                <div class="loading-spinner" aria-hidden="true"></div>
+                <p class="loading-message">${message}</p>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    } else {
+        overlay.querySelector('.loading-message').textContent = message;
+    }
+    overlay.classList.add('active');
+}
+
+function hideLoadingOverlay() {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
 }
 
 // Insert Elements
@@ -427,8 +500,15 @@ function updateThemePreview(themeName) {
 // Toggle theme panel in editor
 function toggleThemePanel() {
     const panel = document.getElementById('theme-panel');
+    const toggleBtn = document.querySelector('[aria-controls="theme-panel"]');
+    
     if (panel) {
-        panel.classList.toggle('active');
+        const isActive = panel.classList.toggle('active');
+        
+        // Update aria-expanded state on the toggle button
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
     }
 }
 
@@ -471,11 +551,18 @@ let lastAnalysisResults = null;
 // Toggle AI Panel visibility
 function toggleAIPanel() {
     const panel = document.getElementById('ai-panel');
+    const toggleBtn = document.querySelector('[aria-controls="ai-panel"]');
+    
     if (panel) {
-        panel.classList.toggle('active');
+        const isActive = panel.classList.toggle('active');
+        
+        // Update aria-expanded state on the toggle button
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
 
         // Run analysis when opening if no results yet
-        if (panel.classList.contains('active') && !lastAnalysisResults) {
+        if (isActive && !lastAnalysisResults) {
             runAIAnalysis();
         }
     }
@@ -733,6 +820,13 @@ if (typeof showToast !== 'function') {
 
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
+        
+        // Set appropriate ARIA attributes based on message type
+        // Errors and warnings use assertive, success/info use polite
+        const isUrgent = type === 'error' || type === 'warning';
+        toast.setAttribute('role', isUrgent ? 'alert' : 'status');
+        toast.setAttribute('aria-live', isUrgent ? 'assertive' : 'polite');
+        
         toast.style.cssText = `
             padding: 12px 20px;
             margin-top: 8px;

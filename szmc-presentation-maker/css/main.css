@@ -58,6 +58,65 @@
     --radius-xl: 1rem;
 }
 
+/* Accessibility - Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 var(--radius) 0;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Focus Styles for Accessibility */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary: #0066cc;
+        --primary-light: #0077ee;
+        --accent: #00aa00;
+        --gray-300: #666666;
+        --gray-400: #555555;
+    }
+}
+
 /* Reset & Base */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -404,12 +463,39 @@ select:focus {
     padding: var(--spacing-xl);
     cursor: pointer;
     transition: all 0.3s;
+    text-align: left;
+    display: block;
+    width: 100%;
 }
 
 .template-card:hover {
     border-color: var(--secondary);
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
+}
+
+.template-card:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-color: var(--primary);
+}
+
+/* Touch feedback for mobile */
+.template-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .template-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .template-card:active {
+        transform: scale(0.98);
+        background: var(--gray-50);
+    }
 }
 
 .template-icon {
@@ -1913,6 +1999,58 @@ select:focus {
 .toast-warning { background: #f59e0b; }
 .toast-error { background: #ef4444; }
 .toast-info { background: #3b82f6; }
+
+/* ================================
+   Loading Overlay
+   ================================ */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--gray-200);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-message {
+    font-size: 1rem;
+    color: var(--gray-700);
+    font-weight: 500;
+}
 
 /* ================================
    Slide Canvas Image Drop Zone
