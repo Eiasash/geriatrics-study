@@ -126,17 +126,17 @@ class MobileManager {
                 <i class="fas fa-plus-circle"></i>
                 <span data-i18n="addSlide">${i18n ? i18n.t('addSlide') : 'Add'}</span>
             </button>
+            <button class="mobile-toolbar-btn" onclick="mobileManager.toggleAIPanel()" title="AI Assistant">
+                <i class="fas fa-robot"></i>
+                <span>AI</span>
+            </button>
             <button class="mobile-toolbar-btn" onclick="mobileManager.showActions()" title="Actions">
                 <i class="fas fa-ellipsis-h"></i>
-                <span data-i18n="slideActions">${i18n ? i18n.t('slideActions') : 'Actions'}</span>
-            </button>
-            <button class="mobile-toolbar-btn" onclick="showPresentationOptions()" title="Present">
-                <i class="fas fa-play"></i>
-                <span data-i18n="present">${i18n ? i18n.t('present') : 'Present'}</span>
+                <span data-i18n="slideActions">${i18n ? i18n.t('slideActions') : 'More'}</span>
             </button>
             <button class="mobile-toolbar-btn" onclick="mobileManager.showExportMenu()" title="Export">
                 <i class="fas fa-download"></i>
-                <span data-i18n="save">${i18n ? i18n.t('save') : 'Export'}</span>
+                <span data-i18n="save">${i18n ? i18n.t('save') : 'Save'}</span>
             </button>
         `;
 
@@ -564,6 +564,27 @@ class MobileManager {
             });
 
             this.updateMobileSlideList();
+        }
+    }
+
+    // Toggle AI panel on mobile
+    toggleAIPanel() {
+        const aiPanel = document.getElementById('ai-panel');
+        if (aiPanel) {
+            aiPanel.classList.toggle('active');
+            this.overlay.classList.toggle('active');
+
+            // Run analysis when opening
+            if (aiPanel.classList.contains('active') && typeof runAIAnalysis === 'function') {
+                runAIAnalysis();
+            }
+        }
+    }
+
+    // Show present options
+    showPresentOptions() {
+        if (typeof showPresentationOptions === 'function') {
+            showPresentationOptions();
         }
     }
 }
