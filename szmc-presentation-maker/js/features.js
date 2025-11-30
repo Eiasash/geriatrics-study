@@ -381,6 +381,11 @@ const WordCount = {
             text = text.replace(/<[^>]*>/g, '');
         } while (text !== prevText);
         text = text.trim();
+        const text = Object.values(slide.data)
+            .filter(v => typeof v === 'string')
+            .join(' ')
+            .replace(/<[^>]*>/g, '') // Remove HTML tags
+            .trim();
 
         return text.split(/\s+/).filter(w => w.length > 0).length;
     },
