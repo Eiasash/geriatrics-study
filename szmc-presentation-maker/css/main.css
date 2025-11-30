@@ -1955,6 +1955,103 @@ select:focus {
     color: var(--gray-500);
 }
 
+/* Additional AI Result Styles for new features */
+.ai-result-item.ai-result-error {
+    border-left-color: #ef4444;
+    background: #fef2f2;
+}
+
+.ai-result-item.ai-result-warning {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.ai-result-item.ai-result-info {
+    border-left-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.ai-result-item.ai-result-tip {
+    border-left-color: #10b981;
+    background: #ecfdf5;
+}
+
+.ai-slide-badge {
+    font-size: 0.65rem;
+    color: var(--gray-500);
+    background: var(--gray-100);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    margin-left: auto;
+}
+
+.ai-result-action {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-bottom: var(--spacing-sm);
+    font-style: italic;
+}
+
+.ai-quick-fix-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--primary);
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.ai-quick-fix-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.ai-quick-fix-btn i {
+    font-size: 0.7rem;
+}
+
+.ai-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    background: var(--gray-100);
+    border-radius: var(--radius);
+}
+
+.ai-section-header i {
+    color: var(--primary);
+}
+
+.ai-placeholder.ai-success {
+    color: #10b981;
+}
+
+.ai-placeholder.ai-success i {
+    opacity: 1;
+}
+
+.ai-subtitle {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-top: var(--spacing-xs);
+}
+
+.ai-score-value.good { color: #86efac; }
+.ai-score-value.moderate { color: #fde047; }
+.ai-score-value.poor { color: #fca5a5; }
+
 /* Responsive AI Panel */
 @media (max-width: 480px) {
     .ai-panel {
