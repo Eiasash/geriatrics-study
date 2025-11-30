@@ -500,8 +500,15 @@ function updateThemePreview(themeName) {
 // Toggle theme panel in editor
 function toggleThemePanel() {
     const panel = document.getElementById('theme-panel');
+    const toggleBtn = document.querySelector('[aria-controls="theme-panel"]');
+    
     if (panel) {
-        panel.classList.toggle('active');
+        const isActive = panel.classList.toggle('active');
+        
+        // Update aria-expanded state on the toggle button
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
     }
 }
 
@@ -544,11 +551,18 @@ let lastAnalysisResults = null;
 // Toggle AI Panel visibility
 function toggleAIPanel() {
     const panel = document.getElementById('ai-panel');
+    const toggleBtn = document.querySelector('[aria-controls="ai-panel"]');
+    
     if (panel) {
-        panel.classList.toggle('active');
+        const isActive = panel.classList.toggle('active');
+        
+        // Update aria-expanded state on the toggle button
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
 
         // Run analysis when opening if no results yet
-        if (panel.classList.contains('active') && !lastAnalysisResults) {
+        if (isActive && !lastAnalysisResults) {
             runAIAnalysis();
         }
     }
@@ -806,6 +820,13 @@ if (typeof showToast !== 'function') {
 
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
+        
+        // Set appropriate ARIA attributes based on message type
+        // Errors and warnings use assertive, success/info use polite
+        const isUrgent = type === 'error' || type === 'warning';
+        toast.setAttribute('role', isUrgent ? 'alert' : 'status');
+        toast.setAttribute('aria-live', isUrgent ? 'assertive' : 'polite');
+        
         toast.style.cssText = `
             padding: 12px 20px;
             margin-top: 8px;
