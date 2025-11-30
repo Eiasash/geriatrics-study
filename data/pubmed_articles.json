@@ -91,16 +91,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
     },
     {
-      "pmid": "41168499",
-      "title": "[Importance of vision in old age].",
-      "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
-      "authors": "Fink David J, Finger Robert P, Terheyden Jan H",
-      "journal": "Zeitschrift fur Gerontologie und Geriatrie",
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
       "year": "2025",
-      "key_findings": [
-        "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
     }
   ],
   "dementia": [
@@ -197,14 +195,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     },
     {
-      "pmid": "41188603",
-      "title": "A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.",
-      "abstract": "The Asian Working Group for Sarcopenia (AWGS) presents an updated 2025 consensus reframing sarcopenia management through a life-course approach to muscle health promotion. While aligning with the Global Leadership Initiative in Sarcopenia (GLIS), this update provides healthcare providers with Asia-specific guidance. The consensus introduces three key refinements: first, expanding sarcopenia diagnosis to middle-aged adults (50‒64 years) with validated diagnostic thresholds; second, simplifying the diagnostic algorithm to require only concurrent low muscle mass and strength, with physical performance as an outcome measure; and third, introducing an enhanced muscle health framework recognizing skeletal muscle as vital for healthy longevity, emphasizing cross-talk with brain, bone, adipose tissue and immune systems. This framework leverages the World Health Organization's Integrated Care for Older People (ICOPE) implementation for enhanced case-finding through natural overlap between muscle health and ICOPE's intrinsic capacity domains. The consensus provides evidence-based recommendations for multimodal interventions that combine resistance exercise with nutritional supplementation, representing advancement toward proactive muscle health promotion and establishing a framework for reducing age-related decline in Asian populations.",
-      "authors": "Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.",
-      "journal": "Nature aging",
+      "pmid": "41060616",
+      "title": "Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.",
+      "abstract": "Sarcopenia and cachexia are two common and overlapping but distinct muscle wasting syndromes that predict adverse outcomes and undermine quality of life among older adults with cancer. Despite their prognostic value and negative effects on older patients' well-being, sarcopenia and cachexia are not routinely or adequately assessed and managed in clinical oncology practice. However, efforts to recognize and manage sarcopenia and cachexia at diagnosis and during follow-up may have beneficial effects on muscle mass, physical function, and quality of life among older adults with cancer, although evidence on long-term clinical outcomes in response to targeted interventions has yet to be established. This comprehensive review attempts to (i) delineate the differences in the pathophysiology and clinical manifestations between sarcopenia and cachexia, (ii) clarify how sarcopenia and cachexia are defined in the geriatric oncology literature, (iii) describe methods for assessing sarcopenia and cachexia in clinical practice, (iv) review the prognostic value of sarcopenia and cachexia among older patients, particularly those undergoing systemic cancer treatment, and (v) discuss evidence-based strategies aimed at managing sarcopenia and cachexia for older adults with cancer.",
+      "authors": "Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.",
+      "journal": "Drugs & aging",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41188603/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41060616/"
     }
   ],
   "end_of_life": [

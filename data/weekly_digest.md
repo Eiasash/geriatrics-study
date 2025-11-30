@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 11:18*
+*Generated: 2025-11-30 14:22*
 
 
 ## Delirium (דליריום)
@@ -54,11 +54,10 @@
 - **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
 - **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
-### 📄 [Importance of vision in old age].
-- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
-- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
-- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
-- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
 
 
 ## Dementia (דמנציה)
@@ -113,10 +112,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
-- **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
-- **Journal**: Nature aging (2025)
-- **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
+### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
+- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
+- **Journal**: Drugs & aging (2025)
+- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
 
 
 ## End Of Life (טיפול סוף-חיים)
