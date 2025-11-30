@@ -2118,3 +2118,10 @@ function toggleAutoAnalyze() {
         window.aiAutoAnalyzeEnabled = false;
     }
 }
+
+// Export functions to window for use from HTML onclick handlers
+window.runAIAnalysis = runAIAnalysis;
+window.toggleAIPanel = toggleAIPanel;
+window.filterAIResults = filterAIResults;
+window.toggleAutoAnalyze = toggleAutoAnalyze;
+window.escapeHtml = escapeHtml;

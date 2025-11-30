@@ -67,25 +67,18 @@ class DarkModeManager {
     }
 
     updateToggleButton() {
-        const toggleBtn = document.getElementById('dark-mode-toggle');
-        if (toggleBtn) {
-            const moonIcon = toggleBtn.querySelector('.fa-moon');
-            const sunIcon = toggleBtn.querySelector('.fa-sun');
-            
-            if (moonIcon && sunIcon) {
-                if (this.isDarkMode) {
-                    moonIcon.style.display = 'none';
-                    sunIcon.style.display = 'block';
-                } else {
-                    moonIcon.style.display = 'block';
-                    sunIcon.style.display = 'none';
-                }
-            }
+        // Update all dark mode toggle buttons (landing and editor pages have separate buttons)
+        const buttons = document.querySelectorAll('.dark-mode-toggle');
+        buttons.forEach(btn => {
+            // Update icon - replace the entire innerHTML for simplicity
+            btn.innerHTML = this.isDarkMode
+                ? '<i class="fas fa-sun" aria-hidden="true"></i>'
+                : '<i class="fas fa-moon" aria-hidden="true"></i>';
 
-            // Update aria label
-            toggleBtn.setAttribute('aria-label', 
-                this.isDarkMode ? 'Switch to light mode' : 'Switch to dark mode');
-        }
+            // Update aria label and title
+            btn.setAttribute('aria-label', this.isDarkMode ? 'Switch to light mode' : 'Switch to dark mode');
+            btn.title = this.isDarkMode ? 'Light Mode' : 'Dark Mode';
+        });
     }
 
     // Get current state
