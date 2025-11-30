@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 18:42*
+*Generated: 2025-11-30 19:23*
 
 
 ## Delirium (דליריום)
@@ -24,6 +24,11 @@
 
 ## Frailty (שבריריות)
 
+### 📄 Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).
+- **Authors**: Han Yaxin, Zhang Haohao, Tian Jiajing et al.
+- **Journal**: Nutrients (2025)
+- **Link**: [41305592](https://pubmed.ncbi.nlm.nih.gov/41305592/)
+
 ### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
 - **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
 - **Journal**: Journal of affective disorders (2025)
@@ -34,12 +39,6 @@
 - **Journal**: American journal of preventive medicine (2025)
 - **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
 - **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
-
-### 📄 [Dizziness in old age].
-- **Authors**: Trabert Johannes
-- **Journal**: Die Ophthalmologie (2025)
-- **Link**: [41128849](https://pubmed.ncbi.nlm.nih.gov/41128849/)
-- **Key Finding**: Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life...
 
 
 ## Falls (נפילות)
@@ -54,11 +53,10 @@
 - **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
 - **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
-### 📄 [Importance of vision in old age].
-- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
-- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
-- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
-- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
 
 
 ## Dementia (דמנציה)
@@ -113,10 +111,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
-- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
-- **Journal**: Drugs & aging (2025)
-- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
+### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
+- **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
+- **Journal**: Nature aging (2025)
+- **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
 
 
 ## End Of Life (טיפול סוף-חיים)
