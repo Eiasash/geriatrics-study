@@ -202,6 +202,89 @@
     border-color: rgba(255, 255, 255, 0.25);
 }
 
+/* Dark Mode Theme */
+[data-theme="dark"] {
+    --background-color: #0f172a;
+    --text-color: #f1f5f9;
+
+    --white: #1e293b;
+    --gray-50: #1e293b;
+    --gray-100: #334155;
+    --gray-200: #475569;
+    --gray-300: #64748b;
+    --gray-400: #94a3b8;
+    --gray-500: #cbd5e1;
+    --gray-600: #e2e8f0;
+    --gray-700: #f1f5f9;
+    --gray-800: #f8fafc;
+    --gray-900: #ffffff;
+
+    --surface-primary: #1e293b;
+    --surface-secondary: #334155;
+    --surface-tertiary: #475569;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #475569;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .slide-canvas,
+[data-theme="dark"] .slide-thumbnail,
+[data-theme="dark"] .properties-panel,
+[data-theme="dark"] .slide-navigator,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .ai-panel {
+    background-color: var(--surface-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-secondary {
+    background-color: var(--surface-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: var(--surface-tertiary);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: var(--surface-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .editor-header {
+    background-color: var(--surface-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .landing-page {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .template-card {
+    background-color: var(--surface-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .template-card:hover {
+    background-color: var(--surface-secondary);
+}
+
 /* Accessibility - Skip Link */
 .skip-link {
     position: absolute;

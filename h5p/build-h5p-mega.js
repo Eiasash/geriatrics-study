@@ -38,20 +38,20 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
   const endPage = {
     showSolutionButton: true,
     showSummary: true,
-    retryButtonText: "נסה שוב",
-    finishButtonText: "סיום",
+    retryButtonText: 'נסה שוב',
+    finishButtonText: 'סיום',
     override: {
-      showSolutionButton: "enabled",
-      retryButton: "enabled"
+      showSolutionButton: 'enabled',
+      retryButton: 'enabled'
     },
     message: `<div dir="rtl" style="text-align:right">${endHtml || ''}</div>`
   };
 
   const content = {
-    override: { showSolutionButton: "enabled", retryButton: "enabled" },
+    override: { showSolutionButton: 'enabled', retryButton: 'enabled' },
     introPage,
     questionSet: questions,
-    progressType: "textual",
+    progressType: 'textual',
     behaviour: { autoContinue: false, enableRetry: true, enableSolutionsButton: true, passPercentage: passPercentage ?? 70 },
     endPage
   };
@@ -59,12 +59,12 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
   return {
     content,
     title,
-    language: "he",
-    mainLibrary: "H5P.QuestionSet",
-    embedTypes: ["div"],
+    language: 'he',
+    mainLibrary: 'H5P.QuestionSet',
+    embedTypes: ['div'],
     preloadedDependencies: [
-      { machineName: "H5P.QuestionSet", majorVersion: 1, minorVersion: 0 },
-      { machineName: "H5P.MultiChoice", majorVersion: 1, minorVersion: 0 }
+      { machineName: 'H5P.QuestionSet', majorVersion: 1, minorVersion: 0 },
+      { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 }
     ]
   };
 }

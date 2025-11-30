@@ -1,13 +1,25 @@
+# Dependabot Auto-Merge Workflow
+#
+# This workflow automatically approves and merges Dependabot PRs for:
+# - Minor and patch version updates
+# - Security updates (always prioritized)
+#
+# Major version updates require manual review.
+#
+# Requirements:
+# - Either configure a GitHub App with BOT_APP_ID and BOT_PRIVATE_KEY secrets
+#   for approval (recommended), OR
+# - Configure DEPENDABOT_APPROVE_PAT secret with a PAT that has repo scope
+#   from a different user account (workflows cannot self-approve with GITHUB_TOKEN)
+#
+# If neither is configured, auto-approval will be skipped but auto-merge
+# will still be enabled (requires branch protection to not require approval).
+
 name: Dependabot Auto-Merge
 
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
-  pull_request_review:
-    types: [submitted]
-  workflow_run:
-    workflows: ["CI Enhanced", "CI Pipeline"]
-    types: [completed]
 
 permissions:
   contents: write
@@ -18,79 +30,102 @@ jobs:
   check-eligibility:
     name: Check Auto-Merge Eligibility
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]' || github.event.pull_request.user.login == 'dependabot[bot]'
+    # Only run for Dependabot PRs - check the PR author, not the actor
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     outputs:
       should_merge: ${{ steps.check.outputs.should_merge }}
       merge_method: ${{ steps.check.outputs.merge_method }}
+      update_type: ${{ steps.metadata.outputs.update-type }}
+      pr_number: ${{ github.event.pull_request.number }}
+      pr_node_id: ${{ github.event.pull_request.node_id }}
+      pr_head_sha: ${{ github.event.pull_request.head.sha }}
     steps:
-      - name: Check PR details
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check PR eligibility
         id: check
         uses: actions/github-script@v7
+        env:
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+          DEPENDENCY_TYPE: ${{ steps.metadata.outputs.dependency-type }}
         with:
           script: |
-            const pr = context.payload.pull_request || 
-                      await github.rest.pulls.get({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        pull_number: context.issue.number
-                      }).then(r => r.data);
+            const pr = context.payload.pull_request;
+            const updateType = process.env.UPDATE_TYPE;
+            const dependencyType = process.env.DEPENDENCY_TYPE;
             
-            // Check if it's a Dependabot PR
-            if (pr.user.login !== 'dependabot[bot]') {
+            console.log('PR Title:', pr.title);
+            console.log('Update Type:', updateType);
+            console.log('Dependency Type:', dependencyType);
+            
+            let mergeMethod = 'squash';
+            let shouldMerge = false;
+            
+            // Check labels first - these take priority
+            const labels = pr.labels.map(l => l.name.toLowerCase());
+            if (labels.includes('do-not-merge') || labels.includes('hold')) {
+              console.log('❌ Hold label detected - will not auto-merge');
               core.setOutput('should_merge', 'false');
+              core.setOutput('merge_method', mergeMethod);
               return;
             }
             
-            // Determine update type from title
-            const title = pr.title.toLowerCase();
-            let mergeMethod = 'squash'; // default
-            let shouldMerge = false;
-            
-            // Auto-merge patch and minor updates
-            if (title.includes('bump') || title.includes('update')) {
-              // Check version bump type
-              const versionMatch = title.match(/from ([\d.]+) to ([\d.]+)/);
-              if (versionMatch) {
-                const [, oldVersion, newVersion] = versionMatch;
-                const oldParts = oldVersion.split('.').map(Number);
-                const newParts = newVersion.split('.').map(Number);
+            // Determine if we should auto-merge based on update type
+            switch (updateType) {
+              case 'version-update:semver-patch':
+                console.log('✅ Patch update - eligible for auto-merge');
+                shouldMerge = true;
+                break;
+              case 'version-update:semver-minor':
+                console.log('✅ Minor update - eligible for auto-merge');
+                shouldMerge = true;
+                break;
+              case 'version-update:semver-major':
+                console.log('⚠️ Major update - requires manual review');
+                shouldMerge = false;
+                break;
+              default:
+                // Fallback: parse from title
+                const title = pr.title.toLowerCase();
+                console.log('Using title fallback for update type detection');
                 
-                // Major version change - don't auto-merge
-                if (newParts[0] > oldParts[0]) {
-                  console.log('Major version change detected - manual review required');
-                  shouldMerge = false;
-                }
-                // Minor or patch - auto-merge
-                else {
-                  console.log('Minor/patch version change - eligible for auto-merge');
+                // Security updates should always be auto-merged
+                if (title.includes('security') || title.includes('vulnerability')) {
+                  console.log('✅ Security update detected - will auto-merge');
                   shouldMerge = true;
+                } else {
+                  // Try to parse version from title
+                  const versionMatch = pr.title.match(/from ([\d.]+) to ([\d.]+)/);
+                  if (versionMatch) {
+                    const [, oldVersion, newVersion] = versionMatch;
+                    const oldMajor = parseInt(oldVersion.split('.')[0], 10);
+                    const newMajor = parseInt(newVersion.split('.')[0], 10);
+                    
+                    if (newMajor > oldMajor) {
+                      console.log('⚠️ Major version change detected from title - requires manual review');
+                      shouldMerge = false;
+                    } else {
+                      console.log('✅ Minor/patch update detected from title - eligible for auto-merge');
+                      shouldMerge = true;
+                    }
+                  } else {
+                    // Can't determine version type - be conservative
+                    console.log('⚠️ Could not determine update type - requires manual review');
+                    shouldMerge = false;
+                  }
                 }
-              } else {
-                // If we can't determine version, check for security updates
-                shouldMerge = title.includes('security') || 
-                             title.includes('vulnerability') ||
-                             title.includes('patch');
-              }
-            }
-            
-            // Always auto-merge security updates
-            if (title.includes('security') || title.includes('vulnerability')) {
-              shouldMerge = true;
-              mergeMethod = 'squash';
-              console.log('Security update detected - will auto-merge');
-            }
-            
-            // Check labels
-            const labels = pr.labels.map(l => l.name);
-            if (labels.includes('do-not-merge') || labels.includes('hold')) {
-              shouldMerge = false;
-              console.log('Hold label detected - will not auto-merge');
             }
             
             core.setOutput('should_merge', shouldMerge.toString());
             core.setOutput('merge_method', mergeMethod);
+            
+            console.log(`\n📋 Decision: should_merge=${shouldMerge}, merge_method=${mergeMethod}`);
 
-  # Wait for checks to pass
+  # Wait for CI checks to pass
   wait-for-checks:
     name: Wait for Status Checks
     runs-on: ubuntu-latest
@@ -100,53 +135,92 @@ jobs:
       - name: Wait for CI checks
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ needs.check-eligibility.outputs.pr_head_sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 30
           running-workflow-name: 'Wait for Status Checks'
           allowed-conclusions: success,skipped
 
-  # Auto-approve PR
+  # Auto-approve PR (requires GitHub App or PAT from different user)
   auto-approve:
     name: Auto-Approve PR
     runs-on: ubuntu-latest
     needs: [check-eligibility, wait-for-checks]
     if: needs.check-eligibility.outputs.should_merge == 'true'
+    env:
+      HAS_BOT_APP: ${{ secrets.BOT_APP_ID != '' && secrets.BOT_PRIVATE_KEY != '' }}
+      HAS_PAT: ${{ secrets.DEPENDABOT_APPROVE_PAT != '' }}
     steps:
-      - name: Generate token
+      - name: Generate GitHub App token
         id: generate_token
+        if: env.HAS_BOT_APP == 'true'
         uses: tibdex/github-app-token@v2
         with:
           app_id: ${{ secrets.BOT_APP_ID }}
           private_key: ${{ secrets.BOT_PRIVATE_KEY }}
         continue-on-error: true
       
-      - name: Approve PR
-        uses: hmarr/auto-approve-action@v3
+      - name: Approve PR with GitHub App
+        if: steps.generate_token.outputs.token != ''
+        uses: hmarr/auto-approve-action@v4
         with:
-          github-token: ${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}
+          github-token: ${{ steps.generate_token.outputs.token }}
+          pull-request-number: ${{ needs.check-eligibility.outputs.pr_number }}
           review-message: |
-            Auto-approved Dependabot update.
+            ✅ Auto-approved Dependabot update.
             
-            ✅ All CI checks passed
-            ✅ No breaking changes detected
-            ✅ Version bump is within allowed range
+            - CI checks are running
+            - No breaking changes detected
+            - Version bump is within allowed range (minor/patch)
             
-            This PR will be automatically merged.
+            This PR will be automatically merged once all checks pass.
+      
+      - name: Approve PR with PAT (fallback)
+        if: steps.generate_token.outputs.token == '' && env.HAS_PAT == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDABOT_APPROVE_PAT }}
+        run: |
+          gh pr review ${{ needs.check-eligibility.outputs.pr_number }} \
+            --repo ${{ github.repository }} \
+            --approve \
+            --body "✅ Auto-approved Dependabot update (minor/patch version)."
+      
+      - name: Skip approval (no token configured)
+        if: steps.generate_token.outputs.token == '' && env.HAS_PAT != 'true'
+        run: |
+          echo "⚠️ No GitHub App or PAT configured for auto-approval."
+          echo "Auto-merge will still be enabled, but PR won't be auto-approved."
+          echo ""
+          echo "To enable auto-approval, configure one of:"
+          echo "  1. BOT_APP_ID and BOT_PRIVATE_KEY secrets (recommended)"
+          echo "  2. DEPENDABOT_APPROVE_PAT secret with a PAT from a different user"
 
   # Enable auto-merge
   enable-auto-merge:
     name: Enable Auto-Merge
     runs-on: ubuntu-latest
     needs: [check-eligibility, auto-approve]
-    if: needs.check-eligibility.outputs.should_merge == 'true'
+    if: |
+      always() &&
+      needs.check-eligibility.result == 'success' &&
+      needs.check-eligibility.outputs.should_merge == 'true'
     steps:
       - name: Enable auto-merge
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ needs.check-eligibility.outputs.pr_number }}
+          PR_NODE_ID: ${{ needs.check-eligibility.outputs.pr_node_id }}
+          MERGE_METHOD: ${{ needs.check-eligibility.outputs.merge_method }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const mergeMethod = '${{ needs.check-eligibility.outputs.merge_method }}';
+            const prNumber = parseInt(process.env.PR_NUMBER, 10);
+            const prNodeId = process.env.PR_NODE_ID;
+            const mergeMethod = process.env.MERGE_METHOD;
+            
+            console.log(`Enabling auto-merge for PR #${prNumber}`);
+            console.log(`Node ID: ${prNodeId}`);
+            console.log(`Merge method: ${mergeMethod}`);
             
             try {
               const result = await github.graphql(`
@@ -164,64 +238,137 @@ jobs:
                   }
                 }
               `, {
-                pullRequestId: context.payload.pull_request.node_id,
+                pullRequestId: prNodeId,
                 mergeMethod: mergeMethod.toUpperCase()
               });
               
-              console.log('Auto-merge enabled:', result);
+              console.log('✅ Auto-merge enabled successfully');
+              console.log('Result:', JSON.stringify(result, null, 2));
             } catch (error) {
-              console.error('Failed to enable auto-merge:', error);
+              console.error('❌ Failed to enable auto-merge:', error.message);
               
-              // Fallback: try to merge directly if checks passed
+              // Check if auto-merge is not available (e.g., not enabled in repo settings)
+              if (error.message.includes('Pull request is not in the correct state')) {
+                console.log('ℹ️ PR may already be merged or auto-merge not available');
+              }
+              
+              // Fallback: try direct merge if all checks have passed
+              console.log('Attempting direct merge as fallback...');
               try {
+                const pr = await github.rest.pulls.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber
+                });
+                
                 await github.rest.pulls.merge({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  pull_number: context.issue.number,
+                  pull_number: prNumber,
                   merge_method: mergeMethod,
-                  commit_title: `chore(deps): ${context.payload.pull_request.title}`,
+                  commit_title: `chore(deps): ${pr.data.title}`,
                   commit_message: 'Auto-merged by Dependabot automation'
                 });
-                console.log('Direct merge successful');
+                console.log('✅ Direct merge successful');
               } catch (mergeError) {
-                console.error('Direct merge also failed:', mergeError);
+                console.error('❌ Direct merge failed:', mergeError.message);
+                console.log('ℹ️ PR may need manual intervention or checks are still running');
               }
             }
 
-  # Comment on PR
+  # Comment on PR to indicate auto-merge status
   comment:
     name: Add Auto-Merge Comment
     runs-on: ubuntu-latest
     needs: [check-eligibility, enable-auto-merge]
-    if: needs.check-eligibility.outputs.should_merge == 'true'
+    if: |
+      always() &&
+      needs.check-eligibility.result == 'success' &&
+      needs.check-eligibility.outputs.should_merge == 'true'
     steps:
       - name: Comment on PR
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ needs.check-eligibility.outputs.pr_number }}
+          MERGE_METHOD: ${{ needs.check-eligibility.outputs.merge_method }}
+          UPDATE_TYPE: ${{ needs.check-eligibility.outputs.update_type }}
         with:
           script: |
+            const prNumber = parseInt(process.env.PR_NUMBER, 10);
+            const mergeMethod = process.env.MERGE_METHOD;
+            const updateType = process.env.UPDATE_TYPE || 'version update';
+            
             const comment = `## 🤖 Dependabot Auto-Merge
             
             This PR has been marked for **automatic merging** once all checks pass.
             
             ### Merge Criteria Met:
-            - ✅ Dependabot security or version update
-            - ✅ No major version changes detected
+            - ✅ Dependabot ${updateType}
+            - ✅ Version bump is within allowed range
             - ✅ CI checks configured to run
-            - ✅ Auto-merge enabled with \`${{ needs.check-eligibility.outputs.merge_method }}\` method
+            - ✅ Auto-merge enabled with \`${mergeMethod}\` method
             
             ### What happens next?
             1. CI checks will run automatically
             2. If all checks pass, PR will be merged
             3. If checks fail, manual intervention required
             
-            To prevent auto-merge, add the \`do-not-merge\` label.
+            To prevent auto-merge, add the \`do-not-merge\` or \`hold\` label.
             
             ---
             _Automated by Dependabot Auto-Merge workflow_`;
             
             await github.rest.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: prNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: comment
             });
+
+  # Log when PR is not eligible for auto-merge
+  not-eligible:
+    name: Log Non-Eligible PR
+    runs-on: ubuntu-latest
+    needs: check-eligibility
+    if: |
+      needs.check-eligibility.result == 'success' &&
+      needs.check-eligibility.outputs.should_merge == 'false'
+    steps:
+      - name: Log reason
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ needs.check-eligibility.outputs.pr_number }}
+          UPDATE_TYPE: ${{ needs.check-eligibility.outputs.update_type }}
+        with:
+          script: |
+            const prNumber = parseInt(process.env.PR_NUMBER, 10);
+            const updateType = process.env.UPDATE_TYPE || 'unknown';
+            
+            console.log(`PR #${prNumber} is not eligible for auto-merge`);
+            console.log(`Update type: ${updateType}`);
+            
+            // Only comment on major updates to inform the user
+            if (updateType === 'version-update:semver-major') {
+              const comment = `## ⚠️ Manual Review Required
+              
+              This Dependabot PR contains a **major version update** and requires manual review.
+              
+              ### Why?
+              Major version updates may contain breaking changes that could affect your application.
+              
+              ### What to do?
+              1. Review the changelog and release notes
+              2. Check for breaking changes
+              3. Test locally if needed
+              4. Approve and merge manually when ready
+              
+              ---
+              _Automated by Dependabot Auto-Merge workflow_`;
+              
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
