@@ -371,11 +371,16 @@ const WordCount = {
     getSlideWordCount(slide) {
         if (!slide || !slide.data) return 0;
 
-        const text = Object.values(slide.data)
+        let text = Object.values(slide.data)
             .filter(v => typeof v === 'string')
-            .join(' ')
-            .replace(/<[^>]*>/g, '') // Remove HTML tags
-            .trim();
+            .join(' ');
+        // Remove HTML tags (incomplete multi-char sanitization fix)
+        let prevText;
+        do {
+            prevText = text;
+            text = text.replace(/<[^>]*>/g, '');
+        } while (text !== prevText);
+        text = text.trim();
 
         return text.split(/\s+/).filter(w => w.length > 0).length;
     },
