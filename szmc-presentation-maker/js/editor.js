@@ -212,48 +212,84 @@ class PresentationEditor {
         if (!template) return;
 
         const canvas = document.getElementById('current-slide');
+        if (!canvas) return;
+
         canvas.innerHTML = template.render(currentSlide.data);
 
-        // Add input listeners for auto-save
-        const editableElements = canvas.querySelectorAll('[contenteditable="true"]');
-        editableElements.forEach(el => {
-            el.addEventListener('input', () => {
+        // Use event delegation to avoid memory leaks from accumulated listeners
+        // Remove old delegated handler if exists
+        if (this._canvasInputHandler) {
+            canvas.removeEventListener('input', this._canvasInputHandler);
+        }
+        if (this._canvasBlurHandler) {
+            canvas.removeEventListener('focusout', this._canvasBlurHandler);
+        }
+
+        // Create new delegated handlers
+        this._canvasInputHandler = (e) => {
+            if (e.target.hasAttribute('contenteditable')) {
                 this.isDirty = true;
                 this.updateThumbnailContent(this.currentSlideIndex);
-            });
+            }
+        };
 
-            el.addEventListener('blur', () => {
+        this._canvasBlurHandler = (e) => {
+            if (e.target.hasAttribute('contenteditable')) {
                 this.saveCurrentSlideData();
-                // Trigger AI analysis on content change
                 if (typeof triggerAIAnalysisOnChange === 'function') {
                     triggerAIAnalysisOnChange();
                 }
-            });
+            }
+        };
+
+        canvas.addEventListener('input', this._canvasInputHandler);
+        canvas.addEventListener('focusout', this._canvasBlurHandler);
+
+        // Add spellcheck="false" to all contenteditable elements for medical terms
+        const editableElements = canvas.querySelectorAll('[contenteditable="true"]');
+        editableElements.forEach(el => {
+            el.setAttribute('spellcheck', 'false');
         });
     }
 
     renderThumbnails() {
         const container = document.getElementById('slide-thumbnails');
+        if (!container) return;
+
         container.innerHTML = '';
 
         this.slides.forEach((slide, index) => {
             const thumbnail = document.createElement('div');
             thumbnail.className = `slide-thumbnail ${index === this.currentSlideIndex ? 'active' : ''}`;
             thumbnail.setAttribute('data-index', index);
+            thumbnail.setAttribute('role', 'button');
+            thumbnail.setAttribute('tabindex', '0');
 
             const template = SlideTemplates[slide.type];
             const typeName = template ? template.name : slide.type;
 
+            // Get preview text from slide data
+            const previewText = this.getSlidePreviewText(slide);
+
+            thumbnail.setAttribute('aria-label', `Slide ${index + 1}: ${typeName}${previewText ? ' - ' + previewText : ''}`);
+
             thumbnail.innerHTML = `
                 <div class="slide-thumbnail-number">${index + 1}</div>
                 <div class="slide-thumbnail-content">${typeName}</div>
-                <div class="slide-thumbnail-delete" onclick="event.stopPropagation(); editor.deleteSlide(${index})">
-                    <i class="fas fa-times"></i>
+                <div class="slide-thumbnail-preview">${previewText || ''}</div>
+                <div class="slide-thumbnail-delete" onclick="event.stopPropagation(); editor.deleteSlide(${index})" role="button" aria-label="Delete slide ${index + 1}" tabindex="0">
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </div>
-                <div class="drag-handle" title="Drag to reorder"></div>
+                <div class="drag-handle" title="Drag to reorder" aria-hidden="true"></div>
             `;
 
             thumbnail.addEventListener('click', () => this.selectSlide(index));
+            thumbnail.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.selectSlide(index);
+                }
+            });
 
             // Drag and drop
             thumbnail.setAttribute('draggable', 'true');
@@ -282,6 +318,25 @@ class PresentationEditor {
         });
     }
 
+    // Get preview text from slide data for thumbnail
+    getSlidePreviewText(slide) {
+        if (!slide || !slide.data) return '';
+        const data = slide.data;
+
+        // Try common text fields
+        const textFields = ['title', 'chiefComplaint', 'content', 'question', 'assessment'];
+        for (const field of textFields) {
+            if (data[field] && typeof data[field] === 'string') {
+                // Strip HTML and truncate
+                const text = data[field].replace(/<[^>]*>/g, '').trim();
+                if (text.length > 0) {
+                    return text.length > 30 ? text.substring(0, 30) + '...' : text;
+                }
+            }
+        }
+        return '';
+    }
+
     updateThumbnailSelection() {
         const thumbnails = document.querySelectorAll('.slide-thumbnail');
         thumbnails.forEach((thumb, index) => {
@@ -290,7 +345,21 @@ class PresentationEditor {
     }
 
     updateThumbnailContent(index) {
-        // Optional: Update thumbnail preview content
+        const thumbnail = document.querySelector(`.slide-thumbnail[data-index="${index}"]`);
+        if (!thumbnail || !this.slides[index]) return;
+
+        const slide = this.slides[index];
+        const previewText = this.getSlidePreviewText(slide);
+        const previewEl = thumbnail.querySelector('.slide-thumbnail-preview');
+
+        if (previewEl) {
+            previewEl.textContent = previewText || '';
+        }
+
+        // Update aria-label
+        const template = SlideTemplates[slide.type];
+        const typeName = template ? template.name : slide.type;
+        thumbnail.setAttribute('aria-label', `Slide ${index + 1}: ${typeName}${previewText ? ' - ' + previewText : ''}`);
     }
 
     updateSlideTypeSelector() {
@@ -542,6 +611,7 @@ class PresentationEditor {
 
 // Create global editor instance
 const editor = new PresentationEditor();
+window.editor = editor; // Expose to window for AI assistant access
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
