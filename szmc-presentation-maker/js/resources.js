@@ -232,7 +232,7 @@ const EvidenceGrades = {
 
 function searchOpenEvidence(query) {
     const url = MedicalResources.openEvidence.searchUrl + encodeURIComponent(query);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function searchPubMed(query, filters = {}) {
@@ -247,33 +247,33 @@ function searchPubMed(query, filters = {}) {
         searchQuery += ' AND free full text[filter]';
     }
     const url = MedicalResources.pubmed.searchUrl + encodeURIComponent(searchQuery);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function searchCochrane(query) {
     const url = MedicalResources.cochrane.searchUrl + encodeURIComponent(query);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function searchUpToDate(query) {
     const url = MedicalResources.uptodate.searchUrl + encodeURIComponent(query);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function searchMDCalc(query) {
     const url = MedicalResources.mdcalc.searchUrl + encodeURIComponent(query);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function searchRadiopaedia(query) {
     const url = MedicalResources.radiopaedia.searchUrl + encodeURIComponent(query);
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 function openResource(resourceKey) {
     const resource = MedicalResources[resourceKey];
     if (resource) {
-        window.open(resource.url, '_blank');
+        window.open(resource.url, '_blank', 'noopener,noreferrer');
     }
 }
 
@@ -411,7 +411,7 @@ function searchFromPanel(resourceKey) {
     }
     const resource = MedicalResources[resourceKey];
     if (resource && resource.searchUrl) {
-        window.open(resource.searchUrl + encodeURIComponent(query), '_blank');
+        window.open(resource.searchUrl + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
     }
 }
 

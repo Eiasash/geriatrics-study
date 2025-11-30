@@ -11,7 +11,7 @@ const OUT = path.join(__dirname, 'dist');
 const readJson = async p => JSON.parse(await fs.readFile(p, 'utf8'));
 
 // Build QuestionSet payload from selected topics' mcqs
-function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercentage, logoPath }) {
+function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercentage }) {
   const questions = mcqs.map(m => ({
     library: { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 },
     params: {
