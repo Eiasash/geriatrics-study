@@ -599,11 +599,11 @@
             
             // Perplexity supports deep linking, others need clipboard copy
             if (ai === 'perplexity') {
-                window.open(baseUrl + encodeURIComponent(query), '_blank');
+                window.open(baseUrl + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
             } else {
                 // Copy query to clipboard and open main site
                 navigator.clipboard.writeText(query).catch(() => {});
-                window.open(baseUrl, '_blank');
+                window.open(baseUrl, '_blank', 'noopener,noreferrer');
             }
         }
 

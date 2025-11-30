@@ -250,33 +250,33 @@
                     showToast('Opening OpenEvidence...');
                 });
             }
-            window.open('https://www.openevidence.com', '_blank');
+            window.open('https://www.openevidence.com', '_blank', 'noopener,noreferrer');
         }
 
         function searchUpToDate() {
             const query = document.getElementById('searchQuery').value;
             if (query.trim()) {
-                window.open(`https://www.uptodate.com/contents/search?search=${encodeURIComponent(query)}`, '_blank');
+                window.open(`https://www.uptodate.com/contents/search?search=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
             } else {
-                window.open('https://www.uptodate.com', '_blank');
+                window.open('https://www.uptodate.com', '_blank', 'noopener,noreferrer');
             }
         }
 
         function searchPubMed() {
             const query = document.getElementById('searchQuery').value;
             if (query.trim()) {
-                window.open(`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(query)}`, '_blank');
+                window.open(`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
             } else {
-                window.open('https://pubmed.ncbi.nlm.nih.gov', '_blank');
+                window.open('https://pubmed.ncbi.nlm.nih.gov', '_blank', 'noopener,noreferrer');
             }
         }
 
         function searchPerplexity() {
             const query = document.getElementById('searchQuery').value;
             if (query.trim()) {
-                window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(query)}`, '_blank');
+                window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
             } else {
-                window.open('https://www.perplexity.ai', '_blank');
+                window.open('https://www.perplexity.ai', '_blank', 'noopener,noreferrer');
             }
         }
 

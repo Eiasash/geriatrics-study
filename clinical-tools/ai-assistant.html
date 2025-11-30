@@ -346,10 +346,10 @@
                 }).catch(() => {
                     addMessage(`השאילתה נשלחה ל-${service.name}. נפתח חלון חדש.`, 'ai');
                 });
-                window.open(service.url, '_blank');
+                window.open(service.url, '_blank', 'noopener,noreferrer');
             } else {
                 // Service supports deep linking
-                window.open(service.url + encodedQuery, '_blank');
+                window.open(service.url + encodedQuery, '_blank', 'noopener,noreferrer');
                 setTimeout(() => {
                     addMessage(`השאילתה נשלחה ל-${service.name}. נפתח חלון חדש עם התשובה.`, 'ai');
                 }, 500);
@@ -411,7 +411,7 @@
             document.getElementById('user-input').value = query;
 
             // Open drugs.com
-            window.open(`https://www.drugs.com/drug_interactions.html?drug_list=${drugList.join(',')}`, '_blank');
+            window.open(`https://www.drugs.com/drug_interactions.html?drug_list=${drugList.join(',')}`, '_blank', 'noopener,noreferrer');
 
             sendQuery();
         }

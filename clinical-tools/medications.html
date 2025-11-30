@@ -560,7 +560,7 @@
 
             // Copy query to clipboard and open OpenEvidence
             navigator.clipboard.writeText(`[Geriatric Medication Review] ${medList}`).catch(() => {});
-            window.open('https://www.openevidence.com', '_blank');
+            window.open('https://www.openevidence.com', '_blank', 'noopener,noreferrer');
         }
 
         function clearAllMeds() {
