@@ -36,14 +36,15 @@ const DarkMode = {
     },
 
     updateToggleButton(isDark) {
-        const btn = document.getElementById('dark-mode-toggle');
-        if (btn) {
+        // Update all dark mode toggle buttons (landing and editor pages have separate buttons)
+        const buttons = document.querySelectorAll('.dark-mode-toggle');
+        buttons.forEach(btn => {
             btn.innerHTML = isDark
                 ? '<i class="fas fa-sun" aria-hidden="true"></i>'
                 : '<i class="fas fa-moon" aria-hidden="true"></i>';
             btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
             btn.title = isDark ? 'Light Mode' : 'Dark Mode';
-        }
+        });
     }
 };
 
@@ -480,6 +481,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ================================
+// GLOBAL toggleDarkMode FUNCTION
+// ================================
+// This provides backwards compatibility for onclick="toggleDarkMode()" calls in HTML
+function toggleDarkMode() {
+    DarkMode.toggle();
+}
+
 // Export for global access
 window.DarkMode = DarkMode;
 window.PresentationTimer = PresentationTimer;
@@ -487,3 +496,7 @@ window.KeyboardShortcuts = KeyboardShortcuts;
 window.FocusMode = FocusMode;
 window.WordCount = WordCount;
 window.RecentFiles = RecentFiles;
+window.toggleDarkMode = toggleDarkMode;
+
+// Note: getPresentationData, CloudSave, TemplateSharing, and CollaborativeEditing
+// are defined in advanced-export.js and exposed globally there

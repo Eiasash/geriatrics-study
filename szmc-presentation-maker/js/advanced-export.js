@@ -707,10 +707,15 @@ function saveCloudConfig(provider) {
 
 // Get presentation data helper
 function getPresentationData() {
-    // Try to get from current editor state
+    // Use the editor's getPresentation method (most reliable)
+    if (window.editor && typeof window.editor.getPresentation === 'function') {
+        return window.editor.getPresentation();
+    }
+
+    // Try to get from current presentation state
     if (window.currentPresentation) return window.currentPresentation;
 
-    // Fallback: collect from DOM
+    // Fallback: collect from DOM (least reliable)
     const slides = [];
     document.querySelectorAll('.slide-item, .slide').forEach((el, i) => {
         slides.push({
@@ -809,6 +814,7 @@ document.head.appendChild(style);
 // Export functions globally
 window.exportToPowerPoint = exportToPowerPoint;
 window.exportToPDF = exportToPDF;
+window.getPresentationData = getPresentationData;
 window.CloudSave = CloudSave;
 window.TemplateSharing = TemplateSharing;
 window.CollaborativeEditing = CollaborativeEditing;
