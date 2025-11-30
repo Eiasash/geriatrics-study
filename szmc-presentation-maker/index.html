@@ -152,6 +152,9 @@
                         <i class="fas fa-history" aria-hidden="true"></i>
                     </button>
                     <div class="toolbar-divider" aria-hidden="true"></div>
+                    <button class="dark-mode-toggle" id="dark-mode-toggle" onclick="DarkMode.toggle()" title="Dark Mode" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
                     <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant" aria-label="Toggle AI Assistant panel" aria-expanded="false" aria-controls="ai-panel">
                         <i class="fas fa-robot" aria-hidden="true"></i>
                         <span class="ai-badge" id="ai-issue-badge" style="display: none;" aria-label="Number of issues found">0</span>
@@ -823,6 +826,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/pwa-install.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mobile.js"></script>
+    <script src="js/features.js"></script>
     <script>
         // Language switching function
         function switchLanguage(lang) {
