@@ -35,11 +35,14 @@ function selectTemplate(type) {
 
     // Set default title based on type
     const titleInput = document.getElementById('presentation-title');
-    if (type === 'case') {
-        titleInput.value = 'Case Presentation';
-    } else if (type === 'journal') {
-        titleInput.value = 'Journal Club';
-    }
+    const templateTitles = {
+        'case': 'Case Presentation',
+        'journal': 'Journal Club',
+        'lecture': 'Teaching Lecture',
+        'grandRounds': 'Grand Rounds',
+        'quickCase': 'Quick Case'
+    };
+    titleInput.value = templateTitles[type] || 'New Presentation';
 }
 
 // Slide Management
