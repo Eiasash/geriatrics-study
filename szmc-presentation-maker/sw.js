@@ -3,7 +3,7 @@
  * Full offline support for PWA
  */
 
-const CACHE_NAME = 'szmc-presentation-v3';
+const CACHE_NAME = 'szmc-presentation-v4';
 
 // All files to cache for complete offline use
 const CACHE_FILES = [
@@ -38,6 +38,7 @@ const CACHE_FILES = [
     './js/ai-assistant.js',
     './js/main.js',
     './js/mobile.js',
+    './js/features.js',
 
     // JavaScript - New Features
     './js/speaker-notes.js',
