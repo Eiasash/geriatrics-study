@@ -703,18 +703,7 @@ function saveCloudConfig(provider) {
     showToast('Cloud config saved!', 'success');
 }
 
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.textContent = message;
-    toast.style.cssText = `
-        position: fixed; bottom: 20px; right: 20px; padding: 12px 24px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white; border-radius: 8px; z-index: 10000; animation: slideIn 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-}
+// Uses window.showToast from main.js
 
 // Get presentation data helper
 function getPresentationData() {

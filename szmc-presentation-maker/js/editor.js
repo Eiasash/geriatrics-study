@@ -672,30 +672,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Toast notification system
-function showToast(message, type = 'success') {
-    // Remove existing toast
-    const existingToast = document.querySelector('.toast');
-    if (existingToast) existingToast.remove();
-
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-        <span>${message}</span>
-    `;
-
-    document.body.appendChild(toast);
-
-    // Animate in
-    setTimeout(() => toast.classList.add('show'), 10);
-
-    // Remove after 3 seconds
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 3000);
-}
+// Toast notification - uses window.showToast from main.js
 
 // Duplicate current slide helper
 function duplicateCurrentSlide() {
