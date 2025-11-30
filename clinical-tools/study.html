@@ -349,12 +349,37 @@
         let stats = JSON.parse(localStorage.getItem('studyStats') || '{"total": 0, "correct": 0, "streak": 0}');
 
         // AI Service URLs
+        // Note: OpenEvidence doesn't support deep linking, so we just open main site
         const aiServices = {
-            openevidence: 'https://openevidence.com/search?q=',
-            chatgpt: 'https://chat.openai.com/?q=',
-            claude: 'https://claude.ai/new?q=',
+            openevidence: 'https://www.openevidence.com',
+            chatgpt: 'https://chat.openai.com',
+            claude: 'https://claude.ai',
             perplexity: 'https://www.perplexity.ai/search?q='
         };
+
+        // Helper function to open AI service with query copied to clipboard
+        function openAIWithQuery(service, query) {
+            const url = aiServices[service];
+            if (service === 'perplexity') {
+                // Perplexity supports deep linking
+                window.open(url + encodeURIComponent(query), '_blank');
+            } else {
+                // Copy query to clipboard and open main site
+                navigator.clipboard.writeText(query).then(() => {
+                    showToast('שאלה הועתקה - הדביקו באתר שנפתח');
+                }).catch(() => {});
+                window.open(url, '_blank');
+            }
+        }
+
+        // Simple toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:white;padding:12px 24px;border-radius:8px;z-index:10000;';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
 
         // Sample questions database
         const questionBank = {
@@ -595,8 +620,7 @@
 
         function openAI(query) {
             const ai = getSelectedAI();
-            const url = aiServices[ai] + encodeURIComponent(query);
-            window.open(url, '_blank');
+            openAIWithQuery(ai, query);
         }
 
         function askTopicQuestion() {
