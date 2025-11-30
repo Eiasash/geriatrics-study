@@ -157,9 +157,9 @@ The repository uses GitHub Actions for:
 
 ### Branch Naming
 
-- Feature branches: `feature/<short-description>`
-- Bug fixes: `fix/<short-description>`
-- Documentation: `docs/<short-description>`
+- Feature branches: `feature/<short-description>` (e.g., `feature/add-hebrew-rtl-support`)
+- Bug fixes: `fix/<short-description>` (e.g., `fix/presentation-maker-offline-mode`)
+- Documentation: `docs/<short-description>` (e.g., `docs/update-readme-badges`)
 
 ### Commit Messages
 
@@ -180,7 +180,7 @@ The repository uses GitHub Actions for:
 - `.github/workflows/*.yml` - CI/CD workflows (unless specifically requested)
 - `data/content.json` - Medical content requires specialist review
 - `.github/CODEOWNERS` - Repository ownership configuration
-- Dependency lock files (`package-lock.json`) - Let npm handle these
+- Dependency lock files (`package-lock.json`) - Committed to repo; avoid manual edits, let npm update them
 
 ### Actions to Avoid
 
