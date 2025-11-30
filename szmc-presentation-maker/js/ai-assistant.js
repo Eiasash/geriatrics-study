@@ -698,7 +698,12 @@ class AIAssistant {
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
-                            window.editor.openSlideEditor(issue.slideIndex);
+                            // Focus on the slide canvas for editing
+                            const canvas = document.getElementById('current-slide');
+                            if (canvas) {
+                                const editable = canvas.querySelector('[contenteditable="true"]');
+                                if (editable) editable.focus();
+                            }
                         }
                     }
                 };

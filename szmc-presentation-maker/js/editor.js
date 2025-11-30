@@ -542,6 +542,7 @@ class PresentationEditor {
 
 // Create global editor instance
 const editor = new PresentationEditor();
+window.editor = editor; // Expose to window for AI assistant access
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
