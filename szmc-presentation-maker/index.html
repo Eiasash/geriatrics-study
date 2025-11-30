@@ -941,31 +941,35 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <style>
         .install-prompt {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            background: linear-gradient(135deg, #00b4d8 0%, #0ea5e9 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 14px 28px;
+            border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.35);
             z-index: 10000;
             display: flex;
             align-items: center;
-            gap: 8px;
-            animation: slideUp 0.3s ease;
+            gap: 10px;
+            animation: slideUpBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.2s ease;
         }
         .install-prompt:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 180, 216, 0.45);
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .install-prompt:active {
+            transform: translateX(-50%) translateY(0);
+        }
+        @keyframes slideUpBounce {
+            from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
         }
     </style>
 </body>
