@@ -3,7 +3,7 @@
  * Full offline support for PWA
  */
 
-const CACHE_NAME = 'szmc-presentation-v5';
+const CACHE_NAME = 'szmc-presentation-v6';
 
 // All files to cache for complete offline use
 const CACHE_FILES = [
