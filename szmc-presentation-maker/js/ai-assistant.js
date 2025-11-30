@@ -698,7 +698,12 @@ class AIAssistant {
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
-                            window.editor.openSlideEditor(issue.slideIndex);
+                            // Focus on the slide canvas for editing
+                            const canvas = document.getElementById('current-slide');
+                            if (canvas) {
+                                const editable = canvas.querySelector('[contenteditable="true"]');
+                                if (editable) editable.focus();
+                            }
                         }
                     }
                 };
@@ -764,13 +769,14 @@ class AIAssistant {
         const slide = window.editor?.slides[slideIndex];
         if (!slide) return;
 
+        const data = slide.data || slide;
         const suggestions = [];
 
-        if (slide.type === 'bullet-points' && slide.points && slide.points.length > 5) {
-            suggestions.push(`Split ${slide.points.length} bullet points across 2 slides`);
+        if (slide.type === 'bullet-points' && data.points && data.points.length > 5) {
+            suggestions.push(`Split ${data.points.length} bullet points across 2 slides`);
         }
 
-        if (slide.content && slide.content.length > 500) {
+        if (data.content && data.content.length > 500) {
             suggestions.push('Create a new slide for additional details');
         }
 

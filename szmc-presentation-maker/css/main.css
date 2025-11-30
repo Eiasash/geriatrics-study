@@ -683,7 +683,18 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    flex-grow: 1;
+}
+
+.slide-thumbnail-preview {
+    padding: 0 var(--spacing-xs);
+    font-size: 0.45rem;
+    color: var(--gray-400);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .slide-thumbnail-delete {
