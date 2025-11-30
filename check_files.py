@@ -27,13 +27,15 @@ if h5p_dist.exists():
 else:
     print("  Directory does not exist")
 
-# Check Anki dist
-print(f"\nAnki dist directory: {Path('anki/dist').absolute()}")
-anki_files = list(Path("anki/dist").glob("*.apkg"))
-print(f"  APKG files: {len(anki_files)}")
-for f in anki_files:
+# Check H5P files
+print(f"\nH5P packages:")
+h5p_files = list(h5p_dist.glob("*.h5p")) if h5p_dist.exists() else []
+print(f"  H5P files: {len(h5p_files)}")
+for f in h5p_files[:5]:  # Show first 5
     size_kb = f.stat().st_size / 1024
     print(f"    ✓ {f.name} ({size_kb:.1f} KB)")
+if len(h5p_files) > 5:
+    print(f"    ... and {len(h5p_files) - 5} more")
 
 # Check content
 data_file = Path("data/content.json")
@@ -43,9 +45,11 @@ if data_file.exists():
     print(f"\nContent data loaded:")
     print(f"  Total topics: {len(data)}")
     for topic in data[:3]:
-        print(f"    - {topic['title']} ({len(topic.get('mcqs', []))} MCQs)")
+        print(f"    - {topic['topic']} ({len(topic.get('mcqs', []))} MCQs)")
 
 print("\n=== SUMMARY ===")
-print("✓ Anki package built successfully (geriatrics.apkg)")
-print("? H5P files may have been created but are not visible (possible encoding issue)")
-print("\nTo import Anki deck: Open Anki → File → Import → Select anki/dist/geriatrics.apkg")
+if h5p_files:
+    print(f"✓ {len(h5p_files)} H5P packages built successfully")
+else:
+    print("⚠ No H5P packages found - run 'cd h5p && npm run build:qset' to build")
+print("\nTo use H5P packages: Upload to any H5P-compatible platform (Moodle, WordPress, etc.)")
