@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 14:56*
+*Generated: 2025-11-30 15:02*
 
 
 ## Delirium (דליריום)
@@ -61,11 +61,6 @@
 
 
 ## Dementia (דמנציה)
-
-### 📄 [Agitation].
-- **Authors**: Yoshiyama Kenji
-- **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
-- **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
 
 ### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
 - **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
