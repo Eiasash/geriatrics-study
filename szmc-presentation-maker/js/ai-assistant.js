@@ -1471,7 +1471,478 @@ class AIAssistant {
             default: return '#6b7280';
         }
     }
+
+    // NEW: Generate geriatrics-specific content suggestions
+    generateGeriatricsContentSuggestions(slides) {
+        const suggestions = [];
+        const allText = slides.map(s => this.getSlideText(s)).join(' ').toLowerCase();
+        const slideTypes = slides.map(s => s.type);
+
+        // Geriatric Assessment suggestions
+        if (slideTypes.includes('patient-info') || slideTypes.includes('hpi')) {
+            if (!allText.includes('functional') && !allText.includes('adl') && !allText.includes('iadl')) {
+                suggestions.push({
+                    title: 'Add Functional Assessment',
+                    message: 'Consider adding functional status (ADLs/IADLs) - crucial for geriatric patients.',
+                    action: 'Add a slide discussing the patient\'s functional abilities and independence.',
+                    slideType: 'geriatric-assessment'
+                });
+            }
+
+            if (!allText.includes('cognitive') && !allText.includes('mmse') && !allText.includes('moca') && !allText.includes('dementia')) {
+                suggestions.push({
+                    title: 'Add Cognitive Assessment',
+                    message: 'Consider documenting cognitive status using MMSE, MoCA, or similar tools.',
+                    action: 'Include cognitive screening results or baseline mental status.',
+                    slideType: 'geriatric-assessment'
+                });
+            }
+
+            if (!allText.includes('fall') && !allText.includes('mobility') && !allText.includes('gait')) {
+                suggestions.push({
+                    title: 'Add Fall Risk Assessment',
+                    message: 'Falls are a major geriatric syndrome. Consider documenting fall history and risk factors.',
+                    action: 'Add information about fall history, gait assessment, and fall prevention.',
+                    slideType: 'geriatric-syndromes'
+                });
+            }
+
+            if (!allText.includes('goals') && !allText.includes('advance directive') && !allText.includes('code status')) {
+                suggestions.push({
+                    title: 'Consider Goals of Care',
+                    message: 'Goals of care discussion is important in geriatric presentations.',
+                    action: 'Add a Goals of Care slide discussing patient preferences and advance directives.',
+                    slideType: 'goals-of-care'
+                });
+            }
+        }
+
+        // Medication-related suggestions
+        if (slideTypes.includes('medications') || slideTypes.includes('medications-detailed')) {
+            if (!allText.includes('polypharmacy') && !allText.includes('deprescribing')) {
+                suggestions.push({
+                    title: 'Address Polypharmacy',
+                    message: 'Consider discussing polypharmacy risks and deprescribing opportunities.',
+                    action: 'Review medication list for potentially inappropriate medications using Beers Criteria.',
+                    slideType: 'medications-detailed'
+                });
+            }
+
+            if (!allText.includes('renal') && !allText.includes('egfr') && !allText.includes('kidney')) {
+                suggestions.push({
+                    title: 'Consider Renal Function',
+                    message: 'Many medications require dose adjustment for renal function in elderly.',
+                    action: 'Include eGFR and discuss medication dose adjustments based on renal function.',
+                    slideType: 'medications-detailed'
+                });
+            }
+        }
+
+        // Discharge planning suggestions
+        if (slideTypes.includes('plan') || slideTypes.includes('treatment')) {
+            if (!allText.includes('discharge') && !allText.includes('transition') && !allText.includes('follow-up')) {
+                suggestions.push({
+                    title: 'Add Discharge Planning',
+                    message: 'Discharge planning is critical for preventing readmissions in geriatric patients.',
+                    action: 'Discuss discharge disposition, home safety, and follow-up plans.',
+                    slideType: 'prognosis'
+                });
+            }
+
+            if (!allText.includes('caregiver') && !allText.includes('family') && !allText.includes('social support')) {
+                suggestions.push({
+                    title: 'Include Social Support',
+                    message: 'Social support and caregiver assessment are important in geriatric care.',
+                    action: 'Add information about caregiver availability and social support systems.',
+                    slideType: 'social-history'
+                });
+            }
+        }
+
+        return suggestions;
+    }
+
+    // NEW: Get actionable content templates for quick insertion
+    getGeriatricsTemplates() {
+        return {
+            'functional-assessment': {
+                title: 'Functional Assessment',
+                content: `<h3>Functional Status</h3>
+<p><strong>ADLs (Activities of Daily Living):</strong></p>
+<ul>
+<li>Bathing: Independent / Needs assistance / Dependent</li>
+<li>Dressing: Independent / Needs assistance / Dependent</li>
+<li>Toileting: Independent / Needs assistance / Dependent</li>
+<li>Transferring: Independent / Needs assistance / Dependent</li>
+<li>Continence: Continent / Incontinent</li>
+<li>Feeding: Independent / Needs assistance / Dependent</li>
+</ul>
+<p><strong>IADLs (Instrumental ADLs):</strong></p>
+<ul>
+<li>Managing finances, medications, transportation, shopping, housework, meal preparation, telephone use</li>
+</ul>`
+            },
+            'cognitive-assessment': {
+                title: 'Cognitive Assessment',
+                content: `<h3>Cognitive Status</h3>
+<p><strong>MMSE Score:</strong> __/30</p>
+<p><strong>MoCA Score:</strong> __/30 (adjusted for education)</p>
+<p><strong>Clock Drawing Test:</strong> Normal / Abnormal</p>
+<p><strong>Baseline:</strong> Unchanged / Declined from baseline</p>
+<p><strong>Assessment:</strong> No cognitive impairment / MCI / Dementia (specify type)</p>`
+            },
+            'fall-assessment': {
+                title: 'Fall Risk Assessment',
+                content: `<h3>Fall Risk Assessment</h3>
+<p><strong>Fall History:</strong> __ falls in past 12 months</p>
+<p><strong>Circumstances:</strong> [describe]</p>
+<p><strong>Risk Factors:</strong></p>
+<ul>
+<li>Gait/balance impairment</li>
+<li>Orthostatic hypotension</li>
+<li>Visual impairment</li>
+<li>Polypharmacy (especially psychotropics)</li>
+<li>Environmental hazards</li>
+<li>Previous falls</li>
+</ul>
+<p><strong>Morse Fall Scale:</strong> __/125 (Low/Moderate/High risk)</p>`
+            },
+            'medication-review': {
+                title: 'Medication Review',
+                content: `<h3>Medication Review - Beers Criteria</h3>
+<p><strong>Potentially Inappropriate Medications:</strong></p>
+<ul>
+<li>[List PIMs identified]</li>
+</ul>
+<p><strong>Deprescribing Opportunities:</strong></p>
+<ul>
+<li>[Medications to consider discontinuing]</li>
+</ul>
+<p><strong>Dose Adjustments Needed:</strong></p>
+<ul>
+<li>[Medications requiring renal dose adjustment]</li>
+</ul>
+<p><strong>Drug Interactions:</strong></p>
+<ul>
+<li>[Significant interactions identified]</li>
+</ul>`
+            },
+            'goals-of-care': {
+                title: 'Goals of Care',
+                content: `<h3>Goals of Care Discussion</h3>
+<p><strong>Patient's Values:</strong> [What matters most to patient]</p>
+<p><strong>Quality of Life Priorities:</strong></p>
+<ul>
+<li>[Key priorities identified]</li>
+</ul>
+<p><strong>Code Status:</strong> Full code / DNR / DNR-DNI / Comfort measures only</p>
+<p><strong>Advance Directive:</strong> Yes / No / POLST completed</p>
+<p><strong>Healthcare Proxy:</strong> [Name and relationship]</p>
+<p><strong>Care Goals:</strong> Curative / Life-prolonging / Comfort-focused</p>`
+            }
+        };
+    }
+
+    // NEW: Insert geriatrics-specific content template
+    insertGeriatricsTemplate(templateKey, slideIndex) {
+        const templates = this.getGeriatricsTemplates();
+        const template = templates[templateKey];
+
+        if (!template || !window.editor) return false;
+
+        const slide = window.editor.slides[slideIndex];
+        if (slide && slide.data) {
+            // Append to existing content
+            const existingContent = slide.data.content || '';
+            slide.data.content = existingContent + '\n\n' + template.content;
+
+            window.editor.renderThumbnails();
+            window.editor.renderCurrentSlide();
+            window.showToast(`Added ${template.title} template`, 'success');
+            this.refreshAnalysis();
+            return true;
+        }
+        return false;
+    }
+
+    // NEW: Get AI-powered content suggestions based on slide context
+    getContextualSuggestions(slide, index) {
+        const suggestions = [];
+        const data = slide.data || slide;
+        const text = this.getSlideText(slide).toLowerCase();
+
+        // HPI suggestions
+        if (slide.type === 'hpi' || slide.type === 'patient-info') {
+            if (!text.includes('timeline')) {
+                suggestions.push({
+                    type: 'enhancement',
+                    title: 'Add Clinical Timeline',
+                    description: 'Consider adding a timeline to visualize disease progression',
+                    action: () => {
+                        if (window.editor) {
+                            window.editor.addSlide('timeline-visual', index + 1);
+                            window.showToast('Added timeline slide', 'success');
+                        }
+                    }
+                });
+            }
+        }
+
+        // Differential diagnosis suggestions
+        if (slide.type === 'differential') {
+            if (!text.includes('most likely') && !text.includes('working diagnosis')) {
+                suggestions.push({
+                    type: 'improvement',
+                    title: 'Highlight Working Diagnosis',
+                    description: 'Clearly indicate the most likely diagnosis to guide discussion',
+                    action: null
+                });
+            }
+        }
+
+        // Treatment suggestions
+        if (slide.type === 'treatment' || slide.type === 'plan') {
+            if (!text.includes('first-line') && !text.includes('evidence')) {
+                suggestions.push({
+                    type: 'enhancement',
+                    title: 'Add Evidence Level',
+                    description: 'Consider noting the evidence level for treatment recommendations',
+                    action: null
+                });
+            }
+
+            if (!text.includes('monitor') && !text.includes('follow')) {
+                suggestions.push({
+                    type: 'reminder',
+                    title: 'Add Monitoring Plan',
+                    description: 'Include what parameters to monitor and when to follow up',
+                    action: null
+                });
+            }
+        }
+
+        return suggestions;
+    }
 }
 
 // Create global instance
 window.aiAssistant = new AIAssistant();
+
+// Helper function to escape HTML to prevent XSS
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    const div = document.createElement('div');
+    div.textContent = String(text);
+    return div.innerHTML;
+}
+
+// Store analysis results for event delegation
+let lastAnalysisResults = { issues: [], suggestions: [] };
+let lastGeriatricsSuggestions = [];
+
+// Global function for AI analysis - renders results to UI
+function runAIAnalysis() {
+    if (!window.editor || !window.editor.slides) {
+        console.warn('Editor not initialized');
+        return;
+    }
+
+    const results = window.aiAssistant.analyzePresentation(window.editor.slides);
+    const geriatricsSuggestions = window.aiAssistant.generateGeriatricsContentSuggestions(window.editor.slides);
+
+    // Store for event delegation
+    lastAnalysisResults = results;
+    lastGeriatricsSuggestions = geriatricsSuggestions;
+
+    // Update UI elements
+    const scoreEl = document.getElementById('ai-score');
+    const scoreBarEl = document.getElementById('ai-score-bar');
+    const timingEl = document.getElementById('ai-timing');
+    const resultsContainer = document.getElementById('ai-results');
+    const errorCountEl = document.getElementById('ai-error-count');
+    const warningCountEl = document.getElementById('ai-warning-count');
+    const infoCountEl = document.getElementById('ai-info-count');
+    const tipCountEl = document.getElementById('ai-tip-count');
+    const badgeEl = document.getElementById('ai-issue-badge');
+
+    // Update score
+    if (scoreEl) {
+        scoreEl.textContent = results.score;
+        scoreEl.className = `ai-score-value ${results.score >= 80 ? 'good' : results.score >= 60 ? 'moderate' : 'poor'}`;
+    }
+
+    if (scoreBarEl) {
+        scoreBarEl.style.width = `${results.score}%`;
+        scoreBarEl.style.background = results.score >= 80 ? '#10b981' : results.score >= 60 ? '#f59e0b' : '#ef4444';
+    }
+
+    // Update timing
+    if (timingEl) {
+        const timing = window.aiAssistant.getTimingEstimate(window.editor.slides);
+        timingEl.innerHTML = `<i class="fas fa-clock"></i> Est. ${timing.formatted}`;
+    }
+
+    // Update stats
+    if (errorCountEl) errorCountEl.textContent = results.stats.errorCount;
+    if (warningCountEl) warningCountEl.textContent = results.stats.warningCount;
+    if (infoCountEl) infoCountEl.textContent = results.stats.infoCount;
+    if (tipCountEl) tipCountEl.textContent = results.stats.tipCount + geriatricsSuggestions.length;
+
+    // Update badge
+    const totalIssues = results.stats.errorCount + results.stats.warningCount;
+    if (badgeEl) {
+        badgeEl.textContent = totalIssues;
+        badgeEl.style.display = totalIssues > 0 ? 'flex' : 'none';
+    }
+
+    // Render results
+    if (resultsContainer) {
+        let html = '';
+
+        // Render issues first
+        [...results.issues, ...results.suggestions].forEach(item => {
+            const icon = window.aiAssistant.getSeverityIcon(item.severity);
+            const color = window.aiAssistant.getSeverityColor(item.severity);
+            const quickFix = window.aiAssistant.getQuickFix(item);
+            const itemIndex = [...results.issues, ...results.suggestions].indexOf(item);
+
+            html += `
+                <div class="ai-result-item ai-result-${escapeHtml(item.severity)}" style="border-left: 4px solid ${escapeHtml(color)};">
+                    <div class="ai-result-header">
+                        <i class="fas ${escapeHtml(icon)}" style="color: ${escapeHtml(color)};"></i>
+                        <strong>${escapeHtml(item.title)}</strong>
+                        ${item.slideIndex !== null ? `<span class="ai-slide-badge">Slide ${item.slideIndex + 1}</span>` : ''}
+                    </div>
+                    <p class="ai-result-message">${escapeHtml(item.message)}</p>
+                    ${quickFix ? `<button class="ai-quick-fix-btn" data-action="quickfix" data-item-index="${itemIndex}" data-severity="${escapeHtml(item.severity)}" data-slide-index="${item.slideIndex !== null ? item.slideIndex : ''}" data-action-type="${escapeHtml(item.action || '')}">
+                        <i class="fas fa-magic"></i> ${escapeHtml(quickFix.label)}
+                    </button>` : ''}
+                </div>
+            `;
+        });
+
+        // Render geriatrics-specific suggestions
+        if (geriatricsSuggestions.length > 0) {
+            html += `<div class="ai-section-header"><i class="fas fa-user-md"></i> Geriatrics-Specific Suggestions</div>`;
+            geriatricsSuggestions.forEach((suggestion, idx) => {
+                const safeSlideType = suggestion.slideType ? escapeHtml(suggestion.slideType) : '';
+                html += `
+                    <div class="ai-result-item ai-result-tip" style="border-left: 4px solid #10b981;">
+                        <div class="ai-result-header">
+                            <i class="fas fa-lightbulb" style="color: #10b981;"></i>
+                            <strong>${escapeHtml(suggestion.title)}</strong>
+                        </div>
+                        <p class="ai-result-message">${escapeHtml(suggestion.message)}</p>
+                        <p class="ai-result-action"><em>${escapeHtml(suggestion.action)}</em></p>
+                        ${suggestion.slideType ? `<button class="ai-quick-fix-btn" data-action="add-slide" data-slide-type="${safeSlideType}">
+                            <i class="fas fa-plus"></i> Add ${safeSlideType.replace(/-/g, ' ')} Slide
+                        </button>` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        if (!html) {
+            html = `
+                <div class="ai-placeholder ai-success">
+                    <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                    <p>Great job! No major issues found.</p>
+                    <p class="ai-subtitle">Your presentation looks good. Consider the geriatrics tips above for enhancement.</p>
+                </div>
+            `;
+        }
+
+        resultsContainer.innerHTML = html;
+
+        // Set up event delegation for quick fix buttons (only once)
+        if (!resultsContainer.hasAttribute('data-listener-attached')) {
+            resultsContainer.addEventListener('click', handleQuickFixClick);
+            resultsContainer.setAttribute('data-listener-attached', 'true');
+        }
+    }
+
+    return results;
+}
+
+// Handle quick fix button clicks via event delegation
+function handleQuickFixClick(event) {
+    const button = event.target.closest('.ai-quick-fix-btn');
+    if (!button) return;
+
+    const action = button.dataset.action;
+
+    if (action === 'add-slide') {
+        const slideType = button.dataset.slideType;
+        if (slideType && window.editor) {
+            window.editor.addSlide(slideType);
+            if (window.showToast) {
+                window.showToast(`Added ${slideType.replace(/-/g, ' ')} slide`, 'success');
+            }
+            // Re-run analysis
+            setTimeout(runAIAnalysis, 300);
+        }
+    } else if (action === 'quickfix') {
+        const itemIndex = parseInt(button.dataset.itemIndex, 10);
+        const actionType = button.dataset.actionType;
+        const slideIndex = button.dataset.slideIndex !== '' ? parseInt(button.dataset.slideIndex, 10) : null;
+
+        // Reconstruct the item from stored results
+        const allItems = [...lastAnalysisResults.issues, ...lastAnalysisResults.suggestions];
+        const item = allItems[itemIndex];
+
+        if (item) {
+            const quickFix = window.aiAssistant.getQuickFix(item);
+            if (quickFix && typeof quickFix.action === 'function') {
+                quickFix.action();
+            }
+        }
+    }
+}
+
+// Toggle AI Panel
+function toggleAIPanel() {
+    const panel = document.getElementById('ai-panel');
+    const btn = document.querySelector('.btn-ai');
+
+    if (panel) {
+        panel.classList.toggle('active');
+        if (btn) {
+            btn.setAttribute('aria-expanded', panel.classList.contains('active') ? 'true' : 'false');
+        }
+
+        // Auto-run analysis when opening panel
+        if (panel.classList.contains('active')) {
+            runAIAnalysis();
+        }
+    }
+}
+
+// Filter AI results
+function filterAIResults(filter) {
+    const tabs = document.querySelectorAll('.ai-filter-tab');
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.filter === filter);
+    });
+
+    const items = document.querySelectorAll('.ai-result-item');
+    items.forEach(item => {
+        if (filter === 'all') {
+            item.style.display = 'block';
+        } else if (filter === 'issues') {
+            item.style.display = (item.classList.contains('ai-result-error') || item.classList.contains('ai-result-warning')) ? 'block' : 'none';
+        } else if (filter === 'suggestions') {
+            item.style.display = (item.classList.contains('ai-result-info') || item.classList.contains('ai-result-tip')) ? 'block' : 'none';
+        }
+    });
+}
+
+// Toggle auto-analyze
+function toggleAutoAnalyze() {
+    const checkbox = document.getElementById('ai-auto-analyze');
+    if (checkbox && checkbox.checked) {
+        // Set up auto-analyze on changes
+        window.aiAutoAnalyzeEnabled = true;
+    } else {
+        window.aiAutoAnalyzeEnabled = false;
+    }
+}
