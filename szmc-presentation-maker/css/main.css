@@ -2017,6 +2017,38 @@ select:focus {
     font-size: 0.7rem;
 }
 
+/* Geriatrics-specific action buttons - more prominent */
+.ai-geriatrics-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #10b981;
+    font-weight: 600;
+}
+
+.ai-geriatrics-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    border-color: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.ai-geriatrics-btn i {
+    font-size: 0.85rem;
+}
+
+/* Animation for successful action */
+@keyframes aiActionSuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.ai-quick-fix-btn.success {
+    animation: aiActionSuccess 0.3s ease;
+    background: #10b981;
+    color: white;
+}
+
 .ai-section-header {
     display: flex;
     align-items: center;
