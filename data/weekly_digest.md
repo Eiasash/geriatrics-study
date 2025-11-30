@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-29 22:10*
+*Generated: 2025-11-30 11:18*
 
 
 ## Delirium (דליריום)
@@ -35,10 +35,11 @@
 - **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
 - **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
 
-### 📄 Nutritional status and cardiac arrest: from background frailty to prognostic and therapeutic target.
-- **Authors**: Mongardon Nicolas, Lê Minh-Pierre, Miard Camille
-- **Journal**: Resuscitation (2025)
-- **Link**: [41082963](https://pubmed.ncbi.nlm.nih.gov/41082963/)
+### 📄 [Dizziness in old age].
+- **Authors**: Trabert Johannes
+- **Journal**: Die Ophthalmologie (2025)
+- **Link**: [41128849](https://pubmed.ncbi.nlm.nih.gov/41128849/)
+- **Key Finding**: Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life...
 
 
 ## Falls (נפילות)
@@ -48,15 +49,16 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
-- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
-- **Journal**: BMC geriatrics (2025)
-- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
-
 ### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
 - **Authors**: Al Hamad Hanadi, Sathian Brijesh
 - **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
 - **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
+
+### 📄 [Importance of vision in old age].
+- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
+- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
+- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
+- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
 
 
 ## Dementia (דמנציה)
@@ -66,16 +68,16 @@
 - **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
 - **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
 
-### 📄 Association between vaccinations and risk of dementia: a systematic review and meta-analysis.
-- **Authors**: Maggi Stefania, Fulöp Tamàs, De Vita Elda et al.
-- **Journal**: Age and ageing (2025)
-- **Link**: [41269248](https://pubmed.ncbi.nlm.nih.gov/41269248/)
-
 ### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
 - **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
 - **Journal**: Nature medicine (2025)
 - **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
 - **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
+
+### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
+- **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
+- **Journal**: Pulmonology (2025)
+- **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
@@ -111,10 +113,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
-- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
-- **Journal**: Drugs & aging (2025)
-- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
+### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
+- **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
+- **Journal**: Nature aging (2025)
+- **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
 
 
 ## End Of Life (טיפול סוף-חיים)
