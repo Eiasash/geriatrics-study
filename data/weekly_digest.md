@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 20:29*
+*Generated: 2025-11-30 20:42*
 
 
 ## Delirium (דליריום)
