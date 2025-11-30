@@ -1821,7 +1821,7 @@
             const topicId = currentQuiz.topicId;
             const mode = currentQuiz.mode;
             closeQuiz();
-            setTimeout(() => startQuiz(topicId, mode), 300);
+            setTimeout(() => startTopicQuiz(topicId, mode), 300);
         }
 
         function closeQuiz() {
@@ -1910,7 +1910,7 @@
 
         function startQuizFromModal(topicId, mode, modal) {
             modal.remove();
-            startQuiz(topicId, mode);
+            startTopicQuiz(topicId, mode);
         }
 
         // ====================================
