@@ -8,15 +8,15 @@ const OUT = path.join(__dirname, 'dist');
 
 function renderDialogCards(title, pairs) {
   return {
-    "title": title,
-    "language": "he",
-    "mainLibrary": "H5P.Dialogcards",
-    "preloadedDependencies": [
-      { "machineName": "H5P.Dialogcards", "majorVersion": 1, "minorVersion": 8 }
+    'title': title,
+    'language': 'he',
+    'mainLibrary': 'H5P.Dialogcards',
+    'preloadedDependencies': [
+      { 'machineName': 'H5P.Dialogcards', 'majorVersion': 1, 'minorVersion': 8 }
     ],
-    "content": {
-      "cards": pairs.map(p => ({ "text": p.q, "answer": p.a })),
-      "behaviour": { "randomizeCards": true, "scaleText": false, "disableBack": false }
+    'content': {
+      'cards': pairs.map(p => ({ 'text': p.q, 'answer': p.a })),
+      'behaviour': { 'randomizeCards': true, 'scaleText': false, 'disableBack': false }
     }
   };
 }
@@ -29,19 +29,19 @@ async function main() {
   for (const t of topics) {
     const title = t.topic;
     const pairs = t.flashcards || [];
-    if (!pairs.length) continue;
+    if (!pairs.length) {continue;}
   
     const tmpDir = path.join(__dirname, `.tmp_${Date.now()}_${Math.random().toString(36).slice(2)}`);
     await fs.ensureDir(tmpDir);
     await fs.ensureDir(path.join(tmpDir, 'content'));
   
     const h5pJson = {
-      "title": `${title} – Dialog Cards`,
-      "language": "he",
-      "mainLibrary": "H5P.Dialogcards",
-      "embedTypes": ["div"],
-      "preloadedDependencies": [
-        { "machineName": "H5P.Dialogcards", "majorVersion": 1, "minorVersion": 8 }
+      'title': `${title} – Dialog Cards`,
+      'language': 'he',
+      'mainLibrary': 'H5P.Dialogcards',
+      'embedTypes': ['div'],
+      'preloadedDependencies': [
+        { 'machineName': 'H5P.Dialogcards', 'majorVersion': 1, 'minorVersion': 8 }
       ]
     };
     await fs.writeJson(path.join(tmpDir, 'h5p.json'), h5pJson, { spaces: 2 });
@@ -50,7 +50,7 @@ async function main() {
     await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), content, { spaces: 2 });
   
     // Sanitize filename: replace spaces and problematic characters
-    const safeTitle = title.replace(/[\s\/\\:*?"<>|]/g, '_');
+    const safeTitle = title.replace(/[\s/\\:*?"<>|]/g, '_');
     const outFile = path.join(OUT, `${safeTitle}.h5p`);
     
     // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix

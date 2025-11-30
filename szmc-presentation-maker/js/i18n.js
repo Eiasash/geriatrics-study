@@ -221,6 +221,13 @@ class I18n {
                 mobileView: 'Mobile View',
                 toggleView: 'Toggle View',
 
+                // Theme
+                darkMode: 'Dark Mode',
+                lightMode: 'Light Mode',
+                darkModeEnabled: 'Dark mode enabled',
+                lightModeEnabled: 'Light mode enabled',
+                toggleDarkMode: 'Toggle dark mode',
+
                 // Language
                 language: 'Language',
                 english: 'English',
@@ -462,6 +469,13 @@ class I18n {
                 desktopView: 'תצוגת מחשב',
                 mobileView: 'תצוגת נייד',
                 toggleView: 'החלף תצוגה',
+
+                // Theme
+                darkMode: 'מצב כהה',
+                lightMode: 'מצב בהיר',
+                darkModeEnabled: 'מצב כהה הופעל',
+                lightModeEnabled: 'מצב בהיר הופעל',
+                toggleDarkMode: 'החלף מצב כהה/בהיר',
 
                 // Language
                 language: 'שפה',
