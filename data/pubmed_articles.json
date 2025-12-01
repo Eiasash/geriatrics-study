@@ -48,18 +48,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "41137434",
-      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
-      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
-      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
-      "journal": "Annals of medicine",
-      "year": "2025",
-      "key_findings": [
-        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
-    },
-    {
       "pmid": "40914903",
       "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
       "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
@@ -68,6 +56,18 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
+    },
+    {
+      "pmid": "40840867",
+      "title": "Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.",
+      "abstract": "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality. We investigated the relationship between frailty and peripheral neuropathy in hemodialysis patients.",
+      "authors": "Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.",
+      "journal": "Renal failure",
+      "year": "2025",
+      "key_findings": [
+        "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40840867/"
     }
   ],
   "falls": [
@@ -126,14 +126,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
     },
     {
-      "pmid": "39869458",
-      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
-      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
-      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
-      "journal": "Pulmonology",
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
     }
   ],
   "deprescribing": [
