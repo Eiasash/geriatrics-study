@@ -60,14 +60,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
     },
     {
-      "pmid": "40914903",
-      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
-      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
-      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
-      "journal": "Annals of medicine",
+      "pmid": "41271526",
+      "title": "Frailty measurement in research and clinical practice: An updated review.",
+      "abstract": "Frailty is a highly prevalent geriatric condition, affecting between 12-24% of older adults globally. It remains a major cause of morbidity and mortality in older adults. Incorporating frailty measurement into clinical decision making can guide optimal patient care. This updated review presents an outline of current frailty definitions and measurement approaches in both research and clinical practice, including: Fried's frailty phenotype; Rockwood and Mitnitski's Frailty Index (FI) of cumulative deficits; Clinical Frailty Scale (CFS); Fatigue, Resistance, Ambulation, Illness and Loss of weight (FRAIL) scale; Edmonton Frail Scale (EFS); electronic Frailty Index (eFI); Hospital Frailty Risk Score (HFRS); Study of Osteoporotic Fractures (SOF) Index; Tilburg Frailty Indicator (TFI); Groningen Frailty Indictor (GFI); Multidimensional Prognostic Index (MPI); the Kihon Checklist (KCL); Geriatric 8 (G8) for oncology; the Essential Frailty Toolset (EFT) for cardiology; plus gait speed and grip strength. The main strengths and limitations of existing frailty measurements are summarised, including how well these measurements operationalise frailty in terms of their accuracy in identifying frailty, their basis on biological causative theory, and their ability to reliably predict patient outcomes and response to potential therapies.",
+      "authors": "Dent Elsa, Hanlon Peter, Kowal Paul et al.",
+      "journal": "European journal of internal medicine",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41271526/"
     }
   ],
   "falls": [
@@ -204,16 +204,6 @@
   ],
   "end_of_life": [
     {
-      "pmid": "40689782",
-      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
-      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
-      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
-      "journal": "Expert review of endocrinology & metabolism",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
-    },
-    {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
       "abstract": "Modern cardiovascular medicine and surgery enable the treatment of complex cardiovascular disease, even in elderly and multimorbid patients, through increasingly sophisticated procedures. Nevertheless, there are situations in which surgical intervention appears medically inappropriate or is explicitly declined by the patient. Similarly, it may become necessary in the postoperative course to revise the original therapeutic goals-particularly when continued survival depends upon prolonged intensive care unit treatment, or when the anticipated quality of life, from the patient's perspective, appears inadequate. While established guidelines and position papers-most notably from the German Interdisciplinary Association for Intensive and Emergency Medicine-are already available in the field of intensive care medicine, a discipline-specific framework for cardiac surgery has been lacking thus far. This inaugural position paper issued by the German Society for Thoracic and Cardiovascular Surgery seeks to contribute to the definition of clinical and ethical standards in the context of therapeutic restraint (Section A) and to the redefinition of therapeutic goals (Section B) within our specialty. The aim is to promote a structured and multiprofessional approach that transparently integrates the core pillars of goal setting in therapy-namely, medical indication and patient autonomy-into a comprehensible decision-making framework. Achieving this objective requires close collaboration among physicians and nursing staff in cardiac surgery, cardiology, intensive care, anesthesiology, ethics consultation, and palliative care. The present recommendations are intended to serve as a foundation for patient-centered, appropriate, and transparent decision-making-always with the overarching aim of preserving the dignity and self-determination of the patients concerned.",
@@ -232,6 +222,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
+    },
+    {
+      "pmid": "40689782",
+      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
+      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
+      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
+      "journal": "Expert review of endocrinology & metabolism",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
     }
   ],
   "incontinence": [
