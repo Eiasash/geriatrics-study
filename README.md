@@ -1,136 +1,144 @@
-# Geriatrics Study Materials 🏥
+# SZMC Geriatrics Hub
 
-[![CI Pipeline](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml)
-[![H5P Build](https://github.com/Eiasash/geriatrics-study/actions/workflows/h5p-deploy.yml/badge.svg)](https://github.com/Eiasash/geriatrics-study/actions/workflows/h5p-deploy.yml)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Eiasash/geriatrics-study)](https://github.com/Eiasash/geriatrics-study/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <img src="szmc-presentation-maker/icons/icon.svg" width="120" alt="SZMC Geriatrics Logo">
+</p>
 
-Educational materials system for geriatrics topics - featuring H5P interactive content and the SZMC Presentation Maker with full Hebrew language support.
+<p align="center">
+  <strong>Shaare Zedek Medical Center - Geriatrics Department</strong><br>
+  Clinical tools, educational resources & presentation maker
+</p>
 
-## 📚 Features
+<p align="center">
+  <a href="https://eiasash.github.io/geriatrics-study/">🌐 Live Site</a> •
+  <a href="https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/">📊 Presentation Maker</a> •
+  <a href="https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html">🩺 Clinical Tools</a>
+</p>
 
-- **🎮 H5P Interactive Content**: Question sets and timed mega-quizzes
-- **📊 SZMC Presentation Maker**: Create medical case presentations and journal club slides (PWA - installable)
-- **🏥 Clinical Tools**: Medical calculators and assessment tools
-- **🌐 Hebrew Support**: Full RTL support with proper formatting
-- **🤖 Automated CI/CD**: Build, test, and release automation
+---
 
-## 🚀 Quick Start
+## 🚀 Quick Links
 
-### Prerequisites
+| Tool | Description | Link |
+|------|-------------|------|
+| **Presentation Maker** | Create medical presentations for case reviews & journal clubs | [Open →](https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/) |
+| **Clinical Dashboard** | Geriatric assessments, medications & decision tools | [Open →](https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html) |
+| **H5P Study Mode** | Interactive quizzes and flashcards | [Open →](https://eiasash.github.io/geriatrics-study/h5p/) |
+| **Hazzard's 8e** | Comprehensive geriatric medicine study materials | [Open →](https://eiasash.github.io/geriatrics-study/hazzards/) |
 
-- Node.js 20+
-- Git
+---
 
-### Installation
+## 📁 Repository Structure
 
+```
+geriatrics-study/
+├── index.html                    # Main landing page
+├── szmc-presentation-maker/      # Presentation creation tool
+│   ├── css/                      # Stylesheets (mobile, RTL, dark mode)
+│   ├── js/                       # Application logic & templates
+│   ├── templates/                # Case & journal club templates
+│   └── presentations/            # Saved presentation examples
+├── clinical-tools/               # Clinical reference applications
+│   ├── dashboard.html            # Main clinical tools hub
+│   ├── assessments.html          # Geriatric assessments (MMSE, MoCA, etc.)
+│   ├── medications.html          # Medication reference & Beers criteria
+│   ├── anticoag.html             # Anticoagulation management
+│   ├── decisions.html            # Clinical decision support
+│   ├── evidence.html             # Evidence-based guidelines
+│   ├── exam.html                 # Physical examination reference
+│   ├── oncall.html               # On-call quick reference
+│   └── ai-assistant.html         # AI-powered clinical assistant
+├── hazzards/                     # Hazzard's Geriatric Medicine 8e
+│   ├── Part1_*.html              # Principles of Geriatric Medicine
+│   ├── Part2_*.html              # Geriatric Syndromes
+│   └── Part3_*.html              # Organ System Diseases
+├── h5p/                          # Interactive learning content
+│   ├── build-h5p.js              # H5P content generator
+│   └── index.html                # Study mode interface
+├── data/                         # Shared data files
+│   └── content.json              # Question banks & content
+└── scripts/                      # Utility scripts
+    └── pubmed_fetcher.py         # PubMed citation fetcher
+```
+
+---
+
+## 🛠️ Features
+
+### Presentation Maker
+- **25+ slide templates** for case presentations and journal clubs
+- **AI-assisted content generation** from clinical notes
+- **Export options**: PPTX, PDF, PNG, HTML
+- **Hebrew RTL support** for bilingual presentations
+- **Dark mode** for comfortable editing
+- **PWA support** - install as app on mobile/desktop
+- **Offline capable** with service worker caching
+
+### Clinical Tools
+- **Geriatric Assessments**: MMSE, MoCA, GDS, ADL/IADL scales
+- **Medication Reference**: Beers criteria, drug interactions
+- **Anticoagulation**: CHADS-VASc, HAS-BLED, reversal protocols
+- **Evidence Search**: Quick access to guidelines and literature
+
+### Study Resources
+- **Hazzard's 8e**: Complete textbook content searchable
+- **H5P Quizzes**: Interactive board exam preparation
+- **Flashcards**: Spaced repetition learning
+
+---
+
+## 💻 Development
+
+### Local Development
 ```bash
 # Clone the repository
 git clone https://github.com/Eiasash/geriatrics-study.git
 cd geriatrics-study
 
-# Install H5P dependencies
+# Serve locally (any static server works)
+npx serve .
+# or
+python -m http.server 8000
+```
+
+### Building H5P Content
+```bash
 cd h5p
 npm install
+npm run build
 ```
-
-### Building Packages
-
-#### H5P QuestionSet
-```bash
-cd h5p
-npm run build:qset
-# Output: h5p/dist/<Topic>_QuestionSet.h5p
-```
-
-#### H5P Mega Package
-```bash
-cd h5p
-TOPICS="דליריום,שבריריות (Frailty)" PASS=75 npm run build:mega
-# Output: h5p/dist/geriatrics_mega.h5p
-```
-
-## 📱 SZMC Presentation Maker
-
-A Progressive Web App for creating professional medical presentations:
-
-- **Case Presentations**: Structure patient cases for conferences
-- **Journal Club**: Create slides for research paper reviews
-- **Medical Snippets**: Quick-insert common geriatric assessments
-- **Offline Support**: Works without internet connection
-- **Export**: PowerPoint, PDF, and HTML formats
-
-**Try it**: [https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/](https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/)
-
-## 📦 Pre-built Releases
-
-Download ready-to-use packages from the [Releases page](https://github.com/Eiasash/geriatrics-study/releases).
-
-## 🏗️ Project Structure
-
-```
-geriatrics-study/
-├── h5p/                        # H5P interactive content
-│   ├── build-h5p-questionset.js
-│   ├── build-h5p-mega.js
-│   └── dist/                   # Built H5P packages
-├── szmc-presentation-maker/    # PWA Presentation tool
-│   ├── index.html
-│   ├── manifest.json           # PWA manifest
-│   └── sw.js                   # Service worker
-├── clinical-tools/             # Medical calculators
-├── data/                       # Source content
-│   └── content.json            # Questions and answers
-└── .github/workflows/          # CI/CD automation
-```
-
-## 📋 Topics Covered
-
-1. דליריום (Delirium)
-2. דמנציה ומחלת אלצהיימר (Dementia and Alzheimer's)
-3. שבריריות (Frailty)
-4. נפילות (Falls)
-5. דיכאון בגיל המבוגר (Depression in the Elderly)
-6. רישום ודה-פרסקייבינג תרופות (Prescribing and Deprescribing)
-7. אי שליטה בסוגרים (Incontinence)
-8. סרקופניה ותזונה (Sarcopenia and Nutrition)
-9. טיפול סוף-חיים (End-of-life Care)
-10. שבץ מוחי (Stroke/TIA)
-11. אי ספיקת לב / יתר לחץ דם (Heart Failure/Hypertension)
-12. פרקינסון ותסמונות אקסטרה-פירמידליות (Parkinson's and Extrapyramidal Syndromes)
-
-## 🔧 Development
-
-### Running Tests
-```bash
-cd h5p
-npm test
-npm run lint
-```
-
-### Security Audits
-```bash
-cd h5p
-npm audit
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support
-
-For issues and questions:
-- [Open an issue](https://github.com/Eiasash/geriatrics-study/issues)
 
 ---
 
-Made with ❤️ for medical education
+## 🤝 Contributing
+
+Contributions welcome! Please:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+## 🏥 About
+
+This project is developed for the **Geriatrics Department at Shaare Zedek Medical Center, Jerusalem**. 
+
+It provides educational and clinical tools for:
+- Medical residents and fellows
+- Attending physicians
+- Medical students
+- Allied health professionals
+
+---
+
+<p align="center">
+  <sub>Made with ❤️ for better geriatric care</sub>
+</p>
