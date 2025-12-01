@@ -2570,6 +2570,17 @@ select:focus {
     margin-right: var(--spacing-sm);
 }
 
+.file-formats-hint {
+    margin-top: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.file-formats-hint i {
+    margin-right: 4px;
+}
+
 /* ================================
    Editor Header Enhancements
    ================================ */
