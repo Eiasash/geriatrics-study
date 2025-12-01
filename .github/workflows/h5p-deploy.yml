@@ -131,7 +131,7 @@ jobs:
         path: h5p
         
     - name: 🌐 Setup GitHub Pages
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v5
       
     - name: 📁 Prepare deployment directory
       run: |
