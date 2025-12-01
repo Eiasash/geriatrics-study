@@ -102,7 +102,40 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
     }
   ],
-  "dementia": [],
+  "dementia": [
+    {
+      "pmid": "41233181",
+      "title": "[Agitation].",
+      "abstract": "Agitation is a behavioral and psychological symptom of dementia (BPSD); however, until recently, there has been no consensus-based definition. When initiating therapeutic interventions, the type of dementia that is the cause of the BPSD must be considered and treatment must be tailored accordingly. As with other types of BPSD, non-pharmacological interventions are considered the first-line treatment for agitation, unless the symptoms present an exceptional level of urgency. Person-centered care is effective as a non-pharmacological intervention for agitation. Other examples include music therapy, animal-assisted therapy, and aromatherapy; however, these are not very effective for agitation. Useful information on non-pharmacological interventions for agitation can be obtained from the website \"Ninchisho Chienowa-net,\" which is a web-based system that collects information on the coping strategies of caregivers for BPSD. If non-pharmacological interventions are ineffective or the symptoms are urgent, pharmacological treatment should be considered. Brexpiprazole has been approved as effective for agitation in Alzheimer's disease. For the treatment of agitation, medications other than brexpiprazole are frequently used in clinical settings and may offer some degree of efficacy.",
+      "authors": "Yoshiyama Kenji",
+      "journal": "Brain and nerve = Shinkei kenkyu no shinpo",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41233181/"
+    },
+    {
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
+    },
+    {
+      "pmid": "40855194",
+      "title": "Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.",
+      "abstract": "Alzheimer's disease (AD) and AD-related dementias (AD/ADRD) have a substantial genetic basis, with APOE4 homozygotes increasingly recognized as a distinct genetic subtype. To identify genotype-specific metabolic pathways and modifiable risk factors, we integrated genetic, plasma metabolomic and dietary data from 4,215 women and 1,490 men in prospective cohorts. Here we show that the associations of 57 metabolites with dementia risk varied by APOE4 genotype or other AD/ADRD risk variants. For example, cholesteryl esters and sphingomyelins were most strongly associated with increased dementia risk in APOE4 homozygotes, whereas inverse associations with glycerides were specific to this genotype. Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP). Adherence to the Mediterranean diet more effectively modulated dementia-related metabolites in APOE4 homozygotes, suggesting targeted prevention strategies. Incorporating metabolomic data modestly improved dementia risk prediction, particularly during early follow-up. Mendelian randomization analysis identified 19 putative causal relationships between metabolites and cognitive outcomes, including protective effects of 4-guanidinobutanoate, carotenoids and N",
+      "authors": "Liu Yuxi, Gu Xiao, Li Yanping et al.",
+      "journal": "Nature medicine",
+      "year": "2025",
+      "key_findings": [
+        "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
+    }
+  ],
   "deprescribing": [
     {
       "pmid": "40719419",

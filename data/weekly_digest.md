@@ -60,6 +60,25 @@
 - **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
 
 
+## Dementia (דמנציה)
+
+### 📄 [Agitation].
+- **Authors**: Yoshiyama Kenji
+- **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
+- **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
+
+### 📄 
+- **Authors**: Cornford Nisha, Charnley Margaret
+- **Journal**: Nutrition research reviews (2025)
+- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
+
+### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
+- **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
+- **Journal**: Nature medicine (2025)
+- **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
+- **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
+
+
 ## Deprescribing (דה-פרסקייבינג)
 
 ### 📄 Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).

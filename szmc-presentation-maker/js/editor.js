@@ -168,6 +168,42 @@ class PresentationEditor {
         this.updateThumbnailSelection();
     }
 
+    openSlideEditor(index) {
+        // Select the slide
+        this.selectSlide(index);
+        
+        // Scroll to the slide canvas
+        const canvas = document.getElementById('current-slide');
+        if (canvas) {
+            canvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Focus the first editable element after a short delay
+            setTimeout(() => {
+                const firstEditable = canvas.querySelector('[contenteditable="true"]');
+                if (firstEditable) {
+                    firstEditable.focus();
+                }
+            }, 300);
+        }
+
+        // Close AI panel on mobile to show the slide
+        if (window.innerWidth <= 768) {
+            const aiPanel = document.querySelector('.ai-assistant-panel');
+            if (aiPanel && aiPanel.classList.contains('active')) {
+                if (typeof toggleAIAssistant === 'function') {
+                    toggleAIAssistant();
+                } else {
+                    aiPanel.classList.remove('active');
+                }
+            }
+        }
+
+        // Show a toast notification
+        if (typeof showToast === 'function') {
+            showToast(`Editing slide ${index + 1}`, 'info');
+        }
+    }
+
     changeSlideType(newType) {
         const currentSlide = this.slides[this.currentSlideIndex];
         if (!currentSlide || !SlideTemplates[newType]) return;
