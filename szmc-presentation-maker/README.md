@@ -2,7 +2,23 @@
 
 A professional presentation builder for the Geriatrics Department at Shaare Zedek Medical Center (SZMC). Create structured, consistent, and visually appealing presentations for case presentations and journal clubs.
 
+## Professional Medical Standards
+
+This presentation maker follows globally recognized medical presentation standards:
+
+- **AMA (American Medical Association)**: Citation formatting and medical terminology standards
+- **NLM (National Library of Medicine)**: Evidence-based structure and reference formatting
+- **ICMJE (International Committee of Medical Journal Editors)**: Research reporting standards
+- **CONSORT/PRISMA**: Clinical trial and systematic review reporting guidelines
+- **CASP/GRADE**: Critical appraisal and evidence quality frameworks
+
 ## Features
+
+### Text-to-Presentation Generator
+- **Auto-detection**: Automatically identifies case presentations vs. journal club articles
+- **Smart parsing**: Extracts key information from pasted text
+- **Multiple themes**: 8 professional color schemes
+- **Customizable**: Adjust slide density and included sections
 
 ### Case Presentation Template
 - **Patient Information**: Demographics, chief complaint, code status
@@ -64,12 +80,20 @@ A professional presentation builder for the Geriatrics Department at Shaare Zede
 | Escape | Exit presentation mode |
 | Home / End | First / Last slide |
 
-### Exporting
+### Importing Presentations
 
-- **PowerPoint**: Click "Export PPTX" to generate a .pptx file
-- **JSON**: Use Save to download editable JSON format
-- **HTML**: Export as standalone HTML file
-- **PDF**: Use browser print function
+- **JSON**: Load previously saved presentations
+- **PowerPoint (.pptx)**: Import existing PowerPoint files - extracts text and structure
+- **HTML**: Import HTML presentations - parses slide structure and content
+
+Click "Import Presentation" on the landing page and select your file.
+
+### Exporting Presentations
+
+- **PowerPoint (.pptx)**: Full-featured export with proper formatting, themes, and layouts
+- **JSON**: Editable format for saving and sharing presentations
+- **HTML**: Standalone HTML file for web viewing
+- **PDF**: Use browser print function (Ctrl+P → Save as PDF)
 
 ## Template Structure
 

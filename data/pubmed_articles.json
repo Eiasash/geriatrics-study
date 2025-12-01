@@ -35,6 +35,18 @@
   ],
   "frailty": [
     {
+      "pmid": "41137434",
+      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
+      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
+      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
+      "journal": "Annals of medicine",
+      "year": "2025",
+      "key_findings": [
+        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
+    },
+    {
       "pmid": "41253248",
       "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
       "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
@@ -48,24 +60,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "40914903",
-      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
-      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
-      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
-      "journal": "Annals of medicine",
+      "pmid": "41267611",
+      "title": "Frailty across Neurological Diseases: Why Sex and Gender Matter.",
+      "abstract": "Frailty is increasingly recognized as a critical factor in neurology, influencing disease susceptibility, progression, and outcomes. Emerging evidence highlights the pivotal role of sex and gender in shaping frailty trajectories across major neurological disorders, including stroke, Parkinson's disease (PD), dementia, and multiple sclerosis. This systematic review synthesizes current knowledge on the interplay between frailty and neurological disease, with a focus on sex-specific patterns. Recognizing sex- and gender-related differences in frailty expression is critical to advancing a more personalized and equitable model of neurological care, and reducing disparities in a growing population affected by age-related neurological conditions. ANN NEUROL 2025.",
+      "authors": "Lorefice Lorena, Pellecchia Maria Teresa",
+      "journal": "Annals of neurology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
-    },
-    {
-      "pmid": "41323622",
-      "title": "Association of frailty and pre-frailty with cardiovascular mortality: a meta-analysis of 26 cohort studies.",
-      "abstract": "This meta-analysis evaluated the association of frailty and pre-frailty with cardiovascular mortality in cohort studies. While frailty is a recognized predictor of poor outcomes, the prognostic role of pre-frailty-a critical intermediate stage-remains less clear. We assessed their associations with cardiovascular mortality, explored heterogeneity, and examined the robustness of findings through publication bias analyses.",
-      "authors": "Zhao Yan, Wu Yedan, Liu Zhuohui et al.",
-      "journal": "Frontiers in public health",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41323622/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41267611/"
     }
   ],
   "falls": [
@@ -80,16 +82,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "40902310",
-      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
-      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
-      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
-      "journal": "Revista espanola de geriatria y gerontologia",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
-    },
-    {
       "pmid": "40970437",
       "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
       "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
@@ -98,6 +90,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
+    },
+    {
+      "pmid": "40902310",
+      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
+      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
+      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
+      "journal": "Revista espanola de geriatria y gerontologia",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
     }
   ],
   "dementia": [
@@ -190,27 +192,17 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41188603/"
     },
     {
-      "pmid": "41060616",
-      "title": "Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.",
-      "abstract": "Sarcopenia and cachexia are two common and overlapping but distinct muscle wasting syndromes that predict adverse outcomes and undermine quality of life among older adults with cancer. Despite their prognostic value and negative effects on older patients' well-being, sarcopenia and cachexia are not routinely or adequately assessed and managed in clinical oncology practice. However, efforts to recognize and manage sarcopenia and cachexia at diagnosis and during follow-up may have beneficial effects on muscle mass, physical function, and quality of life among older adults with cancer, although evidence on long-term clinical outcomes in response to targeted interventions has yet to be established. This comprehensive review attempts to (i) delineate the differences in the pathophysiology and clinical manifestations between sarcopenia and cachexia, (ii) clarify how sarcopenia and cachexia are defined in the geriatric oncology literature, (iii) describe methods for assessing sarcopenia and cachexia in clinical practice, (iv) review the prognostic value of sarcopenia and cachexia among older patients, particularly those undergoing systemic cancer treatment, and (v) discuss evidence-based strategies aimed at managing sarcopenia and cachexia for older adults with cancer.",
-      "authors": "Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.",
-      "journal": "Drugs & aging",
+      "pmid": "40644314",
+      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
+      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
+      "authors": "Chen Alissa S, Batsis John A",
+      "journal": "Diabetes",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41060616/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     }
   ],
   "end_of_life": [
-    {
-      "pmid": "40769281",
-      "title": "Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.",
-      "abstract": "End-of-life distress and delirium are common in palliative care inpatients, often requiring sedatives that diminish interaction. Current practices rely on clinical experience rather than evidence.",
-      "authors": "Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.",
-      "journal": "Journal of pain and symptom management",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40769281/"
-    },
     {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
@@ -230,6 +222,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
+    },
+    {
+      "pmid": "40689782",
+      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
+      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
+      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
+      "journal": "Expert review of endocrinology & metabolism",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
     }
   ],
   "incontinence": [
