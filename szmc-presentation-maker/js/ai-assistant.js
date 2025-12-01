@@ -208,6 +208,59 @@ class AIAssistant {
             { name: 'Immobility', markers: ['bedbound', 'immobile', 'cannot walk', 'wheelchair'] },
             { name: 'Iatrogenesis', markers: ['adverse event', 'medication error', 'hospital-acquired'] }
         ];
+
+        // Auto-fix configuration constants
+        this.AUTO_FIX_CONFIG = {
+            MAX_COLUMN_CONTENT_LENGTH: 500,
+            MAX_LIST_ITEMS: 8,
+            MAX_TEACHING_POINTS: 5,
+            MAX_KEY_POINTS: 6,
+            CONTENT_TRUNCATION_SUFFIX: '...'
+        };
+
+        // Toast messages for auto-fix actions
+        this.TOAST_MESSAGES = {
+            SLIDE_SPLIT_SUCCESS: 'Slide split successfully',
+            SLIDE_SPLIT_NO_POINT: 'No suitable split point found',
+            SLIDE_SIMPLIFIED: 'Slide simplified successfully',
+            SLIDE_OPTIMAL: 'Slide is already optimal',
+            OVERFLOW_FIXED: 'Overflow issues fixed',
+            ABBREVIATIONS_ADDED: 'Abbreviations slide added',
+            TAKE_HOME_ADDED: 'Take-home messages slide added',
+            TAKE_HOME_NO_CONTENT: 'Not enough content to generate take-home points',
+            TEACHING_POINTS_ADDED: 'Teaching points slide added',
+            REFERENCES_ADDED: 'References slide added',
+            SLIDE_MOVED: 'Slide moved'
+        };
+
+        // Common medical abbreviation definitions
+        this.ABBREVIATION_DEFINITIONS = {
+            'ADL': 'Activities of Daily Living',
+            'IADL': 'Instrumental Activities of Daily Living',
+            'MMSE': 'Mini-Mental State Examination',
+            'MoCA': 'Montreal Cognitive Assessment',
+            'GDS': 'Geriatric Depression Scale',
+            'PHQ-9': 'Patient Health Questionnaire-9',
+            'CAM': 'Confusion Assessment Method',
+            'TUG': 'Timed Up and Go',
+            'FRAIL': 'Fatigue, Resistance, Ambulation, Illnesses, Loss of weight',
+            'CGA': 'Comprehensive Geriatric Assessment',
+            'PIM': 'Potentially Inappropriate Medication',
+            'ADE': 'Adverse Drug Event',
+            'DNR': 'Do Not Resuscitate',
+            'DNI': 'Do Not Intubate',
+            'POLST': 'Physician Orders for Life-Sustaining Treatment',
+            'HbA1c': 'Hemoglobin A1c',
+            'eGFR': 'Estimated Glomerular Filtration Rate',
+            'BUN': 'Blood Urea Nitrogen',
+            'CBC': 'Complete Blood Count',
+            'BMP': 'Basic Metabolic Panel'
+        };
+    }
+
+    // Helper function to escape regex special characters
+    escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
     // ==========================================
@@ -345,7 +398,7 @@ class AIAssistant {
             
             for (const marker of syndrome.markers) {
                 // Use word boundary matching for better accuracy
-                const regex = new RegExp(`\\b${marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+                const regex = new RegExp(`\\b${this.escapeRegex(marker)}\\b`, 'i');
                 if (regex.test(lowerText)) {
                     matchCount++;
                     matchedMarkers.push(marker);
@@ -1410,9 +1463,9 @@ class AIAssistant {
         
         if (didSplit) {
             window.editor.render?.();
-            window.showToast?.('Slide split successfully', 'success');
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SPLIT_SUCCESS, 'success');
         } else {
-            window.showToast?.('No suitable split point found', 'info');
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SPLIT_NO_POINT, 'info');
         }
     }
 
@@ -1450,31 +1503,31 @@ class AIAssistant {
             }
         });
         
-        // Limit list items to 8
-        if (data.points && Array.isArray(data.points) && data.points.length > 8) {
-            data.points = data.points.slice(0, 8);
+        // Limit list items
+        if (data.points && Array.isArray(data.points) && data.points.length > this.AUTO_FIX_CONFIG.MAX_LIST_ITEMS) {
+            data.points = data.points.slice(0, this.AUTO_FIX_CONFIG.MAX_LIST_ITEMS);
             simplified = true;
         }
         
-        if (slide.type === 'teaching-points' && data.points && data.points.length > 5) {
-            data.points = data.points.slice(0, 5);
+        if (slide.type === 'teaching-points' && data.points && data.points.length > this.AUTO_FIX_CONFIG.MAX_TEACHING_POINTS) {
+            data.points = data.points.slice(0, this.AUTO_FIX_CONFIG.MAX_TEACHING_POINTS);
             simplified = true;
         }
         
         if (slide.type === 'key-points-visual') {
             const keyPoints = data.keyPoints || data.points || [];
-            if (keyPoints.length > 6) {
-                if (data.keyPoints) data.keyPoints = keyPoints.slice(0, 6);
-                if (data.points) data.points = keyPoints.slice(0, 6);
+            if (keyPoints.length > this.AUTO_FIX_CONFIG.MAX_KEY_POINTS) {
+                if (data.keyPoints) data.keyPoints = keyPoints.slice(0, this.AUTO_FIX_CONFIG.MAX_KEY_POINTS);
+                if (data.points) data.points = keyPoints.slice(0, this.AUTO_FIX_CONFIG.MAX_KEY_POINTS);
                 simplified = true;
             }
         }
         
         if (simplified) {
             window.editor.render?.();
-            window.showToast?.('Slide simplified successfully', 'success');
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SIMPLIFIED, 'success');
         } else {
-            window.showToast?.('Slide is already optimal', 'info');
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_OPTIMAL, 'info');
         }
     }
 
@@ -1494,13 +1547,15 @@ class AIAssistant {
             const rightContent = data.rightContent || data.right || '';
             
             if (leftContent.length > 800 || rightContent.length > 800) {
-                // Truncate to 500 characters with ellipsis
+                // Truncate to configured max length with ellipsis
                 if (leftContent.length > 800) {
-                    data.leftContent = leftContent.substring(0, 500) + '...';
+                    data.leftContent = leftContent.substring(0, this.AUTO_FIX_CONFIG.MAX_COLUMN_CONTENT_LENGTH) + 
+                                      this.AUTO_FIX_CONFIG.CONTENT_TRUNCATION_SUFFIX;
                     fixed = true;
                 }
                 if (rightContent.length > 800) {
-                    data.rightContent = rightContent.substring(0, 500) + '...';
+                    data.rightContent = rightContent.substring(0, this.AUTO_FIX_CONFIG.MAX_COLUMN_CONTENT_LENGTH) + 
+                                       this.AUTO_FIX_CONFIG.CONTENT_TRUNCATION_SUFFIX;
                     fixed = true;
                 }
             }
@@ -1522,7 +1577,7 @@ class AIAssistant {
         
         if (fixed) {
             window.editor.render?.();
-            window.showToast?.('Overflow issues fixed', 'success');
+            window.showToast?.(this.TOAST_MESSAGES.OVERFLOW_FIXED, 'success');
         }
     }
 
@@ -1530,37 +1585,13 @@ class AIAssistant {
     addAbbreviationDefinitions(abbreviations) {
         if (!window.editor || !abbreviations || abbreviations.length === 0) return;
         
-        // Common abbreviation definitions
-        const definitions = {
-            'ADL': 'Activities of Daily Living',
-            'IADL': 'Instrumental Activities of Daily Living',
-            'MMSE': 'Mini-Mental State Examination',
-            'MoCA': 'Montreal Cognitive Assessment',
-            'GDS': 'Geriatric Depression Scale',
-            'PHQ-9': 'Patient Health Questionnaire-9',
-            'CAM': 'Confusion Assessment Method',
-            'TUG': 'Timed Up and Go',
-            'FRAIL': 'Fatigue, Resistance, Ambulation, Illnesses, Loss of weight',
-            'CGA': 'Comprehensive Geriatric Assessment',
-            'PIM': 'Potentially Inappropriate Medication',
-            'ADE': 'Adverse Drug Event',
-            'DNR': 'Do Not Resuscitate',
-            'DNI': 'Do Not Intubate',
-            'POLST': 'Physician Orders for Life-Sustaining Treatment',
-            'HbA1c': 'Hemoglobin A1c',
-            'eGFR': 'Estimated Glomerular Filtration Rate',
-            'BUN': 'Blood Urea Nitrogen',
-            'CBC': 'Complete Blood Count',
-            'BMP': 'Basic Metabolic Panel'
-        };
-        
-        // Create abbreviations slide
+        // Create abbreviations slide using configured definitions
         const abbrSlide = {
             type: 'content',
             data: {
                 title: 'Abbreviations',
                 content: '<ul>' + abbreviations.map(abbr => {
-                    const def = definitions[abbr] || '(definition needed)';
+                    const def = this.ABBREVIATION_DEFINITIONS[abbr] || '(definition needed)';
                     return `<li><strong>${abbr}</strong>: ${def}</li>`;
                 }).join('') + '</ul>'
             }
@@ -1578,7 +1609,7 @@ class AIAssistant {
         
         window.editor.insertSlide?.(insertIndex, abbrSlide);
         window.editor.render?.();
-        window.showToast?.('Abbreviations slide added', 'success');
+        window.showToast?.(this.TOAST_MESSAGES.ABBREVIATIONS_ADDED, 'success');
     }
 
     // Auto-add take-home slide
@@ -1589,7 +1620,7 @@ class AIAssistant {
         const result = this.generateTakeHomePoints(slides);
         
         if (result.points.length === 0) {
-            window.showToast?.('Not enough content to generate take-home points', 'warning');
+            window.showToast?.(this.TOAST_MESSAGES.TAKE_HOME_NO_CONTENT, 'warning');
             return;
         }
         
@@ -1616,7 +1647,7 @@ class AIAssistant {
         
         window.editor.insertSlide?.(insertIndex, takeHomeSlide);
         window.editor.render?.();
-        window.showToast?.('Take-home messages slide added', 'success');
+        window.showToast?.(this.TOAST_MESSAGES.TAKE_HOME_ADDED, 'success');
     }
 
     // Auto-add teaching points slide
@@ -1678,7 +1709,7 @@ class AIAssistant {
         
         window.editor.insertSlide?.(insertIndex, teachingSlide);
         window.editor.render?.();
-        window.showToast?.('Teaching points slide added', 'success');
+        window.showToast?.(this.TOAST_MESSAGES.TEACHING_POINTS_ADDED, 'success');
     }
 
     // Quick fix functions
@@ -1709,8 +1740,8 @@ class AIAssistant {
                 return {
                     label: 'Add Slide',
                     action: () => {
-                        if (issue.suggestedType) {
-                            window.editor?.addSlide(issue.suggestedType);
+                        if (issue.suggestedType && window.editor) {
+                            window.editor.addSlide(issue.suggestedType);
                             window.showToast?.(`Added ${issue.suggestedType} slide`, 'success');
                         } else {
                             const typeSelect = document.getElementById('slide-type');
@@ -1726,8 +1757,8 @@ class AIAssistant {
                     label: 'Move Slide',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null && issue.targetIndex !== undefined) {
-                            window.editor.moveSlide?.(issue.slideIndex, issue.targetIndex);
-                            window.showToast?.('Slide moved', 'success');
+                            window.editor.moveSlide(issue.slideIndex, issue.targetIndex);
+                            window.showToast?.(this.TOAST_MESSAGES.SLIDE_MOVED, 'success');
                         } else if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
                             window.showToast?.('Use drag and drop to reorder slides', 'info');
@@ -1794,7 +1825,7 @@ class AIAssistant {
                     action: () => {
                         if (window.editor) {
                             window.editor.addSlide('references-formatted');
-                            window.showToast?.('References slide added', 'success');
+                            window.showToast?.(this.TOAST_MESSAGES.REFERENCES_ADDED, 'success');
                         }
                     }
                 };
