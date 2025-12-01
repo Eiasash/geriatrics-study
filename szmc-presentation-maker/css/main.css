@@ -2357,3 +2357,304 @@ kbd {
 .shortcuts-tip i {
     color: #f59e0b;
 }
+
+/* ================================
+   AI Tools Section
+   ================================ */
+
+.ai-tools-section {
+    border-top: 1px solid var(--gray-200);
+    margin-top: auto;
+}
+
+.ai-tools-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    background: var(--gray-50);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--gray-700);
+    transition: all 0.2s;
+}
+
+.ai-tools-header:hover {
+    background: var(--gray-100);
+}
+
+.ai-tools-header i:first-child {
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+.ai-tools-header .fa-chevron-down {
+    transition: transform 0.3s;
+}
+
+.ai-tools-header.expanded .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.ai-tools-content {
+    padding: 12px;
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-200);
+}
+
+.ai-tool-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.ai-tool-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.75rem;
+    color: var(--gray-600);
+}
+
+.ai-tool-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ai-tool-btn i {
+    font-size: 1.25rem;
+}
+
+.ai-tool-btn span {
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* AI Tool Modal */
+.ai-tool-modal-content {
+    max-width: 600px;
+    max-height: 80vh;
+}
+
+.ai-tool-modal-content .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.ai-tool-input-group {
+    margin-bottom: 16px;
+}
+
+.ai-tool-input-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+}
+
+.ai-tool-input-group input,
+.ai-tool-input-group select,
+.ai-tool-input-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.ai-tool-input-group input:focus,
+.ai-tool-input-group select:focus,
+.ai-tool-input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.ai-tool-input-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.ai-tool-results {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+}
+
+.ai-tool-results h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-tool-results h4 i {
+    color: var(--primary);
+}
+
+.ai-tool-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ai-tool-results li {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary);
+    font-size: 0.875rem;
+    color: var(--gray-700);
+}
+
+.ai-tool-results li.warning {
+    border-left-color: var(--accent-warning);
+    background: #fffbeb;
+}
+
+.ai-tool-results li.danger {
+    border-left-color: var(--accent-danger);
+    background: #fef2f2;
+}
+
+.ai-tool-results li.success {
+    border-left-color: var(--accent);
+    background: #f0fdf4;
+}
+
+.ai-tool-results .result-header {
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.ai-tool-results .result-detail {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-top: 4px;
+}
+
+.ai-tool-quick-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.ai-tool-quick-btn {
+    padding: 6px 12px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ai-tool-quick-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.ai-tool-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.ai-tool-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.ai-tool-card-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gray-800);
+}
+
+.ai-tool-card-badge {
+    padding: 2px 8px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.ai-tool-card-badge.warning {
+    background: var(--accent-warning);
+}
+
+.ai-tool-card-badge.danger {
+    background: var(--accent-danger);
+}
+
+.ai-tool-card-content {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.ai-tool-empty {
+    text-align: center;
+    padding: 24px;
+    color: var(--gray-500);
+}
+
+.ai-tool-empty i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--gray-300);
+}
+
+/* Mobile AI Tools */
+@media (max-width: 768px) {
+    .ai-tool-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .ai-tool-btn {
+        padding: 10px 6px;
+    }
+    
+    .ai-tool-btn i {
+        font-size: 1.1rem;
+    }
+    
+    .ai-tool-btn span {
+        font-size: 0.65rem;
+    }
+    
+    .ai-tool-modal-content {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 16px 16px 0 0;
+        max-height: 85vh;
+    }
+}
