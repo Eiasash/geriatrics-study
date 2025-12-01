@@ -36,10 +36,10 @@
 - **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
 - **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
 
-### 📄 Frailty measurement in research and clinical practice: An updated review.
-- **Authors**: Dent Elsa, Hanlon Peter, Kowal Paul et al.
-- **Journal**: European journal of internal medicine (2025)
-- **Link**: [41271526](https://pubmed.ncbi.nlm.nih.gov/41271526/)
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
 
 ## Falls (נפילות)
