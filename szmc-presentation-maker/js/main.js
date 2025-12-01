@@ -1,5 +1,34 @@
 // SZMC Geriatrics Presentation Maker - Main Application
 
+// Toast Notification System
+function showToast(message, type = 'info', duration = 3000) {
+    // Remove any existing toasts
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast-notification toast-${type}`;
+    toast.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    // Add to body
+    document.body.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Auto-remove after duration
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, duration);
+}
+
 // Page Navigation
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
@@ -61,26 +90,61 @@ function savePresentation() {
     alert('Presentation saved successfully!');
 }
 
-function loadPresentation() {
+async function loadPresentation() {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.json';
+    // Accept JSON, PowerPoint, and HTML files
+    input.accept = '.json,.pptx,.html,.htm';
 
-    input.onchange = (e) => {
+    input.onchange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            try {
-                const data = JSON.parse(event.target.result);
+        try {
+            // Show loading indicator
+            showToast('Loading presentation...', 'info');
+
+            let data;
+            const fileName = file.name.toLowerCase();
+
+            if (fileName.endsWith('.json')) {
+                // Load JSON
+                const reader = new FileReader();
+                const result = await new Promise((resolve, reject) => {
+                    reader.onload = (event) => resolve(event.target.result);
+                    reader.onerror = reject;
+                    reader.readAsText(file);
+                });
+                data = JSON.parse(result);
+            } else if (fileName.endsWith('.pptx')) {
+                // Import PowerPoint
+                if (typeof window.exporter !== 'undefined' && window.exporter.importFromPPTX) {
+                    data = await window.exporter.importFromPPTX(file);
+                } else {
+                    throw new Error('PowerPoint import is not available. Please ensure all scripts are loaded.');
+                }
+            } else if (fileName.endsWith('.html') || fileName.endsWith('.htm')) {
+                // Import HTML
+                if (typeof window.exporter !== 'undefined' && window.exporter.importFromHTML) {
+                    data = await window.exporter.importFromHTML(file);
+                } else {
+                    throw new Error('HTML import is not available. Please ensure all scripts are loaded.');
+                }
+            } else {
+                throw new Error('Unsupported file format. Please use .json, .pptx, or .html files.');
+            }
+
+            if (data && data.slides) {
                 editor.loadPresentation(data);
                 showPage('editor-page');
-            } catch (error) {
-                alert('Error loading presentation: ' + error.message);
+                showToast('Presentation loaded successfully!', 'success');
+            } else {
+                throw new Error('Invalid presentation data.');
             }
-        };
-        reader.readAsText(file);
+        } catch (error) {
+            console.error('Error loading presentation:', error);
+            showToast('Error loading presentation: ' + error.message, 'error');
+        }
     };
 
     input.click();

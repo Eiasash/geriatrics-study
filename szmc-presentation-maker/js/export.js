@@ -1670,6 +1670,8 @@ class PresentationExporter {
 
 // Create global exporter instance
 const exporter = new PresentationExporter();
+// Make exporter globally available
+window.exporter = exporter;
 
 // Global export functions
 async function exportToPPTX() {
