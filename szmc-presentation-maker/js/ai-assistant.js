@@ -208,6 +208,59 @@ class AIAssistant {
             { name: 'Immobility', markers: ['bedbound', 'immobile', 'cannot walk', 'wheelchair'] },
             { name: 'Iatrogenesis', markers: ['adverse event', 'medication error', 'hospital-acquired'] }
         ];
+
+        // Auto-fix configuration constants
+        this.AUTO_FIX_CONFIG = {
+            MAX_COLUMN_CONTENT_LENGTH: 500,
+            MAX_LIST_ITEMS: 8,
+            MAX_TEACHING_POINTS: 5,
+            MAX_KEY_POINTS: 6,
+            CONTENT_TRUNCATION_SUFFIX: '...'
+        };
+
+        // Toast messages for auto-fix actions
+        this.TOAST_MESSAGES = {
+            SLIDE_SPLIT_SUCCESS: 'Slide split successfully',
+            SLIDE_SPLIT_NO_POINT: 'No suitable split point found',
+            SLIDE_SIMPLIFIED: 'Slide simplified successfully',
+            SLIDE_OPTIMAL: 'Slide is already optimal',
+            OVERFLOW_FIXED: 'Overflow issues fixed',
+            ABBREVIATIONS_ADDED: 'Abbreviations slide added',
+            TAKE_HOME_ADDED: 'Take-home messages slide added',
+            TAKE_HOME_NO_CONTENT: 'Not enough content to generate take-home points',
+            TEACHING_POINTS_ADDED: 'Teaching points slide added',
+            REFERENCES_ADDED: 'References slide added',
+            SLIDE_MOVED: 'Slide moved'
+        };
+
+        // Common medical abbreviation definitions
+        this.ABBREVIATION_DEFINITIONS = {
+            'ADL': 'Activities of Daily Living',
+            'IADL': 'Instrumental Activities of Daily Living',
+            'MMSE': 'Mini-Mental State Examination',
+            'MoCA': 'Montreal Cognitive Assessment',
+            'GDS': 'Geriatric Depression Scale',
+            'PHQ-9': 'Patient Health Questionnaire-9',
+            'CAM': 'Confusion Assessment Method',
+            'TUG': 'Timed Up and Go',
+            'FRAIL': 'Fatigue, Resistance, Ambulation, Illnesses, Loss of weight',
+            'CGA': 'Comprehensive Geriatric Assessment',
+            'PIM': 'Potentially Inappropriate Medication',
+            'ADE': 'Adverse Drug Event',
+            'DNR': 'Do Not Resuscitate',
+            'DNI': 'Do Not Intubate',
+            'POLST': 'Physician Orders for Life-Sustaining Treatment',
+            'HbA1c': 'Hemoglobin A1c',
+            'eGFR': 'Estimated Glomerular Filtration Rate',
+            'BUN': 'Blood Urea Nitrogen',
+            'CBC': 'Complete Blood Count',
+            'BMP': 'Basic Metabolic Panel'
+        };
+    }
+
+    // Helper function to escape regex special characters
+    escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
     // ==========================================
@@ -334,27 +387,49 @@ class AIAssistant {
         return null;
     }
 
-    // Detect geriatric syndromes in text
+    // Detect geriatric syndromes in text with improved accuracy
     detectGeriatricSyndromes(text) {
         const found = [];
         const lowerText = text.toLowerCase();
 
         for (const syndrome of this.geriatricSyndromes) {
-            const matchedMarkers = syndrome.markers.filter(m => lowerText.includes(m));
-            if (matchedMarkers.length >= 2) {
+            let matchCount = 0;
+            const matchedMarkers = [];
+            
+            for (const marker of syndrome.markers) {
+                // Use word boundary matching for better accuracy
+                const regex = new RegExp(`\\b${this.escapeRegex(marker)}\\b`, 'i');
+                if (regex.test(lowerText)) {
+                    matchCount++;
+                    matchedMarkers.push(marker);
+                }
+            }
+            
+            // Higher threshold for more accurate detection
+            if (matchCount >= 2) {
                 found.push({
                     syndrome: syndrome.name,
                     confidence: 'High',
-                    markers: matchedMarkers
+                    markers: matchedMarkers,
+                    score: matchCount / syndrome.markers.length
                 });
-            } else if (matchedMarkers.length === 1) {
+            } else if (matchCount === 1 && syndrome.markers.length <= 3) {
+                // Only suggest if the syndrome has few markers (more specific)
                 found.push({
                     syndrome: syndrome.name,
                     confidence: 'Possible',
-                    markers: matchedMarkers
+                    markers: matchedMarkers,
+                    score: matchCount / syndrome.markers.length
                 });
             }
         }
+
+        // Sort by confidence and score
+        found.sort((a, b) => {
+            if (a.confidence === 'High' && b.confidence !== 'High') return -1;
+            if (a.confidence !== 'High' && b.confidence === 'High') return 1;
+            return b.score - a.score;
+        });
 
         return found;
     }
@@ -826,8 +901,8 @@ class AIAssistant {
         if (titleIndex > 0) {
             this.addIssue(this.SEVERITY.WARNING,
                 'Title slide not first',
-                'Consider moving your title slide to the beginning of the presentation.',
-                titleIndex, 'moveSlide');
+                'Auto-move title slide to the beginning of the presentation.',
+                titleIndex, 'moveSlide', { targetIndex: 0 });
         }
 
         // Check for HPI before Assessment
@@ -836,18 +911,27 @@ class AIAssistant {
         if (hpiIndex > -1 && assessmentIndex > -1 && hpiIndex > assessmentIndex) {
             this.addIssue(this.SEVERITY.WARNING,
                 'HPI after Assessment',
-                'The History of Present Illness should come before the Assessment section.',
-                hpiIndex, 'moveSlide');
+                'The History of Present Illness should come before the Assessment section. Auto-move recommended.',
+                hpiIndex, 'moveSlide', { targetIndex: assessmentIndex });
+        }
+
+        // Check for TOC after title
+        const tocIndex = slideTypes.indexOf('toc');
+        if (tocIndex > -1 && titleIndex > -1 && tocIndex - titleIndex > 2) {
+            this.addSuggestion(this.SEVERITY.INFO,
+                'TOC not after title',
+                'Table of Contents is typically placed right after the title slide.',
+                tocIndex, 'moveSlide', { targetIndex: titleIndex + 1 });
         }
 
         // Check for Conclusion/Take-home at end
-        const conclusionTypes = ['take-home', 'conclusion', 'references'];
+        const conclusionTypes = ['take-home', 'conclusion', 'references', 'references-formatted', 'questions'];
         const lastSlideType = slideTypes[slideTypes.length - 1];
         if (slides.length > 3 && !conclusionTypes.includes(lastSlideType)) {
             this.addSuggestion(this.SEVERITY.TIP,
                 'Add conclusion',
-                'Consider ending with a take-home points or conclusion slide.',
-                null, 'addSlide');
+                'End with a take-home points or conclusion slide for better impact.',
+                null, 'addTakeHome');
         }
     }
 
@@ -887,7 +971,7 @@ class AIAssistant {
                 if (htmlContent.length > 2000) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Content overflow likely',
-                        `Slide ${index + 1} (${slide.type}) has very dense HTML content that may overflow. Consider simplifying or splitting.`,
+                        `Slide ${index + 1} (${slide.type}) has very dense HTML content that may overflow. Auto-simplify or split recommended.`,
                         index, 'simplifySlide');
                 }
 
@@ -896,7 +980,7 @@ class AIAssistant {
                 if (listItemCount > 12) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Too many list items',
-                        `Slide ${index + 1} has ${listItemCount} list items which may cause overflow. Limit to 6-8 items per slide.`,
+                        `Slide ${index + 1} has ${listItemCount} list items which may cause overflow. Auto-split into multiple slides?`,
                         index, 'splitSlide');
                 }
             }
@@ -911,8 +995,8 @@ class AIAssistant {
                 if (leftLen > 800 || rightLen > 800) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Two-column overflow',
-                        `Slide ${index + 1} has too much content in columns. Each column should have less than 400 characters.`,
-                        index, 'editSlide');
+                        `Slide ${index + 1} has too much content in columns. Auto-fix will truncate content.`,
+                        index, 'fixOverflow');
                 }
             }
 
@@ -922,8 +1006,8 @@ class AIAssistant {
                 if (points.length > 5) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Too many teaching points',
-                        `Slide ${index + 1} has ${points.length} teaching points. Limit to 4-5 for readability.`,
-                        index, 'splitSlide');
+                        `Slide ${index + 1} has ${points.length} teaching points. Auto-simplify will limit to 5.`,
+                        index, 'simplifySlide');
                 }
             }
 
@@ -933,8 +1017,8 @@ class AIAssistant {
                 if (keyPoints.length > 6) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Too many key points',
-                        `Slide ${index + 1} has ${keyPoints.length} key points. The grid layout works best with 3-6 points.`,
-                        index, 'splitSlide');
+                        `Slide ${index + 1} has ${keyPoints.length} key points. Auto-simplify will limit to 6 for grid layout.`,
+                        index, 'simplifySlide');
                 }
             }
 
@@ -959,8 +1043,8 @@ class AIAssistant {
                 if (stats.length > 4) {
                     this.addIssue(this.SEVERITY.WARNING,
                         'Too many statistics',
-                        `Slide ${index + 1} has ${stats.length} statistics. The 4-column grid layout works best with exactly 4 stats.`,
-                        index, 'editSlide');
+                        `Slide ${index + 1} has ${stats.length} statistics. Auto-simplify will use only the first 4.`,
+                        index, 'simplifySlide');
                 }
             }
         });
@@ -1218,8 +1302,8 @@ class AIAssistant {
         if (usedAbbreviations.length > 0) {
             this.addSuggestion(this.SEVERITY.INFO,
                 'Define abbreviations',
-                `Consider defining these abbreviations on first use: ${usedAbbreviations.slice(0, 5).join(', ')}${usedAbbreviations.length > 5 ? '...' : ''}`,
-                null, null);
+                `Auto-add definitions for these abbreviations: ${usedAbbreviations.slice(0, 5).join(', ')}${usedAbbreviations.length > 5 ? '...' : ''}`,
+                null, 'fixAbbreviations', { abbreviations: usedAbbreviations.slice(0, 10) });
         }
     }
 
@@ -1286,19 +1370,30 @@ class AIAssistant {
             this.addSuggestion(this.SEVERITY.TIP,
                 'Complete case structure',
                 `Consider adding: ${missingTypes.slice(0, 3).join(', ')} for a complete case presentation.`,
-                null, 'addSlide');
+                null, 'addSlide', { suggestedType: missingTypes[0] });
         }
 
-        // Suggest teaching points
+        // Suggest teaching points - now actionable
         if (slides.length > 5 && !slideTypes.includes('teaching-points') && !slideTypes.includes('take-home')) {
             this.addSuggestion(this.SEVERITY.TIP,
                 'Add teaching points',
-                'Consider adding a teaching points or take-home slide to summarize key learnings.',
-                null, 'addSlide');
+                'Auto-generate teaching points from your presentation content.',
+                null, 'addTeachingPoints');
         }
 
-        // Suggest references if citations exist
-        const hasReferences = slideTypes.includes('references');
+        // Suggest take-home messages - now actionable
+        if (slides.length > 5 && !slideTypes.includes('take-home')) {
+            const hasTeachingPoints = slideTypes.includes('teaching-points');
+            if (!hasTeachingPoints) {
+                this.addSuggestion(this.SEVERITY.TIP,
+                    'Add take-home messages',
+                    'Auto-generate take-home messages from your presentation.',
+                    null, 'addTakeHome');
+            }
+        }
+
+        // Suggest references if citations exist - now actionable
+        const hasReferences = slideTypes.includes('references') || slideTypes.includes('references-formatted');
         const hasCitations = slides.some(s => {
             const text = this.getSlideText(s);
             return /\[\d+\]|\(\d{4}\)/.test(text);
@@ -1308,8 +1403,313 @@ class AIAssistant {
             this.addSuggestion(this.SEVERITY.INFO,
                 'Add references slide',
                 'You have citations but no references slide. Add one to properly credit your sources.',
-                null, 'addSlide');
+                null, 'addReferences');
         }
+    }
+
+    // ==========================================
+    // AUTO-FIX IMPLEMENTATION FUNCTIONS
+    // ==========================================
+
+    // Auto-split a dense slide into multiple slides
+    autoSplitSlide(slideIndex) {
+        if (!window.editor) return;
+        
+        const slide = window.editor.slides[slideIndex];
+        if (!slide) return;
+        
+        const data = slide.data || slide;
+        let didSplit = false;
+        
+        // Split bullet points if too many
+        if (data.points && Array.isArray(data.points) && data.points.length > 6) {
+            const midpoint = Math.ceil(data.points.length / 2);
+            const firstHalf = data.points.slice(0, midpoint);
+            const secondHalf = data.points.slice(midpoint);
+            
+            // Update current slide with first half
+            slide.data = { ...data, points: firstHalf };
+            
+            // Create new slide with second half
+            const newSlide = {
+                type: slide.type,
+                data: { ...data, points: secondHalf }
+            };
+            window.editor.insertSlide?.(slideIndex + 1, newSlide);
+            didSplit = true;
+        }
+        
+        // Split long content
+        if (data.content && typeof data.content === 'string' && data.content.length > 800) {
+            const content = data.content;
+            // Try to split at paragraph or sentence boundaries
+            const sentences = content.match(/[^.!?]+[.!?]+/g) || [content];
+            
+            if (sentences.length > 1) {
+                const midpoint = Math.ceil(sentences.length / 2);
+                const firstHalf = sentences.slice(0, midpoint).join(' ');
+                const secondHalf = sentences.slice(midpoint).join(' ');
+                
+                slide.data = { ...data, content: firstHalf };
+                
+                const newSlide = {
+                    type: slide.type,
+                    data: { ...data, content: secondHalf }
+                };
+                window.editor.insertSlide?.(slideIndex + 1, newSlide);
+                didSplit = true;
+            }
+        }
+        
+        if (didSplit) {
+            window.editor.render?.();
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SPLIT_SUCCESS, 'success');
+        } else {
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SPLIT_NO_POINT, 'info');
+        }
+    }
+
+    // Auto-simplify a slide by removing excess content
+    autoSimplifySlide(slideIndex) {
+        if (!window.editor) return;
+        
+        const slide = window.editor.slides[slideIndex];
+        if (!slide) return;
+        
+        const data = slide.data || slide;
+        let simplified = false;
+        
+        // Simplify HTML content: remove nested divs, inline styles
+        const htmlFields = ['content', 'leftContent', 'rightContent', 'description'];
+        htmlFields.forEach(field => {
+            if (data[field] && typeof data[field] === 'string') {
+                let html = data[field];
+                
+                // Remove excessive inline styles
+                html = html.replace(/style="[^"]*width\s*:\s*[^"]*"/gi, '');
+                html = html.replace(/style="[^"]*height\s*:\s*[^"]*"/gi, '');
+                
+                // Remove deeply nested divs
+                html = html.replace(/<div[^>]*>\s*<div[^>]*>\s*<div[^>]*>/gi, '<div>');
+                html = html.replace(/<\/div>\s*<\/div>\s*<\/div>/gi, '</div>');
+                
+                // Remove empty paragraphs
+                html = html.replace(/<p[^>]*>\s*<\/p>/gi, '');
+                
+                if (html !== data[field]) {
+                    data[field] = html;
+                    simplified = true;
+                }
+            }
+        });
+        
+        // Limit list items
+        if (data.points && Array.isArray(data.points) && data.points.length > this.AUTO_FIX_CONFIG.MAX_LIST_ITEMS) {
+            data.points = data.points.slice(0, this.AUTO_FIX_CONFIG.MAX_LIST_ITEMS);
+            simplified = true;
+        }
+        
+        if (slide.type === 'teaching-points' && data.points && data.points.length > this.AUTO_FIX_CONFIG.MAX_TEACHING_POINTS) {
+            data.points = data.points.slice(0, this.AUTO_FIX_CONFIG.MAX_TEACHING_POINTS);
+            simplified = true;
+        }
+        
+        if (slide.type === 'key-points-visual') {
+            const keyPoints = data.keyPoints || data.points || [];
+            if (keyPoints.length > this.AUTO_FIX_CONFIG.MAX_KEY_POINTS) {
+                if (data.keyPoints) data.keyPoints = keyPoints.slice(0, this.AUTO_FIX_CONFIG.MAX_KEY_POINTS);
+                if (data.points) data.points = keyPoints.slice(0, this.AUTO_FIX_CONFIG.MAX_KEY_POINTS);
+                simplified = true;
+            }
+        }
+        
+        if (simplified) {
+            window.editor.render?.();
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_SIMPLIFIED, 'success');
+        } else {
+            window.showToast?.(this.TOAST_MESSAGES.SLIDE_OPTIMAL, 'info');
+        }
+    }
+
+    // Fix content overflow issues
+    fixContentOverflow(slideIndex) {
+        if (!window.editor) return;
+        
+        const slide = window.editor.slides[slideIndex];
+        if (!slide) return;
+        
+        const data = slide.data || slide;
+        let fixed = false;
+        
+        // For two-column slides, balance content
+        if (slide.type === 'two-column') {
+            const leftContent = data.leftContent || data.left || '';
+            const rightContent = data.rightContent || data.right || '';
+            
+            if (leftContent.length > 800 || rightContent.length > 800) {
+                // Truncate to configured max length with ellipsis
+                if (leftContent.length > 800) {
+                    data.leftContent = leftContent.substring(0, this.AUTO_FIX_CONFIG.MAX_COLUMN_CONTENT_LENGTH) + 
+                                      this.AUTO_FIX_CONFIG.CONTENT_TRUNCATION_SUFFIX;
+                    fixed = true;
+                }
+                if (rightContent.length > 800) {
+                    data.rightContent = rightContent.substring(0, this.AUTO_FIX_CONFIG.MAX_COLUMN_CONTENT_LENGTH) + 
+                                       this.AUTO_FIX_CONFIG.CONTENT_TRUNCATION_SUFFIX;
+                    fixed = true;
+                }
+            }
+        }
+        
+        // For tables, limit rows
+        const htmlContent = this.getSlideHTMLContent(slide);
+        if (htmlContent.includes('<table')) {
+            const rowCount = (htmlContent.match(/<tr/gi) || []).length;
+            if (rowCount > 8) {
+                // Show toast suggesting manual edit
+                window.showToast?.('Table has too many rows. Please manually reduce to 6-8 rows.', 'warning');
+                if (window.editor) {
+                    window.editor.selectSlide(slideIndex);
+                }
+                return;
+            }
+        }
+        
+        if (fixed) {
+            window.editor.render?.();
+            window.showToast?.(this.TOAST_MESSAGES.OVERFLOW_FIXED, 'success');
+        }
+    }
+
+    // Add abbreviation definitions to a slide
+    addAbbreviationDefinitions(abbreviations) {
+        if (!window.editor || !abbreviations || abbreviations.length === 0) return;
+        
+        // Create abbreviations slide using configured definitions
+        const abbrSlide = {
+            type: 'content',
+            data: {
+                title: 'Abbreviations',
+                content: '<ul>' + abbreviations.map(abbr => {
+                    const def = this.ABBREVIATION_DEFINITIONS[abbr] || '(definition needed)';
+                    return `<li><strong>${abbr}</strong>: ${def}</li>`;
+                }).join('') + '</ul>'
+            }
+        };
+        
+        // Insert after title or TOC
+        let insertIndex = 1;
+        const slides = window.editor.slides;
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].type === 'toc') {
+                insertIndex = i + 1;
+                break;
+            }
+        }
+        
+        window.editor.insertSlide?.(insertIndex, abbrSlide);
+        window.editor.render?.();
+        window.showToast?.(this.TOAST_MESSAGES.ABBREVIATIONS_ADDED, 'success');
+    }
+
+    // Auto-add take-home slide
+    autoAddTakeHomeSlide() {
+        if (!window.editor) return;
+        
+        const slides = window.editor.slides;
+        const result = this.generateTakeHomePoints(slides);
+        
+        if (result.points.length === 0) {
+            window.showToast?.(this.TOAST_MESSAGES.TAKE_HOME_NO_CONTENT, 'warning');
+            return;
+        }
+        
+        const takeHomeSlide = {
+            type: 'take-home',
+            data: {
+                title: 'Take-Home Messages',
+                message1: result.points[0] || '',
+                message2: result.points[1] || '',
+                message3: result.points[2] || '',
+                message4: result.points[3] || ''
+            }
+        };
+        
+        // Add at end before references/questions
+        let insertIndex = slides.length;
+        for (let i = slides.length - 1; i >= 0; i--) {
+            if (['references', 'references-formatted', 'questions'].includes(slides[i].type)) {
+                insertIndex = i;
+            } else {
+                break;
+            }
+        }
+        
+        window.editor.insertSlide?.(insertIndex, takeHomeSlide);
+        window.editor.render?.();
+        window.showToast?.(this.TOAST_MESSAGES.TAKE_HOME_ADDED, 'success');
+    }
+
+    // Auto-add teaching points slide
+    autoAddTeachingPointsSlide() {
+        if (!window.editor) return;
+        
+        const slides = window.editor.slides;
+        const syndromes = [];
+        
+        // Detect geriatric syndromes across all slides
+        slides.forEach(slide => {
+            const text = this.getSlideText(slide);
+            const detected = this.detectGeriatricSyndromes(text);
+            detected.forEach(s => {
+                if (!syndromes.find(syn => syn.syndrome === s.syndrome)) {
+                    syndromes.push(s);
+                }
+            });
+        });
+        
+        // Get clinical pearls for detected syndromes
+        const points = [];
+        syndromes.slice(0, 3).forEach(s => {
+            const pearls = this.getClinicalPearls(s.syndrome);
+            if (pearls && pearls.pearls && pearls.pearls.length > 0) {
+                points.push({
+                    point: pearls.pearls[0],
+                    detail: s.syndrome + ' management'
+                });
+            }
+        });
+        
+        // Add generic geriatrics points if not enough
+        if (points.length < 3) {
+            points.push(
+                { point: 'Consider geriatric syndromes: falls, delirium, frailty, incontinence', detail: 'Comprehensive assessment' },
+                { point: 'Review medications using Beers Criteria and deprescribing principles', detail: 'Medication safety' },
+                { point: 'Assess functional status (ADLs, IADLs) and goals of care', detail: 'Patient-centered care' }
+            );
+        }
+        
+        const teachingSlide = {
+            type: 'teaching-points',
+            data: {
+                title: 'Teaching Points',
+                points: points.slice(0, 5)
+            }
+        };
+        
+        // Add before take-home or at end
+        let insertIndex = slides.length;
+        for (let i = slides.length - 1; i >= 0; i--) {
+            if (['take-home', 'references', 'references-formatted', 'questions'].includes(slides[i].type)) {
+                insertIndex = i;
+            } else {
+                break;
+            }
+        }
+        
+        window.editor.insertSlide?.(insertIndex, teachingSlide);
+        window.editor.render?.();
+        window.showToast?.(this.TOAST_MESSAGES.TEACHING_POINTS_ADDED, 'success');
     }
 
     // Quick fix functions
@@ -1321,7 +1721,7 @@ class AIAssistant {
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
-                            window.editor.openSlideEditor(issue.slideIndex);
+                            window.editor.openSlideEditor?.(issue.slideIndex);
                         }
                     }
                 };
@@ -1340,11 +1740,15 @@ class AIAssistant {
                 return {
                     label: 'Add Slide',
                     action: () => {
-                        // Scroll to add slide section
-                        const typeSelect = document.getElementById('slide-type');
-                        if (typeSelect) {
-                            typeSelect.scrollIntoView({ behavior: 'smooth' });
-                            typeSelect.focus();
+                        if (issue.suggestedType && window.editor) {
+                            window.editor.addSlide(issue.suggestedType);
+                            window.showToast?.(`Added ${issue.suggestedType} slide`, 'success');
+                        } else {
+                            const typeSelect = document.getElementById('slide-type');
+                            if (typeSelect) {
+                                typeSelect.scrollIntoView({ behavior: 'smooth' });
+                                typeSelect.focus();
+                            }
                         }
                     }
                 };
@@ -1352,28 +1756,76 @@ class AIAssistant {
                 return {
                     label: 'Move Slide',
                     action: () => {
-                        if (window.editor && issue.slideIndex !== null) {
+                        if (window.editor && issue.slideIndex !== null && issue.targetIndex !== undefined) {
+                            window.editor.moveSlide(issue.slideIndex, issue.targetIndex);
+                            window.showToast?.(this.TOAST_MESSAGES.SLIDE_MOVED, 'success');
+                        } else if (window.editor && issue.slideIndex !== null) {
                             window.editor.selectSlide(issue.slideIndex);
-                            window.showToast('Use drag and drop to reorder slides', 'info');
+                            window.showToast?.('Use drag and drop to reorder slides', 'info');
                         }
                     }
                 };
             case 'splitSlide':
                 return {
-                    label: 'Split Slide',
+                    label: 'Auto Split',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
-                            this.suggestSplitSlide(issue.slideIndex);
+                            this.autoSplitSlide(issue.slideIndex);
                         }
                     }
                 };
             case 'simplifySlide':
                 return {
-                    label: 'Simplify Content',
+                    label: 'Auto Simplify',
                     action: () => {
                         if (window.editor && issue.slideIndex !== null) {
-                            window.editor.selectSlide(issue.slideIndex);
-                            window.showToast('Tip: Remove complex HTML, reduce list items, or split into multiple slides', 'info');
+                            this.autoSimplifySlide(issue.slideIndex);
+                        }
+                    }
+                };
+            case 'fixAbbreviations':
+                return {
+                    label: 'Add Definitions',
+                    action: () => {
+                        if (window.editor && issue.abbreviations) {
+                            this.addAbbreviationDefinitions(issue.abbreviations);
+                        }
+                    }
+                };
+            case 'fixOverflow':
+                return {
+                    label: 'Fix Overflow',
+                    action: () => {
+                        if (window.editor && issue.slideIndex !== null) {
+                            this.fixContentOverflow(issue.slideIndex);
+                        }
+                    }
+                };
+            case 'addTakeHome':
+                return {
+                    label: 'Auto-Generate',
+                    action: () => {
+                        if (window.editor) {
+                            this.autoAddTakeHomeSlide();
+                        }
+                    }
+                };
+            case 'addTeachingPoints':
+                return {
+                    label: 'Auto-Generate',
+                    action: () => {
+                        if (window.editor) {
+                            this.autoAddTeachingPointsSlide();
+                        }
+                    }
+                };
+            case 'addReferences':
+                return {
+                    label: 'Add References Slide',
+                    action: () => {
+                        if (window.editor) {
+                            window.editor.addSlide('references-formatted');
+                            window.showToast?.(this.TOAST_MESSAGES.REFERENCES_ADDED, 'success');
                         }
                     }
                 };
@@ -1495,52 +1947,77 @@ class AIAssistant {
     checkMedicationSafety(slides) {
         const allText = slides.map(s => this.getSlideText(s)).join(' ').toLowerCase();
 
-        // Check for Beers Criteria medications
-        const foundBeersMeds = [];
+        // Check for Beers Criteria medications with more specific matching
+        const foundBeersMeds = new Map();
         this.beersCriteria.forEach(med => {
-            if (allText.includes(med.toLowerCase())) {
-                foundBeersMeds.push(med);
+            // Use word boundary matching for better accuracy
+            const regex = new RegExp(`\\b${med.toLowerCase()}\\b`, 'i');
+            if (regex.test(allText)) {
+                const details = this.beersDetails[med] || this.beersDetails[med.toLowerCase()];
+                foundBeersMeds.set(med, details);
             }
         });
 
-        if (foundBeersMeds.length > 0) {
-            this.addSuggestion(this.SEVERITY.INFO,
+        if (foundBeersMeds.size > 0) {
+            const medList = Array.from(foundBeersMeds.keys());
+            let message = `Found ${foundBeersMeds.size} potentially inappropriate medication(s): ${medList.slice(0, 3).join(', ')}`;
+            if (medList.length > 3) message += ` and ${medList.length - 3} more`;
+            message += '. Consider discussing deprescribing or alternatives.';
+            
+            this.addIssue(this.SEVERITY.WARNING,
                 'Beers Criteria medications detected',
-                `Found potentially inappropriate medications for older adults: ${foundBeersMeds.slice(0, 3).join(', ')}${foundBeersMeds.length > 3 ? '...' : ''}. Consider discussing risks.`,
-                null, null);
+                message,
+                null, null, { beersMeds: Array.from(foundBeersMeds.entries()) });
         }
 
-        // Check for potential drug interactions
+        // Check for potential drug interactions with better matching
         const foundInteractions = [];
         Object.entries(this.drugInteractions).forEach(([drug, interactions]) => {
-            if (allText.includes(drug.toLowerCase())) {
+            const drugRegex = new RegExp(`\\b${drug.toLowerCase()}\\b`, 'i');
+            if (drugRegex.test(allText)) {
                 interactions.forEach(interactor => {
-                    if (allText.includes(interactor.toLowerCase())) {
-                        foundInteractions.push(`${drug} + ${interactor}`);
+                    const interactorRegex = new RegExp(`\\b${interactor.toLowerCase()}\\b`, 'i');
+                    if (interactorRegex.test(allText)) {
+                        foundInteractions.push({ drug1: drug, drug2: interactor });
                     }
                 });
             }
         });
 
         if (foundInteractions.length > 0) {
+            const interactionText = foundInteractions.slice(0, 2)
+                .map(i => `${i.drug1} ↔ ${i.drug2}`)
+                .join('; ');
             this.addIssue(this.SEVERITY.WARNING,
                 'Potential drug interactions',
-                `Detected potential interactions: ${foundInteractions.slice(0, 2).join('; ')}. Consider addressing in your presentation.`,
-                null, null);
+                `Detected ${foundInteractions.length} potential interaction(s): ${interactionText}${foundInteractions.length > 2 ? '...' : ''}. Recommend adding interaction discussion.`,
+                null, null, { interactions: foundInteractions });
         }
 
         // Check for high-risk medications without monitoring mentioned
-        const highRiskMeds = ['warfarin', 'digoxin', 'lithium', 'methotrexate', 'insulin'];
-        const monitoringTerms = ['inr', 'level', 'monitor', 'check', 'follow'];
+        const highRiskMeds = {
+            'warfarin': { monitoring: 'INR', target: '2-3 (most indications)' },
+            'digoxin': { monitoring: 'digoxin level', target: '0.5-2.0 ng/mL' },
+            'lithium': { monitoring: 'lithium level', target: '0.6-1.2 mEq/L' },
+            'methotrexate': { monitoring: 'CBC, LFTs, creatinine', target: 'Regular monitoring' },
+            'insulin': { monitoring: 'blood glucose, A1c', target: 'Individualized' },
+            'aminoglycosides': { monitoring: 'drug level, creatinine', target: 'Peak/trough levels' },
+            'vancomycin': { monitoring: 'vancomycin trough', target: '10-20 mcg/mL' }
+        };
+        
+        const monitoringTerms = ['inr', 'level', 'monitor', 'check', 'follow', 'lab', 'blood', 'test'];
 
-        highRiskMeds.forEach(med => {
-            if (allText.includes(med)) {
-                const hasMonitoring = monitoringTerms.some(term => allText.includes(term));
+        Object.entries(highRiskMeds).forEach(([med, info]) => {
+            const medRegex = new RegExp(`\\b${med}\\b`, 'i');
+            if (medRegex.test(allText)) {
+                const hasMonitoring = monitoringTerms.some(term => 
+                    allText.includes(term) || allText.includes(info.monitoring.toLowerCase())
+                );
                 if (!hasMonitoring) {
                     this.addSuggestion(this.SEVERITY.TIP,
-                        `${med.charAt(0).toUpperCase() + med.slice(1)} monitoring`,
-                        `High-risk medication "${med}" mentioned. Consider discussing monitoring requirements.`,
-                        null, null);
+                        `${med.charAt(0).toUpperCase() + med.slice(1)} monitoring needed`,
+                        `High-risk medication "${med}" requires ${info.monitoring} monitoring (target: ${info.target}). Consider adding this information.`,
+                        null, null, { medication: med, monitoring: info });
                 }
             }
         });
@@ -1844,12 +2321,12 @@ class AIAssistant {
         return lowercaseWords.length > (words.length - 1) * 0.5;
     }
 
-    addIssue(severity, title, message, slideIndex, action) {
-        this.issues.push({ severity, title, message, slideIndex, action });
+    addIssue(severity, title, message, slideIndex, action, extraData = {}) {
+        this.issues.push({ severity, title, message, slideIndex, action, ...extraData });
     }
 
-    addSuggestion(severity, title, message, slideIndex, action) {
-        this.suggestions.push({ severity, title, message, slideIndex, action });
+    addSuggestion(severity, title, message, slideIndex, action, extraData = {}) {
+        this.suggestions.push({ severity, title, message, slideIndex, action, ...extraData });
     }
 
     getResults() {
