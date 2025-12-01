@@ -1251,3 +1251,172 @@
         display: none !important;
     }
 }
+
+/* =============================================================================
+   MOBILE FIXES FOR AI ASSISTANT
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    /* Panel positioning */
+    .ai-assistant-panel {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: 70vh;
+        height: auto;
+        border-radius: 20px 20px 0 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        z-index: 10000;
+    }
+
+    .ai-assistant-panel.open {
+        transform: translateY(0);
+        right: 0;
+    }
+
+    /* Header styling */
+    .ai-panel-header {
+        padding: 16px 20px;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ai-panel-header::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+    }
+
+    .ai-panel-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .ai-panel-close {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    /* Content area */
+    .ai-panel-content {
+        max-height: calc(70vh - 80px);
+        overflow-y: auto;
+        padding: 16px;
+        padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+
+    /* Analysis summary */
+    .analysis-summary {
+        padding: 14px;
+        margin-bottom: 16px;
+    }
+
+    .summary-stat .stat-count {
+        font-size: 20px;
+    }
+
+    .summary-stat .stat-label {
+        font-size: 11px;
+    }
+
+    /* Issue cards */
+    .analysis-issue {
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .issue-icon {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 14px;
+        left: 14px;
+    }
+
+    .analysis-issue {
+        position: relative;
+        padding-left: 54px;
+    }
+
+    .issue-content {
+        width: 100%;
+    }
+
+    .issue-title {
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+
+    .issue-slide {
+        display: inline-block;
+        padding: 2px 8px;
+        background: rgba(6, 182, 212, 0.15);
+        border-radius: 4px;
+        margin-bottom: 8px;
+    }
+
+    .issue-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .issue-actions {
+        width: 100%;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 12px;
+        align-self: flex-start;
+    }
+
+    .issue-action-btn {
+        flex: 1;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 10px;
+        min-height: 44px;
+    }
+
+    .issue-dismiss-btn {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Tab bar */
+    .ai-tabs {
+        padding: 0 16px;
+        margin-bottom: 16px;
+    }
+
+    .ai-tab {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    /* Analyze button */
+    .btn-analyze {
+        padding: 16px 24px;
+        font-size: 16px;
+        min-height: 52px;
+    }
+}
