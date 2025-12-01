@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 14:02*
+*Generated: 2025-12-01 14:28*
 
 
 ## Delirium (דליריום)
@@ -30,16 +30,16 @@
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
-- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
+- **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
 - **Journal**: Annals of medicine (2025)
-- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
+- **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
+- **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
 
-### 📄 Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.
-- **Authors**: Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.
-- **Journal**: Renal failure (2025)
-- **Link**: [40840867](https://pubmed.ncbi.nlm.nih.gov/40840867/)
-- **Key Finding**: Frailty is highly prevalent in chronic kidney disease patients and associated with mortality...
+### 📄 Frailty measurement in research and clinical practice: An updated review.
+- **Authors**: Dent Elsa, Hanlon Peter, Kowal Paul et al.
+- **Journal**: European journal of internal medicine (2025)
+- **Link**: [41271526](https://pubmed.ncbi.nlm.nih.gov/41271526/)
 
 
 ## Falls (נפילות)
@@ -118,11 +118,6 @@
 
 ## End Of Life (טיפול סוף-חיים)
 
-### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
-- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
-- **Journal**: Expert review of endocrinology & metabolism (2025)
-- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
-
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
@@ -132,6 +127,11 @@
 - **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
 - **Journal**: International journal of nursing studies (2025)
 - **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
+
+### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
+- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
+- **Journal**: Expert review of endocrinology & metabolism (2025)
+- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
