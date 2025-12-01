@@ -82,6 +82,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
+      "pmid": "40902310",
+      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
+      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
+      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
+      "journal": "Revista espanola de geriatria y gerontologia",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
+    },
+    {
       "pmid": "40970437",
       "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
       "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
@@ -90,16 +100,6 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
-    },
-    {
-      "pmid": "41314827",
-      "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
-      "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
-      "authors": "Schoene Daniel, Gross Michaela, Finger Benjamin et al.",
-      "journal": "BMJ open",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
     }
   ],
   "dementia": [
@@ -114,6 +114,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41233181/"
     },
     {
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
+    },
+    {
       "pmid": "40855194",
       "title": "Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.",
       "abstract": "Alzheimer's disease (AD) and AD-related dementias (AD/ADRD) have a substantial genetic basis, with APOE4 homozygotes increasingly recognized as a distinct genetic subtype. To identify genotype-specific metabolic pathways and modifiable risk factors, we integrated genetic, plasma metabolomic and dietary data from 4,215 women and 1,490 men in prospective cohorts. Here we show that the associations of 57 metabolites with dementia risk varied by APOE4 genotype or other AD/ADRD risk variants. For example, cholesteryl esters and sphingomyelins were most strongly associated with increased dementia risk in APOE4 homozygotes, whereas inverse associations with glycerides were specific to this genotype. Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP). Adherence to the Mediterranean diet more effectively modulated dementia-related metabolites in APOE4 homozygotes, suggesting targeted prevention strategies. Incorporating metabolomic data modestly improved dementia risk prediction, particularly during early follow-up. Mendelian randomization analysis identified 19 putative causal relationships between metabolites and cognitive outcomes, including protective effects of 4-guanidinobutanoate, carotenoids and N",
@@ -124,16 +134,6 @@
         "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
-    },
-    {
-      "pmid": "39869458",
-      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
-      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
-      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
-      "journal": "Pulmonology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     }
   ],
   "deprescribing": [
