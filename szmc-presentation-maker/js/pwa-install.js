@@ -79,8 +79,8 @@ class PWAInstallManager {
                 <div class="pwa-install-description">Quick access, works offline</div>
             </div>
             <div class="pwa-install-actions">
-                <button class="pwa-install-btn secondary" onclick="pwaInstall.dismissPrompt(true)">Don't show again</button>
                 <button class="pwa-install-btn primary" onclick="pwaInstall.install()">Install</button>
+                <button class="pwa-install-btn secondary" onclick="pwaInstall.dismissPrompt(true)">Don't show again</button>
             </div>
         `;
         document.body.appendChild(prompt);
@@ -92,7 +92,7 @@ class PWAInstallManager {
         modal.id = 'ios-install-modal';
         modal.innerHTML = `
             <div class="ios-install-content">
-                <button class="ios-install-close-btn" onclick="pwaInstall.hideIOSModal(true)" aria-label="Don't show again">
+                <button class="ios-install-close-btn" onclick="pwaInstall.hideIOSModal(false)" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
                 <h3><i class="fas fa-mobile-alt"></i> Install App</h3>
@@ -226,7 +226,16 @@ class PWAInstallManager {
         return !this.isInstalled && (this.deferredPrompt !== null || this.isIOS);
     }
 
-    // Reset dismissal (useful for testing or settings)
+    /**
+     * Resets the dismissal state, allowing the install prompt to be shown again.
+     * This is useful for:
+     * - Testing the install prompt functionality
+     * - Settings page where users can re-enable the install prompt
+     * - Debugging PWA installation issues
+     * 
+     * After calling this method, the install prompt will appear again on the next
+     * page load if the app is installable.
+     */
     resetDismissal() {
         localStorage.removeItem('pwa-install-dismissed');
         localStorage.removeItem('pwa-ios-prompt');

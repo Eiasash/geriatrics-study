@@ -150,7 +150,6 @@
     }
 
     .pwa-install-btn.secondary {
-        order: 2;
         background: transparent;
         text-decoration: underline;
         font-size: 0.8rem;
