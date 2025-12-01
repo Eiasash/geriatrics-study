@@ -364,6 +364,56 @@ function applyTheme(themeName) {
     }
 }
 
+// ================================
+// Dropdown Menu Functions
+// ================================
+
+// Toggle dropdown menu visibility
+function toggleDropdown(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+    if (!dropdown) return;
+    
+    // Find the parent .dropdown element
+    const parentDropdown = dropdown.closest('.dropdown');
+    if (!parentDropdown) return;
+    
+    const isOpen = parentDropdown.classList.contains('open');
+    
+    // Close all other dropdowns first
+    closeDropdowns();
+    
+    // Toggle this dropdown
+    if (!isOpen) {
+        parentDropdown.classList.add('open');
+        
+        // Update aria-expanded
+        const toggle = parentDropdown.querySelector('.dropdown-toggle');
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', 'true');
+        }
+    }
+}
+
+// Close all open dropdowns
+function closeDropdowns() {
+    document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+        dropdown.classList.remove('open');
+        
+        // Update aria-expanded
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+        closeDropdowns();
+    }
+});
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Set initial body class for page state (landing page is default active)
@@ -503,7 +553,7 @@ function updateThemePreview(themeName) {
 // Toggle theme panel in editor
 function toggleThemePanel() {
     const panel = document.getElementById('theme-panel');
-    const toggleBtn = document.querySelector('[aria-controls="theme-panel"]');
+    const toggleBtn = document.querySelector('.btn-theme');
     
     if (panel) {
         const isActive = panel.classList.toggle('active');
@@ -514,6 +564,21 @@ function toggleThemePanel() {
         }
     }
 }
+
+// Close theme panel when clicking outside
+document.addEventListener('click', (e) => {
+    const themePanel = document.getElementById('theme-panel');
+    const themeBtn = document.querySelector('.btn-theme');
+    
+    if (themePanel && themePanel.classList.contains('active')) {
+        if (!themePanel.contains(e.target) && !themeBtn?.contains(e.target)) {
+            themePanel.classList.remove('active');
+            if (themeBtn) {
+                themeBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+});
 
 // Service worker for offline support
 if ('serviceWorker' in navigator) {
