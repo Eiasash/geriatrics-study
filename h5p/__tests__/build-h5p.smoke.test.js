@@ -1,6 +1,6 @@
 jest.mock('fs-extra');
 jest.mock('child_process', () => ({
-  execSync: jest.fn()
+  execSync: jest.fn(),
 }));
 
 test('build-h5p.js loads without throwing', () => {

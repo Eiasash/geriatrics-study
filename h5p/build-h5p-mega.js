@@ -8,31 +8,31 @@ const ASSETS = path.join(__dirname, 'assets');
 const OUT = path.join(__dirname, 'dist');
 
 // Helpers
-const readJson = async p => JSON.parse(await fs.readFile(p, 'utf8'));
+const readJson = async (p) => JSON.parse(await fs.readFile(p, 'utf8'));
 
 // Build QuestionSet payload from selected topics' mcqs
 function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercentage }) {
-  const questions = mcqs.map(m => ({
+  const questions = mcqs.map((m) => ({
     library: { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 },
     params: {
       question: `<div dir="rtl" style="text-align:right">${m.q}</div>`,
-      answers: m.options.map(opt => ({
+      answers: m.options.map((opt) => ({
         text: `<div dir="rtl" style="text-align:right">${opt}</div>`,
-        correct: opt === m.correct
+        correct: opt === m.correct,
       })),
       behaviour: {
         randomAnswers: true,
         singleAnswer: true,
         showSolutionButton: true,
-        enableRetry: true
-      }
-    }
+        enableRetry: true,
+      },
+    },
   }));
 
   const introPage = {
     showIntroPage: true,
     title: title,
-    introduction: `<div dir="rtl" style="text-align:right">${introHtml || ''}</div>`
+    introduction: `<div dir="rtl" style="text-align:right">${introHtml || ''}</div>`,
   };
 
   const endPage = {
@@ -42,9 +42,9 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
     finishButtonText: 'סיום',
     override: {
       showSolutionButton: 'enabled',
-      retryButton: 'enabled'
+      retryButton: 'enabled',
     },
-    message: `<div dir="rtl" style="text-align:right">${endHtml || ''}</div>`
+    message: `<div dir="rtl" style="text-align:right">${endHtml || ''}</div>`,
   };
 
   const content = {
@@ -52,8 +52,13 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
     introPage,
     questionSet: questions,
     progressType: 'textual',
-    behaviour: { autoContinue: false, enableRetry: true, enableSolutionsButton: true, passPercentage: passPercentage ?? 70 },
-    endPage
+    behaviour: {
+      autoContinue: false,
+      enableRetry: true,
+      enableSolutionsButton: true,
+      passPercentage: passPercentage ?? 70,
+    },
+    endPage,
   };
 
   return {
@@ -64,33 +69,34 @@ function buildQuestionSetPayload({ title, mcqs, introHtml, endHtml, passPercenta
     embedTypes: ['div'],
     preloadedDependencies: [
       { machineName: 'H5P.QuestionSet', majorVersion: 1, minorVersion: 0 },
-      { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 }
-    ]
+      { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 },
+    ],
   };
 }
 
 async function main() {
   await fs.ensureDir(OUT);
-  
+
   const topics = await readJson(DATA);
-  
+
   // Selection via env var TOPICS (comma-separated, exact match) or fallback to all topics
-  const sel = process.env.TOPICS ? process.env.TOPICS.split(',').map(s => s.trim()) : null;
+  const sel = process.env.TOPICS ? process.env.TOPICS.split(',').map((s) => s.trim()) : null;
   const passPct = process.env.PASS || 70;
-  
+
   // Collect MCQs from selected topics
-  let picked = topics.filter(t => !sel || sel.includes(t.topic));
-  const allMcqs = picked.flatMap(t => (t.mcqs || []).map(m => ({ ...m, _topic: t.topic })));
-  
+  let picked = topics.filter((t) => !sel || sel.includes(t.topic));
+  const allMcqs = picked.flatMap((t) => (t.mcqs || []).map((m) => ({ ...m, _topic: t.topic })));
+
   // Basic intro/end with placeholders and logo
   let introText = 'מגה-מבחן גריאטריה — שאלות נבחרות לפי תכנית ה-IMA. בהצלחה!';
-  let endText = 'תודה! ניתן לעיין בפתרונות או לנסות שוב. ציון המעבר מוגדר לפי אחוז המינימום שהוגדר.';
-  
+  let endText =
+    'תודה! ניתן לעיין בפתרונות או לנסות שוב. ציון המעבר מוגדר לפי אחוז המינימום שהוגדר.';
+
   // Prepare temp dir
   const tmpDir = path.join(__dirname, `.tmp_mega_${Date.now()}`);
   await fs.ensureDir(tmpDir);
   await fs.ensureDir(path.join(tmpDir, 'content'));
-  
+
   // Try to include logo if exists
   const logoPath = path.join(ASSETS, 'logo.png');
   const hasLogo = await fs.pathExists(logoPath);
@@ -102,41 +108,44 @@ async function main() {
     introText = imgTag + '<br/>' + introText;
     endText += '<br/>' + imgTag;
   }
-  
+
   // Build payload and files
   const payload = buildQuestionSetPayload({
     title: 'מגה-חידון גריאטריה (Question Set)',
     mcqs: allMcqs,
     introHtml: introText,
     endHtml: endText,
-    passPercentage: Number(passPct)
+    passPercentage: Number(passPct),
   });
-  
+
   // h5p.json
   const h5pJson = {
     title: payload.title,
     language: payload.language,
     mainLibrary: payload.mainLibrary,
     embedTypes: payload.embedTypes,
-    preloadedDependencies: payload.preloadedDependencies
+    preloadedDependencies: payload.preloadedDependencies,
   };
   await fs.writeJson(path.join(tmpDir, 'h5p.json'), h5pJson, { spaces: 2 });
-  
+
   // content.json
   await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), payload.content, { spaces: 2 });
-  
+
   // pack
   const outFile = path.join(OUT, 'Mega_QuestionSet.h5p');
-  
+
   // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
   if (process.platform === 'win32') {
-    execSync(`powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`, { stdio: 'inherit' });
+    execSync(
+      `powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`,
+      { stdio: 'inherit' }
+    );
     // Rename .zip to .h5p
     await fs.rename(`${outFile}.zip`, outFile);
   } else {
     execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, { stdio: 'inherit' });
   }
-  
+
   await fs.remove(tmpDir);
   console.log('✔ Built', outFile);
   console.log('Use env TOPICS and PASS to select topics and pass threshold, e.g.:');

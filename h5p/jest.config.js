@@ -13,33 +13,24 @@ module.exports = {
     '!**/uploads/**',
     '!jest.config.js',
     '!coverage/**',
-    '!__mocks__/**'
+    '!__mocks__/**',
   ],
   coverageThreshold: {
     global: {
       branches: 0,
       functions: 0,
       lines: 0,
-      statements: 0
-    }
+      statements: 0,
+    },
   },
-  testMatch: [
-    '**/__tests__/**/*.js',
-    '**/*.test.js',
-    '**/*.spec.js'
-  ],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/dist/',
-    '/libraries/',
-    '/content/'
-  ],
+  testMatch: ['**/__tests__/**/*.js', '**/*.test.js', '**/*.spec.js'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/libraries/', '/content/'],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1'
+    '^@/(.*)$': '<rootDir>/$1',
   },
   // Ensure mocks directory is picked up for fs-extra
   moduleDirectories: ['node_modules', '.'],
   verbose: true,
   bail: false,
-  errorOnDeprecated: true
+  errorOnDeprecated: true,
 };
