@@ -35,23 +35,17 @@
     <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
 
-    <link rel="stylesheet" href="css/main.css?v=20251201a">
-    <link rel="stylesheet" href="css/presentation.css?v=20251201a">
-    <link rel="stylesheet" href="css/visuals.css?v=20251201a">
-    <link rel="stylesheet" href="css/resources.css?v=20251201a">
-    <link rel="stylesheet" href="css/generator.css?v=20251201a">
-    <link rel="stylesheet" href="css/rtl.css?v=20251201a">
-    <link rel="stylesheet" href="css/mobile.css?v=20251201a">
+    <link rel="stylesheet" href="css/main.css?v=20251201b">
+    <link rel="stylesheet" href="css/presentation.css?v=20251201b">
+    <link rel="stylesheet" href="css/visuals.css?v=20251201b">
+    <link rel="stylesheet" href="css/resources.css?v=20251201b">
+    <link rel="stylesheet" href="css/generator.css?v=20251201b">
+    <link rel="stylesheet" href="css/rtl.css?v=20251201b">
+    <link rel="stylesheet" href="css/mobile.css?v=20251201b">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css?v=20251201a">
 </head>
 <body>
-    <!-- MOBILE DEBUG BUTTON -->
-    <div id="mobile-direct-present" style="position:fixed;bottom:80px;right:10px;z-index:999999;display:flex;flex-direction:column;gap:8px;">
-        <button onclick="try{startPresentation()}catch(e){alert(e.message)}" style="padding:15px 20px;background:#10b981;color:white;border:none;border-radius:10px;font-weight:bold;font-size:14px;box-shadow:0 4px 15px rgba(0,0,0,0.3);">▶ DIRECT PRESENT</button>
-        <button onclick="alert('Slides: '+editor.slides.length+'\nCurrent: '+editor.currentSlideIndex+'\nType: '+(editor.slides[0]?''+editor.slides[0].type:'none'))" style="padding:10px 15px;background:#3b82f6;color:white;border:none;border-radius:8px;font-size:12px;">DEBUG INFO</button>
-    </div>
-    <!-- END MOBILE DEBUG -->
     <div id="app">
         <!-- Landing Page -->
         <div id="landing-page" class="page active">
@@ -880,20 +874,20 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         </div>
     </div>
 
-    <script src="js/i18n.js?v=20251201a"></script>
-    <script src="js/templates.js?v=20251201a"></script>
-    <script src="js/templates-extended.js?v=20251201a"></script>
-    <script src="js/templates-extra.js?v=20251201a"></script>
-    <script src="js/citations.js?v=20251201a"></script>
-    <script src="js/resources.js?v=20251201a"></script>
-    <script src="js/generator.js?v=20251201a"></script>
-    <script src="js/editor.js?v=20251201a"></script>
-    <script src="js/presentation.js?v=20251201a"></script>
-    <script src="js/export.js?v=20251201a"></script>
-    <script src="js/advanced-export.js?v=20251201a"></script>
-    <script src="js/ai-assistant.js?v=20251201a"></script>
-    <script src="js/main.js?v=20251201a"></script>
-    <script src="js/mobile.js?v=20251201a"></script>
+    <script src="js/i18n.js?v=20251201b"></script>
+    <script src="js/templates.js?v=20251201b"></script>
+    <script src="js/templates-extended.js?v=20251201b"></script>
+    <script src="js/templates-extra.js?v=20251201b"></script>
+    <script src="js/citations.js?v=20251201b"></script>
+    <script src="js/resources.js?v=20251201b"></script>
+    <script src="js/generator.js?v=20251201b"></script>
+    <script src="js/editor.js?v=20251201b"></script>
+    <script src="js/presentation.js?v=20251201b"></script>
+    <script src="js/export.js?v=20251201b"></script>
+    <script src="js/advanced-export.js?v=20251201b"></script>
+    <script src="js/ai-assistant.js?v=20251201b"></script>
+    <script src="js/main.js?v=20251201b"></script>
+    <script src="js/mobile.js?v=20251201b"></script>
     <script>
         // Language switching function
         function switchLanguage(lang) {
