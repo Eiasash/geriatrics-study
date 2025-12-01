@@ -103,7 +103,7 @@ jobs:
       # Python audit for Anki
       - name: Setup Python
         if: matrix.language == 'python'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -167,7 +167,7 @@ jobs:
       # Setup for Anki build
       - name: Setup Python
         if: matrix.component == 'anki'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -208,7 +208,7 @@ jobs:
           path: artifacts
       
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       
