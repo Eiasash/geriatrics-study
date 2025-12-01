@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#1e3a5f">
     <meta name="description" content="SZMC Geriatrics - Clinical tools, presentation maker, and study resources for geriatric medicine">
     <title>SZMC Geriatrics Hub</title>
@@ -35,13 +35,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
         }
 
         body {
             font-family: var(--font-sans);
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            /* FIX: Keeps background locked during scroll */
+            background-attachment: fixed; 
             min-height: 100vh;
             color: var(--gray-800);
+            /* FIX: Prevents horizontal scrolling issues */
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .container {
@@ -84,7 +90,7 @@
 
         /* Main Content */
         main {
-            padding: 20px;
+            padding: 10px; /* Reduced padding for mobile */
             padding-bottom: 60px;
         }
 
@@ -96,6 +102,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            padding-left: 10px;
         }
 
         .section-title i {
@@ -105,7 +112,8 @@
         /* Tool Cards Grid */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            /* FIX: Changed 320px to 280px to fit small phones */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-bottom: 48px;
         }
@@ -120,11 +128,14 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .tool-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
 
         .tool-icon {
@@ -189,6 +200,7 @@
         /* Clinical Tools Section */
         .clinical-grid {
             display: grid;
+            /* FIX: Adjusted for mobile lists */
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
             margin-bottom: 48px;
@@ -240,8 +252,12 @@
             text-decoration: underline;
         }
 
-        /* Responsive */
+        /* Responsive Tweaks */
         @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
             .logo-text {
                 font-size: 1.75rem;
             }
@@ -252,9 +268,11 @@
 
             header p {
                 font-size: 1rem;
+                padding: 0 10px;
             }
 
             .tools-grid {
+                /* Ensures grid doesn't break on very narrow screens */
                 grid-template-columns: 1fr;
             }
 
@@ -271,12 +289,12 @@
         .quick-access {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 16px 24px;
+            padding: 16px 12px;
             margin-bottom: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
@@ -286,10 +304,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 8px;
             transition: all 0.2s;
             font-weight: 500;
+            background: rgba(255, 255, 255, 0.05); /* Added slight background for visibility */
         }
 
         .quick-link:hover {
