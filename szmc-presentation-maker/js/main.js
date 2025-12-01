@@ -118,15 +118,15 @@ async function loadPresentation() {
                 data = JSON.parse(result);
             } else if (fileName.endsWith('.pptx')) {
                 // Import PowerPoint
-                if (typeof exporter !== 'undefined' && exporter.importFromPPTX) {
-                    data = await exporter.importFromPPTX(file);
+                if (typeof window.exporter !== 'undefined' && window.exporter.importFromPPTX) {
+                    data = await window.exporter.importFromPPTX(file);
                 } else {
                     throw new Error('PowerPoint import is not available. Please ensure all scripts are loaded.');
                 }
             } else if (fileName.endsWith('.html') || fileName.endsWith('.htm')) {
                 // Import HTML
-                if (typeof exporter !== 'undefined' && exporter.importFromHTML) {
-                    data = await exporter.importFromHTML(file);
+                if (typeof window.exporter !== 'undefined' && window.exporter.importFromHTML) {
+                    data = await window.exporter.importFromHTML(file);
                 } else {
                     throw new Error('HTML import is not available. Please ensure all scripts are loaded.');
                 }
