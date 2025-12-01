@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e3a5f">
+    <title>Hazzard's Geriatric Medicine 8e - SZMC Geriatrics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8a;
+            --secondary: #f39c12;
+            --accent: #27ae60;
+            --white: #ffffff;
+            --gray-100: #f1f5f9;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f1f33 0%, #1e3a5f 100%);
+            min-height: 100vh;
+            color: var(--gray-800);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        header h1 i {
+            color: var(--secondary);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* Parts Grid */
+        .parts-grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .part-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .part-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .part-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--secondary), #d68910);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .part-info h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .part-info p {
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .part-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .part-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arrow {
+            margin-left: auto;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        /* Additional Resources */
+        .resources {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            color: var(--white);
+        }
+
+        .resources h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .resource-link i {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .part-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .part-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .part-meta {
+                justify-content: center;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to SZMC Geriatrics Hub
+            </a>
+            <h1>
+                <i class="fas fa-book-medical"></i>
+                Hazzard's Geriatric Medicine
+            </h1>
+            <p>8th Edition - Comprehensive Study Materials</p>
+        </header>
+
+        <div class="parts-grid">
+            <a href="Part1_Hazzards_Geriatric_Medicine_8e.html" class="part-card">
+                <div class="part-number">1</div>
+                <div class="part-info">
+                    <h3>Part 1: Principles of Geriatric Medicine</h3>
+                    <p>Foundations of geriatric care, biology of aging, comprehensive geriatric assessment, and principles of geriatric pharmacology.</p>
+                    <div class="part-meta">
+                        <span><i class="fas fa-file-alt"></i> Chapters 1-20</span>
+                        <span><i class="fas fa-clock"></i> ~4 hours</span>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="Part2_Hazzards_Geriatric_Medicine_8e.html" class="part-card">
+                <div class="part-number">2</div>
+                <div class="part-info">
+                    <h3>Part 2: Geriatric Syndromes</h3>
+                    <p>Falls, delirium, dementia, incontinence, malnutrition, pressure injuries, and other common geriatric syndromes.</p>
+                    <div class="part-meta">
+                        <span><i class="fas fa-file-alt"></i> Chapters 21-50</span>
+                        <span><i class="fas fa-clock"></i> ~5 hours</span>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="Part3_Hazzards_Geriatric_Medicine_8e.html" class="part-card">
+                <div class="part-number">3</div>
+                <div class="part-info">
+                    <h3>Part 3: Organ System Diseases</h3>
+                    <p>Cardiovascular, respiratory, renal, neurological, and other organ-specific conditions in older adults.</p>
+                    <div class="part-meta">
+                        <span><i class="fas fa-file-alt"></i> Chapters 51-80+</span>
+                        <span><i class="fas fa-clock"></i> ~4 hours</span>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+        </div>
+
+        <div class="resources">
+            <h3><i class="fas fa-chart-bar"></i> Additional Resources</h3>
+            <div class="resources-grid">
+                <a href="Chart_UPDATED.html" class="resource-link">
+                    <i class="fas fa-table"></i>
+                    <span>Study Charts</span>
+                </a>
+                <a href="Chart_LTS_Only.html" class="resource-link">
+                    <i class="fas fa-list-check"></i>
+                    <span>LTS Summary</span>
+                </a>
+                <a href="../h5p/" class="resource-link">
+                    <i class="fas fa-brain"></i>
+                    <span>Practice Quizzes</span>
+                </a>
+                <a href="../szmc-presentation-maker/" class="resource-link">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Create Presentation</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
