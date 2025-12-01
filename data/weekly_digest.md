@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 17:22*
+*Generated: 2025-12-01 17:37*
 
 
 ## Delirium (דליריום)
@@ -24,22 +24,22 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
-- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
-- **Journal**: Ageing research reviews (2025)
-- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
-- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
-
 ### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
 - **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
 - **Journal**: Annals of medicine (2025)
 - **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
 - **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
 
-### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
-- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
+### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
+- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
+- **Journal**: Ageing research reviews (2025)
+- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
+- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
+
+### 📄 Frailty across Neurological Diseases: Why Sex and Gender Matter.
+- **Authors**: Lorefice Lorena, Pellecchia Maria Teresa
+- **Journal**: Annals of neurology (2025)
+- **Link**: [41267611](https://pubmed.ncbi.nlm.nih.gov/41267611/)
 
 
 ## Falls (נפילות)
@@ -49,15 +49,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
-- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
-- **Journal**: Revista espanola de geriatria y gerontologia (2025)
-- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
-
 ### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
 - **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
+
+### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
+- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
+- **Journal**: Revista espanola de geriatria y gerontologia (2025)
+- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
 
 
 ## Dementia (דמנציה)
@@ -118,10 +118,10 @@
 
 ## End Of Life (טיפול סוף-חיים)
 
-### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
-- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
-- **Journal**: Expert review of endocrinology & metabolism (2025)
-- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
+### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
+- **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
+- **Journal**: Journal of pain and symptom management (2025)
+- **Link**: [40769281](https://pubmed.ncbi.nlm.nih.gov/40769281/)
 
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.

@@ -35,6 +35,18 @@
   ],
   "frailty": [
     {
+      "pmid": "41137434",
+      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
+      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
+      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
+      "journal": "Annals of medicine",
+      "year": "2025",
+      "key_findings": [
+        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
+    },
+    {
       "pmid": "41253248",
       "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
       "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
@@ -48,26 +60,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "41137434",
-      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
-      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
-      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
-      "journal": "Annals of medicine",
-      "year": "2025",
-      "key_findings": [
-        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
-    },
-    {
-      "pmid": "40914903",
-      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
-      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
-      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
-      "journal": "Annals of medicine",
+      "pmid": "41267611",
+      "title": "Frailty across Neurological Diseases: Why Sex and Gender Matter.",
+      "abstract": "Frailty is increasingly recognized as a critical factor in neurology, influencing disease susceptibility, progression, and outcomes. Emerging evidence highlights the pivotal role of sex and gender in shaping frailty trajectories across major neurological disorders, including stroke, Parkinson's disease (PD), dementia, and multiple sclerosis. This systematic review synthesizes current knowledge on the interplay between frailty and neurological disease, with a focus on sex-specific patterns. Recognizing sex- and gender-related differences in frailty expression is critical to advancing a more personalized and equitable model of neurological care, and reducing disparities in a growing population affected by age-related neurological conditions. ANN NEUROL 2025.",
+      "authors": "Lorefice Lorena, Pellecchia Maria Teresa",
+      "journal": "Annals of neurology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41267611/"
     }
   ],
   "falls": [
@@ -82,16 +82,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "40902310",
-      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
-      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
-      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
-      "journal": "Revista espanola de geriatria y gerontologia",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
-    },
-    {
       "pmid": "40970437",
       "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
       "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
@@ -100,6 +90,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
+    },
+    {
+      "pmid": "40902310",
+      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
+      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
+      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
+      "journal": "Revista espanola de geriatria y gerontologia",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
     }
   ],
   "dementia": [
@@ -204,14 +204,14 @@
   ],
   "end_of_life": [
     {
-      "pmid": "40689782",
-      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
-      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
-      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
-      "journal": "Expert review of endocrinology & metabolism",
+      "pmid": "40769281",
+      "title": "Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.",
+      "abstract": "End-of-life distress and delirium are common in palliative care inpatients, often requiring sedatives that diminish interaction. Current practices rely on clinical experience rather than evidence.",
+      "authors": "Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.",
+      "journal": "Journal of pain and symptom management",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40769281/"
     },
     {
       "pmid": "41218637",
