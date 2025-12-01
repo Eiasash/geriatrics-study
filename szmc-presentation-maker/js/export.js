@@ -1259,74 +1259,70 @@ class PresentationExporter {
             await this.loadJSZip();
         }
 
-        return new Promise(async (resolve, reject) => {
-            try {
-                const zip = await JSZip.loadAsync(file);
-                
-                // Check if it's a valid PPTX (contains [Content_Types].xml)
-                const contentTypes = zip.file('[Content_Types].xml');
-                if (!contentTypes) {
-                    reject(new Error('Invalid PowerPoint file format'));
-                    return;
-                }
-
-                // Extract presentation title from docProps/core.xml
-                let title = 'Imported Presentation';
-                const coreProps = zip.file('docProps/core.xml');
-                if (coreProps) {
-                    const coreXml = await coreProps.async('string');
-                    const titleMatch = coreXml.match(/<dc:title>([^<]*)<\/dc:title>/);
-                    if (titleMatch) title = titleMatch[1];
-                }
-
-                // Extract slides from ppt/slides/
-                const slides = [];
-                const slideFiles = Object.keys(zip.files)
-                    .filter(name => name.match(/^ppt\/slides\/slide\d+\.xml$/))
-                    .sort((a, b) => {
-                        const numA = parseInt(a.match(/slide(\d+)/)[1]);
-                        const numB = parseInt(b.match(/slide(\d+)/)[1]);
-                        return numA - numB;
-                    });
-
-                for (let i = 0; i < slideFiles.length; i++) {
-                    const slideFile = zip.file(slideFiles[i]);
-                    if (slideFile) {
-                        const slideXml = await slideFile.async('string');
-                        
-                        // Extract text content from slide XML
-                        const textContent = this.extractTextFromPPTXSlide(slideXml);
-                        const slideTitle = textContent.title || `Slide ${i + 1}`;
-                        
-                        slides.push({
-                            id: `slide-${Date.now()}-${i}`,
-                            type: i === 0 ? 'title' : 'content',
-                            data: {
-                                title: slideTitle,
-                                content: textContent.body || '',
-                                subtitle: textContent.subtitle || ''
-                            },
-                            order: i
-                        });
-                    }
-                }
-
-                if (slides.length === 0) {
-                    reject(new Error('No slides found in the PowerPoint file'));
-                    return;
-                }
-
-                resolve({
-                    title: title,
-                    type: 'case',
-                    slides: slides,
-                    importedFrom: 'pptx',
-                    importedAt: new Date().toISOString()
-                });
-            } catch (error) {
-                reject(new Error('Failed to parse PowerPoint file: ' + error.message));
+        try {
+            const zip = await JSZip.loadAsync(file);
+            
+            // Check if it's a valid PPTX (contains [Content_Types].xml)
+            const contentTypes = zip.file('[Content_Types].xml');
+            if (!contentTypes) {
+                throw new Error('Invalid PowerPoint file format');
             }
-        });
+
+            // Extract presentation title from docProps/core.xml
+            let title = 'Imported Presentation';
+            const coreProps = zip.file('docProps/core.xml');
+            if (coreProps) {
+                const coreXml = await coreProps.async('string');
+                const titleMatch = coreXml.match(/<dc:title>([^<]*)<\/dc:title>/);
+                if (titleMatch) title = titleMatch[1];
+            }
+
+            // Extract slides from ppt/slides/
+            const slides = [];
+            const slideFiles = Object.keys(zip.files)
+                .filter(name => name.match(/^ppt\/slides\/slide\d+\.xml$/))
+                .sort((a, b) => {
+                    const numA = parseInt(a.match(/slide(\d+)/)[1]);
+                    const numB = parseInt(b.match(/slide(\d+)/)[1]);
+                    return numA - numB;
+                });
+
+            for (let i = 0; i < slideFiles.length; i++) {
+                const slideFile = zip.file(slideFiles[i]);
+                if (slideFile) {
+                    const slideXml = await slideFile.async('string');
+                    
+                    // Extract text content from slide XML
+                    const textContent = this.extractTextFromPPTXSlide(slideXml);
+                    const slideTitle = textContent.title || `Slide ${i + 1}`;
+                    
+                    slides.push({
+                        id: `slide-${Date.now()}-${i}`,
+                        type: i === 0 ? 'title' : 'content',
+                        data: {
+                            title: slideTitle,
+                            content: textContent.body || '',
+                            subtitle: textContent.subtitle || ''
+                        },
+                        order: i
+                    });
+                }
+            }
+
+            if (slides.length === 0) {
+                throw new Error('No slides found in the PowerPoint file');
+            }
+
+            return {
+                title: title,
+                type: 'case',
+                slides: slides,
+                importedFrom: 'pptx',
+                importedAt: new Date().toISOString()
+            };
+        } catch (error) {
+            throw new Error('Failed to parse PowerPoint file: ' + error.message);
+        }
     }
 
     // Load JSZip library
@@ -1352,7 +1348,7 @@ class PresentationExporter {
         // Extract all text content using regex (works without XML parser)
         const textMatches = xml.match(/<a:t>([^<]*)<\/a:t>/g);
         if (textMatches) {
-            textMatches.forEach((match, index) => {
+            textMatches.forEach((match) => {
                 const text = match.replace(/<\/?a:t>/g, '').trim();
                 if (text) {
                     textParts.push(text);
@@ -1384,48 +1380,46 @@ class PresentationExporter {
             await this.loadPDFJS();
         }
 
-        return new Promise(async (resolve, reject) => {
-            try {
-                const arrayBuffer = await file.arrayBuffer();
-                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        try {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            
+            const slides = [];
+            const numPages = pdf.numPages;
+
+            for (let i = 1; i <= numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
                 
-                const slides = [];
-                const numPages = pdf.numPages;
-
-                for (let i = 1; i <= numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const textContent = await page.getTextContent();
-                    
-                    // Extract text from page
-                    const text = textContent.items.map(item => item.str).join(' ').trim();
-                    
-                    // First line as title, rest as content
-                    const lines = text.split(/\s{3,}|\n/);
-                    const title = lines[0] || `Page ${i}`;
-                    const content = lines.slice(1).join('\n');
-                    
-                    slides.push({
-                        id: `slide-${Date.now()}-${i - 1}`,
-                        type: i === 1 ? 'title' : 'content',
-                        data: {
-                            title: title.substring(0, 200),
-                            content: content.substring(0, 5000)
-                        },
-                        order: i - 1
-                    });
-                }
-
-                resolve({
-                    title: slides[0]?.data?.title || 'Imported PDF',
-                    type: 'case',
-                    slides: slides,
-                    importedFrom: 'pdf',
-                    importedAt: new Date().toISOString()
+                // Extract text from page
+                const text = textContent.items.map(item => item.str).join(' ').trim();
+                
+                // First line as title, rest as content
+                const lines = text.split(/\s{3,}|\n/);
+                const title = lines[0] || `Page ${i}`;
+                const content = lines.slice(1).join('\n');
+                
+                slides.push({
+                    id: `slide-${Date.now()}-${i - 1}`,
+                    type: i === 1 ? 'title' : 'content',
+                    data: {
+                        title: title.substring(0, 200),
+                        content: content.substring(0, 5000)
+                    },
+                    order: i - 1
                 });
-            } catch (error) {
-                reject(new Error('Failed to parse PDF file: ' + error.message));
             }
-        });
+
+            return {
+                title: slides[0]?.data?.title || 'Imported PDF',
+                type: 'case',
+                slides: slides,
+                importedFrom: 'pdf',
+                importedAt: new Date().toISOString()
+            };
+        } catch (error) {
+            throw new Error('Failed to parse PDF file: ' + error.message);
+        }
     }
 
     // Load PDF.js library
