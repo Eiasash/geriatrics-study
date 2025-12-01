@@ -1,2079 +1,916 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1e3a5f">
+    <meta name="description" content="Create professional medical presentations for geriatrics case reviews and journal clubs">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>🎓 מערכת למידה גריאטריה מתקדמת - שערי צדק</title>
-    
-    <!-- H5P Framework Integration -->
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js"></script>
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-event-dispatcher.js"></script>
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p.js"></script>
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-content-type.js"></script>
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-confirmation-dialog.js"></script>
-    <script type="text/javascript" src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-action-bar.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p.css" />
-    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p-confirmation-dialog.css" />
-    <link rel="stylesheet" type="text/css" href="https://h5p.org/sites/all/modules/h5p/library/styles/h5p-core-button.css" />
-    
-    <style>
-        :root {
-            --primary-blue: #0f4c81;
-            --secondary-blue: #1e6eb5;
-            --accent-teal: #00b4d8;
-            --success-green: #10b981;
-            --warning-orange: #f59e0b;
-            --danger-red: #ef4444;
-            --dark-bg: #0a1628;
-            --card-bg: #0f1f33;
-            --text-primary: #ffffff;
-            --text-secondary: #cbd5e1;
-            --border-color: #2a4560;
-            --gradient-primary: linear-gradient(135deg, #0a3459 0%, #0f4c81 35%, #1e6eb5 70%, #00b4d8 100%);
-            --gradient-success: linear-gradient(135deg, #10b981 0%, #00b4d8 100%);
-            --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Hebrew', 'Arial Hebrew', 'Roboto', sans-serif;
-            background: var(--gradient-primary);
-            min-height: 100vh;
-            color: var(--text-primary);
-            overflow-x: hidden;
-            direction: rtl;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><path d="M30,50 Q50,20 70,50 Q50,80 30,50" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center;
-            background-size: contain;
-        }
-
-        .header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #00b4d8, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s infinite linear;
-            background-size: 200% auto;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .hospital-badge {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            padding: 8px 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-
-        .stats-dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-success);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(255, 255, 255, 0.18);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            background: var(--gradient-success);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .stat-progress {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .stat-progress-bar {
-            height: 100%;
-            background: var(--gradient-success);
-            transition: width 1s ease;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-success);
-            border-radius: 2px;
-        }
-
-        .modes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .mode-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mode-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            transform: scale(0);
-            transition: transform 0.6s ease;
-        }
-
-        .mode-card:hover::before {
-            transform: scale(1);
-        }
-
-        .mode-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-        }
-
-        .mode-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            display: block;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mode-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mode-description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mode-btn {
-            background: var(--gradient-success);
-            border: none;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mode-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        .topic-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .topic-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-success);
-        }
-
-        .topic-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        .topic-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        
-        .topic-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            flex: 1;
-        }
-        
-        .question-count {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .topic-description {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .topic-features {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .feature-tag {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-        
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .btn-start {
-            background: var(--gradient-success);
-            color: white;
-        }
-        
-        .btn-practice {
-            background: var(--gradient-warning);
-            color: white;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .quiz-container {
-            display: none;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: #333;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-        }
-        
-        .quiz-container.active {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .quiz-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-        
-        .quiz-progress {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .progress-bar {
-            width: 200px;
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: var(--gradient-success);
-            transition: width 0.3s ease;
-        }
-        
-        .quiz-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .quiz-stat {
-            text-align: center;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .quiz-stat-number {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-        
-        .quiz-stat-label {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        
-        .question-container {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .question-number {
-            background: var(--primary-blue);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        
-        .question-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        .answers-grid {
-            display: grid;
-            gap: 10px;
-        }
-        
-        .answer-option {
-            background: white;
-            border: 2px solid #ddd;
-            padding: 15px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .answer-option:hover {
-            border-color: var(--primary-blue);
-            background: #f0f8ff;
-        }
-        
-        .answer-option.selected {
-            background: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
-        }
-        
-        .answer-option.correct {
-            background: var(--success-green);
-            border-color: var(--success-green);
-            color: white;
-        }
-        
-        .answer-option.incorrect {
-            background: var(--danger-red);
-            border-color: var(--danger-red);
-            color: white;
-        }
-        
-        .answer-letter {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
-        .selected .answer-letter,
-        .correct .answer-letter,
-        .incorrect .answer-letter {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-        
-        .quiz-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 25px;
-        }
-        
-        .quiz-btn {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .quiz-btn:hover {
-            background: var(--secondary-blue);
-            transform: translateY(-2px);
-        }
-        
-        .quiz-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .close-btn {
-            background: var(--danger-red);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            position: absolute;
-            top: 15px;
-            left: 15px;
-        }
-        
-        .timer {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-        
-        .timer-icon {
-            font-size: 1.2rem;
-        }
-        
-        .timer.warning {
-            color: var(--warning-orange);
-        }
-        
-        .timer.danger {
-            color: var(--danger-red);
-            animation: pulse 1s infinite;
-        }
-        
-        .explanation {
-            background: #e8f4fd;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 4px solid var(--primary-blue);
-        }
-        
-        .explanation-title {
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin-bottom: 10px;
-        }
-        
-        .explanation-text {
-            line-height: 1.6;
-            color: #555;
-        }
-        
-        .results-container {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .results-score {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .results-score.excellent {
-            color: var(--success-green);
-        }
-        
-        .results-score.good {
-            color: var(--primary-blue);
-        }
-        
-        .results-score.needs-improvement {
-            color: var(--warning-orange);
-        }
-        
-        .results-message {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-        
-        .results-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            color: #666;
-        }
-        
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ddd;
-            border-radius: 50%;
-            border-top-color: var(--primary-blue);
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--success-green);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .header p {
-                font-size: 1rem;
-            }
-
-            .stats-dashboard {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .stat-card {
-                padding: 15px;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-            }
-
-            .modes-grid,
-            .topics-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .mode-card,
-            .topic-card {
-                padding: 20px;
-                border-radius: 18px;
-            }
-
-            .mode-icon {
-                font-size: 2.5rem;
-            }
-
-            .mode-title {
-                font-size: 1.2rem;
-            }
-
-            .mode-btn {
-                padding: 14px 25px;
-                font-size: 1rem;
-                min-height: 48px;
-            }
-
-            .topic-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .topic-title {
-                font-size: 1.1rem;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .action-buttons .btn {
-                width: 100%;
-                justify-content: center;
-                min-height: 48px;
-                font-size: 1rem;
-            }
-
-            .quiz-container {
-                padding: 15px;
-                margin: 15px 5px;
-                border-radius: 15px;
-            }
-
-            .quiz-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: stretch;
-            }
-
-            .quiz-title {
-                font-size: 1.2rem;
-                text-align: center;
-            }
-
-            .quiz-progress {
-                flex-direction: column;
-                gap: 10px;
-                align-items: stretch;
-            }
-
-            .progress-bar {
-                width: 100%;
-            }
-
-            .question-container {
-                padding: 15px;
-            }
-
-            .question-text {
-                font-size: 1rem;
-            }
-
-            .answer-option {
-                padding: 14px 15px;
-                min-height: 48px;
-            }
-
-            .quiz-btn {
-                min-height: 48px;
-                padding: 14px 20px;
-                font-size: 1rem;
-            }
-
-            .notification {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                transform: translateY(-100px);
-            }
-
-            .notification.show {
-                transform: translateY(0);
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .header p {
-                font-size: 0.9rem;
-            }
-
-            .hospital-badge {
-                padding: 6px 12px;
-                font-size: 0.85rem;
-            }
-
-            .stats-dashboard {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .stat-card {
-                padding: 12px;
-            }
-
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .stat-label {
-                font-size: 0.8rem;
-            }
-
-            .quiz-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .quiz-stat {
-                padding: 8px;
-            }
-
-            .quiz-stat-number {
-                font-size: 1rem;
-            }
-
-            .quiz-controls {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .quiz-controls .quiz-btn {
-                width: 100%;
-            }
-
-            .results-score {
-                font-size: 2.2rem;
-            }
-
-            .results-message {
-                font-size: 1rem;
-            }
-
-            .explanation {
-                padding: 12px;
-            }
-
-            .feature-tag {
-                font-size: 0.65rem;
-                padding: 3px 8px;
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .mode-card:hover,
-            .topic-card:hover,
-            .stat-card:hover {
-                transform: none;
-            }
-
-            .mode-card:active,
-            .topic-card:active {
-                transform: scale(0.98);
-                background: rgba(255, 255, 255, 0.2);
-            }
-
-            .btn:hover,
-            .mode-btn:hover,
-            .quiz-btn:hover {
-                transform: none;
-            }
-
-            .btn:active,
-            .mode-btn:active,
-            .quiz-btn:active {
-                transform: scale(0.95);
-            }
-
-            .answer-option:hover {
-                border-color: #ddd;
-                background: white;
-            }
-
-            .answer-option:active {
-                background: #f0f8ff;
-                border-color: var(--primary-blue);
-            }
-        }
-    </style>
+    <title>SZMC Geriatrics Presentation Maker</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/presentation.css">
+    <link rel="stylesheet" href="css/visuals.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/generator.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/ai-assistant.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>מערכת למידה גריאטריה מתקדמת</h1>
-            <p>פלטפורמת H5P אינטראקטיבית מקצועית להכנה למבחנים ולתרגול קליני</p>
-            <div class="hospital-badge">
-                <span>🏥</span>
-                <span>שערי צדק - מחלקת גריאטריה</span>
-            </div>
-        </div>
-
-        <!-- Statistics Dashboard -->
-        <div class="stats-dashboard">
-            <div class="stat-card">
-                <div class="stat-number" id="totalActivities">25</div>
-                <div class="stat-label">פעילות H5P</div>
-                <div class="stat-progress">
-                    <div class="stat-progress-bar" style="width: 85%"></div>
+    <div id="app">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <header class="landing-header">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span data-i18n="logo">SZMC Geriatrics</span>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalQuestions">387</div>
-                <div class="stat-label">שאלות</div>
-                <div class="stat-progress">
-                    <div class="stat-progress-bar" style="width: 92%"></div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="activeUsers">28</div>
-                <div class="stat-label">משתמשים פעילים</div>
-                <div class="stat-progress">
-                    <div class="stat-progress-bar" style="width: 67%"></div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="completionRate">94%</div>
-                <div class="stat-label">אחוז השלמה</div>
-                <div class="stat-progress">
-                    <div class="stat-progress-bar" style="width: 94%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Clinical Tools Section -->
-        <h2 class="section-title">כלים קליניים 🩺</h2>
-        <div class="modes-grid">
-            <a href="szmc-presentation-maker/index.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">🎨</div>
-                <div class="mode-title">יצירת מצגות</div>
-                <div class="mode-description">יצירת מצגות מקצועיות למקרים ו-Journal Club עם תמיכה בעברית ואנגלית</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/decisions.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">🧠</div>
-                <div class="mode-title">כלי החלטה קלינית</div>
-                <div class="mode-description">הערכת סיכון לדליריום, פוליפרמציה, קיבולת ועוד</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/anticoag.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">💊</div>
-                <div class="mode-title">מחשבון נוגדי קרישה</div>
-                <div class="mode-description">CHA₂DS₂-VASc, HAS-BLED ומינון DOACs</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/oncall.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">🚨</div>
-                <div class="mode-title">On-Call Co-Pilot</div>
-                <div class="mode-description">פרוטוקולי חירום גריאטריים - דליריום, נפילות, כאב חזה</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/dashboard.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">📋</div>
-                <div class="mode-title">לוח מטופלים</div>
-                <div class="mode-description">מעקב מטופלים לסיבוב בוקר עם דירוג סיכון</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/exam.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">📖</div>
-                <div class="mode-title">סימולטור מבחן שלב א'</div>
-                <div class="mode-description">שאלות תרגול בעברית ואנגלית להכנה לבורד</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/evidence.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">📚</div>
-                <div class="mode-title">משאבי מידע רפואי</div>
-                <div class="mode-description">גישה מהירה ל-OpenEvidence AI, UpToDate והנחיות קליניות</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/assessments.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">📊</div>
-                <div class="mode-title">הערכות גריאטריות</div>
-                <div class="mode-description">MMSE, Morse Fall Scale, Barthel Index - הערכות קוגניטיביות ותפקודיות</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/ai-assistant.html" class="mode-card" style="text-decoration: none; color: inherit; background: linear-gradient(135deg, #0f4c81 0%, #00b4d8 100%);">
-                <div class="mode-icon">🤖</div>
-                <div class="mode-title" style="color: white;">עוזר קליני AI</div>
-                <div class="mode-description" style="color: rgba(255,255,255,0.9);">OpenEvidence, ChatGPT, Claude, Perplexity - אינטגרציה עם מנועי AI</div>
-                <button class="mode-btn" style="background: white; color: #0f4c81;">פתח AI</button>
-            </a>
-
-            <a href="clinical-tools/medications.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">💉</div>
-                <div class="mode-title">מנהל תרופות חכם</div>
-                <div class="mode-description">Beers Criteria, STOPP/START, בדיקת אינטראקציות עם AI</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-
-            <a href="clinical-tools/study.html" class="mode-card" style="text-decoration: none; color: inherit;">
-                <div class="mode-icon">🎓</div>
-                <div class="mode-title">עוזר למידה AI</div>
-                <div class="mode-description">הכנה לבורד עם AI, שאלות תרגול, כרטיסיות זיכרון</div>
-                <button class="mode-btn">פתח כלי</button>
-            </a>
-        </div>
-
-        <!-- Study Modes -->
-        <h2 class="section-title">כלי למידה מתקדמים ⚡</h2>
-        <div class="modes-grid">
-            <div class="mode-card" onclick="startMode('application')">
-                <div class="mode-icon">📱</div>
-                <div class="mode-title">אפליקציה מבוססת</div>
-                <div class="mode-description">מערכת למידה אינטראקטיבית עם מעקב התקדמות אישית</div>
-                <button class="mode-btn">התחל אפליקציה</button>
-            </div>
-
-            <div class="mode-card" onclick="startMode('timed')">
-                <div class="mode-icon">🎯</div>
-                <div class="mode-title">מבחן חזרה מתקדם</div>
-                <div class="mode-description">תרגול מהיר עם משוב מיידי וסטטיסטיקות מפורטות</div>
-                <button class="mode-btn">התחל מבחן</button>
-            </div>
-
-            <div class="mode-card" onclick="startMode('exam')">
-                <div class="mode-icon">⏰</div>
-                <div class="mode-title">מבחן עם טיימר</div>
-                <div class="mode-description">סימולציה של מבחן אמיתי עם הגבלת זמן וניקוד</div>
-                <button class="mode-btn">התחל מבחן</button>
-            </div>
-
-            <div class="mode-card" onclick="startMode('adaptive')">
-                <div class="mode-icon">🧠</div>
-                <div class="mode-title">למידה אדפטיבית</div>
-                <div class="mode-description">מערכת AI שמתאימה שאלות לפי הרמה האישית</div>
-                <button class="mode-btn">התחל למידה</button>
-            </div>
-        </div>
-
-        <!-- Topic Areas -->
-        <h2 class="section-title">תוכן לפי נושא 📚</h2>
-        <div class="topics-grid" id="topicsGrid"></div>
-
-        <!-- Quiz Container -->
-        <div id="quizContainer" class="quiz-container">
-            <button class="close-btn" onclick="closeQuiz()">✕ סגור</button>
-            <div class="quiz-header">
-                <div class="quiz-title" id="quizTitle">מבחן גריאטריה</div>
-                <div class="quiz-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-                    </div>
-                    <span id="questionCounter">1/10</span>
-                    <div class="timer" id="timer">
-                        <span class="timer-icon">⏱️</span>
-                        <span id="timeDisplay">10:00</span>
+                <div class="header-actions">
+                    <div class="language-selector">
+                        <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')" title="English">
+                            <span>EN</span>
+                        </button>
+                        <button class="lang-btn" id="lang-he" onclick="switchLanguage('he')" title="עברית">
+                            <span>עב</span>
+                        </button>
                     </div>
                 </div>
+            </header>
+
+            <main class="landing-main">
+                <h1 data-i18n="presentationMaker">Presentation Maker</h1>
+                <p class="subtitle" data-i18n="appSubtitle">Create professional medical presentations for case reviews and journal clubs</p>
+
+                <div class="template-grid">
+                    <div class="template-card" onclick="selectTemplate('case')">
+                        <div class="template-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <h3 data-i18n="casePresentation">Case Presentation</h3>
+                        <p data-i18n="casePresentationDesc">Patient history, physical exam, differentials, workup, diagnosis, and treatment plan</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> 25 slide template</li>
+                            <li><i class="fas fa-check"></i> Table of contents & take-home</li>
+                            <li><i class="fas fa-check"></i> Charts, images & algorithms</li>
+                            <li><i class="fas fa-check"></i> Numbered citations</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card" onclick="selectTemplate('journal')">
+                        <div class="template-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <h3 data-i18n="journalClub">Journal Club</h3>
+                        <p data-i18n="journalClubDesc">Critical appraisal of medical literature with structured analysis</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> 20 slide template</li>
+                            <li><i class="fas fa-check"></i> PICO & statistical analysis</li>
+                            <li><i class="fas fa-check"></i> Data visualizations</li>
+                            <li><i class="fas fa-check"></i> Formatted references</li>
+                        </ul>
+                    </div>
+
+                    <div class="template-card template-card-generate" onclick="showGeneratorModal()">
+                        <div class="template-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 data-i18n="generateFromText">Generate from Text</h3>
+                        <p data-i18n="generateFromTextDesc">Paste your case notes or article and auto-generate a structured presentation</p>
+                        <ul class="template-features">
+                            <li><i class="fas fa-check"></i> Auto-detect case vs journal</li>
+                            <li><i class="fas fa-check"></i> Extract key information</li>
+                            <li><i class="fas fa-check"></i> Multiple style themes</li>
+                            <li><i class="fas fa-check"></i> Customizable output</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="load-section">
+                    <button class="btn-secondary" onclick="loadPresentation()">
+                        <i class="fas fa-folder-open"></i> Load Saved Presentation
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Editor Page -->
+        <div id="editor-page" class="page">
+            <header class="editor-header">
+                <div class="header-left">
+                    <button class="btn-back" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="logo-small">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>SZMC Geriatrics</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <input type="text" id="presentation-title" placeholder="Presentation Title" value="Untitled Presentation">
+                </div>
+                <div class="header-right">
+                    <div class="autosave-indicator" id="autosave-indicator" title="Auto-save status">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Saved</span>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <button class="btn-icon" onclick="editor.undo()" title="Undo (Ctrl+Z)" id="btn-undo" disabled>
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button class="btn-icon" onclick="editor.redo()" title="Redo (Ctrl+Y)" id="btn-redo" disabled>
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <div class="toolbar-divider"></div>
+                    <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant">
+                        <i class="fas fa-robot"></i>
+                        <span class="ai-badge" id="ai-issue-badge" style="display: none;">0</span>
+                    </button>
+                    <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme">
+                        <i class="fas fa-palette"></i>
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('save-dropdown')">
+                            <i class="fas fa-save"></i> Save <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="save-dropdown" class="dropdown-menu">
+                            <button onclick="savePresentation(); closeDropdowns()"><i class="fas fa-save"></i> Save Local</button>
+                            <button onclick="CloudSave.local.save(getPresentationData()); closeDropdowns()"><i class="fas fa-history"></i> Save Backup</button>
+                            <hr>
+                            <button onclick="CloudSave.googleDrive.save(getPresentationData()); closeDropdowns()"><i class="fab fa-google-drive"></i> Google Drive</button>
+                            <button onclick="CloudSave.dropbox.save(getPresentationData()); closeDropdowns()"><i class="fab fa-dropbox"></i> Dropbox</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('export-dropdown')">
+                            <i class="fas fa-download"></i> Export <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="export-dropdown" class="dropdown-menu">
+                            <button onclick="exportToPowerPoint(); closeDropdowns()"><i class="fas fa-file-powerpoint"></i> PowerPoint (.pptx)</button>
+                            <button onclick="exportToPDF(); closeDropdowns()"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button onclick="exportToHTML(); closeDropdowns()"><i class="fas fa-code"></i> HTML</button>
+                            <button onclick="exportToJSON(); closeDropdowns()"><i class="fas fa-file-code"></i> JSON</button>
+                            <hr>
+                            <button onclick="TemplateSharing.exportTemplate(getPresentationData()); closeDropdowns()"><i class="fas fa-file-export"></i> Export Template</button>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn-secondary dropdown-toggle" onclick="toggleDropdown('share-dropdown')">
+                            <i class="fas fa-share-alt"></i> Share <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="share-dropdown" class="dropdown-menu">
+                            <button onclick="TemplateSharing.copyShareLink(getPresentationData()); closeDropdowns()"><i class="fas fa-link"></i> Copy Link</button>
+                            <button onclick="startCollaboration(); closeDropdowns()"><i class="fas fa-users"></i> Start Collaboration</button>
+                            <button onclick="joinCollaboration(); closeDropdowns()"><i class="fas fa-sign-in-alt"></i> Join Session</button>
+                        </div>
+                    </div>
+                    <div id="collab-users" class="collab-users-bar"></div>
+                    <button class="btn-primary" onclick="showPresentationOptions()">
+                        <i class="fas fa-play"></i> Present
+                    </button>
+                </div>
+            </header>
+
+            <div class="editor-container">
+                <!-- Sidebar - Slide Navigator -->
+                <aside class="slide-navigator">
+                    <div class="navigator-header">
+                        <h3>Slides</h3>
+                        <button class="btn-icon" onclick="addSlide()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div id="slide-thumbnails" class="slide-thumbnails">
+                        <!-- Thumbnails populated by JS -->
+                    </div>
+                </aside>
+
+                <!-- Main Editor -->
+                <main class="slide-editor">
+                    <div id="current-slide" class="slide-canvas">
+                        <!-- Current slide content -->
+                    </div>
+                </main>
+
+                <!-- Properties Panel -->
+                <aside class="properties-panel">
+                    <div class="panel-section">
+                        <h4>Slide Type</h4>
+                        <select id="slide-type" onchange="changeSlideType()">
+                            <optgroup label="Navigation">
+                                <option value="title">Title Slide</option>
+                                <option value="toc">Table of Contents</option>
+                                <option value="section-header">Section Header</option>
+                            </optgroup>
+                            <optgroup label="Case Presentation">
+                                <option value="patient-info">Patient Information</option>
+                                <option value="hpi">History of Present Illness</option>
+                                <option value="timeline-visual">Clinical Timeline</option>
+                                <option value="pmh">Past Medical History</option>
+                                <option value="medications">Medications</option>
+                                <option value="medications-detailed">Medications (Detailed)</option>
+                                <option value="social-history">Social History</option>
+                                <option value="physical-exam">Physical Examination</option>
+                                <option value="labs">Laboratory Results</option>
+                                <option value="imaging">Imaging Studies</option>
+                                <option value="diagnostic-workup">Diagnostic Workup</option>
+                                <option value="geriatric-assessment">Geriatric Assessment</option>
+                                <option value="geriatric-syndromes">Geriatric Syndromes</option>
+                                <option value="differential">Differential Diagnosis</option>
+                                <option value="diagnosis">Final Diagnosis</option>
+                                <option value="disease-overview">Disease Overview</option>
+                                <option value="pathophysiology">Pathophysiology</option>
+                                <option value="risk-factors">Risk Factors</option>
+                                <option value="treatment">Treatment Plan</option>
+                                <option value="algorithm">Treatment Algorithm</option>
+                                <option value="drug-comparison">Drug Comparison</option>
+                                <option value="prognosis">Prognosis & Follow-up</option>
+                                <option value="goals-of-care">Goals of Care</option>
+                                <option value="case-summary">Case Summary</option>
+                            </optgroup>
+                            <optgroup label="Journal Club">
+                                <option value="jc-title">Article Title</option>
+                                <option value="jc-background">Background & Rationale</option>
+                                <option value="jc-pico">PICO Question</option>
+                                <option value="jc-methods">Study Methods</option>
+                                <option value="jc-results">Results</option>
+                                <option value="jc-statistics">Statistical Analysis</option>
+                                <option value="jc-discussion">Discussion</option>
+                                <option value="jc-limitations">Limitations</option>
+                                <option value="jc-applicability">Clinical Applicability</option>
+                                <option value="jc-conclusion">Conclusions</option>
+                                <option value="evidence-summary">Evidence Summary</option>
+                                <option value="forest-plot">Forest Plot</option>
+                            </optgroup>
+                            <optgroup label="Data & Visuals">
+                                <option value="statistics-visual">Statistics Display</option>
+                                <option value="chart-bar">Bar Chart</option>
+                                <option value="chart-pie">Pie Chart</option>
+                                <option value="image-full">Full Image</option>
+                                <option value="image-comparison">Image Comparison</option>
+                                <option value="key-points-visual">Key Points (Visual)</option>
+                            </optgroup>
+                            <optgroup label="Interactive">
+                                <option value="quiz">Quiz Question</option>
+                            </optgroup>
+                            <optgroup label="Conclusion">
+                                <option value="teaching-points">Teaching Points</option>
+                                <option value="take-home">Take-Home Messages</option>
+                                <option value="references">References</option>
+                                <option value="references-formatted">References (Formatted)</option>
+                                <option value="qr-resources">QR Code Resources</option>
+                                <option value="questions">Questions</option>
+                            </optgroup>
+                            <optgroup label="General">
+                                <option value="content">Content Slide</option>
+                                <option value="two-column">Two Column</option>
+                                <option value="comparison">Comparison</option>
+                                <option value="pros-cons">Pros & Cons</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="panel-section" id="slide-properties">
+                        <!-- Dynamic properties based on slide type -->
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Quick Insert</h4>
+                        <div class="quick-insert-grid">
+                            <button onclick="insertElement('table')" title="Table">
+                                <i class="fas fa-table"></i>
+                            </button>
+                            <button onclick="insertElement('list')" title="Bullet List">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button onclick="triggerImageUpload()" title="Upload Image">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <button onclick="insertElement('chart')" title="Chart">
+                                <i class="fas fa-chart-bar"></i>
+                            </button>
+                            <button onclick="insertElement('callout')" title="Callout Box">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                            <button onclick="insertElement('reference')" title="Reference">
+                                <i class="fas fa-quote-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Slide Actions</h4>
+                        <div class="slide-actions">
+                            <button class="btn-action" onclick="duplicateCurrentSlide()" title="Duplicate Slide">
+                                <i class="fas fa-copy"></i> Duplicate
+                            </button>
+                            <button class="btn-action" onclick="editor.deleteSlide(editor.currentSlideIndex)" title="Delete Slide">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h4>Help</h4>
+                        <button class="btn-help" onclick="showKeyboardShortcuts()">
+                            <i class="fas fa-keyboard"></i> Keyboard Shortcuts
+                        </button>
+                    </div>
+                </aside>
             </div>
-            
-            <div class="quiz-stats">
-                <div class="quiz-stat">
-                    <div class="quiz-stat-number" id="correctAnswers">0</div>
-                    <div class="quiz-stat-label">נכונות</div>
+        </div>
+
+        <!-- Presentation Mode -->
+        <div id="presentation-mode" class="page">
+            <div id="presentation-container">
+                <!-- Full screen presentation -->
+            </div>
+            <div class="presentation-controls">
+                <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+                <span id="slide-counter">1 / 1</span>
+                <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+                <button onclick="exitPresentation()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <!-- Generator Modal -->
+        <div id="generator-modal" class="modal">
+            <div class="modal-backdrop" onclick="hideGeneratorModal()"></div>
+            <div class="modal-content generator-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-magic"></i> Generate Presentation from Text</h2>
+                    <button class="modal-close" onclick="hideGeneratorModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-                <div class="quiz-stat">
-                    <div class="quiz-stat-number" id="incorrectAnswers">0</div>
-                    <div class="quiz-stat-label">שגויות</div>
+
+                <div class="modal-body">
+                    <div class="generator-layout">
+                        <div class="generator-input-section">
+                            <div class="form-group">
+                                <label for="paste-text-input">
+                                    <i class="fas fa-paste"></i> Paste Your Text
+                                </label>
+                                <textarea
+                                    id="paste-text-input"
+                                    placeholder="Paste your case notes, discharge summary, or journal article abstract here...
+
+Example for Case:
+78 year old male presents with 3 days of confusion.
+Chief complaint: altered mental status
+HPI: Patient was in usual state of health until...
+PMH: Hypertension, Type 2 Diabetes, CHF
+Medications: Metformin 1000mg BID, Lisinopril 20mg daily...
+
+Example for Journal Club:
+Title: Effects of Intensive Blood Pressure Treatment...
+Authors: SPRINT Research Group
+Background: The optimal systolic blood pressure target...
+Methods: Randomized controlled trial of 9361 participants...
+Results: Primary outcome occurred in 1.65% vs 2.19%..."
+                                    rows="15"
+                                ></textarea>
+                            </div>
+
+                            <div class="detected-type" id="detected-type-display">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Start typing to auto-detect presentation type...</span>
+                            </div>
+                        </div>
+
+                        <div class="generator-options-section">
+                            <h3><i class="fas fa-cog"></i> Options</h3>
+
+                            <div class="form-group">
+                                <label for="gen-title-input">Presentation Title</label>
+                                <input type="text" id="gen-title-input" placeholder="Auto-generated or enter custom title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gen-presenter-input">Presenter Name</label>
+                                <input type="text" id="gen-presenter-input" placeholder="Your name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gen-theme-select"><i class="fas fa-palette"></i> Theme Style</label>
+                                <select id="gen-theme-select">
+                                    <option value="szmc-blue">SZMC Blue (Default)</option>
+                                    <option value="clinical-green">Clinical Green</option>
+                                    <option value="modern-purple">Modern Purple</option>
+                                    <option value="warm-orange">Warm Orange</option>
+                                    <option value="dark-professional">Dark Professional</option>
+                                    <option value="medical-red">Medical Red</option>
+                                    <option value="minimal-gray">Minimal Gray</option>
+                                    <option value="navy-gold">Navy & Gold</option>
+                                </select>
+                            </div>
+
+                            <div class="theme-preview" id="theme-preview">
+                                <div class="preview-colors">
+                                    <div class="preview-color primary"></div>
+                                    <div class="preview-color secondary"></div>
+                                    <div class="preview-color accent"></div>
+                                </div>
+                                <span class="preview-label">Color Preview</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-sliders-h"></i> Additional Options</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-toc" checked>
+                                        <span>Include Table of Contents</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-takehome" checked>
+                                        <span>Include Take-Home Messages</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-refs" checked>
+                                        <span>Include References Slide</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="gen-include-questions" checked>
+                                        <span>Include Questions Slide</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-expand-arrows-alt"></i> Slide Density</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="compact">
+                                        <span>Compact (15-18 slides)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="standard" checked>
+                                        <span>Standard (20-25 slides)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="slide-density" value="detailed">
+                                        <span>Detailed (25-30 slides)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="quiz-stat">
-                    <div class="quiz-stat-number" id="currentStreak">0</div>
-                    <div class="quiz-stat-label">רצף</div>
-                </div>
-                <div class="quiz-stat">
-                    <div class="quiz-stat-number" id="accuracy">0%</div>
-                    <div class="quiz-stat-label">דיוק</div>
+
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="hideGeneratorModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="btn-primary" onclick="generateFromText()">
+                        <i class="fas fa-magic"></i> Generate Presentation
+                    </button>
                 </div>
             </div>
-            
-            <div id="questionContent">
-                <div class="loading">טוען שאלות...</div>
+        </div>
+
+        <!-- Theme Selector Panel (in editor) -->
+        <div id="theme-panel" class="theme-panel">
+            <div class="panel-section">
+                <h4><i class="fas fa-palette"></i> Theme</h4>
+                <select id="editor-theme-select" onchange="applyTheme(this.value)">
+                    <option value="szmc-blue">SZMC Blue</option>
+                    <option value="clinical-green">Clinical Green</option>
+                    <option value="modern-purple">Modern Purple</option>
+                    <option value="warm-orange">Warm Orange</option>
+                    <option value="dark-professional">Dark Professional</option>
+                    <option value="medical-red">Medical Red</option>
+                    <option value="minimal-gray">Minimal Gray</option>
+                    <option value="navy-gold">Navy & Gold</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Presentation Options Modal -->
+        <div id="presentation-options-modal" class="modal">
+            <div class="modal-backdrop" onclick="hidePresentationOptions()"></div>
+            <div class="modal-content presentation-options-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-play-circle"></i> Start Presentation</h2>
+                    <button class="modal-close" onclick="hidePresentationOptions()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <h3>Choose Presentation Mode</h3>
+                    <div class="presentation-mode-grid">
+                        <div class="mode-option" onclick="hidePresentationOptions(); startPresentation('standard');">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Standard</h4>
+                            <p>Full screen presentation mode</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startSpeakerView();">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h4>Speaker View</h4>
+                            <p>See notes and next slide</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startOverview();">
+                            <i class="fas fa-th"></i>
+                            <h4>Overview</h4>
+                            <p>See all slides at once</p>
+                        </div>
+                        <div class="mode-option" onclick="hidePresentationOptions(); startRehearsal();">
+                            <i class="fas fa-stopwatch"></i>
+                            <h4>Rehearsal</h4>
+                            <p>Practice with timer</p>
+                        </div>
+                    </div>
+
+                    <div class="transition-options">
+                        <label>Slide Transition</label>
+                        <select id="transition-select" onchange="setTransitionEffect(this.value)">
+                            <option value="fade">Fade</option>
+                            <option value="slide">Slide</option>
+                            <option value="zoom">Zoom</option>
+                            <option value="none">None (Instant)</option>
+                        </select>
+                    </div>
+
+                    <div class="keyboard-hints">
+                        <h4><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h4>
+                        <div class="hint-grid">
+                            <span><kbd>Space</kbd> / <kbd>→</kbd></span><span>Next slide</span>
+                            <span><kbd>←</kbd></span><span>Previous slide</span>
+                            <span><kbd>O</kbd></span><span>Overview mode</span>
+                            <span><kbd>B</kbd></span><span>Black screen</span>
+                            <span><kbd>W</kbd></span><span>White screen</span>
+                            <span><kbd>Esc</kbd></span><span>Exit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="hidePresentationOptions()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="btn-primary" onclick="hidePresentationOptions(); startPresentation('standard');">
+                        <i class="fas fa-play"></i> Start Standard Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Modal -->
+        <div id="shortcuts-modal" class="modal">
+            <div class="modal-backdrop" onclick="hideKeyboardShortcuts()"></div>
+            <div class="modal-content shortcuts-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h2>
+                    <button class="modal-close" onclick="hideKeyboardShortcuts()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-category">
+                            <h3>Navigation</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>←</kbd> / <kbd>→</kbd></span>
+                                <span class="shortcut-desc">Previous / Next slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Home</kbd> / <kbd>End</kbd></span>
+                                <span class="shortcut-desc">First / Last slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Editing</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Z</kbd></span>
+                                <span class="shortcut-desc">Undo</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd></span>
+                                <span class="shortcut-desc">Redo</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>C</kbd></span>
+                                <span class="shortcut-desc">Copy slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>V</kbd></span>
+                                <span class="shortcut-desc">Paste slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>D</kbd></span>
+                                <span class="shortcut-desc">Duplicate slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Delete</kbd></span>
+                                <span class="shortcut-desc">Delete slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>File</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>S</kbd></span>
+                                <span class="shortcut-desc">Save presentation</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Ctrl</kbd> + <kbd>N</kbd></span>
+                                <span class="shortcut-desc">Add new slide</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Presentation</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Space</kbd></span>
+                                <span class="shortcut-desc">Next slide</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>O</kbd></span>
+                                <span class="shortcut-desc">Overview mode</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>B</kbd></span>
+                                <span class="shortcut-desc">Black screen</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>W</kbd></span>
+                                <span class="shortcut-desc">White screen</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>Esc</kbd></span>
+                                <span class="shortcut-desc">Exit presentation</span>
+                            </div>
+                        </div>
+
+                        <div class="shortcut-category">
+                            <h3>Other</h3>
+                            <div class="shortcut-item">
+                                <span class="shortcut-keys"><kbd>?</kbd></span>
+                                <span class="shortcut-desc">Show this help</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shortcuts-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Tip: Drag and drop images directly onto slides to insert them!</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-primary" onclick="hideKeyboardShortcuts()">
+                        <i class="fas fa-check"></i> Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant Panel -->
+        <div id="ai-panel" class="ai-panel">
+            <div class="ai-panel-header">
+                <div class="ai-panel-title">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </div>
+                <div class="ai-panel-actions">
+                    <button class="btn-icon" onclick="runAIAnalysis()" title="Analyze Presentation">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn-icon" onclick="toggleAIPanel()" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ai-panel-body">
+                <!-- Presentation Score & Timing -->
+                <div class="ai-score-section">
+                    <div class="ai-score-display">
+                        <div class="ai-score-circle">
+                            <span class="ai-score-value" id="ai-score">--</span>
+                            <span class="ai-score-label">Score</span>
+                        </div>
+                        <div class="ai-score-bar-container">
+                            <div class="ai-score-bar-fill" id="ai-score-bar"></div>
+                        </div>
+                    </div>
+                    <div class="ai-timing" id="ai-timing">
+                        <i class="fas fa-clock"></i> Est. --:--
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <div class="ai-summary" id="ai-summary">
+                    <div class="ai-stat ai-stat-error">
+                        <i class="fas fa-times-circle"></i>
+                        <span class="stat-count" id="ai-error-count">0</span>
+                        <span class="stat-label">Errors</span>
+                    </div>
+                    <div class="ai-stat ai-stat-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span class="stat-count" id="ai-warning-count">0</span>
+                        <span class="stat-label">Warnings</span>
+                    </div>
+                    <div class="ai-stat ai-stat-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="stat-count" id="ai-info-count">0</span>
+                        <span class="stat-label">Info</span>
+                    </div>
+                    <div class="ai-stat ai-stat-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span class="stat-count" id="ai-tip-count">0</span>
+                        <span class="stat-label">Tips</span>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="ai-filter-tabs">
+                    <button class="ai-filter-tab active" data-filter="all" onclick="filterAIResults('all')">
+                        All
+                    </button>
+                    <button class="ai-filter-tab" data-filter="issues" onclick="filterAIResults('issues')">
+                        Issues
+                    </button>
+                    <button class="ai-filter-tab" data-filter="suggestions" onclick="filterAIResults('suggestions')">
+                        Suggestions
+                    </button>
+                </div>
+
+                <!-- Results List -->
+                <div class="ai-results" id="ai-results">
+                    <div class="ai-placeholder">
+                        <i class="fas fa-magic"></i>
+                        <p>Click the refresh button to analyze your presentation</p>
+                        <button class="btn-primary btn-sm" onclick="runAIAnalysis()">
+                            <i class="fas fa-play"></i> Analyze Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-panel-footer">
+                <label class="ai-auto-analyze">
+                    <input type="checkbox" id="ai-auto-analyze" onchange="toggleAutoAnalyze()">
+                    <span>Auto-analyze on changes</span>
+                </label>
             </div>
         </div>
     </div>
 
-    <!-- Notification -->
-    <div id="notification" class="notification">
-        <span id="notificationText"></span>
-    </div>
-
+    <script src="js/i18n.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/templates-extended.js"></script>
+    <script src="js/templates-extra.js"></script>
+    <script src="js/citations.js"></script>
+    <script src="js/resources.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/presentation.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/advanced-export.js"></script>
+    <script src="js/ai-i18n.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mobile.js"></script>
     <script>
-        // ====================================
-        // COMPREHENSIVE QUESTION BANK
-        // ====================================
-        
-        const questionBanks = {
-            frailty: [
-                {
-                    question: "מהו הקריטריון העיקרי לאבחון תסמונת השבריות (Frailty Syndrome) לפי קריטריוני Fried?",
-                    options: [
-                        "ירידה במסה שרירית בלבד",
-                        "נוכחות של 3 או יותר מהקריטריונים: ירידה במשקל, אחיזה חלשה, עייפות, איטיות בהליכה, פעילות פיזית נמוכה",
-                        "גיל מעל 80 ופולימורבידיות",
-                        "ירידה בתפקוד קוגניטיבי ופיזי בלבד"
-                    ],
-                    correct: 1,
-                    explanation: "תסמונת השבריות מאובחנת לפי 5 קריטריונים של Fried: ירידה במשקל לא מכוונת, אחיזה חלשה, תחושת עייפות, איטיות בהליכה ופעילות פיזית נמוכה. נוכחות של 3 או יותר מציינת שבריות."
-                },
-                {
-                    question: "איזו התערבות הוכחה כיעילה ביותר במניעת הידרדרות אצל מבוגרים שבירים?",
-                    options: [
-                        "תוספי חלבון בלבד",
-                        "אימון כוח משולב עם תזונה מותאמת",
-                        "תרופות אנטי-דלקתיות",
-                        "מנוחה מוחלטת"
-                    ],
-                    correct: 1,
-                    explanation: "מחקרים מראים כי שילוב של אימון התנגדות (כוח) עם תזונה עשירה בחלבון היא ההתערבות היעילה ביותר לשיפור מצב השבריות ומניעת הידרדרות."
-                },
-                {
-                    question: "מהו הערך הפרוגנוסטי העיקרי של הערכת שבריות במבוגרים?",
-                    options: [
-                        "חיזוי תמותה בלבד",
-                        "חיזוי נפילות, אשפוזים, תלות תפקודית ותמותה",
-                        "אבחון דמנציה",
-                        "הערכת סיכון קרדיווסקולרי"
-                    ],
-                    correct: 1,
-                    explanation: "הערכת שבריות מנבאת מגוון תוצאות שליליות כולל: סיכון גבוה לנפילות, אשפוזים חוזרים, התפתחות תלות תפקודית, וכן עלייה בתמותה."
-                }
-            ],
-            
-            delirium: [
-                {
-                    question: "מהם הקריטריונים העיקריים לאבחון דליריום לפי DSM-5?",
-                    options: [
-                        "בלבול וחוסר התמצאות בלבד",
-                        "הפרעה בקשב, התפתחות מהירה, תנודתיות במהלך היום, הפרעה קוגניטיבית נוספת",
-                        "הזיות וגלובליות בלבד",
-                        "ירידה בתפקוד יומיומי"
-                    ],
-                    correct: 1,
-                    explanation: "DSM-5 מגדיר דליריום כ: A) הפרעה בקשב וערנות B) התפתחות מהירה (שעות-ימים) ותנודתיות C) הפרעה קוגניטיבית נוספת (זיכרון, התמצאות, שפה) D) לא מוסבר על ידי הפרעה קוגניטיבית קיימת."
-                },
-                {
-                    question: "מהו הגורם השכיח ביותר לדליריום בקרב מבוגרים מאושפזים?",
-                    options: [
-                        "זיהומים (במיוחד UTI ודלקת ריאות)",
-                        "שבץ מוחי",
-                        "דיכאון",
-                        "כאב כרוני"
-                    ],
-                    correct: 0,
-                    explanation: "זיהומים הם הגורם השכיח ביותר לדליריום בקרב מבוגרים, במיוחד זיהומי דרכי השתן (UTI) ודלקת ריאות. חשוב לחפש זיהום בכל מטופל מבוגר המציג דליריום."
-                },
-                {
-                    question: "מהי ההתערבות הלא-תרופתית היעילה ביותר למניעת דליריום?",
-                    options: [
-                        "הגבלת ביקורים",
-                        "פרוטוקול HELP (Hospital Elder Life Program)",
-                        "הרגעה תרופתית מונעת",
-                        "בידוד החולה"
-                    ],
-                    correct: 1,
-                    explanation: "פרוטוקול HELP כולל: התמצאות חוזרת, שינה טובה, ניידות מוקדמת, ראייה ושמיעה תקינות, הידרציה טובה ומניעת תרופות מזיקות. זה מפחית דליריום ב-40%."
-                }
-            ],
-            
-            dementia: [
-                {
-                    question: "מהו ההבדל העיקרי בין דליריום לדמנציה בהתפתחות הסימפטומים?",
-                    options: [
-                        "דליריום מתפתח בהדרגה, דמנציה מתפתחת במהירות",
-                        "דליריום מתפתח במהירות (שעות-ימים), דמנציה מתפתחת בהדרגה (חודשים-שנים)",
-                        "שניהם מתפתחים באותו קצב",
-                        "אין הבדל בקצב ההתפתחות"
-                    ],
-                    correct: 1,
-                    explanation: "דליריום מאופיין בהתפתחות מהירה (שעות עד ימים) ותנודתיות במהלך היום, בעוד דמנציה מתפתחת בהדרגה לאורך חודשים או שנים עם ירידה קוגניטיבית מתמדת."
-                },
-                {
-                    question: "איזה כלי סקר מומלץ לבדיקה ראשונית של תפקוד קוגניטיבי?",
-                    options: [
-                        "MMSE (Mini-Mental State Examination)",
-                        "MoCA (Montreal Cognitive Assessment)",
-                        "Clock Drawing Test",
-                        "כל האמור לעיל"
-                    ],
-                    correct: 3,
-                    explanation: "כל הכלים מועילים: MMSE לבדיקה כללית, MoCA רגיש יותר לליקוי קוגניטיבי קל, ובדיקת ציור שעון פשוטה וזמינה. השילוב נותן תמונה מקיפה יותר."
-                }
-            ],
-            
-            falls: [
-                {
-                    question: "מהם גורמי הסיכון העיקריים לנפילות במבוגרים?",
-                    options: [
-                        "חולשת שרירים, הפרעות שיווי משקל, תרופות, מכשולים בסביבה",
-                        "גיל מתקדם בלבד",
-                        "מחלות כרוניות בלבד",
-                        "ירידה בראייה בלבד"
-                    ],
-                    correct: 0,
-                    explanation: "נפילות הן תוצאה של גורמים רב-מערכתיים: חולשה, הפרעות איזון, תרופות (במיוחד פסיכוטרופיות), מכשולים סביבתיים, בעיות ראייה, היפוטנזיה ארתוסטטית ועוד."
-                },
-                {
-                    question: "איזו הערכה מומלצת למבוגר שנפל פעמיים או יותר בשנה האחרונה?",
-                    options: [
-                        "בדיקת דם בלבד",
-                        "הערכה מקיפה רב-מערכתית לגורמי נפילות",
-                        "צילום רנטגן",
-                        "מנוחה במיטה"
-                    ],
-                    correct: 1,
-                    explanation: "מטופל עם 2+ נפילות זקוק להערכה מקיפה: היסטוריה מפורטת, בדיקה פיזיקלית, בדיקת תרופות, הערכת שיווי משקל וכוח, בדיקת ראייה, הערכת הסביבה הביתית."
-                }
-            ],
-            
-            medications: [
-                {
-                    question: "מהן תרופות ה-BEERS criteria הנפוצות שיש להימנע מהן אצל מבוגרים?",
-                    options: [
-                        "אנטיביוטיקה",
-                        "בנזודיאזפינים, אנטיכולינרגיים, NSAIDs, אנטיהיסטמינים מסוג ראשון",
-                        "תרופות לחץ דם בלבד",
-                        "ויטמינים"
-                    ],
-                    correct: 1,
-                    explanation: "Beers Criteria מזהים תרופות בעלות סיכון גבוה למבוגרים: בנזודיאזפינים (דליריום, נפילות), אנטיכולינרגיים (בלבול), NSAIDs (כליות), אנטיהיסטמינים ישנים (הרגעה)."
-                }
-            ],
-            
-            depression: [
-                {
-                    question: "מהם הסימפטומים העיקריים של דיכאון אצל מבוגרים?",
-                    options: [
-                        "עצב בלבד",
-                        "מצב רוח דכדוך, אנהדוניה, הפרעות שינה, אובדן אנרגיה, הפרעות קוגניטיביות",
-                        "תלונות פיזיות בלבד",
-                        "בידוד חברתי בלבד"
-                    ],
-                    correct: 1,
-                    explanation: "דיכאון גריאטרי כולל: מצב רוח דכדוך, אובדן עניין (אנהדוניה), הפרעות שינה ותיאבון, אובדן אנרגיה, קושי בריכוז, תחושות אשמה, הפרעות קוגניטיביות (פסאודו-דמנציה)."
-                }
-            ]
-        };
-
-        // ====================================
-        // TOPIC CONFIGURATION
-        // ====================================
-        
-        const topicsConfig = [
-            {
-                id: 'frailty',
-                title: 'שבריות (Frailty)',
-                questionCount: '15 שאלות',
-                description: 'תכניות למידה אינטראקטיבית להיכרות עם נושא שבריות - קריטריוני Fried, התערבויות מבוססות ראיות ופרוגנוזה',
-                features: ['קריטריוני Fried', 'התערבויות', 'פרוגנוזה', 'מקרי מבחן'],
-                h5pFile: 'שבריות.h5p',
-                color: '--gradient-success'
-            },
-            {
-                id: 'delirium',
-                title: 'דליריום',
-                questionCount: '18 שאלות', 
-                description: 'תכניות למידה אינטראקטיבית בתחום דליריום - אבחון, מניעה וטיפול בדליריום בקרב מבוגרים',
-                features: ['DSM-5 קריטריונים', 'CAM Scale', 'מניעה', 'טיפול'],
-                h5pFile: 'דליריום.h5p',
-                color: '--gradient-warning'
-            },
-            {
-                id: 'dementia',
-                title: 'דמנציה ואלצהיימר',
-                questionCount: '22 שאלות',
-                description: 'מערכת למידה מקיפה בתחום הדמנציות - אבחון מבדל, כלי הערכה קוגניטיביים וגישות טיפוליות',
-                features: ['אבחון מבדל', 'MMSE/MoCA', 'טיפול תרופתי', 'תמיכה משפחתית'],
-                h5pFile: 'דמנציה_ואלצהיימר.h5p',
-                color: '--gradient-primary'
-            },
-            {
-                id: 'falls',
-                title: 'נפילות ומניעתן',
-                questionCount: '16 שאלות',
-                description: 'מערכת מקיפה למניעת נפילות - הערכת סיכון, גורמי נפילות והתערבויות מבוססות ראיות',
-                features: ['הערכת סיכון', 'בדיקת איזון', 'שינוי סביבה', 'אימון כוח'],
-                h5pFile: 'נפילות.h5p',
-                color: '--gradient-warning'
-            },
-            {
-                id: 'medications',
-                title: 'תרופות במבוגרים',
-                questionCount: '20 שאלות',
-                description: 'פרמקולוגיה גריאטרית - Beers Criteria, אינטראקציות תרופתיות והתאמות מינון',
-                features: ['Beers Criteria', 'אינטראקציות', 'התאמת מינון', 'Deprescribing'],
-                h5pFile: 'תרופות_מבוגרים.h5p',
-                color: '--gradient-success'
-            },
-            {
-                id: 'depression',
-                title: 'דיכאון גריאטרי',
-                questionCount: '14 שאלות',
-                description: 'זיהוי וטיפול בדיכאון אצל מבוגרים - כלי סקר, אבחון מבדל וגישות טיפוליות',
-                features: ['GDS Scale', 'אבחון מבדל', 'טיפול תרופתי', 'פסיכותרפיה'],
-                h5pFile: 'דיכאון_גריאטרי.h5p',
-                color: '--gradient-primary'
+        // Language switching function
+        function switchLanguage(lang) {
+            if (window.i18n) {
+                i18n.setLanguage(lang);
+                updateLanguageButtons(lang);
             }
-        ];
+        }
 
-        // ====================================
-        // GLOBAL STATE MANAGEMENT
-        // ====================================
-        
-        let currentQuiz = {
-            topicId: '',
-            questions: [],
-            currentQuestionIndex: 0,
-            score: 0,
-            correctAnswers: 0,
-            incorrectAnswers: 0,
-            currentStreak: 0,
-            maxStreak: 0,
-            startTime: null,
-            timeLimit: 600, // 10 minutes default
-            timerInterval: null,
-            userAnswers: []
-        };
+        function updateLanguageButtons(lang) {
+            const enBtn = document.getElementById('lang-en');
+            const heBtn = document.getElementById('lang-he');
+            if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+            if (heBtn) heBtn.classList.toggle('active', lang === 'he');
+        }
 
-        // ====================================
-        // INITIALIZATION
-        // ====================================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎓 Geriatrics Platform Initialized');
-            renderTopics();
-            updateStats();
-            initializeEventListeners();
-            
-            // Test H5P integration
-            if (typeof H5P !== 'undefined') {
-                console.log('✅ H5P Framework Ready');
-                showNotification('מערכת H5P מוכנה לשימוש', 'success');
-            } else {
-                console.warn('⚠️ H5P Framework not detected');
-                showNotification('מערכת H5P לא זמינה - נעבור למצב חלופי', 'warning');
+        // Dropdown functions
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id).parentElement;
+            const wasOpen = dropdown.classList.contains('open');
+            closeDropdowns();
+            if (!wasOpen) dropdown.classList.add('open');
+        }
+
+        function closeDropdowns() {
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+        }
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) closeDropdowns();
+        });
+
+        // Collaboration helpers
+        function startCollaboration() {
+            const roomId = CollaborativeEditing.createRoom(getPresentationData());
+            const url = CollaborativeEditing.getShareUrl();
+            navigator.clipboard.writeText(url);
+            showToast('Collaboration started! Link copied to clipboard.', 'success');
+        }
+
+        function joinCollaboration() {
+            const roomId = prompt('Enter room ID or paste invite link:');
+            if (roomId) {
+                const id = roomId.includes('room=') ? roomId.split('room=')[1] : roomId;
+                const name = prompt('Enter your name:');
+                CollaborativeEditing.joinRoom(id, name || 'Guest');
+            }
+        }
+
+        // Initialize language buttons on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.i18n) {
+                updateLanguageButtons(i18n.getLanguage());
             }
         });
 
-        // ====================================
-        // TOPIC RENDERING
-        // ====================================
-        
-        function renderTopics() {
-            const topicsGrid = document.getElementById('topicsGrid');
-            topicsGrid.innerHTML = '';
-            
-            topicsConfig.forEach(topic => {
-                const topicCard = document.createElement('div');
-                topicCard.className = 'topic-card';
-                
-                // Create elements separately to avoid HTML parsing issues
-                const header = document.createElement('div');
-                header.className = 'topic-header';
-                header.innerHTML = `
-                    <div class="topic-title">${topic.title}</div>
-                    <div class="question-count">${topic.questionCount}</div>
-                `;
-                
-                const description = document.createElement('div');
-                description.className = 'topic-description';
-                description.textContent = topic.description;
-                
-                const features = document.createElement('div');
-                features.className = 'topic-features';
-                topic.features.forEach(feature => {
-                    const tag = document.createElement('span');
-                    tag.className = 'feature-tag';
-                    tag.textContent = feature;
-                    features.appendChild(tag);
-                });
-                
-                const buttons = document.createElement('div');
-                buttons.className = 'action-buttons';
-                
-                // Create practice button
-                const practiceBtn = document.createElement('button');
-                practiceBtn.className = 'btn btn-start';
-                practiceBtn.innerHTML = '<span>📚</span> תרגול';
-                practiceBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    startTopicQuiz(topic.id, 'practice');
-                });
-                
-                // Create exam button  
-                const examBtn = document.createElement('button');
-                examBtn.className = 'btn btn-practice';
-                examBtn.innerHTML = '<span>⏱️</span> מבחן';
-                examBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    startTopicQuiz(topic.id, 'exam');
-                });
-                
-                buttons.appendChild(practiceBtn);
-                buttons.appendChild(examBtn);
-                
-                topicCard.appendChild(header);
-                topicCard.appendChild(description);
-                topicCard.appendChild(features);
-                topicCard.appendChild(buttons);
-                
-                topicsGrid.appendChild(topicCard);
-            });
-        }
+        // Listen for language changes
+        window.addEventListener('languageChanged', (e) => {
+            updateLanguageButtons(e.detail.lang);
+        });
 
-        // ====================================
-        // QUIZ SYSTEM
-        // ====================================
-        
-        // ====================================
-        // QUIZ SYSTEM FIX - PREVENT DOWNLOADS
-        // ====================================
-        
-        function startTopicQuiz(topicId, mode) {
-            console.log('Starting quiz:', topicId, mode);
-            
-            // Prevent any default link behavior
-            event.preventDefault();
-            event.stopPropagation();
-            
-            const topic = topicsConfig.find(t => t.id === topicId);
-            if (!topic) {
-                showNotification('נושא לא נמצא', 'error');
-                return false;
-            }
-
-            const questions = questionBanks[topicId] || [];
-            if (questions.length === 0) {
-                showNotification('אין שאלות זמינות לנושא זה', 'warning');
-                return false;
-            }
-
-            // Initialize quiz state
-            currentQuiz = {
-                topicId: topicId,
-                questions: shuffleArray([...questions]),
-                currentQuestionIndex: 0,
-                score: 0,
-                correctAnswers: 0,
-                incorrectAnswers: 0,
-                currentStreak: 0,
-                maxStreak: 0,
-                startTime: new Date(),
-                timeLimit: mode === 'exam' ? 600 : null, // 10 minutes for exam
-                timerInterval: null,
-                userAnswers: [],
-                mode: mode
-            };
-
-            // Show quiz container
-            const container = document.getElementById('quizContainer');
-            container.classList.add('active');
-            container.scrollIntoView({ behavior: 'smooth' });
-
-            // Update quiz title
-            document.getElementById('quizTitle').textContent = `${topic.title} - ${mode === 'exam' ? 'מבחן' : 'תרגול'}`;
-
-            // Start timer if exam mode
-            if (mode === 'exam') {
-                startTimer();
-                document.getElementById('timer').style.display = 'flex';
-            } else {
-                document.getElementById('timer').style.display = 'none';
-            }
-
-            // Load first question
-            loadQuestion();
-            
-            showNotification(`התחיל ${mode === 'exam' ? 'מבחן' : 'תרגול'} בנושא ${topic.title}`, 'success');
-            return false;
-        }
-
-        function loadQuestion() {
-            const question = currentQuiz.questions[currentQuiz.currentQuestionIndex];
-            if (!question) {
-                finishQuiz();
-                return;
-            }
-
-            updateQuizProgress();
-            renderQuestion(question);
-        }
-
-        function renderQuestion(question) {
-            const container = document.getElementById('questionContent');
-            const questionNum = currentQuiz.currentQuestionIndex + 1;
-            
-            container.innerHTML = `
-                <div class="question-container">
-                    <div class="question-number">שאלה ${questionNum}</div>
-                    <div class="question-text">${question.question}</div>
-                    <div class="answers-grid">
-                        ${question.options.map((option, index) => `
-                            <div class="answer-option" onclick="selectAnswer(${index})" data-index="${index}">
-                                <div class="answer-letter">${String.fromCharCode(65 + index)}</div>
-                                <div class="answer-text">${option}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                <div class="quiz-controls">
-                    <button class="quiz-btn" onclick="previousQuestion()" ${currentQuiz.currentQuestionIndex === 0 ? 'disabled' : ''}>
-                        שאלה קודמת
-                    </button>
-                    <button class="quiz-btn" onclick="nextQuestion()" id="nextBtn" disabled>
-                        שאלה הבאה
-                    </button>
-                </div>
-            `;
-        }
-
-        function selectAnswer(answerIndex) {
-            // Clear previous selections
-            document.querySelectorAll('.answer-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Select current answer
-            const selectedOption = document.querySelector(`[data-index="${answerIndex}"]`);
-            selectedOption.classList.add('selected');
-            
-            // Store answer
-            currentQuiz.userAnswers[currentQuiz.currentQuestionIndex] = answerIndex;
-            
-            // Enable next button
-            document.getElementById('nextBtn').disabled = false;
-            
-            // In practice mode, show immediate feedback
-            if (currentQuiz.mode === 'practice') {
-                showAnswerFeedback(answerIndex);
-            }
-        }
-
-        function showAnswerFeedback(selectedIndex) {
-            const question = currentQuiz.questions[currentQuiz.currentQuestionIndex];
-            const isCorrect = selectedIndex === question.correct;
-            
-            // Update answer styling
-            document.querySelectorAll('.answer-option').forEach((option, index) => {
-                if (index === question.correct) {
-                    option.classList.add('correct');
-                } else if (index === selectedIndex && !isCorrect) {
-                    option.classList.add('incorrect');
-                }
-                option.style.pointerEvents = 'none'; // Disable further clicking
-            });
-
-            // Update stats
-            if (isCorrect) {
-                currentQuiz.correctAnswers++;
-                currentQuiz.currentStreak++;
-                currentQuiz.maxStreak = Math.max(currentQuiz.maxStreak, currentQuiz.currentStreak);
-            } else {
-                currentQuiz.incorrectAnswers++;
-                currentQuiz.currentStreak = 0;
-            }
-
-            updateQuizStats();
-
-            // Show explanation
-            if (question.explanation) {
-                const container = document.getElementById('questionContent');
-                const explanationDiv = document.createElement('div');
-                explanationDiv.className = 'explanation';
-                explanationDiv.innerHTML = `
-                    <div class="explanation-title">הסבר:</div>
-                    <div class="explanation-text">${question.explanation}</div>
-                `;
-                container.appendChild(explanationDiv);
-            }
-        }
-
-        function nextQuestion() {
-            const selectedAnswer = currentQuiz.userAnswers[currentQuiz.currentQuestionIndex];
-            if (selectedAnswer === undefined) {
-                showNotification('יש לבחור תשובה', 'warning');
-                return;
-            }
-
-            // In exam mode, process answer without immediate feedback
-            if (currentQuiz.mode === 'exam') {
-                const question = currentQuiz.questions[currentQuiz.currentQuestionIndex];
-                const isCorrect = selectedAnswer === question.correct;
-                
-                if (isCorrect) {
-                    currentQuiz.correctAnswers++;
-                    currentQuiz.currentStreak++;
-                    currentQuiz.maxStreak = Math.max(currentQuiz.maxStreak, currentQuiz.currentStreak);
-                } else {
-                    currentQuiz.incorrectAnswers++;
-                    currentQuiz.currentStreak = 0;
-                }
-                updateQuizStats();
-            }
-
-            currentQuiz.currentQuestionIndex++;
-            
-            if (currentQuiz.currentQuestionIndex >= currentQuiz.questions.length) {
-                finishQuiz();
-            } else {
-                loadQuestion();
-            }
-        }
-
-        function previousQuestion() {
-            if (currentQuiz.currentQuestionIndex > 0) {
-                currentQuiz.currentQuestionIndex--;
-                loadQuestion();
-            }
-        }
-
-        function updateQuizProgress() {
-            const progress = ((currentQuiz.currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
-            document.getElementById('progressFill').style.width = `${progress}%`;
-            document.getElementById('questionCounter').textContent = 
-                `${currentQuiz.currentQuestionIndex + 1}/${currentQuiz.questions.length}`;
-        }
-
-        function updateQuizStats() {
-            document.getElementById('correctAnswers').textContent = currentQuiz.correctAnswers;
-            document.getElementById('incorrectAnswers').textContent = currentQuiz.incorrectAnswers;
-            document.getElementById('currentStreak').textContent = currentQuiz.currentStreak;
-            
-            const total = currentQuiz.correctAnswers + currentQuiz.incorrectAnswers;
-            const accuracy = total > 0 ? Math.round((currentQuiz.correctAnswers / total) * 100) : 0;
-            document.getElementById('accuracy').textContent = `${accuracy}%`;
-        }
-
-        function startTimer() {
-            const timerDisplay = document.getElementById('timeDisplay');
-            const timer = document.getElementById('timer');
-            let timeLeft = currentQuiz.timeLimit;
-
-            currentQuiz.timerInterval = setInterval(() => {
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
-                timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-                if (timeLeft <= 60) {
-                    timer.classList.add('danger');
-                } else if (timeLeft <= 300) {
-                    timer.classList.add('warning');
-                }
-
-                if (timeLeft <= 0) {
-                    clearInterval(currentQuiz.timerInterval);
-                    showNotification('הזמן נגמר!', 'error');
-                    finishQuiz();
-                }
-
-                timeLeft--;
-            }, 1000);
-        }
-
-        function finishQuiz() {
-            clearInterval(currentQuiz.timerInterval);
-            
-            const total = currentQuiz.questions.length;
-            const score = Math.round((currentQuiz.correctAnswers / total) * 100);
-            
-            showQuizResults(score);
-            updateUserStats();
-        }
-
-        function showQuizResults(score) {
-            const container = document.getElementById('questionContent');
-            const endTime = new Date();
-            const duration = Math.round((endTime - currentQuiz.startTime) / 1000);
-            const minutes = Math.floor(duration / 60);
-            const seconds = duration % 60;
-
-            let scoreClass = '';
-            let message = '';
-            
-            if (score >= 90) {
-                scoreClass = 'excellent';
-                message = '🏆 מצוין! הישגים מרשימים!';
-            } else if (score >= 70) {
-                scoreClass = 'good';
-                message = '👍 טוב מאוד! המשך כך!';
-            } else {
-                scoreClass = 'needs-improvement';
-                message = '📚 יש מקום לשיפור - המשך ללמוד!';
-            }
-
-            container.innerHTML = `
-                <div class="results-container">
-                    <div class="results-score ${scoreClass}">${score}%</div>
-                    <div class="results-message">${message}</div>
-                    
-                    <div class="results-stats">
-                        <div class="quiz-stat">
-                            <div class="quiz-stat-number">${currentQuiz.correctAnswers}</div>
-                            <div class="quiz-stat-label">תשובות נכונות</div>
-                        </div>
-                        <div class="quiz-stat">
-                            <div class="quiz-stat-number">${currentQuiz.incorrectAnswers}</div>
-                            <div class="quiz-stat-label">תשובות שגויות</div>
-                        </div>
-                        <div class="quiz-stat">
-                            <div class="quiz-stat-number">${currentQuiz.maxStreak}</div>
-                            <div class="quiz-stat-label">רצף הצלחות</div>
-                        </div>
-                        <div class="quiz-stat">
-                            <div class="quiz-stat-number">${minutes}:${seconds.toString().padStart(2, '0')}</div>
-                            <div class="quiz-stat-label">משך זמן</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <button class="quiz-btn" onclick="restartQuiz()" style="margin-left: 10px;">
-                            🔄 מבחן חדש
-                        </button>
-                        <button class="quiz-btn" onclick="closeQuiz()">
-                            📊 חזרה לדף הרئיסי
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            showNotification(`מבחן הסתיים! ציון: ${score}%`, score >= 70 ? 'success' : 'warning');
-        }
-
-        function restartQuiz() {
-            const topicId = currentQuiz.topicId;
-            const mode = currentQuiz.mode;
-            closeQuiz();
-            setTimeout(() => startTopicQuiz(topicId, mode), 300);
-        }
-
-        function closeQuiz() {
-            clearInterval(currentQuiz.timerInterval);
-            document.getElementById('quizContainer').classList.remove('active');
-            
-            // Reset quiz state
-            currentQuiz = {
-                topicId: '',
-                questions: [],
-                currentQuestionIndex: 0,
-                score: 0,
-                correctAnswers: 0,
-                incorrectAnswers: 0,
-                currentStreak: 0,
-                maxStreak: 0,
-                startTime: null,
-                timeLimit: null,
-                timerInterval: null,
-                userAnswers: []
-            };
-        }
-
-        // ====================================
-        // STUDY MODES
-        // ====================================
-        
-        function startMode(mode) {
-            switch(mode) {
-                case 'application':
-                    showNotification('🎓 מצב אפליקציה - בחר נושא ספציפי מהרשימה למטה', 'info');
-                    document.querySelector('.topics-grid').scrollIntoView({ behavior: 'smooth' });
-                    break;
-                    
-                case 'timed':
-                    showModeSelector('timed', 'מבחן חזרה מתקדם', 'בחר נושא למבחן מהיר עם משוב מיידי');
-                    break;
-                    
-                case 'exam':
-                    showModeSelector('exam', 'מבחן עם זמן', 'בחר נושא למבחן עם הגבלת זמן וניקוד');
-                    break;
-                    
-                case 'adaptive':
-                    showNotification('🧠 מצב למידה אדפטיבי - בפיתוח', 'info');
-                    break;
-            }
-        }
-
-        function showModeSelector(mode, title, description) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.8); display: flex; align-items: center;
-                justify-content: center; z-index: 1000; direction: rtl;
-                padding: 15px; box-sizing: border-box;
-            `;
-
-            modal.innerHTML = `
-                <div style="background: white; padding: 20px; border-radius: 15px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;">
-                    <h3 style="color: var(--primary-blue); margin-bottom: 12px; font-size: 1.2rem;">${title}</h3>
-                    <p style="color: #666; margin-bottom: 20px; font-size: 0.95rem;">${description}</p>
-                    <div style="display: grid; gap: 10px;">
-                        ${topicsConfig.map(topic => `
-                            <button onclick="startQuizFromModal('${topic.id}', '${mode}', this.parentElement.parentElement.parentElement)"
-                                    style="padding: 14px 12px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 10px; cursor: pointer; text-align: right; font-size: 0.95rem; min-height: 48px;">
-                                <strong>${topic.title}</strong> - ${topic.questionCount}
-                            </button>
-                        `).join('')}
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()"
-                            style="margin-top: 20px; padding: 14px 24px; background: #6c757d; color: white; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1rem; min-height: 48px;">
-                        סגור
-                    </button>
-                </div>
-            `;
-
-            document.body.appendChild(modal);
-
-            // Close on background click
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.remove();
-                }
-            });
-        }
-
-        function startQuizFromModal(topicId, mode, modal) {
-            modal.remove();
-            startTopicQuiz(topicId, mode);
-        }
-
-        // ====================================
-        // STATISTICS & PERSISTENCE
-        // ====================================
-        
-        function updateStats() {
-            // Simulate dynamic stats
-            const stats = getStoredStats();
-            
-            document.getElementById('totalActivities').textContent = stats.activities;
-            document.getElementById('totalQuestions').textContent = stats.questions;
-            document.getElementById('activeUsers').textContent = stats.users;
-            document.getElementById('completionRate').textContent = stats.completion + '%';
-        }
-
-        function getStoredStats() {
-            const stored = localStorage.getItem('geriatrics-stats');
-            if (stored) {
-                return JSON.parse(stored);
-            }
-            
-            return {
-                activities: 25,
-                questions: 387,
-                users: 28,
-                completion: 94,
-                totalQuizzes: 0,
-                totalScore: 0,
-                bestStreak: 0
-            };
-        }
-
-        function updateUserStats() {
-            const stats = getStoredStats();
-            stats.totalQuizzes++;
-            stats.totalScore += currentQuiz.correctAnswers;
-            stats.bestStreak = Math.max(stats.bestStreak, currentQuiz.maxStreak);
-            
-            localStorage.setItem('geriatrics-stats', JSON.stringify(stats));
-            updateStats();
-        }
-
-        // ====================================
-        // UTILITY FUNCTIONS
-        // ====================================
-        
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function showNotification(message, type = 'info') {
-            const notification = document.getElementById('notification');
-            const text = document.getElementById('notificationText');
-            
-            text.textContent = message;
-            notification.className = `notification show ${type}`;
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
-        }
-
-        function initializeEventListeners() {
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (document.getElementById('quizContainer').classList.contains('active')) {
-                    const key = e.key.toUpperCase();
-                    const index = ['A', 'B', 'C', 'D'].indexOf(key);
-                    
-                    if (index !== -1) {
-                        selectAnswer(index);
-                    } else if (key === 'ENTER') {
-                        e.preventDefault();
-                        const nextBtn = document.getElementById('nextBtn');
-                        if (nextBtn && !nextBtn.disabled) {
-                            nextQuestion();
-                        }
-                    }
-                }
-            });
-
-            // Touch gestures for mobile
-            let startX = null;
-            document.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-            
-            document.addEventListener('touchend', (e) => {
-                if (!startX) return;
-                
-                const endX = e.changedTouches[0].clientX;
-                const diffX = startX - endX;
-                
-                if (Math.abs(diffX) > 100) { // Minimum swipe distance
-                    if (diffX > 0) {
-                        // Swipe left - next question
-                        const nextBtn = document.getElementById('nextBtn');
-                        if (nextBtn && !nextBtn.disabled) {
-                            nextQuestion();
-                        }
-                    } else {
-                        // Swipe right - previous question  
-                        if (currentQuiz.currentQuestionIndex > 0) {
-                            previousQuestion();
-                        }
-                    }
-                }
-                
-                startX = null;
-            });
-        }
-
-        // ====================================
-        // PWA FEATURES
-        // ====================================
-        
-        // Service Worker registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
-
-        // Install PWA prompt
+        // PWA Install Prompt
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            
-            // Show install button
-            const installBtn = document.createElement('button');
-            installBtn.textContent = '📱 התקן אפליקציה';
-            installBtn.className = 'quiz-btn';
-            installBtn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000;';
-            installBtn.onclick = () => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        showNotification('האפליקציה הותקנה בהצלחה!', 'success');
-                    }
-                    deferredPrompt = null;
-                    installBtn.remove();
-                });
-            };
-            
-            document.body.appendChild(installBtn);
-            setTimeout(() => installBtn.remove(), 10000); // Auto-hide after 10 seconds
+            showInstallButton();
         });
 
-        console.log('🎓 מערכת גריאטריה מתקדמת - מוכנה לשימוש');
-        console.log('📊 סה"כ שאלות במערכת:', Object.values(questionBanks).reduce((sum, bank) => sum + bank.length, 0));
-        console.log('🏥 בהצלחה בהכשרה בשערי צדק!');
+        function showInstallButton() {
+            const btn = document.createElement('button');
+            btn.id = 'install-btn';
+            btn.className = 'install-prompt';
+            btn.innerHTML = '<i class="fas fa-download"></i> Install App';
+            btn.onclick = installApp;
+            document.body.appendChild(btn);
+        }
+
+        async function installApp() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                document.getElementById('install-btn')?.remove();
+            }
+            deferredPrompt = null;
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registered:', reg.scope))
+                    .catch(err => console.error('SW registration failed:', err));
+            });
+        }
     </script>
+
+    <style>
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: slideUp 0.3s ease;
+        }
+        .install-prompt:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    </style>
 </body>
 </html>
