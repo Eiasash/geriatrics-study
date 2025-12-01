@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 18:24*
+*Generated: 2025-12-01 18:25*
 
 
 ## Delirium (דליריום)
@@ -118,11 +118,6 @@
 
 ## End Of Life (טיפול סוף-חיים)
 
-### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
-- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
-- **Journal**: Expert review of endocrinology & metabolism (2025)
-- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
-
 ### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
 - **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
 - **Journal**: Journal of pain and symptom management (2025)
@@ -132,6 +127,11 @@
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
+
+### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
+- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
+- **Journal**: International journal of nursing studies (2025)
+- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
