@@ -75,7 +75,7 @@
         width: 100% !important;
         min-height: 44px;
         padding: 0.5rem;
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px; /* Prevents automatic zoom on iOS when input is focused (iOS zooms when font-size < 16px) */
     }
     
     /* Buttons */
