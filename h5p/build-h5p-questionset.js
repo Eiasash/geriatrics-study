@@ -15,61 +15,66 @@ function renderQuestionSet(title, mcqs) {
       question: m.q,
       answers: m.options.map((opt) => ({
         text: opt,
-        correct: opt === m.correct
+        correct: opt === m.correct,
       })),
       behaviour: {
         randomAnswers: true,
         singleAnswer: true,
         showSolutionButton: true,
-        enableRetry: true
-      }
-    }
+        enableRetry: true,
+      },
+    },
   }));
 
   return {
-    'content': {
-      'override': {
-        'showSolutionButton': 'enabled',
-        'retryButton': 'enabled'
+    content: {
+      override: {
+        showSolutionButton: 'enabled',
+        retryButton: 'enabled',
       },
-      'introPage': {
-        'showIntroPage': false
+      introPage: {
+        showIntroPage: false,
       },
-      'questionSet': questions,
-      'progressType': 'textual',
-      'behaviour': {
-        'autoContinue': false,
-        'enableRetry': true,
-        'enableSolutionsButton': true,
-        'passPercentage': 60
+      questionSet: questions,
+      progressType: 'textual',
+      behaviour: {
+        autoContinue: false,
+        enableRetry: true,
+        enableSolutionsButton: true,
+        passPercentage: 60,
       },
-      'endPage': {
-        'showSolutionButton': true,
-        'showSummary': true
-      }
+      endPage: {
+        showSolutionButton: true,
+        showSummary: true,
+      },
     },
-    'title': `${title} – Question Set`,
-    'language': 'he',
-    'mainLibrary': 'H5P.QuestionSet',
-    'embedTypes': ['div'],
-    'preloadedDependencies': [
-      { 'machineName': 'H5P.QuestionSet', 'majorVersion': 1, 'minorVersion': 0 },
-      { 'machineName': 'H5P.MultiChoice', 'majorVersion': 1, 'minorVersion': 0 }
-    ]
+    title: `${title} – Question Set`,
+    language: 'he',
+    mainLibrary: 'H5P.QuestionSet',
+    embedTypes: ['div'],
+    preloadedDependencies: [
+      { machineName: 'H5P.QuestionSet', majorVersion: 1, minorVersion: 0 },
+      { machineName: 'H5P.MultiChoice', majorVersion: 1, minorVersion: 0 },
+    ],
   };
 }
 
 async function main() {
   await fs.ensureDir(OUT);
-  
+
   const topics = JSON.parse(await fs.readFile(DATA, 'utf8'));
-  
+
   for (const t of topics) {
     const title = t.topic;
     const mcqs = Array.isArray(t.mcqs) ? t.mcqs : [];
-    if (!mcqs.length) {continue;}
+    if (!mcqs.length) {
+      continue;
+    }
 
-    const tmpDir = path.join(__dirname, `.tmp_qset_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+    const tmpDir = path.join(
+      __dirname,
+      `.tmp_qset_${Date.now()}_${Math.random().toString(36).slice(2)}`
+    );
     await fs.ensureDir(tmpDir);
     await fs.ensureDir(path.join(tmpDir, 'content'));
 
@@ -81,20 +86,25 @@ async function main() {
       language: payload.language,
       mainLibrary: payload.mainLibrary,
       embedTypes: payload.embedTypes,
-      preloadedDependencies: payload.preloadedDependencies
+      preloadedDependencies: payload.preloadedDependencies,
     };
     await fs.writeJson(path.join(tmpDir, 'h5p.json'), h5pJson, { spaces: 2 });
 
     // content/content.json with QuestionSet params
-    await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), payload.content, { spaces: 2 });
+    await fs.writeJson(path.join(tmpDir, 'content', 'content.json'), payload.content, {
+      spaces: 2,
+    });
 
     // Sanitize filename: replace spaces and problematic characters
     const safeTitle = title.replace(/[\s/\\:*?"<>|]/g, '_');
     const outFile = path.join(OUT, `${safeTitle}_QuestionSet.h5p`);
-    
+
     // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
     if (process.platform === 'win32') {
-      execSync(`powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`, { stdio: 'inherit' });
+      execSync(
+        `powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`,
+        { stdio: 'inherit' }
+      );
       // Rename .zip to .h5p
       await fs.rename(`${outFile}.zip`, outFile);
     } else {
