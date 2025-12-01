@@ -372,8 +372,8 @@ class AIAssistant {
         `;
 
         // Apply translations if i18n is available
-        if (window.i18n) {
-            i18n.translatePage();
+        if (window.i18n && typeof window.i18n.updateAllTranslations === 'function') {
+            window.i18n.updateAllTranslations();
         }
     }
 
