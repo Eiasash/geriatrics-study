@@ -1,5 +1,17 @@
 // SZMC Geriatrics Presentation Maker - Enhanced Presentation Mode
 
+// Visual debug helper for mobile
+function showDebug(msg) {
+    let debugEl = document.getElementById('mobile-debug');
+    if (!debugEl) {
+        debugEl = document.createElement('div');
+        debugEl.id = 'mobile-debug';
+        debugEl.style.cssText = 'position:fixed;top:10px;left:10px;right:10px;background:rgba(255,0,0,0.9);color:white;padding:10px;font-size:12px;z-index:999999;border-radius:8px;max-height:40vh;overflow:auto;';
+        document.body.appendChild(debugEl);
+    }
+    debugEl.innerHTML += msg + '<br>';
+}
+
 class PresentationMode {
     constructor() {
         this.isActive = false;
@@ -13,7 +25,7 @@ class PresentationMode {
     }
 
     start(slides, mode = 'standard') {
-        console.log('Starting presentation with', slides.length, 'slides');
+        showDebug('Start called: ' + slides.length + ' slides');
         this.slides = slides;
         this.currentIndex = editor.currentSlideIndex || 0;
         this.isActive = true;
@@ -201,32 +213,37 @@ class PresentationMode {
     }
 
     renderSlide() {
+        showDebug('renderSlide called, index: ' + this.currentIndex);
+        
         const slide = this.slides[this.currentIndex];
         if (!slide) {
-            console.error('Presentation: No slide at index', this.currentIndex);
+            showDebug('ERROR: No slide at index ' + this.currentIndex);
             return;
         }
 
+        showDebug('Slide type: ' + slide.type);
+        
         const template = SlideTemplates[slide.type];
         if (!template) {
-            console.error('Presentation: No template for type', slide.type);
+            showDebug('ERROR: No template for type: ' + slide.type);
             return;
         }
 
         const container = document.getElementById('presentation-container');
         if (!container) {
-            console.error('Presentation: Container not found');
+            showDebug('ERROR: presentation-container not found');
             return;
         }
 
-        console.log('Rendering slide:', slide.type, 'at index', this.currentIndex);
+        showDebug('Container found, rendering...');
 
         // Render immediately on mobile
         const isMobile = window.innerWidth <= 768;
+        showDebug('isMobile: ' + isMobile + ', width: ' + window.innerWidth);
         
         try {
             const slideHtml = template.render(slide.data);
-            console.log('Slide HTML generated, length:', slideHtml.length);
+            showDebug('HTML generated, length: ' + slideHtml.length);
             
             // Create slide canvas with forced inline styles for mobile
             const canvasStyles = isMobile ? 
@@ -244,12 +261,19 @@ class PresentationMode {
                 el.removeAttribute('contenteditable');
             });
             
-            console.log('Slide rendered successfully');
+            showDebug('SUCCESS: Slide rendered');
+            
+            // Auto-hide debug after 5 seconds
+            setTimeout(() => {
+                const debugEl = document.getElementById('mobile-debug');
+                if (debugEl) debugEl.style.display = 'none';
+            }, 5000);
+            
         } catch (e) {
-            console.error('Presentation render error:', e);
+            showDebug('RENDER ERROR: ' + e.message);
             container.innerHTML = `
                 <div class="slide-canvas presentation-slide" style="width: 90vw; aspect-ratio: 16/9; background: #1e3a5f; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                    <p style="color: white; font-size: 1rem; padding: 20px; text-align: center;">Error rendering slide: ${e.message}</p>
+                    <p style="color: white; font-size: 1rem; padding: 20px; text-align: center;">Error: ${e.message}</p>
                 </div>
             `;
         }
