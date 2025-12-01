@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 18:25*
+*Generated: 2025-12-01 19:06*
 
 
 ## Delirium (דליריום)
@@ -36,10 +36,10 @@
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Frailty across Neurological Diseases: Why Sex and Gender Matter.
-- **Authors**: Lorefice Lorena, Pellecchia Maria Teresa
-- **Journal**: Annals of neurology (2025)
-- **Link**: [41267611](https://pubmed.ncbi.nlm.nih.gov/41267611/)
+### 📄 Association of frailty and pre-frailty with cardiovascular mortality: a meta-analysis of 26 cohort studies.
+- **Authors**: Zhao Yan, Wu Yedan, Liu Zhuohui et al.
+- **Journal**: Frontiers in public health (2025)
+- **Link**: [41323622](https://pubmed.ncbi.nlm.nih.gov/41323622/)
 
 
 ## Falls (נפילות)
@@ -110,13 +110,18 @@
 - **Journal**: Nature aging (2025)
 - **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
 
-### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
-- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
-- **Journal**: Drugs & aging (2025)
-- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
+### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
+- **Authors**: Chen Alissa S, Batsis John A
+- **Journal**: Diabetes (2025)
+- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
 
 ## End Of Life (טיפול סוף-חיים)
+
+### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
+- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
+- **Journal**: Expert review of endocrinology & metabolism (2025)
+- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
 
 ### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
 - **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
@@ -127,11 +132,6 @@
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
-
-### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
-- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
-- **Journal**: International journal of nursing studies (2025)
-- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
