@@ -35,7 +35,7 @@ jobs:
       h5p: ${{ steps.filter.outputs.h5p }}
       data: ${{ steps.filter.outputs.data }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -55,7 +55,7 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       needs.changes.outputs.h5p == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -105,7 +105,7 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       needs.changes.outputs.h5p == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -168,7 +168,7 @@ jobs:
               npm run build:mega
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       # Setup and cache for H5P builds
       - name: Setup Node.js
@@ -214,7 +214,7 @@ jobs:
     needs: build
     if: success()
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Download all artifacts
         uses: actions/download-artifact@v5
@@ -223,7 +223,7 @@ jobs:
           path: artifacts
       
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       

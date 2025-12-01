@@ -55,6 +55,46 @@
    ============================================================================ */
 
 @media (max-width: 768px) {
+    /* Editor header */
+    .editor-header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .header-left .logo-small span {
+        display: none;
+    }
+    
+    .header-center {
+        order: 3;
+        width: 100%;
+    }
+    
+    .header-right {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .header-right .dropdown {
+        display: none;
+    }
+    
+    .header-right .btn-icon,
+    .header-right .btn-secondary,
+    .header-right .btn-primary {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .header-right .toolbar-divider {
+        display: none;
+    }
+    
+    .autosave-indicator span {
+        display: none;
+    }
+
     /* Editor container - single column */
     .editor-container {
         display: flex;
@@ -79,6 +119,7 @@
     #presentation-title {
         font-size: 1rem;
         padding: 8px 12px;
+        min-height: 44px;
     }
 
     /* Slide Navigator - horizontal scrolling */
@@ -439,20 +480,65 @@
     .modal-content {
         width: calc(100% - 24px);
         max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
         margin: 12px;
         border-radius: 16px;
+        overflow-y: auto;
     }
 
     .modal-header {
         padding: 16px;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+        border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .modal-header h2,
+    .modal-header h3 {
+        font-size: 1.25rem;
     }
 
     .modal-body {
         padding: 16px;
+        max-height: none;
     }
 
     .modal-footer {
         padding: 16px;
+        position: sticky;
+        bottom: 0;
+        background: white;
+        border-top: 1px solid var(--gray-200);
+    }
+    
+    .modal-footer button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .modal-footer button:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Generator modal specific */
+    .generator-layout {
+        flex-direction: column;
+    }
+    
+    .generator-input-section,
+    .generator-options-section {
+        width: 100%;
+    }
+    
+    /* Presentation options */
+    .presentation-mode-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .keyboard-hints {
+        display: none;
     }
 }
 

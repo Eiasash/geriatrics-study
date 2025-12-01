@@ -43,7 +43,7 @@ jobs:
       anki: ${{ steps.filter.outputs.anki }}
       data: ${{ steps.filter.outputs.data }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -76,7 +76,7 @@ jobs:
           - component: anki
             language: python
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       # Node.js audit for H5P
       - name: Setup Node.js
@@ -103,7 +103,7 @@ jobs:
       # Python audit for Anki
       - name: Setup Python
         if: matrix.language == 'python'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -148,7 +148,7 @@ jobs:
             build_cmd: PYTHONIOENCODING=utf-8 python build_apkg.py
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       # Setup for H5P builds
       - name: Setup Node.js
@@ -167,7 +167,7 @@ jobs:
       # Setup for Anki build
       - name: Setup Python
         if: matrix.component == 'anki'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -200,7 +200,7 @@ jobs:
     needs: build
     if: success()
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Download all artifacts
         uses: actions/download-artifact@v5
@@ -208,7 +208,7 @@ jobs:
           path: artifacts
       
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       
@@ -261,7 +261,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Download all artifacts
         uses: actions/download-artifact@v5
