@@ -29,7 +29,7 @@ jobs:
     
     steps:
     - name: 📥 Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       
     - name: 🔧 Setup Node.js
       uses: actions/setup-node@v4
@@ -116,7 +116,7 @@ jobs:
       
     steps:
     - name: 📥 Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       
     - name: 📥 Download H5P packages
       uses: actions/download-artifact@v4
@@ -131,7 +131,7 @@ jobs:
         path: h5p
         
     - name: 🌐 Setup GitHub Pages
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v5
       
     - name: 📁 Prepare deployment directory
       run: |

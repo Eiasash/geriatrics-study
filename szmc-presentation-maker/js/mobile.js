@@ -569,15 +569,14 @@ class MobileManager {
 
     // Toggle AI panel on mobile
     toggleAIPanel() {
-        const aiPanel = document.getElementById('ai-panel');
-        if (aiPanel) {
-            aiPanel.classList.toggle('active');
-            this.overlay.classList.toggle('active');
-
-            // Run analysis when opening
-            if (aiPanel.classList.contains('active') && typeof runAIAnalysis === 'function') {
-                runAIAnalysis();
-            }
+        // Use new AI Assistant panel
+        if (window.aiAssistant && typeof aiAssistant.togglePanel === 'function') {
+            aiAssistant.togglePanel();
+        } else if (typeof toggleAIPanel === 'function') {
+            // Fallback to global function
+            toggleAIPanel();
+        } else {
+            console.error('AI Assistant not available');
         }
     }
 
