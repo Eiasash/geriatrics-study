@@ -897,7 +897,14 @@ select:focus {
 /* Presentation Mode */
 #presentation-mode {
     background: var(--gray-900);
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
 }
 
 #presentation-container {
@@ -906,11 +913,29 @@ select:focus {
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xl);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 #presentation-container .slide-canvas {
-    max-width: 1200px;
-    max-height: calc(100vh - 100px);
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    max-height: calc(100vh - 120px);
+    aspect-ratio: 16 / 9;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#presentation-container .slide-canvas.presentation-slide {
+    display: flex;
+}
+
+#presentation-container .slide-canvas .slide {
+    width: 100%;
+    height: 100%;
 }
 
 .presentation-controls {
@@ -922,8 +947,9 @@ select:focus {
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-sm) var(--spacing-lg);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     border-radius: var(--radius-xl);
+    z-index: 10000;
 }
 
 .presentation-controls button {
@@ -935,17 +961,21 @@ select:focus {
     color: var(--white);
     border-radius: 50%;
     transition: all 0.2s;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .presentation-controls button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 #slide-counter {
-    color: var(--gray-400);
-    font-size: 0.875rem;
-    min-width: 60px;
+    color: var(--gray-300);
+    font-size: 0.95rem;
+    min-width: 70px;
     text-align: center;
+    font-weight: 500;
 }
 
 /* Responsive */
