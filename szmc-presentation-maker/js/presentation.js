@@ -13,20 +13,30 @@ class PresentationMode {
     }
 
     start(slides, mode = 'standard') {
+        console.log('Starting presentation with', slides.length, 'slides');
         this.slides = slides;
-        this.currentIndex = editor.currentSlideIndex;
+        this.currentIndex = editor.currentSlideIndex || 0;
         this.isActive = true;
         this.mode = mode;
 
         // Hide editor, show presentation
-        document.getElementById('editor-page').classList.remove('active');
-        document.getElementById('presentation-mode').classList.add('active');
+        const editorPage = document.getElementById('editor-page');
+        const presentationMode = document.getElementById('presentation-mode');
+        
+        if (editorPage) editorPage.classList.remove('active');
+        if (presentationMode) {
+            presentationMode.classList.add('active');
+            // Force display on mobile
+            presentationMode.style.display = 'flex';
+            console.log('Presentation mode activated');
+        }
 
         // Setup based on mode
         this.setupPresentationMode();
 
-        // Enter fullscreen for standard/rehearsal modes
-        if (mode === 'standard' || mode === 'rehearsal') {
+        // Enter fullscreen for standard/rehearsal modes (skip on mobile)
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile && (mode === 'standard' || mode === 'rehearsal')) {
             this.enterFullscreen();
         }
 
@@ -209,38 +219,40 @@ class PresentationMode {
             return;
         }
 
-        // Render immediately (no transition delay on mobile)
+        console.log('Rendering slide:', slide.type, 'at index', this.currentIndex);
+
+        // Render immediately on mobile
         const isMobile = window.innerWidth <= 768;
-        const delay = isMobile ? 0 : (this.transitionEffect === 'none' ? 0 : 100);
+        
+        try {
+            const slideHtml = template.render(slide.data);
+            console.log('Slide HTML generated, length:', slideHtml.length);
+            
+            // Create slide canvas with forced inline styles for mobile
+            const canvasStyles = isMobile ? 
+                'width: calc(100vw - 16px); max-width: none; aspect-ratio: 16/9; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);' :
+                '';
+            
+            container.innerHTML = `
+                <div class="slide-canvas presentation-slide" style="${canvasStyles}">
+                    ${slideHtml}
+                </div>
+            `;
 
-        container.classList.add('transitioning');
-
-        setTimeout(() => {
-            try {
-                const slideHtml = template.render(slide.data);
-                container.innerHTML = `
-                    <div class="slide-canvas presentation-slide">
-                        ${slideHtml}
-                    </div>
-                `;
-
-                // Make content non-editable
-                container.querySelectorAll('[contenteditable]').forEach(el => {
-                    el.removeAttribute('contenteditable');
-                });
-
-                container.classList.remove('transitioning');
-            } catch (e) {
-                console.error('Presentation render error:', e);
-                container.innerHTML = `
-                    <div class="slide-canvas presentation-slide">
-                        <div class="slide" style="display:flex;align-items:center;justify-content:center;background:#1e3a5f;color:white;">
-                            <p>Error rendering slide: ${e.message}</p>
-                        </div>
-                    </div>
-                `;
-            }
-        }, delay);
+            // Make content non-editable
+            container.querySelectorAll('[contenteditable]').forEach(el => {
+                el.removeAttribute('contenteditable');
+            });
+            
+            console.log('Slide rendered successfully');
+        } catch (e) {
+            console.error('Presentation render error:', e);
+            container.innerHTML = `
+                <div class="slide-canvas presentation-slide" style="width: 90vw; aspect-ratio: 16/9; background: #1e3a5f; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: white; font-size: 1rem; padding: 20px; text-align: center;">Error rendering slide: ${e.message}</p>
+                </div>
+            `;
+        }
 
         // Update progress
         this.updateProgress();
