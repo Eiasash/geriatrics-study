@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-11-30 22:41*
+*Generated: 2025-12-01 05:28*
 
 
 ## Delirium (דליריום)
@@ -24,10 +24,11 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).
-- **Authors**: Han Yaxin, Zhang Haohao, Tian Jiajing et al.
-- **Journal**: Nutrients (2025)
-- **Link**: [41305592](https://pubmed.ncbi.nlm.nih.gov/41305592/)
+### 📄 Frailty and frailty syndromes in persons with hemophilia: a review.
+- **Authors**: McKeown William, Taylor Stephanie, Shapiro Susan
+- **Journal**: Journal of thrombosis and haemostasis : JTH (2025)
+- **Link**: [40714195](https://pubmed.ncbi.nlm.nih.gov/40714195/)
+- **Key Finding**: It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization...
 
 ### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
 - **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
@@ -48,16 +49,16 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
-- **Authors**: Al Hamad Hanadi, Sathian Brijesh
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
-
 ### 📄 [Importance of vision in old age].
 - **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
 - **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
 - **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
 - **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
+
+### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
+- **Authors**: Al Hamad Hanadi, Sathian Brijesh
+- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
+- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
 
 ## Dementia (דמנציה)
@@ -79,6 +80,26 @@
 - **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
 
+## Deprescribing (דה-פרסקייבינג)
+
+### 📄 Hypertension in the Oldest Old.
+- **Authors**: Supiano Mark A, Ascher Simon B, Rich Michael W
+- **Journal**: JACC. Advances (2025)
+- **Link**: [41231192](https://pubmed.ncbi.nlm.nih.gov/41231192/)
+
+### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
+- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
+- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
+- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
+- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
+
+### 📄 [Dizziness in old age].
+- **Authors**: Trabert Johannes
+- **Journal**: Die Ophthalmologie (2025)
+- **Link**: [41128849](https://pubmed.ncbi.nlm.nih.gov/41128849/)
+- **Key Finding**: Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life...
+
+
 ## Sarcopenia (סרקופניה)
 
 ### 📄 International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).
@@ -87,15 +108,15 @@
 - **Link**: [39699070](https://pubmed.ncbi.nlm.nih.gov/39699070/)
 - **Key Finding**: The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least o...
 
-### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
-- **Authors**: Chen Alissa S, Batsis John A
-- **Journal**: Diabetes (2025)
-- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
-
 ### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
 - **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
 - **Journal**: Nature aging (2025)
 - **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
+
+### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
+- **Authors**: Chen Alissa S, Batsis John A
+- **Journal**: Diabetes (2025)
+- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
 
 ## End Of Life (טיפול סוף-חיים)
@@ -110,11 +131,10 @@
 - **Journal**: Palliative care and social practice (2025)
 - **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
 
-### 📄 End-of-life and palliative care in patients with metastatic renal cancer.
-- **Authors**: Lendínez-Cano G, Roldán Cumbreras C, Congregado Ruíz C B et al.
-- **Journal**: Actas urologicas espanolas (2025)
-- **Link**: [40939839](https://pubmed.ncbi.nlm.nih.gov/40939839/)
-- **Key Finding**: Palliative care is a fundamental component of the comprehensive management of patients with advanced cancer, significantly improving quality of life...
+### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
+- **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
+- **Journal**: Journal of pain and symptom management (2025)
+- **Link**: [40769281](https://pubmed.ncbi.nlm.nih.gov/40769281/)
 
 
 ## Incontinence (אי שליטה בסוגרים)

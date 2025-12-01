@@ -35,14 +35,16 @@
   ],
   "frailty": [
     {
-      "pmid": "41305592",
-      "title": "Mapping Research Trends in Frailty and Nutrition: A Combined Bibliometric and Structured Review (2000-2024).",
-      "abstract": "",
-      "authors": "Han Yaxin, Zhang Haohao, Tian Jiajing et al.",
-      "journal": "Nutrients",
+      "pmid": "40714195",
+      "title": "Frailty and frailty syndromes in persons with hemophilia: a review.",
+      "abstract": "Advances in treatment for persons with hemophilia (PWH) have improved life expectancy, but PWH face new challenges, including frailty. Frailty is a health state of increased functional vulnerability. It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization. Although well-characterized in the general population, its prevalence and impact on PWH remain underexplored. Emerging evidence suggests PWH currently have increased frailty, particularly those with severe disease and joint damage from inadequate early prophylaxis. This review examines frailty in PWH, including the impact of frailty syndromes (falls, immobility, incontinence, cognitive impairment, and polypharmacy) and the potential role of the hemophilia multidisciplinary team in screening and management. The Clinical Frailty Scale can be used by nonspecialists and can aid in early identification and subsequent intervention, including referral to geriatric medicine when appropriate. Importantly, interventions such as the comprehensive geriatric assessment have been shown to reverse or slow progression of frailty with improved health outcomes. An individualized multidisciplinary approach, including fall prevention, tailored exercise regimes, and medication review, is key. Cognitive impairment and dementia may impact self-management, necessitating dementia-friendly healthcare strategies. Given the growing population of older PWH, it is crucial to increase awareness of frailty for both the hemophilia multidisciplinary team and PWH to facilitate screening, evidence-based interventions, optimization of care pathways, and ensure comprehensive multidisciplinary support to improve quality of life. Future studies should address the specific needs of aging PWH, including women, and further investigate the impact of frailty on clinical outcomes in PWH.",
+      "authors": "McKeown William, Taylor Stephanie, Shapiro Susan",
+      "journal": "Journal of thrombosis and haemostasis : JTH",
       "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41305592/"
+      "key_findings": [
+        "It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40714195/"
     },
     {
       "pmid": "40738335",
@@ -79,16 +81,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "40110801",
-      "title": "Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.",
-      "abstract": "Falls are an important health concern among older persons. This study attempted to evaluate the characteristics and risk factors of falls in older persons attending a geriatric falls clinic in Qatar, with a particular emphasis on the impact of the COVID-19 epidemic.",
-      "authors": "Al Hamad Hanadi, Sathian Brijesh",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
-    },
-    {
       "pmid": "41168499",
       "title": "[Importance of vision in old age].",
       "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
@@ -99,6 +91,16 @@
         "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
+    },
+    {
+      "pmid": "40110801",
+      "title": "Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.",
+      "abstract": "Falls are an important health concern among older persons. This study attempted to evaluate the characteristics and risk factors of falls in older persons attending a geriatric falls clinic in Qatar, with a particular emphasis on the impact of the COVID-19 epidemic.",
+      "authors": "Al Hamad Hanadi, Sathian Brijesh",
+      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
     }
   ],
   "dementia": [
@@ -135,7 +137,42 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     }
   ],
-  "deprescribing": [],
+  "deprescribing": [
+    {
+      "pmid": "41231192",
+      "title": "Hypertension in the Oldest Old.",
+      "abstract": "Hypertension affects 80% of adults 80 years of age or older and is a leading cause of morbidity and mortality through its fundamental role as a risk factor for cardiovascular disease, stroke, kidney disease, and cognitive impairment. Antihypertensive therapy reduces the risk of coronary artery disease, heart failure, atrial fibrillation, stroke, and cognitive decline among patients in this age group, but older patients with advanced frailty, cognitive impairment, complex comorbidities, or nursing home residence have largely been excluded from clinical trials. This article reviews the epidemiology, pathophysiology, diagnosis, and management of hypertension in the oldest old, herein defined as age ≥80 years. We propose the geriatrics 4 Ms model as a framework for providing individualized patient-centered care for the oldest patients with hypertension. Additional research is needed in patients who have been under-represented in clinical trials and to assess the role of deprescribing in the care of older patients with hypertension.",
+      "authors": "Supiano Mark A, Ascher Simon B, Rich Michael W",
+      "journal": "JACC. Advances",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41231192/"
+    },
+    {
+      "pmid": "40022664",
+      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
+      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
+      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
+      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
+      "year": "2025",
+      "key_findings": [
+        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
+    },
+    {
+      "pmid": "41128849",
+      "title": "[Dizziness in old age].",
+      "abstract": "Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life. The causes are diverse and differ from younger patients. Polyneuropathy, orthostatic dysregulation, drug-related causes, positional vertigo and bilateral vestibulopathy are more frequent in old age. A detailed and vertigo-specific patient history, including the assessment of risk factors such as frailty, polypharmacy and comorbidities, is essential for the diagnostics. The treatment depends on the underlying cause and includes physiotherapeutic interventions as well as adjustments to the medication.",
+      "authors": "Trabert Johannes",
+      "journal": "Die Ophthalmologie",
+      "year": "2025",
+      "key_findings": [
+        "Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41128849/"
+    }
+  ],
   "sarcopenia": [
     {
       "pmid": "39699070",
@@ -150,16 +187,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39699070/"
     },
     {
-      "pmid": "40644314",
-      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
-      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
-      "authors": "Chen Alissa S, Batsis John A",
-      "journal": "Diabetes",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
-    },
-    {
       "pmid": "41188603",
       "title": "A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.",
       "abstract": "The Asian Working Group for Sarcopenia (AWGS) presents an updated 2025 consensus reframing sarcopenia management through a life-course approach to muscle health promotion. While aligning with the Global Leadership Initiative in Sarcopenia (GLIS), this update provides healthcare providers with Asia-specific guidance. The consensus introduces three key refinements: first, expanding sarcopenia diagnosis to middle-aged adults (50‒64 years) with validated diagnostic thresholds; second, simplifying the diagnostic algorithm to require only concurrent low muscle mass and strength, with physical performance as an outcome measure; and third, introducing an enhanced muscle health framework recognizing skeletal muscle as vital for healthy longevity, emphasizing cross-talk with brain, bone, adipose tissue and immune systems. This framework leverages the World Health Organization's Integrated Care for Older People (ICOPE) implementation for enhanced case-finding through natural overlap between muscle health and ICOPE's intrinsic capacity domains. The consensus provides evidence-based recommendations for multimodal interventions that combine resistance exercise with nutritional supplementation, representing advancement toward proactive muscle health promotion and establishing a framework for reducing age-related decline in Asian populations.",
@@ -168,6 +195,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41188603/"
+    },
+    {
+      "pmid": "40644314",
+      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
+      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
+      "authors": "Chen Alissa S, Batsis John A",
+      "journal": "Diabetes",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     }
   ],
   "end_of_life": [
@@ -192,16 +229,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
     },
     {
-      "pmid": "40939839",
-      "title": "End-of-life and palliative care in patients with metastatic renal cancer.",
-      "abstract": "Palliative care is a fundamental component of the comprehensive management of patients with advanced cancer, significantly improving quality of life. Since most patients with metastatic renal cell carcinoma (mRCC) ultimately die from disease progression, end-of-life care represents a key element of quality cancer care. This area can be assessed through specific indicators derived from administrative data.",
-      "authors": "Lendínez-Cano G, Roldán Cumbreras C, Congregado Ruíz C B et al.",
-      "journal": "Actas urologicas espanolas",
+      "pmid": "40769281",
+      "title": "Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.",
+      "abstract": "End-of-life distress and delirium are common in palliative care inpatients, often requiring sedatives that diminish interaction. Current practices rely on clinical experience rather than evidence.",
+      "authors": "Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.",
+      "journal": "Journal of pain and symptom management",
       "year": "2025",
-      "key_findings": [
-        "Palliative care is a fundamental component of the comprehensive management of patients with advanced cancer, significantly improving quality of life"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40939839/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40769281/"
     }
   ],
   "incontinence": [
