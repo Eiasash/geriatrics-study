@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 14:51*
+*Generated: 2025-12-01 15:05*
 
 
 ## Delirium (דליריום)
@@ -36,10 +36,10 @@
 - **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
 - **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
 
-### 📄 Frailty measurement in research and clinical practice: An updated review.
-- **Authors**: Dent Elsa, Hanlon Peter, Kowal Paul et al.
-- **Journal**: European journal of internal medicine (2025)
-- **Link**: [41271526](https://pubmed.ncbi.nlm.nih.gov/41271526/)
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
 
 ## Falls (נפילות)
@@ -122,6 +122,11 @@
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
+
+### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
+- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
+- **Journal**: International journal of nursing studies (2025)
+- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 ### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
 - **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
