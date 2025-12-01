@@ -27,7 +27,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Determine version
         id: version
@@ -121,7 +121,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-release
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Download release artifacts
         uses: actions/download-artifact@v5
@@ -191,7 +191,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-release, create-release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Download release artifacts
         uses: actions/download-artifact@v5
