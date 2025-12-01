@@ -82,16 +82,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "40902310",
-      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
-      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
-      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
-      "journal": "Revista espanola de geriatria y gerontologia",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
-    },
-    {
       "pmid": "40970437",
       "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
       "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
@@ -100,6 +90,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
+    },
+    {
+      "pmid": "40902310",
+      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
+      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
+      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
+      "journal": "Revista espanola de geriatria y gerontologia",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
     }
   ],
   "dementia": [
@@ -192,17 +192,27 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41188603/"
     },
     {
-      "pmid": "40644314",
-      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
-      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
-      "authors": "Chen Alissa S, Batsis John A",
-      "journal": "Diabetes",
+      "pmid": "41060616",
+      "title": "Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.",
+      "abstract": "Sarcopenia and cachexia are two common and overlapping but distinct muscle wasting syndromes that predict adverse outcomes and undermine quality of life among older adults with cancer. Despite their prognostic value and negative effects on older patients' well-being, sarcopenia and cachexia are not routinely or adequately assessed and managed in clinical oncology practice. However, efforts to recognize and manage sarcopenia and cachexia at diagnosis and during follow-up may have beneficial effects on muscle mass, physical function, and quality of life among older adults with cancer, although evidence on long-term clinical outcomes in response to targeted interventions has yet to be established. This comprehensive review attempts to (i) delineate the differences in the pathophysiology and clinical manifestations between sarcopenia and cachexia, (ii) clarify how sarcopenia and cachexia are defined in the geriatric oncology literature, (iii) describe methods for assessing sarcopenia and cachexia in clinical practice, (iv) review the prognostic value of sarcopenia and cachexia among older patients, particularly those undergoing systemic cancer treatment, and (v) discuss evidence-based strategies aimed at managing sarcopenia and cachexia for older adults with cancer.",
+      "authors": "Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.",
+      "journal": "Drugs & aging",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41060616/"
     }
   ],
   "end_of_life": [
+    {
+      "pmid": "40689782",
+      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
+      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
+      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
+      "journal": "Expert review of endocrinology & metabolism",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
+    },
     {
       "pmid": "40769281",
       "title": "Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.",
@@ -222,16 +232,6 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
-    },
-    {
-      "pmid": "41252804",
-      "title": "Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.",
-      "abstract": "Sickle cell disease is one of the most common inherited monogenetic blood disorders. People living with sickle cell disease experience both acute pain and long-lasting complications, leading to co-morbidities which impact their quality of life. Palliative care is both under-reported and under-utilised for people living with sickle cell disease despite the profound impacts of this illness across their lives.",
-      "authors": "Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.",
-      "journal": "International journal of nursing studies",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
     }
   ],
   "incontinence": [

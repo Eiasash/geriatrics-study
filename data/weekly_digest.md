@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 18:22*
+*Generated: 2025-12-01 18:24*
 
 
 ## Delirium (דליריום)
@@ -49,15 +49,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
-- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
-- **Journal**: Revista espanola de geriatria y gerontologia (2025)
-- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
-
 ### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
 - **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
+
+### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
+- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
+- **Journal**: Revista espanola de geriatria y gerontologia (2025)
+- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
 
 
 ## Dementia (דמנציה)
@@ -110,13 +110,18 @@
 - **Journal**: Nature aging (2025)
 - **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
 
-### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
-- **Authors**: Chen Alissa S, Batsis John A
-- **Journal**: Diabetes (2025)
-- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
+### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
+- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
+- **Journal**: Drugs & aging (2025)
+- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
 
 
 ## End Of Life (טיפול סוף-חיים)
+
+### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
+- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
+- **Journal**: Expert review of endocrinology & metabolism (2025)
+- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
 
 ### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
 - **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
@@ -127,11 +132,6 @@
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
-
-### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
-- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
-- **Journal**: International journal of nursing studies (2025)
-- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
