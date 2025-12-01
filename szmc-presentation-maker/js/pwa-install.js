@@ -10,6 +10,7 @@ class PWAInstallManager {
         this.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         this.isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
                           window.navigator.standalone === true;
+        this.dismissedPermanently = localStorage.getItem('pwa-install-dismissed') === 'true';
 
         this.init();
     }
@@ -19,6 +20,12 @@ class PWAInstallManager {
         if (this.isStandalone) {
             this.isInstalled = true;
             console.log('[PWA] Running in standalone mode');
+            return;
+        }
+
+        // Check if user permanently dismissed the prompt
+        if (this.dismissedPermanently) {
+            console.log('[PWA] User previously dismissed install prompt');
             return;
         }
 
@@ -61,6 +68,9 @@ class PWAInstallManager {
         prompt.className = 'pwa-install-prompt';
         prompt.id = 'pwa-install-prompt';
         prompt.innerHTML = `
+            <button class="pwa-install-close" onclick="pwaInstall.dismissPrompt(false)" aria-label="Close install prompt">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="pwa-install-icon">
                 <i class="fas fa-download"></i>
             </div>
@@ -69,8 +79,8 @@ class PWAInstallManager {
                 <div class="pwa-install-description">Quick access, works offline</div>
             </div>
             <div class="pwa-install-actions">
-                <button class="pwa-install-btn secondary" onclick="pwaInstall.hidePrompt()">Later</button>
                 <button class="pwa-install-btn primary" onclick="pwaInstall.install()">Install</button>
+                <button class="pwa-install-btn secondary" onclick="pwaInstall.dismissPrompt(true)">Don't show again</button>
             </div>
         `;
         document.body.appendChild(prompt);
@@ -82,6 +92,9 @@ class PWAInstallManager {
         modal.id = 'ios-install-modal';
         modal.innerHTML = `
             <div class="ios-install-content">
+                <button class="ios-install-close-btn" onclick="pwaInstall.hideIOSModal(false)" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
                 <h3><i class="fas fa-mobile-alt"></i> Install App</h3>
                 <p>Install SZMC Presentation Maker on your device for quick access and offline use.</p>
                 <div class="ios-install-steps">
@@ -98,14 +111,17 @@ class PWAInstallManager {
                         <span>Tap <strong>Add</strong> to confirm</span>
                     </div>
                 </div>
-                <button class="ios-install-close" onclick="pwaInstall.hideIOSModal()">Got it</button>
+                <div class="ios-install-footer">
+                    <button class="ios-install-dismiss" onclick="pwaInstall.hideIOSModal(true)">Don't show again</button>
+                    <button class="ios-install-close" onclick="pwaInstall.hideIOSModal(false)">Got it</button>
+                </div>
             </div>
         `;
         document.body.appendChild(modal);
     }
 
     showPrompt() {
-        if (this.isInstalled || !this.deferredPrompt) return;
+        if (this.isInstalled || !this.deferredPrompt || this.dismissedPermanently) return;
 
         const prompt = document.getElementById('pwa-install-prompt');
         if (prompt) {
@@ -117,6 +133,15 @@ class PWAInstallManager {
         const prompt = document.getElementById('pwa-install-prompt');
         if (prompt) {
             prompt.classList.remove('visible');
+        }
+    }
+
+    dismissPrompt(permanent = false) {
+        this.hidePrompt();
+        if (permanent) {
+            localStorage.setItem('pwa-install-dismissed', 'true');
+            this.dismissedPermanently = true;
+            console.log('[PWA] User permanently dismissed install prompt');
         }
     }
 
@@ -143,7 +168,7 @@ class PWAInstallManager {
     }
 
     showIOSPrompt() {
-        if (this.isStandalone) return;
+        if (this.isStandalone || this.dismissedPermanently) return;
 
         localStorage.setItem('pwa-ios-prompt', Date.now().toString());
         const modal = document.getElementById('ios-install-modal');
@@ -152,10 +177,15 @@ class PWAInstallManager {
         }
     }
 
-    hideIOSModal() {
+    hideIOSModal(permanent = false) {
         const modal = document.getElementById('ios-install-modal');
         if (modal) {
             modal.classList.remove('visible');
+        }
+        if (permanent) {
+            localStorage.setItem('pwa-install-dismissed', 'true');
+            this.dismissedPermanently = true;
+            console.log('[PWA] User permanently dismissed iOS install modal');
         }
     }
 
@@ -194,6 +224,23 @@ class PWAInstallManager {
     // Check if app is installable
     isInstallable() {
         return !this.isInstalled && (this.deferredPrompt !== null || this.isIOS);
+    }
+
+    /**
+     * Resets the dismissal state, allowing the install prompt to be shown again.
+     * This is useful for:
+     * - Testing the install prompt functionality
+     * - Settings page where users can re-enable the install prompt
+     * - Debugging PWA installation issues
+     * 
+     * After calling this method, the install prompt will appear again on the next
+     * page load if the app is installable.
+     */
+    resetDismissal() {
+        localStorage.removeItem('pwa-install-dismissed');
+        localStorage.removeItem('pwa-ios-prompt');
+        this.dismissedPermanently = false;
+        console.log('[PWA] Install prompt dismissal reset');
     }
 }
 
