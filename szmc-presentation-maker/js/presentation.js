@@ -192,30 +192,55 @@ class PresentationMode {
 
     renderSlide() {
         const slide = this.slides[this.currentIndex];
-        if (!slide) return;
+        if (!slide) {
+            console.error('Presentation: No slide at index', this.currentIndex);
+            return;
+        }
 
         const template = SlideTemplates[slide.type];
-        if (!template) return;
+        if (!template) {
+            console.error('Presentation: No template for type', slide.type);
+            return;
+        }
 
         const container = document.getElementById('presentation-container');
+        if (!container) {
+            console.error('Presentation: Container not found');
+            return;
+        }
 
-        // Apply transition effect
+        // Render immediately (no transition delay on mobile)
+        const isMobile = window.innerWidth <= 768;
+        const delay = isMobile ? 0 : (this.transitionEffect === 'none' ? 0 : 100);
+
         container.classList.add('transitioning');
 
         setTimeout(() => {
-            container.innerHTML = `
-                <div class="slide-canvas presentation-slide">
-                    ${template.render(slide.data)}
-                </div>
-            `;
+            try {
+                const slideHtml = template.render(slide.data);
+                container.innerHTML = `
+                    <div class="slide-canvas presentation-slide">
+                        ${slideHtml}
+                    </div>
+                `;
 
-            // Make content non-editable
-            container.querySelectorAll('[contenteditable]').forEach(el => {
-                el.removeAttribute('contenteditable');
-            });
+                // Make content non-editable
+                container.querySelectorAll('[contenteditable]').forEach(el => {
+                    el.removeAttribute('contenteditable');
+                });
 
-            container.classList.remove('transitioning');
-        }, this.transitionEffect === 'none' ? 0 : 150);
+                container.classList.remove('transitioning');
+            } catch (e) {
+                console.error('Presentation render error:', e);
+                container.innerHTML = `
+                    <div class="slide-canvas presentation-slide">
+                        <div class="slide" style="display:flex;align-items:center;justify-content:center;background:#1e3a5f;color:white;">
+                            <p>Error rendering slide: ${e.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }, delay);
 
         // Update progress
         this.updateProgress();
