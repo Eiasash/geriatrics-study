@@ -82,16 +82,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "41291457",
-      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
-      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
-      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
-      "journal": "BMC geriatrics",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
-    },
-    {
       "pmid": "40970437",
       "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
       "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
@@ -100,6 +90,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
+    },
+    {
+      "pmid": "41314827",
+      "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
+      "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
+      "authors": "Schoene Daniel, Gross Michaela, Finger Benjamin et al.",
+      "journal": "BMJ open",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
     }
   ],
   "dementia": [
@@ -126,14 +126,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
     },
     {
-      "pmid": "39988819",
-      "title": "",
-      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
-      "authors": "Cornford Nisha, Charnley Margaret",
-      "journal": "Nutrition research reviews",
+      "pmid": "39869458",
+      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
+      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
+      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
+      "journal": "Pulmonology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     }
   ],
   "deprescribing": [
