@@ -9,11 +9,6 @@
     z-index: 1000;
 }
 
-/* When on editor page, position above toolbar */
-body.on-editor .view-mode-container {
-    bottom: 90px;
-}
-
 .view-toggle-btn {
     display: flex;
     align-items: center;
@@ -187,18 +182,10 @@ body.rtl .mobile-nav-drawer.active {
 }
 
 @media (max-width: 768px) {
-    /* Only show toolbar when on editor page */
-    body.on-editor .mobile-toolbar {
-        display: grid !important;
-        grid-template-columns: repeat(5, 1fr);
+    .mobile-toolbar {
+        display: flex;
         justify-content: space-around;
         align-items: center;
-    }
-
-    /* Hide on landing and presentation pages */
-    body.on-landing .mobile-toolbar,
-    body.on-presentation .mobile-toolbar {
-        display: none !important;
     }
 }
 
@@ -242,15 +229,6 @@ body.rtl .mobile-nav-drawer.active {
 
     .header-left {
         order: 1;
-        flex: 0 0 auto;
-    }
-
-    .header-left .logo {
-        font-size: 0.9rem;
-    }
-
-    .header-left .logo span {
-        display: none;
     }
 
     .header-center {
@@ -263,30 +241,15 @@ body.rtl .mobile-nav-drawer.active {
     .header-right {
         order: 2;
         gap: 4px;
-        flex: 1;
-        justify-content: flex-end;
     }
 
-    /* Hide most toolbar buttons on mobile - use bottom toolbar instead */
     .header-right .btn-secondary,
-    .header-right .dropdown,
-    .header-right .btn-ai,
-    .header-right .btn-theme,
-    .header-right .collab-users-bar {
-        display: none !important;
-    }
-
-    /* Only show essential buttons */
-    .header-right .dark-mode-toggle,
     .header-right .btn-primary {
-        display: flex;
-    }
-
-    .header-right .btn-primary {
-        padding: 8px 12px;
+        padding: 6px 10px;
         font-size: 0.8rem;
     }
 
+    .header-right .btn-secondary span,
     .header-right .btn-primary span {
         display: none;
     }
@@ -295,22 +258,13 @@ body.rtl .mobile-nav-drawer.active {
         display: none;
     }
 
-    .autosave-indicator {
-        display: none;
-    }
-
-    .presentation-timer {
+    .autosave-indicator span {
         display: none;
     }
 
     #presentation-title {
         font-size: 0.9rem;
         padding: 8px 12px;
-    }
-
-    /* Hide btn-icon toolbar buttons */
-    .header-right .btn-icon {
-        display: none;
     }
 }
 
@@ -737,8 +691,7 @@ body.force-mobile-view .properties-panel {
 }
 
 body.force-mobile-view .mobile-toolbar {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
 }
 
 body.force-mobile-view .header-right .btn-secondary span,
@@ -822,57 +775,42 @@ body.force-mobile-view .header-right .btn-primary span {
 
 /* Landing Page Mobile */
 @media (max-width: 768px) {
-    /* Critical: Allow landing page to scroll on mobile */
     #landing-page {
-        overflow-y: auto !important;
+        height: 100%;
+        overflow-y: auto;
         overflow-x: hidden;
-        min-height: 100vh;
-        height: auto;
+        -webkit-overflow-scrolling: touch;
     }
-
+    
     .landing-header {
-        padding: 12px 16px;
         position: sticky;
         top: 0;
         z-index: 100;
     }
-
-    .landing-header .logo span {
-        font-size: 1rem;
-    }
-
-    .landing-header .header-actions {
-        gap: 8px;
-    }
-
+    
     .landing-main {
         padding: 20px 16px;
-        min-height: calc(100vh - 60px);
-        justify-content: flex-start;
-        padding-top: 40px;
+        padding-bottom: 40px;
+        min-height: auto;
+        flex: 1;
     }
 
     .landing-main h1 {
         font-size: 1.75rem;
-        text-align: center;
     }
 
     .subtitle {
         font-size: 0.95rem;
         margin-bottom: 24px;
-        text-align: center;
     }
 
     .template-grid {
         grid-template-columns: 1fr;
         gap: 16px;
-        max-width: 100%;
-        padding: 0;
     }
 
     .template-card {
         padding: 20px;
-        margin: 0;
     }
 
     .template-icon {
@@ -899,13 +837,6 @@ body.force-mobile-view .header-right .btn-primary span {
 
     .load-section {
         margin-top: 24px;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .load-section .load-btn {
-        width: 100%;
-        padding: 14px 20px;
     }
 }
 
@@ -939,525 +870,4 @@ body.force-mobile-view .header-right .btn-primary span {
 
 .swipe-indicator.show {
     opacity: 1;
-}
-
-/* Enhanced Mobile Experience */
-@media (max-width: 768px) {
-    /* Better slide editing area */
-    .slide-editor {
-        padding: 8px;
-        height: calc(100vh - 140px);
-        overflow-y: auto;
-    }
-
-    .slide-canvas {
-        min-height: 300px;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Make contenteditable areas easier to tap */
-    .slide-canvas [contenteditable="true"] {
-        min-height: 44px;
-        padding: 8px;
-        border-radius: 4px;
-        transition: background 0.2s;
-    }
-
-    .slide-canvas [contenteditable="true"]:focus {
-        background: rgba(59, 130, 246, 0.1);
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-    }
-
-    /* AI Panel on mobile */
-    .ai-panel {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        max-width: 100%;
-        z-index: 2000;
-        transition: right 0.3s ease;
-        border-radius: 0;
-    }
-
-    .ai-panel.active {
-        right: 0;
-    }
-
-    .ai-panel-header {
-        padding: 16px;
-        border-bottom: 1px solid var(--gray-200);
-    }
-
-    .ai-panel-body {
-        height: calc(100vh - 140px);
-        overflow-y: auto;
-        padding-bottom: 80px;
-    }
-
-    .ai-result-item {
-        padding: 12px;
-        margin-bottom: 8px;
-    }
-
-    .ai-quick-fix-btn {
-        padding: 10px 16px;
-        min-height: 44px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Mobile toolbar with AI button */
-@media (max-width: 768px) {
-    .mobile-toolbar {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-        padding: 8px;
-        padding-bottom: calc(8px + env(safe-area-inset-bottom));
-    }
-
-    .mobile-toolbar-btn {
-        padding: 8px 4px;
-    }
-
-    .mobile-toolbar-btn i {
-        font-size: 1.1rem;
-    }
-
-    .mobile-toolbar-btn span {
-        font-size: 0.6rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
-/* Force mobile view class */
-body.force-mobile-view .ai-panel {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    max-width: 100%;
-    z-index: 2000;
-    transition: right 0.3s ease;
-    border-radius: 0;
-}
-
-body.force-mobile-view .ai-panel.active {
-    right: 0;
-}
-
-body.force-mobile-view .editor-header .header-right .btn-secondary,
-body.force-mobile-view .editor-header .header-right .dropdown,
-body.force-mobile-view .editor-header .header-right .btn-ai,
-body.force-mobile-view .editor-header .header-right .btn-theme {
-    display: none !important;
-}
-
-body.force-mobile-view .editor-header .header-left .logo span {
-    display: none;
-}
-
-body.force-mobile-view .editor-header .header-right .btn-icon {
-    display: none;
-}
-
-body.force-mobile-view .presentation-timer,
-body.force-mobile-view .autosave-indicator {
-    display: none;
-}
-
-/* Dark mode mobile adjustments */
-[data-theme="dark"] .mobile-nav-drawer {
-    background: var(--surface-primary);
-}
-
-[data-theme="dark"] .mobile-nav-header {
-    background: var(--primary-dark);
-}
-
-[data-theme="dark"] .mobile-slide-item {
-    background: var(--surface-secondary);
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .mobile-slide-item:hover,
-[data-theme="dark"] .mobile-slide-item.active {
-    background: var(--primary);
-}
-
-[data-theme="dark"] .mobile-toolbar {
-    background: var(--surface-primary);
-    border-color: var(--border-color);
-}
-
-[data-theme="dark"] .mobile-toolbar-btn {
-    color: var(--text-secondary);
-}
-
-[data-theme="dark"] .mobile-toolbar-btn:hover,
-[data-theme="dark"] .mobile-toolbar-btn.active {
-    color: var(--primary-light);
-    background: var(--surface-secondary);
-}
-
-[data-theme="dark"] .mobile-slide-type-modal,
-[data-theme="dark"] .mobile-actions-sheet {
-    background: var(--surface-primary);
-}
-
-[data-theme="dark"] .mobile-slide-type-item {
-    background: var(--surface-secondary);
-    border-color: var(--border-color);
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .mobile-action-btn {
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .mobile-action-btn:hover {
-    background: var(--surface-secondary);
-}
-
-[data-theme="dark"] .mobile-lang-selector {
-    background: var(--surface-secondary);
-}
-
-[data-theme="dark"] .mobile-lang-btn {
-    color: var(--text-secondary);
-}
-
-[data-theme="dark"] .mobile-lang-btn.active {
-    background: var(--surface-tertiary);
-    color: var(--primary-light);
-}
-
-/* ====================================================
-   CRITICAL: Mobile overflow and clipping fixes
-   ==================================================== */
-
-/* Ensure landing page is fully scrollable on mobile */
-@media (max-width: 768px) {
-    html, body {
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    #landing-page {
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        min-height: 100vh;
-        height: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Fix template cards overflow */
-    .template-grid {
-        width: calc(100% - 32px);
-        margin: 0 auto;
-        overflow: visible;
-    }
-
-    .template-card {
-        overflow: hidden;
-        max-width: 100%;
-    }
-
-    /* Fix header clipping */
-    .landing-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: inherit;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-
-    /* Prevent content from going under notch/status bar */
-    .landing-main {
-        padding-top: max(20px, env(safe-area-inset-top));
-        padding-bottom: max(20px, env(safe-area-inset-bottom));
-    }
-
-    /* AI Panel fullscreen mobile fix */
-    .ai-panel {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-height: 100vh !important;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        overflow: hidden;
-        border-radius: 0 !important;
-    }
-
-    .ai-panel.active {
-        transform: translateX(0);
-    }
-
-    .ai-panel-body {
-        height: calc(100vh - 60px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
-        max-height: calc(100vh - 60px) !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        padding: 16px;
-        padding-bottom: calc(80px + env(safe-area-inset-bottom));
-    }
-
-    .ai-results {
-        max-height: none;
-        overflow: visible;
-    }
-
-    .ai-result-item {
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    /* Modal fixes for mobile */
-    .modal {
-        padding: 0 !important;
-    }
-
-    .modal-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 100% !important;
-        max-height: 100vh !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .modal-body {
-        max-height: calc(100vh - 140px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Generator modal specific fixes */
-    .generator-modal-content {
-        height: 100% !important;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .generator-layout {
-        flex-direction: column;
-        overflow-y: auto;
-        flex: 1;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .generator-input-section,
-    .generator-options-section {
-        width: 100% !important;
-        max-width: 100%;
-    }
-
-    #paste-text-input {
-        min-height: 200px;
-        max-height: 300px;
-        resize: vertical;
-    }
-
-    /* Slide editor mobile overflow fixes */
-    .slide-editor {
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        height: calc(100vh - 140px) !important;
-        max-height: calc(100vh - 140px) !important;
-    }
-
-    .slide-canvas {
-        overflow: hidden !important;
-        max-width: 100%;
-        min-height: 250px;
-        max-height: calc(100vh - 200px);
-    }
-
-    .slide-canvas .slide {
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: 100%;
-    }
-
-    /* Fix contenteditable overflow */
-    [contenteditable="true"] {
-        overflow-wrap: break-word;
-        word-break: break-word;
-        max-width: 100%;
-    }
-
-    /* Dropdown and actions sheet fixes */
-    .dropdown-menu {
-        position: fixed !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        max-width: 90vw;
-        max-height: 80vh;
-        overflow-y: auto;
-        z-index: 10000;
-    }
-
-    /* Theme panel mobile fix */
-    .theme-panel {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        top: auto !important;
-        max-height: 50vh;
-        overflow-y: auto;
-        border-radius: 16px 16px 0 0;
-        z-index: 2000;
-    }
-
-    /* Fix text overflow in UI elements */
-    .ai-panel-title span,
-    .ai-result-item p,
-    .ai-suggestion-text {
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    /* Prevent horizontal scroll on body */
-    body {
-        overflow-x: hidden !important;
-    }
-}
-
-/* Very small screens (iPhone SE, etc.) */
-@media (max-width: 375px) {
-    .landing-main h1 {
-        font-size: 1.5rem !important;
-    }
-
-    .subtitle {
-        font-size: 0.85rem !important;
-    }
-
-    .template-card {
-        padding: 16px;
-    }
-
-    .template-icon {
-        width: 48px;
-        height: 48px;
-    }
-
-    .template-icon i {
-        font-size: 1.25rem;
-    }
-
-    .template-card h3 {
-        font-size: 1rem;
-    }
-
-    .template-features {
-        font-size: 0.7rem;
-    }
-
-    /* Smaller buttons for tiny screens */
-    .mobile-toolbar-btn {
-        padding: 6px 2px;
-    }
-
-    .mobile-toolbar-btn i {
-        font-size: 1rem;
-    }
-
-    .mobile-toolbar-btn span {
-        font-size: 0.55rem;
-    }
-
-    /* AI panel adjustments */
-    .ai-score-circle {
-        width: 60px;
-        height: 60px;
-    }
-
-    .ai-score-value {
-        font-size: 1.25rem;
-    }
-}
-
-/* Landscape mode mobile fixes */
-@media (max-width: 896px) and (orientation: landscape) {
-    #landing-page {
-        min-height: auto;
-    }
-
-    .landing-main {
-        padding: 16px;
-    }
-
-    .template-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-
-    .template-card {
-        padding: 12px;
-    }
-
-    .template-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 8px;
-    }
-
-    .template-features {
-        display: none;
-    }
-
-    /* AI panel landscape */
-    .ai-panel-body {
-        height: calc(100vh - 50px) !important;
-    }
-
-    .ai-summary {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-    }
-}
-
-/* iOS specific fixes */
-@supports (-webkit-touch-callout: none) {
-    /* Fix iOS bounce scroll issues */
-    .ai-panel-body,
-    .modal-body,
-    .slide-editor {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Fix iOS input zoom */
-    input, textarea, select {
-        font-size: 16px !important;
-    }
-
-    /* Fix iOS safe area */
-    .mobile-toolbar {
-        padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
-    }
-
-    .ai-panel-body {
-        padding-bottom: calc(20px + env(safe-area-inset-bottom)) !important;
-    }
 }
