@@ -11,16 +11,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40574569/"
     },
     {
-      "pmid": "41182057",
-      "title": "Ambulatory ophthalmic anesthesia: what is important.",
-      "abstract": "This review addresses aspects relevant to caregivers facing increased numbers of adult and elderly patients seeking ambulatory medical service for ophthalmic surgery.",
-      "authors": "Castello Roberto, Neth Jens",
-      "journal": "Current opinion in anaesthesiology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
-    },
-    {
       "pmid": "40720202",
       "title": "Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.",
       "abstract": "Postoperative delirium is a common and serious complication in orthopedic surgery patients, particularly in the elderly. This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.",
@@ -31,42 +21,53 @@
         "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients."
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
+    },
+    {
+      "pmid": "41316013",
+      "title": "Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.",
+      "abstract": "The stress hyperglycemia ratio (SHR) is an emerging glycemic marker in critical care, but its relationship with delirium in elderly surgical and trauma ICU patients remains unclear. This study explored the association between SHR and delirium to inform early identification strategies.",
+      "authors": "Yao Fengwei, Zhao Hongyan, Liu Lei et al.",
+      "journal": "BMC geriatrics",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41316013/"
     }
   ],
   "frailty": [
     {
-      "pmid": "40714195",
-      "title": "Frailty and frailty syndromes in persons with hemophilia: a review.",
-      "abstract": "Advances in treatment for persons with hemophilia (PWH) have improved life expectancy, but PWH face new challenges, including frailty. Frailty is a health state of increased functional vulnerability. It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization. Although well-characterized in the general population, its prevalence and impact on PWH remain underexplored. Emerging evidence suggests PWH currently have increased frailty, particularly those with severe disease and joint damage from inadequate early prophylaxis. This review examines frailty in PWH, including the impact of frailty syndromes (falls, immobility, incontinence, cognitive impairment, and polypharmacy) and the potential role of the hemophilia multidisciplinary team in screening and management. The Clinical Frailty Scale can be used by nonspecialists and can aid in early identification and subsequent intervention, including referral to geriatric medicine when appropriate. Importantly, interventions such as the comprehensive geriatric assessment have been shown to reverse or slow progression of frailty with improved health outcomes. An individualized multidisciplinary approach, including fall prevention, tailored exercise regimes, and medication review, is key. Cognitive impairment and dementia may impact self-management, necessitating dementia-friendly healthcare strategies. Given the growing population of older PWH, it is crucial to increase awareness of frailty for both the hemophilia multidisciplinary team and PWH to facilitate screening, evidence-based interventions, optimization of care pathways, and ensure comprehensive multidisciplinary support to improve quality of life. Future studies should address the specific needs of aging PWH, including women, and further investigate the impact of frailty on clinical outcomes in PWH.",
-      "authors": "McKeown William, Taylor Stephanie, Shapiro Susan",
-      "journal": "Journal of thrombosis and haemostasis : JTH",
+      "pmid": "41253248",
+      "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
+      "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
+      "authors": "Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.",
+      "journal": "Ageing research reviews",
       "year": "2025",
       "key_findings": [
-        "It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization"
+        "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored",
+        "Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40714195/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "40738335",
-      "title": "Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.",
-      "abstract": "Sleep disorders-including daytime sleepiness (DS), insomnia, and sleep apnea (SA)-have been linked to aging-related phenotypes, but their causal roles remain unclear. This study aimed to examine the potential causal effects of these sleep traits on biological aging using a Mendelian randomization (MR) approach.",
-      "authors": "Zhang Zheng, Ren Hao, Cheng Yongjia et al.",
-      "journal": "Journal of affective disorders",
+      "pmid": "40914903",
+      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
+      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
+      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
+      "journal": "Annals of medicine",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
     },
     {
-      "pmid": "40921305",
-      "title": "Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.",
-      "abstract": "Frailty and dementia are prevalent, interrelated conditions in aging populations, yet the temporal relationship between frailty progression and dementia risk remains underexplored. This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.",
-      "authors": "Ye Xin, Wang Xinfeng, Hu Mingzheng et al.",
-      "journal": "American journal of preventive medicine",
+      "pmid": "40840867",
+      "title": "Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.",
+      "abstract": "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality. We investigated the relationship between frailty and peripheral neuropathy in hemodialysis patients.",
+      "authors": "Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.",
+      "journal": "Renal failure",
       "year": "2025",
       "key_findings": [
-        "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts."
+        "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40921305/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40840867/"
     }
   ],
   "falls": [
@@ -81,26 +82,24 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "40902310",
-      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
-      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
-      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
-      "journal": "Revista espanola de geriatria y gerontologia",
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
     },
     {
-      "pmid": "41168499",
-      "title": "[Importance of vision in old age].",
-      "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
-      "authors": "Fink David J, Finger Robert P, Terheyden Jan H",
-      "journal": "Zeitschrift fur Gerontologie und Geriatrie",
+      "pmid": "40970437",
+      "title": "Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.",
+      "abstract": "Falls are among the most common adverse events in hospitals, with major clinical and legal consequences. Despite existing prevention guidelines, fall-related incidents remain frequent, underscoring the need to evaluate healthcare workers' awareness and adherence to institutional protocols.",
+      "authors": "Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.",
+      "journal": "Annals of medicine",
       "year": "2025",
-      "key_findings": [
-        "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
     }
   ],
   "dementia": [
@@ -115,16 +114,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41233181/"
     },
     {
-      "pmid": "39988819",
-      "title": "",
-      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
-      "authors": "Cornford Nisha, Charnley Margaret",
-      "journal": "Nutrition research reviews",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
-    },
-    {
       "pmid": "40855194",
       "title": "Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.",
       "abstract": "Alzheimer's disease (AD) and AD-related dementias (AD/ADRD) have a substantial genetic basis, with APOE4 homozygotes increasingly recognized as a distinct genetic subtype. To identify genotype-specific metabolic pathways and modifiable risk factors, we integrated genetic, plasma metabolomic and dietary data from 4,215 women and 1,490 men in prospective cohorts. Here we show that the associations of 57 metabolites with dementia risk varied by APOE4 genotype or other AD/ADRD risk variants. For example, cholesteryl esters and sphingomyelins were most strongly associated with increased dementia risk in APOE4 homozygotes, whereas inverse associations with glycerides were specific to this genotype. Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP). Adherence to the Mediterranean diet more effectively modulated dementia-related metabolites in APOE4 homozygotes, suggesting targeted prevention strategies. Incorporating metabolomic data modestly improved dementia risk prediction, particularly during early follow-up. Mendelian randomization analysis identified 19 putative causal relationships between metabolites and cognitive outcomes, including protective effects of 4-guanidinobutanoate, carotenoids and N",
@@ -135,42 +124,48 @@
         "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
+    },
+    {
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
     }
   ],
   "deprescribing": [
     {
-      "pmid": "41231192",
-      "title": "Hypertension in the Oldest Old.",
-      "abstract": "Hypertension affects 80% of adults 80 years of age or older and is a leading cause of morbidity and mortality through its fundamental role as a risk factor for cardiovascular disease, stroke, kidney disease, and cognitive impairment. Antihypertensive therapy reduces the risk of coronary artery disease, heart failure, atrial fibrillation, stroke, and cognitive decline among patients in this age group, but older patients with advanced frailty, cognitive impairment, complex comorbidities, or nursing home residence have largely been excluded from clinical trials. This article reviews the epidemiology, pathophysiology, diagnosis, and management of hypertension in the oldest old, herein defined as age ≥80 years. We propose the geriatrics 4 Ms model as a framework for providing individualized patient-centered care for the oldest patients with hypertension. Additional research is needed in patients who have been under-represented in clinical trials and to assess the role of deprescribing in the care of older patients with hypertension.",
-      "authors": "Supiano Mark A, Ascher Simon B, Rich Michael W",
-      "journal": "JACC. Advances",
+      "pmid": "40719419",
+      "title": "Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).",
+      "abstract": "Chronic pulmonary conditions require complex treatment strategies involving long-term antibiotic treatment, which carries the highest risk of antimicrobial resistance and adverse drug events (ADE). Specific guidance on prescribing and deprescribing can help reduce these risks and improve therapy effectiveness. The aim of the study was to determine prescribing and deprescribing practices for long-term antibiotic treatment (≥30 days) in preventing exacerbations of stable chronic pulmonary conditions in adult patients across all healthcare settings.",
+      "authors": "Tadic Ivana, Fialová Daniela, Hazen Ankie et al.",
+      "journal": "COPD",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41231192/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
     },
     {
-      "pmid": "40022664",
-      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
-      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
-      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
+      "pmid": "41296133",
+      "title": "Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.",
+      "abstract": "Polypharmacy, the concurrent use of five or more medications, is prevalent among older adults with Diabetes, a population at elevated risk for medication-related complications. Complex treatment regimens for Diabetes and its comorbidities exacerbate challenges such as medication non-adherence, drug interactions, adverse events, and increased hospitalization risk. This review aimed to estimate the prevalence of polypharmacy among older adults with Diabetes.",
+      "authors": "Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.",
+      "journal": "Aging clinical and experimental research",
       "year": "2025",
-      "key_findings": [
-        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41296133/"
     },
     {
-      "pmid": "41128849",
-      "title": "[Dizziness in old age].",
-      "abstract": "Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life. The causes are diverse and differ from younger patients. Polyneuropathy, orthostatic dysregulation, drug-related causes, positional vertigo and bilateral vestibulopathy are more frequent in old age. A detailed and vertigo-specific patient history, including the assessment of risk factors such as frailty, polypharmacy and comorbidities, is essential for the diagnostics. The treatment depends on the underlying cause and includes physiotherapeutic interventions as well as adjustments to the medication.",
-      "authors": "Trabert Johannes",
-      "journal": "Die Ophthalmologie",
+      "pmid": "41184174",
+      "title": "A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.",
+      "abstract": "Polypharmacy and potentially inappropriate medications (PIMs) contribute to adverse outcomes. Deprescribing, the supervised withdrawal of PIMs, is a key strategy to reduce these risks. Identifying the most targeted PIMs and commonly used tools for deprescribing remains essential. The aim of this systematic review was to identify the medication classes targeted by deprescribing tools, stratified by tool type and frequency and to evaluate the availability of medication-specific tools.",
+      "authors": "Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.",
+      "journal": "Expert review of clinical pharmacology",
       "year": "2025",
-      "key_findings": [
-        "Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41128849/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41184174/"
     }
   ],
   "sarcopenia": [
@@ -209,6 +204,16 @@
   ],
   "end_of_life": [
     {
+      "pmid": "40689782",
+      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
+      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
+      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
+      "journal": "Expert review of endocrinology & metabolism",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
+    },
+    {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
       "abstract": "Modern cardiovascular medicine and surgery enable the treatment of complex cardiovascular disease, even in elderly and multimorbid patients, through increasingly sophisticated procedures. Nevertheless, there are situations in which surgical intervention appears medically inappropriate or is explicitly declined by the patient. Similarly, it may become necessary in the postoperative course to revise the original therapeutic goals-particularly when continued survival depends upon prolonged intensive care unit treatment, or when the anticipated quality of life, from the patient's perspective, appears inadequate. While established guidelines and position papers-most notably from the German Interdisciplinary Association for Intensive and Emergency Medicine-are already available in the field of intensive care medicine, a discipline-specific framework for cardiac surgery has been lacking thus far. This inaugural position paper issued by the German Society for Thoracic and Cardiovascular Surgery seeks to contribute to the definition of clinical and ethical standards in the context of therapeutic restraint (Section A) and to the redefinition of therapeutic goals (Section B) within our specialty. The aim is to promote a structured and multiprofessional approach that transparently integrates the core pillars of goal setting in therapy-namely, medical indication and patient autonomy-into a comprehensible decision-making framework. Achieving this objective requires close collaboration among physicians and nursing staff in cardiac surgery, cardiology, intensive care, anesthesiology, ethics consultation, and palliative care. The present recommendations are intended to serve as a foundation for patient-centered, appropriate, and transparent decision-making-always with the overarching aim of preserving the dignity and self-determination of the patients concerned.",
@@ -219,27 +224,27 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
     },
     {
-      "pmid": "41246289",
-      "title": "Demystifying Compassionate Communities.",
-      "abstract": "",
-      "authors": "Ng Yong Hao, Aoun Samar",
-      "journal": "Palliative care and social practice",
+      "pmid": "41252804",
+      "title": "Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.",
+      "abstract": "Sickle cell disease is one of the most common inherited monogenetic blood disorders. People living with sickle cell disease experience both acute pain and long-lasting complications, leading to co-morbidities which impact their quality of life. Palliative care is both under-reported and under-utilised for people living with sickle cell disease despite the profound impacts of this illness across their lives.",
+      "authors": "Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.",
+      "journal": "International journal of nursing studies",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
-    },
-    {
-      "pmid": "40769281",
-      "title": "Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.",
-      "abstract": "End-of-life distress and delirium are common in palliative care inpatients, often requiring sedatives that diminish interaction. Current practices rely on clinical experience rather than evidence.",
-      "authors": "Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.",
-      "journal": "Journal of pain and symptom management",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40769281/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
     }
   ],
   "incontinence": [
+    {
+      "pmid": "41297740",
+      "title": "Prevalence and associated factors of fecal incontinence: a global population-based study. Fecal incontinence in the global population.",
+      "abstract": "The global prevalence of fecal incontinence (FI) is likely underestimated with an unmet need to identify associated factors to improve patient care. This study aimed to report the global prevalence of FI and to identify associated factors.",
+      "authors": "van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.",
+      "journal": "Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41297740/"
+    },
     {
       "pmid": "41040126",
       "title": "History of the Treatment of Rectal Prolapse.",
@@ -261,16 +266,6 @@
         "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40848414/"
-    },
-    {
-      "pmid": "41297740",
-      "title": "Prevalence and associated factors of fecal incontinence: a global population-based study. Fecal incontinence in the global population.",
-      "abstract": "The global prevalence of fecal incontinence (FI) is likely underestimated with an unmet need to identify associated factors to improve patient care. This study aimed to report the global prevalence of FI and to identify associated factors.",
-      "authors": "van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.",
-      "journal": "Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41297740/"
     }
   ]
 }

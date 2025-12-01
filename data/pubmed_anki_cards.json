@@ -11,9 +11,9 @@
     ]
   },
   {
-    "id": "8e33c9e1",
-    "front": "[שבריריות] Study: Frailty and frailty syndromes in persons with hemophilia: a review.\n\nWhat was the main finding?",
-    "back": "It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization\n\n📖 McKeown William, Taylor Stephanie, Shapiro Susan (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40714195/",
+    "id": "e5214b29",
+    "front": "[שבריריות] Study: Frailty and the brain: A narrative review of functional and pathological correlates.\n\nWhat was the main finding?",
+    "back": "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored\n\n📖 Sciancalepore Francesco, Salemme Simone, Valletta Martina et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41253248/",
     "tags": [
       "frailty",
       "research",
@@ -22,25 +22,25 @@
     ]
   },
   {
-    "id": "2904b95b",
-    "front": "[שבריריות] Study: Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.\n\nWhat was the main finding?",
-    "back": "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.\n\n📖 Ye Xin, Wang Xinfeng, Hu Mingzheng et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40921305/",
+    "id": "bae0ab88",
+    "front": "[שבריריות] Based on Sciancalepore Francesco et al. (2025), what clinical practice change might be considered?",
+    "back": "Finding: Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes\n\nClinical relevance: Consider this evidence when treating elderly patients with frailty-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41253248/",
+    "tags": [
+      "frailty",
+      "clinical",
+      "evidence-based",
+      "שבריריות"
+    ]
+  },
+  {
+    "id": "2de37c5e",
+    "front": "[שבריריות] Study: Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.\n\nWhat was the main finding?",
+    "back": "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality\n\n📖 Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40840867/",
     "tags": [
       "frailty",
       "research",
       "recent",
       "שבריריות"
-    ]
-  },
-  {
-    "id": "84202044",
-    "front": "[נפילות] Study: [Importance of vision in old age].\n\nWhat was the main finding?",
-    "back": "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases\n\n📖 Fink David J, Finger Robert P, Terheyden Jan H (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41168499/",
-    "tags": [
-      "falls",
-      "research",
-      "recent",
-      "נפילות"
     ]
   },
   {
@@ -52,28 +52,6 @@
       "research",
       "recent",
       "דמנציה"
-    ]
-  },
-  {
-    "id": "8fb682ac",
-    "front": "[דה-פרסקייבינג] Study: Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.\n\nWhat was the main finding?",
-    "back": "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group\n\n📖 Bayrak Muharrem, Kaşali Kamber, Güner Merve et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40022664/",
-    "tags": [
-      "deprescribing",
-      "research",
-      "recent",
-      "דה-פרסקייבינג"
-    ]
-  },
-  {
-    "id": "b9fa3a2f",
-    "front": "[דה-פרסקייבינג] Study: [Dizziness in old age].\n\nWhat was the main finding?",
-    "back": "Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life\n\n📖 Trabert Johannes (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41128849/",
-    "tags": [
-      "deprescribing",
-      "research",
-      "recent",
-      "דה-פרסקייבינג"
     ]
   },
   {

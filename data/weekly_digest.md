@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 06:43*
+*Generated: 2025-12-01 09:53*
 
 
 ## Delirium (דליריום)
@@ -10,36 +10,36 @@
 - **Journal**: European journal of anaesthesiology (2025)
 - **Link**: [40574569](https://pubmed.ncbi.nlm.nih.gov/40574569/)
 
-### 📄 Ambulatory ophthalmic anesthesia: what is important.
-- **Authors**: Castello Roberto, Neth Jens
-- **Journal**: Current opinion in anaesthesiology (2025)
-- **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
-
 ### 📄 Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.
 - **Authors**: Niu Yanan, Wang Qiang, Lu Jin et al.
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
 - **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
 
+### 📄 Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.
+- **Authors**: Yao Fengwei, Zhao Hongyan, Liu Lei et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41316013](https://pubmed.ncbi.nlm.nih.gov/41316013/)
+
 
 ## Frailty (שבריריות)
 
-### 📄 Frailty and frailty syndromes in persons with hemophilia: a review.
-- **Authors**: McKeown William, Taylor Stephanie, Shapiro Susan
-- **Journal**: Journal of thrombosis and haemostasis : JTH (2025)
-- **Link**: [40714195](https://pubmed.ncbi.nlm.nih.gov/40714195/)
-- **Key Finding**: It is associated with aging and linked to adverse outcomes such as falls, hospitalization, and institutionalization...
+### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
+- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
+- **Journal**: Ageing research reviews (2025)
+- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
+- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
-- **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
-- **Journal**: Journal of affective disorders (2025)
-- **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
-### 📄 Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.
-- **Authors**: Ye Xin, Wang Xinfeng, Hu Mingzheng et al.
-- **Journal**: American journal of preventive medicine (2025)
-- **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
-- **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
+### 📄 Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.
+- **Authors**: Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.
+- **Journal**: Renal failure (2025)
+- **Link**: [40840867](https://pubmed.ncbi.nlm.nih.gov/40840867/)
+- **Key Finding**: Frailty is highly prevalent in chronic kidney disease patients and associated with mortality...
 
 
 ## Falls (נפילות)
@@ -49,16 +49,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
-- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
-- **Journal**: Revista espanola de geriatria y gerontologia (2025)
-- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
 
-### 📄 [Importance of vision in old age].
-- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
-- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
-- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
-- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
+### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
+- **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
 
 
 ## Dementia (דמנציה)
@@ -68,36 +67,34 @@
 - **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
 - **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
 
-### 📄 
-- **Authors**: Cornford Nisha, Charnley Margaret
-- **Journal**: Nutrition research reviews (2025)
-- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
-
 ### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
 - **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
 - **Journal**: Nature medicine (2025)
 - **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
 - **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
 
+### 📄 
+- **Authors**: Cornford Nisha, Charnley Margaret
+- **Journal**: Nutrition research reviews (2025)
+- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
+
 
 ## Deprescribing (דה-פרסקייבינג)
 
-### 📄 Hypertension in the Oldest Old.
-- **Authors**: Supiano Mark A, Ascher Simon B, Rich Michael W
-- **Journal**: JACC. Advances (2025)
-- **Link**: [41231192](https://pubmed.ncbi.nlm.nih.gov/41231192/)
+### 📄 Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).
+- **Authors**: Tadic Ivana, Fialová Daniela, Hazen Ankie et al.
+- **Journal**: COPD (2025)
+- **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
 
-### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
-- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
-- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
+### 📄 Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.
+- **Authors**: Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.
+- **Journal**: Aging clinical and experimental research (2025)
+- **Link**: [41296133](https://pubmed.ncbi.nlm.nih.gov/41296133/)
 
-### 📄 [Dizziness in old age].
-- **Authors**: Trabert Johannes
-- **Journal**: Die Ophthalmologie (2025)
-- **Link**: [41128849](https://pubmed.ncbi.nlm.nih.gov/41128849/)
-- **Key Finding**: Dizziness is a frequent and often multifactorial symptom in older patients that can significantly impair the quality of life...
+### 📄 A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.
+- **Authors**: Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.
+- **Journal**: Expert review of clinical pharmacology (2025)
+- **Link**: [41184174](https://pubmed.ncbi.nlm.nih.gov/41184174/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -121,23 +118,28 @@
 
 ## End Of Life (טיפול סוף-חיים)
 
+### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
+- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
+- **Journal**: Expert review of endocrinology & metabolism (2025)
+- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
+
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
 
-### 📄 Demystifying Compassionate Communities.
-- **Authors**: Ng Yong Hao, Aoun Samar
-- **Journal**: Palliative care and social practice (2025)
-- **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
-
-### 📄 Dexmedetomidine Versus Midazolam for End-of-Life Sedation: The DREAMS Non-Blinded Randomized Clinical Trial.
-- **Authors**: Thomas Benjamin, Barclay Gregory, Mansfield Kylie et al.
-- **Journal**: Journal of pain and symptom management (2025)
-- **Link**: [40769281](https://pubmed.ncbi.nlm.nih.gov/40769281/)
+### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
+- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
+- **Journal**: International journal of nursing studies (2025)
+- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
+
+### 📄 Prevalence and associated factors of fecal incontinence: a global population-based study. Fecal incontinence in the global population.
+- **Authors**: van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.
+- **Journal**: Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association (2025)
+- **Link**: [41297740](https://pubmed.ncbi.nlm.nih.gov/41297740/)
 
 ### 📄 History of the Treatment of Rectal Prolapse.
 - **Authors**: Spivak Rebecca, Hu Katherine
@@ -149,9 +151,4 @@
 - **Journal**: Tissue & cell (2025)
 - **Link**: [40848414](https://pubmed.ncbi.nlm.nih.gov/40848414/)
 - **Key Finding**: In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not...
-
-### 📄 Prevalence and associated factors of fecal incontinence: a global population-based study. Fecal incontinence in the global population.
-- **Authors**: van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.
-- **Journal**: Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association (2025)
-- **Link**: [41297740](https://pubmed.ncbi.nlm.nih.gov/41297740/)
 
