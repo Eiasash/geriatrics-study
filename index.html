@@ -2,22 +2,24 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="theme-color" content="#1e3a5f">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0f172a">
     <meta name="description" content="SZMC Geriatrics - Clinical tools, presentation maker, and study resources for geriatric medicine">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>SZMC Geriatrics Hub</title>
     <link rel="icon" type="image/svg+xml" href="szmc-presentation-maker/icons/icon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #1e3a5f;
-            --primary-light: #2d5a8a;
-            --primary-dark: #0f1f33;
-            --secondary: #3498db;
-            --accent: #27ae60;
-            --accent-warning: #f39c12;
-            --accent-danger: #e74c3c;
+            --primary-light: #3b82f6;
+            --primary-dark: #0f172a;
+            --secondary: #06b6d4;
+            --accent: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
             --white: #ffffff;
             --gray-50: #f8fafc;
             --gray-100: #f1f5f9;
@@ -28,26 +30,34 @@
             --gray-600: #475569;
             --gray-700: #334155;
             --gray-800: #1e293b;
+            --gray-900: #0f172a;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: var(--font-sans);
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
-            /* FIX: Keeps background locked during scroll */
-            background-attachment: fixed; 
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary) 50%, var(--primary-dark) 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             color: var(--gray-800);
-            /* FIX: Prevents horizontal scrolling issues */
             overflow-x: hidden;
             overflow-y: auto;
+            line-height: 1.6;
         }
 
         .container {
@@ -58,7 +68,7 @@
 
         /* Header */
         header {
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             text-align: center;
             color: var(--white);
         }
@@ -68,171 +78,299 @@
             align-items: center;
             justify-content: center;
             gap: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        .logo i {
-            font-size: 3rem;
-            color: var(--accent);
+        .logo-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent), #059669);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         }
 
         .logo-text {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        header p {
-            font-size: 1.25rem;
+        .tagline {
+            font-size: 1.15rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .tagline strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Quick Access Bar */
+        .quick-access {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .quick-link i {
+            font-size: 1.1rem;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Main Content */
         main {
-            padding: 10px; /* Reduced padding for mobile */
+            padding: 10px;
             padding-bottom: 60px;
         }
 
         .section-title {
             color: var(--white);
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
             margin-bottom: 24px;
             display: flex;
             align-items: center;
             gap: 12px;
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
         .section-title i {
             color: var(--secondary);
+            font-size: 1.2rem;
         }
 
         /* Tool Cards Grid */
         .tools-grid {
             display: grid;
-            /* FIX: Changed 320px to 280px to fit small phones */
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-bottom: 48px;
         }
 
         .tool-card {
             background: var(--white);
-            border-radius: 16px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 28px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-lg);
             display: flex;
             flex-direction: column;
             position: relative;
-            z-index: 1;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .tool-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(59, 130, 246, 0.1);
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
         }
 
         .tool-icon {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
+            position: relative;
         }
 
-        .tool-icon.presentation { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
-        .tool-icon.clinical { background: linear-gradient(135deg, #27ae60, #1e8449); color: white; }
-        .tool-icon.study { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
-        .tool-icon.h5p { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
-        .tool-icon.hazzards { background: linear-gradient(135deg, #f39c12, #d68910); color: white; }
+        .tool-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 20px;
+            background: inherit;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .tool-icon.presentation { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .tool-icon.clinical { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .tool-icon.study { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+        .tool-icon.h5p { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .tool-icon.hazzards { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
 
         .tool-card h3 {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 10px;
         }
 
         .tool-card p {
             color: var(--gray-600);
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 20px;
             flex: 1;
+            font-size: 0.95rem;
         }
 
         .tool-features {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 16px;
         }
 
         .feature-tag {
             background: var(--gray-100);
             color: var(--gray-700);
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tool-card:hover .feature-tag {
+            background: var(--primary-light);
+            color: white;
         }
 
         .tool-card .arrow {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--secondary);
+            color: var(--primary-light);
             font-weight: 600;
-            margin-top: 20px;
+            font-size: 0.95rem;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .tool-card .arrow i {
+            transition: transform 0.3s;
         }
 
         .tool-card:hover .arrow {
-            gap: 12px;
+            color: var(--primary);
+        }
+
+        .tool-card:hover .arrow i {
+            transform: translateX(4px);
         }
 
         /* Clinical Tools Section */
         .clinical-grid {
             display: grid;
-            /* FIX: Adjusted for mobile lists */
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
             margin-bottom: 48px;
         }
 
         .clinical-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            padding: 18px 20px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
+            border: 1px solid transparent;
         }
 
         .clinical-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
         .clinical-card i {
-            font-size: 1.5rem;
-            color: var(--secondary);
+            font-size: 1.4rem;
+            color: var(--primary-light);
             width: 40px;
-            text-align: center;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .clinical-card:hover i {
+            background: var(--primary-light);
+            color: white;
         }
 
         .clinical-card span {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--gray-700);
+            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -243,110 +381,162 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        footer p {
+            margin-bottom: 12px;
+        }
+
         footer a {
             color: var(--secondary);
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive Tweaks */
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 12px;
             }
 
-            .logo-text {
+            header {
+                padding: 40px 16px 30px;
+            }
+
+            .logo {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .logo-icon {
+                width: 64px;
+                height: 64px;
                 font-size: 1.75rem;
             }
 
-            .logo i {
-                font-size: 2rem;
+            .logo-text {
+                font-size: 1.8rem;
             }
 
-            header p {
+            .tagline {
                 font-size: 1rem;
                 padding: 0 10px;
             }
 
+            .quick-access {
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .quick-link {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                flex: 1 1 auto;
+                min-width: calc(50% - 8px);
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
             .tools-grid {
-                /* Ensures grid doesn't break on very narrow screens */
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .clinical-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .tool-card {
-                padding: 24px;
+                padding: 22px;
+            }
+
+            .tool-card h3 {
+                font-size: 1.15rem;
+            }
+
+            .tool-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.3rem;
+            }
+
+            .feature-tag {
+                padding: 5px 10px;
+                font-size: 0.75rem;
             }
         }
 
-        /* Quick Access Bar */
-        .quick-access {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 16px 12px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+        @media (max-width: 380px) {
+            .quick-link {
+                min-width: 100%;
+            }
+
+            .quick-link span {
+                display: none;
+            }
         }
 
-        .quick-link {
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.05); /* Added slight background for visibility */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .quick-link:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .tool-card, .clinical-card {
+            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .badge {
-            background: var(--accent);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.2s; }
+        .tool-card:nth-child(3) { animation-delay: 0.3s; }
+        .tool-card:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-heartbeat"></i>
+                <div class="logo-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
                 <span class="logo-text">SZMC Geriatrics</span>
             </div>
-            <p>Shaare Zedek Medical Center - Geriatrics Department<br>Clinical tools, educational resources & presentation maker</p>
+            <p class="tagline"><strong>Shaare Zedek Medical Center</strong> - Geriatrics Department<br>Clinical tools, educational resources & presentation maker</p>
         </header>
 
         <div class="quick-access">
             <a href="szmc-presentation-maker/" class="quick-link">
-                <i class="fas fa-desktop"></i> Presentation Maker
+                <i class="fas fa-desktop"></i>
+                <span>Presentation Maker</span>
             </a>
             <a href="clinical-tools/dashboard.html" class="quick-link">
-                <i class="fas fa-stethoscope"></i> Clinical Tools
+                <i class="fas fa-stethoscope"></i>
+                <span>Clinical Tools</span>
             </a>
             <a href="h5p/" class="quick-link">
-                <i class="fas fa-graduation-cap"></i> Study Mode
+                <i class="fas fa-graduation-cap"></i>
+                <span>Study Mode</span>
             </a>
             <a href="hazzards/" class="quick-link">
-                <i class="fas fa-book"></i> Hazzard's
+                <i class="fas fa-book"></i>
+                <span>Hazzard's</span>
                 <span class="badge">NEW</span>
             </a>
         </div>
@@ -465,11 +655,9 @@
 
         <footer>
             <p>Shaare Zedek Medical Center - Geriatrics Department</p>
-            <p style="margin-top: 8px;">
-                <a href="https://github.com/Eiasash/geriatrics-study" target="_blank">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </p>
+            <a href="https://github.com/Eiasash/geriatrics-study" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
         </footer>
     </div>
 </body>
