@@ -48,6 +48,18 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
+      "pmid": "41137434",
+      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
+      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
+      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
+      "journal": "Annals of medicine",
+      "year": "2025",
+      "key_findings": [
+        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
+    },
+    {
       "pmid": "40914903",
       "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
       "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
@@ -56,18 +68,6 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
-    },
-    {
-      "pmid": "40840867",
-      "title": "Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.",
-      "abstract": "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality. We investigated the relationship between frailty and peripheral neuropathy in hemodialysis patients.",
-      "authors": "Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.",
-      "journal": "Renal failure",
-      "year": "2025",
-      "key_findings": [
-        "Frailty is highly prevalent in chronic kidney disease patients and associated with mortality"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40840867/"
     }
   ],
   "falls": [
