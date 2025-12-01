@@ -1,7 +1,5 @@
-const fs = require('fs-extra');
 const nativeFs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 describe('H5P Build Scripts', () => {
   const distPath = path.join(__dirname, 'dist');
@@ -15,7 +13,9 @@ describe('H5P Build Scripts', () => {
 
   describe('Configuration', () => {
     test('should have valid package.json', () => {
-      const packageJson = JSON.parse(nativeFs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
+      const packageJson = JSON.parse(
+        nativeFs.readFileSync(path.join(__dirname, 'package.json'), 'utf8')
+      );
       expect(packageJson).toBeDefined();
       expect(packageJson.scripts).toBeDefined();
       expect(packageJson.scripts['build:qset']).toBeDefined();
@@ -93,7 +93,10 @@ describe('H5P Build Scripts', () => {
     });
 
     test('should sanitize filenames properly', () => {
-      const buildScript = nativeFs.readFileSync(path.join(__dirname, 'build-h5p-questionset.js'), 'utf8');
+      const buildScript = nativeFs.readFileSync(
+        path.join(__dirname, 'build-h5p-questionset.js'),
+        'utf8'
+      );
       expect(buildScript).toContain('replace');
       expect(buildScript).toContain('safeTitle');
     });
@@ -124,7 +127,7 @@ describe('H5P Build Scripts', () => {
       const buildH5p = require('./build-h5p.js');
       const buildQset = require('./build-h5p-questionset.js');
       const buildMega = require('./build-h5p-mega.js');
-      
+
       expect(typeof buildH5p).toBe('function');
       expect(typeof buildQset).toBe('function');
       expect(typeof buildMega).toBe('function');
