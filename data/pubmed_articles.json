@@ -81,6 +81,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
+      "pmid": "40902310",
+      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
+      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
+      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
+      "journal": "Revista espanola de geriatria y gerontologia",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
+    },
+    {
       "pmid": "41168499",
       "title": "[Importance of vision in old age].",
       "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
@@ -91,16 +101,6 @@
         "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
-    },
-    {
-      "pmid": "40110801",
-      "title": "Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.",
-      "abstract": "Falls are an important health concern among older persons. This study attempted to evaluate the characteristics and risk factors of falls in older persons attending a geriatric falls clinic in Qatar, with a particular emphasis on the impact of the COVID-19 epidemic.",
-      "authors": "Al Hamad Hanadi, Sathian Brijesh",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
     }
   ],
   "dementia": [
@@ -115,6 +115,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41233181/"
     },
     {
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
+    },
+    {
       "pmid": "40855194",
       "title": "Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.",
       "abstract": "Alzheimer's disease (AD) and AD-related dementias (AD/ADRD) have a substantial genetic basis, with APOE4 homozygotes increasingly recognized as a distinct genetic subtype. To identify genotype-specific metabolic pathways and modifiable risk factors, we integrated genetic, plasma metabolomic and dietary data from 4,215 women and 1,490 men in prospective cohorts. Here we show that the associations of 57 metabolites with dementia risk varied by APOE4 genotype or other AD/ADRD risk variants. For example, cholesteryl esters and sphingomyelins were most strongly associated with increased dementia risk in APOE4 homozygotes, whereas inverse associations with glycerides were specific to this genotype. Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP). Adherence to the Mediterranean diet more effectively modulated dementia-related metabolites in APOE4 homozygotes, suggesting targeted prevention strategies. Incorporating metabolomic data modestly improved dementia risk prediction, particularly during early follow-up. Mendelian randomization analysis identified 19 putative causal relationships between metabolites and cognitive outcomes, including protective effects of 4-guanidinobutanoate, carotenoids and N",
@@ -125,16 +135,6 @@
         "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
-    },
-    {
-      "pmid": "39869458",
-      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
-      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
-      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
-      "journal": "Pulmonology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     }
   ],
   "deprescribing": [

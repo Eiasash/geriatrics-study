@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 06:25*
+*Generated: 2025-12-01 06:43*
 
 
 ## Delirium (דליריום)
@@ -49,16 +49,16 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
+### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
+- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
+- **Journal**: Revista espanola de geriatria y gerontologia (2025)
+- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
+
 ### 📄 [Importance of vision in old age].
 - **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
 - **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
 - **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
 - **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
-
-### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
-- **Authors**: Al Hamad Hanadi, Sathian Brijesh
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
 
 
 ## Dementia (דמנציה)
@@ -68,16 +68,16 @@
 - **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
 - **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
 
+### 📄 
+- **Authors**: Cornford Nisha, Charnley Margaret
+- **Journal**: Nutrition research reviews (2025)
+- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
+
 ### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
 - **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
 - **Journal**: Nature medicine (2025)
 - **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
 - **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
-
-### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
-- **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
-- **Journal**: Pulmonology (2025)
-- **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
