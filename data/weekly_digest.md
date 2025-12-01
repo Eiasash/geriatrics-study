@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 18:21*
+*Generated: 2025-12-01 18:22*
 
 
 ## Delirium (דליריום)
@@ -24,22 +24,22 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
-- **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
-- **Journal**: Annals of medicine (2025)
-- **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
-- **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
-
 ### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
 - **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
 - **Journal**: Ageing research reviews (2025)
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Frailty across Neurological Diseases: Why Sex and Gender Matter.
-- **Authors**: Lorefice Lorena, Pellecchia Maria Teresa
-- **Journal**: Annals of neurology (2025)
-- **Link**: [41267611](https://pubmed.ncbi.nlm.nih.gov/41267611/)
+### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
+- **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
+- **Journal**: Annals of medicine (2025)
+- **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
+- **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
+
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
 
 ## Falls (נפילות)
@@ -49,15 +49,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
-- **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
-
 ### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
 - **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
 - **Journal**: Revista espanola de geriatria y gerontologia (2025)
 - **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
+
+### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
+- **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
 
 
 ## Dementia (דמנציה)
@@ -110,10 +110,10 @@
 - **Journal**: Nature aging (2025)
 - **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
 
-### 📄 Sarcopenia and Cachexia in Older Patients with Cancer: Pathophysiology, Diagnosis, Impact on Outcomes, and Management Strategies.
-- **Authors**: Papadopoulos Efthymios, Irving Brian A, Brown Justin C et al.
-- **Journal**: Drugs & aging (2025)
-- **Link**: [41060616](https://pubmed.ncbi.nlm.nih.gov/41060616/)
+### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
+- **Authors**: Chen Alissa S, Batsis John A
+- **Journal**: Diabetes (2025)
+- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
 
 ## End Of Life (טיפול סוף-חיים)
