@@ -43,6 +43,37 @@ class AIAssistant {
         this.createPanelHTML();
         this.bindEvents();
         this.loadSavedMessages();
+        this.setupMobileSupport();
+    }
+
+    setupMobileSupport() {
+        // Ensure panel is properly positioned on mobile
+        const panel = document.getElementById('ai-assistant-panel');
+        if (panel) {
+            panel.setAttribute('aria-hidden', 'true');
+            panel.setAttribute('role', 'dialog');
+            panel.setAttribute('aria-label', 'AI Assistant');
+        }
+
+        // Add touch support for all interactive elements
+        document.querySelectorAll('.ai-suggestion-btn, .quick-action-chip, .generate-card').forEach(btn => {
+            btn.addEventListener('touchend', (e) => {
+                // Small delay to show touch feedback
+                setTimeout(() => {
+                    btn.click();
+                }, 50);
+            }, { passive: true });
+        });
+
+        // Handle viewport changes (keyboard open/close on mobile)
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', () => {
+                const panel = document.getElementById('ai-assistant-panel');
+                if (panel && panel.classList.contains('open')) {
+                    panel.style.height = `${window.visualViewport.height}px`;
+                }
+            });
+        }
     }
 
     createPanelHTML() {
@@ -72,7 +103,7 @@ class AIAssistant {
                         <div class="ai-status-dot"></div>
                         <span data-i18n="aiOnline">Online</span>
                     </div>
-                    <button class="ai-panel-close" onclick="aiAssistant.togglePanel()">
+                    <button class="ai-panel-close" id="ai-panel-close-btn" aria-label="Close AI Assistant">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -352,19 +383,50 @@ class AIAssistant {
         if (input) {
             input.addEventListener('keydown', (e) => this.handleInputKeydown(e));
             input.addEventListener('input', (e) => this.autoResizeInput(e.target));
+            
+            // Fix iOS keyboard issues
+            input.addEventListener('focus', () => {
+                setTimeout(() => {
+                    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            });
         }
 
-        // Close on outside click
-        document.addEventListener('click', (e) => {
+        // Close button - use both click and touchend for mobile
+        const closeBtn = document.querySelector('.ai-panel-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.togglePanel(false);
+            });
+            closeBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.togglePanel(false);
+            });
+        }
+
+        // Handle back button on Android
+        window.addEventListener('popstate', () => {
             const panel = document.getElementById('ai-assistant-panel');
-            const toggleBtn = document.querySelector('.btn-ai, [onclick*="toggleAIPanel"]');
-            if (panel && panel.classList.contains('open') && 
-                !panel.contains(e.target) && 
-                !toggleBtn?.contains(e.target)) {
-                // Optional: close panel on outside click
-                // this.togglePanel(false);
+            if (panel && panel.classList.contains('open')) {
+                this.togglePanel(false);
             }
         });
+
+        // Prevent body scroll when touching inside panel on mobile
+        const panel = document.getElementById('ai-assistant-panel');
+        if (panel) {
+            panel.addEventListener('touchmove', (e) => {
+                // Allow scrolling within scrollable areas
+                const scrollableAreas = ['ai-messages', 'ai-analyze-content', 'ai-generate-content'];
+                const isScrollable = scrollableAreas.some(cls => e.target.closest('.' + cls));
+                if (!isScrollable) {
+                    e.stopPropagation();
+                }
+            }, { passive: true });
+        }
     }
 
     // =========================================================================
@@ -373,16 +435,32 @@ class AIAssistant {
 
     togglePanel(forceState = null) {
         const panel = document.getElementById('ai-assistant-panel');
-        if (!panel) return;
+        if (!panel) {
+            console.error('AI Panel not found');
+            return;
+        }
 
         const shouldOpen = forceState !== null ? forceState : !panel.classList.contains('open');
-        panel.classList.toggle('open', shouldOpen);
+        
+        if (shouldOpen) {
+            panel.classList.add('open');
+            // Prevent body scroll on mobile when panel is open
+            document.body.style.overflow = 'hidden';
+            // Focus management for accessibility
+            panel.setAttribute('aria-hidden', 'false');
+        } else {
+            panel.classList.remove('open');
+            document.body.style.overflow = '';
+            panel.setAttribute('aria-hidden', 'true');
+        }
 
         // Update button state
         const btn = document.querySelector('.btn-ai');
         if (btn) {
             btn.classList.toggle('active', shouldOpen);
         }
+        
+        console.log('AI Panel toggled:', shouldOpen ? 'open' : 'closed');
     }
 
     switchTab(tab) {
@@ -1169,12 +1247,41 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Make globally accessible
     window.aiAssistant = aiAssistant;
+    
+    // Setup AI button with proper mobile touch handling
+    const aiBtn = document.querySelector('.btn-ai');
+    if (aiBtn) {
+        // Remove existing onclick to prevent double firing
+        aiBtn.removeAttribute('onclick');
+        
+        // Add click handler
+        aiBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            aiAssistant.togglePanel();
+        });
+        
+        // Add touch handler for mobile
+        aiBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            aiAssistant.togglePanel();
+        }, { passive: false });
+    }
+    
+    console.log('AI Assistant initialized');
 });
 
 // Legacy function support for existing UI
-function toggleAIPanel() {
+function toggleAIPanel(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
     if (aiAssistant) {
         aiAssistant.togglePanel();
+    } else {
+        console.error('AI Assistant not initialized');
     }
 }
 
