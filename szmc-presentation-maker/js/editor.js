@@ -136,6 +136,40 @@ class PresentationEditor {
         }
     }
 
+    insertSlide(index, slideConfig) {
+        // Insert a slide at a specific index
+        const template = SlideTemplates[slideConfig.type];
+        if (!template) {
+            console.error('Unknown slide type:', slideConfig.type);
+            return;
+        }
+
+        const newSlide = {
+            id: slideConfig.id || this.generateId(),
+            type: slideConfig.type,
+            data: slideConfig.data || { ...template.defaultData },
+            order: index
+        };
+
+        this.slides.splice(index, 0, newSlide);
+
+        // Update order for all slides
+        this.slides.forEach((slide, i) => {
+            slide.order = i;
+        });
+
+        this.isDirty = true;
+        this.renderThumbnails();
+        this.renderCurrentSlide();
+
+        // Trigger AI analysis on change
+        if (typeof triggerAIAnalysisOnChange === 'function') {
+            triggerAIAnalysisOnChange();
+        }
+
+        return newSlide;
+    }
+
     moveSlide(fromIndex, toIndex) {
         if (toIndex < 0 || toIndex >= this.slides.length) return;
 
@@ -158,6 +192,12 @@ class PresentationEditor {
         if (typeof triggerAIAnalysisOnChange === 'function') {
             triggerAIAnalysisOnChange();
         }
+    }
+
+    // Convenience method for rendering
+    render() {
+        this.renderThumbnails();
+        this.renderCurrentSlide();
     }
 
     selectSlide(index) {
