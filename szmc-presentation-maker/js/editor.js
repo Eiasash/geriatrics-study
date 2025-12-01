@@ -136,6 +136,40 @@ class PresentationEditor {
         }
     }
 
+    insertSlide(index, slideConfig) {
+        // Insert a slide at a specific index
+        const template = SlideTemplates[slideConfig.type];
+        if (!template) {
+            console.error('Unknown slide type:', slideConfig.type);
+            return;
+        }
+
+        const newSlide = {
+            id: slideConfig.id || this.generateId(),
+            type: slideConfig.type,
+            data: slideConfig.data || { ...template.defaultData },
+            order: index
+        };
+
+        this.slides.splice(index, 0, newSlide);
+
+        // Update order for all slides
+        this.slides.forEach((slide, i) => {
+            slide.order = i;
+        });
+
+        this.isDirty = true;
+        this.renderThumbnails();
+        this.renderCurrentSlide();
+
+        // Trigger AI analysis on change
+        if (typeof triggerAIAnalysisOnChange === 'function') {
+            triggerAIAnalysisOnChange();
+        }
+
+        return newSlide;
+    }
+
     moveSlide(fromIndex, toIndex) {
         if (toIndex < 0 || toIndex >= this.slides.length) return;
 
@@ -160,12 +194,54 @@ class PresentationEditor {
         }
     }
 
+    // Convenience method for rendering
+    render() {
+        this.renderThumbnails();
+        this.renderCurrentSlide();
+    }
+
     selectSlide(index) {
         this.saveCurrentSlideData();
         this.currentSlideIndex = index;
         this.renderCurrentSlide();
         this.updateSlideTypeSelector();
         this.updateThumbnailSelection();
+    }
+
+    openSlideEditor(index) {
+        // Select the slide
+        this.selectSlide(index);
+        
+        // Scroll to the slide canvas
+        const canvas = document.getElementById('current-slide');
+        if (canvas) {
+            canvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Focus the first editable element after a short delay
+            setTimeout(() => {
+                const firstEditable = canvas.querySelector('[contenteditable="true"]');
+                if (firstEditable) {
+                    firstEditable.focus();
+                }
+            }, 300);
+        }
+
+        // Close AI panel on mobile to show the slide
+        if (window.innerWidth <= 768) {
+            const aiPanel = document.querySelector('.ai-assistant-panel');
+            if (aiPanel && aiPanel.classList.contains('active')) {
+                if (typeof toggleAIAssistant === 'function') {
+                    toggleAIAssistant();
+                } else {
+                    aiPanel.classList.remove('active');
+                }
+            }
+        }
+
+        // Show a toast notification
+        if (typeof showToast === 'function') {
+            showToast(`Editing slide ${index + 1}`, 'info');
+        }
     }
 
     changeSlideType(newType) {
