@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<style>
+  /* MOBILE FIX: Ensures content fits on phone screens */
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Stops side-scrolling blank space */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll on iPhone */
+  }
+
+  /* DESKTOP FIX: Prevents content from getting clipped */
+  #app, .container, .main-wrapper {
+    max-width: 100vw;
+    overflow-y: auto;
+  }
+
+  /* MEDIA QUERY: Adjusts layout specifically for phones */
+  @media screen and (max-width: 768px) {
+    body {
+      font-size: 14px; /* Readable text on mobile */
+    }
+    img, video, canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+</style>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
