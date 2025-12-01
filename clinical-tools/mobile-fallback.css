@@ -1,0 +1,150 @@
+/* Mobile Fallback CSS for Clinical Tools */
+/* This file provides essential mobile styling if Tailwind CDN fails to load */
+
+/* Basic mobile-first responsive utilities */
+@media (max-width: 768px) {
+    /* Container adjustments */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Text sizing */
+    .text-3xl {
+        font-size: 1.5rem !important;
+    }
+    
+    .text-2xl {
+        font-size: 1.35rem !important;
+    }
+    
+    .text-xl {
+        font-size: 1.15rem !important;
+    }
+    
+    /* Grid layouts */
+    .grid {
+        display: grid;
+    }
+    
+    .grid-cols-1,
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4,
+    [class*="grid-cols-"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .gap-2 { gap: 0.5rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    
+    /* Flex layouts */
+    .flex {
+        display: flex;
+    }
+    
+    .flex-col {
+        flex-direction: column;
+    }
+    
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+    
+    /* Spacing */
+    .p-2 { padding: 0.5rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    
+    /* Width utilities */
+    .w-full {
+        width: 100%;
+    }
+    
+    /* Forms and inputs */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+        width: 100% !important;
+        min-height: 44px;
+        padding: 0.5rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Buttons */
+    button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Cards and panels */
+    [class*="bg-white"],
+    [class*="rounded"] {
+        border-radius: 0.5rem;
+    }
+    
+    /* Header adjustments */
+    header .flex {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    header .flex button {
+        width: 100%;
+    }
+    
+    /* Hide/show utilities */
+    .hidden {
+        display: none !important;
+    }
+    
+    /* Overflow */
+    .overflow-x-auto {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Tables */
+    table {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+    
+    /* Ensure good touch targets */
+    a, button, input, select, textarea {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+    
+    .text-3xl {
+        font-size: 1.35rem !important;
+    }
+    
+    .text-2xl {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+    body {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}

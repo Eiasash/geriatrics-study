@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Anticoagulation Synthesizer - CHA₂DS₂-VASc & Dosing</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="mobile-fallback.css">
     <style>
         body { font-family: 'Inter', sans-serif; }
         .score-item { transition: all 0.3s ease; }
         .score-item:hover { background-color: #f3f4f6; }
+        
+        /* Mobile improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem !important;
+            }
+            
+            header h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .grid.lg\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
