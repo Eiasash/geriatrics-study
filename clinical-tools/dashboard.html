@@ -132,9 +132,21 @@
         }
         
         @media (max-width: 767px) {
+            .container { padding: 1rem; }
             header { flex-direction: column; align-items: flex-start; }
+            header h1 { font-size: 1.5rem; }
             .flex.gap-3 { width: 100%; }
-            .flex.gap-3 button { flex: 1; min-width: 0; }
+            .flex.gap-3 button { flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+            .patient-card { padding: 1rem; }
+            .patient-card h3 { font-size: 1rem; }
+            .card-stat { padding: 0.75rem; }
+            .card-stat-number { font-size: 1.25rem; }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.25rem; }
+            .flex.gap-3 { flex-direction: column; }
+            .flex.gap-3 button { width: 100%; }
         }
     </style>
 </head>

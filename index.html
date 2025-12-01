@@ -269,19 +269,77 @@
             header p {
                 font-size: 1rem;
                 padding: 0 10px;
+                line-height: 1.5;
             }
 
             .tools-grid {
                 /* Ensures grid doesn't break on very narrow screens */
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .clinical-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .tool-card {
-                padding: 24px;
+                padding: 20px;
+            }
+            
+            .tool-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .tool-card p {
+                font-size: 0.9rem;
+            }
+            
+            .tool-features {
+                gap: 6px;
+            }
+            
+            .feature-tag {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+            
+            .quick-access {
+                flex-direction: column;
+                padding: 12px;
+                gap: 8px;
+            }
+            
+            .quick-link {
+                width: 100%;
+                justify-content: center;
+                padding: 10px 16px;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+                padding-left: 0;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            header p {
+                font-size: 0.9rem;
+            }
+            
+            .tool-card {
+                padding: 16px;
+            }
+            
+            .tool-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.5rem;
             }
         }
 
