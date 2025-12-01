@@ -20,6 +20,11 @@ class I18n {
                 generateFromText: 'Generate from Text',
                 generateFromTextDesc: 'Paste your case notes or article and auto-generate a structured presentation',
                 loadSavedPresentation: 'Load Saved Presentation',
+                
+                // PWA Install
+                installApp: 'Install SZMC Presentation Maker',
+                installAppDesc: 'Quick access, works offline',
+                installBtn: 'Install App',
 
                 // Template Features
                 slideTemplate: 'slide template',
@@ -221,13 +226,6 @@ class I18n {
                 mobileView: 'Mobile View',
                 toggleView: 'Toggle View',
 
-                // Theme
-                darkMode: 'Dark Mode',
-                lightMode: 'Light Mode',
-                darkModeEnabled: 'Dark mode enabled',
-                lightModeEnabled: 'Light mode enabled',
-                toggleDarkMode: 'Toggle dark mode',
-
                 // Language
                 language: 'Language',
                 english: 'English',
@@ -269,6 +267,11 @@ class I18n {
                 generateFromText: 'צור מטקסט',
                 generateFromTextDesc: 'הדבק את הערות המקרה או המאמר וצור מצגת מובנית אוטומטית',
                 loadSavedPresentation: 'טען מצגת שמורה',
+                
+                // PWA Install
+                installApp: 'התקן את SZMC Presentation Maker',
+                installAppDesc: 'גישה מהירה, עובד אופליין',
+                installBtn: 'התקן אפליקציה',
 
                 // Template Features
                 slideTemplate: 'תבנית שקופיות',
@@ -469,13 +472,6 @@ class I18n {
                 desktopView: 'תצוגת מחשב',
                 mobileView: 'תצוגת נייד',
                 toggleView: 'החלף תצוגה',
-
-                // Theme
-                darkMode: 'מצב כהה',
-                lightMode: 'מצב בהיר',
-                darkModeEnabled: 'מצב כהה הופעל',
-                lightModeEnabled: 'מצב בהיר הופעל',
-                toggleDarkMode: 'החלף מצב כהה/בהיר',
 
                 // Language
                 language: 'שפה',

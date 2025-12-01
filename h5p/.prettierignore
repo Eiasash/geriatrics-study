@@ -4,6 +4,7 @@ libraries/
 content/
 temp/
 uploads/
+coverage/
 *.min.js
 *.min.css
 package-lock.json

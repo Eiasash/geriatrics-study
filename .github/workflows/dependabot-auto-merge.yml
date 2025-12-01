@@ -133,7 +133,7 @@ jobs:
     if: needs.check-eligibility.outputs.should_merge == 'true'
     steps:
       - name: Wait for CI checks
-        uses: lewagon/wait-on-check-action@v1.3.4
+        uses: lewagon/wait-on-check-action@v1.4.1
         with:
           ref: ${{ needs.check-eligibility.outputs.pr_head_sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
