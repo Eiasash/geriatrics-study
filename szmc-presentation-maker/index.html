@@ -861,33 +861,6 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
             updateLanguageButtons(e.detail.lang);
         });
 
-        // PWA Install Prompt
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showInstallButton();
-        });
-
-        function showInstallButton() {
-            const btn = document.createElement('button');
-            btn.id = 'install-btn';
-            btn.className = 'install-prompt';
-            btn.innerHTML = '<i class="fas fa-download"></i> Install App';
-            btn.onclick = installApp;
-            document.body.appendChild(btn);
-        }
-
-        async function installApp() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                document.getElementById('install-btn')?.remove();
-            }
-            deferredPrompt = null;
-        }
-
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -897,40 +870,5 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
             });
         }
     </script>
-
-    <style>
-        .install-prompt {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #00b4d8 0%, #0ea5e9 100%);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.35);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideUpBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transition: all 0.2s ease;
-        }
-        .install-prompt:hover {
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 180, 216, 0.45);
-        }
-        .install-prompt:active {
-            transform: translateX(-50%) translateY(0);
-        }
-        @keyframes slideUpBounce {
-            from { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-        }
-    </style>
 </body>
 </html>
