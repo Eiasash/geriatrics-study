@@ -772,6 +772,58 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                         </button>
                     </div>
                 </div>
+
+                <!-- AI Tools Section -->
+                <div class="ai-tools-section">
+                    <div class="ai-tools-header" onclick="toggleAITools()">
+                        <span><i class="fas fa-toolbox"></i> AI Tools</span>
+                        <i class="fas fa-chevron-down" id="ai-tools-chevron"></i>
+                    </div>
+                    <div class="ai-tools-content" id="ai-tools-content" style="display: none;">
+                        <div class="ai-tool-grid">
+                            <button class="ai-tool-btn" onclick="showAITool('differential')">
+                                <i class="fas fa-list-ul"></i>
+                                <span>Differential Dx</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('pearls')">
+                                <i class="fas fa-gem"></i>
+                                <span>Clinical Pearls</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('beers')">
+                                <i class="fas fa-pills"></i>
+                                <span>Beers Checker</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('labs')">
+                                <i class="fas fa-vial"></i>
+                                <span>Lab Interpreter</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('notes')">
+                                <i class="fas fa-sticky-note"></i>
+                                <span>Speaker Notes</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('quiz')">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Quiz Generator</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('takehome')">
+                                <i class="fas fa-home"></i>
+                                <span>Take-Home</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('pubmed')">
+                                <i class="fas fa-search"></i>
+                                <span>PubMed Search</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('syndromes')">
+                                <i class="fas fa-user-md"></i>
+                                <span>Syndromes</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('tools')">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span>Assessment Tools</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="ai-panel-footer">
@@ -779,6 +831,25 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                     <input type="checkbox" id="ai-auto-analyze" onchange="toggleAutoAnalyze()">
                     <span>Auto-analyze on changes</span>
                 </label>
+            </div>
+        </div>
+
+        <!-- AI Tool Modal -->
+        <div id="ai-tool-modal" class="modal">
+            <div class="modal-content ai-tool-modal-content">
+                <div class="modal-header">
+                    <h2 id="ai-tool-modal-title">AI Tool</h2>
+                    <button class="modal-close" onclick="closeAIToolModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="ai-tool-modal-body">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-footer" id="ai-tool-modal-footer">
+                    <button class="btn-secondary" onclick="closeAIToolModal()">Close</button>
+                    <button class="btn-primary" id="ai-tool-action-btn" style="display: none;">Apply</button>
+                </div>
             </div>
         </div>
     </div>
