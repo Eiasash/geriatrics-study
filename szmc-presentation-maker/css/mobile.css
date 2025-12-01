@@ -916,3 +916,228 @@ body.force-mobile-view .header-right .btn-primary span {
 .swipe-indicator.show {
     opacity: 1;
 }
+
+/* ====== MOBILE FIXES ====== */
+
+/* Fix presentation mode on mobile - make slide fill viewport */
+@media (max-width: 768px) {
+    #presentation-mode {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height for mobile */
+        width: 100vw;
+        background: var(--gray-900, #0f172a);
+    }
+
+    #presentation-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        width: 100%;
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px);
+    }
+
+    #presentation-container .slide-canvas {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: calc(100vh - 90px);
+        max-height: calc(100dvh - 90px);
+        aspect-ratio: 16 / 9;
+    }
+
+    #presentation-container .slide-canvas.presentation-slide {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Make slide content fill the canvas */
+    #presentation-container .slide-canvas .slide {
+        width: 100%;
+        height: 100%;
+        font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+    }
+
+    #presentation-container .slide-canvas .slide h1 {
+        font-size: clamp(1.1rem, 5vw, 1.8rem);
+    }
+
+    #presentation-container .slide-canvas .slide h2 {
+        font-size: clamp(0.9rem, 4vw, 1.4rem);
+    }
+
+    /* Presentation controls at bottom */
+    .presentation-controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        border-radius: 0;
+        padding: 12px 20px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+        justify-content: center;
+        gap: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+    }
+
+    .presentation-controls button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    #slide-counter {
+        font-size: 1rem;
+        min-width: 80px;
+    }
+}
+
+/* ====== EDITOR SLIDE CANVAS FIXES ====== */
+@media (max-width: 768px) {
+    .slide-editor {
+        padding: 8px;
+        min-height: 300px;
+    }
+
+    #current-slide.slide-canvas {
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Ensure slide renders inside canvas */
+    #current-slide.slide-canvas .slide {
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+    }
+}
+
+/* ====== AI ASSISTANT PANEL FIXES ====== */
+@media (max-width: 768px) {
+    .ai-assistant-panel {
+        position: fixed;
+        bottom: 60px; /* Above mobile toolbar */
+        left: 8px;
+        right: 8px;
+        max-height: 50vh;
+        border-radius: 16px 16px 0 0;
+        z-index: 1500;
+    }
+
+    .ai-assistant-panel .ai-panel-content {
+        max-height: calc(50vh - 60px);
+        overflow-y: auto;
+    }
+
+    /* Issue cards */
+    .ai-issue-card {
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+
+    .ai-issue-card .issue-actions {
+        margin-top: 10px;
+    }
+
+    .ai-issue-card .issue-actions button {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        min-height: 36px;
+    }
+}
+
+/* ====== TITLE SLIDE MOBILE FIXES ====== */
+@media (max-width: 768px) {
+    .slide-title {
+        padding: 16px;
+        padding-bottom: 60px;
+    }
+
+    .slide-title .title-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 8px;
+    }
+
+    .slide-title h1 {
+        font-size: clamp(1rem, 5vw, 1.4rem) !important;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .slide-title .subtitle {
+        font-size: clamp(0.75rem, 3vw, 1rem) !important;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+
+    .slide-title .presenter-info {
+        font-size: 0.8rem;
+    }
+
+    .slide-title .date {
+        font-size: 0.7rem;
+    }
+
+    .slide-title .institution-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 8px;
+        right: 8px;
+        font-size: 0.65rem;
+        gap: 6px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .slide-title .institution-logo i {
+        font-size: 0.9rem;
+    }
+
+    .slide-title .institution-logo span {
+        font-size: 0.6rem;
+    }
+}
+
+/* Presentation mode title slide */
+#presentation-container .slide-title h1 {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+}
+
+#presentation-container .slide-title .subtitle {
+    font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+}
+
+/* ====== FIX BLANK CANVAS ISSUE ====== */
+.slide-canvas {
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-canvas .slide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure content is visible */
+#current-slide:empty::after {
+    content: 'Select a slide to edit';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--gray-400, #94a3b8);
+    font-size: 1rem;
+}
