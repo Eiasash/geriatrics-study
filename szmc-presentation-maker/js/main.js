@@ -364,56 +364,6 @@ function applyTheme(themeName) {
     }
 }
 
-// ================================
-// Dropdown Menu Functions
-// ================================
-
-// Toggle dropdown menu visibility
-function toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
-    if (!dropdown) return;
-    
-    // Find the parent .dropdown element
-    const parentDropdown = dropdown.closest('.dropdown');
-    if (!parentDropdown) return;
-    
-    const isOpen = parentDropdown.classList.contains('open');
-    
-    // Close all other dropdowns first
-    closeDropdowns();
-    
-    // Toggle this dropdown
-    if (!isOpen) {
-        parentDropdown.classList.add('open');
-        
-        // Update aria-expanded
-        const toggle = parentDropdown.querySelector('.dropdown-toggle');
-        if (toggle) {
-            toggle.setAttribute('aria-expanded', 'true');
-        }
-    }
-}
-
-// Close all open dropdowns
-function closeDropdowns() {
-    document.querySelectorAll('.dropdown.open').forEach(dropdown => {
-        dropdown.classList.remove('open');
-        
-        // Update aria-expanded
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        if (toggle) {
-            toggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-}
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown')) {
-        closeDropdowns();
-    }
-});
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Set initial body class for page state (landing page is default active)
