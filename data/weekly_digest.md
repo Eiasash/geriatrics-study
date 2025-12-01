@@ -118,11 +118,6 @@
 
 ## End Of Life (טיפול סוף-חיים)
 
-### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
-- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
-- **Journal**: Expert review of endocrinology & metabolism (2025)
-- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
-
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
@@ -132,6 +127,11 @@
 - **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
 - **Journal**: International journal of nursing studies (2025)
 - **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
+
+### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
+- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
+- **Journal**: Expert review of endocrinology & metabolism (2025)
+- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
 
 
 ## Incontinence (אי שליטה בסוגרים)

@@ -204,16 +204,6 @@
   ],
   "end_of_life": [
     {
-      "pmid": "40689782",
-      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
-      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
-      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
-      "journal": "Expert review of endocrinology & metabolism",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
-    },
-    {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
       "abstract": "Modern cardiovascular medicine and surgery enable the treatment of complex cardiovascular disease, even in elderly and multimorbid patients, through increasingly sophisticated procedures. Nevertheless, there are situations in which surgical intervention appears medically inappropriate or is explicitly declined by the patient. Similarly, it may become necessary in the postoperative course to revise the original therapeutic goals-particularly when continued survival depends upon prolonged intensive care unit treatment, or when the anticipated quality of life, from the patient's perspective, appears inadequate. While established guidelines and position papers-most notably from the German Interdisciplinary Association for Intensive and Emergency Medicine-are already available in the field of intensive care medicine, a discipline-specific framework for cardiac surgery has been lacking thus far. This inaugural position paper issued by the German Society for Thoracic and Cardiovascular Surgery seeks to contribute to the definition of clinical and ethical standards in the context of therapeutic restraint (Section A) and to the redefinition of therapeutic goals (Section B) within our specialty. The aim is to promote a structured and multiprofessional approach that transparently integrates the core pillars of goal setting in therapy-namely, medical indication and patient autonomy-into a comprehensible decision-making framework. Achieving this objective requires close collaboration among physicians and nursing staff in cardiac surgery, cardiology, intensive care, anesthesiology, ethics consultation, and palliative care. The present recommendations are intended to serve as a foundation for patient-centered, appropriate, and transparent decision-making-always with the overarching aim of preserving the dignity and self-determination of the patients concerned.",
@@ -232,6 +222,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
+    },
+    {
+      "pmid": "40689782",
+      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
+      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
+      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
+      "journal": "Expert review of endocrinology & metabolism",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
     }
   ],
   "incontinence": [
