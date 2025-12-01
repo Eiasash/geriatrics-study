@@ -503,7 +503,7 @@ function updateThemePreview(themeName) {
 // Toggle theme panel in editor
 function toggleThemePanel() {
     const panel = document.getElementById('theme-panel');
-    const toggleBtn = document.querySelector('[aria-controls="theme-panel"]');
+    const toggleBtn = document.querySelector('.btn-theme');
     
     if (panel) {
         const isActive = panel.classList.toggle('active');
@@ -514,6 +514,21 @@ function toggleThemePanel() {
         }
     }
 }
+
+// Close theme panel when clicking outside
+document.addEventListener('click', (e) => {
+    const themePanel = document.getElementById('theme-panel');
+    const themeBtn = document.querySelector('.btn-theme');
+    
+    if (themePanel && themePanel.classList.contains('active')) {
+        if (!themePanel.contains(e.target) && !themeBtn?.contains(e.target)) {
+            themePanel.classList.remove('active');
+            if (themeBtn) {
+                themeBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+});
 
 // Service worker for offline support
 if ('serviceWorker' in navigator) {

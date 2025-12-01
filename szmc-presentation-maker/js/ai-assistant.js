@@ -372,8 +372,8 @@ class AIAssistant {
         `;
 
         // Apply translations if i18n is available
-        if (window.i18n) {
-            i18n.translatePage();
+        if (window.i18n && typeof window.i18n.updateAllTranslations === 'function') {
+            window.i18n.updateAllTranslations();
         }
     }
 
@@ -448,6 +448,11 @@ class AIAssistant {
             document.body.style.overflow = 'hidden';
             // Focus management for accessibility
             panel.setAttribute('aria-hidden', 'false');
+            // Focus the input for immediate typing
+            setTimeout(() => {
+                const input = document.getElementById('ai-input');
+                if (input) input.focus();
+            }, 300);
         } else {
             panel.classList.remove('open');
             document.body.style.overflow = '';
@@ -458,9 +463,8 @@ class AIAssistant {
         const btn = document.querySelector('.btn-ai');
         if (btn) {
             btn.classList.toggle('active', shouldOpen);
+            btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
         }
-        
-        console.log('AI Panel toggled:', shouldOpen ? 'open' : 'closed');
     }
 
     switchTab(tab) {
@@ -648,17 +652,18 @@ class AIAssistant {
         // Get current presentation context
         const context = this.getPresentationContext();
 
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': this.apiKey,
-                'anthropic-version': '2023-06-01'
-            },
-            body: JSON.stringify({
-                model: 'claude-sonnet-4-20250514',
-                max_tokens: 1024,
-                system: `You are an AI assistant specialized in geriatric medicine presentations. You help create medical case presentations and journal club slides. You have expertise in:
+        try {
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': this.apiKey,
+                    'anthropic-version': '2023-06-01'
+                },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 1024,
+                    system: `You are an AI assistant specialized in geriatric medicine presentations. You help create medical case presentations and journal club slides. You have expertise in:
 - Geriatric syndromes (delirium, dementia, falls, frailty, polypharmacy)
 - Clinical assessment tools (MMSE, MoCA, GDS, CAM, Barthel, etc.)
 - Evidence-based geriatric medicine
@@ -668,12 +673,21 @@ Current presentation context:
 ${context}
 
 Provide helpful, accurate medical information. Format responses with markdown for emphasis. Be concise but thorough.`,
-                messages: [{ role: 'user', content: message }]
-            })
-        });
+                    messages: [{ role: 'user', content: message }]
+                })
+            });
 
-        const data = await response.json();
-        return data.content[0].text;
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.content[0].text;
+        } catch (error) {
+            console.warn('API call failed, falling back to local responses:', error);
+            // Fall back to local responses
+            return this.generateLocalResponse(message);
+        }
     }
 
     generateLocalResponse(message) {
@@ -1064,8 +1078,19 @@ What specific aspect would you like help with? You can also use the quick action
         document.getElementById('warning-count').textContent = analysis.warnings.length;
         document.getElementById('info-count').textContent = analysis.suggestions.length;
 
+        // Update AI badge in header
+        this.updateIssueBadge(analysis.errors.length + analysis.warnings.length);
+
         // Render issues
         this.renderAnalysisIssues(analysis);
+    }
+
+    updateIssueBadge(count) {
+        const badge = document.getElementById('ai-issue-badge');
+        if (badge) {
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+        }
     }
 
     performAnalysis() {
@@ -1254,10 +1279,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove existing onclick to prevent double firing
         aiBtn.removeAttribute('onclick');
         
+        // Track touch to prevent double-firing on mobile
+        let lastTouchTime = 0;
+        
         // Add click handler
         aiBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            // Prevent click from firing after touch
+            if (Date.now() - lastTouchTime < 500) return;
             aiAssistant.togglePanel();
         });
         
@@ -1265,11 +1295,34 @@ document.addEventListener('DOMContentLoaded', () => {
         aiBtn.addEventListener('touchend', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            lastTouchTime = Date.now();
             aiAssistant.togglePanel();
         }, { passive: false });
     }
     
-    console.log('AI Assistant initialized');
+    // Close panel when clicking outside on desktop
+    document.addEventListener('click', (e) => {
+        const panel = document.getElementById('ai-assistant-panel');
+        const aiBtn = document.querySelector('.btn-ai');
+        if (panel && panel.classList.contains('open')) {
+            if (!panel.contains(e.target) && !aiBtn?.contains(e.target)) {
+                // Only close on desktop, not mobile (mobile uses full screen)
+                if (window.innerWidth > 768) {
+                    aiAssistant.togglePanel(false);
+                }
+            }
+        }
+    });
+    
+    // Close panel on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const panel = document.getElementById('ai-assistant-panel');
+            if (panel && panel.classList.contains('open')) {
+                aiAssistant.togglePanel(false);
+            }
+        }
+    });
 });
 
 // Legacy function support for existing UI

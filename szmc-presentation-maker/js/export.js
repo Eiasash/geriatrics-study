@@ -1186,6 +1186,260 @@ class PresentationExporter {
         });
     }
 
+    // Import from HTML file
+    importFromHTML(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                try {
+                    const html = e.target.result;
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    // Extract title
+                    const title = doc.querySelector('title')?.textContent || 
+                                  doc.querySelector('h1')?.textContent || 
+                                  'Imported Presentation';
+
+                    // Extract slides from common patterns
+                    const slides = [];
+                    const slideElements = doc.querySelectorAll('.slide, .slide-container, section, [data-slide]');
+
+                    if (slideElements.length > 0) {
+                        slideElements.forEach((el, index) => {
+                            const slideTitle = el.querySelector('h1, h2, h3, .slide-title')?.textContent || `Slide ${index + 1}`;
+                            const content = el.textContent?.trim() || '';
+                            
+                            slides.push({
+                                id: `slide-${Date.now()}-${index}`,
+                                type: 'content',
+                                data: {
+                                    title: slideTitle,
+                                    content: content.substring(0, 5000) // Limit content length
+                                },
+                                order: index
+                            });
+                        });
+                    } else {
+                        // Fallback: treat body content as single slide
+                        const bodyContent = doc.body?.textContent?.trim() || '';
+                        slides.push({
+                            id: `slide-${Date.now()}-0`,
+                            type: 'content',
+                            data: {
+                                title: title,
+                                content: bodyContent.substring(0, 5000)
+                            },
+                            order: 0
+                        });
+                    }
+
+                    resolve({
+                        title: title,
+                        type: 'case',
+                        slides: slides,
+                        importedFrom: 'html',
+                        importedAt: new Date().toISOString()
+                    });
+                } catch (error) {
+                    reject(new Error('Failed to parse HTML file: ' + error.message));
+                }
+            };
+
+            reader.onerror = () => reject(new Error('Failed to read HTML file'));
+            reader.readAsText(file);
+        });
+    }
+
+    // Import from PPTX file (basic extraction)
+    async importFromPPTX(file) {
+        // Load JSZip library for PPTX parsing
+        if (!window.JSZip) {
+            await this.loadJSZip();
+        }
+
+        try {
+            const zip = await JSZip.loadAsync(file);
+            
+            // Check if it's a valid PPTX (contains [Content_Types].xml)
+            const contentTypes = zip.file('[Content_Types].xml');
+            if (!contentTypes) {
+                throw new Error('Invalid PowerPoint file format');
+            }
+
+            // Extract presentation title from docProps/core.xml
+            let title = 'Imported Presentation';
+            const coreProps = zip.file('docProps/core.xml');
+            if (coreProps) {
+                const coreXml = await coreProps.async('string');
+                const titleMatch = coreXml.match(/<dc:title>([^<]*)<\/dc:title>/);
+                if (titleMatch) title = titleMatch[1];
+            }
+
+            // Extract slides from ppt/slides/
+            const slides = [];
+            const slideFiles = Object.keys(zip.files)
+                .filter(name => name.match(/^ppt\/slides\/slide\d+\.xml$/))
+                .sort((a, b) => {
+                    const numA = parseInt(a.match(/slide(\d+)/)[1]);
+                    const numB = parseInt(b.match(/slide(\d+)/)[1]);
+                    return numA - numB;
+                });
+
+            for (let i = 0; i < slideFiles.length; i++) {
+                const slideFile = zip.file(slideFiles[i]);
+                if (slideFile) {
+                    const slideXml = await slideFile.async('string');
+                    
+                    // Extract text content from slide XML
+                    const textContent = this.extractTextFromPPTXSlide(slideXml);
+                    const slideTitle = textContent.title || `Slide ${i + 1}`;
+                    
+                    slides.push({
+                        id: `slide-${Date.now()}-${i}`,
+                        type: i === 0 ? 'title' : 'content',
+                        data: {
+                            title: slideTitle,
+                            content: textContent.body || '',
+                            subtitle: textContent.subtitle || ''
+                        },
+                        order: i
+                    });
+                }
+            }
+
+            if (slides.length === 0) {
+                throw new Error('No slides found in the PowerPoint file');
+            }
+
+            return {
+                title: title,
+                type: 'case',
+                slides: slides,
+                importedFrom: 'pptx',
+                importedAt: new Date().toISOString()
+            };
+        } catch (error) {
+            throw new Error('Failed to parse PowerPoint file: ' + error.message);
+        }
+    }
+
+    // Load JSZip library
+    loadJSZip() {
+        return new Promise((resolve, reject) => {
+            if (window.JSZip) {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Failed to load JSZip library'));
+            document.head.appendChild(script);
+        });
+    }
+
+    // Extract text from PPTX slide XML
+    extractTextFromPPTXSlide(xml) {
+        const result = { title: '', subtitle: '', body: '' };
+        const textParts = [];
+        
+        // Extract all text content using regex (works without XML parser)
+        const textMatches = xml.match(/<a:t>([^<]*)<\/a:t>/g);
+        if (textMatches) {
+            textMatches.forEach((match) => {
+                const text = match.replace(/<\/?a:t>/g, '').trim();
+                if (text) {
+                    textParts.push(text);
+                }
+            });
+        }
+
+        // First text is usually title, second might be subtitle
+        if (textParts.length > 0) {
+            result.title = textParts[0];
+        }
+        if (textParts.length > 1) {
+            // Check if second part is short (subtitle) or long (body)
+            if (textParts[1].length < 100) {
+                result.subtitle = textParts[1];
+                result.body = textParts.slice(2).join('\n');
+            } else {
+                result.body = textParts.slice(1).join('\n');
+            }
+        }
+
+        return result;
+    }
+
+    // Import from PDF file (text extraction)
+    async importFromPDF(file) {
+        // Load PDF.js library
+        if (!window.pdfjsLib) {
+            await this.loadPDFJS();
+        }
+
+        try {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            
+            const slides = [];
+            const numPages = pdf.numPages;
+
+            for (let i = 1; i <= numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
+                
+                // Extract text from page
+                const text = textContent.items.map(item => item.str).join(' ').trim();
+                
+                // First line as title, rest as content
+                const lines = text.split(/\s{3,}|\n/);
+                const title = lines[0] || `Page ${i}`;
+                const content = lines.slice(1).join('\n');
+                
+                slides.push({
+                    id: `slide-${Date.now()}-${i - 1}`,
+                    type: i === 1 ? 'title' : 'content',
+                    data: {
+                        title: title.substring(0, 200),
+                        content: content.substring(0, 5000)
+                    },
+                    order: i - 1
+                });
+            }
+
+            return {
+                title: slides[0]?.data?.title || 'Imported PDF',
+                type: 'case',
+                slides: slides,
+                importedFrom: 'pdf',
+                importedAt: new Date().toISOString()
+            };
+        } catch (error) {
+            throw new Error('Failed to parse PDF file: ' + error.message);
+        }
+    }
+
+    // Load PDF.js library
+    loadPDFJS() {
+        return new Promise((resolve, reject) => {
+            if (window.pdfjsLib) {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+            script.onload = () => {
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                resolve();
+            };
+            script.onerror = () => reject(new Error('Failed to load PDF.js library'));
+            document.head.appendChild(script);
+        });
+    }
+
     // Export to RTL-aware HTML
     async exportToHTMLWithRTL(presentation) {
         const isRTL = window.i18n && i18n.isRTL();
@@ -1456,30 +1710,69 @@ function savePresentation() {
     exporter.exportToJSON(presentation);
 }
 
-// Load presentation from file
+// Load presentation from file - supports JSON, HTML, PPTX, PPT
 function loadPresentation() {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.json';
+    // Accept multiple formats
+    input.accept = '.json,.html,.htm,.pptx,.ppt,.pdf';
 
     input.onchange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
+        const extension = file.name.split('.').pop().toLowerCase();
+
         try {
-            const data = await exporter.importFromJSON(file);
-            editor.loadPresentation(data);
-
-            if (typeof showToast === 'function') {
-                showToast('Presentation loaded successfully!');
+            let data;
+            
+            switch (extension) {
+                case 'json':
+                    data = await exporter.importFromJSON(file);
+                    break;
+                    
+                case 'html':
+                case 'htm':
+                    data = await exporter.importFromHTML(file);
+                    break;
+                    
+                case 'pptx':
+                    data = await exporter.importFromPPTX(file);
+                    break;
+                    
+                case 'ppt':
+                    // Legacy PowerPoint format - show warning
+                    showToast('Legacy .ppt format detected. Please save as .pptx for best results.', 'warning');
+                    data = await exporter.importFromPPTX(file);
+                    break;
+                    
+                case 'pdf':
+                    showToast('PDF import is read-only. Text content will be extracted.', 'info');
+                    data = await exporter.importFromPDF(file);
+                    break;
+                    
+                default:
+                    throw new Error('Unsupported file format: ' + extension);
             }
+            
+            if (data) {
+                editor.loadPresentation(data);
 
-            // Switch to editor page if not already there
-            document.getElementById('landing-page').classList.remove('active');
-            document.getElementById('editor-page').classList.add('active');
+                if (typeof showToast === 'function') {
+                    showToast('Presentation loaded successfully!', 'success');
+                }
+
+                // Switch to editor page if not already there
+                document.getElementById('landing-page').classList.remove('active');
+                document.getElementById('editor-page').classList.add('active');
+            }
         } catch (error) {
             const errorMsg = window.i18n ? i18n.t('errorLoadingPresentation') : 'Error loading presentation: ';
-            alert(errorMsg + error.message);
+            if (typeof showToast === 'function') {
+                showToast(errorMsg + error.message, 'error');
+            } else {
+                alert(errorMsg + error.message);
+            }
         }
     };
 
