@@ -10,9 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="https://eiasash.github.io/geriatrics-study/">🌐 Live Site</a> •
-  <a href="https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/">📊 Presentation Maker</a> •
-  <a href="https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html">🩺 Clinical Tools</a>
+  <a href="https://eiasash.github.io/geriatrics-study/">
+    <img src="https://img.shields.io/badge/Live%20Site-Visit-blue?style=for-the-badge" alt="Live Site">
+  </a>
+  <a href="https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/">
+    <img src="https://img.shields.io/badge/Presentation%20Maker-Open-green?style=for-the-badge" alt="Presentation Maker">
+  </a>
 </p>
 
 ---
@@ -21,10 +24,28 @@
 
 | Tool | Description | Link |
 |------|-------------|------|
-| **Presentation Maker** | Create medical presentations for case reviews & journal clubs | [Open →](https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/) |
-| **Clinical Dashboard** | Geriatric assessments, medications & decision tools | [Open →](https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html) |
-| **H5P Study Mode** | Interactive quizzes and flashcards | [Open →](https://eiasash.github.io/geriatrics-study/h5p/) |
-| **Hazzard's 8e** | Comprehensive geriatric medicine study materials | [Open →](https://eiasash.github.io/geriatrics-study/hazzards/) |
+| **Main Site** | Landing page and hub | [🌐 Open](https://eiasash.github.io/geriatrics-study/) |
+| **Presentation Maker** | Create medical presentations for case reviews & journal clubs | [📊 Open](https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/) |
+| **Clinical Dashboard** | Geriatric assessments, medications & decision tools | [🩺 Open](https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html) |
+| **H5P Study Mode** | Interactive quizzes and flashcards | [📚 Open](https://eiasash.github.io/geriatrics-study/h5p/) |
+| **Hazzard's 8e - Part 1** | Principles of Geriatric Medicine | [📖 Open](https://eiasash.github.io/geriatrics-study/hazzards/Part1_Hazzards_Geriatric_Medicine_8e.html) |
+| **Hazzard's 8e - Part 2** | Geriatric Syndromes | [📖 Open](https://eiasash.github.io/geriatrics-study/hazzards/Part2_Hazzards_Geriatric_Medicine_8e.html) |
+| **Hazzard's 8e - Part 3** | Organ System Diseases | [📖 Open](https://eiasash.github.io/geriatrics-study/hazzards/Part3_Hazzards_Geriatric_Medicine_8e.html) |
+
+---
+
+## 🩺 Clinical Tools
+
+| Tool | Description | Link |
+|------|-------------|------|
+| **Assessments** | MMSE, MoCA, GDS, ADL/IADL scales | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/assessments.html) |
+| **Medications** | Medication reference & Beers criteria | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/medications.html) |
+| **Anticoagulation** | CHADS-VASc, HAS-BLED, reversal protocols | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/anticoag.html) |
+| **Decision Support** | Clinical decision support tools | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/decisions.html) |
+| **Evidence** | Evidence-based guidelines | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/evidence.html) |
+| **Physical Exam** | Examination reference | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/exam.html) |
+| **On-Call** | Quick reference for on-call | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/oncall.html) |
+| **AI Assistant** | AI-powered clinical assistant | [Open](https://eiasash.github.io/geriatrics-study/clinical-tools/ai-assistant.html) |
 
 ---
 
@@ -73,6 +94,7 @@ geriatrics-study/
 - **Dark mode** for comfortable editing
 - **PWA support** - install as app on mobile/desktop
 - **Offline capable** with service worker caching
+- **Mobile-responsive** design with touch gestures
 
 ### Clinical Tools
 - **Geriatric Assessments**: MMSE, MoCA, GDS, ADL/IADL scales
@@ -129,7 +151,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## 🏥 About
 
-This project is developed for the **Geriatrics Department at Shaare Zedek Medical Center, Jerusalem**. 
+This project is developed for the **Geriatrics Department at Shaare Zedek Medical Center, Jerusalem**.
 
 It provides educational and clinical tools for:
 - Medical residents and fellows
