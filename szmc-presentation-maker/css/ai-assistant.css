@@ -68,6 +68,105 @@
         right: -100%;
         top: 0;
         height: 100vh;
+        height: 100dvh;
+        z-index: 99999;
+        position: fixed;
+        transform: translateX(0);
+        transition: right 0.3s ease;
+    }
+    
+    .ai-assistant-panel.open {
+        right: 0;
+    }
+    
+    .ai-panel-header {
+        padding: 12px 16px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--ai-panel-bg);
+    }
+    
+    .ai-panel-close {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .ai-tabs {
+        position: sticky;
+        top: 68px;
+        z-index: 10;
+        background: var(--ai-panel-bg);
+    }
+    
+    .ai-tab {
+        padding: 12px 8px;
+        min-height: 48px;
+    }
+    
+    .ai-messages {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 20px;
+    }
+    
+    .ai-input-container {
+        position: sticky;
+        bottom: 0;
+        padding: 12px;
+        background: var(--ai-panel-bg);
+        border-top: 1px solid var(--border-color, rgba(255,255,255,0.1));
+    }
+    
+    .ai-input {
+        font-size: 16px; /* Prevents iOS zoom */
+    }
+    
+    .ai-send-btn {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+    }
+    
+    .ai-suggestion-btn {
+        padding: 16px;
+    }
+    
+    .quick-action-chip {
+        padding: 10px 16px;
+        min-height: 44px;
+    }
+    
+    .generate-card {
+        padding: 16px;
+        min-height: 60px;
+    }
+    
+    .btn-analyze {
+        min-height: 52px;
+    }
+    
+    .issue-action-btn {
+        min-height: 44px;
+        padding: 12px 16px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+    .ai-panel-title .ai-title-text span {
+        display: none;
+    }
+    
+    .ai-tab span {
+        display: none;
+    }
+    
+    .ai-tab i {
+        font-size: 18px;
     }
 }
 

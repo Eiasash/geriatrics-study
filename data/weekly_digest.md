@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 10:05*
+*Generated: 2025-12-01 10:15*
 
 
 ## Delirium (דליריום)
@@ -35,11 +35,10 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
-### 📄 Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.
-- **Authors**: Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.
-- **Journal**: Renal failure (2025)
-- **Link**: [40840867](https://pubmed.ncbi.nlm.nih.gov/40840867/)
-- **Key Finding**: Frailty is highly prevalent in chronic kidney disease patients and associated with mortality...
+### 📄 Association of frailty with healthcare utilization and days alive at home in patients with gynecologic cancers: a population-based study.
+- **Authors**: Nguyen Julie M V, Zigras Tiffany, Gayowsky Anastasia et al.
+- **Journal**: American journal of obstetrics and gynecology (2025)
+- **Link**: [40683585](https://pubmed.ncbi.nlm.nih.gov/40683585/)
 
 
 ## Falls (נפילות)
@@ -49,15 +48,15 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
-- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
-- **Journal**: Revista espanola de geriatria y gerontologia (2025)
-- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
-
 ### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
 - **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
 - **Journal**: BMC geriatrics (2025)
 - **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+
+### 📄 Perceived knowledge and attitudes toward fall prevention among nurses and healthcare assistants: a Cross-Sectional survey study.
+- **Authors**: Tana Claudio, Di Risio Alessandro, Moffa Samanta et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
 
 
 ## Dementia (דמנציה)
@@ -73,10 +72,10 @@
 - **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
 - **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
 
-### 📄 
-- **Authors**: Cornford Nisha, Charnley Margaret
-- **Journal**: Nutrition research reviews (2025)
-- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
+### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
+- **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
+- **Journal**: Pulmonology (2025)
+- **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
