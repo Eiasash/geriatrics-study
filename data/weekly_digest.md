@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 16:33*
+*Generated: 2025-12-01 17:11*
 
 
 ## Delirium (דליריום)
@@ -24,22 +24,22 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
-- **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
-- **Journal**: Annals of medicine (2025)
-- **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
-- **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
-
 ### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
 - **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
 - **Journal**: Ageing research reviews (2025)
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Frailty across Neurological Diseases: Why Sex and Gender Matter.
-- **Authors**: Lorefice Lorena, Pellecchia Maria Teresa
-- **Journal**: Annals of neurology (2025)
-- **Link**: [41267611](https://pubmed.ncbi.nlm.nih.gov/41267611/)
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
+
+### 📄 Frailty and peripheral neuropathy in hemodialysis patients: clinical and electrophysiological correlations.
+- **Authors**: Şeker Ayşe, Usta Mehmet, Gönüllü Sinan et al.
+- **Journal**: Renal failure (2025)
+- **Link**: [40840867](https://pubmed.ncbi.nlm.nih.gov/40840867/)
+- **Key Finding**: Frailty is highly prevalent in chronic kidney disease patients and associated with mortality...
 
 
 ## Falls (נפילות)
