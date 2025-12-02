@@ -11,16 +11,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40574569/"
     },
     {
-      "pmid": "41182057",
-      "title": "Ambulatory ophthalmic anesthesia: what is important.",
-      "abstract": "This review addresses aspects relevant to caregivers facing increased numbers of adult and elderly patients seeking ambulatory medical service for ophthalmic surgery.",
-      "authors": "Castello Roberto, Neth Jens",
-      "journal": "Current opinion in anaesthesiology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
-    },
-    {
       "pmid": "40720202",
       "title": "Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.",
       "abstract": "Postoperative delirium is a common and serious complication in orthopedic surgery patients, particularly in the elderly. This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.",
@@ -31,6 +21,16 @@
         "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients."
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
+    },
+    {
+      "pmid": "41316013",
+      "title": "Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.",
+      "abstract": "The stress hyperglycemia ratio (SHR) is an emerging glycemic marker in critical care, but its relationship with delirium in elderly surgical and trauma ICU patients remains unclear. This study explored the association between SHR and delirium to inform early identification strategies.",
+      "authors": "Yao Fengwei, Zhao Hongyan, Liu Lei et al.",
+      "journal": "BMC geriatrics",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41316013/"
     }
   ],
   "frailty": [
@@ -45,26 +45,27 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
     },
     {
-      "pmid": "40738335",
-      "title": "Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.",
-      "abstract": "Sleep disorders-including daytime sleepiness (DS), insomnia, and sleep apnea (SA)-have been linked to aging-related phenotypes, but their causal roles remain unclear. This study aimed to examine the potential causal effects of these sleep traits on biological aging using a Mendelian randomization (MR) approach.",
-      "authors": "Zhang Zheng, Ren Hao, Cheng Yongjia et al.",
-      "journal": "Journal of affective disorders",
+      "pmid": "40914903",
+      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
+      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
+      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
+      "journal": "Annals of medicine",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
     },
     {
-      "pmid": "40921305",
-      "title": "Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.",
-      "abstract": "Frailty and dementia are prevalent, interrelated conditions in aging populations, yet the temporal relationship between frailty progression and dementia risk remains underexplored. This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.",
-      "authors": "Ye Xin, Wang Xinfeng, Hu Mingzheng et al.",
-      "journal": "American journal of preventive medicine",
+      "pmid": "41253248",
+      "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
+      "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
+      "authors": "Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.",
+      "journal": "Ageing research reviews",
       "year": "2025",
       "key_findings": [
-        "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts."
+        "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored",
+        "Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40921305/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     }
   ],
   "falls": [
@@ -79,6 +80,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
+    },
+    {
       "pmid": "41314827",
       "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
       "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
@@ -87,21 +98,19 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
-    },
-    {
-      "pmid": "41168499",
-      "title": "[Importance of vision in old age].",
-      "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
-      "authors": "Fink David J, Finger Robert P, Terheyden Jan H",
-      "journal": "Zeitschrift fur Gerontologie und Geriatrie",
-      "year": "2025",
-      "key_findings": [
-        "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
     }
   ],
   "dementia": [
+    {
+      "pmid": "41315874",
+      "title": "Immune dysfunction in Alzheimer disease.",
+      "abstract": "Emerging evidence highlights the crucial role of peripheral immune cells in maintaining brain homeostasis and their influence on the pathology of Alzheimer disease (AD). Genome-wide association studies have identified numerous AD risk variants in genes expressed by immune cells, implicating innate and adaptive immune pathways in disease progression. Advances in neuroimmunology have revealed that immune cell crosstalk involving T cells, B cells, monocytes and/or macrophages and neutrophils can modulate the hallmark features of AD, including amyloid plaque accumulation, tau pathology and chronic neuroinflammation. Mechanistic insights suggest that chronic peripheral inflammation, immune exhaustion, metabolic dysfunction and epigenetic reprogramming exacerbate neurodegeneration in AD by promoting toxic inflammation and impairing protein clearance in the brain. These findings may catalyse the development of novel immunomodulatory strategies, such as immune checkpoint inhibition and cytokine targeting, among others, for AD. This Review examines peripheral immune alterations in AD, evaluates related therapeutic opportunities and highlights key knowledge gaps, particularly the need for human-derived data to advance translational progress. Future research should prioritize personalized approaches that integrate genetic risk, immune profiling and ageing to inform next-generation therapies for AD.",
+      "authors": "Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.",
+      "journal": "Nature reviews. Neuroscience",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41315874/"
+    },
     {
       "pmid": "39869458",
       "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
@@ -113,60 +122,46 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     },
     {
-      "pmid": "40145977",
-      "title": "Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.",
-      "abstract": "For diverse neurodegenerative disorders, microglial cells are activated. Furthermore, dysfunctional and hyperactivated microglia initiate mitochondrial autophagy, oxidative stress, and pathological protein accumulation, ending with neuroinflammation that exacerbates damage to dopaminergic neurons and contributes significantly to the pathology of neurodegenerative disorder. Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments. This review summarizes the role of microglia neurodegenerative diseases, such as Alzheimer's disease, Parkinson's disease, multiple sclerosis, multiple system atrophy, amyotrophic lateral sclerosis, frontotemporal dementia, progressive supranuclear palsy, cortical degeneration, Lewy body dementia, and Huntington's disease. It also discusses novel forms of cell death such as ferroptosis, cuproptosis, disulfidptosis, and parthanatos (poly(adenosine diphosphate ribose) polymerase 1-dependent cell death), as well as the impact of regulatory factors related to microglial inflammation on microglial activation and neuroinflammation. The aim is to identify potential targets for microglial cell therapy in neurodegenerative diseases.",
-      "authors": "Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.",
-      "journal": "Neural regeneration research",
-      "year": "2026",
-      "key_findings": [
-        "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40145977/"
-    },
-    {
-      "pmid": "41151846",
-      "title": "Pathogenesis of comorbid epilepsy in Alzheimer's disease and use of perampanel, an AMPA receptor inhibitor.",
-      "abstract": "Alzheimer's disease (AD) and epilepsy frequently co-occur and are risk factors for each other's onset. In patients with AD-comorbid epilepsy, seizure control with appropriate anti-seizure medications (ASMs) is crucial, yet no established treatment guidelines exist. Recent studies indicate that α-amino-3-hydroxy-5-methyl-4-isoxazolepropionic acid (AMPA)-type glutamate receptors (AMPARs) are involved in the pathogenesis of both diseases. Perampanel, an AMPAR antagonist, has been approved as an ASM.",
-      "authors": "Kuzuya Akira, Ohara Tomoyuki, Akamatsu Naoki",
-      "journal": "Expert review of neurotherapeutics",
+      "pmid": "39988819",
+      "title": "",
+      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
+      "authors": "Cornford Nisha, Charnley Margaret",
+      "journal": "Nutrition research reviews",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41151846/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
     }
   ],
   "deprescribing": [
     {
-      "pmid": "41328617",
-      "title": "Trends and Socioeconomic Disparities in Polypharmacy and PIM Use Among 66-Year-Olds in Korea: A Nationwide Study, 2012-2021.",
-      "abstract": "With increasing life expectancy, the number of older adults with multiple chronic conditions requiring complex medication regimens is growing, raising concerns about polypharmacy and potentially inappropriate medication (PIM) use. This study investigated trends in polypharmacy and PIM use among 66-year-olds in South Korea from 2012 to 2021, considering participant characteristics, to inform interventions and policies.",
-      "authors": "Jung Hee-Won, Jhang Hoyol, Park Kyunik et al.",
-      "journal": "Annals of geriatric medicine and research",
+      "pmid": "41278245",
+      "title": "Current Status and Research Trends in Deprescribing: A Bibliometric Review.",
+      "abstract": "Polypharmacy has emerged as a major global public health concern. To mitigate its adverse effects, deprescribing has been introduced and integrated into clinical practice. This study aims to analyze the current research landscape and identify emerging trends in deprescribing from a bibliometric perspective.",
+      "authors": "Shi Changcheng, Li Xinyi, Wu Yan et al.",
+      "journal": "Drug, healthcare and patient safety",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41328617/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41278245/"
     },
     {
-      "pmid": "41231192",
-      "title": "Hypertension in the Oldest Old.",
-      "abstract": "Hypertension affects 80% of adults 80 years of age or older and is a leading cause of morbidity and mortality through its fundamental role as a risk factor for cardiovascular disease, stroke, kidney disease, and cognitive impairment. Antihypertensive therapy reduces the risk of coronary artery disease, heart failure, atrial fibrillation, stroke, and cognitive decline among patients in this age group, but older patients with advanced frailty, cognitive impairment, complex comorbidities, or nursing home residence have largely been excluded from clinical trials. This article reviews the epidemiology, pathophysiology, diagnosis, and management of hypertension in the oldest old, herein defined as age ≥80 years. We propose the geriatrics 4 Ms model as a framework for providing individualized patient-centered care for the oldest patients with hypertension. Additional research is needed in patients who have been under-represented in clinical trials and to assess the role of deprescribing in the care of older patients with hypertension.",
-      "authors": "Supiano Mark A, Ascher Simon B, Rich Michael W",
-      "journal": "JACC. Advances",
+      "pmid": "40719419",
+      "title": "Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).",
+      "abstract": "Chronic pulmonary conditions require complex treatment strategies involving long-term antibiotic treatment, which carries the highest risk of antimicrobial resistance and adverse drug events (ADE). Specific guidance on prescribing and deprescribing can help reduce these risks and improve therapy effectiveness. The aim of the study was to determine prescribing and deprescribing practices for long-term antibiotic treatment (≥30 days) in preventing exacerbations of stable chronic pulmonary conditions in adult patients across all healthcare settings.",
+      "authors": "Tadic Ivana, Fialová Daniela, Hazen Ankie et al.",
+      "journal": "COPD",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41231192/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
     },
     {
-      "pmid": "40022664",
-      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
-      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
-      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
+      "pmid": "41296133",
+      "title": "Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.",
+      "abstract": "Polypharmacy, the concurrent use of five or more medications, is prevalent among older adults with Diabetes, a population at elevated risk for medication-related complications. Complex treatment regimens for Diabetes and its comorbidities exacerbate challenges such as medication non-adherence, drug interactions, adverse events, and increased hospitalization risk. This review aimed to estimate the prevalence of polypharmacy among older adults with Diabetes.",
+      "authors": "Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.",
+      "journal": "Aging clinical and experimental research",
       "year": "2025",
-      "key_findings": [
-        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41296133/"
     }
   ],
   "sarcopenia": [
@@ -183,16 +178,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39699070/"
     },
     {
-      "pmid": "40885526",
-      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
-      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
-      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
-      "journal": "Clinical nutrition ESPEN",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
-    },
-    {
       "pmid": "40644314",
       "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
       "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
@@ -201,6 +186,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
+    },
+    {
+      "pmid": "40885526",
+      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
+      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
+      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
+      "journal": "Clinical nutrition ESPEN",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
     }
   ],
   "end_of_life": [
@@ -215,16 +210,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40908745/"
     },
     {
-      "pmid": "41327517",
-      "title": "Is paramedic palliative care different in rural compared to urban settings: A mixed methods study.",
-      "abstract": "Nova Scotia (NS) Paramedics have been provided with palliative care training, allowing for care at home without the requirement of transport to the emergency department. It is largely unknown if rural populations have different experiences with paramedic palliative support services (transport vs no transport assessed/treated).",
-      "authors": "Carter Alix J E, Goldstein Judah, Harrison Michelle et al.",
-      "journal": "Palliative medicine",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41327517/"
-    },
-    {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
       "abstract": "Modern cardiovascular medicine and surgery enable the treatment of complex cardiovascular disease, even in elderly and multimorbid patients, through increasingly sophisticated procedures. Nevertheless, there are situations in which surgical intervention appears medically inappropriate or is explicitly declined by the patient. Similarly, it may become necessary in the postoperative course to revise the original therapeutic goals-particularly when continued survival depends upon prolonged intensive care unit treatment, or when the anticipated quality of life, from the patient's perspective, appears inadequate. While established guidelines and position papers-most notably from the German Interdisciplinary Association for Intensive and Emergency Medicine-are already available in the field of intensive care medicine, a discipline-specific framework for cardiac surgery has been lacking thus far. This inaugural position paper issued by the German Society for Thoracic and Cardiovascular Surgery seeks to contribute to the definition of clinical and ethical standards in the context of therapeutic restraint (Section A) and to the redefinition of therapeutic goals (Section B) within our specialty. The aim is to promote a structured and multiprofessional approach that transparently integrates the core pillars of goal setting in therapy-namely, medical indication and patient autonomy-into a comprehensible decision-making framework. Achieving this objective requires close collaboration among physicians and nursing staff in cardiac surgery, cardiology, intensive care, anesthesiology, ethics consultation, and palliative care. The present recommendations are intended to serve as a foundation for patient-centered, appropriate, and transparent decision-making-always with the overarching aim of preserving the dignity and self-determination of the patients concerned.",
@@ -233,6 +218,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
+    },
+    {
+      "pmid": "41252804",
+      "title": "Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.",
+      "abstract": "Sickle cell disease is one of the most common inherited monogenetic blood disorders. People living with sickle cell disease experience both acute pain and long-lasting complications, leading to co-morbidities which impact their quality of life. Palliative care is both under-reported and under-utilised for people living with sickle cell disease despite the profound impacts of this illness across their lives.",
+      "authors": "Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.",
+      "journal": "International journal of nursing studies",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
     }
   ],
   "incontinence": [

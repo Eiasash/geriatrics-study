@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-02 16:19*
+*Generated: 2025-12-02 18:01*
 
 
 ## Delirium (דליריום)
@@ -10,16 +10,16 @@
 - **Journal**: European journal of anaesthesiology (2025)
 - **Link**: [40574569](https://pubmed.ncbi.nlm.nih.gov/40574569/)
 
-### 📄 Ambulatory ophthalmic anesthesia: what is important.
-- **Authors**: Castello Roberto, Neth Jens
-- **Journal**: Current opinion in anaesthesiology (2025)
-- **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
-
 ### 📄 Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.
 - **Authors**: Niu Yanan, Wang Qiang, Lu Jin et al.
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
 - **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
+
+### 📄 Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.
+- **Authors**: Yao Fengwei, Zhao Hongyan, Liu Lei et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41316013](https://pubmed.ncbi.nlm.nih.gov/41316013/)
 
 
 ## Frailty (שבריריות)
@@ -29,16 +29,16 @@
 - **Journal**: The New England journal of medicine (2025)
 - **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
 
-### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
-- **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
-- **Journal**: Journal of affective disorders (2025)
-- **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
+### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
+- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
 
-### 📄 Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.
-- **Authors**: Ye Xin, Wang Xinfeng, Hu Mingzheng et al.
-- **Journal**: American journal of preventive medicine (2025)
-- **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
-- **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
+### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
+- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
+- **Journal**: Ageing research reviews (2025)
+- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
+- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
 
 ## Falls (נפילות)
@@ -48,54 +48,51 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+
 ### 📄 Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).
 - **Authors**: Schoene Daniel, Gross Michaela, Finger Benjamin et al.
 - **Journal**: BMJ open (2025)
 - **Link**: [41314827](https://pubmed.ncbi.nlm.nih.gov/41314827/)
 
-### 📄 [Importance of vision in old age].
-- **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
-- **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
-- **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
-- **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
-
 
 ## Dementia (דמנציה)
+
+### 📄 Immune dysfunction in Alzheimer disease.
+- **Authors**: Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.
+- **Journal**: Nature reviews. Neuroscience (2025)
+- **Link**: [41315874](https://pubmed.ncbi.nlm.nih.gov/41315874/)
 
 ### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
 - **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
 - **Journal**: Pulmonology (2025)
 - **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
-### 📄 Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.
-- **Authors**: Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.
-- **Journal**: Neural regeneration research (2026)
-- **Link**: [40145977](https://pubmed.ncbi.nlm.nih.gov/40145977/)
-- **Key Finding**: Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modula...
-
-### 📄 Pathogenesis of comorbid epilepsy in Alzheimer's disease and use of perampanel, an AMPA receptor inhibitor.
-- **Authors**: Kuzuya Akira, Ohara Tomoyuki, Akamatsu Naoki
-- **Journal**: Expert review of neurotherapeutics (2025)
-- **Link**: [41151846](https://pubmed.ncbi.nlm.nih.gov/41151846/)
+### 📄 
+- **Authors**: Cornford Nisha, Charnley Margaret
+- **Journal**: Nutrition research reviews (2025)
+- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
 
-### 📄 Trends and Socioeconomic Disparities in Polypharmacy and PIM Use Among 66-Year-Olds in Korea: A Nationwide Study, 2012-2021.
-- **Authors**: Jung Hee-Won, Jhang Hoyol, Park Kyunik et al.
-- **Journal**: Annals of geriatric medicine and research (2025)
-- **Link**: [41328617](https://pubmed.ncbi.nlm.nih.gov/41328617/)
+### 📄 Current Status and Research Trends in Deprescribing: A Bibliometric Review.
+- **Authors**: Shi Changcheng, Li Xinyi, Wu Yan et al.
+- **Journal**: Drug, healthcare and patient safety (2025)
+- **Link**: [41278245](https://pubmed.ncbi.nlm.nih.gov/41278245/)
 
-### 📄 Hypertension in the Oldest Old.
-- **Authors**: Supiano Mark A, Ascher Simon B, Rich Michael W
-- **Journal**: JACC. Advances (2025)
-- **Link**: [41231192](https://pubmed.ncbi.nlm.nih.gov/41231192/)
+### 📄 Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).
+- **Authors**: Tadic Ivana, Fialová Daniela, Hazen Ankie et al.
+- **Journal**: COPD (2025)
+- **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
 
-### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
-- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
-- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
+### 📄 Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.
+- **Authors**: Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.
+- **Journal**: Aging clinical and experimental research (2025)
+- **Link**: [41296133](https://pubmed.ncbi.nlm.nih.gov/41296133/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -106,15 +103,15 @@
 - **Link**: [39699070](https://pubmed.ncbi.nlm.nih.gov/39699070/)
 - **Key Finding**: The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least o...
 
-### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
-- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
-- **Journal**: Clinical nutrition ESPEN (2025)
-- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
-
 ### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
 - **Authors**: Chen Alissa S, Batsis John A
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
+
+### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
+- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
+- **Journal**: Clinical nutrition ESPEN (2025)
+- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
 
 
 ## End Of Life (טיפול סוף-חיים)
@@ -124,15 +121,15 @@
 - **Journal**: Palliative medicine (2025)
 - **Link**: [40908745](https://pubmed.ncbi.nlm.nih.gov/40908745/)
 
-### 📄 Is paramedic palliative care different in rural compared to urban settings: A mixed methods study.
-- **Authors**: Carter Alix J E, Goldstein Judah, Harrison Michelle et al.
-- **Journal**: Palliative medicine (2025)
-- **Link**: [41327517](https://pubmed.ncbi.nlm.nih.gov/41327517/)
-
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
+
+### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
+- **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.
+- **Journal**: International journal of nursing studies (2025)
+- **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
