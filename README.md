@@ -15,6 +15,24 @@
   <a href="https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html">🩺 Clinical Tools</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml">
+    <img src="https://github.com/Eiasash/geriatrics-study/actions/workflows/ci.yml/badge.svg" alt="CI Status">
+  </a>
+  <a href="https://github.com/Eiasash/geriatrics-study/actions/workflows/codeql.yml">
+    <img src="https://github.com/Eiasash/geriatrics-study/actions/workflows/codeql.yml/badge.svg" alt="CodeQL">
+  </a>
+  <a href="https://github.com/Eiasash/geriatrics-study/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+  </a>
+  <a href="https://github.com/Eiasash/geriatrics-study/issues">
+    <img src="https://img.shields.io/github/issues/Eiasash/geriatrics-study" alt="Issues">
+  </a>
+  <a href="https://github.com/Eiasash/geriatrics-study/stargazers">
+    <img src="https://img.shields.io/github/stars/Eiasash/geriatrics-study" alt="Stars">
+  </a>
+</p>
+
 ---
 
 ## 🚀 Quick Links
@@ -134,18 +152,30 @@ npm run build
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+Quick start:
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit changes (`git commit -m 'Add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
 ---
+
+## 🔒 Security
+
+For security concerns or to report vulnerabilities, please see our [Security Policy](SECURITY.md).
 
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+## 📋 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
 
 ---
 
