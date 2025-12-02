@@ -33,7 +33,7 @@
 ```
 geriatrics-study/
 ├── index.html                    # Main landing page
-├── szmc-presentation-maker/      # Presentation creation tool
+├── szmc-presentation-maker/      # Presentation creation tool (online)
 │   ├── css/                      # Stylesheets (mobile, RTL, dark mode)
 │   ├── js/                       # Application logic & templates
 │   ├── templates/                # Case & journal club templates
@@ -57,8 +57,11 @@ geriatrics-study/
 │   └── index.html                # Study mode interface
 ├── data/                         # Shared data files
 │   └── content.json              # Question banks & content
-└── scripts/                      # Utility scripts
-    └── pubmed_fetcher.py         # PubMed citation fetcher
+├── scripts/                      # Utility scripts
+│   ├── pubmed_fetcher.py         # PubMed citation fetcher
+│   ├── setup-local-presentation-maker.sh   # Local setup (Linux/macOS)
+│   └── setup-local-presentation-maker.ps1  # Local setup (Windows)
+└── local-presentation-maker/     # Local instance (git-ignored)
 ```
 
 ---
@@ -100,6 +103,25 @@ npx serve .
 # or
 python -m http.server 8000
 ```
+
+### Local Presentation Maker
+
+Create your own offline, customizable copy of the Presentation Maker:
+
+```bash
+# Linux/macOS
+./scripts/setup-local-presentation-maker.sh
+
+# Windows PowerShell
+.\scripts\setup-local-presentation-maker.ps1
+```
+
+This creates a `local-presentation-maker/` folder (git-ignored) with:
+- **Dashboard** - Quick access to templates, recent presentations, statistics
+- **Local HTTP Server** - Python/Node.js server for full functionality
+- **Personal Config** - Customize your name, theme, language, shortcuts
+- **Local Storage** - Save presentations to `my-presentations/`, `exports/`, `backups/`
+- **Update Mode** - Refresh core files while preserving your data
 
 ### Building H5P Content
 ```bash
