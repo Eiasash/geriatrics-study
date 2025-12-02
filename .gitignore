@@ -39,3 +39,6 @@ htmlcov/
 
 # Cloned repositories
 pack-h5p-action/
+
+# Local tools (not tracked in repo)
+local-presentation-maker/
