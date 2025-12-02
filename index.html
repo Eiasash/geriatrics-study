@@ -552,6 +552,51 @@
             transform: translateY(-4px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        body.dark-mode .tool-card,
+        body.dark-mode .clinical-card,
+        body.dark-mode .search-box {
+            background: rgba(30, 30, 46, 0.95);
+            color: #e0e0e0;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .tool-card:hover,
+        body.dark-mode .clinical-card:hover {
+            background: rgba(40, 40, 56, 0.95);
+        }
+
+        body.dark-mode .tool-card h3,
+        body.dark-mode .search-result-title {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .search-results {
+            background: rgba(30, 30, 46, 0.98);
+        }
+
+        body.dark-mode .search-result-item:hover {
+            background: rgba(40, 40, 56, 0.8);
+        }
+
+        body.dark-mode .theme-toggle,
+        body.dark-mode .back-to-top {
+            background: rgba(30, 30, 46, 0.95);
+            color: #60a5fa;
+        }
+
+        body.dark-mode .quick-link {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .quick-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -797,7 +842,7 @@
         const backToTop = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
+            if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -808,38 +853,45 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Theme Toggle (placeholder - can be extended)
+        // Theme Toggle - Save preference to localStorage
         const themeToggle = document.getElementById('themeToggle');
-        let isDark = false;
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let isDark = localStorage.getItem('darkMode') === 'true' || (localStorage.getItem('darkMode') === null && prefersDark);
 
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
+        function applyTheme(dark) {
             const icon = themeToggle.querySelector('i');
             
-            if (isDark) {
+            if (dark) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
-                // Add dark mode styles here
-                document.body.style.filter = 'invert(0.9) hue-rotate(180deg)';
-                document.querySelectorAll('img, .tool-icon').forEach(el => {
-                    el.style.filter = 'invert(1) hue-rotate(180deg)';
-                });
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
             } else {
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
-                document.body.style.filter = '';
-                document.querySelectorAll('img, .tool-icon').forEach(el => {
-                    el.style.filter = '';
-                });
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
             }
+        }
+
+        // Apply initial theme
+        applyTheme(isDark);
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            applyTheme(isDark);
         });
 
         // Service Worker Registration for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/geriatrics-study/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed'));
+                    .then(reg => {
+                        // Service worker registered successfully
+                    })
+                    .catch(err => {
+                        // Service worker registration failed - graceful degradation
+                    });
             });
         }
     </script>

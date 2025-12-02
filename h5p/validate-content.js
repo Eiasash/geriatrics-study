@@ -247,10 +247,9 @@ function validateContent() {
 
   // Summary
   log.section('📊 Validation Summary');
-  console.log(`Topics: ${topicCount}`);
-  console.log(`Questions: ${questionCount}`);
-  console.log(`Flashcards: ${flashcardCount}`);
-  console.log('');
+  log.info(`Topics: ${topicCount}`);
+  log.info(`Questions: ${questionCount}`);
+  log.info(`Flashcards: ${flashcardCount}`);
 
   if (errorCount === 0 && warningCount === 0) {
     log.success('🎉 All validation checks passed!');
@@ -269,8 +268,8 @@ function validateContent() {
     const avgFlashcardsPerTopic = (flashcardCount / topicCount).toFixed(1);
 
     log.section('📈 Content Statistics');
-    console.log(`Average questions per topic: ${avgQuestionsPerTopic}`);
-    console.log(`Average flashcards per topic: ${avgFlashcardsPerTopic}`);
+    log.info(`Average questions per topic: ${avgQuestionsPerTopic}`);
+    log.info(`Average flashcards per topic: ${avgFlashcardsPerTopic}`);
   }
 
   return errorCount === 0;

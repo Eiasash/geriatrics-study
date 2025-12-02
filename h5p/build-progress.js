@@ -29,7 +29,8 @@ class ProgressBar {
     const filled = Math.floor((current / this.total) * this.barLength);
     const empty = this.barLength - filled;
     
-    const bar = '█'.repeat(filled) + '░'.repeat(empty);
+    // Use ASCII characters for better terminal compatibility
+    const bar = '#'.repeat(filled) + '-'.repeat(empty);
     const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
     
     // Clear line and write progress
