@@ -102,14 +102,14 @@
   ],
   "dementia": [
     {
-      "pmid": "41315874",
-      "title": "Immune dysfunction in Alzheimer disease.",
-      "abstract": "Emerging evidence highlights the crucial role of peripheral immune cells in maintaining brain homeostasis and their influence on the pathology of Alzheimer disease (AD). Genome-wide association studies have identified numerous AD risk variants in genes expressed by immune cells, implicating innate and adaptive immune pathways in disease progression. Advances in neuroimmunology have revealed that immune cell crosstalk involving T cells, B cells, monocytes and/or macrophages and neutrophils can modulate the hallmark features of AD, including amyloid plaque accumulation, tau pathology and chronic neuroinflammation. Mechanistic insights suggest that chronic peripheral inflammation, immune exhaustion, metabolic dysfunction and epigenetic reprogramming exacerbate neurodegeneration in AD by promoting toxic inflammation and impairing protein clearance in the brain. These findings may catalyse the development of novel immunomodulatory strategies, such as immune checkpoint inhibition and cytokine targeting, among others, for AD. This Review examines peripheral immune alterations in AD, evaluates related therapeutic opportunities and highlights key knowledge gaps, particularly the need for human-derived data to advance translational progress. Future research should prioritize personalized approaches that integrate genetic risk, immune profiling and ageing to inform next-generation therapies for AD.",
-      "authors": "Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.",
-      "journal": "Nature reviews. Neuroscience",
+      "pmid": "41328935",
+      "title": "Neuropalliative Care in Dementia.",
+      "abstract": "Patients and their caregivers and families confronting dementia often face heavy burdens from difficult-to-control symptoms, uncertainty about the future, and a high risk of care partner burnout. This article explores common palliative care dilemmas in dementia care and reviews evidence-based approaches to management.",
+      "authors": "Weisbrod Neal",
+      "journal": "Continuum (Minneapolis, Minn.)",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41315874/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41328935/"
     },
     {
       "pmid": "39869458",
@@ -122,14 +122,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     },
     {
-      "pmid": "39988819",
-      "title": "",
-      "abstract": "At present, the treatment of Alzheimer's disease involves only symptomatic medications which have continually demonstrated little efficacy, primarily due to the presence of biological barriers. Despite efforts, researchers have yet to discover a therapeutic treatment that delays neurodegenerative progression or restores associated Alzheimer neuropathological processes. For centuries, ",
-      "authors": "Cornford Nisha, Charnley Margaret",
-      "journal": "Nutrition research reviews",
+      "pmid": "41315874",
+      "title": "Immune dysfunction in Alzheimer disease.",
+      "abstract": "Emerging evidence highlights the crucial role of peripheral immune cells in maintaining brain homeostasis and their influence on the pathology of Alzheimer disease (AD). Genome-wide association studies have identified numerous AD risk variants in genes expressed by immune cells, implicating innate and adaptive immune pathways in disease progression. Advances in neuroimmunology have revealed that immune cell crosstalk involving T cells, B cells, monocytes and/or macrophages and neutrophils can modulate the hallmark features of AD, including amyloid plaque accumulation, tau pathology and chronic neuroinflammation. Mechanistic insights suggest that chronic peripheral inflammation, immune exhaustion, metabolic dysfunction and epigenetic reprogramming exacerbate neurodegeneration in AD by promoting toxic inflammation and impairing protein clearance in the brain. These findings may catalyse the development of novel immunomodulatory strategies, such as immune checkpoint inhibition and cytokine targeting, among others, for AD. This Review examines peripheral immune alterations in AD, evaluates related therapeutic opportunities and highlights key knowledge gaps, particularly the need for human-derived data to advance translational progress. Future research should prioritize personalized approaches that integrate genetic risk, immune profiling and ageing to inform next-generation therapies for AD.",
+      "authors": "Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.",
+      "journal": "Nature reviews. Neuroscience",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41315874/"
     }
   ],
   "deprescribing": [

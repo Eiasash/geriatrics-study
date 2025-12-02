@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-02 18:01*
+*Generated: 2025-12-02 21:01*
 
 
 ## Delirium (דליריום)
@@ -61,20 +61,20 @@
 
 ## Dementia (דמנציה)
 
-### 📄 Immune dysfunction in Alzheimer disease.
-- **Authors**: Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.
-- **Journal**: Nature reviews. Neuroscience (2025)
-- **Link**: [41315874](https://pubmed.ncbi.nlm.nih.gov/41315874/)
+### 📄 Neuropalliative Care in Dementia.
+- **Authors**: Weisbrod Neal
+- **Journal**: Continuum (Minneapolis, Minn.) (2025)
+- **Link**: [41328935](https://pubmed.ncbi.nlm.nih.gov/41328935/)
 
 ### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
 - **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
 - **Journal**: Pulmonology (2025)
 - **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
-### 📄 
-- **Authors**: Cornford Nisha, Charnley Margaret
-- **Journal**: Nutrition research reviews (2025)
-- **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
+### 📄 Immune dysfunction in Alzheimer disease.
+- **Authors**: Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.
+- **Journal**: Nature reviews. Neuroscience (2025)
+- **Link**: [41315874](https://pubmed.ncbi.nlm.nih.gov/41315874/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
