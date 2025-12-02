@@ -11,17 +11,6 @@
     ]
   },
   {
-    "id": "a92dd6ba",
-    "front": "[שבריריות] Study: Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.\n\nWhat was the main finding?",
-    "back": "Frailty is common among cardiac surgery patients and is associated with poor outcomes\n\n📖 Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41137434/",
-    "tags": [
-      "frailty",
-      "research",
-      "recent",
-      "שבריריות"
-    ]
-  },
-  {
     "id": "e5214b29",
     "front": "[שבריריות] Study: Frailty and the brain: A narrative review of functional and pathological correlates.\n\nWhat was the main finding?",
     "back": "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored\n\n📖 Sciancalepore Francesco, Salemme Simone, Valletta Martina et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41253248/",
@@ -44,9 +33,9 @@
     ]
   },
   {
-    "id": "5e28d550",
-    "front": "[דמנציה] Study: Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.\n\nWhat was the main finding?",
-    "back": "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)\n\n📖 Liu Yuxi, Gu Xiao, Li Yanping et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40855194/",
+    "id": "3118240e",
+    "front": "[דמנציה] Study: Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.\n\nWhat was the main finding?",
+    "back": "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments\n\n📖 Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40145977/",
     "tags": [
       "dementia",
       "research",
@@ -69,6 +58,17 @@
     "id": "15a197dd",
     "front": "[אי שליטה בסוגרים] Study: The impact of ageing on the structural compositions of the mucosa of human colon.\n\nWhat was the main finding?",
     "back": "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon\n\n📖 Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40848414/",
+    "tags": [
+      "incontinence",
+      "research",
+      "recent",
+      "אי שליטה בסוגרים"
+    ]
+  },
+  {
+    "id": "dcfa2d2d",
+    "front": "[אי שליטה בסוגרים] Study: Mirabegron exhibits antibacterial and Immunomodulatory activities demonstrated by in vitro and in vivo studies.\n\nWhat was the main finding?",
+    "back": "We found that mirabegron exhibited significant antibacterial activity, particularly against E\n\n📖 Ahmed Esraa A, Abd-Eldayem Ahmed M (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41203718/",
     "tags": [
       "incontinence",
       "research",

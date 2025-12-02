@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-01 20:23*
+*Generated: 2025-12-02 06:45*
 
 
 ## Delirium (דליריום)
@@ -24,11 +24,10 @@
 
 ## Frailty (שבריריות)
 
-### 📄 Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.
-- **Authors**: Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar
-- **Journal**: Annals of medicine (2025)
-- **Link**: [41137434](https://pubmed.ncbi.nlm.nih.gov/41137434/)
-- **Key Finding**: Frailty is common among cardiac surgery patients and is associated with poor outcomes...
+### 📄 Reduction of Antihypertensive Treatment in Nursing Home Residents.
+- **Authors**: Benetos Athanase, Gautier Sylvie, Freminet Anne et al.
+- **Journal**: The New England journal of medicine (2025)
+- **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
 
 ### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
 - **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
@@ -36,10 +35,10 @@
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Frailty across Neurological Diseases: Why Sex and Gender Matter.
-- **Authors**: Lorefice Lorena, Pellecchia Maria Teresa
-- **Journal**: Annals of neurology (2025)
-- **Link**: [41267611](https://pubmed.ncbi.nlm.nih.gov/41267611/)
+### 📄 Association of frailty and pre-frailty with cardiovascular mortality: a meta-analysis of 26 cohort studies.
+- **Authors**: Zhao Yan, Wu Yedan, Liu Zhuohui et al.
+- **Journal**: Frontiers in public health (2025)
+- **Link**: [41323622](https://pubmed.ncbi.nlm.nih.gov/41323622/)
 
 
 ## Falls (נפילות)
@@ -54,29 +53,29 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [40970437](https://pubmed.ncbi.nlm.nih.gov/40970437/)
 
-### 📄 Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.
-- **Authors**: Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.
-- **Journal**: Revista espanola de geriatria y gerontologia (2025)
-- **Link**: [40902310](https://pubmed.ncbi.nlm.nih.gov/40902310/)
+### 📄 Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.
+- **Authors**: Liu Yi, Qiu Junjie, Huang Renlin et al.
+- **Journal**: Frontiers in public health (2025)
+- **Link**: [41306867](https://pubmed.ncbi.nlm.nih.gov/41306867/)
 
 
 ## Dementia (דמנציה)
 
-### 📄 [Agitation].
-- **Authors**: Yoshiyama Kenji
-- **Journal**: Brain and nerve = Shinkei kenkyu no shinpo (2025)
-- **Link**: [41233181](https://pubmed.ncbi.nlm.nih.gov/41233181/)
+### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
+- **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
+- **Journal**: Pulmonology (2025)
+- **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
 
 ### 📄 
 - **Authors**: Cornford Nisha, Charnley Margaret
 - **Journal**: Nutrition research reviews (2025)
 - **Link**: [39988819](https://pubmed.ncbi.nlm.nih.gov/39988819/)
 
-### 📄 Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.
-- **Authors**: Liu Yuxi, Gu Xiao, Li Yanping et al.
-- **Journal**: Nature medicine (2025)
-- **Link**: [40855194](https://pubmed.ncbi.nlm.nih.gov/40855194/)
-- **Key Finding**: Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)...
+### 📄 Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.
+- **Authors**: Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.
+- **Journal**: Neural regeneration research (2026)
+- **Link**: [40145977](https://pubmed.ncbi.nlm.nih.gov/40145977/)
+- **Key Finding**: Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modula...
 
 
 ## Deprescribing (דה-פרסקייבינג)
@@ -105,10 +104,10 @@
 - **Link**: [39699070](https://pubmed.ncbi.nlm.nih.gov/39699070/)
 - **Key Finding**: The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least o...
 
-### 📄 A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.
-- **Authors**: Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.
-- **Journal**: Nature aging (2025)
-- **Link**: [41188603](https://pubmed.ncbi.nlm.nih.gov/41188603/)
+### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
+- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
+- **Journal**: Clinical nutrition ESPEN (2025)
+- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
 
 ### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
 - **Authors**: Chen Alissa S, Batsis John A
@@ -128,10 +127,10 @@
 - **Journal**: International journal of nursing studies (2025)
 - **Link**: [41252804](https://pubmed.ncbi.nlm.nih.gov/41252804/)
 
-### 📄 De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.
-- **Authors**: Siqueira I, Jenkinson J, Briggs P et al.
-- **Journal**: Expert review of endocrinology & metabolism (2025)
-- **Link**: [40689782](https://pubmed.ncbi.nlm.nih.gov/40689782/)
+### 📄 Demystifying Compassionate Communities.
+- **Authors**: Ng Yong Hao, Aoun Samar
+- **Journal**: Palliative care and social practice (2025)
+- **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
@@ -141,14 +140,15 @@
 - **Journal**: Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association (2025)
 - **Link**: [41297740](https://pubmed.ncbi.nlm.nih.gov/41297740/)
 
-### 📄 History of the Treatment of Rectal Prolapse.
-- **Authors**: Spivak Rebecca, Hu Katherine
-- **Journal**: Clinics in colon and rectal surgery (2025)
-- **Link**: [41040126](https://pubmed.ncbi.nlm.nih.gov/41040126/)
-
 ### 📄 The impact of ageing on the structural compositions of the mucosa of human colon.
 - **Authors**: Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al.
 - **Journal**: Tissue & cell (2025)
 - **Link**: [40848414](https://pubmed.ncbi.nlm.nih.gov/40848414/)
 - **Key Finding**: In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not...
+
+### 📄 Mirabegron exhibits antibacterial and Immunomodulatory activities demonstrated by in vitro and in vivo studies.
+- **Authors**: Ahmed Esraa A, Abd-Eldayem Ahmed M
+- **Journal**: Scientific reports (2025)
+- **Link**: [41203718](https://pubmed.ncbi.nlm.nih.gov/41203718/)
+- **Key Finding**: We found that mirabegron exhibited significant antibacterial activity, particularly against E...
 

@@ -35,16 +35,14 @@
   ],
   "frailty": [
     {
-      "pmid": "41137434",
-      "title": "Prevalence and risk factors of frailty among cardiac surgery patients: a systematic review and meta-analysis.",
-      "abstract": "Frailty is common among cardiac surgery patients and is associated with poor outcomes. Previous reviews have been limited by outdated searches, narrow surgical populations, or reliance on a single assessment tool. This study aimed to estimate the prevalence of frailty and identify associated risk factors in patients undergoing cardiac surgery.",
-      "authors": "Sarmadi Sogand, Sanaie Neda, Zare-Kaseb Akbar",
-      "journal": "Annals of medicine",
+      "pmid": "40879421",
+      "title": "Reduction of Antihypertensive Treatment in Nursing Home Residents.",
+      "abstract": "Among older adults with frailty, evidence on the benefits and risks of discontinuing antihypertensive drugs is limited.",
+      "authors": "Benetos Athanase, Gautier Sylvie, Freminet Anne et al.",
+      "journal": "The New England journal of medicine",
       "year": "2025",
-      "key_findings": [
-        "Frailty is common among cardiac surgery patients and is associated with poor outcomes"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41137434/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
     },
     {
       "pmid": "41253248",
@@ -60,14 +58,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "41267611",
-      "title": "Frailty across Neurological Diseases: Why Sex and Gender Matter.",
-      "abstract": "Frailty is increasingly recognized as a critical factor in neurology, influencing disease susceptibility, progression, and outcomes. Emerging evidence highlights the pivotal role of sex and gender in shaping frailty trajectories across major neurological disorders, including stroke, Parkinson's disease (PD), dementia, and multiple sclerosis. This systematic review synthesizes current knowledge on the interplay between frailty and neurological disease, with a focus on sex-specific patterns. Recognizing sex- and gender-related differences in frailty expression is critical to advancing a more personalized and equitable model of neurological care, and reducing disparities in a growing population affected by age-related neurological conditions. ANN NEUROL 2025.",
-      "authors": "Lorefice Lorena, Pellecchia Maria Teresa",
-      "journal": "Annals of neurology",
+      "pmid": "41323622",
+      "title": "Association of frailty and pre-frailty with cardiovascular mortality: a meta-analysis of 26 cohort studies.",
+      "abstract": "This meta-analysis evaluated the association of frailty and pre-frailty with cardiovascular mortality in cohort studies. While frailty is a recognized predictor of poor outcomes, the prognostic role of pre-frailty-a critical intermediate stage-remains less clear. We assessed their associations with cardiovascular mortality, explored heterogeneity, and examined the robustness of findings through publication bias analyses.",
+      "authors": "Zhao Yan, Wu Yedan, Liu Zhuohui et al.",
+      "journal": "Frontiers in public health",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41267611/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41323622/"
     }
   ],
   "falls": [
@@ -92,26 +90,26 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40970437/"
     },
     {
-      "pmid": "40902310",
-      "title": "Evaluating the evidence for sensor-based technologies and medical devices in fall prevention among hospitalized older adults: A systematic review.",
-      "abstract": "Falls among hospitalized older adults increase morbidity, prolong hospital stays, and raise healthcare costs. Sensor-based technologies and medical devices are emerging tools for fall prevention, but their clinical effectiveness remains uncertain. This systematic review aimed to assess their effectiveness in reducing inpatient falls, staff workload, and physical restraint use in hospitalized older adults.",
-      "authors": "Campollo-Duquela Maria Eugenia, Castro-Vilela Maria Elena, Skoumal Martin et al.",
-      "journal": "Revista espanola de geriatria y gerontologia",
+      "pmid": "41306867",
+      "title": "Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.",
+      "abstract": "This study aims to analyze the global epidemiological trends of falls from 1990 to 2021, providing an in-depth understanding of their evolving patterns. It explores the changing trends of falls caused by reduced bone mass in middle-aged and older adults, offering valuable insights to healthcare policymakers for more effective resource allocation.",
+      "authors": "Liu Yi, Qiu Junjie, Huang Renlin et al.",
+      "journal": "Frontiers in public health",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40902310/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41306867/"
     }
   ],
   "dementia": [
     {
-      "pmid": "41233181",
-      "title": "[Agitation].",
-      "abstract": "Agitation is a behavioral and psychological symptom of dementia (BPSD); however, until recently, there has been no consensus-based definition. When initiating therapeutic interventions, the type of dementia that is the cause of the BPSD must be considered and treatment must be tailored accordingly. As with other types of BPSD, non-pharmacological interventions are considered the first-line treatment for agitation, unless the symptoms present an exceptional level of urgency. Person-centered care is effective as a non-pharmacological intervention for agitation. Other examples include music therapy, animal-assisted therapy, and aromatherapy; however, these are not very effective for agitation. Useful information on non-pharmacological interventions for agitation can be obtained from the website \"Ninchisho Chienowa-net,\" which is a web-based system that collects information on the coping strategies of caregivers for BPSD. If non-pharmacological interventions are ineffective or the symptoms are urgent, pharmacological treatment should be considered. Brexpiprazole has been approved as effective for agitation in Alzheimer's disease. For the treatment of agitation, medications other than brexpiprazole are frequently used in clinical settings and may offer some degree of efficacy.",
-      "authors": "Yoshiyama Kenji",
-      "journal": "Brain and nerve = Shinkei kenkyu no shinpo",
+      "pmid": "39869458",
+      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
+      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
+      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
+      "journal": "Pulmonology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41233181/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
     },
     {
       "pmid": "39988819",
@@ -124,16 +122,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39988819/"
     },
     {
-      "pmid": "40855194",
-      "title": "Interplay of genetic predisposition, plasma metabolome and Mediterranean diet in dementia risk and cognitive function.",
-      "abstract": "Alzheimer's disease (AD) and AD-related dementias (AD/ADRD) have a substantial genetic basis, with APOE4 homozygotes increasingly recognized as a distinct genetic subtype. To identify genotype-specific metabolic pathways and modifiable risk factors, we integrated genetic, plasma metabolomic and dietary data from 4,215 women and 1,490 men in prospective cohorts. Here we show that the associations of 57 metabolites with dementia risk varied by APOE4 genotype or other AD/ADRD risk variants. For example, cholesteryl esters and sphingomyelins were most strongly associated with increased dementia risk in APOE4 homozygotes, whereas inverse associations with glycerides were specific to this genotype. Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP). Adherence to the Mediterranean diet more effectively modulated dementia-related metabolites in APOE4 homozygotes, suggesting targeted prevention strategies. Incorporating metabolomic data modestly improved dementia risk prediction, particularly during early follow-up. Mendelian randomization analysis identified 19 putative causal relationships between metabolites and cognitive outcomes, including protective effects of 4-guanidinobutanoate, carotenoids and N",
-      "authors": "Liu Yuxi, Gu Xiao, Li Yanping et al.",
-      "journal": "Nature medicine",
-      "year": "2025",
+      "pmid": "40145977",
+      "title": "Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.",
+      "abstract": "For diverse neurodegenerative disorders, microglial cells are activated. Furthermore, dysfunctional and hyperactivated microglia initiate mitochondrial autophagy, oxidative stress, and pathological protein accumulation, ending with neuroinflammation that exacerbates damage to dopaminergic neurons and contributes significantly to the pathology of neurodegenerative disorder. Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments. This review summarizes the role of microglia neurodegenerative diseases, such as Alzheimer's disease, Parkinson's disease, multiple sclerosis, multiple system atrophy, amyotrophic lateral sclerosis, frontotemporal dementia, progressive supranuclear palsy, cortical degeneration, Lewy body dementia, and Huntington's disease. It also discusses novel forms of cell death such as ferroptosis, cuproptosis, disulfidptosis, and parthanatos (poly(adenosine diphosphate ribose) polymerase 1-dependent cell death), as well as the impact of regulatory factors related to microglial inflammation on microglial activation and neuroinflammation. The aim is to identify potential targets for microglial cell therapy in neurodegenerative diseases.",
+      "authors": "Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.",
+      "journal": "Neural regeneration research",
+      "year": "2026",
       "key_findings": [
-        "Dimethylguanidino-valeric acid was more strongly associated with dementia risk among carriers of the rs2154481-C allele (APP)"
+        "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40855194/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40145977/"
     }
   ],
   "deprescribing": [
@@ -182,14 +180,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39699070/"
     },
     {
-      "pmid": "41188603",
-      "title": "A focus shift from sarcopenia to muscle health in the Asian Working Group for Sarcopenia 2025 Consensus Update.",
-      "abstract": "The Asian Working Group for Sarcopenia (AWGS) presents an updated 2025 consensus reframing sarcopenia management through a life-course approach to muscle health promotion. While aligning with the Global Leadership Initiative in Sarcopenia (GLIS), this update provides healthcare providers with Asia-specific guidance. The consensus introduces three key refinements: first, expanding sarcopenia diagnosis to middle-aged adults (50‒64 years) with validated diagnostic thresholds; second, simplifying the diagnostic algorithm to require only concurrent low muscle mass and strength, with physical performance as an outcome measure; and third, introducing an enhanced muscle health framework recognizing skeletal muscle as vital for healthy longevity, emphasizing cross-talk with brain, bone, adipose tissue and immune systems. This framework leverages the World Health Organization's Integrated Care for Older People (ICOPE) implementation for enhanced case-finding through natural overlap between muscle health and ICOPE's intrinsic capacity domains. The consensus provides evidence-based recommendations for multimodal interventions that combine resistance exercise with nutritional supplementation, representing advancement toward proactive muscle health promotion and establishing a framework for reducing age-related decline in Asian populations.",
-      "authors": "Chen Liang-Kung, Hsiao Fei-Yuan, Akishita Masahiro et al.",
-      "journal": "Nature aging",
+      "pmid": "40885526",
+      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
+      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
+      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
+      "journal": "Clinical nutrition ESPEN",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41188603/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
     },
     {
       "pmid": "40644314",
@@ -224,14 +222,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41252804/"
     },
     {
-      "pmid": "40689782",
-      "title": "De-escalation, palliation and end of life care in frail older people with diabetes-a critical review.",
-      "abstract": "Frail older people with diabetes will need regular medications review and individualized care, especially at the final phase of life. Although guidelines are detailed on escalation of medications, there is little detail on how to de-escalate therapy when need arises. In addition, there is no description of patients' criteria in whom de-escalation should be considered.",
-      "authors": "Siqueira I, Jenkinson J, Briggs P et al.",
-      "journal": "Expert review of endocrinology & metabolism",
+      "pmid": "41246289",
+      "title": "Demystifying Compassionate Communities.",
+      "abstract": "",
+      "authors": "Ng Yong Hao, Aoun Samar",
+      "journal": "Palliative care and social practice",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40689782/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
     }
   ],
   "incontinence": [
@@ -246,16 +244,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41297740/"
     },
     {
-      "pmid": "41040126",
-      "title": "History of the Treatment of Rectal Prolapse.",
-      "abstract": "Rectal prolapse is the intussusception of the rectum, resulting in its full-thickness protrusion out of the anus. Approximately 0.5% of the general population is affected by this condition, with a higher occurrence in women and the elderly. While benign, rectal prolapse can be debilitating, as it can cause pain, bleeding, mucus discharge, and fecal incontinence. The earliest documented records of rectal prolapse date back to Ancient Egypt (1500-1200 BC), describing laxatives and topical therapeutics for the treatment of an anus turned inside out. Many techniques were devised to hold the reduced prolapsed rectum in place, ranging from cords to the use of bandages. Surgical cauterization of the anal sphincter to prevent recurrent prolapse began as early as 6 BC in India, a practice that continued into the 1800s. Advances in fundamental understanding of the anatomy of the colon, rectum, and anus in the 19th and early 20th centuries paved the way for modern surgical approaches. The 20th century saw the development of procedures proposed by surgeons such as Delorme, Moschowitz, Ripstein, and Altemeier. The emergence of the laparoscopic rectopexy in 1992 and subsequent use of robotic-assisted techniques in the early 2000s marked the transition to modern rectal prolapse surgeries, improving both precision and outcomes. The overall management of rectal prolapse has evolved significantly from ancient remedies to the surgeries known today, yet some fundamental similarities remain consistent between today's outlook and what was documented centuries ago. Understanding the historical evolution of the diagnosis and treatment of rectal prolapse provides insight into the contemporary management of the disorder.",
-      "authors": "Spivak Rebecca, Hu Katherine",
-      "journal": "Clinics in colon and rectal surgery",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41040126/"
-    },
-    {
       "pmid": "40848414",
       "title": "The impact of ageing on the structural compositions of the mucosa of human colon.",
       "abstract": "The increased prevalence of chronic constipation, faecal impaction and incontinence among older individuals have been linked in part, to age-related degenerative changes within the bowel. In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon. We address this knowledge gap by examining the number of intestinal stem cells and epithelial tight junction proteins, and densities of connective tissues, namely total collagen and elastin, on macroscopically normal ascending (AC; adults: 30-52 years and elderly: 70 - 89 years) and descending (DC; adults: 42-60 years and elderly: 67 - 82 years) colon using immunohistochemistry and tinctorial staining techniques. The results demonstrated that in the ageing AC but not clearly in the DC, there was a significant decline in anti-junctional adhesion molecule-A, anti- occludin and anti-zonula occluden-1 tight junction protein expressions within the epithelium per mucosal unit area. Compared to younger adults, there was no consistent change in anti-claudin-2 protein in the DC from older adults (p = 0.068), but the level of expression tended to increase in the AC (p = 0.059). The number of olfactomedin-4 positive cells tended to be smaller (mean value: AC; 5.2 ± 0.6 vs. 4.9 ± 0.2/ crypt and DC: 5.6 ± 0.8 vs. 5.1 ± 0.3) but were not statistically significant with increasing age in both regions. Ageing increased the amount of elastin fibres within the muscularis mucosae in AC and DC, and there was a tendency for total collagen fibres to increase in the mucosa of the older adults DC (p = 0.061). These structural changes in the aged mucosa have potential to impact colonic functions and may contribute to the development of lower bowel disorders in a region-specific manner.",
@@ -266,6 +254,18 @@
         "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40848414/"
+    },
+    {
+      "pmid": "41203718",
+      "title": "Mirabegron exhibits antibacterial and Immunomodulatory activities demonstrated by in vitro and in vivo studies.",
+      "abstract": "Mirabegron is a beta 3-adrenoceptor agonist that can help with incontinence, dysuria, and bladder overactivity. It alleviates the symptoms of prostate enlargement and urinary tract infections (UTIs) in the elderly. We aimed to explore Mirabegron's antimicrobial and immune-boosting properties, trying to benefit people suffering from urinary tract infections and having an overactive bladder. Mirabegron's putative antibacterial activity was investigated using the well diffusion method (In Vitro). Infected rats were treated with mirabegron (10 mg/kg, oral) and used for evaluation of immunomodulatory actions (In Vivo). We tested the antibacterial activity in vitro against numerous bacterial strains, including Escherichia coli (E. coli). The phagocytic activity and survival of peritoneal macrophages were examined. Also, serum levels of immunoglobulin G (IgG), immunoglobulin M (IgM), and interferon-γ (INF-γ) were estimated in E. coli-infected rats. We found that mirabegron exhibited significant antibacterial activity, particularly against E. coli. Phagocytic activity increased notably in vivo, indicating an improved innate immune response. Mirabegron also demonstrated a substantial rise in immunoglobulin and cytokine levels, enhancing acquired immunity. According to our findings, in vitro and in vivo tests of mirabegron revealed possible antibacterial activity as well as immunomodulatory properties. Mirabegron could alleviate symptomatic UTIs.",
+      "authors": "Ahmed Esraa A, Abd-Eldayem Ahmed M",
+      "journal": "Scientific reports",
+      "year": "2025",
+      "key_findings": [
+        "We found that mirabegron exhibited significant antibacterial activity, particularly against E"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41203718/"
     }
   ]
 }
