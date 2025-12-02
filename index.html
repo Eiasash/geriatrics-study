@@ -381,6 +381,222 @@
             font-size: 0.7rem;
             font-weight: 600;
         }
+
+        /* Search Bar */
+        .search-container {
+            margin: 32px auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 48px 16px 20px;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--gray-800);
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+            font-size: 1.2rem;
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 8px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .search-result-item:hover {
+            background: var(--gray-50);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .search-result-desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: var(--gray-500);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 88px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        body.dark-mode .tool-card,
+        body.dark-mode .clinical-card,
+        body.dark-mode .search-box {
+            background: rgba(30, 30, 46, 0.95);
+            color: #e0e0e0;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .tool-card:hover,
+        body.dark-mode .clinical-card:hover {
+            background: rgba(40, 40, 56, 0.95);
+        }
+
+        body.dark-mode .tool-card h3,
+        body.dark-mode .search-result-title {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .search-results {
+            background: rgba(30, 30, 46, 0.98);
+        }
+
+        body.dark-mode .search-result-item:hover {
+            background: rgba(40, 40, 56, 0.8);
+        }
+
+        body.dark-mode .theme-toggle,
+        body.dark-mode .back-to-top {
+            background: rgba(30, 30, 46, 0.95);
+            color: #60a5fa;
+        }
+
+        body.dark-mode .quick-link {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .quick-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -407,6 +623,33 @@
                 <i class="fas fa-book"></i> Hazzard's
                 <span class="badge">NEW</span>
             </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search tools, topics, and resources..." aria-label="Search">
+            <i class="fas fa-search search-icon"></i>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Slide Templates</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Geriatrics Topics</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">88</span>
+                <span class="stat-label">Practice Questions</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Clinical Tools</span>
+            </div>
         </div>
 
         <main>
@@ -530,5 +773,127 @@
             </p>
         </footer>
     </div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Search Functionality
+        const searchData = [
+            { title: 'Presentation Maker', desc: 'Create medical presentations', url: 'szmc-presentation-maker/', keywords: ['presentation', 'slides', 'pptx', 'case', 'journal', 'club'] },
+            { title: 'Clinical Tools Dashboard', desc: 'Geriatric assessments and tools', url: 'clinical-tools/dashboard.html', keywords: ['clinical', 'tools', 'assessments', 'medications'] },
+            { title: 'Geriatric Assessments', desc: 'MMSE, MoCA, GDS, ADL/IADL', url: 'clinical-tools/assessments.html', keywords: ['mmse', 'moca', 'gds', 'adl', 'iadl', 'assessment'] },
+            { title: 'Medication Reference', desc: 'Beers criteria, drug interactions', url: 'clinical-tools/medications.html', keywords: ['medications', 'drugs', 'beers', 'criteria', 'interactions'] },
+            { title: 'Anticoagulation Management', desc: 'CHADS-VASc, HAS-BLED, reversal', url: 'clinical-tools/anticoag.html', keywords: ['anticoagulation', 'warfarin', 'doac', 'chads', 'hasbled'] },
+            { title: 'H5P Study Mode', desc: 'Interactive quizzes and flashcards', url: 'h5p/', keywords: ['h5p', 'quiz', 'flashcards', 'study', 'questions'] },
+            { title: 'Hazzard\'s 8e', desc: 'Geriatric medicine textbook', url: 'hazzards/', keywords: ['hazzards', 'textbook', 'reference', 'geriatric medicine'] },
+            { title: 'AI Assistant', desc: 'Clinical decision support', url: 'clinical-tools/ai-assistant.html', keywords: ['ai', 'assistant', 'clinical', 'decision', 'support'] },
+            { title: 'On-Call Reference', desc: 'Quick reference for on-call', url: 'clinical-tools/oncall.html', keywords: ['oncall', 'on-call', 'emergency', 'reference'] },
+            { title: 'Physical Exam', desc: 'Geriatric physical examination', url: 'clinical-tools/exam.html', keywords: ['exam', 'physical', 'examination', 'geriatric'] },
+            { title: 'Evidence Search', desc: 'Guidelines and literature', url: 'clinical-tools/evidence.html', keywords: ['evidence', 'guidelines', 'literature', 'search'] },
+        ];
+
+        const searchBox = document.getElementById('searchBox');
+        const searchResults = document.getElementById('searchResults');
+
+        searchBox.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = searchData.filter(item => 
+                item.title.toLowerCase().includes(query) ||
+                item.desc.toLowerCase().includes(query) ||
+                item.keywords.some(k => k.includes(query))
+            );
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(item => `
+                    <a href="${item.url}" class="search-result-item">
+                        <div class="search-result-title">${item.title}</div>
+                        <div class="search-result-desc">${item.desc}</div>
+                    </a>
+                `).join('');
+                searchResults.classList.add('active');
+            } else {
+                searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                searchResults.classList.add('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Theme Toggle - Save preference to localStorage
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let isDark = localStorage.getItem('darkMode') === 'true' || (localStorage.getItem('darkMode') === null && prefersDark);
+
+        function applyTheme(dark) {
+            const icon = themeToggle.querySelector('i');
+            
+            if (dark) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
+            }
+        }
+
+        // Apply initial theme
+        applyTheme(isDark);
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            applyTheme(isDark);
+        });
+
+        // Service Worker Registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/geriatrics-study/sw.js')
+                    .then(reg => {
+                        // Service worker registered successfully
+                    })
+                    .catch(err => {
+                        // Service worker registration failed - graceful degradation
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
