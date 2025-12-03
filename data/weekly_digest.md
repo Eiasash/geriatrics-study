@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-02 21:01*
+*Generated: 2025-12-03 14:14*
 
 
 ## Delirium (דליריום)
@@ -24,21 +24,22 @@
 
 ## Frailty (שבריריות)
 
+### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
+- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
+- **Journal**: Ageing research reviews (2026)
+- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
+- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
+
 ### 📄 Reduction of Antihypertensive Treatment in Nursing Home Residents.
 - **Authors**: Benetos Athanase, Gautier Sylvie, Freminet Anne et al.
 - **Journal**: The New England journal of medicine (2025)
 - **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
 
-### 📄 Advances and prospects of ergothioneine in the treatment of cognitive frailty.
-- **Authors**: Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [40914903](https://pubmed.ncbi.nlm.nih.gov/40914903/)
-
-### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
-- **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
-- **Journal**: Ageing research reviews (2025)
-- **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
-- **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
+### 📄 Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.
+- **Authors**: Johnson Neil, Qu Junru, Wagatsuma Kenji et al.
+- **Journal**: Frontiers in cardiovascular medicine (2025)
+- **Link**: [41282339](https://pubmed.ncbi.nlm.nih.gov/41282339/)
+- **Key Finding**: Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations...
 
 
 ## Falls (נפילות)
@@ -48,23 +49,23 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
-- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
-- **Journal**: BMC geriatrics (2025)
-- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+### 📄 Tree canopy cover and injurious pedestrian falls: a location-based case-control study.
+- **Authors**: Burford Kathryn G, Lo Alexander X, Quinn James W et al.
+- **Journal**: American journal of epidemiology (2025)
+- **Link**: [41084384](https://pubmed.ncbi.nlm.nih.gov/41084384/)
 
-### 📄 Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).
-- **Authors**: Schoene Daniel, Gross Michaela, Finger Benjamin et al.
-- **Journal**: BMJ open (2025)
-- **Link**: [41314827](https://pubmed.ncbi.nlm.nih.gov/41314827/)
+### 📄 Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.
+- **Authors**: Liu Yi, Qiu Junjie, Huang Renlin et al.
+- **Journal**: Frontiers in public health (2025)
+- **Link**: [41306867](https://pubmed.ncbi.nlm.nih.gov/41306867/)
 
 
 ## Dementia (דמנציה)
 
-### 📄 Neuropalliative Care in Dementia.
-- **Authors**: Weisbrod Neal
-- **Journal**: Continuum (Minneapolis, Minn.) (2025)
-- **Link**: [41328935](https://pubmed.ncbi.nlm.nih.gov/41328935/)
+### 📄 Digital Therapeutics for Alzheimer's and Parkinson's Diseases: Current Trends and Future Perspectives.
+- **Authors**: Jeong Yoo Joo, Lee Hyun-Ju, Kim Jun-Su et al.
+- **Journal**: Medicinal research reviews (2026)
+- **Link**: [40745950](https://pubmed.ncbi.nlm.nih.gov/40745950/)
 
 ### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
 - **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
@@ -89,10 +90,10 @@
 - **Journal**: COPD (2025)
 - **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
 
-### 📄 Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.
-- **Authors**: Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.
-- **Journal**: Aging clinical and experimental research (2025)
-- **Link**: [41296133](https://pubmed.ncbi.nlm.nih.gov/41296133/)
+### 📄 A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.
+- **Authors**: Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.
+- **Journal**: Expert review of clinical pharmacology (2025)
+- **Link**: [41184174](https://pubmed.ncbi.nlm.nih.gov/41184174/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -108,23 +109,23 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
-- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
-- **Journal**: Clinical nutrition ESPEN (2025)
-- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
+### 📄 Postmenopausal sarcopenia and Alzheimer's disease: The interplay of mitochondria, insulin resistance, and myokines.
+- **Authors**: Farhana Fardous, Sultana Most Arifa, Hia Raksa Andalib et al.
+- **Journal**: Neuroscience and biobehavioral reviews (2025)
+- **Link**: [41325816](https://pubmed.ncbi.nlm.nih.gov/41325816/)
 
 
 ## End Of Life (טיפול סוף-חיים)
-
-### 📄 Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.
-- **Authors**: Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.
-- **Journal**: Palliative medicine (2025)
-- **Link**: [40908745](https://pubmed.ncbi.nlm.nih.gov/40908745/)
 
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
+
+### 📄 Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.
+- **Authors**: Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.
+- **Journal**: Palliative medicine (2025)
+- **Link**: [40908745](https://pubmed.ncbi.nlm.nih.gov/40908745/)
 
 ### 📄 Palliative care needs of adults severely affected by sickle cell disease: A mixed-methods systematic review.
 - **Authors**: Alyami Khulood, Bristowe Katherine, Dzeng Elizabeth et al.

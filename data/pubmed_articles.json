@@ -35,6 +35,19 @@
   ],
   "frailty": [
     {
+      "pmid": "41253248",
+      "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
+      "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
+      "authors": "Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.",
+      "journal": "Ageing research reviews",
+      "year": "2026",
+      "key_findings": [
+        "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored",
+        "Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
+    },
+    {
       "pmid": "40879421",
       "title": "Reduction of Antihypertensive Treatment in Nursing Home Residents.",
       "abstract": "Among older adults with frailty, evidence on the benefits and risks of discontinuing antihypertensive drugs is limited.",
@@ -45,27 +58,17 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
     },
     {
-      "pmid": "40914903",
-      "title": "Advances and prospects of ergothioneine in the treatment of cognitive frailty.",
-      "abstract": "To review the biological functions of ergothioneine (ERGO), its correlation with plasma levels in cognitive frailty, and research progress in treating frailty and cognitive impairment, with the aim of providing a reference for ERGO application in cognitive frailty treatment.",
-      "authors": "Gede Arjun M M I, Gu Qingxin, Phukhatmuen Piyaporn et al.",
-      "journal": "Annals of medicine",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40914903/"
-    },
-    {
-      "pmid": "41253248",
-      "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
-      "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
-      "authors": "Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.",
-      "journal": "Ageing research reviews",
+      "pmid": "41282339",
+      "title": "Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.",
+      "abstract": "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations. This review synthesizes evidence from studies published between 2000 and 2025, identified through Google Scholar and PubMed using keywords such as \"frailty\", \"CVD\", \"frailty assessment\", and \"multicomponent interventions\". Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes.",
+      "authors": "Johnson Neil, Qu Junru, Wagatsuma Kenji et al.",
+      "journal": "Frontiers in cardiovascular medicine",
       "year": "2025",
       "key_findings": [
-        "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored",
-        "Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes"
+        "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations",
+        "Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes."
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41282339/"
     }
   ],
   "falls": [
@@ -80,36 +83,36 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "41291457",
-      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
-      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
-      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
-      "journal": "BMC geriatrics",
+      "pmid": "41084384",
+      "title": "Tree canopy cover and injurious pedestrian falls: a location-based case-control study.",
+      "abstract": "Despite about half a million injurious pedestrian falls occurring annually in the United States, prevention of pedestrian falls is under studied. Sidewalk damage from street trees is a known risk for falls; however, tree canopy cover might reduce falls in summer months by lowering ambient temperatures. We conducted pilot research to assess whether emergency medical services (EMS) data could be used to implement a multi-city, location-based case-control study investigating the association between tree canopy cover and locations of injurious pedestrian falls. Case locations (n = 497) were places where EMS responded to a pedestrian fall occurrence between April and September of 2019. Matched control locations (n = 994) were selected from intersections, street segments, and ramp segments that existed in 2019. Percent tree canopy cover was measured within a 100-m radial buffer of each location. Median tree canopy coverage at fall locations was 8%, compared to 14% for control locations. In adjusted analyses, higher tree canopy cover was inversely associated with fall locations (adjusted OR across the inter-quartile range of canopy cover = 0.57; 95% CI, 0.45-0.74), suggesting higher tree canopy cover is associated with lower pedestrian falls risk. Methodological challenges and solutions to implementing and interpreting the location-based, case-control design with EMS data are discussed.",
+      "authors": "Burford Kathryn G, Lo Alexander X, Quinn James W et al.",
+      "journal": "American journal of epidemiology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41084384/"
     },
     {
-      "pmid": "41314827",
-      "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
-      "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
-      "authors": "Schoene Daniel, Gross Michaela, Finger Benjamin et al.",
-      "journal": "BMJ open",
+      "pmid": "41306867",
+      "title": "Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.",
+      "abstract": "This study aims to analyze the global epidemiological trends of falls from 1990 to 2021, providing an in-depth understanding of their evolving patterns. It explores the changing trends of falls caused by reduced bone mass in middle-aged and older adults, offering valuable insights to healthcare policymakers for more effective resource allocation.",
+      "authors": "Liu Yi, Qiu Junjie, Huang Renlin et al.",
+      "journal": "Frontiers in public health",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41306867/"
     }
   ],
   "dementia": [
     {
-      "pmid": "41328935",
-      "title": "Neuropalliative Care in Dementia.",
-      "abstract": "Patients and their caregivers and families confronting dementia often face heavy burdens from difficult-to-control symptoms, uncertainty about the future, and a high risk of care partner burnout. This article explores common palliative care dilemmas in dementia care and reviews evidence-based approaches to management.",
-      "authors": "Weisbrod Neal",
-      "journal": "Continuum (Minneapolis, Minn.)",
-      "year": "2025",
+      "pmid": "40745950",
+      "title": "Digital Therapeutics for Alzheimer's and Parkinson's Diseases: Current Trends and Future Perspectives.",
+      "abstract": "Alzheimer's disease (AD) and Parkinson's disease (PD), which are characterized by the accumulation of misfolded protein aggregates and cognitive/motor dysfunction, are the most prevalent neurodegenerative diseases (NDDs). Despite strategic investigations aimed at augmenting the pharmaceutical pipeline, available drugs for AD and PD merely slow disease progression without curing or treating the underlying pathology. Recent technological advances have given rise to digital therapeutics (DTx): software systems that aim to prevent, cure, and manage specific diseases, including NDDs. For AD and PD, the majority of DTx focus on enhancing cognitive/executive function and motor-related functions, respectively. In this review, we describe the status of therapeutic development for AD and PD, as well as the characteristics and status of DTx targeting these NDDs. In addition, we address the limitations and challenges of DTx and their implications for the treatment of AD and PD. Ultimately, this review provides insights into the potential of DTx as a therapeutic modality and future directions for the development of DTx targeting AD and PD.",
+      "authors": "Jeong Yoo Joo, Lee Hyun-Ju, Kim Jun-Su et al.",
+      "journal": "Medicinal research reviews",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41328935/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40745950/"
     },
     {
       "pmid": "39869458",
@@ -154,14 +157,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
     },
     {
-      "pmid": "41296133",
-      "title": "Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.",
-      "abstract": "Polypharmacy, the concurrent use of five or more medications, is prevalent among older adults with Diabetes, a population at elevated risk for medication-related complications. Complex treatment regimens for Diabetes and its comorbidities exacerbate challenges such as medication non-adherence, drug interactions, adverse events, and increased hospitalization risk. This review aimed to estimate the prevalence of polypharmacy among older adults with Diabetes.",
-      "authors": "Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.",
-      "journal": "Aging clinical and experimental research",
+      "pmid": "41184174",
+      "title": "A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.",
+      "abstract": "Polypharmacy and potentially inappropriate medications (PIMs) contribute to adverse outcomes. Deprescribing, the supervised withdrawal of PIMs, is a key strategy to reduce these risks. Identifying the most targeted PIMs and commonly used tools for deprescribing remains essential. The aim of this systematic review was to identify the medication classes targeted by deprescribing tools, stratified by tool type and frequency and to evaluate the availability of medication-specific tools.",
+      "authors": "Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.",
+      "journal": "Expert review of clinical pharmacology",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41296133/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41184174/"
     }
   ],
   "sarcopenia": [
@@ -188,27 +191,17 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     },
     {
-      "pmid": "40885526",
-      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
-      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
-      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
-      "journal": "Clinical nutrition ESPEN",
+      "pmid": "41325816",
+      "title": "Postmenopausal sarcopenia and Alzheimer's disease: The interplay of mitochondria, insulin resistance, and myokines.",
+      "abstract": "As life expectancy increases, cognitive impairments such as Alzheimer's disease (AD) create serious problems for older adults. Women regardless of ethnicity and age group, are disproportionately affected, accounting for two-thirds of AD cases, with post-menopausal women representing over 60 % of those affected. Sarcopenia, defined by gradual reduction of skeletal muscle mass, strength, and activities, is increasingly correlated with an elevated risk of cognitive decline in post-menopausal women. Menopause-related hormonal decline (particularly estrogen loss) and aging contribute to sarcopenia, characterized by muscle mitochondrial dysfunction, oxidative stress, and insulin resistance. This sarcopenia-driven reduction in muscle mass and functional capacity further reduces the production of myokines (e.g., BDNF, irisin), impairing neuronal proliferation, adult neurogenesis, and spatial learning/memory. These pathophysiological changes show a contributing link between sarcopenia and AD progression in post-menopausal women. This review is unique in that it discusses the triangular interplay between menopause, sarcopenia, and AD, offering an integrated mechanistic framework that links hormonal decline, muscle loss, and neurodegeneration. We aim to clarify the pathophysiological causes behind the muscle-brain axis and suggest viable treatment approaches to slow down sarcopenia and cognitive deterioration in postmenopausal women based on current evidence. The formulation of targeted strategies for enhancing the quality of life and lessening healthcare expenditures in this expanding population depends on the advancement of understanding this complex interconnection between menopause, sarcopenia and cognition.",
+      "authors": "Farhana Fardous, Sultana Most Arifa, Hia Raksa Andalib et al.",
+      "journal": "Neuroscience and biobehavioral reviews",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41325816/"
     }
   ],
   "end_of_life": [
-    {
-      "pmid": "40908745",
-      "title": "Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.",
-      "abstract": "There is growing demand for home-based palliative care because of patient preference, and increased number of deaths. Optimal models for community-based palliative and end-of-life care are unknown.",
-      "authors": "Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.",
-      "journal": "Palliative medicine",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40908745/"
-    },
     {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
@@ -218,6 +211,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
+    },
+    {
+      "pmid": "40908745",
+      "title": "Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.",
+      "abstract": "There is growing demand for home-based palliative care because of patient preference, and increased number of deaths. Optimal models for community-based palliative and end-of-life care are unknown.",
+      "authors": "Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.",
+      "journal": "Palliative medicine",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40908745/"
     },
     {
       "pmid": "41252804",

@@ -13,7 +13,7 @@
   {
     "id": "e5214b29",
     "front": "[שבריריות] Study: Frailty and the brain: A narrative review of functional and pathological correlates.\n\nWhat was the main finding?",
-    "back": "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored\n\n📖 Sciancalepore Francesco, Salemme Simone, Valletta Martina et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41253248/",
+    "back": "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored\n\n📖 Sciancalepore Francesco, Salemme Simone, Valletta Martina et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41253248/",
     "tags": [
       "frailty",
       "research",
@@ -23,8 +23,30 @@
   },
   {
     "id": "bae0ab88",
-    "front": "[שבריריות] Based on Sciancalepore Francesco et al. (2025), what clinical practice change might be considered?",
+    "front": "[שבריריות] Based on Sciancalepore Francesco et al. (2026), what clinical practice change might be considered?",
     "back": "Finding: Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes\n\nClinical relevance: Consider this evidence when treating elderly patients with frailty-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41253248/",
+    "tags": [
+      "frailty",
+      "clinical",
+      "evidence-based",
+      "שבריריות"
+    ]
+  },
+  {
+    "id": "8e998b02",
+    "front": "[שבריריות] Study: Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.\n\nWhat was the main finding?",
+    "back": "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations\n\n📖 Johnson Neil, Qu Junru, Wagatsuma Kenji et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41282339/",
+    "tags": [
+      "frailty",
+      "research",
+      "recent",
+      "שבריריות"
+    ]
+  },
+  {
+    "id": "1f68e6d4",
+    "front": "[שבריריות] Based on Johnson Neil et al. (2025), what clinical practice change might be considered?",
+    "back": "Finding: Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes.\n\nClinical relevance: Consider this evidence when treating elderly patients with frailty-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41282339/",
     "tags": [
       "frailty",
       "clinical",
