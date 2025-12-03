@@ -27,7 +27,7 @@ describe('Content Validation', () => {
 
   describe('Topic Structure', () => {
     test('all topics have required fields', () => {
-      content.forEach((topic, index) => {
+      content.forEach((topic) => {
         expect(topic.topic).toBeDefined();
         expect(typeof topic.topic).toBe('string');
         expect(topic.topic.length).toBeGreaterThan(0);
@@ -48,7 +48,7 @@ describe('Content Validation', () => {
   describe('Flashcard Validation', () => {
     test('flashcards have question and answer', () => {
       content.forEach((topic) => {
-        topic.flashcards.forEach((flashcard, index) => {
+        topic.flashcards.forEach((flashcard) => {
           const question = flashcard.q || flashcard.term;
           const answer = flashcard.a || flashcard.definition;
           
@@ -79,7 +79,7 @@ describe('Content Validation', () => {
   describe('MCQ Validation', () => {
     test('MCQs have required fields', () => {
       content.forEach((topic) => {
-        topic.mcqs.forEach((mcq, index) => {
+        topic.mcqs.forEach((mcq) => {
           const question = mcq.q || mcq.question;
           
           expect(question).toBeDefined();
@@ -105,7 +105,7 @@ describe('Content Validation', () => {
 
     test('correct answer exists in options (for string answers)', () => {
       content.forEach((topic) => {
-        topic.mcqs.forEach((mcq, index) => {
+        topic.mcqs.forEach((mcq) => {
           const correctAnswer = mcq.correct || mcq.correctAnswer;
           
           if (typeof correctAnswer === 'string') {

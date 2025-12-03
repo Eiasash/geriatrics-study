@@ -130,7 +130,7 @@ function validateFlashcard(flashcard, topicName, index) {
 /**
  * Validate a topic
  */
-function validateTopic(topic, index) {
+function validateTopic(topic) {
   const issues = [];
 
   // Topic name
