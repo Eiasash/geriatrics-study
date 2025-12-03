@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-03 14:14*
+*Generated: 2025-12-03 14:41*
 
 
 ## Delirium (דליריום)
@@ -49,10 +49,10 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Tree canopy cover and injurious pedestrian falls: a location-based case-control study.
-- **Authors**: Burford Kathryn G, Lo Alexander X, Quinn James W et al.
-- **Journal**: American journal of epidemiology (2025)
-- **Link**: [41084384](https://pubmed.ncbi.nlm.nih.gov/41084384/)
+### 📄 Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).
+- **Authors**: Schoene Daniel, Gross Michaela, Finger Benjamin et al.
+- **Journal**: BMJ open (2025)
+- **Link**: [41314827](https://pubmed.ncbi.nlm.nih.gov/41314827/)
 
 ### 📄 Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.
 - **Authors**: Liu Yi, Qiu Junjie, Huang Renlin et al.
@@ -80,20 +80,20 @@
 
 ## Deprescribing (דה-פרסקייבינג)
 
-### 📄 Current Status and Research Trends in Deprescribing: A Bibliometric Review.
-- **Authors**: Shi Changcheng, Li Xinyi, Wu Yan et al.
-- **Journal**: Drug, healthcare and patient safety (2025)
-- **Link**: [41278245](https://pubmed.ncbi.nlm.nih.gov/41278245/)
-
 ### 📄 Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).
 - **Authors**: Tadic Ivana, Fialová Daniela, Hazen Ankie et al.
 - **Journal**: COPD (2025)
 - **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
 
-### 📄 A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.
-- **Authors**: Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.
-- **Journal**: Expert review of clinical pharmacology (2025)
-- **Link**: [41184174](https://pubmed.ncbi.nlm.nih.gov/41184174/)
+### 📄 Current Status and Research Trends in Deprescribing: A Bibliometric Review.
+- **Authors**: Shi Changcheng, Li Xinyi, Wu Yan et al.
+- **Journal**: Drug, healthcare and patient safety (2025)
+- **Link**: [41278245](https://pubmed.ncbi.nlm.nih.gov/41278245/)
+
+### 📄 Trends and Socioeconomic Disparities in Polypharmacy and PIM Use Among 66-Year-Olds in Korea: A Nationwide Study, 2012-2021.
+- **Authors**: Jung Hee-Won, Jhang Hoyol, Park Kyunik et al.
+- **Journal**: Annals of geriatric medicine and research (2025)
+- **Link**: [41328617](https://pubmed.ncbi.nlm.nih.gov/41328617/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -109,10 +109,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 Postmenopausal sarcopenia and Alzheimer's disease: The interplay of mitochondria, insulin resistance, and myokines.
-- **Authors**: Farhana Fardous, Sultana Most Arifa, Hia Raksa Andalib et al.
-- **Journal**: Neuroscience and biobehavioral reviews (2025)
-- **Link**: [41325816](https://pubmed.ncbi.nlm.nih.gov/41325816/)
+### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
+- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
+- **Journal**: Clinical nutrition ESPEN (2025)
+- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
 
 
 ## End Of Life (טיפול סוף-חיים)

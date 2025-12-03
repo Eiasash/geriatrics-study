@@ -83,14 +83,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "41084384",
-      "title": "Tree canopy cover and injurious pedestrian falls: a location-based case-control study.",
-      "abstract": "Despite about half a million injurious pedestrian falls occurring annually in the United States, prevention of pedestrian falls is under studied. Sidewalk damage from street trees is a known risk for falls; however, tree canopy cover might reduce falls in summer months by lowering ambient temperatures. We conducted pilot research to assess whether emergency medical services (EMS) data could be used to implement a multi-city, location-based case-control study investigating the association between tree canopy cover and locations of injurious pedestrian falls. Case locations (n = 497) were places where EMS responded to a pedestrian fall occurrence between April and September of 2019. Matched control locations (n = 994) were selected from intersections, street segments, and ramp segments that existed in 2019. Percent tree canopy cover was measured within a 100-m radial buffer of each location. Median tree canopy coverage at fall locations was 8%, compared to 14% for control locations. In adjusted analyses, higher tree canopy cover was inversely associated with fall locations (adjusted OR across the inter-quartile range of canopy cover = 0.57; 95% CI, 0.45-0.74), suggesting higher tree canopy cover is associated with lower pedestrian falls risk. Methodological challenges and solutions to implementing and interpreting the location-based, case-control design with EMS data are discussed.",
-      "authors": "Burford Kathryn G, Lo Alexander X, Quinn James W et al.",
-      "journal": "American journal of epidemiology",
+      "pmid": "41314827",
+      "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
+      "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
+      "authors": "Schoene Daniel, Gross Michaela, Finger Benjamin et al.",
+      "journal": "BMJ open",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41084384/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
     },
     {
       "pmid": "41306867",
@@ -137,16 +137,6 @@
   ],
   "deprescribing": [
     {
-      "pmid": "41278245",
-      "title": "Current Status and Research Trends in Deprescribing: A Bibliometric Review.",
-      "abstract": "Polypharmacy has emerged as a major global public health concern. To mitigate its adverse effects, deprescribing has been introduced and integrated into clinical practice. This study aims to analyze the current research landscape and identify emerging trends in deprescribing from a bibliometric perspective.",
-      "authors": "Shi Changcheng, Li Xinyi, Wu Yan et al.",
-      "journal": "Drug, healthcare and patient safety",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41278245/"
-    },
-    {
       "pmid": "40719419",
       "title": "Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).",
       "abstract": "Chronic pulmonary conditions require complex treatment strategies involving long-term antibiotic treatment, which carries the highest risk of antimicrobial resistance and adverse drug events (ADE). Specific guidance on prescribing and deprescribing can help reduce these risks and improve therapy effectiveness. The aim of the study was to determine prescribing and deprescribing practices for long-term antibiotic treatment (≥30 days) in preventing exacerbations of stable chronic pulmonary conditions in adult patients across all healthcare settings.",
@@ -157,14 +147,24 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
     },
     {
-      "pmid": "41184174",
-      "title": "A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.",
-      "abstract": "Polypharmacy and potentially inappropriate medications (PIMs) contribute to adverse outcomes. Deprescribing, the supervised withdrawal of PIMs, is a key strategy to reduce these risks. Identifying the most targeted PIMs and commonly used tools for deprescribing remains essential. The aim of this systematic review was to identify the medication classes targeted by deprescribing tools, stratified by tool type and frequency and to evaluate the availability of medication-specific tools.",
-      "authors": "Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.",
-      "journal": "Expert review of clinical pharmacology",
+      "pmid": "41278245",
+      "title": "Current Status and Research Trends in Deprescribing: A Bibliometric Review.",
+      "abstract": "Polypharmacy has emerged as a major global public health concern. To mitigate its adverse effects, deprescribing has been introduced and integrated into clinical practice. This study aims to analyze the current research landscape and identify emerging trends in deprescribing from a bibliometric perspective.",
+      "authors": "Shi Changcheng, Li Xinyi, Wu Yan et al.",
+      "journal": "Drug, healthcare and patient safety",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41184174/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41278245/"
+    },
+    {
+      "pmid": "41328617",
+      "title": "Trends and Socioeconomic Disparities in Polypharmacy and PIM Use Among 66-Year-Olds in Korea: A Nationwide Study, 2012-2021.",
+      "abstract": "With increasing life expectancy, the number of older adults with multiple chronic conditions requiring complex medication regimens is growing, raising concerns about polypharmacy and potentially inappropriate medication (PIM) use. This study investigated trends in polypharmacy and PIM use among 66-year-olds in South Korea from 2012 to 2021, considering participant characteristics, to inform interventions and policies.",
+      "authors": "Jung Hee-Won, Jhang Hoyol, Park Kyunik et al.",
+      "journal": "Annals of geriatric medicine and research",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41328617/"
     }
   ],
   "sarcopenia": [
@@ -191,14 +191,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     },
     {
-      "pmid": "41325816",
-      "title": "Postmenopausal sarcopenia and Alzheimer's disease: The interplay of mitochondria, insulin resistance, and myokines.",
-      "abstract": "As life expectancy increases, cognitive impairments such as Alzheimer's disease (AD) create serious problems for older adults. Women regardless of ethnicity and age group, are disproportionately affected, accounting for two-thirds of AD cases, with post-menopausal women representing over 60 % of those affected. Sarcopenia, defined by gradual reduction of skeletal muscle mass, strength, and activities, is increasingly correlated with an elevated risk of cognitive decline in post-menopausal women. Menopause-related hormonal decline (particularly estrogen loss) and aging contribute to sarcopenia, characterized by muscle mitochondrial dysfunction, oxidative stress, and insulin resistance. This sarcopenia-driven reduction in muscle mass and functional capacity further reduces the production of myokines (e.g., BDNF, irisin), impairing neuronal proliferation, adult neurogenesis, and spatial learning/memory. These pathophysiological changes show a contributing link between sarcopenia and AD progression in post-menopausal women. This review is unique in that it discusses the triangular interplay between menopause, sarcopenia, and AD, offering an integrated mechanistic framework that links hormonal decline, muscle loss, and neurodegeneration. We aim to clarify the pathophysiological causes behind the muscle-brain axis and suggest viable treatment approaches to slow down sarcopenia and cognitive deterioration in postmenopausal women based on current evidence. The formulation of targeted strategies for enhancing the quality of life and lessening healthcare expenditures in this expanding population depends on the advancement of understanding this complex interconnection between menopause, sarcopenia and cognition.",
-      "authors": "Farhana Fardous, Sultana Most Arifa, Hia Raksa Andalib et al.",
-      "journal": "Neuroscience and biobehavioral reviews",
+      "pmid": "40885526",
+      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
+      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
+      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
+      "journal": "Clinical nutrition ESPEN",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41325816/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
     }
   ],
   "end_of_life": [
