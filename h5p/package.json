@@ -2,7 +2,6 @@
   "name": "geriatrics-h5p",
   "private": true,
   "scripts": {
-    "postinstall": "patch-package",
     "build": "node build-h5p.js",
     "build:qset": "node build-h5p-questionset.js",
     "build:mega": "node build-h5p-mega.js",
@@ -32,7 +31,6 @@
     "expect": "^30.0.5",
     "h5p-cli": "^1.1.4",
     "jest": "^29.7.0",
-    "patch-package": "^8.0.0",
     "prettier": "^3.2.5"
   }
 }

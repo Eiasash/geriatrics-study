@@ -17,9 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Removed problematic patch-package dependency from h5p
 - Updated development workflow documentation
+- Cleaned up code quality with lint fixes
 
 ### Fixed
 - H5P npm install issues with patch-package
+- Removed unused parameters in validation code (5 warnings)
+- Fixed function call consistency in validate-content.js
+- All ESLint warnings resolved
 
 ## [1.2.0] - 2024-12-01
 
