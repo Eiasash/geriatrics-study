@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-03 18:44*
+*Generated: 2025-12-03 18:56*
 
 
 ## Delirium (דליריום)
@@ -16,13 +16,18 @@
 - **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
 - **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
 
-### 📄 Ambulatory ophthalmic anesthesia: what is important.
-- **Authors**: Castello Roberto, Neth Jens
-- **Journal**: Current opinion in anaesthesiology (2025)
-- **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
+### 📄 Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.
+- **Authors**: Yao Fengwei, Zhao Hongyan, Liu Lei et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41316013](https://pubmed.ncbi.nlm.nih.gov/41316013/)
 
 
 ## Frailty (שבריריות)
+
+### 📄 Reduction of Antihypertensive Treatment in Nursing Home Residents.
+- **Authors**: Benetos Athanase, Gautier Sylvie, Freminet Anne et al.
+- **Journal**: The New England journal of medicine (2025)
+- **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
 
 ### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
 - **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
@@ -30,15 +35,11 @@
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
 
-### 📄 Reduction of Antihypertensive Treatment in Nursing Home Residents.
-- **Authors**: Benetos Athanase, Gautier Sylvie, Freminet Anne et al.
-- **Journal**: The New England journal of medicine (2025)
-- **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
-
-### 📄 Effectiveness of Home-Based interventions for older adults with frailty or pre-frailty: a systematic review and meta-analysis.
-- **Authors**: Yao Gengxin, Li Fei, Ma Xuehan et al.
-- **Journal**: Archives of gerontology and geriatrics (2026)
-- **Link**: [41242035](https://pubmed.ncbi.nlm.nih.gov/41242035/)
+### 📄 Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.
+- **Authors**: Johnson Neil, Qu Junru, Wagatsuma Kenji et al.
+- **Journal**: Frontiers in cardiovascular medicine (2025)
+- **Link**: [41282339](https://pubmed.ncbi.nlm.nih.gov/41282339/)
+- **Key Finding**: Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations...
 
 
 ## Falls (נפילות)
@@ -48,19 +49,24 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
+### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
+- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+
 ### 📄 [Importance of vision in old age].
 - **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
 - **Journal**: Zeitschrift fur Gerontologie und Geriatrie (2025)
 - **Link**: [41168499](https://pubmed.ncbi.nlm.nih.gov/41168499/)
 - **Key Finding**: Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases...
 
-### 📄 Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.
-- **Authors**: Al Hamad Hanadi, Sathian Brijesh
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40110801](https://pubmed.ncbi.nlm.nih.gov/40110801/)
-
 
 ## Dementia (דמנציה)
+
+### 📄 Digital Therapeutics for Alzheimer's and Parkinson's Diseases: Current Trends and Future Perspectives.
+- **Authors**: Jeong Yoo Joo, Lee Hyun-Ju, Kim Jun-Su et al.
+- **Journal**: Medicinal research reviews (2026)
+- **Link**: [40745950](https://pubmed.ncbi.nlm.nih.gov/40745950/)
 
 ### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
 - **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
@@ -72,11 +78,6 @@
 - **Journal**: Neural regeneration research (2026)
 - **Link**: [40145977](https://pubmed.ncbi.nlm.nih.gov/40145977/)
 - **Key Finding**: Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modula...
-
-### 📄 Towards pharmacological prevention of Alzheimer disease.
-- **Authors**: Llibre-Guerra Jorge J, McDade Eric M, Schindler Suzanne E et al.
-- **Journal**: Nature reviews. Neurology (2025)
-- **Link**: [41184455](https://pubmed.ncbi.nlm.nih.gov/41184455/)
 
 
 ## Deprescribing (דה-פרסקייבינג)
@@ -91,10 +92,10 @@
 - **Journal**: COPD (2025)
 - **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
 
-### 📄 A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.
-- **Authors**: Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.
-- **Journal**: Expert review of clinical pharmacology (2025)
-- **Link**: [41184174](https://pubmed.ncbi.nlm.nih.gov/41184174/)
+### 📄 A NASSS framework-guided systematic review and exploratory modelling of digital health interventions for polypharmacy management in older adults.
+- **Authors**: Vamadevan Arun, Vijayan Vijesh, Cole Christine et al.
+- **Journal**: BMC geriatrics (2025)
+- **Link**: [41272510](https://pubmed.ncbi.nlm.nih.gov/41272510/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -110,10 +111,10 @@
 - **Journal**: Diabetes (2025)
 - **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
 
-### 📄 Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.
-- **Authors**: Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.
-- **Journal**: Clinical nutrition ESPEN (2025)
-- **Link**: [40885526](https://pubmed.ncbi.nlm.nih.gov/40885526/)
+### 📄 Mild Cognitive Impairment and Sarcopenia: Effects of Resistance Exercise Training on Neuroinflammation, Cognitive Performance, and Structural Brain Changes.
+- **Authors**: Oporto-Colicoi Valeria, Sepúlveda-Lara Alexis, Marzuca-Nassr Gabriel Nasri et al.
+- **Journal**: International journal of molecular sciences (2025)
+- **Link**: [41303517](https://pubmed.ncbi.nlm.nih.gov/41303517/)
 
 
 ## End Of Life (טיפול סוף-חיים)
@@ -123,15 +124,15 @@
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
 
-### 📄 Demystifying Compassionate Communities.
-- **Authors**: Ng Yong Hao, Aoun Samar
-- **Journal**: Palliative care and social practice (2025)
-- **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
-
 ### 📄 Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.
 - **Authors**: Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.
 - **Journal**: Palliative medicine (2025)
 - **Link**: [40908745](https://pubmed.ncbi.nlm.nih.gov/40908745/)
+
+### 📄 Demystifying Compassionate Communities.
+- **Authors**: Ng Yong Hao, Aoun Samar
+- **Journal**: Palliative care and social practice (2025)
+- **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
 
 
 ## Incontinence (אי שליטה בסוגרים)

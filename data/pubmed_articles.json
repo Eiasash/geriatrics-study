@@ -23,17 +23,27 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
     },
     {
-      "pmid": "41182057",
-      "title": "Ambulatory ophthalmic anesthesia: what is important.",
-      "abstract": "This review addresses aspects relevant to caregivers facing increased numbers of adult and elderly patients seeking ambulatory medical service for ophthalmic surgery.",
-      "authors": "Castello Roberto, Neth Jens",
-      "journal": "Current opinion in anaesthesiology",
+      "pmid": "41316013",
+      "title": "Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.",
+      "abstract": "The stress hyperglycemia ratio (SHR) is an emerging glycemic marker in critical care, but its relationship with delirium in elderly surgical and trauma ICU patients remains unclear. This study explored the association between SHR and delirium to inform early identification strategies.",
+      "authors": "Yao Fengwei, Zhao Hongyan, Liu Lei et al.",
+      "journal": "BMC geriatrics",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41316013/"
     }
   ],
   "frailty": [
+    {
+      "pmid": "40879421",
+      "title": "Reduction of Antihypertensive Treatment in Nursing Home Residents.",
+      "abstract": "Among older adults with frailty, evidence on the benefits and risks of discontinuing antihypertensive drugs is limited.",
+      "authors": "Benetos Athanase, Gautier Sylvie, Freminet Anne et al.",
+      "journal": "The New England journal of medicine",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
+    },
     {
       "pmid": "41253248",
       "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
@@ -48,24 +58,17 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
     },
     {
-      "pmid": "40879421",
-      "title": "Reduction of Antihypertensive Treatment in Nursing Home Residents.",
-      "abstract": "Among older adults with frailty, evidence on the benefits and risks of discontinuing antihypertensive drugs is limited.",
-      "authors": "Benetos Athanase, Gautier Sylvie, Freminet Anne et al.",
-      "journal": "The New England journal of medicine",
+      "pmid": "41282339",
+      "title": "Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.",
+      "abstract": "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations. This review synthesizes evidence from studies published between 2000 and 2025, identified through Google Scholar and PubMed using keywords such as \"frailty\", \"CVD\", \"frailty assessment\", and \"multicomponent interventions\". Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes.",
+      "authors": "Johnson Neil, Qu Junru, Wagatsuma Kenji et al.",
+      "journal": "Frontiers in cardiovascular medicine",
       "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
-    },
-    {
-      "pmid": "41242035",
-      "title": "Effectiveness of Home-Based interventions for older adults with frailty or pre-frailty: a systematic review and meta-analysis.",
-      "abstract": "To systematically summarise the characteristics and effectiveness of home-based interventions on health outcomes in older adults with frailty or pre-frailty.",
-      "authors": "Yao Gengxin, Li Fei, Ma Xuehan et al.",
-      "journal": "Archives of gerontology and geriatrics",
-      "year": "2026",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41242035/"
+      "key_findings": [
+        "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations",
+        "Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes."
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41282339/"
     }
   ],
   "falls": [
@@ -80,6 +83,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
+      "pmid": "41291457",
+      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
+      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
+      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
+      "journal": "BMC geriatrics",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
+    },
+    {
       "pmid": "41168499",
       "title": "[Importance of vision in old age].",
       "abstract": "Vision is a significant determinant of quality of life and autonomy in older people. It declines with age due to natural processes. In the general population this is exacerbated by age-related eye diseases, such as cataract, age-related macular degeneration, glaucoma and diabetic retinopathy. The resulting impairments can lead to reduced mobility, independence and mental health and physiological ageing processes of the eye and disease-related changes in visual function are therefore associated with increased morbidity, such as an increased risk of falls and depression. Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases. In order to keep pace with the increasing demand for care and to maintain vision at the highest possible level into old age, not only targeted and timely ophthalmological care are necessary but also more prevention in the field of age-related eye diseases.",
@@ -90,19 +103,19 @@
         "Treatment, prevention and rehabilitation measures can significantly reduce the impairment of older people caused by age-related eye diseases"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41168499/"
-    },
-    {
-      "pmid": "40110801",
-      "title": "Analysis of outcomes from a geriatrician-led evidence-based falls prevention clinic: a retrospective study from Qatar.",
-      "abstract": "Falls are an important health concern among older persons. This study attempted to evaluate the characteristics and risk factors of falls in older persons attending a geriatric falls clinic in Qatar, with a particular emphasis on the impact of the COVID-19 epidemic.",
-      "authors": "Al Hamad Hanadi, Sathian Brijesh",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40110801/"
     }
   ],
   "dementia": [
+    {
+      "pmid": "40745950",
+      "title": "Digital Therapeutics for Alzheimer's and Parkinson's Diseases: Current Trends and Future Perspectives.",
+      "abstract": "Alzheimer's disease (AD) and Parkinson's disease (PD), which are characterized by the accumulation of misfolded protein aggregates and cognitive/motor dysfunction, are the most prevalent neurodegenerative diseases (NDDs). Despite strategic investigations aimed at augmenting the pharmaceutical pipeline, available drugs for AD and PD merely slow disease progression without curing or treating the underlying pathology. Recent technological advances have given rise to digital therapeutics (DTx): software systems that aim to prevent, cure, and manage specific diseases, including NDDs. For AD and PD, the majority of DTx focus on enhancing cognitive/executive function and motor-related functions, respectively. In this review, we describe the status of therapeutic development for AD and PD, as well as the characteristics and status of DTx targeting these NDDs. In addition, we address the limitations and challenges of DTx and their implications for the treatment of AD and PD. Ultimately, this review provides insights into the potential of DTx as a therapeutic modality and future directions for the development of DTx targeting AD and PD.",
+      "authors": "Jeong Yoo Joo, Lee Hyun-Ju, Kim Jun-Su et al.",
+      "journal": "Medicinal research reviews",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40745950/"
+    },
     {
       "pmid": "39869458",
       "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
@@ -124,16 +137,6 @@
         "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40145977/"
-    },
-    {
-      "pmid": "41184455",
-      "title": "Towards pharmacological prevention of Alzheimer disease.",
-      "abstract": "Prevention of Alzheimer disease (AD) is a medical challenge owing to its complex pathogenesis, which involves amyloid-β (Aβ) and tau aggregation, neuroinflammation and progressive neurodegeneration. Development of disease-specific biomarkers has transformed our ability to detect AD pathology early, enabling more accurate diagnosis, monitoring and the development of targeted disease-modifying therapies. Consequently, primary and secondary prevention of AD have become feasible goals. In this Perspective, we examine current and emerging pharmacological strategies for the prevention of AD, particularly the use of existing anti-Aβ therapies and emerging anti-tau approaches, among people at risk of AD or in the earliest, presymptomatic stages of the disease. We highlight the key challenges in implementing prevention trials, discuss ongoing prevention trials and their implications, and consider the potential and challenges of translation into clinical practice. Implementation of preventative strategies, supported by biomarker-guided patient selection and innovative trial designs, has the potential to substantially delay or prevent the cognitive decline caused by AD. Success would fundamentally transform the AD therapeutic landscape, reducing the socioeconomic burden of dementia and preserving cognitive function in ageing populations worldwide.",
-      "authors": "Llibre-Guerra Jorge J, McDade Eric M, Schindler Suzanne E et al.",
-      "journal": "Nature reviews. Neurology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41184455/"
     }
   ],
   "deprescribing": [
@@ -158,14 +161,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
     },
     {
-      "pmid": "41184174",
-      "title": "A comprehensive systematic review of the types of medication classes targeted by deprescribing tools and the tools/interventions applied to each class.",
-      "abstract": "Polypharmacy and potentially inappropriate medications (PIMs) contribute to adverse outcomes. Deprescribing, the supervised withdrawal of PIMs, is a key strategy to reduce these risks. Identifying the most targeted PIMs and commonly used tools for deprescribing remains essential. The aim of this systematic review was to identify the medication classes targeted by deprescribing tools, stratified by tool type and frequency and to evaluate the availability of medication-specific tools.",
-      "authors": "Madanat Faisal, Noorsaeed Solafa, Alkhlaifat Rahaf et al.",
-      "journal": "Expert review of clinical pharmacology",
+      "pmid": "41272510",
+      "title": "A NASSS framework-guided systematic review and exploratory modelling of digital health interventions for polypharmacy management in older adults.",
+      "abstract": "Polypharmacy is a growing challenge in older adults with multimorbidity, increasing the risk of adverse drug events, hospital admissions, and healthcare utilisation. Technology-supported interventions, such as clinical decision support systems (CDSS) and digital deprescribing tools, offer new opportunities to optimize medication use. However, adoption and sustainability remain variable across healthcare settings. The Non-adoption, Abandonment, Scale-up, Spread, and Sustainability (NASSS) framework offers a valuable lens to evaluate complex digital health interventions targeting medication optimization in older adults.",
+      "authors": "Vamadevan Arun, Vijayan Vijesh, Cole Christine et al.",
+      "journal": "BMC geriatrics",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41184174/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41272510/"
     }
   ],
   "sarcopenia": [
@@ -192,14 +195,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
     },
     {
-      "pmid": "40885526",
-      "title": "Malnutrition, sarcopenia and nutrition therapy for patients with diabetes - A general framework and focus on hospital care.",
-      "abstract": "The prevalence of diabetes is increasing globally and is particularly high among hospitalized patients, presenting challenges for inpatient care. While traditional inpatient management emphasizes glycemic control, medication adjustments, and comorbidity management, malnutrition and muscle loss remain underrecognized factors that significantly influence clinical outcomes. This review aims to highlight the role of malnutrition and muscle dysfunction in hospitalized patients with diabetes and to evaluate the potential of medical nutrition therapy (MNT), particularly diabetes-specific nutrition formulas (DSNFs), to improve patient outcomes.",
-      "authors": "Noronha Jarvis C, Mechanick Jeffrey I, Barazzoni Rocco et al.",
-      "journal": "Clinical nutrition ESPEN",
+      "pmid": "41303517",
+      "title": "Mild Cognitive Impairment and Sarcopenia: Effects of Resistance Exercise Training on Neuroinflammation, Cognitive Performance, and Structural Brain Changes.",
+      "abstract": "Mild cognitive impairment (MCI) and sarcopenia are prevalent age-related conditions that often coexist and share common mechanisms such as chronic inflammation, reduced neuroplasticity, and impaired muscle function. Resistance exercise training (RET) has emerged as a promising non-pharmacological strategy capable of addressing both physical and cognitive decline. The aim of this narrative review is to synthesize preclinical and clinical evidence on the effects of RET in older adults with MCI and sarcopenia, with a specific focus on its impact on neuroinflammation, cognitive performance and structural brain changes. At the molecular level, RET activates anabolic pathways, including PI3K/Akt/mTOR, enhances neurotrophic support via BDNF, NT-3, and IGF-1, and promotes hippocampal neurogenesis through exercise-induced myokines such as irisin and cathepsin B. RET also exerts immunomodulatory actions by shifting microglia toward anti-inflammatory M2 phenotypes, attenuating reactive astrogliosis, and supporting oligodendrocyte precursor cell differentiation, thereby improving myelin integrity. Neuroimaging studies consistently report preservation of hippocampal and precuneus gray matter, as well as improved white matter connectivity following RET. Clinically, RET has demonstrated significant and sustained improvements in executive function, memory, and global cognition, with effects persisting for up to 18 months. Collectively, RET represents a multifaceted intervention with the potential to delay progression from MCI to Alzheimer's disease by integrating neuroprotective, anti-inflammatory, and anabolic effects. Standardization of RET protocols and identification of biomarkers of responsiveness are needed to optimize its role within multimodal dementia-prevention strategies.",
+      "authors": "Oporto-Colicoi Valeria, Sepúlveda-Lara Alexis, Marzuca-Nassr Gabriel Nasri et al.",
+      "journal": "International journal of molecular sciences",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40885526/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41303517/"
     }
   ],
   "end_of_life": [
@@ -214,16 +217,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
     },
     {
-      "pmid": "41246289",
-      "title": "Demystifying Compassionate Communities.",
-      "abstract": "",
-      "authors": "Ng Yong Hao, Aoun Samar",
-      "journal": "Palliative care and social practice",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
-    },
-    {
       "pmid": "40908745",
       "title": "Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.",
       "abstract": "There is growing demand for home-based palliative care because of patient preference, and increased number of deaths. Optimal models for community-based palliative and end-of-life care are unknown.",
@@ -232,6 +225,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/40908745/"
+    },
+    {
+      "pmid": "41246289",
+      "title": "Demystifying Compassionate Communities.",
+      "abstract": "",
+      "authors": "Ng Yong Hao, Aoun Samar",
+      "journal": "Palliative care and social practice",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
     }
   ],
   "incontinence": [
