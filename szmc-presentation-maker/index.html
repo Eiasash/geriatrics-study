@@ -944,10 +944,15 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                 const presentationData = CollaborativeEditing.joinRoom(id, name || 'Guest');
                 
                 // Load the presentation if join was successful
-                if (presentationData && window.editor) {
-                    window.editor.loadPresentation(presentationData);
-                    showToast(`Joined collaboration as ${escapeHtml(name || 'Guest')}`, 'success');
+                if (presentationData) {
+                    if (window.editor) {
+                        window.editor.loadPresentation(presentationData);
+                        showToast(`Joined collaboration as ${escapeHtml(name || 'Guest')}`, 'success');
+                    } else {
+                        showToast('Editor not initialized. Please refresh the page.', 'error');
+                    }
                 }
+                // Note: If presentationData is null, joinRoom already showed an error toast
             }
         }
 
