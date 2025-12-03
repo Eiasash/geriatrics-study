@@ -235,6 +235,11 @@ function searchOpenEvidence(query) {
     window.open(url, '_blank', 'noopener,noreferrer');
 }
 
+function searchPerplexityHealth(query) {
+    const url = MedicalResources.perplexityHealth.searchUrl + encodeURIComponent(query);
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
+
 function searchPubMed(query, filters = {}) {
     let searchQuery = query;
     if (filters.elderly) {
