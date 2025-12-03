@@ -342,6 +342,122 @@ function applyTheme(themeName) {
     }
 }
 
+// Resume auto-saved work from landing page
+function resumeAutoSavedPresentation() {
+    const autosave = localStorage.getItem('szmc_autosave');
+    if (!autosave) {
+        showToast('No auto-saved presentation found', 'error');
+        return;
+    }
+
+    try {
+        const data = JSON.parse(autosave);
+        editor.loadPresentation(data);
+        showPage('editor-page');
+        showToast('Auto-saved session restored', 'success');
+    } catch (err) {
+        console.error('Failed to resume auto-saved presentation', err);
+        showToast('Could not open auto-saved session', 'error');
+    }
+}
+
+// Quick entry to version history modal
+function openVersionHistory() {
+    if (typeof versionHistory !== 'undefined' && versionHistory.openModal) {
+        versionHistory.openModal();
+    }
+}
+
+function formatRelativeTime(timestamp) {
+    if (!timestamp) return '';
+    const diff = Date.now() - new Date(timestamp).getTime();
+    const minutes = Math.round(diff / 60000);
+    if (minutes < 1) return 'Just now';
+    if (minutes < 60) return `${minutes} min ago`;
+    const hours = Math.round(minutes / 60);
+    if (hours < 24) return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+    const days = Math.round(hours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+}
+
+function renderResumeCard() {
+    const resumeSection = document.getElementById('resume-section');
+    if (!resumeSection) return;
+
+    const autosave = localStorage.getItem('szmc_autosave');
+    if (!autosave) {
+        resumeSection.style.display = 'none';
+        return;
+    }
+
+    try {
+        const data = JSON.parse(autosave);
+        const title = data.title || 'Untitled Presentation';
+        const savedAt = data.createdAt || new Date().toISOString();
+
+        document.getElementById('resume-title').textContent = title;
+        document.getElementById('resume-updated').textContent = `Auto-saved ${formatRelativeTime(savedAt)}`;
+        resumeSection.style.display = 'block';
+    } catch (err) {
+        console.warn('Could not parse auto-saved data', err);
+        resumeSection.style.display = 'none';
+    }
+}
+
+function getPresentationSnapshot() {
+    if (!window.editor) return null;
+    const wasDirty = editor.isDirty;
+    try {
+        editor.saveCurrentSlideData();
+        return {
+            title: document.getElementById('presentation-title').value,
+            type: editor.presentationType,
+            slides: editor.slides.map(slide => ({ ...slide, data: { ...slide.data } })),
+            createdAt: new Date().toISOString()
+        };
+    } finally {
+        editor.isDirty = wasDirty || editor.isDirty;
+    }
+}
+
+function updateReadinessPanel() {
+    const scoreEl = document.getElementById('readiness-score');
+    const pillsEl = document.getElementById('readiness-pills');
+    const listEl = document.getElementById('readiness-list');
+    if (!scoreEl || !pillsEl || !listEl) return;
+
+    const presentation = getPresentationSnapshot();
+    if (!presentation) return;
+
+    const analytics = presentationAnalytics.analyze(presentation);
+
+    scoreEl.textContent = `${analytics.completeness.overallScore}%`;
+
+    const timingBadge = `<span class="readiness-pill"><i class="fas fa-clock"></i> Est. ${analytics.timing.totalFormatted}</span>`;
+    const slideBadge = `<span class="readiness-pill"><i class="fas fa-layer-group"></i> ${analytics.overview.slideCount} slides</span>`;
+    const balanceBadge = `<span class="readiness-pill"><i class="fas fa-adjust"></i> Balance ${analytics.balance.score}%</span>`;
+    pillsEl.innerHTML = timingBadge + slideBadge + balanceBadge;
+
+    const readinessItems = [];
+
+    if (analytics.completeness.requiredMissing.length === 0) {
+        readinessItems.push(`<div class="readiness-item"><i class="fas fa-check status-ok"></i>All required slides present</div>`);
+    } else {
+        const missingLabels = analytics.completeness.requiredMissing.map(item => item.label).join(', ');
+        readinessItems.push(`<div class="readiness-item"><i class="fas fa-exclamation-circle status-warning"></i>Missing: ${missingLabels}</div>`);
+    }
+
+    const avgWords = analytics.contentAnalysis.avgWordsPerSlide;
+    const densityIcon = avgWords > 140 ? 'fa-fire status-warning' : 'fa-leaf status-ok';
+    const densityLabel = avgWords > 140 ? 'Consider trimming dense slides' : 'Good pacing per slide';
+    readinessItems.push(`<div class="readiness-item"><i class="fas ${densityIcon}"></i>${densityLabel} (${avgWords} words/slide)</div>`);
+
+    const recommended = analytics.timing.recommendedTime;
+    readinessItems.push(`<div class="readiness-item"><i class="fas fa-stopwatch"></i>Time target: ${recommended.min} - ${recommended.max} (ideal ${recommended.ideal})</div>`);
+
+    listEl.innerHTML = readinessItems.join('');
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Check for auto-saved content
@@ -371,6 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const editorThemeSelect = document.getElementById('editor-theme-select');
         if (editorThemeSelect) editorThemeSelect.value = savedTheme;
     }
+
+    renderResumeCard();
+    updateReadinessPanel();
 });
 
 // Generator text input listeners

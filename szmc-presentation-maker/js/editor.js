@@ -326,6 +326,10 @@ class PresentationEditor {
         editableElements.forEach(el => {
             el.setAttribute('spellcheck', 'false');
         });
+
+        if (typeof updateReadinessPanel === 'function') {
+            updateReadinessPanel();
+        }
     }
 
     renderThumbnails() {
