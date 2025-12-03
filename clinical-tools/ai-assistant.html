@@ -154,6 +154,88 @@
                     </button>
                 </div>
 
+                <!-- Clinical Context Builder -->
+                <div class="glass-card rounded-xl p-4 shadow-lg space-y-3">
+                    <div class="flex items-center justify-between gap-2">
+                        <h3 class="font-bold text-gray-800 flex items-center gap-2">
+                            <span class="text-xl">🧠</span>
+                            בניית הקשר ל-AI
+                        </h3>
+                        <button onclick="resetContextBuilder()" class="text-xs text-blue-700 bg-blue-50 px-3 py-1 rounded-lg hover:bg-blue-100" aria-label="ניקוי השדות בבניית ההקשר">
+                            איפוס
+                        </button>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="block text-gray-700" for="context-age">גיל / מין</label>
+                            <label class="block text-gray-700" for="context-functional">תפקוד/קוגניציה</label>
+                            <input id="context-age" type="text" class="w-full p-2 border rounded-lg" placeholder="85, נקבה" aria-label="גיל ומין">
+                            <input id="context-functional" type="text" class="w-full p-2 border rounded-lg" placeholder="ניידות, ADL/IADL, קוגניציה" aria-label="סטטוס תפקודי/קוגניטיבי">
+                        </div>
+
+                        <label class="block text-gray-700" for="context-summary">תיאור קליני קצר</label>
+                        <textarea id="context-summary" rows="2" class="w-full p-2 border rounded-lg" placeholder="היסטוריה רלוונטית, אבחנות רקע" aria-label="תיאור קליני"></textarea>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-gray-700" for="context-meds">תרופות עיקריות</label>
+                                <textarea id="context-meds" rows="2" class="w-full p-2 border rounded-lg" placeholder="תרופות + מינונים" aria-label="תרופות ומינונים"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700" for="context-labs">ממצאים / בדיקות</label>
+                                <textarea id="context-labs" rows="2" class="w-full p-2 border rounded-lg" placeholder="ויטאלים, מעבדה, הדמיה" aria-label="ממצאים ובדיקות"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-gray-700" for="context-goals">מטרות טיפול</label>
+                                <textarea id="context-goals" rows="2" class="w-full p-2 border rounded-lg" placeholder="אריכות חיים / איכות חיים, העדפות מטופל/משפחה" aria-label="מטרות הטיפול"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700" for="context-allergies">רגישויות / מגבלות</label>
+                                <textarea id="context-allergies" rows="2" class="w-full p-2 border rounded-lg" placeholder="אלרגיות, מגבלות טיפול, דת/תרבות" aria-label="רגישויות ומגבלות"></textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 mb-1">הדגשות בטיחות</label>
+                            <div class="flex flex-wrap gap-2" id="safety-chips">
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">פגיעות כלייתית/כבדית</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">סיכון לנפילות / סדציה</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">תיאום עם רוקחות</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">רצף טיפול בקהילה</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">הסכמה מדעת והעדפות</button>
+                            </div>
+                        </div>
+
+                        <label class="block text-gray-700" for="context-question">שאלה ל-AI</label>
+                        <textarea id="context-question" rows="2" class="w-full p-2 border rounded-lg" placeholder="החלטה טיפולית, דיפרנציאל, התאמות תרופה" aria-label="שאלה ל-AI"></textarea>
+
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <button onclick="buildAIPrompt(false)" class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800 font-medium" aria-label="בנה פקודת AI וללא שליחה">
+                                בנה פניה
+                            </button>
+                            <button onclick="buildAIPrompt(true)" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium" aria-label="בנה פקודת AI ושלח">
+                                בנה ושלח ל-AI
+                            </button>
+                            <button onclick="copyPromptPreview()" class="px-3 py-2 bg-white border rounded-lg text-sm hover:bg-gray-50" aria-label="העתקת הפניה המוכנה ללוח">
+                                העתק פניה
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-5 bg-blue-50 rounded-lg p-2">
+                            הטמפלט מוסיף הנחיות בטיחות (הימנעות מאבחנה חד-משמעית, הדגשת ניטור ותיעוד) יחד עם הדגשים תפקודיים והעדפות מטופל.
+                        </p>
+                        <div class="bg-gray-50 border rounded-lg p-2">
+                            <div class="flex items-center justify-between text-xs text-gray-600 mb-1">
+                                <span>תצוגה מקדימה</span>
+                                <button class="text-blue-700 hover:underline" onclick="buildAIPrompt(false)" aria-label="רענון התצוגה המקדימה">רענון</button>
+                            </div>
+                            <pre id="prompt-preview" class="text-xs text-gray-800 whitespace-pre-wrap"></pre>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Drug Interactions -->
                 <div class="glass-card rounded-xl p-4 shadow-lg">
                     <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
@@ -309,6 +391,78 @@
             frailty: 'כיצד להעריך ולטפל בשבריריות (frailty) במטופל גריאטרי? מהם הכלים המומלצים להערכה?',
             anticoag: 'מהן ההמלצות לנוגדי קרישה במטופל גריאטרי עם פרפור פרוזדורים? כיצד לאזן בין סיכון לדימום לסיכון לשבץ?'
         };
+
+        function buildAIPrompt(autoSend = false) {
+            const ageSex = document.getElementById('context-age').value.trim();
+            const summary = document.getElementById('context-summary').value.trim();
+            const meds = document.getElementById('context-meds').value.trim();
+            const labs = document.getElementById('context-labs').value.trim();
+            const goals = document.getElementById('context-goals').value.trim();
+            const allergies = document.getElementById('context-allergies').value.trim();
+            const functional = document.getElementById('context-functional').value.trim();
+            const question = document.getElementById('context-question').value.trim();
+
+            if (!question) {
+                alert('נא להוסיף את השאלה שתרצו לשאול את ה-AI');
+                return;
+            }
+
+            const safetyTags = Array.from(document.querySelectorAll('.safety-chip.active')).map(chip => chip.textContent.trim());
+
+            const caseLines = [
+                ageSex && `גיל/מין: ${ageSex}`,
+                functional && `תפקוד/קוגניציה: ${functional}`,
+                summary && `רקע וקליניקה: ${summary}`,
+                meds && `תרופות ומינונים: ${meds}`,
+                labs && `ממצאים/בדיקות: ${labs}`,
+                goals && `מטרות/העדפות: ${goals}`,
+                allergies && `רגישויות/מגבלות: ${allergies}`
+            ].filter(Boolean).join('\n');
+
+            const prompt = `הנחה: אתה עוזר קליני בגריאטריה. שמר על שפה בהירה, bullets קצרים ומבנה מסודר.\nמקרה: ${caseLines || 'לא סופקו פרטים נוספים'}.\nשאלה עיקרית: ${question}.\nבבקשה: \n1) אבחנה מבדלת וסדר בירור ממוקד.\n2) התאמות תרופתיות (Beers/STOPP/START) ושיקולי כליה/כבד.\n3) ניטור בטיחות, אדום דגלים ותיעוד מומלץ.\n4) הפניות להנחיות או כלים (CGA, CHA2DS2-VASc, FRAIL, HELP וכו').${safetyTags.length ? `\nהתייחס במיוחד ל: ${safetyTags.join('; ')}` : ''}\nאין לקבוע אבחנה חד-משמעית, אלא להציע אפשרויות וצעדים מעשיים.`;
+
+            document.getElementById('user-input').value = prompt;
+            document.getElementById('prompt-preview').textContent = prompt;
+
+            if (autoSend) {
+                sendQuery();
+            }
+        }
+
+        function toggleChip(chip) {
+            chip.classList.toggle('active');
+            chip.classList.toggle('bg-gray-100');
+            chip.classList.toggle('bg-blue-100');
+            chip.classList.toggle('text-gray-800');
+            chip.classList.toggle('text-blue-800');
+        }
+
+        function copyPromptPreview() {
+            const prompt = document.getElementById('prompt-preview').textContent.trim();
+            if (!prompt) {
+                alert('אין פניה להעתקה. בנו פניה קודם.');
+                return;
+            }
+
+            navigator.clipboard.writeText(prompt).then(() => {
+                addMessage('הפניה הועתקה ללוח.', 'ai');
+            }).catch(() => {
+                alert('העתקה נכשלה, נסו שוב.');
+            });
+        }
+
+        function resetContextBuilder() {
+            ['context-age', 'context-summary', 'context-meds', 'context-labs', 'context-goals', 'context-allergies', 'context-functional', 'context-question']
+                .forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+            document.querySelectorAll('.safety-chip').forEach(chip => {
+                chip.classList.remove('active', 'bg-blue-100', 'text-blue-800');
+                chip.classList.add('bg-gray-100', 'text-gray-800');
+            });
+            document.getElementById('prompt-preview').textContent = '';
+        }
 
         function selectAI(ai) {
             selectedAI = ai;
