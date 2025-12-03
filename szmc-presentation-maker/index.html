@@ -934,6 +934,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
             if (roomId) {
                 const id = roomId.includes('room=') ? roomId.split('room=')[1] : roomId;
                 const name = prompt('Enter your name:');
+                // Note: CollaborativeEditing.joinRoom is synchronous (uses localStorage)
                 const presentationData = CollaborativeEditing.joinRoom(id, name || 'Guest');
                 
                 // Load the presentation if join was successful
