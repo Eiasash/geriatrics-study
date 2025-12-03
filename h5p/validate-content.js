@@ -130,7 +130,7 @@ function validateFlashcard(flashcard, topicName, index) {
 /**
  * Validate a topic
  */
-function validateTopic(topic, index) {
+function validateTopic(topic) {
   const issues = [];
 
   // Topic name
@@ -228,7 +228,7 @@ function validateContent() {
     const topicName = topic.topic || `Topic ${index + 1}`;
     log.info(`\nValidating: ${topicName}`);
 
-    const issues = validateTopic(topic, index);
+    const issues = validateTopic(topic);
 
     if (issues.length === 0) {
       log.success(`${topicName}: No issues found`);
