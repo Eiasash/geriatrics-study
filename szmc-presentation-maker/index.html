@@ -123,6 +123,30 @@
                     </button>
                 </div>
 
+                <!-- Resume / Quickstart -->
+                <div class="resume-section" id="resume-section" style="display: none;">
+                    <div class="resume-card">
+                        <div class="resume-card-header">
+                            <div class="resume-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="resume-meta">
+                                <p class="resume-label">Resume where you left off</p>
+                                <p class="resume-title" id="resume-title">Untitled Presentation</p>
+                                <p class="resume-updated" id="resume-updated"></p>
+                            </div>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="btn-primary" onclick="resumeAutoSavedPresentation()">
+                                <i class="fas fa-play"></i> Continue Editing
+                            </button>
+                            <button class="btn-secondary" onclick="openVersionHistory()">
+                                <i class="fas fa-clock"></i> View Backups
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- PWA Install Card -->
                 <div id="pwa-install-card" class="pwa-install-card" style="display: none;">
                     <div class="pwa-install-icon">
@@ -169,6 +193,9 @@
                     <button class="btn-secondary btn-ai" onclick="toggleAIPanel()" title="AI Assistant">
                         <i class="fas fa-robot"></i>
                         <span class="ai-badge" id="ai-issue-badge" style="display: none;">0</span>
+                    </button>
+                    <button class="btn-secondary btn-analytics" onclick="presentationAnalytics.openModal()" title="Quality dashboard">
+                        <i class="fas fa-chart-bar"></i>
                     </button>
                     <button class="btn-secondary btn-theme" onclick="toggleThemePanel()" title="Change Theme">
                         <i class="fas fa-palette"></i>
@@ -359,6 +386,20 @@
                         <button class="btn-help" onclick="showKeyboardShortcuts()">
                             <i class="fas fa-keyboard"></i> Keyboard Shortcuts
                         </button>
+                    </div>
+
+                    <div class="panel-section readiness-panel">
+                        <div class="readiness-header">
+                            <h4>Readiness &amp; Quality</h4>
+                            <span class="readiness-score" id="readiness-score">--</span>
+                        </div>
+                        <div class="readiness-pills" id="readiness-pills"></div>
+                        <div class="readiness-list" id="readiness-list"></div>
+                        <div class="readiness-footer">
+                            <button class="btn-secondary" onclick="presentationAnalytics.openModal()">
+                                <i class="fas fa-chart-line"></i> Open analytics
+                            </button>
+                        </div>
                     </div>
                 </aside>
             </div>
@@ -840,6 +881,10 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                             <button class="ai-tool-btn" onclick="showAITool('tools')">
                                 <i class="fas fa-clipboard-list"></i>
                                 <span>Assessment Tools</span>
+                            </button>
+                            <button class="ai-tool-btn" onclick="showAITool('evidence')">
+                                <i class="fas fa-robot"></i>
+                                <span>Evidence Scout</span>
                             </button>
                         </div>
                     </div>

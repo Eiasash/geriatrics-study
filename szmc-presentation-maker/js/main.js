@@ -342,6 +342,122 @@ function applyTheme(themeName) {
     }
 }
 
+// Resume auto-saved work from landing page
+function resumeAutoSavedPresentation() {
+    const autosave = localStorage.getItem('szmc_autosave');
+    if (!autosave) {
+        showToast('No auto-saved presentation found', 'error');
+        return;
+    }
+
+    try {
+        const data = JSON.parse(autosave);
+        editor.loadPresentation(data);
+        showPage('editor-page');
+        showToast('Auto-saved session restored', 'success');
+    } catch (err) {
+        console.error('Failed to resume auto-saved presentation', err);
+        showToast('Could not open auto-saved session', 'error');
+    }
+}
+
+// Quick entry to version history modal
+function openVersionHistory() {
+    if (typeof versionHistory !== 'undefined' && versionHistory.openModal) {
+        versionHistory.openModal();
+    }
+}
+
+function formatRelativeTime(timestamp) {
+    if (!timestamp) return '';
+    const diff = Date.now() - new Date(timestamp).getTime();
+    const minutes = Math.round(diff / 60000);
+    if (minutes < 1) return 'Just now';
+    if (minutes < 60) return `${minutes} min ago`;
+    const hours = Math.round(minutes / 60);
+    if (hours < 24) return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+    const days = Math.round(hours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+}
+
+function renderResumeCard() {
+    const resumeSection = document.getElementById('resume-section');
+    if (!resumeSection) return;
+
+    const autosave = localStorage.getItem('szmc_autosave');
+    if (!autosave) {
+        resumeSection.style.display = 'none';
+        return;
+    }
+
+    try {
+        const data = JSON.parse(autosave);
+        const title = data.title || 'Untitled Presentation';
+        const savedAt = data.createdAt || new Date().toISOString();
+
+        document.getElementById('resume-title').textContent = title;
+        document.getElementById('resume-updated').textContent = `Auto-saved ${formatRelativeTime(savedAt)}`;
+        resumeSection.style.display = 'block';
+    } catch (err) {
+        console.warn('Could not parse auto-saved data', err);
+        resumeSection.style.display = 'none';
+    }
+}
+
+function getPresentationSnapshot() {
+    if (!window.editor) return null;
+    const wasDirty = editor.isDirty;
+    try {
+        editor.saveCurrentSlideData();
+        return {
+            title: document.getElementById('presentation-title').value,
+            type: editor.presentationType,
+            slides: editor.slides.map(slide => ({ ...slide, data: { ...slide.data } })),
+            createdAt: new Date().toISOString()
+        };
+    } finally {
+        editor.isDirty = wasDirty || editor.isDirty;
+    }
+}
+
+function updateReadinessPanel() {
+    const scoreEl = document.getElementById('readiness-score');
+    const pillsEl = document.getElementById('readiness-pills');
+    const listEl = document.getElementById('readiness-list');
+    if (!scoreEl || !pillsEl || !listEl) return;
+
+    const presentation = getPresentationSnapshot();
+    if (!presentation) return;
+
+    const analytics = presentationAnalytics.analyze(presentation);
+
+    scoreEl.textContent = `${analytics.completeness.overallScore}%`;
+
+    const timingBadge = `<span class="readiness-pill"><i class="fas fa-clock"></i> Est. ${analytics.timing.totalFormatted}</span>`;
+    const slideBadge = `<span class="readiness-pill"><i class="fas fa-layer-group"></i> ${analytics.overview.slideCount} slides</span>`;
+    const balanceBadge = `<span class="readiness-pill"><i class="fas fa-adjust"></i> Balance ${analytics.balance.score}%</span>`;
+    pillsEl.innerHTML = timingBadge + slideBadge + balanceBadge;
+
+    const readinessItems = [];
+
+    if (analytics.completeness.requiredMissing.length === 0) {
+        readinessItems.push(`<div class="readiness-item"><i class="fas fa-check status-ok"></i>All required slides present</div>`);
+    } else {
+        const missingLabels = analytics.completeness.requiredMissing.map(item => item.label).join(', ');
+        readinessItems.push(`<div class="readiness-item"><i class="fas fa-exclamation-circle status-warning"></i>Missing: ${missingLabels}</div>`);
+    }
+
+    const avgWords = analytics.contentAnalysis.avgWordsPerSlide;
+    const densityIcon = avgWords > 140 ? 'fa-fire status-warning' : 'fa-leaf status-ok';
+    const densityLabel = avgWords > 140 ? 'Consider trimming dense slides' : 'Good pacing per slide';
+    readinessItems.push(`<div class="readiness-item"><i class="fas ${densityIcon}"></i>${densityLabel} (${avgWords} words/slide)</div>`);
+
+    const recommended = analytics.timing.recommendedTime;
+    readinessItems.push(`<div class="readiness-item"><i class="fas fa-stopwatch"></i>Time target: ${recommended.min} - ${recommended.max} (ideal ${recommended.ideal})</div>`);
+
+    listEl.innerHTML = readinessItems.join('');
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Check for auto-saved content
@@ -371,6 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const editorThemeSelect = document.getElementById('editor-theme-select');
         if (editorThemeSelect) editorThemeSelect.value = savedTheme;
     }
+
+    renderResumeCard();
+    updateReadinessPanel();
 });
 
 // Generator text input listeners
@@ -876,6 +995,10 @@ function showAITool(toolType) {
         case 'tools':
             title.innerHTML = '<i class="fas fa-clipboard-list"></i> Assessment Tools';
             body.innerHTML = generateAssessmentToolsUI();
+            break;
+        case 'evidence':
+            title.innerHTML = '<i class="fas fa-robot"></i> Evidence Scout (OpenEvidence style)';
+            body.innerHTML = generateEvidenceToolUI();
             break;
     }
     
@@ -1396,6 +1519,241 @@ function showAssessmentTools(domain) {
     }
 }
 
+// Generate Evidence Scout UI (OpenEvidence style)
+function generateEvidenceToolUI() {
+    const activeContext = buildActiveSlideContext();
+    const prompt = buildEvidencePrompt(activeContext);
+    const gradeLegend = renderEvidenceGradeLegend();
+
+    const quickQuestions = [
+        'Does this patient need anticoagulation?',
+        'Best antibiotic for frail elder with UTI?',
+        'When to deprescribe PPI in older adults?',
+        'Is GLP-1 agonist safe for this patient?'
+    ];
+
+    return `
+        <div class="ai-tool-card">
+            <div class="ai-tool-card-header">
+                <span class="ai-tool-card-title"><i class="fas fa-stethoscope"></i> Frame the question</span>
+                <span class="ai-tool-card-badge">PICO-ready</span>
+            </div>
+            <div class="ai-tool-card-content">
+                <div class="ai-tool-input-group">
+                    <label>Clinical question</label>
+                    <input type="text" id="evidence-question" placeholder="e.g., Optimal antihypertensive in frail elders with CKD" value="${activeContext}">
+                </div>
+                <div class="ai-tool-input-group">
+                    <label>PICO (optional)</label>
+                    <div class="ai-tool-quick-select" style="margin-bottom: 10px;">
+                        <input type="text" id="evidence-population" placeholder="Population (e.g., older adults with delirium)">
+                        <input type="text" id="evidence-intervention" placeholder="Intervention (e.g., haloperidol low dose)">
+                        <input type="text" id="evidence-comparator" placeholder="Comparator (e.g., atypical antipsychotic)">
+                        <input type="text" id="evidence-outcome" placeholder="Outcome (e.g., time to delirium resolution)">
+                        <input type="text" id="evidence-timeframe" placeholder="Timeframe (e.g., 30-day readmission)">
+                    </div>
+                </div>
+                <div class="ai-tool-card">
+                    <div class="ai-tool-card-header">
+                        <span class="ai-tool-card-title">Quick question starters</span>
+                        <span class="ai-tool-card-badge">+Evidence</span>
+                    </div>
+                    <div class="ai-tool-card-content">
+                        <div class="evidence-quick-questions">
+                            ${quickQuestions.map(q => `<button class="evidence-chip" onclick="applyEvidenceTemplate('${q.replace(/'/g, "&apos;")}")">${q}</button>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-tool-card">
+            <div class="ai-tool-card-header">
+                <span class="ai-tool-card-title"><i class="fas fa-robot"></i> Launch evidence copilots</span>
+                <span class="ai-tool-card-badge">OpenEvidence</span>
+            </div>
+            <div class="ai-tool-card-content">
+                <div class="evidence-actions">
+                    <button class="btn-primary" onclick="runEvidenceSearch('openEvidence')"><i class="fas fa-magic"></i> Ask OpenEvidence</button>
+                    <button class="btn-secondary" onclick="runEvidenceSearch('perplexity')"><i class="fas fa-brain"></i> Perplexity (health)</button>
+                    <button class="btn-secondary" onclick="runEvidenceSearch('pubmed')"><i class="fas fa-book-medical"></i> PubMed geriatrics</button>
+                </div>
+                <p class="result-detail" style="margin-top: 10px;">We automatically add geriatric filters and favor systematic reviews when available.</p>
+            </div>
+        </div>
+
+        <div class="ai-tool-card">
+            <div class="ai-tool-card-header">
+                <span class="ai-tool-card-title"><i class="fas fa-clipboard-check"></i> Evidence synthesis prompt</span>
+                <span class="ai-tool-card-badge">Copy-ready</span>
+            </div>
+            <div class="ai-tool-card-content">
+                <div class="evidence-prompt">
+                    <textarea id="evidence-prompt-text">${prompt}</textarea>
+                </div>
+                <div class="evidence-prompt-actions">
+                    <button class="btn-secondary" onclick="refreshEvidencePrompt()"><i class="fas fa-sync-alt"></i> Refresh from context</button>
+                    <button class="btn-primary" onclick="copyEvidencePrompt()"><i class="fas fa-copy"></i> Copy prompt</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-tool-card">
+            <div class="ai-tool-card-header">
+                <span class="ai-tool-card-title"><i class="fas fa-signal"></i> Evidence grading cheat sheet</span>
+                <span class="ai-tool-card-badge">Quality first</span>
+            </div>
+            <div class="ai-tool-card-content">
+                ${gradeLegend}
+            </div>
+        </div>
+    `;
+}
+
+function applyEvidenceTemplate(question) {
+    const questionInput = document.getElementById('evidence-question');
+    if (questionInput) {
+        questionInput.value = question;
+        showToast('Clinical question updated', 'success');
+    }
+}
+
+function buildEvidenceQuery() {
+    const q = document.getElementById('evidence-question')?.value.trim();
+    const population = document.getElementById('evidence-population')?.value.trim();
+    const intervention = document.getElementById('evidence-intervention')?.value.trim();
+    const comparator = document.getElementById('evidence-comparator')?.value.trim();
+    const outcome = document.getElementById('evidence-outcome')?.value.trim();
+    const timeframe = document.getElementById('evidence-timeframe')?.value.trim();
+
+    const picoParts = [population, intervention, comparator, outcome, timeframe].filter(Boolean);
+    const picoString = picoParts.length ? ` | PICO: ${picoParts.join(' | ')}` : '';
+
+    if (q) return `${q}${picoString}`;
+
+    const slideContext = buildActiveSlideContext();
+    if (slideContext) return `${slideContext}${picoString}`;
+
+    return '';
+}
+
+function buildEvidencePrompt(context = '') {
+    const question = document.getElementById('evidence-question')?.value.trim() || context || 'Geriatrics clinical question';
+    const population = document.getElementById('evidence-population')?.value.trim();
+    const intervention = document.getElementById('evidence-intervention')?.value.trim();
+    const comparator = document.getElementById('evidence-comparator')?.value.trim();
+    const outcome = document.getElementById('evidence-outcome')?.value.trim();
+    const timeframe = document.getElementById('evidence-timeframe')?.value.trim();
+
+    const picoLines = [
+        population ? `Population: ${population}` : null,
+        intervention ? `Intervention: ${intervention}` : null,
+        comparator ? `Comparator: ${comparator}` : null,
+        outcome ? `Outcome: ${outcome}` : null,
+        timeframe ? `Timeframe: ${timeframe}` : null
+    ].filter(Boolean);
+
+    const contextLine = context ? `Context from slides: ${context}` : '';
+    return [
+        'You are an OpenEvidence-style clinical evidence copilot for geriatric medicine.',
+        `Clinical question: ${question}`,
+        picoLines.length ? `Structured PICO -> ${picoLines.join(' | ')}` : 'PICO -> not provided; infer from question if needed.',
+        'Search instructions: prioritize PubMed, Cochrane, AGS/BGS guidelines, geriatric pharmacology, and adverse effect data in older adults.',
+        'Output:
+- 2-3 bullet takeaway answers with numeric effect sizes where possible
+- Cite 2-4 key references with PMID/DOI and year
+- Note evidence level (Oxford/GRADE) and relevance to frailty, polypharmacy, renal/hepatic dosing
+- Flag contraindications or deprescribing opportunities',
+        contextLine
+    ].filter(Boolean).join('\n');
+}
+
+function buildActiveSlideContext() {
+    if (!window.editor || !editor.slides || !editor.slides.length) return '';
+    const slide = editor.slides[editor.currentSlideIndex];
+    if (!slide || !slide.data) return '';
+
+    const textBits = [];
+    const data = slide.data;
+    ['title', 'subtitle', 'heading', 'subheading', 'content', 'notes'].forEach(key => {
+        const value = data[key];
+        if (typeof value === 'string' && value.trim()) textBits.push(value.trim());
+        if (Array.isArray(value)) {
+            value.filter(v => typeof v === 'string' && v.trim()).forEach(v => textBits.push(v.trim()));
+        }
+    });
+
+    if (data.bullets && Array.isArray(data.bullets)) {
+        data.bullets.filter(Boolean).forEach(b => textBits.push(b));
+    }
+
+    return textBits.slice(0, 3).join(' · ');
+}
+
+function runEvidenceSearch(engine) {
+    const query = buildEvidenceQuery();
+    if (!query) {
+        showToast('Add a clinical question or PICO details first', 'warning');
+        return;
+    }
+
+    switch (engine) {
+        case 'openEvidence':
+            if (typeof searchOpenEvidence === 'function') searchOpenEvidence(query);
+            break;
+        case 'perplexity':
+            if (typeof searchPerplexityHealth === 'function') searchPerplexityHealth(query);
+            break;
+        case 'pubmed':
+            if (typeof searchPubMed === 'function') searchPubMed(query, { elderly: true, reviewsOnly: true, freeFullText: true });
+            break;
+    }
+
+    showToast('Opening AI evidence search in a new tab', 'info');
+}
+
+function refreshEvidencePrompt() {
+    const context = buildActiveSlideContext();
+    const prompt = buildEvidencePrompt(context);
+    const textarea = document.getElementById('evidence-prompt-text');
+    if (textarea) textarea.value = prompt;
+    showToast('Prompt refreshed from slide context', 'success');
+}
+
+function copyEvidencePrompt() {
+    const textarea = document.getElementById('evidence-prompt-text');
+    if (!textarea) return;
+    navigator.clipboard.writeText(textarea.value).then(() => {
+        showToast('Prompt copied to clipboard', 'success');
+    }).catch(() => {
+        showToast('Could not copy prompt', 'error');
+    });
+}
+
+function renderEvidenceGradeLegend() {
+    if (typeof EvidenceGrades === 'undefined') return '';
+
+    const legend = [];
+    Object.values(EvidenceGrades).forEach(system => {
+        legend.push(`
+            <div class="evidence-grade-card">
+                <div class="grade-title"><i class="fas fa-layer-group"></i> ${system.name}</div>
+                <div class="evidence-grade-grid">
+                    ${system.levels.map(level => `
+                        <div class="evidence-grade-chip" style="background:${level.color}22; border:1px solid ${level.color}66;">
+                            <span>${level.icon ? level.icon : level.level}</span>
+                            <span>${level.description}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="evidence-grade-desc">Use the highest-quality evidence available; call out when evidence is low or uncertain.</div>
+            </div>
+        `);
+    });
+
+    return legend.join('');
+}
+
 // Make functions globally available
 window.toggleAIPanel = toggleAIPanel;
 window.runAIAnalysis = runAIAnalysis;
@@ -1419,3 +1777,8 @@ window.generateTakeHomePoints = generateTakeHomePoints;
 window.searchPubMed = searchPubMed;
 window.detectSyndromes = detectSyndromes;
 window.showAssessmentTools = showAssessmentTools;
+window.generateEvidenceToolUI = generateEvidenceToolUI;
+window.runEvidenceSearch = runEvidenceSearch;
+window.refreshEvidencePrompt = refreshEvidencePrompt;
+window.copyEvidencePrompt = copyEvidencePrompt;
+window.applyEvidenceTemplate = applyEvidenceTemplate;
