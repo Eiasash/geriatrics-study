@@ -922,6 +922,12 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         });
 
         // Collaboration helpers
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         function startCollaboration() {
             const roomId = CollaborativeEditing.createRoom(getPresentationData());
             const url = CollaborativeEditing.getShareUrl();
@@ -934,7 +940,19 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
             if (roomId) {
                 const id = roomId.includes('room=') ? roomId.split('room=')[1] : roomId;
                 const name = prompt('Enter your name:');
-                CollaborativeEditing.joinRoom(id, name || 'Guest');
+                // Note: CollaborativeEditing.joinRoom is synchronous (uses localStorage)
+                const presentationData = CollaborativeEditing.joinRoom(id, name || 'Guest');
+                
+                // Load the presentation if join was successful
+                if (presentationData) {
+                    if (window.editor) {
+                        window.editor.loadPresentation(presentationData);
+                        showToast(`Joined collaboration as ${escapeHtml(name || 'Guest')}`, 'success');
+                    } else {
+                        showToast('Editor not initialized. Please refresh the page.', 'error');
+                    }
+                }
+                // Note: If presentationData is null, joinRoom already showed an error toast
             }
         }
 
