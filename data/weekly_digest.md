@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-03 18:56*
+*Generated: 2025-12-03 21:23*
 
 
 ## Delirium (דליריום)
@@ -10,16 +10,15 @@
 - **Journal**: European journal of anaesthesiology (2025)
 - **Link**: [40574569](https://pubmed.ncbi.nlm.nih.gov/40574569/)
 
-### 📄 Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.
-- **Authors**: Niu Yanan, Wang Qiang, Lu Jin et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
-- **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
-
 ### 📄 Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.
 - **Authors**: Yao Fengwei, Zhao Hongyan, Liu Lei et al.
 - **Journal**: BMC geriatrics (2025)
 - **Link**: [41316013](https://pubmed.ncbi.nlm.nih.gov/41316013/)
+
+### 📄 Ambulatory ophthalmic anesthesia: what is important.
+- **Authors**: Castello Roberto, Neth Jens
+- **Journal**: Current opinion in anaesthesiology (2025)
+- **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
 
 
 ## Frailty (שבריריות)
@@ -29,17 +28,16 @@
 - **Journal**: The New England journal of medicine (2025)
 - **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
 
+### 📄 Effectiveness of Home-Based interventions for older adults with frailty or pre-frailty: a systematic review and meta-analysis.
+- **Authors**: Yao Gengxin, Li Fei, Ma Xuehan et al.
+- **Journal**: Archives of gerontology and geriatrics (2026)
+- **Link**: [41242035](https://pubmed.ncbi.nlm.nih.gov/41242035/)
+
 ### 📄 Frailty and the brain: A narrative review of functional and pathological correlates.
 - **Authors**: Sciancalepore Francesco, Salemme Simone, Valletta Martina et al.
 - **Journal**: Ageing research reviews (2026)
 - **Link**: [41253248](https://pubmed.ncbi.nlm.nih.gov/41253248/)
 - **Key Finding**: However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored...
-
-### 📄 Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.
-- **Authors**: Johnson Neil, Qu Junru, Wagatsuma Kenji et al.
-- **Journal**: Frontiers in cardiovascular medicine (2025)
-- **Link**: [41282339](https://pubmed.ncbi.nlm.nih.gov/41282339/)
-- **Key Finding**: Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations...
 
 
 ## Falls (נפילות)
@@ -49,10 +47,10 @@
 - **Journal**: Annals of medicine (2025)
 - **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
 
-### 📄 Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.
-- **Authors**: Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.
-- **Journal**: BMC geriatrics (2025)
-- **Link**: [41291457](https://pubmed.ncbi.nlm.nih.gov/41291457/)
+### 📄 Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).
+- **Authors**: Schoene Daniel, Gross Michaela, Finger Benjamin et al.
+- **Journal**: BMJ open (2025)
+- **Link**: [41314827](https://pubmed.ncbi.nlm.nih.gov/41314827/)
 
 ### 📄 [Importance of vision in old age].
 - **Authors**: Fink David J, Finger Robert P, Terheyden Jan H
@@ -68,16 +66,15 @@
 - **Journal**: Medicinal research reviews (2026)
 - **Link**: [40745950](https://pubmed.ncbi.nlm.nih.gov/40745950/)
 
+### 📄 Antidiabetic agents and dementia risk in type 2 diabetes: A systematic review and network meta-analysis.
+- **Authors**: Kato Sayaka, Ozu Naoki, Yamakage Hajime et al.
+- **Journal**: Diabetes, obesity & metabolism (2026)
+- **Link**: [41126557](https://pubmed.ncbi.nlm.nih.gov/41126557/)
+
 ### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
 - **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
 - **Journal**: Pulmonology (2025)
 - **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
-
-### 📄 Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.
-- **Authors**: Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.
-- **Journal**: Neural regeneration research (2026)
-- **Link**: [40145977](https://pubmed.ncbi.nlm.nih.gov/40145977/)
-- **Key Finding**: Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modula...
 
 
 ## Deprescribing (דה-פרסקייבינג)
@@ -87,15 +84,15 @@
 - **Journal**: Drug, healthcare and patient safety (2025)
 - **Link**: [41278245](https://pubmed.ncbi.nlm.nih.gov/41278245/)
 
-### 📄 Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).
-- **Authors**: Tadic Ivana, Fialová Daniela, Hazen Ankie et al.
-- **Journal**: COPD (2025)
-- **Link**: [40719419](https://pubmed.ncbi.nlm.nih.gov/40719419/)
-
 ### 📄 A NASSS framework-guided systematic review and exploratory modelling of digital health interventions for polypharmacy management in older adults.
 - **Authors**: Vamadevan Arun, Vijayan Vijesh, Cole Christine et al.
 - **Journal**: BMC geriatrics (2025)
 - **Link**: [41272510](https://pubmed.ncbi.nlm.nih.gov/41272510/)
+
+### 📄 Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.
+- **Authors**: Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.
+- **Journal**: Aging clinical and experimental research (2025)
+- **Link**: [41296133](https://pubmed.ncbi.nlm.nih.gov/41296133/)
 
 
 ## Sarcopenia (סרקופניה)
@@ -124,15 +121,16 @@
 - **Journal**: The Thoracic and cardiovascular surgeon (2025)
 - **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
 
-### 📄 Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.
-- **Authors**: Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.
-- **Journal**: Palliative medicine (2025)
-- **Link**: [40908745](https://pubmed.ncbi.nlm.nih.gov/40908745/)
-
 ### 📄 Demystifying Compassionate Communities.
 - **Authors**: Ng Yong Hao, Aoun Samar
 - **Journal**: Palliative care and social practice (2025)
 - **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
+
+### 📄 A glimpse of the end-of-life of people with Parkinson's disease and atypical parkinsonism: A descriptive analysis of electronic health records.
+- **Authors**: Lennaerts-Kats Herma, Elbers Anke, Muente Catharina et al.
+- **Journal**: Journal of Parkinson's disease (2025)
+- **Link**: [40891701](https://pubmed.ncbi.nlm.nih.gov/40891701/)
+- **Key Finding**: BackgroundThe needs of people with Parkinson's disease (PD) or atypical parkinsonism (AP) change significantly in the final weeks to days of life...
 
 
 ## Incontinence (אי שליטה בסוגרים)

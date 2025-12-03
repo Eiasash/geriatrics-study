@@ -11,18 +11,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40574569/"
     },
     {
-      "pmid": "40720202",
-      "title": "Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.",
-      "abstract": "Postoperative delirium is a common and serious complication in orthopedic surgery patients, particularly in the elderly. This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.",
-      "authors": "Niu Yanan, Wang Qiang, Lu Jin et al.",
-      "journal": "Annals of medicine",
-      "year": "2025",
-      "key_findings": [
-        "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients."
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
-    },
-    {
       "pmid": "41316013",
       "title": "Association between stress hyperglycemia ratio and delirium risk in elderly surgical patients: a retrospective cohort study.",
       "abstract": "The stress hyperglycemia ratio (SHR) is an emerging glycemic marker in critical care, but its relationship with delirium in elderly surgical and trauma ICU patients remains unclear. This study explored the association between SHR and delirium to inform early identification strategies.",
@@ -31,6 +19,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41316013/"
+    },
+    {
+      "pmid": "41182057",
+      "title": "Ambulatory ophthalmic anesthesia: what is important.",
+      "abstract": "This review addresses aspects relevant to caregivers facing increased numbers of adult and elderly patients seeking ambulatory medical service for ophthalmic surgery.",
+      "authors": "Castello Roberto, Neth Jens",
+      "journal": "Current opinion in anaesthesiology",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
     }
   ],
   "frailty": [
@@ -45,6 +43,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
     },
     {
+      "pmid": "41242035",
+      "title": "Effectiveness of Home-Based interventions for older adults with frailty or pre-frailty: a systematic review and meta-analysis.",
+      "abstract": "To systematically summarise the characteristics and effectiveness of home-based interventions on health outcomes in older adults with frailty or pre-frailty.",
+      "authors": "Yao Gengxin, Li Fei, Ma Xuehan et al.",
+      "journal": "Archives of gerontology and geriatrics",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41242035/"
+    },
+    {
       "pmid": "41253248",
       "title": "Frailty and the brain: A narrative review of functional and pathological correlates.",
       "abstract": "Frailty influences the risk, phenotypic expression, and course of highly prevalent neurological conditions. However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored. This narrative review examines existing evidence on the functional and pathological brain correlates of frailty in both healthy adults and patients with neurological conditions, encompassing findings from neuropathology, fluid biomarkers, neuroimaging, and neurophysiology. Autopsy studies suggest that individuals experiencing frailty may exhibit decreased resistance and resilience to neuropathological changes, along with heightened cognitive vulnerability, even in the presence of low levels of pathology. The accumulation of brain pathology may, in turn, play a role in accelerating frailty progression. Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes. Additionally, variations in cerebrospinal fluid and plasma biomarkers of Alzheimer's disease pathology have been documented. Furthermore, frailty-related changes in EEG/MEG signals and brain plasticity suggest potential widespread neural dysfunction. Future research is needed to elucidate the pathophysiological mechanisms underlying the neurological correlates of frailty. This exploration should encompass key aspects of aging, such as inflammation, mitochondrial dysfunction, and impaired proteostasis. Gaining a deeper understanding of the relationship between frailty and brain function and pathology could pave the way for discovering novel biomarkers and intervention targets, ultimately impacting the prevention and management of age-related neurological conditions.",
@@ -56,19 +64,6 @@
         "Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41253248/"
-    },
-    {
-      "pmid": "41282339",
-      "title": "Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.",
-      "abstract": "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations. This review synthesizes evidence from studies published between 2000 and 2025, identified through Google Scholar and PubMed using keywords such as \"frailty\", \"CVD\", \"frailty assessment\", and \"multicomponent interventions\". Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes.",
-      "authors": "Johnson Neil, Qu Junru, Wagatsuma Kenji et al.",
-      "journal": "Frontiers in cardiovascular medicine",
-      "year": "2025",
-      "key_findings": [
-        "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations",
-        "Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes."
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41282339/"
     }
   ],
   "falls": [
@@ -83,14 +78,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
     },
     {
-      "pmid": "41291457",
-      "title": "Sedative-hypnotic drug use and risk of falls and fractures in elderly patients: a cross-sectional study.",
-      "abstract": "Falls are a leading cause of injury, hospitalization, and mortality among older adults. Sedative-hypnotic medications, especially benzodiazepines and Z-drugs, have been implicated as potential contributors to fall risk and fracture. This study investigated the prevalence of sedative-hypnotic drug use in elderly patients with falls and its association with fracture outcomes.",
-      "authors": "Imani Mohammad Hossein, Imani Amir Hossein, Saem Amirhossein et al.",
-      "journal": "BMC geriatrics",
+      "pmid": "41314827",
+      "title": "Conventional and tablet-supported physical training to reduce falls and fall-related injuries in community-dwelling older adults: protocol of the randomised SURE-footed into the future Fall Intervention Trial (SURE-FIT).",
+      "abstract": "Exercise-based interventions are well-established in reducing falls and fall-related injuries, but adherence and accessibility remain key challenges, particularly in rural areas. While conventional in-person training is widely used, digital interventions may offer scalable solutions to enhance engagement and reach. However, pragmatic trials evaluating the real-world effectiveness of conventional and digitally supported fall prevention interventions are lacking, limiting the evidence base for their implementation in routine healthcare settings. The SURE-Footed into the Future Fall Intervention Trial (SURE-FIT) aims to compare the effectiveness of two structured fall prevention interventions-a conventional centre-based exercise programme and a hybrid telemedical programme combining in-person and tablet-supported training-against a wait-list control group in reducing falls and fall-related injuries among community-dwelling older adults.",
+      "authors": "Schoene Daniel, Gross Michaela, Finger Benjamin et al.",
+      "journal": "BMJ open",
       "year": "2025",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41291457/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41314827/"
     },
     {
       "pmid": "41168499",
@@ -117,6 +112,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40745950/"
     },
     {
+      "pmid": "41126557",
+      "title": "Antidiabetic agents and dementia risk in type 2 diabetes: A systematic review and network meta-analysis.",
+      "abstract": "Certain antidiabetic agents may prevent dementia in patients with type 2 diabetes mellitus (T2DM). The purpose of this study is to elucidate the relative effect of antidiabetic agents on reducing dementia risk in patients with T2DM.",
+      "authors": "Kato Sayaka, Ozu Naoki, Yamakage Hajime et al.",
+      "journal": "Diabetes, obesity & metabolism",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41126557/"
+    },
+    {
       "pmid": "39869458",
       "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
       "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
@@ -125,18 +130,6 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
-    },
-    {
-      "pmid": "40145977",
-      "title": "Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.",
-      "abstract": "For diverse neurodegenerative disorders, microglial cells are activated. Furthermore, dysfunctional and hyperactivated microglia initiate mitochondrial autophagy, oxidative stress, and pathological protein accumulation, ending with neuroinflammation that exacerbates damage to dopaminergic neurons and contributes significantly to the pathology of neurodegenerative disorder. Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments. This review summarizes the role of microglia neurodegenerative diseases, such as Alzheimer's disease, Parkinson's disease, multiple sclerosis, multiple system atrophy, amyotrophic lateral sclerosis, frontotemporal dementia, progressive supranuclear palsy, cortical degeneration, Lewy body dementia, and Huntington's disease. It also discusses novel forms of cell death such as ferroptosis, cuproptosis, disulfidptosis, and parthanatos (poly(adenosine diphosphate ribose) polymerase 1-dependent cell death), as well as the impact of regulatory factors related to microglial inflammation on microglial activation and neuroinflammation. The aim is to identify potential targets for microglial cell therapy in neurodegenerative diseases.",
-      "authors": "Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.",
-      "journal": "Neural regeneration research",
-      "year": "2026",
-      "key_findings": [
-        "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40145977/"
     }
   ],
   "deprescribing": [
@@ -151,16 +144,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41278245/"
     },
     {
-      "pmid": "40719419",
-      "title": "Current Practices on Prescribing and Deprescribing for Patients on Long-Term Antibiotic Treatment for Chronic Pulmonary Conditions: An Umbrella Review by the European Society of Clinical Pharmacy (ESCP).",
-      "abstract": "Chronic pulmonary conditions require complex treatment strategies involving long-term antibiotic treatment, which carries the highest risk of antimicrobial resistance and adverse drug events (ADE). Specific guidance on prescribing and deprescribing can help reduce these risks and improve therapy effectiveness. The aim of the study was to determine prescribing and deprescribing practices for long-term antibiotic treatment (≥30 days) in preventing exacerbations of stable chronic pulmonary conditions in adult patients across all healthcare settings.",
-      "authors": "Tadic Ivana, Fialová Daniela, Hazen Ankie et al.",
-      "journal": "COPD",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40719419/"
-    },
-    {
       "pmid": "41272510",
       "title": "A NASSS framework-guided systematic review and exploratory modelling of digital health interventions for polypharmacy management in older adults.",
       "abstract": "Polypharmacy is a growing challenge in older adults with multimorbidity, increasing the risk of adverse drug events, hospital admissions, and healthcare utilisation. Technology-supported interventions, such as clinical decision support systems (CDSS) and digital deprescribing tools, offer new opportunities to optimize medication use. However, adoption and sustainability remain variable across healthcare settings. The Non-adoption, Abandonment, Scale-up, Spread, and Sustainability (NASSS) framework offers a valuable lens to evaluate complex digital health interventions targeting medication optimization in older adults.",
@@ -169,6 +152,16 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41272510/"
+    },
+    {
+      "pmid": "41296133",
+      "title": "Prevalence of polypharmacy among older adults with diabetes: A systematic review and Meta-Analysis.",
+      "abstract": "Polypharmacy, the concurrent use of five or more medications, is prevalent among older adults with Diabetes, a population at elevated risk for medication-related complications. Complex treatment regimens for Diabetes and its comorbidities exacerbate challenges such as medication non-adherence, drug interactions, adverse events, and increased hospitalization risk. This review aimed to estimate the prevalence of polypharmacy among older adults with Diabetes.",
+      "authors": "Satapathy Prakasini, Gaidhane Abhay M, Vadia Nasir et al.",
+      "journal": "Aging clinical and experimental research",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41296133/"
     }
   ],
   "sarcopenia": [
@@ -217,16 +210,6 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
     },
     {
-      "pmid": "40908745",
-      "title": "Models, components and outcomes of palliative and end-of-life care provided to adults living at home: A systematic umbrella review of reviews.",
-      "abstract": "There is growing demand for home-based palliative care because of patient preference, and increased number of deaths. Optimal models for community-based palliative and end-of-life care are unknown.",
-      "authors": "Pask Sophie, Okwuosa Chukwuebuka, Mohamed Ahmed et al.",
-      "journal": "Palliative medicine",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40908745/"
-    },
-    {
       "pmid": "41246289",
       "title": "Demystifying Compassionate Communities.",
       "abstract": "",
@@ -235,6 +218,18 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
+    },
+    {
+      "pmid": "40891701",
+      "title": "A glimpse of the end-of-life of people with Parkinson's disease and atypical parkinsonism: A descriptive analysis of electronic health records.",
+      "abstract": "BackgroundThe needs of people with Parkinson's disease (PD) or atypical parkinsonism (AP) change significantly in the final weeks to days of life. A better understanding of this phase can help improve care.ObjectiveTo examine healthcare use and end-of-life care in people with PD.MethodsWe conducted a retrospective study (2022-2023) in three nursing homes, four hospitals, and eleven general practices in the Netherlands. Electronic health records of deceased individuals with PD or AP were reviewed for symptoms, healthcare use, and professional involvement.ResultsWe reviewed 189 records (70.4% PD; mean age 80.2; 68.1% male). In the last two weeks of life, patients had an average of 8.4 symptoms, with a higher burden in AP. Palliative sedation was used in 60.4%, most often in nursing homes (up to 78.3%) and among AP patients. Euthanasia occurred in 11 cases (6 PD, 5 AP), mainly in nursing homes and general practices. Antibiotics and pain medications were commonly used; fluid and oxygen therapy were more frequent in hospitals. Most patients were treated by a GP and 3-4 other healthcare professionals, but only 12.7% received support from a palliative care team.ConclusionsPeople with PD and AP face a high symptom burden at the end of life, yet palliative care involvement is limited. The frequent use of palliative sedation and cases of euthanasia reflect the complexity of this care phase. Better integration of palliative expertise and research into symptom management is urgently needed.",
+      "authors": "Lennaerts-Kats Herma, Elbers Anke, Muente Catharina et al.",
+      "journal": "Journal of Parkinson's disease",
+      "year": "2025",
+      "key_findings": [
+        "BackgroundThe needs of people with Parkinson's disease (PD) or atypical parkinsonism (AP) change significantly in the final weeks to days of life"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40891701/"
     }
   ],
   "incontinence": [
