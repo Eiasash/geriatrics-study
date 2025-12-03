@@ -228,7 +228,7 @@ function validateContent() {
     const topicName = topic.topic || `Topic ${index + 1}`;
     log.info(`\nValidating: ${topicName}`);
 
-    const issues = validateTopic(topic, index);
+    const issues = validateTopic(topic);
 
     if (issues.length === 0) {
       log.success(`${topicName}: No issues found`);
