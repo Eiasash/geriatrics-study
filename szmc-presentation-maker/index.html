@@ -922,6 +922,12 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
         });
 
         // Collaboration helpers
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         function startCollaboration() {
             const roomId = CollaborativeEditing.createRoom(getPresentationData());
             const url = CollaborativeEditing.getShareUrl();
@@ -940,7 +946,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
                 // Load the presentation if join was successful
                 if (presentationData && window.editor) {
                     window.editor.loadPresentation(presentationData);
-                    showToast(`Joined collaboration as ${name || 'Guest'}`, 'success');
+                    showToast(`Joined collaboration as ${escapeHtml(name || 'Guest')}`, 'success');
                 }
             }
         }
