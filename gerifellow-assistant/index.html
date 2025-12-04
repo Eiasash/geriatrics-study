@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeriFellow Assistant v2.1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>🏥 GeriFellow</h2>
+            <span class="badge">v2.1</span>
+        </div>
+        <nav>
+            <button class="nav-btn active" onclick="switchTab('weekly')">📅 Weekly Case</button>
+            <button class="nav-btn" onclick="switchTab('monthly')">📊 Monthly Synthesis</button>
+            <hr class="nav-divider">
+            <div class="info-box">
+                <p><strong>User:</strong> Dr. Eias Ashkar</p>
+                <p><strong>Role:</strong> Geriatrics Fellow</p>
+                <p><strong>Context:</strong> Shaare Tzedek</p>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="content">
+
+        <section id="weekly-section" class="active-section">
+            <header>
+                <h1>Weekly Case Builder</h1>
+                <p class="subtitle">Focus: <code>geriatrics_weekly_case_template.md</code></p>
+            </header>
+
+            <div class="grid-container">
+                <div class="input-group">
+                    <label>Patient ID & Chief Complaint</label>
+                    <textarea id="wk-demographics" placeholder="82M, admitted for falls. Background of dementia..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Clinical Data (HPI/Meds/Labs)</label>
+                    <textarea id="wk-hpi" placeholder="HPI details, relevant medications, key lab findings..."></textarea>
+                </div>
+                <div class="input-group full-width">
+                    <label>Geriatric Assessment (CGA)</label>
+                    <textarea id="wk-cga" placeholder="Function (ADLs), Cognition (MoCA), Mood, Social, Nutrition..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section id="monthly-section" style="display:none;">
+            <header>
+                <h1>Monthly Synthesis</h1>
+                <p class="subtitle">Focus: <code>monthly_synthesis_template.md</code></p>
+            </header>
+            <div class="input-group full-width">
+                <label>Month Overview & Cases</label>
+                <textarea id="mo-overview" placeholder="Summarize the key cases and themes of the month..."></textarea>
+            </div>
+            <div class="input-group full-width">
+                <label>Learning & IMA Syllabus</label>
+                <textarea id="mo-learning" placeholder="What were the educational goals? Any specific papers read?"></textarea>
+            </div>
+        </section>
+
+        <section class="ai-controls">
+            <label>🤖 AI Assistant: What do you need?</label>
+            <div class="chip-container">
+                <button class="chip diagnosis" onclick="generatePrompt('diagnosis')">🔍 Diagnosis Help</button>
+                <button class="chip teaching" onclick="generatePrompt('teaching')">📚 Teaching Points</button>
+                <button class="chip plan" onclick="generatePrompt('plan')">📋 Mgmt Plan</button>
+                <button class="chip summary" onclick="generatePrompt('full_case')">📝 Full Case Writeup</button>
+            </div>
+        </section>
+
+        <section class="output-section">
+            <div class="output-header">
+                <h3>Generated Prompt</h3>
+                <div class="actions">
+                    <span id="copy-status" class="status-text"></span>
+                    <button class="primary-btn" onclick="copyToClipboard()">📋 Copy Prompt</button>
+                </div>
+            </div>
+            <textarea id="final-output" readonly placeholder="Select a chip above to generate a specific AI prompt..."></textarea>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
