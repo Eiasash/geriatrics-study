@@ -1,45 +1,12 @@
 [
   {
-    "id": "e5214b29",
-    "front": "[שבריריות] Study: Frailty and the brain: A narrative review of functional and pathological correlates.\n\nWhat was the main finding?",
-    "back": "However, the structural, functional, and pathological changes in the brain associated with frailty remain insufficiently explored\n\n📖 Sciancalepore Francesco, Salemme Simone, Valletta Martina et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41253248/",
+    "id": "2904b95b",
+    "front": "[שבריריות] Study: Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.\n\nWhat was the main finding?",
+    "back": "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.\n\n📖 Ye Xin, Wang Xinfeng, Hu Mingzheng et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40921305/",
     "tags": [
       "frailty",
       "research",
       "recent",
-      "שבריריות"
-    ]
-  },
-  {
-    "id": "bae0ab88",
-    "front": "[שבריריות] Based on Sciancalepore Francesco et al. (2026), what clinical practice change might be considered?",
-    "back": "Finding: Numerous MRI-based studies have shown that frailty is associated with vascular brain damage, mostly consisting of increased white matter hyperintensity volumes, and with reduced gray matter volumes\n\nClinical relevance: Consider this evidence when treating elderly patients with frailty-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41253248/",
-    "tags": [
-      "frailty",
-      "clinical",
-      "evidence-based",
-      "שבריריות"
-    ]
-  },
-  {
-    "id": "8e998b02",
-    "front": "[שבריריות] Study: Frailty and cardiovascular disease: a bidirectional relationship with clinical implications.\n\nWhat was the main finding?",
-    "back": "Frailty and cardiovascular disease (CVD) are increasingly recognized as interconnected conditions that significantly impact aging populations\n\n📖 Johnson Neil, Qu Junru, Wagatsuma Kenji et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41282339/",
-    "tags": [
-      "frailty",
-      "research",
-      "recent",
-      "שבריריות"
-    ]
-  },
-  {
-    "id": "1f68e6d4",
-    "front": "[שבריריות] Based on Johnson Neil et al. (2025), what clinical practice change might be considered?",
-    "back": "Finding: Frailty, characterized by reduced physiological resilience and increased vulnerability to stressors, affects 10%-15% of community-dwelling older adults and is associated with adverse CVD outcomes.\n\nClinical relevance: Consider this evidence when treating elderly patients with frailty-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41282339/",
-    "tags": [
-      "frailty",
-      "clinical",
-      "evidence-based",
       "שבריריות"
     ]
   },
@@ -55,9 +22,42 @@
     ]
   },
   {
-    "id": "70ad4a81",
-    "front": "[סרקופניה] Study: International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).\n\nWhat was the main finding?",
-    "back": "The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year\n\n📖 Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/39699070/",
+    "id": "8fb682ac",
+    "front": "[דה-פרסקייבינג] Study: Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.\n\nWhat was the main finding?",
+    "back": "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group\n\n📖 Bayrak Muharrem, Kaşali Kamber, Güner Merve et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40022664/",
+    "tags": [
+      "deprescribing",
+      "research",
+      "recent",
+      "דה-פרסקייבינג"
+    ]
+  },
+  {
+    "id": "925025d2",
+    "front": "[דה-פרסקייבינג] Study: Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.\n\nWhat was the main finding?",
+    "back": "Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex' patient phenotypes\n\n📖 Mei Davide Antonio, Proietti Marco, Romiti Giulio Francesco et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41345290/",
+    "tags": [
+      "deprescribing",
+      "research",
+      "recent",
+      "דה-פרסקייבינג"
+    ]
+  },
+  {
+    "id": "c35a9093",
+    "front": "[דה-פרסקייבינג] Based on Mei Davide Antonio et al. (2025), what clinical practice change might be considered?",
+    "back": "Finding: After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs\n\nClinical relevance: Consider this evidence when treating elderly patients with deprescribing-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41345290/",
+    "tags": [
+      "deprescribing",
+      "clinical",
+      "evidence-based",
+      "דה-פרסקייבינג"
+    ]
+  },
+  {
+    "id": "e1a7aa49",
+    "front": "[סרקופניה] Study: Nutrition and Liver Disease.\n\nWhat was the main finding?",
+    "back": "Malnutrition is associated with a higher rate of complications including ascites, hepatic encephalopathy, and variceal bleeding, progressing to liver failure and poor survival outcomes\n\n📖 Franz Allison, Shay Henry, Kirpich Irina et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41314408/",
     "tags": [
       "sarcopenia",
       "research",
@@ -66,31 +66,9 @@
     ]
   },
   {
-    "id": "eef33aaa",
-    "front": "[טיפול סוף-חיים] Study: Palliative Care in Neuro-oncology.\n\nWhat was the main finding?",
-    "back": "This article reviews the palliative care needs of patients with primary and metastatic brain tumors and discusses the management of common symptoms associated with central nervous system tumors\n\n📖 Walbert Tobias (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41328945/",
-    "tags": [
-      "end_of_life",
-      "research",
-      "recent",
-      "טיפול סוף-חיים"
-    ]
-  },
-  {
     "id": "15a197dd",
     "front": "[אי שליטה בסוגרים] Study: The impact of ageing on the structural compositions of the mucosa of human colon.\n\nWhat was the main finding?",
     "back": "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon\n\n📖 Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40848414/",
-    "tags": [
-      "incontinence",
-      "research",
-      "recent",
-      "אי שליטה בסוגרים"
-    ]
-  },
-  {
-    "id": "dcfa2d2d",
-    "front": "[אי שליטה בסוגרים] Study: Mirabegron exhibits antibacterial and Immunomodulatory activities demonstrated by in vitro and in vivo studies.\n\nWhat was the main finding?",
-    "back": "We found that mirabegron exhibited significant antibacterial activity, particularly against E\n\n📖 Ahmed Esraa A, Abd-Eldayem Ahmed M (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41203718/",
     "tags": [
       "incontinence",
       "research",
