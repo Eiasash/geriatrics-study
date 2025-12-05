@@ -78,3 +78,5 @@ if (require.main === module) {
 }
 
 module.exports = main;
+// Export internal functions for testing
+module.exports.renderDialogCards = renderDialogCards;

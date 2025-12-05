@@ -61,7 +61,7 @@ function validateMCQ(mcq, topicName, index) {
     }
   } else if (typeof correctAnswer === 'string') {
     // String answer - should match one of the options
-    if (!mcq.options.includes(correctAnswer)) {
+    if (Array.isArray(mcq.options) && !mcq.options.includes(correctAnswer)) {
       issues.push(`Question ${index + 1}: correct answer "${correctAnswer}" not found in options`);
     }
   }
@@ -275,6 +275,18 @@ function validateContent() {
   return errorCount === 0;
 }
 
-// Run validation
-const success = validateContent();
-process.exit(success ? 0 : 1);
+// Only run validation when executed directly
+if (require.main === module) {
+  const success = validateContent();
+  process.exit(success ? 0 : 1);
+}
+
+// Export functions for testing
+module.exports = {
+  validateMCQ,
+  validateFlashcard,
+  validateTopic,
+  validateContent,
+  log,
+  colors,
+};
