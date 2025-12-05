@@ -21,14 +21,16 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
     },
     {
-      "pmid": "40831975",
-      "title": "A nomogram and risk stratification for predicting subsyndromal delirium in elderly patients in a post-anaesthesia care unit: A prospective cohort study.",
-      "abstract": "Subsyndromal delirium, as a transitional state of postoperative delirium, does not meet the diagnostic threshold for delirium but independently contributes to adverse outcomes in elderly patients. Early identification and intervention can effectively prevent disease progression.",
-      "authors": "Ma Guoting, Yan Wenjun, Yang Qian et al.",
-      "journal": "International journal of nursing studies advances",
+      "pmid": "40720202",
+      "title": "Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.",
+      "abstract": "Postoperative delirium is a common and serious complication in orthopedic surgery patients, particularly in the elderly. This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.",
+      "authors": "Niu Yanan, Wang Qiang, Lu Jin et al.",
+      "journal": "Annals of medicine",
       "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40831975/"
+      "key_findings": [
+        "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients."
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
     }
   ],
   "frailty": [
@@ -53,16 +55,14 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
     },
     {
-      "pmid": "40921305",
-      "title": "Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.",
-      "abstract": "Frailty and dementia are prevalent, interrelated conditions in aging populations, yet the temporal relationship between frailty progression and dementia risk remains underexplored. This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.",
-      "authors": "Ye Xin, Wang Xinfeng, Hu Mingzheng et al.",
-      "journal": "American journal of preventive medicine",
+      "pmid": "41071474",
+      "title": "Cumulative atherogenic index of plasma exposure and cardiovascular disease risk: the mediating role of frailty in a Chinese middle-aged and elderly population.",
+      "abstract": "Atherosclerosis have been implicated in cardiovascular disease (CVD) risks, and whether frailty played a mediating role in this association was unclear.",
+      "authors": "Lin Yan, Jia Xiaocan, Shi Xuezhong et al.",
+      "journal": "Clinical rheumatology",
       "year": "2025",
-      "key_findings": [
-        "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts."
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40921305/"
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41071474/"
     }
   ],
   "falls": [
@@ -133,18 +133,6 @@
   ],
   "deprescribing": [
     {
-      "pmid": "40022664",
-      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
-      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
-      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
-      "year": "2025",
-      "key_findings": [
-        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
-    },
-    {
       "pmid": "41345290",
       "title": "Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.",
       "abstract": "Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex' patient phenotypes. Possible differences between European and Asian patients regarding these aspects have not been studied. We studied AF patients derived from two large prospective observational AF registries, conducted in Europe and Asia. Multimorbidity and polypharmacy were defined according to the number of comorbidities and drugs at baseline. Frailty was defined according to a 40-items frailty index (FI). Prescription of OAC was assessed at baseline. The primary outcome was the composite of all-cause death and major adverse cardiovascular events. European patients had a higher burden of multimorbidity, frailty, and polypharmacy domains compared with Asians. Asian patients with these domains were less likely to be prescribed OAC than Europeans, especially those who were frail. After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs. OR 0.47, 95% CI 0.40-0.55, p",
@@ -156,6 +144,18 @@
         "After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs"
       ],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41345290/"
+    },
+    {
+      "pmid": "40022664",
+      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
+      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
+      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
+      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
+      "year": "2025",
+      "key_findings": [
+        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
     },
     {
       "pmid": "41333972",
@@ -170,6 +170,28 @@
   ],
   "sarcopenia": [
     {
+      "pmid": "39699070",
+      "title": "International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).",
+      "abstract": "Position Statement: The International Society of Sports Nutrition (ISSN) bases the following position stand on an analysis of the literature regarding the effects of β-Hydroxy-β-Methylbutyrate (HMB). The following 12 points have been approved by the Research Committee of the Society: 1. HMB is a metabolite of the amino acid leucine that is naturally produced in both humans and other animals. Two forms of HMB have been studied: Calcium HMB (HMB-Ca) and a free acid form of HMB (HMB-FA). HMB-FA appears to lead to increased appearance of HMB in the bloodstream when compared to HMB-Ca, though recent results are mixed. 2. The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year. 3. There are no negative effects of HMB-Ca and HMB-FA on glucose tolerance and insulin sensitivity in humans. There may be improvements in glucose metabolism in younger adults. 4. The primary mode of action of HMB appears to be through its dual mechanism to enhance muscle protein synthesis and suppress muscle protein breakdown. HMB's activation of mTORC1 is independent of the leucine-sensing pathway (Sestrin2-GATOR2 complex). 5. HMB may help reduce muscle damage and promote muscle recovery, which can promote muscle growth/repair. HMB may also have anti-inflammatory effects, which could contribute to reducing muscle damage and soreness. 6. HMB consumption in close proximity to an exercise bout may be beneficial to increase muscle protein synthesis and attenuate the inflammatory response. HMB can provide a beneficial physiological effect when consumed both acutely and chronically in humans. 7. Daily HMB supplementation (38 mg/kg body weight) in combination with exercise training may improve body composition through increasing lean mass and/or decreasing fat mass with benefits in participants across age, sex, and training status. The most pronounced of these improvements in body composition with HMB have been observed in studies with robust resistance training programs and dietary control. 8. HMB may improve strength and power in untrained individuals, but its performance benefits in trained athletes are mixed and increase with an increase in study duration (>6 weeks). HMB's beneficial effects on athletic performance are thought to be driven by improved recovery. 9. HMB supplementation appears to potentially have a positive impact on aerobic performance, especially in trained athletes. The mechanisms of the effects are unknown. 10. HMB supplementation may be important in a non-exercising sedentary and aging population to improve muscle strength, functionality, and muscle quality. The effects of HMB supplementation with exercise are varied, but the combination may have a beneficial effect on the treatment of age-associated sarcopenia under select conditions. 11. HMB may be effective in countering muscle disuse atrophy during periods of inactivity due to illness or injury. The modulation of mitochondrial dynamics and lipid metabolism by HMB may be a potential mechanism for preventing disuse atrophy and aiding rehabilitation beyond HMB's effects on rates of muscle protein synthesis and degradation. 12. The efficacy of HMB in combination with certain nutrients may be enhanced under select conditions.",
+      "authors": "Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al.",
+      "journal": "Journal of the International Society of Sports Nutrition",
+      "year": "2025",
+      "key_findings": [
+        "The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39699070/"
+    },
+    {
+      "pmid": "40644314",
+      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
+      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
+      "authors": "Chen Alissa S, Batsis John A",
+      "journal": "Diabetes",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
+    },
+    {
       "pmid": "41233980",
       "title": "Thyroid hormone imbalance, malnutrition, and sarcopenia: a triad of muscle health challenges.",
       "abstract": "Sarcopenia and malnutrition are increasingly recognized as major determinants of morbidity and functional decline in aging and chronically ill populations. Thyroid hormones (THs), particularly triiodothyronine (T3), play a critical role in regulating skeletal muscle homeostasis, influencing myogenesis, mitochondrial function, metabolic rate, and fibre-type specification. Alterations in thyroid function, both hypo- and hyperthyroidism, negatively impact muscle protein turnover, leading to impaired strength and muscle wasting. Notably, nutritional status modulates TH metabolism at multiple levels: malnutrition impairs deiodinase activity, alters TH transport, and reduces peripheral T3 availability, thereby contributing to the low T3 syndrome frequently observed in frail or undernourished individuals. Conversely, excessive T3 levels, as seen in hyperthyroid states or during inappropriate replacement therapy, exacerbate catabolism and accelerate muscle loss. This review synthesizes current evidence on the bidirectional interactions among thyroid dysfunction, nutritional deficiencies, and sarcopenia, proposing an integrative pathophysiological model. We discuss the clinical implications of TH replacement in sarcopenic and malnourished patients, highlighting the need for personalised, multimodal interventions that include hormonal, nutritional, and physical strategies to prevent or mitigate muscle deterioration in endocrine and geriatric contexts.",
@@ -178,31 +200,19 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41233980/"
-    },
-    {
-      "pmid": "41314408",
-      "title": "Nutrition and Liver Disease.",
-      "abstract": "The liver is a dynamic organ that plays a central role in metabolism and serves several critical functions in maintaining overall nutritional health, including helping maintain metabolic homeostasis by ensuring energy needs are met, eliminating waste products, and maintaining nutrient balance. Hepatic injury/liver dysfunction can compromise multiple metabolic processes and lead to complications such as malnutrition (deficiencies, excesses, or imbalances in a person's nutritional or caloric intake). The adverse clinical consequences of malnutrition vary widely from global malnutrition that can result in frailty, cachexia, and/or sarcopenia to micronutrient imbalances that can lead to individual functional alterations. Malnutrition is associated with a higher rate of complications including ascites, hepatic encephalopathy, and variceal bleeding, progressing to liver failure and poor survival outcomes. Malnutrition prior to liver transplantation is associated with worse postoperative quality of life, worse outcomes following decompensation events, and higher recurrence rates of hepatocellular carcinoma. Several treatment options are discussed.",
-      "authors": "Franz Allison, Shay Henry, Kirpich Irina et al.",
-      "journal": "Seminars in liver disease",
-      "year": "2025",
-      "key_findings": [
-        "Malnutrition is associated with a higher rate of complications including ascites, hepatic encephalopathy, and variceal bleeding, progressing to liver failure and poor survival outcomes"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41314408/"
-    },
-    {
-      "pmid": "41340661",
-      "title": "Creatinine-to-cystatin C ratio as muscle assessment tool and predictive value for mortality and sarcopenia in patients with chronic kidney disease: a meta-analysis.",
-      "abstract": "The creatinine-to-cystatin C ratio (CCR) has been developed as a novel biomarker of sarcopenia and prognostic evaluation in various hospitalized populations. However, evidence supporting the use of CCR in patients with chronic kidney disease (CKD) remains limited. Thus, we aimed to evaluate whether CCR could be a marker of muscle mass for predicting prognosis in patients with CKD.",
-      "authors": "Zheng Wen-He, Hu Yan-Ge, Yu Da-Xing et al.",
-      "journal": "Frontiers in nutrition",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41340661/"
     }
   ],
   "end_of_life": [
+    {
+      "pmid": "41339288",
+      "title": "Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.",
+      "abstract": "To investigate knowledge and attitudes of palliative care among community health nurses and analyse factors influencing their knowledge and attitudes.",
+      "authors": "Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.",
+      "journal": "Nursing open",
+      "year": "2025",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41339288/"
+    },
     {
       "pmid": "41218637",
       "title": "\"End-of-Life Care\" in Cardiac Surgery.",
@@ -222,16 +232,6 @@
       "year": "2025",
       "key_findings": [],
       "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
-    },
-    {
-      "pmid": "41339288",
-      "title": "Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.",
-      "abstract": "To investigate knowledge and attitudes of palliative care among community health nurses and analyse factors influencing their knowledge and attitudes.",
-      "authors": "Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.",
-      "journal": "Nursing open",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41339288/"
     }
   ],
   "incontinence": [

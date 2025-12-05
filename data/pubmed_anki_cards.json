@@ -1,13 +1,13 @@
 [
   {
-    "id": "2904b95b",
-    "front": "[שבריריות] Study: Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.\n\nWhat was the main finding?",
-    "back": "This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 large prospective cohorts.\n\n📖 Ye Xin, Wang Xinfeng, Hu Mingzheng et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40921305/",
+    "id": "6d2d8c8b",
+    "front": "[דליריום] Study: Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.\n\nWhat was the main finding?",
+    "back": "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.\n\n📖 Niu Yanan, Wang Qiang, Lu Jin et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40720202/",
     "tags": [
-      "frailty",
+      "delirium",
       "research",
       "recent",
-      "שבריריות"
+      "דליריום"
     ]
   },
   {
@@ -19,17 +19,6 @@
       "research",
       "recent",
       "דמנציה"
-    ]
-  },
-  {
-    "id": "8fb682ac",
-    "front": "[דה-פרסקייבינג] Study: Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.\n\nWhat was the main finding?",
-    "back": "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group\n\n📖 Bayrak Muharrem, Kaşali Kamber, Güner Merve et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40022664/",
-    "tags": [
-      "deprescribing",
-      "research",
-      "recent",
-      "דה-פרסקייבינג"
     ]
   },
   {
@@ -55,9 +44,20 @@
     ]
   },
   {
-    "id": "e1a7aa49",
-    "front": "[סרקופניה] Study: Nutrition and Liver Disease.\n\nWhat was the main finding?",
-    "back": "Malnutrition is associated with a higher rate of complications including ascites, hepatic encephalopathy, and variceal bleeding, progressing to liver failure and poor survival outcomes\n\n📖 Franz Allison, Shay Henry, Kirpich Irina et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41314408/",
+    "id": "8fb682ac",
+    "front": "[דה-פרסקייבינג] Study: Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.\n\nWhat was the main finding?",
+    "back": "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group\n\n📖 Bayrak Muharrem, Kaşali Kamber, Güner Merve et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40022664/",
+    "tags": [
+      "deprescribing",
+      "research",
+      "recent",
+      "דה-פרסקייבינג"
+    ]
+  },
+  {
+    "id": "70ad4a81",
+    "front": "[סרקופניה] Study: International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).\n\nWhat was the main finding?",
+    "back": "The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year\n\n📖 Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/39699070/",
     "tags": [
       "sarcopenia",
       "research",

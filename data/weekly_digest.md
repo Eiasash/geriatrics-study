@@ -1,6 +1,6 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-05 22:09*
+*Generated: 2025-12-05 22:20*
 
 
 ## Delirium (דליריום)
@@ -15,10 +15,11 @@
 - **Journal**: Current opinion in anaesthesiology (2025)
 - **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
 
-### 📄 A nomogram and risk stratification for predicting subsyndromal delirium in elderly patients in a post-anaesthesia care unit: A prospective cohort study.
-- **Authors**: Ma Guoting, Yan Wenjun, Yang Qian et al.
-- **Journal**: International journal of nursing studies advances (2025)
-- **Link**: [40831975](https://pubmed.ncbi.nlm.nih.gov/40831975/)
+### 📄 Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.
+- **Authors**: Niu Yanan, Wang Qiang, Lu Jin et al.
+- **Journal**: Annals of medicine (2025)
+- **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
+- **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
 
 
 ## Frailty (שבריריות)
@@ -33,11 +34,10 @@
 - **Journal**: Journal of affective disorders (2025)
 - **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
 
-### 📄 Frailty and Risks of Dementia Among Middle-Aged and Older Adults: Evidence From 3 Prospective Cohort Studies.
-- **Authors**: Ye Xin, Wang Xinfeng, Hu Mingzheng et al.
-- **Journal**: American journal of preventive medicine (2025)
-- **Link**: [40921305](https://pubmed.ncbi.nlm.nih.gov/40921305/)
-- **Key Finding**: This study aimed to investigate how both baseline frailty and its subsequent changes over time are associated with the risk of incident dementia in 3 ...
+### 📄 Cumulative atherogenic index of plasma exposure and cardiovascular disease risk: the mediating role of frailty in a Chinese middle-aged and elderly population.
+- **Authors**: Lin Yan, Jia Xiaocan, Shi Xuezhong et al.
+- **Journal**: Clinical rheumatology (2025)
+- **Link**: [41071474](https://pubmed.ncbi.nlm.nih.gov/41071474/)
 
 
 ## Falls (נפילות)
@@ -79,17 +79,17 @@
 
 ## Deprescribing (דה-פרסקייבינג)
 
-### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
-- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
-- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
-
 ### 📄 Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.
 - **Authors**: Mei Davide Antonio, Proietti Marco, Romiti Giulio Francesco et al.
 - **Journal**: GeroScience (2025)
 - **Link**: [41345290](https://pubmed.ncbi.nlm.nih.gov/41345290/)
 - **Key Finding**: Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex...
+
+### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
+- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
+- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
+- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
+- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
 
 ### 📄 Clinical Integration and Evaluation of the STrategic Optimization of Prescription Medication Use in Patients on HemoDialysis (STOPMed-HD) Intervention.
 - **Authors**: Abbaticchio Angelina, Theodorlis Madeline, Cross Michelle S et al.
@@ -99,24 +99,29 @@
 
 ## Sarcopenia (סרקופניה)
 
+### 📄 International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).
+- **Authors**: Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al.
+- **Journal**: Journal of the International Society of Sports Nutrition (2025)
+- **Link**: [39699070](https://pubmed.ncbi.nlm.nih.gov/39699070/)
+- **Key Finding**: The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least o...
+
+### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
+- **Authors**: Chen Alissa S, Batsis John A
+- **Journal**: Diabetes (2025)
+- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
+
 ### 📄 Thyroid hormone imbalance, malnutrition, and sarcopenia: a triad of muscle health challenges.
 - **Authors**: Nappi Annarita, Sagliocchi Serena, Cicatiello Annunziata Gaetana et al.
 - **Journal**: Journal of basic and clinical physiology and pharmacology (2025)
 - **Link**: [41233980](https://pubmed.ncbi.nlm.nih.gov/41233980/)
 
-### 📄 Nutrition and Liver Disease.
-- **Authors**: Franz Allison, Shay Henry, Kirpich Irina et al.
-- **Journal**: Seminars in liver disease (2025)
-- **Link**: [41314408](https://pubmed.ncbi.nlm.nih.gov/41314408/)
-- **Key Finding**: Malnutrition is associated with a higher rate of complications including ascites, hepatic encephalopathy, and variceal bleeding, progressing to liver ...
-
-### 📄 Creatinine-to-cystatin C ratio as muscle assessment tool and predictive value for mortality and sarcopenia in patients with chronic kidney disease: a meta-analysis.
-- **Authors**: Zheng Wen-He, Hu Yan-Ge, Yu Da-Xing et al.
-- **Journal**: Frontiers in nutrition (2025)
-- **Link**: [41340661](https://pubmed.ncbi.nlm.nih.gov/41340661/)
-
 
 ## End Of Life (טיפול סוף-חיים)
+
+### 📄 Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.
+- **Authors**: Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.
+- **Journal**: Nursing open (2025)
+- **Link**: [41339288](https://pubmed.ncbi.nlm.nih.gov/41339288/)
 
 ### 📄 "End-of-Life Care" in Cardiac Surgery.
 - **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
@@ -127,11 +132,6 @@
 - **Authors**: Ng Yong Hao, Aoun Samar
 - **Journal**: Palliative care and social practice (2025)
 - **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
-
-### 📄 Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.
-- **Authors**: Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.
-- **Journal**: Nursing open (2025)
-- **Link**: [41339288](https://pubmed.ncbi.nlm.nih.gov/41339288/)
 
 
 ## Incontinence (אי שליטה בסוגרים)
