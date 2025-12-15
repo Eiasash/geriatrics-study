@@ -25,9 +25,9 @@
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "audit-ci": "^7.0.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "expect": "^30.0.5",
     "h5p-cli": "^1.1.4",
     "jest": "^29.7.0",
