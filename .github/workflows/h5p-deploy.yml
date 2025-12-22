@@ -87,7 +87,7 @@ jobs:
         echo "**Total size:** $(du -sh dist | cut -f1)" >> dist/BUILD_REPORT.md
         
     - name: 📤 Upload H5P packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: h5p-packages-${{ github.sha }}
         path: |
@@ -96,7 +96,7 @@ jobs:
         retention-days: 30
         
     - name: 📤 Upload HTML interfaces
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: h5p-interfaces-${{ github.sha }}
         path: |
