@@ -81,7 +81,7 @@ jobs:
       # Node.js audit for H5P
       - name: Setup Node.js
         if: matrix.language == 'node'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -153,7 +153,7 @@ jobs:
       # Setup for H5P builds
       - name: Setup Node.js
         if: matrix.component == 'h5p'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
