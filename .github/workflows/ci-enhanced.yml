@@ -151,7 +151,7 @@ jobs:
       
       - name: Upload artifacts
         if: matrix.job == 'build'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: h5p-${{ matrix.job }}-artifacts
           path: h5p/dist/*.h5p
@@ -268,7 +268,7 @@ jobs:
       
       - name: Upload artifacts
         if: matrix.job == 'build'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: anki-${{ matrix.job }}-artifacts
           path: anki/dist/*.apkg
