@@ -1,154 +1,154 @@
 # 📊 Geriatrics Research Digest
 
-*Generated: 2025-12-05 22:20*
+*Generated: 2026-02-25 09:04*
 
 
 ## Delirium (דליריום)
 
-### 📄 Remimazolam tosylate or propofol and delirium in frail elderly patients after hip surgery: A randomised controlled clinical trial.
-- **Authors**: Cai Wenlan, Shen Fangming, Zhu Lanyue et al.
-- **Journal**: European journal of anaesthesiology (2025)
-- **Link**: [40574569](https://pubmed.ncbi.nlm.nih.gov/40574569/)
+### 📄 Effect of remimazolam on postoperative delirium in elderly patients undergoing major abdominal surgery: a randomized controlled Trial.
+- **Authors**: Zhang Keyao, Zhong Leiyuan, Shang Bin et al.
+- **Journal**: International journal of surgery (London, England) (2026)
+- **Link**: [41217431](https://pubmed.ncbi.nlm.nih.gov/41217431/)
 
-### 📄 Ambulatory ophthalmic anesthesia: what is important.
-- **Authors**: Castello Roberto, Neth Jens
-- **Journal**: Current opinion in anaesthesiology (2025)
-- **Link**: [41182057](https://pubmed.ncbi.nlm.nih.gov/41182057/)
+### 📄 Saccade Tasks: A Noninvasive Approach for Predicting Postoperative Delirium in Elderly Arthroplasty Patients.
+- **Authors**: Kang Meng, Lai Xuan, Wu Junru et al.
+- **Journal**: Anesthesiology (2026)
+- **Link**: [41344677](https://pubmed.ncbi.nlm.nih.gov/41344677/)
+- **Key Finding**: It is associated with long-term cognitive impairment and increased dementia risk...
 
-### 📄 Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.
-- **Authors**: Niu Yanan, Wang Qiang, Lu Jin et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [40720202](https://pubmed.ncbi.nlm.nih.gov/40720202/)
-- **Key Finding**: This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients....
+### 📄 Electroencephalogram-guided anesthesia and postoperative anxiety and depression in elderly gastric cancer patients with sleep disorders.
+- **Authors**: Zhang Xiao-Min, Yuan Li, Chen Yan-Lin et al.
+- **Journal**: World journal of psychiatry (2026)
+- **Link**: [41646623](https://pubmed.ncbi.nlm.nih.gov/41646623/)
 
 
 ## Frailty (שבריריות)
 
-### 📄 Reduction of Antihypertensive Treatment in Nursing Home Residents.
-- **Authors**: Benetos Athanase, Gautier Sylvie, Freminet Anne et al.
-- **Journal**: The New England journal of medicine (2025)
-- **Link**: [40879421](https://pubmed.ncbi.nlm.nih.gov/40879421/)
+### 📄 Frailty.
+- **Authors**: Orkaby Ariela R, Schwartz Andrea Wershof, Callahan Kathryn E
+- **Journal**: Annals of internal medicine (2026)
+- **Link**: [41662715](https://pubmed.ncbi.nlm.nih.gov/41662715/)
 
-### 📄 Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.
-- **Authors**: Zhang Zheng, Ren Hao, Cheng Yongjia et al.
-- **Journal**: Journal of affective disorders (2025)
-- **Link**: [40738335](https://pubmed.ncbi.nlm.nih.gov/40738335/)
+### 📄 Niclosamide extends health span and reduces frailty by ameliorating mTORC1 hyperactivation in aging models.
+- **Authors**: Choi Pyeong Geun, Kim Hee Soo, Park So-Hyun et al.
+- **Journal**: Journal of advanced research (2026)
+- **Link**: [40274225](https://pubmed.ncbi.nlm.nih.gov/40274225/)
 
-### 📄 Cumulative atherogenic index of plasma exposure and cardiovascular disease risk: the mediating role of frailty in a Chinese middle-aged and elderly population.
-- **Authors**: Lin Yan, Jia Xiaocan, Shi Xuezhong et al.
-- **Journal**: Clinical rheumatology (2025)
-- **Link**: [41071474](https://pubmed.ncbi.nlm.nih.gov/41071474/)
+### 📄 Frailty trajectories and risk of incident advanced CKM syndrome: A national cohort analysis.
+- **Authors**: Li Haojiang, Li Qingqing, Sun Ru et al.
+- **Journal**: Archives of gerontology and geriatrics (2026)
+- **Link**: [41643295](https://pubmed.ncbi.nlm.nih.gov/41643295/)
 
 
 ## Falls (נפילות)
 
-### 📄 Home-based strength and balance exercises for fall prevention among older individuals of advanced age: a randomized controlled single-blind study.
-- **Authors**: Zhou Jian, Liu Bo, Xu Jian-Fang et al.
-- **Journal**: Annals of medicine (2025)
-- **Link**: [39918027](https://pubmed.ncbi.nlm.nih.gov/39918027/)
+### 📄 Effectiveness and Cost-Effectiveness of a Digital Falls Prevention Program Versus Usual Care to Improve Balance, Falls Risk, and Function in Older Adults: Protocol for the Keep-On-Keep-Up Randomized Controlled Trial.
+- **Authors**: Stanmore Emma, Parchment Amelia, Odebiyi Bolanle et al.
+- **Journal**: JMIR research protocols (2026)
+- **Link**: [41643062](https://pubmed.ncbi.nlm.nih.gov/41643062/)
 
-### 📄 Incident and recurrent falls among non-Hispanic Black and Hispanic men with chronic conditions.
-- **Authors**: Olokunlade Temitope, Sherman Ledric D, Benden Mark E et al.
-- **Journal**: Journal of safety research (2025)
-- **Link**: [41338796](https://pubmed.ncbi.nlm.nih.gov/41338796/)
+### 📄 Hospitalisation trends for falls and facial fractures in elderly Australian: A national ecological analysis, from 2013-14 to 2022-23.
+- **Authors**: Aminian Parmis, Eton Max, Tennant Marc et al.
+- **Journal**: Archives of gerontology and geriatrics (2026)
+- **Link**: [41643297](https://pubmed.ncbi.nlm.nih.gov/41643297/)
 
-### 📄 Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.
-- **Authors**: Liu Yi, Qiu Junjie, Huang Renlin et al.
-- **Journal**: Frontiers in public health (2025)
-- **Link**: [41306867](https://pubmed.ncbi.nlm.nih.gov/41306867/)
+### 📄 Fall-related deaths and acute healthcare utilisation in the last year of life among older adults in Latvia.
+- **Authors**: Bukova-Žideļūna Aija, Strukčinskienė Birutė, Villeruša Anita
+- **Journal**: Scientific reports (2026)
+- **Link**: [41699146](https://pubmed.ncbi.nlm.nih.gov/41699146/)
+- **Key Finding**: Falls are associated with mortality in older adults; however, evidence on healthcare use preceding fall-related death in Latvia remains limited...
 
 
 ## Dementia (דמנציה)
 
-### 📄 Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.
-- **Authors**: Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.
-- **Journal**: Pulmonology (2025)
-- **Link**: [39869458](https://pubmed.ncbi.nlm.nih.gov/39869458/)
+### 📄 Immune dysfunction in Alzheimer disease.
+- **Authors**: Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.
+- **Journal**: Nature reviews. Neuroscience (2026)
+- **Link**: [41315874](https://pubmed.ncbi.nlm.nih.gov/41315874/)
 
-### 📄 Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.
-- **Authors**: Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.
-- **Journal**: Neural regeneration research (2026)
-- **Link**: [40145977](https://pubmed.ncbi.nlm.nih.gov/40145977/)
-- **Key Finding**: Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modula...
+### 📄 Prevalence of Alzheimer's disease pathology in the community.
+- **Authors**: Aarsland Dag, Sunde Anita Lenora, Tovar-Rios Diego A et al.
+- **Journal**: Nature (2026)
+- **Link**: [41407852](https://pubmed.ncbi.nlm.nih.gov/41407852/)
 
-### 📄 Incretin Hormones GLP-1 and GIP Normalize Energy Utilization and Reduce Inflammation in the Brain in Alzheimer's Disease and Parkinson's Disease: From Repurposed GLP-1 Receptor Agonists to Novel Dual GLP-1/GIP Receptor Agonists as Potential Disease-Modifying Therapies.
-- **Authors**: Hölscher Christian
-- **Journal**: CNS drugs (2025)
-- **Link**: [40938528](https://pubmed.ncbi.nlm.nih.gov/40938528/)
+### 📄 Donanemab in early symptomatic Alzheimer's disease: results from the TRAILBLAZER-ALZ 2 long-term extension.
+- **Authors**: Zimmer Jennifer A, Sims John R, Evans Cynthia D et al.
+- **Journal**: The journal of prevention of Alzheimer's disease (2026)
+- **Link**: [41330788](https://pubmed.ncbi.nlm.nih.gov/41330788/)
+- **Key Finding**: Donanemab significantly slowed clinical progression in participants with early symptomatic Alzheimer's disease (AD) during the 76-week placebo-control...
 
 
 ## Deprescribing (דה-פרסקייבינג)
 
-### 📄 Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.
-- **Authors**: Mei Davide Antonio, Proietti Marco, Romiti Giulio Francesco et al.
-- **Journal**: GeroScience (2025)
-- **Link**: [41345290](https://pubmed.ncbi.nlm.nih.gov/41345290/)
-- **Key Finding**: Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex...
+### 📄 [Polypharmacy and nephrotoxicity].
+- **Authors**: Czock David, Ebinger Kathrin, Sommerer Claudia
+- **Journal**: Innere Medizin (Heidelberg, Germany) (2026)
+- **Link**: [41535444](https://pubmed.ncbi.nlm.nih.gov/41535444/)
 
-### 📄 Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.
-- **Authors**: Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.
-- **Journal**: The aging male : the official journal of the International Society for the Study of the Aging Male (2025)
-- **Link**: [40022664](https://pubmed.ncbi.nlm.nih.gov/40022664/)
-- **Key Finding**: Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group...
+### 📄 [Sustainable healthcare transition: A guide for deprescribing unnecessary biological tests].
+- **Authors**: Costedoat-Chalumeau Nathalie, Bortolotti Véronique, Michon Adrien et al.
+- **Journal**: La Revue de medecine interne (2026)
+- **Link**: [41679989](https://pubmed.ncbi.nlm.nih.gov/41679989/)
 
-### 📄 Clinical Integration and Evaluation of the STrategic Optimization of Prescription Medication Use in Patients on HemoDialysis (STOPMed-HD) Intervention.
-- **Authors**: Abbaticchio Angelina, Theodorlis Madeline, Cross Michelle S et al.
-- **Journal**: Canadian journal of kidney health and disease (2025)
-- **Link**: [41333972](https://pubmed.ncbi.nlm.nih.gov/41333972/)
+### 📄 [Why represcribing instead of deprescribing?].
+- **Authors**: Pazan Farhad, Wehling Martin
+- **Journal**: Innere Medizin (Heidelberg, Germany) (2026)
+- **Link**: [41563460](https://pubmed.ncbi.nlm.nih.gov/41563460/)
 
 
 ## Sarcopenia (סרקופניה)
 
-### 📄 International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).
-- **Authors**: Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al.
-- **Journal**: Journal of the International Society of Sports Nutrition (2025)
-- **Link**: [39699070](https://pubmed.ncbi.nlm.nih.gov/39699070/)
-- **Key Finding**: The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least o...
+### 📄 Novel inflammatory-related indices for screening sarcopenia: Insights from a population-based study.
+- **Authors**: Tong Yuanhao, Li Huayu, Cheng Yang et al.
+- **Journal**: Nutrition (Burbank, Los Angeles County, Calif.) (2026)
+- **Link**: [41161154](https://pubmed.ncbi.nlm.nih.gov/41161154/)
+- **Key Finding**: The progression of sarcopenia is closely associated with inflammation...
 
-### 📄 Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.
-- **Authors**: Chen Alissa S, Batsis John A
-- **Journal**: Diabetes (2025)
-- **Link**: [40644314](https://pubmed.ncbi.nlm.nih.gov/40644314/)
+### 📄 Consensus statement on vitamin D role in metabolic health.
+- **Authors**: Giustina Andrea, di Filippo Luigi, Aleksova Aneta et al.
+- **Journal**: Metabolism: clinical and experimental (2026)
+- **Link**: [41435994](https://pubmed.ncbi.nlm.nih.gov/41435994/)
 
-### 📄 Thyroid hormone imbalance, malnutrition, and sarcopenia: a triad of muscle health challenges.
-- **Authors**: Nappi Annarita, Sagliocchi Serena, Cicatiello Annunziata Gaetana et al.
-- **Journal**: Journal of basic and clinical physiology and pharmacology (2025)
-- **Link**: [41233980](https://pubmed.ncbi.nlm.nih.gov/41233980/)
+### 📄 Comprehensive evaluation of appendicular lean mass and sarcopenia on human health: evidence from the NHANES program.
+- **Authors**: Long Xiao, Chen Ruizhi, Lu Yanmin et al.
+- **Journal**: Experimental gerontology (2026)
+- **Link**: [41579911](https://pubmed.ncbi.nlm.nih.gov/41579911/)
 
 
 ## End Of Life (טיפול סוף-חיים)
 
-### 📄 Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.
-- **Authors**: Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.
-- **Journal**: Nursing open (2025)
-- **Link**: [41339288](https://pubmed.ncbi.nlm.nih.gov/41339288/)
+### 📄 Palliative Care Admission at End-of-Life in Liver Cancer: A 10 Year Population-Based Study of 3565 Deaths in Australia.
+- **Authors**: Mitchell Rebecca J, Cai Shenghan, George Jacob et al.
+- **Journal**: Cancer medicine (2026)
+- **Link**: [41730761](https://pubmed.ncbi.nlm.nih.gov/41730761/)
+- **Key Finding**: This study examined sociodemographic and clinical characteristics associated with palliative care admission in the last 5 years of life for people wit...
 
-### 📄 "End-of-Life Care" in Cardiac Surgery.
-- **Authors**: Lichtenberg Artur, Scherner Max, Meier Stefan et al.
-- **Journal**: The Thoracic and cardiovascular surgeon (2025)
-- **Link**: [41218637](https://pubmed.ncbi.nlm.nih.gov/41218637/)
+### 📄 Symptom burden and palliative care in patients with hematologic malignancies: a single-center experience.
+- **Authors**: Holopainen Annasofia, Kuittinen Taru, Tyynelä-Korhonen Kristiina et al.
+- **Journal**: Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer (2026)
+- **Link**: [41733749](https://pubmed.ncbi.nlm.nih.gov/41733749/)
 
-### 📄 Demystifying Compassionate Communities.
-- **Authors**: Ng Yong Hao, Aoun Samar
-- **Journal**: Palliative care and social practice (2025)
-- **Link**: [41246289](https://pubmed.ncbi.nlm.nih.gov/41246289/)
+### 📄 The Perspectives of Families in Decision-Making Conflicts Related to Palliative Care Patients With Mechanical Ventilation in Taiwan.
+- **Authors**: Wang Shou-Yu, Lin Li-Wei, Wang Jiun-Long et al.
+- **Journal**: The American journal of hospice & palliative care (2026)
+- **Link**: [40349186](https://pubmed.ncbi.nlm.nih.gov/40349186/)
+- **Key Finding**: The results revealed that family members experienced palliative care medical decision-making difficulties (61.40% = <2.5)...
 
 
 ## Incontinence (אי שליטה בסוגרים)
 
-### 📄 Prevalence and associated factors of fecal incontinence: a global population-based study.
-- **Authors**: van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.
-- **Journal**: Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association (2025)
-- **Link**: [41297740](https://pubmed.ncbi.nlm.nih.gov/41297740/)
+### 📄 Neurobrucellosis presenting with concurrent paraplegia and global aphasia in an elderly butcher: A case report and literature review.
+- **Authors**: Sanaei Delir Zavaragh Davood, Abbasi Jamaat Negar, Pourabedini Aghdam Yasamin et al.
+- **Journal**: IDCases (2026)
+- **Link**: [41717057](https://pubmed.ncbi.nlm.nih.gov/41717057/)
 
-### 📄 The impact of ageing on the structural compositions of the mucosa of human colon.
-- **Authors**: Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al.
-- **Journal**: Tissue & cell (2025)
-- **Link**: [40848414](https://pubmed.ncbi.nlm.nih.gov/40848414/)
-- **Key Finding**: In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not...
+### 📄 Sleep disturbance and risk of incident incontinence in middle-aged and older Chinese adults: a 4-year national cohort study.
+- **Authors**: Shen Yuefan, Zhang Weixin, Gao Jianguo et al.
+- **Journal**: BMJ open (2026)
+- **Link**: [41663174](https://pubmed.ncbi.nlm.nih.gov/41663174/)
 
-### 📄 SGLT2 inhibitors do not cause de novo urinary incontinence in diabetic female patients with chronic kidney disease.
-- **Authors**: Helvacı Özant, Karaoğlan Ayşegül, Helvacı Burçak Cavnar et al.
-- **Journal**: International urology and nephrology (2025)
-- **Link**: [40591200](https://pubmed.ncbi.nlm.nih.gov/40591200/)
+### 📄 Quercetin alleviates incontinence-associated dermatitis via IKK/NF-κB pathway.
+- **Authors**: Zhang Yan, Zhao Ge, Duan Junfang et al.
+- **Journal**: Scientific reports (2026)
+- **Link**: [41617834](https://pubmed.ncbi.nlm.nih.gov/41617834/)
 

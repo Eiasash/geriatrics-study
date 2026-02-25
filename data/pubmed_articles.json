@@ -1,271 +1,270 @@
 {
   "delirium": [
     {
-      "pmid": "40574569",
-      "title": "Remimazolam tosylate or propofol and delirium in frail elderly patients after hip surgery: A randomised controlled clinical trial.",
-      "abstract": "Remimazolam tosylate, a novel short-acting benzodiazepine, is increasingly being used in general anaesthesia, but its role in the incidence of postoperative delirium is uncertain, particularly in frail elderly patients.",
-      "authors": "Cai Wenlan, Shen Fangming, Zhu Lanyue et al.",
-      "journal": "European journal of anaesthesiology",
-      "year": "2025",
+      "pmid": "41217431",
+      "title": "Effect of remimazolam on postoperative delirium in elderly patients undergoing major abdominal surgery: a randomized controlled Trial.",
+      "abstract": "Older patients are at a high risk of postoperative delirium (POD), and the choice of general anesthesia may affect postoperative cognitive outcomes. As a new type of benzodiazepine, remimazolam has wide application prospects in clinical anesthesia owing to its rapid onset, non-organ metabolism, and low respiratory and circulatory depression. This study aimed to compare the effect of propofol-based versus remimazolam-based general anesthesia on the incidence of delirium after major abdominal surgery in older adults.",
+      "authors": "Zhang Keyao, Zhong Leiyuan, Shang Bin et al.",
+      "journal": "International journal of surgery (London, England)",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40574569/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41217431/"
     },
     {
-      "pmid": "41182057",
-      "title": "Ambulatory ophthalmic anesthesia: what is important.",
-      "abstract": "This review addresses aspects relevant to caregivers facing increased numbers of adult and elderly patients seeking ambulatory medical service for ophthalmic surgery.",
-      "authors": "Castello Roberto, Neth Jens",
-      "journal": "Current opinion in anaesthesiology",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41182057/"
-    },
-    {
-      "pmid": "40720202",
-      "title": "Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.",
-      "abstract": "Postoperative delirium is a common and serious complication in orthopedic surgery patients, particularly in the elderly. This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.",
-      "authors": "Niu Yanan, Wang Qiang, Lu Jin et al.",
-      "journal": "Annals of medicine",
-      "year": "2025",
+      "pmid": "41344677",
+      "title": "Saccade Tasks: A Noninvasive Approach for Predicting Postoperative Delirium in Elderly Arthroplasty Patients.",
+      "abstract": "Postoperative delirium (POD) is a prevalent complication in elderly surgical patients. It is associated with long-term cognitive impairment and increased dementia risk. However, reliable tools to predict POD are currently lacking.",
+      "authors": "Kang Meng, Lai Xuan, Wu Junru et al.",
+      "journal": "Anesthesiology",
+      "year": "2026",
       "key_findings": [
-        "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients."
+        "It is associated with long-term cognitive impairment and increased dementia risk"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40720202/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41344677/"
+    },
+    {
+      "pmid": "41646623",
+      "title": "Electroencephalogram-guided anesthesia and postoperative anxiety and depression in elderly gastric cancer patients with sleep disorders.",
+      "abstract": "Preoperative sleep disorders are common in elderly gastric cancer patients and may increase the risk of postoperative anxiety and depression. Traditional anesthesia depth monitoring relies on clinical signs, which may not accurately reflect the true anesthetic state in elderly patients. This study evaluates the effect of individualized anesthesia guided by electroencephalogram (EEG) monitoring on postoperative anxiety and depression symptoms in elderly gastric cancer patients with preoperative sleep disorders.",
+      "authors": "Zhang Xiao-Min, Yuan Li, Chen Yan-Lin et al.",
+      "journal": "World journal of psychiatry",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41646623/"
     }
   ],
   "frailty": [
     {
-      "pmid": "40879421",
-      "title": "Reduction of Antihypertensive Treatment in Nursing Home Residents.",
-      "abstract": "Among older adults with frailty, evidence on the benefits and risks of discontinuing antihypertensive drugs is limited.",
-      "authors": "Benetos Athanase, Gautier Sylvie, Freminet Anne et al.",
-      "journal": "The New England journal of medicine",
-      "year": "2025",
+      "pmid": "41662715",
+      "title": "Frailty.",
+      "abstract": "Frailty is a syndrome of decreased reserve across multiple physiologic systems that is associated with greater risk for hospitalizations, disability, institutionalization, and other adverse outcomes, including mortality. Patients with frailty, most of whom are older adults, may be more likely to experience adverse outcomes due to iatrogenic causes, such as higher-risk medications or procedures. Guidelines recommend frailty screening for both chronic disease management and in-hospital care, as identification of frailty allows for risk mitigation and alignment of care with patients' goals. In addition, some interventions may delay or reverse frailty, thus increasing physiologic reserve and improving day-to-day function. This article reviews frailty definitions, approaches to assessment in different care settings, and management.",
+      "authors": "Orkaby Ariela R, Schwartz Andrea Wershof, Callahan Kathryn E",
+      "journal": "Annals of internal medicine",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40879421/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41662715/"
     },
     {
-      "pmid": "40738335",
-      "title": "Sleep disorders and aging: Mendelian randomization analysis of epigenetic and frailty markers.",
-      "abstract": "Sleep disorders-including daytime sleepiness (DS), insomnia, and sleep apnea (SA)-have been linked to aging-related phenotypes, but their causal roles remain unclear. This study aimed to examine the potential causal effects of these sleep traits on biological aging using a Mendelian randomization (MR) approach.",
-      "authors": "Zhang Zheng, Ren Hao, Cheng Yongjia et al.",
-      "journal": "Journal of affective disorders",
-      "year": "2025",
+      "pmid": "40274225",
+      "title": "Niclosamide extends health span and reduces frailty by ameliorating mTORC1 hyperactivation in aging models.",
+      "abstract": "Frailty is characterized by an increased vulnerability to disease and physical debilitation due to a decline in the body's capacity to maintain homeostasis during aging. Therefore, effective management of frailty is crucial for promoting health. Although the role of niclosamide (NIC), an autophagy promoter, has been studied for the treatment of cancer, infectious diseases, and metabolic disorders, no research has focused on its effects on aging.",
+      "authors": "Choi Pyeong Geun, Kim Hee Soo, Park So-Hyun et al.",
+      "journal": "Journal of advanced research",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40738335/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40274225/"
     },
     {
-      "pmid": "41071474",
-      "title": "Cumulative atherogenic index of plasma exposure and cardiovascular disease risk: the mediating role of frailty in a Chinese middle-aged and elderly population.",
-      "abstract": "Atherosclerosis have been implicated in cardiovascular disease (CVD) risks, and whether frailty played a mediating role in this association was unclear.",
-      "authors": "Lin Yan, Jia Xiaocan, Shi Xuezhong et al.",
-      "journal": "Clinical rheumatology",
-      "year": "2025",
+      "pmid": "41643295",
+      "title": "Frailty trajectories and risk of incident advanced CKM syndrome: A national cohort analysis.",
+      "abstract": "The interplay between frailty dynamics and the newly defined Cardiovascular-Kidney-Metabolic (CKM) syndrome remains poorly understood. We aimed to quantify the association between frailty transitions and the risk of incident advanced CKM syndrome and identify modifiable drivers of frailty progression.",
+      "authors": "Li Haojiang, Li Qingqing, Sun Ru et al.",
+      "journal": "Archives of gerontology and geriatrics",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41071474/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41643295/"
     }
   ],
   "falls": [
     {
-      "pmid": "39918027",
-      "title": "Home-based strength and balance exercises for fall prevention among older individuals of advanced age: a randomized controlled single-blind study.",
-      "abstract": "This research was to explore the effectiveness, safety, and adherence of home-based strength and balance exercises for fall prevention among the self-reliant individuals of advanced age and analyzed the beneficial components.",
-      "authors": "Zhou Jian, Liu Bo, Xu Jian-Fang et al.",
-      "journal": "Annals of medicine",
-      "year": "2025",
+      "pmid": "41643062",
+      "title": "Effectiveness and Cost-Effectiveness of a Digital Falls Prevention Program Versus Usual Care to Improve Balance, Falls Risk, and Function in Older Adults: Protocol for the Keep-On-Keep-Up Randomized Controlled Trial.",
+      "abstract": "Falls are the primary cause of fatal and nonfatal accidental injuries in older adults. The World Falls Prevention Guidelines recommend balance-challenging, functional exercise programs as a key strategy for falls prevention, but access, uptake, and adherence to these programs in community settings remain suboptimal. Keep-On-Keep-Up (KOKU), a digital, National Health Service-approved program, was codeveloped with older adults and therapists to provide progressive, evidence-based exercises and to raise awareness of falls prevention strategies.",
+      "authors": "Stanmore Emma, Parchment Amelia, Odebiyi Bolanle et al.",
+      "journal": "JMIR research protocols",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39918027/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41643062/"
     },
     {
-      "pmid": "41338796",
-      "title": "Incident and recurrent falls among non-Hispanic Black and Hispanic men with chronic conditions.",
-      "abstract": "While much is known about the complexities of fall-related risks among older adults, less is known about the risk for falls among men, and especially older non-Hispanic Black and Hispanic men with chronic conditions. To address this crucial gap in safety research, this study examined factors associated with incident falls (1 fall) and recurrent falling (2+ falls) among non-Hispanic Black and Hispanic men ages ≥60 years with ≥1 chronic condition.",
-      "authors": "Olokunlade Temitope, Sherman Ledric D, Benden Mark E et al.",
-      "journal": "Journal of safety research",
-      "year": "2025",
+      "pmid": "41643297",
+      "title": "Hospitalisation trends for falls and facial fractures in elderly Australian: A national ecological analysis, from 2013-14 to 2022-23.",
+      "abstract": "This study investigated national trends in fall- and facial fracture-related hospitalisations among Australians aged 65 years and over from 2013 to 14 to 2022-23, and examined the association between hospitalisation of specific facial fracture subtypes and fall rates.",
+      "authors": "Aminian Parmis, Eton Max, Tennant Marc et al.",
+      "journal": "Archives of gerontology and geriatrics",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41338796/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41643297/"
     },
     {
-      "pmid": "41306867",
-      "title": "Global, regional, and national burden of falls from 1990 to 2021: a comprehensive analysis with a focus on falls attributable to reduced bone mass and projections to 2045.",
-      "abstract": "This study aims to analyze the global epidemiological trends of falls from 1990 to 2021, providing an in-depth understanding of their evolving patterns. It explores the changing trends of falls caused by reduced bone mass in middle-aged and older adults, offering valuable insights to healthcare policymakers for more effective resource allocation.",
-      "authors": "Liu Yi, Qiu Junjie, Huang Renlin et al.",
-      "journal": "Frontiers in public health",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41306867/"
+      "pmid": "41699146",
+      "title": "Fall-related deaths and acute healthcare utilisation in the last year of life among older adults in Latvia.",
+      "abstract": "Falls are associated with mortality in older adults; however, evidence on healthcare use preceding fall-related death in Latvia remains limited. This study examined fall-related deaths and hospital and emergency medical service utilisation in the last year of life among adults aged 65 years and older in Latvia. A cross-sectional registry-based study was conducted using national mortality data on individuals who died of falls-related causes (ICD-10 W00-W19) between 2019 and 2023. Mortality records were individually linked to state-funded inpatient and emergency medical service data for the preceding 12 months. The study included 549 fall-related deaths (median age 83 years; 54.6% female). In the year preceding death, 60.7% of individuals had been hospitalised once and 31.7% twice or more, while 47.5% had made one emergency medical service call and 34.1% had made two or more. Most deaths occurred in a hospital (75.8%), with an increasing trend over time. Higher odds of dying in the hospital were observed among individuals with injury-related acute healthcare use and head injuries. These findings highlight the importance of integrated fall-prevention strategies, improved post-discharge follow-up, and coordinated care across emergency, hospital, primary, and community services to reduce fall-related mortality among older adults.",
+      "authors": "Bukova-Žideļūna Aija, Strukčinskienė Birutė, Villeruša Anita",
+      "journal": "Scientific reports",
+      "year": "2026",
+      "key_findings": [
+        "Falls are associated with mortality in older adults; however, evidence on healthcare use preceding fall-related death in Latvia remains limited"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41699146/"
     }
   ],
   "dementia": [
     {
-      "pmid": "39869458",
-      "title": "Respiratory syncytial virus vaccination in older adults and patients with chronic disorders: A position paper from the Portuguese Society of Pulmonology, the Portuguese Association of General and Family Medicine, the Portuguese Society of Cardiology, the Portuguese Society of Infectious Diseases and Clinical Microbiology, the Portuguese Society of Endocrinology, Diabetes and Metabolism, and the Portuguese Society of Internal Medicine.",
-      "abstract": "Respiratory syncytial virus (RSV) is an important cause of lower respiratory tract infection, hospitalisation and death in adults.",
-      "authors": "Alfaro Tiago, Froes Filipe, Vicente Cláudia et al.",
-      "journal": "Pulmonology",
-      "year": "2025",
+      "pmid": "41315874",
+      "title": "Immune dysfunction in Alzheimer disease.",
+      "abstract": "Emerging evidence highlights the crucial role of peripheral immune cells in maintaining brain homeostasis and their influence on the pathology of Alzheimer disease (AD). Genome-wide association studies have identified numerous AD risk variants in genes expressed by immune cells, implicating innate and adaptive immune pathways in disease progression. Advances in neuroimmunology have revealed that immune cell crosstalk involving T cells, B cells, monocytes and/or macrophages and neutrophils can modulate the hallmark features of AD, including amyloid plaque accumulation, tau pathology and chronic neuroinflammation. Mechanistic insights suggest that chronic peripheral inflammation, immune exhaustion, metabolic dysfunction and epigenetic reprogramming exacerbate neurodegeneration in AD by promoting toxic inflammation and impairing protein clearance in the brain. These findings may catalyse the development of novel immunomodulatory strategies, such as immune checkpoint inhibition and cytokine targeting, among others, for AD. This Review examines peripheral immune alterations in AD, evaluates related therapeutic opportunities and highlights key knowledge gaps, particularly the need for human-derived data to advance translational progress. Future research should prioritize personalized approaches that integrate genetic risk, immune profiling and ageing to inform next-generation therapies for AD.",
+      "authors": "Butovsky Oleg, Rosenzweig Neta, Kleemann Kilian L et al.",
+      "journal": "Nature reviews. Neuroscience",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39869458/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41315874/"
     },
     {
-      "pmid": "40145977",
-      "title": "Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.",
-      "abstract": "For diverse neurodegenerative disorders, microglial cells are activated. Furthermore, dysfunctional and hyperactivated microglia initiate mitochondrial autophagy, oxidative stress, and pathological protein accumulation, ending with neuroinflammation that exacerbates damage to dopaminergic neurons and contributes significantly to the pathology of neurodegenerative disorder. Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments. This review summarizes the role of microglia neurodegenerative diseases, such as Alzheimer's disease, Parkinson's disease, multiple sclerosis, multiple system atrophy, amyotrophic lateral sclerosis, frontotemporal dementia, progressive supranuclear palsy, cortical degeneration, Lewy body dementia, and Huntington's disease. It also discusses novel forms of cell death such as ferroptosis, cuproptosis, disulfidptosis, and parthanatos (poly(adenosine diphosphate ribose) polymerase 1-dependent cell death), as well as the impact of regulatory factors related to microglial inflammation on microglial activation and neuroinflammation. The aim is to identify potential targets for microglial cell therapy in neurodegenerative diseases.",
-      "authors": "Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al.",
-      "journal": "Neural regeneration research",
+      "pmid": "41407852",
+      "title": "Prevalence of Alzheimer's disease pathology in the community.",
+      "abstract": "The prevalence of Alzheimer's disease neuropathological changes (ADNCs), the leading cause of cognitive impairment, remains uncertain. Recent blood-based biomarkers enable scalable assessment of ADNCs",
+      "authors": "Aarsland Dag, Sunde Anita Lenora, Tovar-Rios Diego A et al.",
+      "journal": "Nature",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41407852/"
+    },
+    {
+      "pmid": "41330788",
+      "title": "Donanemab in early symptomatic Alzheimer's disease: results from the TRAILBLAZER-ALZ 2 long-term extension.",
+      "abstract": "Donanemab significantly slowed clinical progression in participants with early symptomatic Alzheimer's disease (AD) during the 76-week placebo-controlled period of TRAILBLAZER-ALZ 2.",
+      "authors": "Zimmer Jennifer A, Sims John R, Evans Cynthia D et al.",
+      "journal": "The journal of prevention of Alzheimer's disease",
       "year": "2026",
       "key_findings": [
-        "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments"
+        "Donanemab significantly slowed clinical progression in participants with early symptomatic Alzheimer's disease (AD) during the 76-week placebo-controlled period of TRAILBLAZER-ALZ 2."
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40145977/"
-    },
-    {
-      "pmid": "40938528",
-      "title": "Incretin Hormones GLP-1 and GIP Normalize Energy Utilization and Reduce Inflammation in the Brain in Alzheimer's Disease and Parkinson's Disease: From Repurposed GLP-1 Receptor Agonists to Novel Dual GLP-1/GIP Receptor Agonists as Potential Disease-Modifying Therapies.",
-      "abstract": "Alzheimer's disease (AD) and Parkinson's disease (PD) are chronic neurodegenerative disorders with few effective drug treatments available. An underrated element of these diseases is that glucose uptake and energy utilization is much reduced in neurons. In the brains of patients, signaling of insulin, insulin-like growth factor 1, and other growth factors is downregulated early on. This leads to reduced glucose utilization and impaired mitochondrial function. In an attempt to compensate for the loss, other pathways are upregulated, e.g., the increased use of ketones produced from fatty acids by astrocytes that are shuttled to neurons. In addition, amino acids are increasingly used to generate energy. Despite this, neurons generate less and less energy over time, leading to impaired synaptic activity, reduced cell repair, mitogenesis, autophagy, the accumulation of misfolded proteins, and finally, to cell death. At the same time, the chronic inflammation response in the brain that is part of these diseases continues to damage neurons. Glucagon-like peptide 1 (GLP-1) and glucose-dependent insulinotropic polypeptide (GIP) are peptide hormones and growth factors that have shown neuroprotective effects in animal studies and in clinical trials. GLP-1 and GIP receptor agonists were able to reduce inflammation while normalizing growth factor signaling and energy utilization in the brain. Insulin signaling was improved and energy utilization, glucose uptake, mitogenesis, and mitochondrial functionality was brought back to physiological levels. In addition, the chronic inflammation response and the levels of proinflammatory cytokines in the brain were much reduced. Clinical trials testing GLP-1 receptor agonists in patients with AD or PD have been conducted and have shown first successes, serving as proof of concept that activating GLP-1 receptor is a sensible strategy to treat AD/PD. A phase II study testing liraglutide in patients with AD showed first improvements, and two phase II trials testing exendin-4 (exenatide, Bydureon",
-      "authors": "Hölscher Christian",
-      "journal": "CNS drugs",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40938528/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41330788/"
     }
   ],
   "deprescribing": [
     {
-      "pmid": "41345290",
-      "title": "Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.",
-      "abstract": "Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex' patient phenotypes. Possible differences between European and Asian patients regarding these aspects have not been studied. We studied AF patients derived from two large prospective observational AF registries, conducted in Europe and Asia. Multimorbidity and polypharmacy were defined according to the number of comorbidities and drugs at baseline. Frailty was defined according to a 40-items frailty index (FI). Prescription of OAC was assessed at baseline. The primary outcome was the composite of all-cause death and major adverse cardiovascular events. European patients had a higher burden of multimorbidity, frailty, and polypharmacy domains compared with Asians. Asian patients with these domains were less likely to be prescribed OAC than Europeans, especially those who were frail. After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs. OR 0.47, 95% CI 0.40-0.55, p",
-      "authors": "Mei Davide Antonio, Proietti Marco, Romiti Giulio Francesco et al.",
-      "journal": "GeroScience",
-      "year": "2025",
-      "key_findings": [
-        "Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex' patient phenotypes",
-        "After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41345290/"
-    },
-    {
-      "pmid": "40022664",
-      "title": "Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.",
-      "abstract": "Type 2 diabetes mellitus (T2DM) is a common chronic disease in the elderly. Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group. This study aimed to identify fall risk factors in older adults with T2DM.",
-      "authors": "Bayrak Muharrem, Kaşali Kamber, Güner Merve et al.",
-      "journal": "The aging male : the official journal of the International Society for the Study of the Aging Male",
-      "year": "2025",
-      "key_findings": [
-        "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40022664/"
-    },
-    {
-      "pmid": "41333972",
-      "title": "Clinical Integration and Evaluation of the STrategic Optimization of Prescription Medication Use in Patients on HemoDialysis (STOPMed-HD) Intervention.",
-      "abstract": "People undergoing hemodialysis (HD) take an average of 12 medications daily, with 93% prescribed at least one potentially inappropriate medication or dose. Polypharmacy is commonly defined as taking 5 or more medications per day; however, it can also refer to the use of inappropriate medication choices and doses. Polypharmacy can lead to serious health consequences, including drug-drug interactions, falls, and hospitalizations. Deprescribing, the process of stopping or gradually reducing the dose of a medication that may be causing harm or offers no benefit, can reduce polypharmacy among older adults. However, little research focuses on deprescribing in the HD population, and few tools exist to support deprescribing in HD. To address this gap, we developed and validated the STrategic Optimization of Medication Use in Patients on HemoDialysis (STOPMed-HD) intervention, a deprescribing toolkit which includes clinician-focused algorithms, monitoring forms, and evidence tables, and patient-facing information bulletins and videos. Co-developed with clinicians and patients, the toolkit reflects patient priorities and aligns with their deprescribing goals. This report describes the implementation and evaluation strategy of the STOPMed-HD intervention at 4 HD sites across Canada, and presents insights into barriers, facilitators, and key considerations for implementation.",
-      "authors": "Abbaticchio Angelina, Theodorlis Madeline, Cross Michelle S et al.",
-      "journal": "Canadian journal of kidney health and disease",
-      "year": "2025",
+      "pmid": "41535444",
+      "title": "[Polypharmacy and nephrotoxicity].",
+      "abstract": "Polypharmacy is common among older adults. Renal effects can range from mild functional increases in creatinine to structural tubular injury.",
+      "authors": "Czock David, Ebinger Kathrin, Sommerer Claudia",
+      "journal": "Innere Medizin (Heidelberg, Germany)",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41333972/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41535444/"
+    },
+    {
+      "pmid": "41679989",
+      "title": "[Sustainable healthcare transition: A guide for deprescribing unnecessary biological tests].",
+      "abstract": "",
+      "authors": "Costedoat-Chalumeau Nathalie, Bortolotti Véronique, Michon Adrien et al.",
+      "journal": "La Revue de medecine interne",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41679989/"
+    },
+    {
+      "pmid": "41563460",
+      "title": "[Why represcribing instead of deprescribing?].",
+      "abstract": "Demographic change is leading to an ever-increasing prevalence of multimorbidity and polypharmacy. At the same time, older people are excluded from randomized controlled approval studies. Due to this age-blind approach, there is a lack of evidence regarding the efficacy, safety, and suitability for older people of many drugs used by the main consumers of medicinal products. To solve this problem, many different list approaches and tools have been developed, often using a combination of existing evidence and expert opinion.",
+      "authors": "Pazan Farhad, Wehling Martin",
+      "journal": "Innere Medizin (Heidelberg, Germany)",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41563460/"
     }
   ],
   "sarcopenia": [
     {
-      "pmid": "39699070",
-      "title": "International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).",
-      "abstract": "Position Statement: The International Society of Sports Nutrition (ISSN) bases the following position stand on an analysis of the literature regarding the effects of β-Hydroxy-β-Methylbutyrate (HMB). The following 12 points have been approved by the Research Committee of the Society: 1. HMB is a metabolite of the amino acid leucine that is naturally produced in both humans and other animals. Two forms of HMB have been studied: Calcium HMB (HMB-Ca) and a free acid form of HMB (HMB-FA). HMB-FA appears to lead to increased appearance of HMB in the bloodstream when compared to HMB-Ca, though recent results are mixed. 2. The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year. 3. There are no negative effects of HMB-Ca and HMB-FA on glucose tolerance and insulin sensitivity in humans. There may be improvements in glucose metabolism in younger adults. 4. The primary mode of action of HMB appears to be through its dual mechanism to enhance muscle protein synthesis and suppress muscle protein breakdown. HMB's activation of mTORC1 is independent of the leucine-sensing pathway (Sestrin2-GATOR2 complex). 5. HMB may help reduce muscle damage and promote muscle recovery, which can promote muscle growth/repair. HMB may also have anti-inflammatory effects, which could contribute to reducing muscle damage and soreness. 6. HMB consumption in close proximity to an exercise bout may be beneficial to increase muscle protein synthesis and attenuate the inflammatory response. HMB can provide a beneficial physiological effect when consumed both acutely and chronically in humans. 7. Daily HMB supplementation (38 mg/kg body weight) in combination with exercise training may improve body composition through increasing lean mass and/or decreasing fat mass with benefits in participants across age, sex, and training status. The most pronounced of these improvements in body composition with HMB have been observed in studies with robust resistance training programs and dietary control. 8. HMB may improve strength and power in untrained individuals, but its performance benefits in trained athletes are mixed and increase with an increase in study duration (>6 weeks). HMB's beneficial effects on athletic performance are thought to be driven by improved recovery. 9. HMB supplementation appears to potentially have a positive impact on aerobic performance, especially in trained athletes. The mechanisms of the effects are unknown. 10. HMB supplementation may be important in a non-exercising sedentary and aging population to improve muscle strength, functionality, and muscle quality. The effects of HMB supplementation with exercise are varied, but the combination may have a beneficial effect on the treatment of age-associated sarcopenia under select conditions. 11. HMB may be effective in countering muscle disuse atrophy during periods of inactivity due to illness or injury. The modulation of mitochondrial dynamics and lipid metabolism by HMB may be a potential mechanism for preventing disuse atrophy and aiding rehabilitation beyond HMB's effects on rates of muscle protein synthesis and degradation. 12. The efficacy of HMB in combination with certain nutrients may be enhanced under select conditions.",
-      "authors": "Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al.",
-      "journal": "Journal of the International Society of Sports Nutrition",
-      "year": "2025",
+      "pmid": "41161154",
+      "title": "Novel inflammatory-related indices for screening sarcopenia: Insights from a population-based study.",
+      "abstract": "The progression of sarcopenia is closely associated with inflammation. However, systematic data is currently limited linking sarcopenia to inflammatory-related indices, especially neutrophil percentage-to-albumin ratio (NPAR).",
+      "authors": "Tong Yuanhao, Li Huayu, Cheng Yang et al.",
+      "journal": "Nutrition (Burbank, Los Angeles County, Calif.)",
+      "year": "2026",
       "key_findings": [
-        "The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year"
+        "The progression of sarcopenia is closely associated with inflammation"
       ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/39699070/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41161154/"
     },
     {
-      "pmid": "40644314",
-      "title": "Treating Sarcopenic Obesity in the Era of Incretin Therapies: Perspectives and Challenges.",
-      "abstract": "Sarcopenic obesity, a subtype of obesity, is marked by reduced skeletal muscle mass and function, or sarcopenia, and poses a significant health challenge to older adults as it affects an estimated 28.3% of people aged >60 years. This subtype is unique to older adults as aging exacerbates sarcopenia and obesity due to changes in energy metabolism, hormones and inflammatory markers, and lifestyle factors. Traditional treatments for sarcopenic obesity have been focused on exercise and dietary modifications to reduce fat while maintaining muscle mass. Newer glucagon-like peptide 1 receptor agonists (GLP-1RAs) and dual gastric inhibitory polypeptide/GLP-1 receptor agonists (GIP/GLP-1RAs), including liraglutide, semaglutide, and tirzepatide, have shown great promise to reduce weight, treat obesity-related complications, improve physical function, and improve quality of life, in younger clinical trial populations. However, the use of GLP-1RAs and GIP/GLP-1RAs has not been exhaustively evaluated in older adults with sarcopenic obesity. These medications come with the risk of loss of muscle mass and an increased rate of adverse events. Thus, clinicians should use them cautiously by weighing the potential benefits against their risks. Herein, we discuss a possible approach to using GLP-1RAs and GIP/GLP-1RAs in patients with sarcopenic obesity, including considerations for patient identification, monitoring, maintenance, and discontinuation. In this article we also discuss the emerging treatments that will be available, which may include activin type II receptor antibodies and selective androgen receptor agonists. We conclude by highlighting the advancement of geroscience as a promising field for individualizing treatments in the future.",
-      "authors": "Chen Alissa S, Batsis John A",
-      "journal": "Diabetes",
-      "year": "2025",
+      "pmid": "41435994",
+      "title": "Consensus statement on vitamin D role in metabolic health.",
+      "abstract": "The 8th International Conference Controversies in Vitamin D, held in September 2024, convened leading experts to address the multifaceted role of vitamin D in human health. Key discussions focused on its influence on metabolic health, including effects on sarcopenia, muscle function, and energy metabolism, as well as its role in obesity, cardiovascular health, and diabetes. Preclinical evidence was presented, suggesting a pivotal role of vitamin D in regulating muscle function and repair, potentially preventing sarcopenia. A relationship between low vitamin D (25[OH]D) concentrations and increased risk of cardiovascular diseases and diabetes was supported by several preclinical and clinical studies. Vitamin D supplementation was recently demonstrated to help improve glycemia and reduce the progression to diabetes and increase the likelihood of regression to normal glucose regulation in adults with prediabetes. Despite mixed outcomes from large, population-based randomized clinical trials, the conference underscored the critical need for personalized research, through disease-specific clinical trials, to fully elucidate the therapeutic potential of vitamin D supplementation, particularly in chronic conditions such as cardiovascular diseases and diabetes. In conclusion, while vitamin D demonstrates considerable promise in modifying a wide array of metabolic health concerns, rigorous scientific inquiry is essential to deepen our understanding of its mechanisms as well as potential protective effects and establish evidence-based guidelines for supplementation. This growing body of work has the potential to significantly enhance clinical outcomes and improve public health strategies, calling for continued exploration and collaboration in the field of vitamin D research.",
+      "authors": "Giustina Andrea, di Filippo Luigi, Aleksova Aneta et al.",
+      "journal": "Metabolism: clinical and experimental",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40644314/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41435994/"
     },
     {
-      "pmid": "41233980",
-      "title": "Thyroid hormone imbalance, malnutrition, and sarcopenia: a triad of muscle health challenges.",
-      "abstract": "Sarcopenia and malnutrition are increasingly recognized as major determinants of morbidity and functional decline in aging and chronically ill populations. Thyroid hormones (THs), particularly triiodothyronine (T3), play a critical role in regulating skeletal muscle homeostasis, influencing myogenesis, mitochondrial function, metabolic rate, and fibre-type specification. Alterations in thyroid function, both hypo- and hyperthyroidism, negatively impact muscle protein turnover, leading to impaired strength and muscle wasting. Notably, nutritional status modulates TH metabolism at multiple levels: malnutrition impairs deiodinase activity, alters TH transport, and reduces peripheral T3 availability, thereby contributing to the low T3 syndrome frequently observed in frail or undernourished individuals. Conversely, excessive T3 levels, as seen in hyperthyroid states or during inappropriate replacement therapy, exacerbate catabolism and accelerate muscle loss. This review synthesizes current evidence on the bidirectional interactions among thyroid dysfunction, nutritional deficiencies, and sarcopenia, proposing an integrative pathophysiological model. We discuss the clinical implications of TH replacement in sarcopenic and malnourished patients, highlighting the need for personalised, multimodal interventions that include hormonal, nutritional, and physical strategies to prevent or mitigate muscle deterioration in endocrine and geriatric contexts.",
-      "authors": "Nappi Annarita, Sagliocchi Serena, Cicatiello Annunziata Gaetana et al.",
-      "journal": "Journal of basic and clinical physiology and pharmacology",
-      "year": "2025",
+      "pmid": "41579911",
+      "title": "Comprehensive evaluation of appendicular lean mass and sarcopenia on human health: evidence from the NHANES program.",
+      "abstract": "While accumulating points have been figured out the importance of muscle function, less clinical or epidemiological evidence have been provided. This study aimed to provide new evidence on the systemic effects of muscle mass on health condition, based on the National Health and Nutrition Examination Survey (NHANES) program.",
+      "authors": "Long Xiao, Chen Ruizhi, Lu Yanmin et al.",
+      "journal": "Experimental gerontology",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41233980/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41579911/"
     }
   ],
   "end_of_life": [
     {
-      "pmid": "41339288",
-      "title": "Knowledge and Attitudes of Palliative Care Among Community Health Nurses in China: A Cross-Sectional Study.",
-      "abstract": "To investigate knowledge and attitudes of palliative care among community health nurses and analyse factors influencing their knowledge and attitudes.",
-      "authors": "Liu Dun-Xiu, Kong Ling-Na, Yang Jun et al.",
-      "journal": "Nursing open",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41339288/"
+      "pmid": "41730761",
+      "title": "Palliative Care Admission at End-of-Life in Liver Cancer: A 10 Year Population-Based Study of 3565 Deaths in Australia.",
+      "abstract": "Palliative care is essential to manage symptoms and end-of-life (EOL) quality, yet its utilisation in liver cancer remains poorly understood. This study examined sociodemographic and clinical characteristics associated with palliative care admission in the last 5 years of life for people with a death from liver cancer.",
+      "authors": "Mitchell Rebecca J, Cai Shenghan, George Jacob et al.",
+      "journal": "Cancer medicine",
+      "year": "2026",
+      "key_findings": [
+        "This study examined sociodemographic and clinical characteristics associated with palliative care admission in the last 5 years of life for people with a death from liver cancer."
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41730761/"
     },
     {
-      "pmid": "41218637",
-      "title": "\"End-of-Life Care\" in Cardiac Surgery.",
-      "abstract": "Modern cardiovascular medicine and surgery enable the treatment of complex cardiovascular disease, even in elderly and multimorbid patients, through increasingly sophisticated procedures. Nevertheless, there are situations in which surgical intervention appears medically inappropriate or is explicitly declined by the patient. Similarly, it may become necessary in the postoperative course to revise the original therapeutic goals-particularly when continued survival depends upon prolonged intensive care unit treatment, or when the anticipated quality of life, from the patient's perspective, appears inadequate. While established guidelines and position papers-most notably from the German Interdisciplinary Association for Intensive and Emergency Medicine-are already available in the field of intensive care medicine, a discipline-specific framework for cardiac surgery has been lacking thus far. This inaugural position paper issued by the German Society for Thoracic and Cardiovascular Surgery seeks to contribute to the definition of clinical and ethical standards in the context of therapeutic restraint (Section A) and to the redefinition of therapeutic goals (Section B) within our specialty. The aim is to promote a structured and multiprofessional approach that transparently integrates the core pillars of goal setting in therapy-namely, medical indication and patient autonomy-into a comprehensible decision-making framework. Achieving this objective requires close collaboration among physicians and nursing staff in cardiac surgery, cardiology, intensive care, anesthesiology, ethics consultation, and palliative care. The present recommendations are intended to serve as a foundation for patient-centered, appropriate, and transparent decision-making-always with the overarching aim of preserving the dignity and self-determination of the patients concerned.",
-      "authors": "Lichtenberg Artur, Scherner Max, Meier Stefan et al.",
-      "journal": "The Thoracic and cardiovascular surgeon",
-      "year": "2025",
+      "pmid": "41733749",
+      "title": "Symptom burden and palliative care in patients with hematologic malignancies: a single-center experience.",
+      "abstract": "Patients with hematological malignancies are a heterogeneous group with special palliative care needs. They are known to have many symptoms and frequent emergency room visits and hospitalizations in the end-of-life phase. However, there are limited data about the symptom burden and health care service utilization in different diagnostic groups of hematological malignancies.",
+      "authors": "Holopainen Annasofia, Kuittinen Taru, Tyynelä-Korhonen Kristiina et al.",
+      "journal": "Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41218637/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41733749/"
     },
     {
-      "pmid": "41246289",
-      "title": "Demystifying Compassionate Communities.",
-      "abstract": "",
-      "authors": "Ng Yong Hao, Aoun Samar",
-      "journal": "Palliative care and social practice",
-      "year": "2025",
-      "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41246289/"
+      "pmid": "40349186",
+      "title": "The Perspectives of Families in Decision-Making Conflicts Related to Palliative Care Patients With Mechanical Ventilation in Taiwan.",
+      "abstract": "BackgroundFamily members experience decision-making conflicts regarding changes in patient care. If the medical team does not attempt to understand the family members' awareness of palliative care, family members may experience medical decision-making stress and dilemmas. This study examined the decision-making conflicts of the family members of patients dependent on prolonged mechanical ventilator regarding palliative care in Taiwan.MethodsA cross-sectional design was used in this study. Family members of such patients in the subacute respiratory care ward and the respiratory intensive care unit of a medical center in Taiwan were recruited. A structured questionnaire was used to collect data.ResultsAmong the family members of the 127 patients included, 57.5% hesitated to make palliative medical decisions and 61.4% experienced palliative medical decision conflicts. The absence of other chronic diseases, family members' inability to accept the movement of patients to palliative care, and family members' hesitation in palliative care medical decision-making resulted in decision-making conflicts. In this study, 127 prolonged mechanical ventilation-dependent patients (PMVDP) and their family members were examined. The results revealed that family members experienced palliative care medical decision-making difficulties (61.40% = <2.5). Predictors of palliative care decision-making conflict for PMVDP and their family members included the following: absence of other comorbid chronic diseases, the inability of family to accept palliative care on behalf of patients, and hesitation in palliative care medical decision-making by family members.ConclusionThe study results are able to help Taiwanese medical staff in evaluating such conflicts and palliative care medical decisions of PMVDP.",
+      "authors": "Wang Shou-Yu, Lin Li-Wei, Wang Jiun-Long et al.",
+      "journal": "The American journal of hospice & palliative care",
+      "year": "2026",
+      "key_findings": [
+        "The results revealed that family members experienced palliative care medical decision-making difficulties (61.40% = <2.5)"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40349186/"
     }
   ],
   "incontinence": [
     {
-      "pmid": "41297740",
-      "title": "Prevalence and associated factors of fecal incontinence: a global population-based study.",
-      "abstract": "The global prevalence of fecal incontinence (FI) is likely underestimated with an unmet need to identify associated factors to improve patient care. This study aimed to report the global prevalence of FI and to identify associated factors.",
-      "authors": "van Gils Tom, Algera Joost P, Hreinsson Jóhann P et al.",
-      "journal": "Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association",
-      "year": "2025",
+      "pmid": "41717057",
+      "title": "Neurobrucellosis presenting with concurrent paraplegia and global aphasia in an elderly butcher: A case report and literature review.",
+      "abstract": "Brucellosis is a prevalent zoonotic infection and presents with wide range of clinical manifestations, including rare but severe neurological complications.",
+      "authors": "Sanaei Delir Zavaragh Davood, Abbasi Jamaat Negar, Pourabedini Aghdam Yasamin et al.",
+      "journal": "IDCases",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41297740/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41717057/"
     },
     {
-      "pmid": "40848414",
-      "title": "The impact of ageing on the structural compositions of the mucosa of human colon.",
-      "abstract": "The increased prevalence of chronic constipation, faecal impaction and incontinence among older individuals have been linked in part, to age-related degenerative changes within the bowel. In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon. We address this knowledge gap by examining the number of intestinal stem cells and epithelial tight junction proteins, and densities of connective tissues, namely total collagen and elastin, on macroscopically normal ascending (AC; adults: 30-52 years and elderly: 70 - 89 years) and descending (DC; adults: 42-60 years and elderly: 67 - 82 years) colon using immunohistochemistry and tinctorial staining techniques. The results demonstrated that in the ageing AC but not clearly in the DC, there was a significant decline in anti-junctional adhesion molecule-A, anti- occludin and anti-zonula occluden-1 tight junction protein expressions within the epithelium per mucosal unit area. Compared to younger adults, there was no consistent change in anti-claudin-2 protein in the DC from older adults (p = 0.068), but the level of expression tended to increase in the AC (p = 0.059). The number of olfactomedin-4 positive cells tended to be smaller (mean value: AC; 5.2 ± 0.6 vs. 4.9 ± 0.2/ crypt and DC: 5.6 ± 0.8 vs. 5.1 ± 0.3) but were not statistically significant with increasing age in both regions. Ageing increased the amount of elastin fibres within the muscularis mucosae in AC and DC, and there was a tendency for total collagen fibres to increase in the mucosa of the older adults DC (p = 0.061). These structural changes in the aged mucosa have potential to impact colonic functions and may contribute to the development of lower bowel disorders in a region-specific manner.",
-      "authors": "Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al.",
-      "journal": "Tissue & cell",
-      "year": "2025",
-      "key_findings": [
-        "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon"
-      ],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40848414/"
+      "pmid": "41663174",
+      "title": "Sleep disturbance and risk of incident incontinence in middle-aged and older Chinese adults: a 4-year national cohort study.",
+      "abstract": "This study aimed to investigate the longitudinal association between sleep disturbance and the risk of new-onset incontinence in middle-aged and older Chinese adults and to explore whether chronic lung diseases mediate this relationship.",
+      "authors": "Shen Yuefan, Zhang Weixin, Gao Jianguo et al.",
+      "journal": "BMJ open",
+      "year": "2026",
+      "key_findings": [],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41663174/"
     },
     {
-      "pmid": "40591200",
-      "title": "SGLT2 inhibitors do not cause de novo urinary incontinence in diabetic female patients with chronic kidney disease.",
-      "abstract": "SGLT2 inhibitors have demonstrated significant cardiovascular and renal benefits, increasing their use in diabetic patients with chronic kidney disease (CKD). Concerns have been raised about their potential to exacerbate urinary incontinence (UI). This study evaluates the impact of SGLT2 inhibitors on de novo UI in female diabetic patients with CKD who were initially UI-free.",
-      "authors": "Helvacı Özant, Karaoğlan Ayşegül, Helvacı Burçak Cavnar et al.",
-      "journal": "International urology and nephrology",
-      "year": "2025",
+      "pmid": "41617834",
+      "title": "Quercetin alleviates incontinence-associated dermatitis via IKK/NF-κB pathway.",
+      "abstract": "Incontinence-associated dermatitis (IAD) is a prevalent inflammatory skin condition caused by prolonged exposure to urine and feces, particularly in elderly and critically ill patients. The pathogenesis of IAD is closely linked to chronic inflammation, which results in the excessive release of pro-inflammatory cytokines and skin barrier dysfunction. This study investigates the therapeutic potential of quercetin, a natural flavonoid with known anti-inflammatory and antioxidant properties, in a rat model of IAD. We found that quercetin (50–100 mg/kg) downregulated the expression and phosphorylation of IKKα/β and NF-κB by over 40%, leading to a marked reduction (approximately 40–70%) in pro-inflammatory cytokines (TNF-α, IL-6, IL-1β and IFN-γ). Furthermore, quercetin promoted skin barrier repair, as evidenced by about one-fold improvement in transepidermal water loss measurements and nearly three-fold increase in filaggrin expression. Histological findings showing enhanced epidermal integrity, reduced inflammatory cell infiltration and suppressed cell apoptosis. Our findings suggest that quercetin mitigates inflammation and accelerates skin barrier repair in IAD by targeting the IKK/NF-κB pathway, offering a promising therapeutic strategy for this debilitating condition.",
+      "authors": "Zhang Yan, Zhao Ge, Duan Junfang et al.",
+      "journal": "Scientific reports",
+      "year": "2026",
       "key_findings": [],
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40591200/"
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41617834/"
     }
   ]
 }

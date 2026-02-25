@@ -1,8 +1,8 @@
 [
   {
-    "id": "6d2d8c8b",
-    "front": "[דליריום] Study: Risk factors for postoperative delirium in orthopedic surgery patients: a systematic review and meta-analysis.\n\nWhat was the main finding?",
-    "back": "This study aimed to systematically review and meta-analyze the risk factors associated with postoperative delirium in orthopedic surgery patients.\n\n📖 Niu Yanan, Wang Qiang, Lu Jin et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40720202/",
+    "id": "d6cf5c56",
+    "front": "[דליריום] Study: Saccade Tasks: A Noninvasive Approach for Predicting Postoperative Delirium in Elderly Arthroplasty Patients.\n\nWhat was the main finding?",
+    "back": "It is associated with long-term cognitive impairment and increased dementia risk\n\n📖 Kang Meng, Lai Xuan, Wu Junru et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41344677/",
     "tags": [
       "delirium",
       "research",
@@ -11,9 +11,20 @@
     ]
   },
   {
-    "id": "3118240e",
-    "front": "[דמנציה] Study: Potential targets of microglia in the treatment of neurodegenerative diseases: Mechanism and therapeutic implications.\n\nWhat was the main finding?",
-    "back": "Microglial over-activation is closely associated with the secretion of pro-inflammatory cytokines, the phagocytosis of injured neurons, and the modulation of neurotoxic environments\n\n📖 Zhao Wenhui, Liu Zhongxuan, Wu Jiannan et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40145977/",
+    "id": "6909259c",
+    "front": "[נפילות] Study: Fall-related deaths and acute healthcare utilisation in the last year of life among older adults in Latvia.\n\nWhat was the main finding?",
+    "back": "Falls are associated with mortality in older adults; however, evidence on healthcare use preceding fall-related death in Latvia remains limited\n\n📖 Bukova-Žideļūna Aija, Strukčinskienė Birutė, Villeruša Anita (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41699146/",
+    "tags": [
+      "falls",
+      "research",
+      "recent",
+      "נפילות"
+    ]
+  },
+  {
+    "id": "5f776212",
+    "front": "[דמנציה] Study: Donanemab in early symptomatic Alzheimer's disease: results from the TRAILBLAZER-ALZ 2 long-term extension.\n\nWhat was the main finding?",
+    "back": "Donanemab significantly slowed clinical progression in participants with early symptomatic Alzheimer's disease (AD) during the 76-week placebo-controlled period of TRAILBLAZER-ALZ 2.\n\n📖 Zimmer Jennifer A, Sims John R, Evans Cynthia D et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41330788/",
     "tags": [
       "dementia",
       "research",
@@ -22,42 +33,9 @@
     ]
   },
   {
-    "id": "925025d2",
-    "front": "[דה-פרסקייבינג] Study: Multimorbidity, frailty and polypharmacy in European and Asian patients with atrial fibrillation: a comparison of two regional prospective observational registries.\n\nWhat was the main finding?",
-    "back": "Multimorbidity, frailty, and polypharmacy are associated with worse outcomes in patients with atrial fibrillation (AF), leading to 'clinically complex' patient phenotypes\n\n📖 Mei Davide Antonio, Proietti Marco, Romiti Giulio Francesco et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41345290/",
-    "tags": [
-      "deprescribing",
-      "research",
-      "recent",
-      "דה-פרסקייבינג"
-    ]
-  },
-  {
-    "id": "c35a9093",
-    "front": "[דה-פרסקייבינג] Based on Mei Davide Antonio et al. (2025), what clinical practice change might be considered?",
-    "back": "Finding: After adjustments, being frail was associated with lower OAC prescription, with Asians less likely prescribed than Europeans (OR 0.34, 95% CI 0.25-0.45 vs\n\nClinical relevance: Consider this evidence when treating elderly patients with deprescribing-related conditions.\n\n🔗 Full study: https://pubmed.ncbi.nlm.nih.gov/41345290/",
-    "tags": [
-      "deprescribing",
-      "clinical",
-      "evidence-based",
-      "דה-פרסקייבינג"
-    ]
-  },
-  {
-    "id": "8fb682ac",
-    "front": "[דה-פרסקייבינג] Study: Risk factors influencing fall risk in geriatric patients with type 2 diabetes: a comprehensive analysis.\n\nWhat was the main finding?",
-    "back": "Comorbidities, especially neuropathy and retinopathy, significantly increase fall risk in this group\n\n📖 Bayrak Muharrem, Kaşali Kamber, Güner Merve et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40022664/",
-    "tags": [
-      "deprescribing",
-      "research",
-      "recent",
-      "דה-פרסקייבינג"
-    ]
-  },
-  {
-    "id": "70ad4a81",
-    "front": "[סרקופניה] Study: International society of sports nutrition position stand: β-hydroxy-β-methylbutyrate (HMB).\n\nWhat was the main finding?",
-    "back": "The available safety/toxicity data suggest that chronic HMB-Ca and HMB-FA consumption are safe for oral HMB supplementation in humans up to at least one year\n\n📖 Rathmacher John A, Pitchford Lisa M, Stout Jeffrey R et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/39699070/",
+    "id": "611302a4",
+    "front": "[סרקופניה] Study: Novel inflammatory-related indices for screening sarcopenia: Insights from a population-based study.\n\nWhat was the main finding?",
+    "back": "The progression of sarcopenia is closely associated with inflammation\n\n📖 Tong Yuanhao, Li Huayu, Cheng Yang et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41161154/",
     "tags": [
       "sarcopenia",
       "research",
@@ -66,14 +44,25 @@
     ]
   },
   {
-    "id": "15a197dd",
-    "front": "[אי שליטה בסוגרים] Study: The impact of ageing on the structural compositions of the mucosa of human colon.\n\nWhat was the main finding?",
-    "back": "In aged laboratory animals, increased mucosal permeability has been associated with overall loss of mucosal integrity, but equivalent studies have not been conducted for the human colon\n\n📖 Baidoo Nicholas, Rasis Enrica De, Tahiri Dion et al. (2025)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40848414/",
+    "id": "30f2d326",
+    "front": "[טיפול סוף-חיים] Study: Palliative Care Admission at End-of-Life in Liver Cancer: A 10 Year Population-Based Study of 3565 Deaths in Australia.\n\nWhat was the main finding?",
+    "back": "This study examined sociodemographic and clinical characteristics associated with palliative care admission in the last 5 years of life for people with a death from liver cancer.\n\n📖 Mitchell Rebecca J, Cai Shenghan, George Jacob et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/41730761/",
     "tags": [
-      "incontinence",
+      "end_of_life",
       "research",
       "recent",
-      "אי שליטה בסוגרים"
+      "טיפול סוף-חיים"
+    ]
+  },
+  {
+    "id": "e4d94528",
+    "front": "[טיפול סוף-חיים] Study: The Perspectives of Families in Decision-Making Conflicts Related to Palliative Care Patients With Mechanical Ventilation in Taiwan.\n\nWhat was the main finding?",
+    "back": "The results revealed that family members experienced palliative care medical decision-making difficulties (61.40% = <2.5)\n\n📖 Wang Shou-Yu, Lin Li-Wei, Wang Jiun-Long et al. (2026)\n🔗 https://pubmed.ncbi.nlm.nih.gov/40349186/",
+    "tags": [
+      "end_of_life",
+      "research",
+      "recent",
+      "טיפול סוף-חיים"
     ]
   }
 ]
