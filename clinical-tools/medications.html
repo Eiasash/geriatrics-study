@@ -300,31 +300,69 @@
 
         let medications = JSON.parse(localStorage.getItem('geriatricMeds') || '[]');
 
-        // Beers Criteria Database (simplified)
+        // AGS Beers Criteria 2023 — expanded database
         const beersCriteria = {
-            'diazepam': { risk: 'high', reason: 'Increased risk of falls, cognitive impairment, delirium', alternative: 'Consider non-pharmacologic sleep hygiene, if needed short-acting: Lorazepam low dose' },
-            'lorazepam': { risk: 'medium', reason: 'Benzodiazepine - risk of falls, sedation', alternative: 'Use lowest dose, shortest duration' },
-            'zolpidem': { risk: 'high', reason: 'Z-drug - similar risks to benzodiazepines, ER visits', alternative: 'Sleep hygiene, Melatonin, Trazodone low dose' },
-            'diphenhydramine': { risk: 'high', reason: 'Highly anticholinergic - confusion, urinary retention, constipation', alternative: 'Second-gen antihistamines: Loratadine, Cetirizine' },
-            'oxybutynin': { risk: 'high', reason: 'Anticholinergic - cognitive decline, delirium', alternative: 'Mirabegron, behavioral therapy' },
-            'amitriptyline': { risk: 'high', reason: 'TCA - highly anticholinergic, sedating', alternative: 'SSRI, SNRI, Nortriptyline lower dose' },
-            'nortriptyline': { risk: 'medium', reason: 'TCA - less anticholinergic but still risky', alternative: 'SSRI, SNRI' },
-            'ibuprofen': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment, CV risk', alternative: 'Acetaminophen, Topical NSAIDs' },
-            'diclofenac': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment, CV risk', alternative: 'Acetaminophen, Topical diclofenac' },
-            'naproxen': { risk: 'high', reason: 'NSAID - GI bleeding, renal impairment', alternative: 'Acetaminophen' },
-            'glibenclamide': { risk: 'high', reason: 'Long-acting sulfonylurea - severe hypoglycemia', alternative: 'Glimepiride, Gliclazide, Metformin' },
-            'glyburide': { risk: 'high', reason: 'Long-acting sulfonylurea - severe hypoglycemia', alternative: 'Shorter-acting sulfonylureas or other classes' },
-            'metoclopramide': { risk: 'high', reason: 'EPS, tardive dyskinesia risk increases with age', alternative: 'Domperidone (with caution), dietary modifications' },
-            'digoxin': { risk: 'medium', reason: 'Toxicity risk if >0.125mg/day, monitor levels', alternative: 'Lower dose, rate control alternatives' },
-            'nifedipine': { risk: 'high', reason: 'Immediate release - hypotension, falls', alternative: 'Extended-release CCBs: Amlodipine' },
-            'doxazosin': { risk: 'high', reason: 'Alpha-blocker - orthostatic hypotension, falls', alternative: 'Tamsulosin if for BPH, other antihypertensives' },
-            'quetiapine': { risk: 'high', reason: 'Antipsychotic in dementia - increased mortality', alternative: 'Non-pharmacologic approaches first' },
-            'haloperidol': { risk: 'high', reason: 'Antipsychotic - EPS, falls, mortality in dementia', alternative: 'Low dose, short duration if absolutely needed' },
-            'omeprazole': { risk: 'medium', reason: 'PPI >8 weeks without indication - C. diff, fractures, B12 deficiency', alternative: 'H2 blockers, step-down therapy' },
-            'pantoprazole': { risk: 'medium', reason: 'PPI - same risks as omeprazole', alternative: 'Review indication, consider discontinuation' },
-            'tramadol': { risk: 'medium', reason: 'Seizure risk, serotonin syndrome, falls', alternative: 'Acetaminophen, careful opioid selection' },
-            'meperidine': { risk: 'high', reason: 'Neurotoxic metabolite, seizures', alternative: 'Other opioids if needed' },
-            'promethazine': { risk: 'high', reason: 'Highly anticholinergic, sedating', alternative: 'Ondansetron for nausea' }
+            // Benzodiazepines & Z-drugs
+            'diazepam': { risk: 'high', reason: 'Benzodiazepine — falls, cognitive impairment, delirium, hip fracture', alternative: 'Non-pharmacologic sleep hygiene; CBT-I; short-term Lorazepam only if necessary' },
+            'lorazepam': { risk: 'high', reason: 'Benzodiazepine — falls, sedation, cognitive impairment', alternative: 'Lowest dose, shortest duration; CBT-I; Melatonin' },
+            'clonazepam': { risk: 'high', reason: 'Long-acting benzodiazepine — fall/fracture risk, delirium', alternative: 'Taper slowly; SSRIs for anxiety; Buspirone' },
+            'alprazolam': { risk: 'high', reason: 'Benzodiazepine — dependency, falls, sedation', alternative: 'SSRIs for anxiety; gradual taper' },
+            'flurazepam': { risk: 'high', reason: 'Long-acting BZD — prolonged sedation, falls', alternative: 'Melatonin; Trazodone low dose' },
+            'temazepam': { risk: 'high', reason: 'Benzodiazepine — falls, cognitive decline', alternative: 'CBT-I; sleep hygiene; Melatonin' },
+            'zolpidem': { risk: 'high', reason: 'Z-drug — similar risk to BZDs: falls, delirium, ER visits, next-day impairment', alternative: 'Sleep hygiene; CBT-I; Melatonin; low-dose Doxepin (≤6mg)' },
+            'zaleplon': { risk: 'high', reason: 'Z-drug — falls, cognitive effects', alternative: 'CBT-I; Melatonin' },
+            'zopiclone': { risk: 'high', reason: 'Z-drug — falls, cognitive effects, daytime sedation', alternative: 'CBT-I; Melatonin' },
+            // Anticholinergics
+            'diphenhydramine': { risk: 'high', reason: 'Highly anticholinergic — confusion, urinary retention, constipation, delirium', alternative: 'Loratadine or Cetirizine for allergies; avoid as sleep aid' },
+            'hydroxyzine': { risk: 'high', reason: 'Anticholinergic + antihistamine — sedation, falls, delirium', alternative: 'SSRIs for anxiety; avoid in elderly' },
+            'chlorpheniramine': { risk: 'high', reason: 'Anticholinergic antihistamine — confusion, urinary retention', alternative: 'Loratadine, Cetirizine, Fexofenadine' },
+            'oxybutynin': { risk: 'high', reason: 'Anticholinergic OAB — cognitive decline, delirium, dry mouth, constipation', alternative: 'Mirabegron; bladder training; Tolterodine ER (less CNS penetration)' },
+            'tolterodine': { risk: 'medium', reason: 'Anticholinergic OAB — cognitive effects (less than Oxybutynin IR)', alternative: 'Mirabegron preferred; behavioral therapy' },
+            'solifenacin': { risk: 'medium', reason: 'Anticholinergic OAB — cognitive effects', alternative: 'Mirabegron preferred' },
+            'amitriptyline': { risk: 'high', reason: 'TCA — highly anticholinergic, sedating, orthostatic hypotension, QT prolongation', alternative: 'SSRI or SNRI for depression; Duloxetine for pain; Nortriptyline if TCA needed' },
+            'doxepin': { risk: 'high', reason: 'TCA — anticholinergic, sedating (low dose ≤6mg acceptable for insomnia)', alternative: 'SSRIs; low-dose Doxepin ≤6mg may be acceptable for insomnia only' },
+            'imipramine': { risk: 'high', reason: 'TCA — anticholinergic, orthostatic hypotension, cardiac conduction effects', alternative: 'SSRI, SNRI' },
+            'nortriptyline': { risk: 'medium', reason: 'TCA — less anticholinergic than Amitriptyline but still risky in elderly', alternative: 'SSRI, SNRI; lowest effective dose if used' },
+            'promethazine': { risk: 'high', reason: 'Highly anticholinergic phenothiazine — sedation, delirium, respiratory depression', alternative: 'Ondansetron for nausea; Metoclopramide only if no alternative (EPS risk)' },
+            // NSAIDs
+            'ibuprofen': { risk: 'high', reason: 'NSAID — GI bleeding (especially >75yo or with anticoagulants), AKI, fluid retention, HF exacerbation, CV risk', alternative: 'Acetaminophen (max 2g/day in frail); topical NSAIDs; PPI if NSAID unavoidable' },
+            'diclofenac': { risk: 'high', reason: 'NSAID — GI bleeding, AKI, CV risk (highest CV risk of NSAIDs)', alternative: 'Acetaminophen; Naproxen (lowest CV risk if NSAID needed) + PPI' },
+            'naproxen': { risk: 'high', reason: 'NSAID — GI bleeding, AKI, hypertension; lowest CV risk if NSAID needed', alternative: 'Acetaminophen; topical NSAIDs; add PPI if used' },
+            'indomethacin': { risk: 'high', reason: 'NSAID — highest CNS adverse effects of all NSAIDs; delirium risk', alternative: 'Avoid entirely in elderly; Acetaminophen; topical agents' },
+            'piroxicam': { risk: 'high', reason: 'Long-acting NSAID — prolonged GI bleeding risk', alternative: 'Acetaminophen; topical NSAIDs' },
+            'meloxicam': { risk: 'medium', reason: 'NSAID — GI/renal/CV risks similar to other NSAIDs despite COX-2 selectivity', alternative: 'Acetaminophen; topical diclofenac' },
+            // Hypoglycemics
+            'glibenclamide': { risk: 'high', reason: 'Long-acting sulfonylurea — severe prolonged hypoglycemia, hospitalization', alternative: 'Gliclazide MR; Glimepiride (shorter-acting); Metformin; DPP-4 inhibitors' },
+            'glyburide': { risk: 'high', reason: 'Long-acting sulfonylurea — severe hypoglycemia, high hospitalisation rate', alternative: 'Gliclazide MR; GLP-1 agonists; DPP-4 inhibitors; SGLT-2 with renal check' },
+            'glipizide': { risk: 'medium', reason: 'Sulfonylurea — hypoglycemia risk (shorter-acting than Glibenclamide)', alternative: 'Metformin; DPP-4 inhibitors; Gliclazide MR' },
+            // GI / Prokinetics
+            'metoclopramide': { risk: 'high', reason: 'EPS, tardive dyskinesia — risk increases with age and cumulative dose', alternative: 'Dietary modifications; Ondansetron for nausea; Domperidone short-term with caution' },
+            // PPIs
+            'omeprazole': { risk: 'medium', reason: 'PPI >8 weeks without clear indication — C. diff, osteoporosis, hip fracture, B12/Mg deficiency, community-acquired pneumonia', alternative: 'H2 blockers short-term; step-down to lowest dose; review indication regularly' },
+            'pantoprazole': { risk: 'medium', reason: 'PPI — same risks as Omeprazole; reassess indication every 8 weeks', alternative: 'Lowest effective dose; H2 blockers if mild GERD; stop if no indication' },
+            'esomeprazole': { risk: 'medium', reason: 'PPI — fractures, C. diff, B12/Mg deficiency with long-term use', alternative: 'Step down to H2 blocker; PRN use only' },
+            // Cardiovascular
+            'digoxin': { risk: 'medium', reason: 'Narrow therapeutic index — toxicity if >0.125mg/day; renal clearance reduced in elderly; toxicity mimics delirium', alternative: 'Rate control with beta-blockers or non-DHP CCBs for AF; dose <0.125mg/day if used' },
+            'nifedipine': { risk: 'high', reason: 'Immediate-release CCB — reflex tachycardia, hypotension, falls, MI risk', alternative: 'Amlodipine; Felodipine ER; Lercanidipine ER' },
+            'doxazosin': { risk: 'high', reason: 'Alpha-1 blocker — orthostatic hypotension, falls, syncope', alternative: 'Tamsulosin if BPH indication; ACE/ARB/CCB for hypertension' },
+            'prazosin': { risk: 'high', reason: 'Alpha-1 blocker — orthostatic hypotension, falls', alternative: 'Other antihypertensives; Tamsulosin for BPH' },
+            'terazosin': { risk: 'high', reason: 'Alpha-1 blocker — orthostatic hypotension, falls', alternative: 'Tamsulosin for BPH; other antihypertensives' },
+            'amiodarone': { risk: 'medium', reason: 'Multiple toxicities: pulmonary, hepatic, thyroid, neuropathy; QT prolongation', alternative: 'Rate control preferred; if rhythm control needed, Dronedarone or Flecainide (without structural disease)' },
+            // Antipsychotics
+            'quetiapine': { risk: 'high', reason: 'Antipsychotic in dementia — increased mortality (cerebrovascular events, pneumonia), EPS, metabolic', alternative: 'Non-pharmacologic BPSD management first; if needed, very low dose brief trial with consent' },
+            'haloperidol': { risk: 'high', reason: 'Antipsychotic — EPS, tardive dyskinesia, QT prolongation, mortality in dementia', alternative: 'Non-pharmacologic approaches; lowest dose shortest duration if delirium safety risk' },
+            'risperidone': { risk: 'high', reason: 'Antipsychotic in dementia — cerebrovascular events, EPS, mortality', alternative: 'Non-pharmacologic BPSD; if essential: lowest dose, regular review, documented informed consent' },
+            'olanzapine': { risk: 'high', reason: 'Antipsychotic — metabolic effects, sedation, falls, EPS, mortality in dementia', alternative: 'Non-pharmacologic BPSD; short-term very low dose only if safety risk' },
+            // Opioids
+            'tramadol': { risk: 'medium', reason: 'Seizure risk, serotonin syndrome (especially with SSRIs), falls, delirium, hypoglycemia', alternative: 'Acetaminophen; Buprenorphine patch for chronic pain; topical agents' },
+            'meperidine': { risk: 'high', reason: 'Active neurotoxic metabolite (normeperidine) — seizures, delirium; accumulates in renal impairment', alternative: 'Morphine, Oxycodone, or Hydromorphone in lowest effective dose' },
+            'pentazocine': { risk: 'high', reason: 'Mixed opioid agonist-antagonist — confusion, hallucinations, dysphoria', alternative: 'Pure opioid agonists if opioid necessary' },
+            // Muscle relaxants
+            'cyclobenzaprine': { risk: 'high', reason: 'Anticholinergic, sedating — limited efficacy for chronic pain, falls', alternative: 'Physical therapy; Methocarbamol (less anticholinergic); Tizanidine with caution' },
+            'methocarbamol': { risk: 'medium', reason: 'CNS depression, falls, anticholinergic — limited efficacy', alternative: 'Physical therapy; NSAIDs topical; heat therapy' },
+            'carisoprodol': { risk: 'high', reason: 'Sedating, potential for abuse, anticholinergic', alternative: 'Physical therapy; avoid' },
+            // Anticoagulation
+            'aspirin': { risk: 'medium', reason: 'Aspirin >100mg without clear CV indication — GI bleeding increases with age; benefit unclear in primary prevention >70yo', alternative: 'Review indication; discontinue if primary prevention only in >70yo; PPI if continued' }
         };
 
         // STOPP Criteria (simplified)
