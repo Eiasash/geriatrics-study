@@ -104,58 +104,8 @@ jobs:
           h5p/timer-embed.html
         retention-days: 30
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/advanced-cicd'
-    
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-      
-    steps:
-    - name: 📥 Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: 📥 Download H5P packages
-      uses: actions/download-artifact@v4
-      with:
-        name: h5p-packages-${{ github.sha }}
-        path: h5p/dist
-        
-    - name: 📥 Download HTML interfaces
-      uses: actions/download-artifact@v4
-      with:
-        name: h5p-interfaces-${{ github.sha }}
-        path: h5p
-        
-    - name: 🌐 Setup GitHub Pages
-      uses: actions/configure-pages@v5
-      
-    - name: 📁 Prepare deployment directory
-      run: |
-        mkdir -p _site/h5p/dist
-        cp -r h5p/dist/* _site/h5p/dist/
-        cp h5p/index.html _site/h5p/
-        cp h5p/timer-embed.html _site/h5p/
-        echo "# Geriatrics Study H5P Content" > _site/index.html
-        echo "<meta http-equiv='refresh' content='0; url=h5p/index.html'>" >> _site/index.html
-        
-    - name: 📤 Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: _site
-        
-    - name: 🚀 Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-      
-    - name: ✅ Deployment success
-      if: success()
-      run: |
-        echo "🎉 Successfully deployed to GitHub Pages!"
-        echo "📍 View at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/h5p/"
+  # REMOVED: deploy job overwrote full site with only H5P content.
+  # All Pages deployment handled by deploy.yml.
 
   release:
     needs: build
@@ -216,7 +166,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   notify:
-    needs: [build, deploy]
+    needs: [build]
     runs-on: ubuntu-latest
     if: always()
     
