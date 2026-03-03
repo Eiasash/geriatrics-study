@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a5f">
     <meta name="description" content="SZMC Geriatrics - Clinical tools, presentation maker, and study resources for geriatric medicine">
     <title>SZMC Geriatrics Hub</title>
@@ -793,6 +794,8 @@
     </button>
 
     <script>
+        function esc(s){const d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML;}
+
         // Search Functionality
         const searchData = [
             { title: 'Presentation Maker', desc: 'Create medical presentations', url: 'szmc-presentation-maker/', keywords: ['presentation', 'slides', 'pptx', 'case', 'journal', 'club'] },
@@ -828,9 +831,9 @@
 
             if (results.length > 0) {
                 searchResults.innerHTML = results.map(item => `
-                    <a href="${item.url}" class="search-result-item">
-                        <div class="search-result-title">${item.title}</div>
-                        <div class="search-result-desc">${item.desc}</div>
+                    <a href="${esc(item.url)}" class="search-result-item">
+                        <div class="search-result-title">${esc(item.title)}</div>
+                        <div class="search-result-desc">${esc(item.desc)}</div>
                     </a>
                 `).join('');
                 searchResults.classList.add('active');
