@@ -2,4 +2,8 @@ User-agent: *
 Allow: /
 
 # Block textbook content from search indexing
-Disallow: /hazzards/
+Disallow: /hazzards/Part1_
+Disallow: /hazzards/Part2_
+Disallow: /hazzards/Part3_
+
+Sitemap: https://eiasash.github.io/geriatrics-study/sitemap.xml
