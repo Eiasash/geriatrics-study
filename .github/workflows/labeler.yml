@@ -73,8 +73,6 @@ jobs:
             const branchName = context.payload.pull_request.head.ref;
             if (branchName.includes('npm')) {
               labels.push('javascript', 'component: h5p');
-            } else if (branchName.includes('pip')) {
-              labels.push('python', 'component: anki');
             } else if (branchName.includes('github-actions')) {
               labels.push('type: ci/cd');
             }

@@ -10,14 +10,6 @@
       - '.eslint*'
       - '.prettier*'
 
-'component: anki':
-  - changed-files:
-    - any-glob-to-any-file:
-      - 'anki/**'
-      - 'requirements*.txt'
-      - 'pytest.ini'
-      - 'setup.cfg'
-
 'component: data':
   - changed-files:
     - any-glob-to-any-file:
@@ -82,7 +74,6 @@
 'priority: high':
   - changed-files:
     - any-glob-to-any-file:
-      - 'anki/build_apkg.py'
       - 'h5p/build-*.js'
       - 'data/content.json'
 
