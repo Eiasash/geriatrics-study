@@ -25,6 +25,8 @@ const CACHE_FILES = [
     // Study resources
     './h5p/index.html',
     './hazzards/index.html',
+    './szmc-presentation-maker/index.html',
+    './gerifellow-assistant/index.html',
     // Note: Hazzards Part HTML files (4-5MB each) are NOT pre-cached
     // to avoid excessive storage usage. They cache on first visit instead.
     // Data

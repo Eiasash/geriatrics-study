@@ -962,6 +962,105 @@
         ],
         "correct": "היפונתרמיה",
         "explanation": "SSRIs גורמים ל־SIADH, במיוחד בתחילת הטיפול."
+      },
+      {
+        "question": "Which screening tool is recommended as an initial brief screen for depression in older adults?",
+        "options": [
+          "Mini-Mental State Examination",
+          "Patient Health Questionnaire-2 (PHQ-2)",
+          "Cornell Depression Scale",
+          "Hamilton Rating Scale"
+        ],
+        "answer": 1,
+        "explanation": "The PHQ-2 asks about depressed mood and anhedonia over 2 weeks. If positive, follow up with the full PHQ-9. The Cornell Scale is for depression in dementia specifically."
+      },
+      {
+        "question": "A PHQ-9 score >10 has what sensitivity and specificity for major depression in older adults?",
+        "options": [
+          "70% / 70%",
+          "80% / 80%",
+          "88% / 88%",
+          "95% / 95%"
+        ],
+        "answer": 2,
+        "explanation": "PHQ-9 score >10 has 88% sensitivity and 88% specificity for major depression, making it a reliable screening and monitoring tool."
+      },
+      {
+        "question": "An 84-year-old with Alzheimer's develops depressive symptoms. The HTA-SADD trial showed that first-line treatment should be:",
+        "options": [
+          "Sertraline",
+          "Mirtazapine",
+          "3 months of watchful waiting with psychosocial interventions",
+          "Combined SSRI + psychotherapy"
+        ],
+        "answer": 2,
+        "explanation": "HTA-SADD showed no benefit of sertraline or mirtazapine vs placebo at 13 and 39 weeks in depression with dementia. Adverse effects occurred in >40% on antidepressants. Recommend 3 months observation with stepped psychosocial interventions first."
+      },
+      {
+        "question": "Which depression screening tool is most appropriate for a patient with moderate dementia who lacks insight into their mood?",
+        "options": [
+          "PHQ-9",
+          "Geriatric Depression Scale",
+          "Cornell Depression Scale for Dementia",
+          "Beck Depression Inventory"
+        ],
+        "answer": 2,
+        "explanation": "The Cornell Scale is completed by caregivers and has 93% sensitivity and 97% specificity for depression in dementia (score ≥6). It doesn't require patient insight."
+      },
+      {
+        "question": "A 79-year-old retired psychiatrist has insomnia, weight loss, anhedonia, and irritability for 2 months since retirement. He declines medication but would accept psychotherapy. What is the best recommendation?",
+        "options": [
+          "Additional time to adjust rather than treatment",
+          "Psychotherapy is the best recommendation",
+          "Only CBT would be effective",
+          "Medications are needed for his vegetative symptoms"
+        ],
+        "answer": 1,
+        "explanation": "Psychotherapy is appropriate first-line when preferred by the patient. Multiple forms of psychotherapy (CBT, problem-solving therapy, interpersonal therapy) are effective for late-life depression, not only CBT."
+      },
+      {
+        "question": "The IMPACT collaborative care model for late-life depression includes all EXCEPT:",
+        "options": [
+          "Depression care manager in primary care",
+          "Stepped-care treatment algorithm",
+          "Weekly supervision by geriatrician and psychiatrist",
+          "Mandatory antidepressant medication"
+        ],
+        "answer": 3,
+        "explanation": "IMPACT offers patients treatment alternatives including antidepressants AND problem-solving therapy (6-8 sessions). It doesn't mandate medication. At 4-year follow-up, total healthcare costs were significantly lower."
+      },
+      {
+        "question": "Problem-solving therapy in the IMPACT model has been found to be:",
+        "options": [
+          "Inferior to antidepressants",
+          "Similarly effective to antidepressants for major depression",
+          "Only effective for minor depression",
+          "Effective only when combined with medication"
+        ],
+        "answer": 1,
+        "explanation": "Problem-solving therapy is a 6-8 session structured psychotherapy found similarly effective to antidepressants in treating major depressive disorder in older primary care patients."
+      },
+      {
+        "question": "A 68-year-old presents with forgetfulness after his father's death from Alzheimer's. He also has insomnia and fatigue. The most appropriate next step is:",
+        "options": [
+          "Reassure that minor forgetfulness is normal",
+          "Refer for neuropsychologic testing",
+          "Administer the Geriatric Depression Scale",
+          "Start cholinesterase inhibitor"
+        ],
+        "answer": 2,
+        "explanation": "Forgetfulness, tiredness, and insomnia after a grief event could be symptoms of depression. Screen for depression first with GDS. If negative, proceed with cognitive screening."
+      },
+      {
+        "question": "In depressed older patients WITHOUT dementia, switching or augmenting antidepressants yields approximately what improvement rate?",
+        "options": [
+          "25%",
+          "50%",
+          "75%",
+          "90%"
+        ],
+        "answer": 1,
+        "explanation": "Switching or augmenting yields about 50% improvement (even higher with persistent sequential strategies). However, there are no comparable findings for depressed patients WITH dementia."
       }
     ]
   },
@@ -988,6 +1087,105 @@
         ],
         "correct": "סקירה תקופתית כולל איכות חיים",
         "explanation": "גישה הדרגתית בהתאם לצרכים."
+      },
+      {
+        "question": "An 84-year-old on donepezil develops new urinary urgency and incontinence. Which medication change is most likely responsible?",
+        "options": [
+          "Increased levothyroxine",
+          "Starting donepezil",
+          "Stopping hydrochlorothiazide",
+          "Stopping simvastatin"
+        ],
+        "answer": 1,
+        "explanation": "Acetylcholinesterase inhibitors (donepezil) have procholinergic effects that can cause urinary urgency/incontinence. Starting oxybutynin to treat this would be a prescribing cascade."
+      },
+      {
+        "question": "Starting oxybutynin to treat incontinence caused by donepezil is an example of:",
+        "options": [
+          "Appropriate step-up therapy",
+          "Prescribing cascade",
+          "Therapeutic substitution",
+          "Deprescribing"
+        ],
+        "answer": 1,
+        "explanation": "A prescribing cascade occurs when a new medication is prescribed to treat adverse effects of another medication. The correct approach is to discontinue or reduce the offending agent."
+      },
+      {
+        "question": "The cognitive adverse effects of oxybutynin are related to:",
+        "options": [
+          "Total daily dose",
+          "Peak drug levels",
+          "Duration of therapy",
+          "Renal clearance"
+        ],
+        "answer": 1,
+        "explanation": "Oxybutynin cognitive adverse effects correlate with peak drug levels (SOE=A). Extended-release formulations with lower peak levels may have fewer cognitive effects than immediate-release."
+      },
+      {
+        "question": "A 76-year-old with BPH develops acute urinary retention after starting OTC cold medication. The most likely culprit is:",
+        "options": [
+          "Acetaminophen",
+          "Guaifenesin",
+          "Alpha-adrenergic nasal decongestant",
+          "Dextromethorphan"
+        ],
+        "answer": 2,
+        "explanation": "OTC nasal decongestants are alpha-adrenergic agonists that constrict bladder outlet smooth muscle. In men with BPH, this increases dynamic resistance and can precipitate retention."
+      },
+      {
+        "question": "Which anticholinergic medication used for allergies should be avoided in older adults according to Beers Criteria?",
+        "options": [
+          "Cetirizine",
+          "Loratadine",
+          "Diphenhydramine",
+          "Fexofenadine"
+        ],
+        "answer": 2,
+        "explanation": "Diphenhydramine has strong anticholinergic effects causing sedation, confusion, urinary retention, and constipation. Second-generation antihistamines (cetirizine, loratadine, fexofenadine) are preferred."
+      },
+      {
+        "question": "Concurrent use of anticholinergic bladder medications and cholinesterase inhibitors results in:",
+        "options": [
+          "Enhanced efficacy of both drugs",
+          "Pharmacodynamic antagonism reducing efficacy of both",
+          "No clinically significant interaction",
+          "Improved urinary function with stable cognition"
+        ],
+        "answer": 1,
+        "explanation": "Anticholinergics and cholinesterase inhibitors have opposing mechanisms — they antagonize each other. Anticholinergics may worsen cognition, and cholinesterase inhibitors may worsen bladder symptoms."
+      },
+      {
+        "question": "Adding alpha-blocker therapy with anticholinergic bladder medication in men with BPH and overactive bladder:",
+        "options": [
+          "Is always contraindicated",
+          "May improve incontinence when alpha-blocker is maximized first",
+          "Requires urodynamic testing before initiation",
+          "Has no evidence of benefit"
+        ],
+        "answer": 1,
+        "explanation": "Adding anticholinergic medications to alpha-blocker therapy may improve incontinence in men with BPH and overactive bladder (SOE=A), but alpha-blocker should be maximized first."
+      },
+      {
+        "question": "POLST (Physician Orders for Life-Sustaining Therapies) forms for patients with advanced dementia increasingly exclude which option?",
+        "options": [
+          "IV antibiotics",
+          "Hospitalization",
+          "Parenteral feeding tube placement",
+          "Comfort measures only"
+        ],
+        "answer": 2,
+        "explanation": "For patients with advanced dementia, feeding tube placement has no clear benefit. Clinicians recommend it no longer appear as an option in advance care planning documents like POLST."
+      },
+      {
+        "question": "When deprescribing in an elderly patient, which principle is MOST important?",
+        "options": [
+          "Stop all potentially inappropriate medications simultaneously",
+          "Taper one medication at a time and monitor",
+          "Only deprescribe medications on Beers list",
+          "Deprescribe only if the patient requests it"
+        ],
+        "answer": 1,
+        "explanation": "Deprescribing should be done one medication at a time with monitoring for withdrawal effects or return of symptoms. This allows attribution of any changes to the specific medication stopped."
       }
     ]
   },
@@ -1014,6 +1212,105 @@
         ],
         "correct": "timed voiding + אימון רצפת האגן",
         "explanation": "גישה לא‑כירורגית ראשונית."
+      },
+      {
+        "question": "A 72-year-old woman has stress and urge urinary incontinence for 3 years. Pelvic exam shows strong pelvic floor contraction. Best initial management?",
+        "options": [
+          "Oral conjugated estrogen",
+          "Extended-release oxybutynin",
+          "Behavioral therapy with Kegel exercises",
+          "Surgical tension-free vaginal tape"
+        ],
+        "answer": 2,
+        "explanation": "Behavioral therapy with Kegels is first-line for stress and mixed incontinence (SOE=A for Kegels in Cochrane review). Oral estrogen WORSENS incontinence. Surgery is not first-line."
+      },
+      {
+        "question": "The 'freeze and squeeze' technique teaches patients to manage urgency by:",
+        "options": [
+          "Rushing to the bathroom immediately",
+          "Standing still and contracting pelvic floor muscles until urgency passes",
+          "Taking an extra dose of anticholinergic medication",
+          "Applying cold compress to the suprapubic area"
+        ],
+        "answer": 1,
+        "explanation": "Patients should stay very still, repeatedly contract pelvic floor muscles until urgency resolves, then proceed to bathroom. If urgency returns en route, repeat the technique."
+      },
+      {
+        "question": "A 70-year-old man with diabetes has urinary urgency/frequency. Postvoid residual is 650 mL. Urodynamics show large capacity, poor contraction, no obstruction. Best management?",
+        "options": [
+          "Kegel exercises",
+          "Oxybutynin",
+          "TURP",
+          "Referral for intermittent self-catheterization instruction"
+        ],
+        "answer": 3,
+        "explanation": "PVR >300 mL requires urologic referral (SOE=C). Urodynamics show neurogenic bladder (poor contractility, no obstruction). Self-catheterization preserves upper tract. TURP useless without obstruction. Oxybutynin could worsen retention."
+      },
+      {
+        "question": "Oral conjugated estrogen therapy in elderly women with urinary incontinence has been shown to:",
+        "options": [
+          "Improve stress incontinence",
+          "Worsen urinary incontinence",
+          "Have no effect",
+          "Improve urge but not stress incontinence"
+        ],
+        "answer": 1,
+        "explanation": "Oral conjugated estrogen therapy has been shown to WORSEN urinary incontinence and should not be used (SOE=A). Vaginal topical estrogen cream might be a helpful adjunct."
+      },
+      {
+        "question": "Chronic indwelling urinary catheter complications include all EXCEPT:",
+        "options": [
+          "UTI",
+          "Bladder stones",
+          "Improved quality of life",
+          "Urethral strictures"
+        ],
+        "answer": 2,
+        "explanation": "Chronic catheters cause UTI, obstruction, urethral damage, strictures, bladder stones, and bladder spasm. They should not be the initial recommendation for incontinence."
+      },
+      {
+        "question": "A positive standing cough test in a woman with urinary symptoms is highly specific for:",
+        "options": [
+          "Urge incontinence",
+          "Overflow incontinence",
+          "Stress incontinence",
+          "Functional incontinence"
+        ],
+        "answer": 2,
+        "explanation": "A positive standing cough test (immediate urine leakage with cough) is a highly specific sign for stress incontinence (SOE=A)."
+      },
+      {
+        "question": "In a man with BPH symptoms, checking postvoid residual is important before starting anticholinergics because:",
+        "options": [
+          "It confirms the diagnosis of BPH",
+          "Anticholinergics could cause complete retention if PVR is already elevated",
+          "Normal PVR excludes the need for treatment",
+          "PVR determines the choice of anticholinergic"
+        ],
+        "answer": 1,
+        "explanation": "Oxybutynin could result in complete urine retention in a patient with untreated elevated PVR (SOE=A). Always check PVR before adding anticholinergics in men with BPH."
+      },
+      {
+        "question": "Diphenhydramine can cause urinary retention by:",
+        "options": [
+          "Alpha-adrenergic stimulation",
+          "Beta-adrenergic blockade",
+          "Anticholinergic inhibition of bladder smooth muscle contraction",
+          "Direct detrusor muscle toxicity"
+        ],
+        "answer": 2,
+        "explanation": "Diphenhydramine's anticholinergic effects inhibit contraction of bladder smooth muscle (detrusor), causing urinary retention. A normal PVR would exclude this as the cause."
+      },
+      {
+        "question": "Asymptomatic bacteriuria in an elderly woman with stable chronic urinary incontinence should be treated with antibiotics:",
+        "options": [
+          "Always, to prevent UTI complications",
+          "Only if pyuria is present on urinalysis",
+          "Never, in the absence of acute symptoms",
+          "Only if the culture shows >100,000 CFU/mL"
+        ],
+        "answer": 2,
+        "explanation": "In stable chronic incontinence without acute symptoms, and with a clean urinalysis, a positive culture likely represents contamination or asymptomatic bacteriuria. Treatment would not improve incontinence (SOE=A)."
       }
     ]
   },
@@ -1040,6 +1337,105 @@
         ],
         "correct": "חלבון בלבד בלי פעילות",
         "explanation": "השילוב עם פעילות נחוץ."
+      },
+      {
+        "question": "Which supplement has NOT been shown to improve human skeletal muscle mass?",
+        "options": [
+          "DHEA",
+          "Leucine",
+          "Vitamins C and E",
+          "Testosterone"
+        ],
+        "answer": 2,
+        "explanation": "DHEA, testosterone (SOE=B), leucine, and vitamin D all improve muscle mass. Vitamins C and E (antioxidants) have only shown promise in animal studies, not in humans."
+      },
+      {
+        "question": "The most effective management for an obese older adult with functional limitation due to relative sarcopenia is:",
+        "options": [
+          "Weight loss by dietary management alone",
+          "Regular exercise alone",
+          "Combined weight loss and regular exercise",
+          "Physical therapy for gait and balance only"
+        ],
+        "answer": 2,
+        "explanation": "Obesity with low muscle mass relative to body weight (relative sarcopenia) is best treated with combined weight loss (~10%) and exercise. Either alone is less effective (SOE=A)."
+      },
+      {
+        "question": "Screening for nutritional status in older adults should routinely include:",
+        "options": [
+          "Serum albumin only",
+          "BMI calculation only",
+          "Body weight, weight loss, and tools like MNA or MST",
+          "Prealbumin levels"
+        ],
+        "answer": 2,
+        "explanation": "Screening should include body weight, weight loss assessment, and validated tools like the Mini Nutritional Assessment (MNA) or Malnutrition Screening Tool (MST). Albumin/prealbumin are affected by inflammation and do not accurately reflect nutritional status."
+      },
+      {
+        "question": "Plasma albumin and prealbumin should NOT be used to assess malnutrition because:",
+        "options": [
+          "They are too expensive",
+          "Inflammation and injury alter their synthesis and degradation",
+          "They only reflect visceral protein status",
+          "They are not available in routine labs"
+        ],
+        "answer": 1,
+        "explanation": "Although albumin and prealbumin correlate with clinical outcomes, inflammation and injury alter their synthesis and degradation, limiting their usefulness for nutritional assessment specifically."
+      },
+      {
+        "question": "Vitamin D's role in sarcopenia prevention is related to:",
+        "options": [
+          "Calcium absorption only",
+          "Vitamin D receptors in skeletal muscle important for protein synthesis",
+          "Anti-inflammatory effects",
+          "Improved appetite"
+        ],
+        "answer": 1,
+        "explanation": "Vitamin D receptors are present in skeletal muscle and important for protein synthesis. Proximal muscle weakness is a sign of osteomalacia. USPSTF meta-analysis showed 17% fall reduction with vitamin D."
+      },
+      {
+        "question": "Protein requirements in older adults compared to younger adults:",
+        "options": [
+          "Decrease with age",
+          "Do not decrease with age; protein should be a greater proportion of diet",
+          "Remain exactly the same per kg/day",
+          "Should be restricted to protect kidney function"
+        ],
+        "answer": 1,
+        "explanation": "Protein requirements do not decrease with age (SOE=C). Since total energy requirements decline, protein should make up a proportionally greater part of the diet in older adults."
+      },
+      {
+        "question": "After a left hemispheric stroke with moderate hemiparesis, the most appropriate initial step before feeding is:",
+        "options": [
+          "Trial of feeding",
+          "Bedside assessment of swallowing function",
+          "Videofluoroscopy",
+          "NGT placement"
+        ],
+        "answer": 1,
+        "explanation": "Stroke guidelines recommend swallowing assessment before any feeding. A standardized bedside swallowing test detects post-stroke dysphagia with 97% sensitivity and 90% specificity (SOE=B)."
+      },
+      {
+        "question": "Prevention of malnutrition in older adults requires addressing all EXCEPT:",
+        "options": [
+          "Polypharmacy affecting taste",
+          "Depression and social isolation",
+          "Unnecessarily restricted diets",
+          "Increasing dietary salt restriction for all patients"
+        ],
+        "answer": 3,
+        "explanation": "Unnecessarily restricted diets (limiting salt, fat, sugar) can contribute to inadequate eating. Other barriers include polypharmacy, dental health, food insecurity, depression, and mealtime isolation."
+      },
+      {
+        "question": "The Mediterranean diet in older adults is associated with:",
+        "options": [
+          "Increased cardiovascular risk",
+          "Prevention of CVD progression and reversal of metabolic syndrome",
+          "No proven benefits over standard Western diet",
+          "Benefit only for weight loss"
+        ],
+        "answer": 1,
+        "explanation": "The traditional Mediterranean diet (olive oil, vegetables, nuts, fruits) meets healthy diet criteria and is associated with prevention of CVD progression and reversal of metabolic syndrome."
       }
     ]
   },
@@ -1066,6 +1462,105 @@
         ],
         "correct": "נוחות ותמיכת משפחה",
         "explanation": "טיפול פליאטיבי ממוקד."
+      },
+      {
+        "question": "An 88-year-old with DNR, bilateral amputations develops acute renal failure requiring dialysis. She is alert. The most appropriate next step is:",
+        "options": [
+          "Consult palliative care",
+          "Assess her capacity to decide about hemodialysis",
+          "Call daughter for consent",
+          "Proceed with dialysis catheter"
+        ],
+        "answer": 1,
+        "explanation": "DNR applies to cardiac/respiratory arrest only, not dialysis decisions. Since the patient is alert, assess her decision-making capacity first. She may be able to give or refuse informed consent."
+      },
+      {
+        "question": "Decision-making capacity requires all EXCEPT:",
+        "options": [
+          "Understanding risks and benefits",
+          "Reasoning in context of personal values",
+          "Agreement with physician recommendation",
+          "Ability to communicate a choice"
+        ],
+        "answer": 2,
+        "explanation": "Capacity requires understanding, reasoning, appreciation of consequences, and communication of choice. The patient need NOT agree with the physician - competent patients may refuse recommended treatment."
+      },
+      {
+        "question": "An 86-year-old Black man refuses to complete advance directives. The most appropriate approach is:",
+        "options": [
+          "Document refusal and proceed with discharge",
+          "Arrange patient/family meeting to discuss wishes and preferences",
+          "Insist on completing directives before discharge",
+          "Have the ethics committee intervene"
+        ],
+        "answer": 1,
+        "explanation": "Cultural competence is essential. Many Black Americans have limited trust in healthcare systems and may perceive advance directives negatively. A collaborative meeting to understand the patient's and family's values and care preferences is most appropriate."
+      },
+      {
+        "question": "Advance care planning differs from goals of care in that advance directives focus on:",
+        "options": [
+          "Short-term rehabilitation goals",
+          "Wishes for care in the context of serious acute illness",
+          "Daily functional outcomes",
+          "Medication preferences"
+        ],
+        "answer": 1,
+        "explanation": "Goals of care are patient-directed wishes for wellbeing (often non-medical). Advance directives focus on wishes for care during serious illness, including appointment of a healthcare proxy."
+      },
+      {
+        "question": "The risk of death per year in people aged 85+ is approximately:",
+        "options": [
+          "1-2%",
+          "3-5%",
+          "8-10%",
+          "20-25%"
+        ],
+        "answer": 2,
+        "explanation": "Annual mortality is 8-10% for ages 85+ and over 30% for ages 90+. This highlights the importance of clarifying end-of-life preferences as a priority for the very old."
+      },
+      {
+        "question": "Hospice use is associated with all EXCEPT:",
+        "options": [
+          "Greater satisfaction with quality of dying",
+          "Greater caregiver depression and anxiety",
+          "Better quality of end-of-life care",
+          "Less conflict in treatment decisions"
+        ],
+        "answer": 1,
+        "explanation": "Hospice involves greater caregiver effort (medication administration, time off work), but caregivers do NOT report more depression, anxiety, or persistent grief — hospice buffers the negative impact."
+      },
+      {
+        "question": "Persistent/complicated grief in older adults is defined as lasting beyond:",
+        "options": [
+          "2 weeks",
+          "3 months",
+          "6-12 months",
+          "2 years"
+        ],
+        "answer": 2,
+        "explanation": "DSM-5 defines complex bereavement disorder as lasting 6-12 months after death. In older adults, it's associated with disability, cognitive impairment, and suicidal thinking. Affects 9-25% of bereaved older adults."
+      },
+      {
+        "question": "Dignity therapy at end of life is designed to:",
+        "options": [
+          "Treat clinical depression",
+          "Bolster sense of meaning and reduce existential distress",
+          "Replace advance care planning",
+          "Manage physical pain"
+        ],
+        "answer": 1,
+        "explanation": "Dignity therapy is a short-term psychotherapy that improves well-being in people with life-limiting illness by supporting meaning-making. Patients with higher sense of meaning experience less end-of-life distress."
+      },
+      {
+        "question": "Aggressive treatment at end of life in older adults with cancer includes all EXCEPT:",
+        "options": [
+          "New chemotherapy within 14 days of death",
+          "ICU admission in last month of life",
+          "Hospice enrollment >7 days before death",
+          "Multiple ED visits in last month"
+        ],
+        "answer": 2,
+        "explanation": "Timely hospice enrollment (>7 days) is considered appropriate care. Aggressive markers include late chemotherapy, short hospice stays (<3 days), multiple ED visits, >14 days hospitalization, and ICU admission in the last month."
       }
     ]
   },
@@ -1088,6 +1583,105 @@
         ],
         "correct": "שליטה ב‑BP + אנטי‑טרומבוטי",
         "explanation": "מפחית סיכון לחזרה."
+      },
+      {
+        "question": "A 75-year-old woman had a stroke 2 weeks ago with right hemiparesis and mild aphasia. She was delirious from UTI but has recovered cognitively. She is dependent in transfers, toileting, and IADLs. Best next step?",
+        "options": [
+          "Continue nursing home physical therapy only",
+          "Refer to outpatient physiatrist",
+          "Refer to inpatient stroke rehabilitation",
+          "Discharge home with home health"
+        ],
+        "answer": 2,
+        "explanation": "She needs comprehensive inpatient rehabilitation — she is engaged in therapy, follows commands, and has multiple functional deficits requiring PT, OT, and speech therapy. The nursing home alone is insufficient."
+      },
+      {
+        "question": "Before beginning any oral feeding after stroke, the first step should be:",
+        "options": [
+          "Trial of pureed diet",
+          "Bedside swallowing assessment",
+          "Videofluoroscopy",
+          "NGT placement for 48 hours"
+        ],
+        "answer": 1,
+        "explanation": "Stroke guidelines mandate swallowing assessment before any feeding. Bedside test has 97% sensitivity and 90% specificity for dysphagia (SOE=B). Feeding without assessment increases aspiration risk (SOE=A)."
+      },
+      {
+        "question": "For stroke patients, occupational therapy, speech therapy, and language pathology consultations are indicated when:",
+        "options": [
+          "Only if patient requests them",
+          "Only for hemorrhagic stroke",
+          "When there are functional deficits in ADLs, communication, or cognition",
+          "Only after 6 weeks post-stroke"
+        ],
+        "answer": 2,
+        "explanation": "Comprehensive rehabilitation should include all relevant disciplines based on the patient's deficits. This patient with hemiparesis, aphasia, and ADL dependence needs PT, OT, and speech therapy."
+      },
+      {
+        "question": "Diabetes mellitus increases the risk of which post-stroke complication that requires specific education?",
+        "options": [
+          "Hemorrhagic transformation",
+          "Falls",
+          "Seizures",
+          "DVT"
+        ],
+        "answer": 1,
+        "explanation": "Diabetes increases fall risk in older adults. Clinicians must be attentive to fall risk education and offer mobility programs guided by physical therapy."
+      },
+      {
+        "question": "Delirium after stroke should prompt reassessment of cognition:",
+        "options": [
+          "Immediately during the delirium",
+          "At discharge only",
+          "Several weeks after delirium resolves",
+          "Only if family requests it"
+        ],
+        "answer": 2,
+        "explanation": "Patients who develop delirium should have cognition reassessed several weeks later, after the acute confusional state resolves, to determine true baseline cognitive function."
+      },
+      {
+        "question": "CHA₂DS₂-VASc scoring is used in stroke prevention for:",
+        "options": [
+          "All stroke patients",
+          "Patients with atrial fibrillation",
+          "Post-hemorrhagic stroke only",
+          "Carotid stenosis assessment"
+        ],
+        "answer": 1,
+        "explanation": "CHA₂DS₂-VASc stratifies stroke risk in atrial fibrillation to guide anticoagulation decisions. Components: CHF, HTN, Age≥75 (2pts), DM, prior Stroke/TIA (2pts), Vascular disease, Age 65-74, Sex (female)."
+      },
+      {
+        "question": "In a post-stroke patient, the Confusion Assessment Method (CAM) assesses:",
+        "options": [
+          "Stroke severity",
+          "Depression",
+          "Delirium — acute change, inattention, disorganized thinking, altered consciousness",
+          "Cognitive decline"
+        ],
+        "answer": 2,
+        "explanation": "CAM evaluates delirium by assessing acute change/fluctuating course, inattention, disorganized thinking, and altered level of consciousness. It has an ICU version."
+      },
+      {
+        "question": "Functional decline after stroke may be reversible when caused by:",
+        "options": [
+          "Fixed neurological deficit",
+          "Depression",
+          "White matter disease",
+          "Cortical atrophy"
+        ],
+        "answer": 1,
+        "explanation": "Depression is a reversible cause of functional decline post-stroke. It should be screened for and treated, as it significantly impairs rehabilitation participation and recovery."
+      },
+      {
+        "question": "The Ultra Brief bedside cognitive screen asks patients to:",
+        "options": [
+          "Draw a clock and name 3 animals",
+          "List days of week backward and state current day",
+          "Count backward from 100 by 7s",
+          "Remember 3 words after 5 minutes"
+        ],
+        "answer": 1,
+        "explanation": "The Ultra Brief two-item screen asks patients to list the days of the week backward and identify the current day. It's useful for quick bedside cognitive assessment in hospitalized patients."
       }
     ]
   },
@@ -1110,6 +1704,105 @@
         ],
         "correct": "לטפל בזהירות ולנטר",
         "explanation": "איזון עדין עם ניטור."
+      },
+      {
+        "question": "An 86-year-old with class IV heart failure, diabetes, CKD, and DNR is ready for discharge. The patient and wife refuse rehab facility. Most appropriate step?",
+        "options": [
+          "Insist on rehab transfer",
+          "Arrange patient/family meeting to discuss wishes and options",
+          "Discharge home without services",
+          "Consult ethics committee"
+        ],
+        "answer": 1,
+        "explanation": "Respectful discussion of the patient's and family's values, decision-making approaches, and care preferences should guide the collaborative treatment plan."
+      },
+      {
+        "question": "In an elderly patient with heart failure, which medication class from Beers Criteria requires particular caution?",
+        "options": [
+          "ACE inhibitors",
+          "NSAIDs",
+          "Beta-blockers",
+          "Loop diuretics"
+        ],
+        "answer": 1,
+        "explanation": "NSAIDs promote sodium and water retention and can worsen heart failure. They should be avoided in elderly patients with HF. ACE inhibitors and beta-blockers are actually beneficial in HF."
+      },
+      {
+        "question": "Postural blood pressure measurement is a high-yield examination element in older adults because it can detect:",
+        "options": [
+          "Heart failure only",
+          "Orthostatic hypotension predisposing to falls and syncope",
+          "Atrial fibrillation",
+          "Aortic stenosis"
+        ],
+        "answer": 1,
+        "explanation": "Postural blood pressure is a high-yield, often non-traditional exam element that detects orthostatic hypotension — common in elderly patients on antihypertensives, diuretics, or with autonomic dysfunction."
+      },
+      {
+        "question": "Functional status measurement in older heart failure patients is essential because:",
+        "options": [
+          "It determines medication dosing",
+          "It is a summary measure of overall health impact and guides care planning",
+          "It is required for insurance billing",
+          "It predicts ejection fraction"
+        ],
+        "answer": 1,
+        "explanation": "Functional status is a summary measure of the overall impact of health conditions. Changes in functional status should prompt diagnostic evaluation. It drives care planning for older adults."
+      },
+      {
+        "question": "Hospice eligibility for end-stage heart failure includes all EXCEPT:",
+        "options": [
+          "Class IV symptoms despite optimal therapy",
+          "EF <20%",
+          "Prognosis of ≤6 months",
+          "Successful completion of cardiac rehabilitation"
+        ],
+        "answer": 3,
+        "explanation": "Hospice requires a prognosis of ≤6 months. Criteria for HF include refractory Class IV symptoms, recurrent hospitalizations, and poor prognosis despite optimal medical therapy."
+      },
+      {
+        "question": "ICU admission during the last month of life in elderly heart failure patients is considered:",
+        "options": [
+          "Standard of care",
+          "A marker of aggressive end-of-life treatment",
+          "Always inappropriate",
+          "Required for hospice transition"
+        ],
+        "answer": 1,
+        "explanation": "ICU use in the last month of life is a marker of aggressive end-of-life care. About 30% of Medicare beneficiaries have ICU admissions in their final month. This rate is declining slowly."
+      },
+      {
+        "question": "When treating hypertension in frail elderly patients, the most important consideration is:",
+        "options": [
+          "Achieving JNC targets as quickly as possible",
+          "Avoiding orthostatic hypotension and falls",
+          "Using combination therapy from day 1",
+          "Restricting sodium to <1g/day"
+        ],
+        "answer": 1,
+        "explanation": "In frail elderly patients, aggressive BP lowering risks orthostatic hypotension, falls, and fractures. Treatment should be individualized with careful monitoring of standing BP."
+      },
+      {
+        "question": "A patient with heart failure and suspected depression should be screened with:",
+        "options": [
+          "Only cardiac biomarkers",
+          "PHQ-2 followed by PHQ-9 if positive",
+          "MMSE",
+          "Beck Depression Inventory only"
+        ],
+        "answer": 1,
+        "explanation": "Depression is common in HF (up to 40%) and worsens outcomes. The two-question PHQ-2 screen is recommended, followed by PHQ-9 if positive. Depression in HF is treatable and screening improves outcomes."
+      },
+      {
+        "question": "Guided Care model for patients with multiple chronic conditions provides all EXCEPT:",
+        "options": [
+          "Home assessment by registered nurse",
+          "Monthly status monitoring",
+          "Transitional care coordination",
+          "Direct specialist consultations bypassing primary care"
+        ],
+        "answer": 3,
+        "explanation": "Guided Care works within primary care — a nurse works with 2-5 physicians. It provides home assessment, care plans, monthly monitoring, self-care promotion, transitional care, caregiver support, and community resource access."
       }
     ]
   },
@@ -1132,6 +1825,105 @@
         ],
         "correct": "פיזיותרפיה",
         "explanation": "שיפור שיווי משקל ותנועה."
+      },
+      {
+        "question": "Daytime somnolence in Parkinson's disease can be treated with:",
+        "options": [
+          "Increased levodopa",
+          "Modafinil",
+          "Benzodiazepines",
+          "Melatonin"
+        ],
+        "answer": 1,
+        "explanation": "Modafinil has been studied for daytime somnolence in PD. AAN practice parameters address treatment of nonmotor PD symptoms including sleep disorders."
+      },
+      {
+        "question": "Depression in Parkinson's disease is often underdiagnosed because:",
+        "options": [
+          "PD patients rarely experience depression",
+          "Atypical presentations, comorbid cognitive impairment, and symptom overlap",
+          "Depression screening tools don't work in PD",
+          "PD medications prevent depression"
+        ],
+        "answer": 1,
+        "explanation": "Depression in PD is underdiagnosed due to underreported symptoms, atypical presentations, and overlap with PD features (psychomotor slowing, flat affect, sleep disturbance). Comorbid cognitive impairment further complicates detection."
+      },
+      {
+        "question": "Anticholinergic medications in a PD patient with dementia may cause:",
+        "options": [
+          "Improved tremor only",
+          "Worsening cognition and delirium",
+          "Better bladder function without side effects",
+          "No additional risk compared to younger patients"
+        ],
+        "answer": 1,
+        "explanation": "Anticholinergics carry high risk of cognitive worsening and delirium in PD patients with dementia. They should be avoided or used with extreme caution per Beers Criteria."
+      },
+      {
+        "question": "When assessing mental status in a hospitalized PD patient, the most important comparison is:",
+        "options": [
+          "Against age-matched norms",
+          "Against admission baseline and clinical context",
+          "Against pre-PD cognitive function",
+          "Against MMSE cutoff of 24"
+        ],
+        "answer": 1,
+        "explanation": "In hospitalized patients, mental status must be interpreted in context of change from baseline and clinical situation. PD patients are especially prone to delirium during hospitalization."
+      },
+      {
+        "question": "Falls in Parkinson's disease are related to all EXCEPT:",
+        "options": [
+          "Postural instability",
+          "Orthostatic hypotension from medications",
+          "Freezing of gait",
+          "Improved proprioception"
+        ],
+        "answer": 3,
+        "explanation": "PD patients have impaired proprioception, not improved. Falls are multifactorial: postural instability, freezing of gait, orthostatic hypotension (from dopaminergic drugs and autonomic dysfunction), and cognitive impairment."
+      },
+      {
+        "question": "A PD patient on levodopa develops visual hallucinations. The first step should be:",
+        "options": [
+          "Add an antipsychotic immediately",
+          "Reduce or simplify the dopaminergic regimen",
+          "Increase levodopa dose",
+          "Order brain MRI"
+        ],
+        "answer": 1,
+        "explanation": "Visual hallucinations in PD are often medication-related. First, simplify the regimen — reduce/stop anticholinergics, then amantadine, then dopamine agonists, before reducing levodopa."
+      },
+      {
+        "question": "Which antipsychotic is most appropriate for psychosis in PD?",
+        "options": [
+          "Haloperidol",
+          "Olanzapine",
+          "Quetiapine or pimavanserin",
+          "Risperidone"
+        ],
+        "answer": 2,
+        "explanation": "Quetiapine (low dose) and pimavanserin (5-HT2A inverse agonist) are preferred for PD psychosis. Haloperidol, olanzapine, and risperidone worsen motor symptoms due to D2 blockade."
+      },
+      {
+        "question": "Autonomic dysfunction in PD includes all EXCEPT:",
+        "options": [
+          "Orthostatic hypotension",
+          "Constipation",
+          "Urinary frequency",
+          "Improved sweating regulation"
+        ],
+        "answer": 3,
+        "explanation": "PD causes widespread autonomic dysfunction: orthostatic hypotension, constipation, urinary symptoms, impaired sweating (not improved), drooling, and sexual dysfunction."
+      },
+      {
+        "question": "The physical examination in older PD patients should prioritize:",
+        "options": [
+          "Detailed cardiac auscultation",
+          "Functional tasks like sitting up, standing, and walking",
+          "Comprehensive neurological reflex testing",
+          "Pulmonary function assessment"
+        ],
+        "answer": 1,
+        "explanation": "In older patients, high-yield functional exam elements (standing, walking, postural BP) take precedence over traditional elements. Seeing if a patient can sit up or stand is often more important than heart sounds."
       }
     ]
   }
