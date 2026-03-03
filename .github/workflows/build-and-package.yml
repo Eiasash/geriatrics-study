@@ -5,15 +5,13 @@ on:
     branches: [main]
     paths:
       - 'h5p/**'
-      - 'anki/**'
       - 'data/**'
       - '.github/workflows/build-and-package.yml'
-    tags: ['v*']  # Tags trigger regardless of paths
+    tags: ['v*']
   pull_request:
     branches: [main]
     paths:
       - 'h5p/**'
-      - 'anki/**'
       - 'data/**'
       - '.github/workflows/build-and-package.yml'
   workflow_dispatch:
@@ -24,23 +22,19 @@ on:
         type: boolean
         default: false
 
-# Prevent concurrent runs for the same PR/branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 env:
   NODE_VERSION: '20'
-  PYTHON_VERSION: '3.11'
 
 jobs:
-  # Detect which components changed
   changes:
     name: Detect changes
     runs-on: ubuntu-latest
     outputs:
       h5p: ${{ steps.filter.outputs.h5p }}
-      anki: ${{ steps.filter.outputs.anki }}
       data: ${{ steps.filter.outputs.data }}
     steps:
       - uses: actions/checkout@v4
@@ -51,149 +45,78 @@ jobs:
             h5p:
               - 'h5p/**'
               - 'data/**'
-            anki:
-              - 'anki/**'
-              - 'data/**'
             data:
               - 'data/**'
 
-  # Security audits run in parallel using matrix
   audit:
-    name: Security audit (${{ matrix.component }})
+    name: Security audit (h5p)
     runs-on: ubuntu-latest
     needs: changes
     if: |
       github.event_name == 'workflow_dispatch' ||
       startsWith(github.ref, 'refs/tags/') ||
-      needs.changes.outputs.h5p == 'true' ||
-      needs.changes.outputs.anki == 'true'
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - component: h5p
-            language: node
-          - component: anki
-            language: python
+      needs.changes.outputs.h5p == 'true'
     steps:
       - uses: actions/checkout@v4
-      
-      # Node.js audit for H5P
       - name: Setup Node.js
-        if: matrix.language == 'node'
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
           cache-dependency-path: h5p/package-lock.json
-      
       - name: Install npm dependencies
-        if: matrix.language == 'node'
         working-directory: h5p
         run: npm ci
-      
       - name: Run npm audit
-        if: matrix.language == 'node'
         working-directory: h5p
         run: |
           npm audit --audit-level=high || true
           npx audit-ci --high || true
         continue-on-error: true
-      
-      # Python audit for Anki
-      - name: Setup Python
-        if: matrix.language == 'python'
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
-          cache-dependency-path: anki/requirements.txt
-      
-      - name: Run pip-audit
-        if: matrix.language == 'python'
-        uses: pypa/gh-action-pip-audit@v1
-        with:
-          inputs: anki/requirements.txt
-        continue-on-error: true
 
-  # Build components in parallel using matrix
   build:
-    name: Build ${{ matrix.component }} (${{ matrix.mode || 'default' }})
+    name: Build h5p (${{ matrix.mode }})
     runs-on: ubuntu-latest
     needs: [changes, audit]
     if: |
       github.event_name == 'workflow_dispatch' ||
       startsWith(github.ref, 'refs/tags/') ||
-      needs.changes.outputs.h5p == 'true' ||
-      needs.changes.outputs.anki == 'true'
+      needs.changes.outputs.h5p == 'true'
     strategy:
       fail-fast: false
       matrix:
         include:
-          # H5P builds
-          - component: h5p
-            mode: questionset
+          - mode: questionset
             artifact: h5p-questionset
             build_cmd: npm run build:qset
-          - component: h5p
-            mode: mega
+          - mode: mega
             artifact: h5p-mega
             build_cmd: |
               export TOPICS="דליריום,שבריריות (Frailty),רישום ודה-פרסקייבינג תרופות,נפילות,דמנציה ומחלת אלצהיימר"
               export PASS=75
               npm run build:mega
-          # Anki build
-          - component: anki
-            artifact: anki-package
-            build_cmd: PYTHONIOENCODING=utf-8 python build_apkg.py
-    
     steps:
       - uses: actions/checkout@v4
-      
-      # Setup for H5P builds
       - name: Setup Node.js
-        if: matrix.component == 'h5p'
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
           cache-dependency-path: h5p/package-lock.json
-      
-      - name: Install H5P dependencies
-        if: matrix.component == 'h5p'
+      - name: Install dependencies
         working-directory: h5p
         run: npm ci
-      
-      # Setup for Anki build
-      - name: Setup Python
-        if: matrix.component == 'anki'
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
-          cache-dependency-path: anki/requirements.txt
-      
-      - name: Install Anki dependencies
-        if: matrix.component == 'anki'
-        working-directory: anki
-        run: pip install -r requirements.txt
-      
-      # Run builds
-      - name: Build ${{ matrix.component }} - ${{ matrix.mode || 'package' }}
-        working-directory: ${{ matrix.component }}
+      - name: Build h5p - ${{ matrix.mode }}
+        working-directory: h5p
         run: ${{ matrix.build_cmd }}
-      
-      # Upload artifacts
       - name: Upload ${{ matrix.artifact }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
-          path: |
-            ${{ matrix.component }}/dist/*
+          path: h5p/dist/*
           retention-days: 30
           if-no-files-found: error
 
-  # Test that built packages are valid
   validate:
     name: Validate packages
     runs-on: ubuntu-latest
@@ -201,46 +124,19 @@ jobs:
     if: success()
     steps:
       - uses: actions/checkout@v4
-      
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-      
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      
-      - name: Validate file structure
+      - name: Validate H5P archives
         run: |
           echo "=== Validating built packages ==="
-          
-          # Check H5P packages
-          if [ -d "artifacts/h5p-questionset" ]; then
-            echo "QuestionSet H5P files:"
-            ls -la artifacts/h5p-questionset/*.h5p 2>/dev/null || echo "No QuestionSet files found"
-          fi
-          
-          if [ -d "artifacts/h5p-mega" ]; then
-            echo "Mega H5P files:"
-            ls -la artifacts/h5p-mega/*.h5p 2>/dev/null || echo "No Mega files found"
-          fi
-          
-          # Check Anki package
-          if [ -d "artifacts/anki-package" ]; then
-            echo "Anki packages:"
-            ls -la artifacts/anki-package/*.apkg 2>/dev/null || echo "No Anki files found"
-          fi
-          
-          # Validate H5P files are valid zip archives
           for h5p in artifacts/*/*.h5p; do
             if [ -f "$h5p" ]; then
               echo "Validating: $h5p"
-              unzip -t "$h5p" > /dev/null 2>&1 && echo "✓ Valid H5P archive" || echo "✗ Invalid H5P archive"
+              unzip -t "$h5p" > /dev/null 2>&1 && echo "  Valid" || echo "  INVALID"
             fi
           done
-      
       - name: Run validation script
         if: always()
         run: |
@@ -248,7 +144,6 @@ jobs:
             PYTHONIOENCODING=utf-8 python check_files.py
           fi
 
-  # Create release when tagged or manually triggered
   release:
     name: Create release
     runs-on: ubuntu-latest
@@ -262,49 +157,16 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-      
       - name: Prepare release assets
         run: |
           mkdir -p release
-          
-          # Copy all H5P files
           find artifacts -name "*.h5p" -exec cp {} release/ \;
-          
-          # Copy Anki packages
-          find artifacts -name "*.apkg" -exec cp {} release/ \;
-          
-          # Create checksums
           cd release
           sha256sum * > SHA256SUMS.txt
-          
-          # Create release notes
-          cat > ../RELEASE_NOTES.md << EOF
-          ## 📦 Release Assets
-          
-          ### H5P Packages
-          - QuestionSet format: Individual topic packages for interactive quizzes
-          - Mega format: Combined multi-topic package with timer functionality
-          
-          ### Anki Package
-          - Complete flashcard deck for all geriatrics topics
-          - Hebrew language support
-          - Formatted for optimal spaced repetition learning
-          
-          ### 🔒 Security
-          All packages have been audited for security vulnerabilities.
-          
-          ### ✅ Validation
-          All packages have been validated and tested.
-          
-          ---
-          *Generated by automated CI/CD pipeline*
-          EOF
-      
       - name: Generate release tag
         id: tag
         run: |
@@ -313,20 +175,16 @@ jobs:
           else
             echo "tag=v$(date +'%Y.%m.%d')-${{ github.run_number }}" >> $GITHUB_OUTPUT
           fi
-      
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: "Release ${{ steps.tag.outputs.tag }}"
-          body_path: RELEASE_NOTES.md
-          files: |
-            release/*
+          files: release/*
           draft: false
           prerelease: false
           generate_release_notes: true
 
-  # Summary job for branch protection rules
   summary:
     name: CI Summary
     runs-on: ubuntu-latest
@@ -335,27 +193,11 @@ jobs:
     steps:
       - name: Summary
         run: |
-          echo "## 📊 CI/CD Pipeline Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Audit results
-          echo "### 🔒 Security Audits" >> $GITHUB_STEP_SUMMARY
-          echo "- H5P (npm): ${{ needs.audit.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Anki (pip): ${{ needs.audit.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Build results
-          echo "### 🏗️ Build Status" >> $GITHUB_STEP_SUMMARY
-          echo "- Builds: ${{ needs.build.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Validation: ${{ needs.validate.result }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Links
-          echo "### 🔗 Quick Links" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
-          echo "- [Repository](https://github.com/${{ github.repository }})" >> $GITHUB_STEP_SUMMARY
-          
-          # Set exit code based on results
-          if [[ "${{ needs.build.result }}" != "success" ]] || [[ "${{ needs.validate.result }}" != "success" ]]; then
+          echo "## CI/CD Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Audit: ${{ needs.audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Build: ${{ needs.build.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Validate: ${{ needs.validate.result }}" >> $GITHUB_STEP_SUMMARY
+          # Fail only on actual failures, not skips
+          if [[ "${{ needs.build.result }}" == "failure" ]] || [[ "${{ needs.validate.result }}" == "failure" ]]; then
             exit 1
           fi
