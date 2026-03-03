@@ -519,15 +519,23 @@
 
             const messageDiv = document.createElement('div');
             messageDiv.className = `chat-message flex gap-3 ${isUser ? 'flex-row-reverse' : ''}`;
-            messageDiv.innerHTML = `
-                <div class="w-10 h-10 ${isUser ? 'bg-green-100' : 'bg-blue-100'} rounded-full flex items-center justify-center flex-shrink-0">
-                    ${isUser ? '👤' : '🤖'}
-                </div>
-                <div class="${isUser ? 'bg-green-100' : 'bg-white'} p-4 rounded-2xl ${isUser ? 'rounded-tl-none' : 'rounded-tr-none'} shadow-sm max-w-md">
-                    <p class="text-gray-700">${text}</p>
-                </div>
-            `;
+
+            const avatar = document.createElement('div');
+            avatar.className = `w-10 h-10 ${isUser ? 'bg-green-100' : 'bg-blue-100'} rounded-full flex items-center justify-center flex-shrink-0`;
+            avatar.textContent = isUser ? '👤' : '🤖';
+
+            const bubble = document.createElement('div');
+            bubble.className = `${isUser ? 'bg-green-100' : 'bg-white'} p-4 rounded-2xl shadow-sm max-w-md`;
+
+            const p = document.createElement('p');
+            p.className = 'text-gray-700';
+            p.textContent = text; // safe: no HTML injection
+
+            bubble.appendChild(p);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(bubble);
             container.appendChild(messageDiv);
+
             container.scrollTop = container.scrollHeight;
         }
 
@@ -609,17 +617,43 @@
                 return;
             }
 
-            container.innerHTML = chatHistory.slice(0, 10).map(item => {
+            container.innerHTML = '';
+            const wrapper = document.createElement('div');
+            wrapper.className = 'space-y-2';
+
+            chatHistory.slice(0, 10).forEach(item => {
                 const service = aiServices[item.ai];
-                const date = new Date(item.timestamp).toLocaleDateString('he-IL');
-                return `
-                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" onclick="reuseQuery('${item.query.replace(/'/g, "\\'")}')">
-                        <span>${service.icon}</span>
-                        <div class="flex-1 truncate text-sm text-gray-700">${item.query}</div>
-                        <span class="text-xs text-gray-400">${date}</span>
-                    </div>
-                `;
-            }).join('');
+                if (!service) return;
+
+                const row = document.createElement('div');
+                row.className = 'flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer';
+
+                const icon = document.createElement('span');
+                icon.textContent = service.icon;
+
+                const body = document.createElement('div');
+                body.className = 'flex-1 truncate';
+
+                const q = document.createElement('p');
+                q.className = 'text-sm text-gray-700 truncate';
+                q.textContent = item.query;
+
+                const date = document.createElement('p');
+                date.className = 'text-xs text-gray-400';
+                date.textContent = new Date(item.timestamp).toLocaleDateString('he-IL');
+
+                body.appendChild(q);
+                body.appendChild(date);
+
+                row.appendChild(icon);
+                row.appendChild(body);
+
+                row.addEventListener('click', () => reuseQuery(item.query));
+
+                wrapper.appendChild(row);
+            });
+
+            container.appendChild(wrapper);
         }
 
         function reuseQuery(query) {
