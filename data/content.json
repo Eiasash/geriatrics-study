@@ -9,6 +9,38 @@
       {
         "q": "מה עקרונות הטיפול הראשוניים בדליריום?",
         "a": "איתור גורם הפיך; התערבויות לא-תרופתיות (אוריינטציה, שינה, משקפיים/שמיעה, ניידות); תרופות רק במצבי סיכון."
+      },
+      {
+        "front": "CAM diagnostic criteria (4 features)",
+        "back": "1) Acute onset/fluctuating course, 2) Inattention, 3) Disorganized thinking, 4) Altered level of consciousness. Need 1+2 plus either 3 or 4. Sensitivity 94-100%, specificity 90-95%."
+      },
+      {
+        "front": "Yale Delirium Prevention Trial (HELP) — 6 risk factors addressed",
+        "back": "Cognitive impairment, sleep deprivation, immobility, vision impairment, hearing impairment, dehydration. Standardized protocols significantly reduce delirium incidence."
+      },
+      {
+        "front": "4 independent baseline risk factors for hospital delirium",
+        "back": "1) Vision impairment, 2) Severe illness (APACHE II >16), 3) Cognitive impairment (MMSE <24), 4) BUN/Cr ratio ≥18. With ≥3 factors: 32-83% delirium risk."
+      },
+      {
+        "front": "Hypoactive vs hyperactive delirium in elderly",
+        "back": "Hypoactive is MORE COMMON in elderly (slowed movement, paucity of speech, unresponsiveness) but identified far LESS frequently. Hyperactive: restlessness, agitation, constant movement."
+      },
+      {
+        "front": "Donepezil for delirium prevention",
+        "back": "Does NOT prevent postoperative delirium. RCTs in elective joint replacement and hip replacement showed no difference vs placebo (SOE=A). Rivastigmine also ineffective (SOE=B)."
+      },
+      {
+        "front": "Delirium prevalence in different settings",
+        "back": "ED: 6-38% of adults >65. Hospitalized: 10-50%. ICU: approaches 75%. Unrecognized in up to 70% of hospitalized elderly (SOE=B)."
+      },
+      {
+        "front": "4AT vs CAM in emergency settings",
+        "back": "4AT, bCAM, and RASS more favorably balance brevity, accuracy, and ED provider acceptability than full CAM, which requires careful training and specific protocol."
+      },
+      {
+        "front": "Delirium as 'stress test for the brain'",
+        "back": "If a previously healthy person develops delirium from a minor insult (UTI, elective surgery), suspect unrecognized underlying neurologic disease. Screen for dementia after delirium clears."
       }
     ],
     "mcqs": [
@@ -232,7 +264,8 @@
         "correct": "היפואקטיבי",
         "explanation": "נראה שקט ולכן מוחמץ."
       }
-    ]
+    ],
+    "description": "Delirium is an acute confusional state with fluctuating consciousness, inattention, and cognitive dysfunction. It affects 10-50% of hospitalized elderly and is often unrecognized (up to 70%). Key tools: CAM, 4AT, bCAM. Prevention via HELP protocol addressing 6 risk factors. Hypoactive form most common in elderly."
   },
   {
     "topic": "דמנציה ומחלת אלצהיימר",
@@ -244,6 +277,38 @@
       {
         "q": "מה הפתולוגיה האופיינית לאלצהיימר?",
         "a": "פלאקים עמילואידיים וסבכים נוירופיברילריים של טאו."
+      },
+      {
+        "front": "Dementia with Lewy Bodies — distinguishing features",
+        "back": "Fluctuating cognition, prominent visual hallucinations, parkinsonism, attentional deficits resembling delirium. Cholinergic deficiency from basal forebrain degeneration. Extremely vulnerable to delirium."
+      },
+      {
+        "front": "Central auditory dysfunction and dementia",
+        "back": "Central auditory dysfunction is a PRECURSOR to incident dementia (SOE=A). Greater hearing loss independently associated with lower MMSE, memory, and executive function scores."
+      },
+      {
+        "front": "25-dBHL hearing loss cognitive equivalent",
+        "back": "Reduction in cognitive performance from 25-dBHL hearing loss is equivalent to 6.8 years of aging on mental status, memory, and executive function measures."
+      },
+      {
+        "front": "Depression screening in dementia — which tool?",
+        "back": "Cornell Depression Scale for Dementia: completed by CAREGIVERS, does not require patient insight. Score ≥6: 93% sensitivity, 97% specificity for depression in dementia."
+      },
+      {
+        "front": "HTA-SADD trial key findings",
+        "back": "Sertraline and mirtazapine NO better than placebo for depression in Alzheimer's at 13 and 39 weeks. Adverse effects >40% on antidepressants vs 25% placebo. Recommend 3-month watchful waiting first."
+      },
+      {
+        "front": "Anticholinesterase inhibitors for AD behavioral symptoms",
+        "back": "Donepezil is the most prudent initial choice for episodic paranoid symptoms in recently diagnosed AD (SOE=C), before considering antipsychotics."
+      },
+      {
+        "front": "Capacity assessment — 4 components",
+        "back": "1) Understand risks/benefits/alternatives, 2) Reason about information in context of values, 3) Appreciate consequences of choice, 4) Make and communicate a choice. Patient need NOT agree with physician."
+      },
+      {
+        "front": "Over one-third of all-cause dementia risk is associated with:",
+        "back": "Hearing loss. Study showed >1/3 of all-cause dementia risk was associated with hearing loss. Self-reported hearing aid use was NOT associated with significant dementia risk reduction."
       }
     ],
     "mcqs": [
@@ -467,7 +532,8 @@
         "correct": "BPSD כולל פסיכוזה/תוקפנות; דיכאון לא",
         "explanation": "מאפיינים נפרדים."
       }
-    ]
+    ],
+    "description": "Dementia is a chronic progressive decline in cognition affecting function. Alzheimer disease accounts for 60-80% of cases. Key assessments: MMSE, MoCA, clock drawing. Cholinesterase inhibitors (donepezil, rivastigmine, galantamine) for mild-moderate; memantine for moderate-severe. Behavioral symptoms managed non-pharmacologically first."
   },
   {
     "topic": "שבריריות (Frailty)",
@@ -479,6 +545,38 @@
       {
         "q": "מהו Clinical Frailty Scale?",
         "a": "סולם קליני (1–9) להערכת שבריריות – מנבא תמותה ותוצאות."
+      },
+      {
+        "front": "Fried Frailty Phenotype — 5 criteria",
+        "back": "≥3 of: 1) Unintentional weight loss (>10 lbs/year), 2) Self-reported exhaustion, 3) Low physical activity, 4) Slow walking speed, 5) Weak grip strength. 1-2 = pre-frail."
+      },
+      {
+        "front": "Comprehensive Geriatric Assessment (CGA) domains",
+        "back": "Medical, cognitive, affective/mood, social, economic, environmental, spiritual, functional status, frailty, advance care planning. Instruments guide but don't replace clinical judgment."
+      },
+      {
+        "front": "Geriatric assessment differs from standard evaluation by:",
+        "back": "Emphasizes functional status as both dimension to evaluate AND outcome to improve. Includes social, psychological, environmental factors beyond disease manifestations."
+      },
+      {
+        "front": "FRAX fracture risk tool",
+        "back": "Web-based WHO calculator integrating clinical risk factors + optional femoral neck BMD. Gives 10-year probability of hip and major osteoporotic fracture. Treatment threshold: hip ≥3% or major ≥20%."
+      },
+      {
+        "front": "Vitamin D and fall prevention — USPSTF",
+        "back": "Vitamin D supplementation + exercise are specific interventions reducing falls. USPSTF meta-analysis: vitamin D reduces falls by 17%. Osteoporosis Canada meta-analysis confirmed."
+      },
+      {
+        "front": "Physical fitness vs weight loss in older adults",
+        "back": "Physical fitness and functional independence confer MORE benefit than weight loss alone. No mortality benefit from weight loss proven in older adults. Combined exercise + weight loss best for obese elderly."
+      },
+      {
+        "front": "AGS Choosing Wisely — key principle",
+        "back": "Identify and avoid low-value interventions in geriatric care. Single component of larger value-based care constellation. Doesn't replace clinical judgment but guides appropriate resource use."
+      },
+      {
+        "front": "Proactive geriatric consultation to prevent delirium",
+        "back": "Protocol-based: pain treatment, eliminate unnecessary meds, bowel/bladder regulation, early mobilization. Effective at reducing delirium incidence (SOE=B)."
       }
     ],
     "mcqs": [
@@ -702,7 +800,8 @@
         "correct": "צוות רב‑מקצועי כולל פיזיו/תזונאי/מרפא בעיסוק",
         "explanation": "גישה CGA."
       }
-    ]
+    ],
+    "description": "Frailty is a clinical syndrome of decreased physiologic reserve and increased vulnerability. Fried phenotype: ≥3 of weight loss, exhaustion, low activity, slow gait, weak grip. Associated with falls, disability, hospitalization, and death. Interventions: exercise (especially resistance training), nutrition optimization, comprehensive geriatric assessment."
   },
   {
     "topic": "נפילות",
@@ -714,6 +813,38 @@
       {
         "q": "איזה סוג תרופות מחייב הפחתה עקב סיכון נפילות?",
         "a": "בנזודיאזפינים ותרופות פסיכואקטיביות."
+      },
+      {
+        "front": "Hospital fall prevention — best evidence",
+        "back": "Health IT-based nursing-led falls prevention toolkit: bed posters, patient education handouts, plans of care. RCT showed effectiveness for patient-specific education and communication."
+      },
+      {
+        "front": "Morse Fall Scale — 6 items",
+        "back": "1) Fall history (3 months), 2) Secondary diagnosis, 3) Ambulatory aid, 4) IV/heparin lock, 5) Gait, 6) Mental status. Scored to determine low/moderate/high fall risk."
+      },
+      {
+        "front": "Diabetes and fall risk in elderly",
+        "back": "DM increases fall risk via peripheral neuropathy, hypoglycemia, orthostatic hypotension, visual impairment. Clinicians must provide fall risk education and guided physical therapy mobility programs."
+      },
+      {
+        "front": "Postural blood pressure — high-yield exam",
+        "back": "Essential in elderly: detects orthostatic hypotension (common with antihypertensives, diuretics, autonomic dysfunction). More important in geriatric exam than many traditional elements."
+      },
+      {
+        "front": "In-hospital delirium risk factors that increase falls",
+        "back": "Physical restraints, bladder catheterization, sleep/sensory deprivation, ≥3 new medications. Avoiding these prevents both delirium AND falls."
+      },
+      {
+        "front": "Physical exam in hospitalized elderly — priorities",
+        "back": "Day 5 of hospitalization: more important to see if patient can SIT UP/STAND than to listen to heart sounds. Postural BP, cognitive status, hearing, vision, foot exam are high-yield."
+      },
+      {
+        "front": "Foot deformities and fall risk",
+        "back": "Calluses over bunions (hallux valgus) common in elderly. In diabetic patients: DEBRIDE and assess for ulcer first before padding or shoe changes. Untreated foot problems increase fall risk."
+      },
+      {
+        "front": "Haloperidol for delirium prevention — evidence",
+        "back": "Two RCTs in hip surgery patients ≥70: no significant reduction in delirium incidence (SOE=A), but severity and duration were reduced. Not recommended for routine prevention."
       }
     ],
     "mcqs": [
@@ -937,7 +1068,8 @@
         "correct": "סקווטים מותאמים",
         "explanation": "מחזק שרירים."
       }
-    ]
+    ],
+    "description": "Falls affect ~30% of community-dwelling elderly annually. Multifactorial: muscle weakness, gait/balance disorders, polypharmacy, environmental hazards, visual impairment. Assessment: Timed Up and Go, Morse Fall Scale. Prevention: multifactorial interventions, exercise, medication review, vitamin D, environmental modification."
   },
   {
     "topic": "דיכאון בגיל המבוגר",
@@ -949,6 +1081,38 @@
       {
         "q": "איזו גישה פסיכותרפית יעילה לאחר גיל 65?",
         "a": "CBT, כולל קבוצתי."
+      },
+      {
+        "front": "PHQ-2 screening questions",
+        "back": "1) Little interest or pleasure in doing things? 2) Feeling down, depressed, or hopeless? Over past 2 weeks. If positive → proceed to PHQ-9."
+      },
+      {
+        "front": "PHQ-9 sensitivity/specificity for major depression",
+        "back": "Score >10: 88% sensitivity, 88% specificity for major depression. Reliable for detection and monitoring severity."
+      },
+      {
+        "front": "Depression screening tools — evidence-supported (4)",
+        "back": "PHQ-2, PHQ-9, GDS (Geriatric Depression Scale), GDS-short form. Screen annually or when symptoms arise."
+      },
+      {
+        "front": "IMPACT model components",
+        "back": "1-year stepped collaborative care: depression care manager in primary care, treatment alternatives (meds + problem-solving therapy), stepped-care algorithm, weekly psychiatrist/geriatrician supervision. Lower costs at 4 years."
+      },
+      {
+        "front": "HTA-SADD: antidepressants in dementia",
+        "back": "326 patients, 9 centers. Sertraline & mirtazapine = placebo at 13 and 39 weeks. AEs >40% on drug vs 25% placebo. Recommend 3 months watchful waiting + psychosocial interventions first."
+      },
+      {
+        "front": "Cornell Depression Scale for Dementia",
+        "back": "Caregiver-completed. Score ≥6: 93% sensitivity, 97% specificity. Use when patient lacks insight into mood (moderate-severe dementia)."
+      },
+      {
+        "front": "Switching/augmenting antidepressants in elderly",
+        "back": "~50% improvement rate (higher with sequential strategies) in elderly WITHOUT dementia. No comparable evidence exists for depressed patients WITH dementia."
+      },
+      {
+        "front": "Problem-solving therapy in IMPACT",
+        "back": "6-8 session structured psychotherapy. Similarly effective to antidepressants for major depression in older primary care patients. One of the treatment alternatives offered."
       }
     ],
     "mcqs": [
@@ -1061,8 +1225,119 @@
         ],
         "answer": 1,
         "explanation": "Switching or augmenting yields about 50% improvement (even higher with persistent sequential strategies). However, there are no comparable findings for depressed patients WITH dementia."
+      },
+      {
+        "question": "Late-life depression is associated with all EXCEPT:",
+        "options": [
+          "Increased disability",
+          "Higher healthcare utilization",
+          "Decreased mortality",
+          "Decreased quality of life"
+        ],
+        "answer": 2,
+        "explanation": "Depression INCREASES mortality, disability, healthcare use, and decreases quality of life."
+      },
+      {
+        "question": "The two-question depressive screen asks about:",
+        "options": [
+          "Sleep and appetite",
+          "Sadness/feeling down and loss of interest",
+          "Anxiety and irritability",
+          "Fatigue and concentration"
+        ],
+        "answer": 1,
+        "explanation": "Quick screen: 'Have you been sad/blue/down?' and 'Have you lost interest in things?' If positive, do full GDS or PHQ-9."
+      },
+      {
+        "question": "Depression in Parkinson's disease is often underdiagnosed because:",
+        "options": [
+          "PD patients rarely get depressed",
+          "Symptom overlap with PD motor features",
+          "Screening tools are invalid in PD",
+          "Only psychiatrists can diagnose it"
+        ],
+        "answer": 1,
+        "explanation": "Psychomotor slowing, flat affect, sleep disturbance in PD mimic depression. Comorbid cognitive impairment further complicates detection."
+      },
+      {
+        "question": "Grief typically differs from major depression in that grief is NOT associated with:",
+        "options": [
+          "Sadness",
+          "Crying",
+          "Memory problems and functional loss",
+          "Longing for the deceased"
+        ],
+        "answer": 2,
+        "explanation": "Grief usually does NOT cause memory problems or functional loss. When present, screen for depression, which may coexist with grief."
+      },
+      {
+        "question": "Persistent/complicated grief affects what percentage of bereaved older adults?",
+        "options": [
+          "1-2%",
+          "9-25%",
+          "50-60%",
+          "75-90%"
+        ],
+        "answer": 1,
+        "explanation": "9-25% develop persistent grief (DSM-5: 6-12 months duration). Associated with disability, cognitive impairment, suicidal thinking."
+      },
+      {
+        "question": "Self-reported poor health in adults ≥65 predicts:",
+        "options": [
+          "Nothing useful",
+          "Increased risk of cognitive impairment over 10 years",
+          "Lower healthcare costs",
+          "Better medication adherence"
+        ],
+        "answer": 1,
+        "explanation": "Global Self-Reported Health correlates with objective indices (SOE=A). Poor ratings predict cognitive impairment risk even in community-dwelling adults 60-64."
+      },
+      {
+        "question": "Dignity therapy at end of life improves well-being by:",
+        "options": [
+          "Increasing medication doses",
+          "Bolstering sense of meaning and reducing existential distress",
+          "Providing financial counseling",
+          "Facilitating family conflict resolution"
+        ],
+        "answer": 1,
+        "explanation": "Short-term psychotherapy supporting meaning-making in life-limiting illness. Patients with higher sense of meaning have less end-of-life distress."
+      },
+      {
+        "question": "Atypical depression in elderly may present primarily as:",
+        "options": [
+          "Euphoria",
+          "Somatic complaints and cognitive dysfunction",
+          "Mania",
+          "Psychosis"
+        ],
+        "answer": 1,
+        "explanation": "Elderly patients often present with somatic complaints (pain, GI symptoms, fatigue) and cognitive complaints ('pseudodementia') rather than classic sadness."
+      },
+      {
+        "question": "Which is TRUE about SSRIs in elderly patients?",
+        "options": [
+          "They have no side effects",
+          "Hyponatremia is a recognized adverse effect",
+          "They are contraindicated over age 80",
+          "They work faster than in younger patients"
+        ],
+        "answer": 1,
+        "explanation": "SSRIs can cause SIADH-related hyponatremia, especially in elderly. Also risk of GI bleeding, falls, and insomnia. Monitor sodium in first weeks."
+      },
+      {
+        "question": "Depression screening in older adults is recommended:",
+        "options": [
+          "Only when patient complains",
+          "Only at initial visit",
+          "Annually or when symptoms arise",
+          "Every 5 years"
+        ],
+        "answer": 2,
+        "explanation": "Annual depression screening or when symptoms arise is recommended. Use PHQ-2, PHQ-9, GDS, or GDS-short form (evidence-supported tools)."
       }
-    ]
+    ],
+    "description": "Depression prevalence 10-30% in older adults. Often underdiagnosed due to atypical presentation and comorbidity. Screening: PHQ-2 → PHQ-9, GDS, Cornell Scale (for dementia). Treatment: psychotherapy (CBT, problem-solving therapy) and/or antidepressants. IMPACT collaborative care model shows sustained benefit."
   },
   {
     "topic": "רישום ודה‑פרסקייבינג תרופות",
@@ -1074,6 +1349,38 @@
       {
         "q": "מה האתגר העיקרי בדה‑פרסקייבינג?",
         "a": "חוסר קווים ברורים, מחסור בתמיכה, התנגדות מטופלית."
+      },
+      {
+        "front": "Prescribing cascade — definition and example",
+        "back": "New medication prescribed to treat adverse effects of another medication. Example: oxybutynin started for urinary urgency caused by donepezil. Correct approach: discontinue the offending agent."
+      },
+      {
+        "front": "Beers Criteria — key drug classes to avoid in elderly",
+        "back": "Anticholinergics, benzodiazepines, NSAIDs (especially with HF/CKD), first-generation antihistamines, barbiturates, meperidine, sliding-scale insulin (prolonged use)."
+      },
+      {
+        "front": "Anticholinergic + cholinesterase inhibitor interaction",
+        "back": "Pharmacodynamic antagonism: each reduces the other's efficacy. Anticholinergics worsen cognition; cholinesterase inhibitors worsen bladder symptoms. Avoid concurrent use when possible."
+      },
+      {
+        "front": "OTC decongestants in men with BPH",
+        "back": "Alpha-adrenergic agonist decongestants constrict bladder outlet smooth muscle → can precipitate acute urinary retention in men with BPH (SOE=A). Ask about OTC meds."
+      },
+      {
+        "front": "Oxybutynin cognitive effects — mechanism",
+        "back": "Cognitive adverse effects correlate with PEAK drug levels (SOE=A). Extended-release has lower peaks → potentially fewer cognitive effects than immediate-release."
+      },
+      {
+        "front": "EQUiPPED protocol for ED medication safety",
+        "back": "Education + personal provider feedback + electronic clinical decision support. Sustained reduction in potentially inappropriate prescribing at 1 year across 4 VA hospitals."
+      },
+      {
+        "front": "Prospect theory in medical decisions",
+        "back": "Framing as gains → risk averse (save 200 people); as losses → risk seeking (400 die). Medical professionals equally susceptible. Affects advance care planning, treatment choices."
+      },
+      {
+        "front": "Average 75-year-old comorbidity burden",
+        "back": "3.5 chronic diseases. One disease may obscure another's presentation. Treating one may worsen another. Disease-specific approach is not optimal in elderly."
       }
     ],
     "mcqs": [
@@ -1186,8 +1493,119 @@
         ],
         "answer": 1,
         "explanation": "Deprescribing should be done one medication at a time with monitoring for withdrawal effects or return of symptoms. This allows attribution of any changes to the specific medication stopped."
+      },
+      {
+        "question": "A 79-year-old with Alzheimer's on donepezil has episodic paranoid ideas. The most appropriate initial pharmacologic treatment is:",
+        "options": [
+          "Haloperidol",
+          "Memantine",
+          "Donepezil (optimize dose)",
+          "Haloperidol plus donepezil"
+        ],
+        "answer": 2,
+        "explanation": "For episodic, recently diagnosed AD with behavioral symptoms, optimizing cholinesterase inhibitor is the most prudent first step (SOE=C) before adding antipsychotics."
+      },
+      {
+        "question": "In the EQUiPPED protocol for medication safety in EDs, the intervention combines:",
+        "options": [
+          "Mandatory pharmacy consult for all patients",
+          "Education, provider feedback, and electronic decision support",
+          "Automatic Beers Criteria alerts only",
+          "Pharmacist-led medication reconciliation only"
+        ],
+        "answer": 1,
+        "explanation": "EQUiPPED combines education + personal provider feedback + electronic clinical decision support. Demonstrated sustained reduction in potentially inappropriate prescribing at 1 year."
+      },
+      {
+        "question": "Beers Criteria in the ED setting:",
+        "options": [
+          "Apply exactly as in outpatient settings",
+          "May have different risk-benefit for short-term prescriptions",
+          "Are never relevant in acute care",
+          "Only apply to nursing home patients"
+        ],
+        "answer": 1,
+        "explanation": "Beers Criteria generally apply to longer-duration prescriptions. Short ED prescriptions may have a unique risk-benefit profile that remains relatively untested."
+      },
+      {
+        "question": "ED clinicians who identify overtreated hypertension or hyperglycemia should:",
+        "options": [
+          "Continue all medications unchanged",
+          "Initiate deprescribing and communicate to primary physicians",
+          "Only adjust if they are geriatricians",
+          "Refer to pharmacy only"
+        ],
+        "answer": 1,
+        "explanation": "ED clinicians should initiate deprescribing for overtreatment (hypoglycemia, hypotension) and communicate findings/recommendations to the patient's physicians."
+      },
+      {
+        "question": "Clinical decision making in older adults differs from younger patients primarily because:",
+        "options": [
+          "Older patients don't need treatment",
+          "Age-related physiologic changes affect test interpretation and treatment responses",
+          "Evidence-based guidelines are identical for all ages",
+          "Only survival matters"
+        ],
+        "answer": 1,
+        "explanation": "Age-related changes affect diagnostics and treatment. Average 75-year-old has 3.5 chronic diseases; one disease may obscure another's presentation, and treating one may worsen another."
+      },
+      {
+        "question": "In geriatric decision-making, patient priorities should focus on:",
+        "options": [
+          "Only disease-specific cure",
+          "Longevity versus comfort/symptom relief trade-offs",
+          "Cost reduction only",
+          "Family preferences exclusively"
+        ],
+        "answer": 1,
+        "explanation": "Good decision-making elicits patient priorities among competing domains (longevity vs comfort) to ensure preferences drive all evaluation and management decisions."
+      },
+      {
+        "question": "Framing effects in medical decision-making:",
+        "options": [
+          "Only affect patients, not clinicians",
+          "Affect both clinicians and patients equally",
+          "Are irrelevant in geriatrics",
+          "Can be eliminated by better education"
+        ],
+        "answer": 1,
+        "explanation": "Prospect theory: when options framed as gains → risk averse; as losses → risk seeking. Medical professionals are equally susceptible to these biases."
+      },
+      {
+        "question": "The Choosing Wisely campaign in geriatrics addresses:",
+        "options": [
+          "Increasing healthcare spending",
+          "Reducing low-value care through evidence-based recommendations",
+          "Mandating specific treatments",
+          "Limiting access to specialists"
+        ],
+        "answer": 1,
+        "explanation": "AGS Choosing Wisely guidelines identify low-value interventions to avoid, as one component of moving toward value-based care."
+      },
+      {
+        "question": "When multiple medication changes are made simultaneously and new symptoms develop:",
+        "options": [
+          "The newest medication is always responsible",
+          "It becomes difficult to identify the causative change",
+          "All medications should be stopped immediately",
+          "No action is needed"
+        ],
+        "answer": 1,
+        "explanation": "Making multiple medication changes at once makes it difficult to identify which change caused new symptoms. Change one at a time when possible."
+      },
+      {
+        "question": "Anticholinergic burden in elderly is problematic because:",
+        "options": [
+          "Anticholinergic effects are rare in elderly",
+          "Cumulative effects from multiple mildly anticholinergic drugs cause cognitive impairment, falls, and delirium",
+          "Only strong anticholinergics matter",
+          "Effects are easily reversible"
+        ],
+        "answer": 1,
+        "explanation": "Multiple medications with mild anticholinergic properties produce cumulative burden causing confusion, falls, urinary retention, constipation, and delirium."
       }
-    ]
+    ],
+    "description": "Polypharmacy (≥5 medications) affects >40% of elderly. Beers Criteria and STOPP/START guide inappropriate prescribing. Key concepts: prescribing cascade, anticholinergic burden, drug-drug interactions. Deprescribing: one medication at a time with monitoring. Always consider renal/hepatic dose adjustments."
   },
   {
     "topic": "אי שליטה בסוגרים (Continence)",
@@ -1199,6 +1617,38 @@
       {
         "q": "תפקיד הצוות הרב‑מקצועי?",
         "a": "שילוב גריאטר/ית, פיזיותרפיה, סיעוד להנחיה ותמיכה."
+      },
+      {
+        "front": "Urinary incontinence types in elderly",
+        "back": "Stress (cough/sneeze), Urge (overactive bladder), Overflow (retention), Functional (can't reach toilet), Mixed (stress+urge). DIAPPERS mnemonic for transient causes."
+      },
+      {
+        "front": "Behavioral therapy for incontinence — first-line",
+        "back": "Kegel exercises (pelvic floor training) = first-line for stress and mixed UI (Cochrane SOE=A). 'Freeze and squeeze' technique for urge. Contract pelvic floor before activities causing leakage."
+      },
+      {
+        "front": "Oral vs vaginal estrogen for incontinence",
+        "back": "ORAL conjugated estrogen WORSENS incontinence (SOE=A) — never use. VAGINAL topical estrogen cream may be helpful adjunct for atrophic changes."
+      },
+      {
+        "front": "PVR >300 mL management",
+        "back": "Requires measurement of serum creatinine and referral to urology (SOE=C). May need intermittent self-catheterization. Do NOT start anticholinergics without checking PVR."
+      },
+      {
+        "front": "Donepezil → incontinence mechanism",
+        "back": "Cholinesterase inhibitors have procholinergic effects → increase detrusor contractility → urinary urgency and urge incontinence. Population studies confirm (SOE=A)."
+      },
+      {
+        "front": "Standing cough test — interpretation",
+        "back": "Patient stands, coughs vigorously. Immediate leakage = highly specific for STRESS incontinence (SOE=A). Delayed leakage suggests urge component."
+      },
+      {
+        "front": "Neurogenic bladder in diabetic neuropathy",
+        "back": "Large capacity, poor contraction, no obstruction on urodynamics. PVR very high (>300-650 mL). Treatment: intermittent self-catheterization, NOT TURP or anticholinergics."
+      },
+      {
+        "front": "Medications causing urinary retention in elderly",
+        "back": "Anticholinergics (diphenhydramine), alpha-agonist decongestants, opioids, TCAs, calcium channel blockers. Always review med list for new incontinence or retention."
       }
     ],
     "mcqs": [
@@ -1311,8 +1761,119 @@
         ],
         "answer": 2,
         "explanation": "In stable chronic incontinence without acute symptoms, and with a clean urinalysis, a positive culture likely represents contamination or asymptomatic bacteriuria. Treatment would not improve incontinence (SOE=A)."
+      },
+      {
+        "question": "An 84-year-old on donepezil develops urinary urgency. Discontinuing donepezil would most likely improve incontinence because:",
+        "options": [
+          "Donepezil causes urinary retention",
+          "Cholinesterase inhibitors increase bladder contractility",
+          "Donepezil is nephrotoxic",
+          "Donepezil causes overflow incontinence"
+        ],
+        "answer": 1,
+        "explanation": "Procholinergic drugs (donepezil) increase bladder smooth muscle contractility → urgency and urge incontinence. Population studies confirm this association (SOE=A)."
+      },
+      {
+        "question": "Restless legs syndrome can contribute to urinary symptoms primarily through:",
+        "options": [
+          "Direct bladder irritation",
+          "Sleep disruption causing nocturia",
+          "Renal effects",
+          "Prostate enlargement"
+        ],
+        "answer": 1,
+        "explanation": "RLS causes severe sleep disruption with frequent awakenings, contributing to nocturia. Diagnosis: uncomfortable leg sensations at rest, circadian pattern, relieved by movement."
+      },
+      {
+        "question": "Pramipexole is first-line treatment for:",
+        "options": [
+          "Urge incontinence",
+          "Stress incontinence",
+          "Restless legs syndrome",
+          "Overflow incontinence"
+        ],
+        "answer": 2,
+        "explanation": "Pramipexole (dopamine agonist) is first-line for restless legs syndrome which can indirectly contribute to nocturia through sleep disruption."
+      },
+      {
+        "question": "Tolterodine added to alpha-blocker therapy in men with BPH is appropriate when:",
+        "options": [
+          "As initial therapy",
+          "Alpha-blocker therapy has been maximized and voiding symptoms persist",
+          "PVR is >500 mL",
+          "Patient has delirium"
+        ],
+        "answer": 1,
+        "explanation": "Adding anticholinergic bladder medications to alpha-blocker may improve incontinence in BPH with overactive bladder (SOE=A), but only after alpha-blocker is maximized."
+      },
+      {
+        "question": "Intermittent self-catheterization is preferred over indwelling catheter because:",
+        "options": [
+          "It's easier for nursing staff",
+          "Lower risk of UTI, stones, and urethral damage",
+          "It's less expensive",
+          "It requires no patient education"
+        ],
+        "answer": 1,
+        "explanation": "Indwelling catheters cause UTI, obstruction, urethral damage, strictures, bladder stones, and spasm. Self-catheterization preserves upper tract with lower complication rates."
+      },
+      {
+        "question": "Urodynamic testing showing large capacity, poor contraction, and no obstruction suggests:",
+        "options": [
+          "BPH requiring TURP",
+          "Stress incontinence",
+          "Neurogenic bladder (underactive detrusor)",
+          "Normal aging"
+        ],
+        "answer": 2,
+        "explanation": "Large capacity + poor contraction + no obstruction = poorly contractile/neurogenic bladder. Common in diabetic neuropathy. Self-catheterization is the appropriate treatment."
+      },
+      {
+        "question": "Vaginal topical estrogen in urinary incontinence:",
+        "options": [
+          "Is contraindicated like oral estrogen",
+          "May be a helpful adjunct, unlike oral estrogen which worsens incontinence",
+          "Replaces behavioral therapy",
+          "Is first-line treatment"
+        ],
+        "answer": 1,
+        "explanation": "Key distinction: ORAL conjugated estrogen worsens incontinence (SOE=A). VAGINAL topical estrogen cream may be a helpful adjunct for atrophic changes."
+      },
+      {
+        "question": "The standing cough test assesses for:",
+        "options": [
+          "Overflow incontinence",
+          "Urge incontinence",
+          "Stress incontinence (positive = immediate leakage with cough)",
+          "Neurogenic bladder"
+        ],
+        "answer": 2,
+        "explanation": "Patient stands, coughs vigorously — immediate urine leakage is highly specific for stress incontinence (SOE=A). Distinguished from urge incontinence by timing."
+      },
+      {
+        "question": "Functional incontinence in hospitalized elderly is often caused by:",
+        "options": [
+          "Bladder pathology",
+          "Inability to reach toilet due to mobility, restraints, or cognitive impairment",
+          "Urethral stricture",
+          "Renal failure"
+        ],
+        "answer": 1,
+        "explanation": "Functional incontinence: intact urinary tract but inability to toilet due to immobility, restraints, delirium, or environmental barriers. Addressed by removing barriers."
+      },
+      {
+        "question": "In an elderly patient with new incontinence, medication review should focus on:",
+        "options": [
+          "Only bladder-specific medications",
+          "All medications with anticholinergic, diuretic, or autonomic effects",
+          "Only newly started medications",
+          "Only Beers Criteria medications"
+        ],
+        "answer": 1,
+        "explanation": "Multiple drug classes affect continence: anticholinergics (retention), cholinesterase inhibitors (urgency), diuretics (frequency), alpha-blockers (relaxation), sedatives (functional)."
       }
-    ]
+    ],
+    "description": "Urinary incontinence affects 15-30% of community-dwelling elderly. Types: stress, urge, overflow, functional, mixed. Evaluation: history, PVR measurement, urinalysis. First-line: behavioral therapy, Kegel exercises, bladder training. Avoid anticholinergics in cognitive impairment. Oral estrogen worsens incontinence."
   },
   {
     "topic": "סרקופניה ותזונה",
@@ -1324,6 +1885,38 @@
       {
         "q": "תזונה יומית מוצעת?",
         "a": "1.0–1.2 g/kg חלבון, ליאוצין, ויטמין D."
+      },
+      {
+        "front": "Sarcopenia definition and screening",
+        "back": "Progressive loss of muscle mass AND strength/function with aging. Screen: SARC-F questionnaire (≥4 positive). Confirm: grip strength, gait speed, muscle mass (DEXA/BIA)."
+      },
+      {
+        "front": "Leucine for sarcopenia",
+        "back": "Crucial essential amino acid for combating sarcopenia (SOE=B). Long-term essential amino acid intake recognized as important for prevention and treatment."
+      },
+      {
+        "front": "MNA (Mini Nutritional Assessment)",
+        "back": "Validated nutritional screening tool for elderly. Screens body weight, weight loss, dietary intake, disease burden. Preferred over albumin/prealbumin which reflect inflammation, not nutrition."
+      },
+      {
+        "front": "Why NOT albumin for nutritional assessment?",
+        "back": "Inflammation and injury alter albumin/prealbumin synthesis and degradation, limiting usefulness for nutritional assessment specifically. They correlate with outcomes but not nutrition status."
+      },
+      {
+        "front": "Tube feeding formulas — key selections",
+        "back": "Standard: Osmolite 1.0 kcal/mL. Volume-restricted: TwoCal HN 2.0. ESRD: Nepro (low K+). Diabetes: Glucerna. High protein: Promote. Fat malabsorption: Vivonex."
+      },
+      {
+        "front": "Bedside swallowing assessment post-stroke",
+        "back": "97% sensitivity, 90% specificity for dysphagia (SOE=B). MUST be done before ANY feeding. Trial of feeding without assessment increases aspiration risk (SOE=A)."
+      },
+      {
+        "front": "Mediterranean diet benefits in elderly",
+        "back": "Olive oil, vegetables, nuts, fruits. Associated with CVD prevention, metabolic syndrome reversal. Antioxidants and fiber may reduce transient oxidative stress from food intake."
+      },
+      {
+        "front": "Olanzapine for cancer anorexia",
+        "back": "ASCO first-line recommendation. 2.5 mg bedtime: 60% gained ≥5% weight vs 9% placebo (p<.001). Mirtazapine ineffective in large RCT. Megestrol/steroids increase appetite but don't improve survival."
       }
     ],
     "mcqs": [
@@ -1436,8 +2029,119 @@
         ],
         "answer": 1,
         "explanation": "The traditional Mediterranean diet (olive oil, vegetables, nuts, fruits) meets healthy diet criteria and is associated with prevention of CVD progression and reversal of metabolic syndrome."
+      },
+      {
+        "question": "The SARC-F screening questionnaire assesses:",
+        "options": [
+          "Nutritional status only",
+          "Strength, Assistance walking, Rise from chair, Climb stairs, Falls",
+          "Bone density risk",
+          "Cognitive function"
+        ],
+        "answer": 1,
+        "explanation": "SARC-F: 5-item self-report screening for sarcopenia. Score ≥4 suggests sarcopenia requiring further assessment with grip strength and gait speed."
+      },
+      {
+        "question": "Protein requirements in older adults should be:",
+        "options": [
+          "Reduced to protect kidneys",
+          "At least 1.0-1.2 g/kg/day, a greater proportion of total calories",
+          "Same as young adults at 0.8 g/kg/day",
+          "Unrestricted"
+        ],
+        "answer": 1,
+        "explanation": "Requirements don't decrease with age. Since total energy needs decline, protein should be proportionally greater. General consensus ≥1.0-1.2 g/kg/day (SOE=C)."
+      },
+      {
+        "question": "Enteral feeding is preferred over parenteral because of all EXCEPT:",
+        "options": [
+          "Maintains mucosal integrity",
+          "Maintains IgA secretion",
+          "Lower infection risk",
+          "Faster nutrient delivery"
+        ],
+        "answer": 3,
+        "explanation": "Enteral feeding limits mucosal atrophy, maintains IgA secretion, prevents cholelithiasis, costs less, and has fewer infectious complications. Speed of delivery is not an advantage."
+      },
+      {
+        "question": "For a volume-restricted patient needing tube feeding, which formula is most appropriate?",
+        "options": [
+          "Osmolite 1.0 kcal/mL",
+          "TwoCal HN 2.0 kcal/mL",
+          "Vivonex RTF 1.0 kcal/mL",
+          "Vital AF 1.2 kcal/mL"
+        ],
+        "answer": 1,
+        "explanation": "TwoCal HN at 2.0 kcal/mL provides maximum calories in minimum volume for fluid-restricted patients. Standard formulas at 1.0 kcal/mL require more volume."
+      },
+      {
+        "question": "Nepro with Carb Steady formula is designed for patients with:",
+        "options": [
+          "Diabetes only",
+          "ESRD (end-stage renal disease)",
+          "Fat malabsorption",
+          "ARDS"
+        ],
+        "answer": 1,
+        "explanation": "Nepro: 1.8 kcal/mL, 48% lipid, low potassium (27.2 mEq/L), designed for ESRD patients on dialysis with restricted potassium and fluid needs."
+      },
+      {
+        "question": "Unnecessary dietary restrictions in elderly (low salt, low fat, low sugar) can:",
+        "options": [
+          "Always improve outcomes",
+          "Contribute to inadequate eating and malnutrition",
+          "Have no effect on intake",
+          "Only matter in hospitalized patients"
+        ],
+        "answer": 1,
+        "explanation": "Overly restricted diets contribute to malnutrition in elderly. Prevention requires addressing these along with polypharmacy, dental health, depression, and mealtime isolation."
+      },
+      {
+        "question": "Physical activity in elderly protects against all EXCEPT:",
+        "options": [
+          "Cognitive impairment",
+          "Type 2 diabetes",
+          "Chromosomal mutations",
+          "Functional decline"
+        ],
+        "answer": 2,
+        "explanation": "Regular moderate exercise delays CAD, diabetes, osteoporosis, obesity, cognitive impairment; protects against functional decline; improves mood. It doesn't prevent chromosomal mutations."
+      },
+      {
+        "question": "The recommended daily physical activity for older adults is:",
+        "options": [
+          "10 minutes weekly",
+          "30 minutes on most/all days",
+          "2 hours daily",
+          "Only when symptoms develop"
+        ],
+        "answer": 1,
+        "explanation": "At least 30 minutes moderate-intensity physical activity on most, preferably all, days. Even moderate activity substantially drops all-cause mortality."
+      },
+      {
+        "question": "Cancer cachexia differs from simple malnutrition in that:",
+        "options": [
+          "It responds well to caloric replacement",
+          "It cannot be reversed by simply replacing calories and nutrients",
+          "It only occurs in pancreatic cancer",
+          "It improves with appetite stimulants alone"
+        ],
+        "answer": 1,
+        "explanation": "Cancer cachexia is multifactorial (metabolic dysregulation, inflammation, muscle wasting) and cannot be reversed by caloric replacement. Olanzapine is recommended first-line for anorexia."
+      },
+      {
+        "question": "Olanzapine for cancer-related anorexia at 2.5 mg bedtime showed what result?",
+        "options": [
+          "No benefit",
+          "60% gained ≥5% weight vs 9% placebo",
+          "Only improved nausea",
+          "Worsened cachexia"
+        ],
+        "answer": 1,
+        "explanation": "In 124 solid tumor patients, 60% on olanzapine gained ≥5% weight vs 9% placebo (p<.001). Recommended as first-line by ASCO guidelines. Mirtazapine was ineffective."
       }
-    ]
+    ],
+    "description": "Sarcopenia: progressive loss of muscle mass and strength with aging. Screening: SARC-F, grip strength, gait speed. Risk factors: inactivity, malnutrition, inflammation. Treatment: resistance exercise + adequate protein (1.0-1.2 g/kg/day), vitamin D, leucine. MNA for nutritional screening. Mediterranean diet protective."
   },
   {
     "topic": "טיפול סוף‑חיים",
@@ -1449,6 +2153,38 @@
       {
         "q": "קריטי בתכנון טיפול פליאטיבי?",
         "a": "Advance Care Planning – העדפות מטופל."
+      },
+      {
+        "front": "Advance care planning — 2017 consensus definition",
+        "back": "Process supporting adults in understanding and sharing personal values, life goals, and preferences regarding future medical care during serious/chronic illness."
+      },
+      {
+        "front": "Goals of care vs advance directives",
+        "back": "Goals: patient-directed wishes for wellbeing/accomplishments, often non-medical, spanning multiple diseases. Advance directives: wishes for care during serious acute illness + healthcare proxy appointment."
+      },
+      {
+        "front": "DNR scope — critical limitation",
+        "back": "DNR applies ONLY to cardiac/respiratory arrest. Does NOT apply to other decisions (dialysis, surgery, antibiotics). Always assess capacity for current decision at hand."
+      },
+      {
+        "front": "Hospice benefits — evidence",
+        "back": "Greater satisfaction with quality of dying, better quality of care, less conflict in decisions. Caregivers: more effort but NO increase in depression, anxiety, or persistent grief."
+      },
+      {
+        "front": "Aggressive end-of-life care markers",
+        "back": "New chemo within 14 days of death, ICU in last month, >1 ED visit last month, >14 days hospitalization, hospice stay <3 days. Nearly 20% of cancer patients got chemo in last 2 weeks."
+      },
+      {
+        "front": "Persistent/complicated grief — facts",
+        "back": "DSM-5: 6-12 months after death. Affects 9-25% of elderly bereaved. Associated with disability, cognitive impairment, suicidal thinking. Targeted psychotherapy > standard interpersonal therapy."
+      },
+      {
+        "front": "POLST vs standard advance directives",
+        "back": "POLST: physician orders immediately actionable, travels with patient. Standard AD: broader values document, may need interpretation. POLST reduces aggressive treatment in nursing homes."
+      },
+      {
+        "front": "Cultural competence at end of life",
+        "back": "For many Black Americans: limited trust in healthcare, longevity may trump quality of life, advance directives perceived as denial of care. Always ask about decision-making approaches and preferences."
       }
     ],
     "mcqs": [
@@ -1561,8 +2297,119 @@
         ],
         "answer": 2,
         "explanation": "Timely hospice enrollment (>7 days) is considered appropriate care. Aggressive markers include late chemotherapy, short hospice stays (<3 days), multiple ED visits, >14 days hospitalization, and ICU admission in the last month."
+      },
+      {
+        "question": "Advance care planning consensus definition focuses on:",
+        "options": [
+          "Only DNR decisions",
+          "Sharing personal values, life goals, and preferences for future care",
+          "Choosing a nursing home",
+          "Financial planning"
+        ],
+        "answer": 1,
+        "explanation": "2017 consensus: ACP supports adults in understanding and sharing personal values, life goals, and preferences regarding future medical care during serious illness."
+      },
+      {
+        "question": "Goals of care differ from advance directives in that goals:",
+        "options": [
+          "Only apply during hospitalization",
+          "Are overarching, often non-medical, spanning multiple diseases",
+          "Must be documented legally",
+          "Replace advance directives"
+        ],
+        "answer": 1,
+        "explanation": "Goals of care are patient-directed wishes for wellbeing (e.g., attending grandchild's wedding, sleeping without pain). They span diseases and are often non-medical. Advance directives focus on acute illness decisions."
+      },
+      {
+        "question": "Annual mortality rate for people aged 90+ is approximately:",
+        "options": [
+          "5%",
+          "10%",
+          "20%",
+          ">30%"
+        ],
+        "answer": 3,
+        "explanation": "8-10% per year for ages 85+, and OVER 30% per year for ages 90+. This highlights urgency of clarifying end-of-life preferences in the very old."
+      },
+      {
+        "question": "Who is more likely to initiate end-of-life discussions?",
+        "options": [
+          "Adult children",
+          "Older adults themselves",
+          "Hospital social workers",
+          "Insurance companies"
+        ],
+        "answer": 1,
+        "explanation": "Older adults are more likely to initiate such discussions than their adult children. Adult children may resist and often favor more aggressive treatment than parents."
+      },
+      {
+        "question": "POLST completion in nursing home residents is associated with:",
+        "options": [
+          "More aggressive treatment",
+          "Less aggressive treatment at end of life",
+          "No difference in care",
+          "Mandatory hospice enrollment"
+        ],
+        "answer": 1,
+        "explanation": "Older adults completing POLST are less likely to receive aggressive treatment in nursing homes, though this effect was not seen in ER admissions."
+      },
+      {
+        "question": "Medicare reimburses advance care planning discussions under CPT codes:",
+        "options": [
+          "Only for terminal patients",
+          "99497 and 99498, voluntarily, with no completed document required",
+          "Only once per patient lifetime",
+          "Only in inpatient settings"
+        ],
+        "answer": 1,
+        "explanation": "Since 2016, voluntary ACP discussions reimbursed under 99497/99498. No completed document required. Can bill multiple encounters. But only 1.6% of Medicare Advantage patients had a billed discussion."
+      },
+      {
+        "question": "Deprescribing medications at end of life is:",
+        "options": [
+          "Never appropriate while patient is alive",
+          "An emerging priority to reduce pill burden",
+          "Only done by pharmacists",
+          "Contraindicated in hospice"
+        ],
+        "answer": 1,
+        "explanation": "Deprescribing medications no longer appropriate is increasingly recognized as important at end of life, though defining best practices remains challenging."
+      },
+      {
+        "question": "Caregiver bereavement after hospice use shows:",
+        "options": [
+          "Higher rates of depression and anxiety",
+          "No increase in depression/anxiety despite greater caregiving involvement",
+          "Lower quality of care ratings",
+          "Increased family conflict"
+        ],
+        "answer": 1,
+        "explanation": "Despite greater involvement (medications, time off work), hospice caregivers do NOT report more depression, anxiety, or persistent grief. Hospice buffers negative caregiving impact."
+      },
+      {
+        "question": "The SPIKES protocol is used for:",
+        "options": [
+          "Medication reconciliation",
+          "Breaking bad news to patients and families",
+          "Fall prevention",
+          "Delirium screening"
+        ],
+        "answer": 1,
+        "explanation": "SPIKES: Setting, Perception, Invitation, Knowledge, Empathy, Strategy/Summary. Structured framework for delivering difficult news in clinical settings."
+      },
+      {
+        "question": "Nearly what percentage of cancer patients continued chemotherapy in the last 2 weeks of life?",
+        "options": [
+          "5%",
+          "Nearly 20%",
+          "50%",
+          "75%"
+        ],
+        "answer": 1,
+        "explanation": "SEER analysis of 30,000 patients aged 65+ showed nearly 20% received chemotherapy in last 2 weeks of life, reflecting persistent aggressive end-of-life treatment."
       }
-    ]
+    ],
+    "description": "End-of-life care encompasses advance care planning, goals of care discussions, hospice, and palliative care. Key documents: advance directives, POLST, healthcare proxy. Hospice for prognosis ≤6 months. Annual mortality 8-10% for ages 85+. Dignity therapy for existential distress. Cultural competence essential."
   },
   {
     "topic": "שבץ מוחי (Stroke/TIA)",
@@ -1570,6 +2417,42 @@
       {
         "q": "מניעה חשובה לשבץ חוזר?",
         "a": "טיפול אנטי‑טרומבוטי, שליטה ב‑BP, שיקום מוקדם."
+      },
+      {
+        "front": "CHA₂DS₂-VASc scoring — all components",
+        "back": "C=CHF(1), H=HTN(1), A₂=Age≥75(2), D=DM(1), S₂=Stroke/TIA(2), V=Vascular disease(1), A=Age 65-74(1), Sc=Sex female(1). Max 9. Score ≥2 in males or ≥3 in females → anticoagulate."
+      },
+      {
+        "front": "Post-stroke swallowing assessment — mandatory",
+        "back": "Bedside test: 97% sensitivity, 90% specificity. MUST do before ANY oral feeding. Feeding without assessment increases aspiration risk (SOE=A). Then videofluoroscopy if needed."
+      },
+      {
+        "front": "Inpatient stroke rehabilitation criteria",
+        "back": "Multiple functional deficits (hemiparesis, ADL dependence, aphasia), cognitively able to participate, engaged in therapy, follows commands. Needs comprehensive PT + OT + speech."
+      },
+      {
+        "front": "Post-stroke depression screening",
+        "back": "Depression is reversible cause of functional decline post-stroke. Screen with PHQ-2 → PHQ-9. Significant barrier to rehabilitation participation and recovery."
+      },
+      {
+        "front": "Delirium after stroke — implications",
+        "back": "Common in elderly stroke patients. Increases LOS, cognitive/functional decline, post-hospital depression. Reassess cognition weeks later — may unmask pre-existing dementia."
+      },
+      {
+        "front": "4AT delirium screen — advantages",
+        "back": "Brief, accurate, acceptable to ED/ward providers. Doesn't require extensive training like full CAM. Components: alertness, AMT4, attention, acute change."
+      },
+      {
+        "front": "Non-invasive carotid imaging",
+        "back": "Duplex ultrasound, CTA, MRA provide adequate diagnostic accuracy vs intra-arterial angiography for symptomatic carotid stenosis (meta-analysis)."
+      },
+      {
+        "front": "DM and post-stroke fall risk",
+        "back": "Diabetes independently increases fall risk: neuropathy, hypoglycemia, orthostatic hypotension. Must provide fall risk education and PT-guided mobility program."
+      },
+      {
+        "front": "Ultra Brief cognitive screen — 2 items",
+        "back": "1) List days of the week backward, 2) What day is it today? Quick bedside screen for hospitalized patients. Positive result warrants full cognitive assessment."
       }
     ],
     "mcqs": [
@@ -1682,8 +2565,119 @@
         ],
         "answer": 1,
         "explanation": "The Ultra Brief two-item screen asks patients to list the days of the week backward and identify the current day. It's useful for quick bedside cognitive assessment in hospitalized patients."
+      },
+      {
+        "question": "CHA₂DS₂-VASc score components giving 2 points each are:",
+        "options": [
+          "CHF and Diabetes",
+          "Age ≥75 and prior Stroke/TIA",
+          "Hypertension and Vascular disease",
+          "Female sex and Age 65-74"
+        ],
+        "answer": 1,
+        "explanation": "2-point items: Age ≥75 and prior Stroke/TIA/thromboembolism. 1-point: CHF, HTN, DM, vascular disease, age 65-74, female sex. Max score 9."
+      },
+      {
+        "question": "A standardized bedside swallowing test detects post-stroke dysphagia with:",
+        "options": [
+          "50% sensitivity, 50% specificity",
+          "97% sensitivity, 90% specificity",
+          "100% sensitivity, 100% specificity",
+          "70% sensitivity, 95% specificity"
+        ],
+        "answer": 1,
+        "explanation": "Bedside swallowing test: 97% sensitivity, 90% specificity for dysphagia after stroke (SOE=B). Must be done before ANY oral feeding."
+      },
+      {
+        "question": "The CAM-ICU is specifically designed to assess delirium in:",
+        "options": [
+          "Outpatient clinics",
+          "Emergency departments only",
+          "ICU patients, including post-stroke",
+          "Nursing homes only"
+        ],
+        "answer": 2,
+        "explanation": "CAM-ICU version assesses delirium in ICU settings where patients may be intubated or sedated. Important for post-stroke patients in critical care."
+      },
+      {
+        "question": "Delirium in a post-stroke patient can be viewed as:",
+        "options": [
+          "Normal recovery",
+          "A 'stress test for the brain' unmasking decreased cerebral reserve",
+          "An expected surgical complication requiring no evaluation",
+          "A sign of medication overuse only"
+        ],
+        "answer": 1,
+        "explanation": "Delirium as 'stress test for the brain' — infection/drugs unmask decreased cerebral reserve and may herald underlying neurodegenerative disease requiring outpatient screening."
+      },
+      {
+        "question": "Post-stroke rehabilitation should include OT, PT, and speech therapy when:",
+        "options": [
+          "Only if patient requests each",
+          "Patient has deficits in ADLs, mobility, AND communication",
+          "Only for hemorrhagic stroke",
+          "After 6 weeks waiting period"
+        ],
+        "answer": 1,
+        "explanation": "Comprehensive rehabilitation addressing all deficits. This patient with hemiparesis (PT), ADL dependence (OT), and aphasia (speech) needs all three simultaneously."
+      },
+      {
+        "question": "Hypoactive delirium in hospitalized stroke patients is:",
+        "options": [
+          "Rare",
+          "The most common form in elderly, often missed",
+          "Always drug-induced",
+          "Easy to diagnose without screening tools"
+        ],
+        "answer": 1,
+        "explanation": "Hypoactive delirium is most common in elderly (slowed movement, paucity of speech, unresponsiveness) but identified far less frequently than hyperactive form by staff."
+      },
+      {
+        "question": "A stroke patient with diabetes has increased risk of falls because:",
+        "options": [
+          "Stroke always prevents walking",
+          "DM increases fall risk independently through neuropathy and hypoglycemia",
+          "Diabetes causes blindness in all patients",
+          "Falls only occur from hemiparesis"
+        ],
+        "answer": 1,
+        "explanation": "DM independently increases fall risk via peripheral neuropathy, hypoglycemia, and orthostatic hypotension. Clinicians must provide fall risk education and mobility programs."
+      },
+      {
+        "question": "After delirium resolves in a hospitalized patient, cognition should be reassessed:",
+        "options": [
+          "Immediately the same day",
+          "Several weeks later to determine true baseline",
+          "Only if family requests",
+          "Never — delirium has no cognitive implications"
+        ],
+        "answer": 1,
+        "explanation": "Delirium may unmask previously unrecognized dementia. Reassess cognition several weeks after resolution to determine true baseline and screen for underlying neurodegenerative disease."
+      },
+      {
+        "question": "The 4AT delirium screening tool advantages in emergency settings include:",
+        "options": [
+          "Requires 30 minutes to administer",
+          "Balances brevity, accuracy, and emergency provider acceptability",
+          "Only works for hyperactive delirium",
+          "Requires specialized neuropsych training"
+        ],
+        "answer": 1,
+        "explanation": "4AT, along with bCAM and RASS, more favorably balance brevity, accuracy, and ED provider acceptability compared to full CAM which requires careful training."
+      },
+      {
+        "question": "Carotid stenosis evaluation by non-invasive imaging compared to intra-arterial angiography:",
+        "options": [
+          "Is never accurate enough",
+          "Provides adequate diagnostic accuracy for most clinical decisions",
+          "Is only useful for screening, not treatment decisions",
+          "Requires MRI in all cases"
+        ],
+        "answer": 1,
+        "explanation": "Meta-analysis showed non-invasive imaging (duplex ultrasound, CTA, MRA) provides adequate diagnostic accuracy for symptomatic carotid stenosis evaluation."
       }
-    ]
+    ],
+    "description": "Stroke is a leading cause of disability in elderly. Assessment: NIHSS for severity, CHA₂DS₂-VASc for AF-related stroke risk. Swallowing assessment mandatory before feeding. Comprehensive rehabilitation (PT/OT/speech). Screen for post-stroke depression. Delirium common — reassess cognition weeks later."
   },
   {
     "topic": "אי ספיקת לב / יתר לחץ דם",
@@ -1691,6 +2685,42 @@
       {
         "q": "עמודי תווך בטיפול?",
         "a": "שליטה בלחץ דם, תרופות מותאמות, ניטור נוזלים ותפקוד."
+      },
+      {
+        "front": "HF diagnosis — first-line imaging",
+        "back": "Echocardiography: assesses ventricular function, valvular disease, wall motion, hypertrophy. CXR and ECG alone cannot determine specific cardiac abnormality."
+      },
+      {
+        "front": "Medications to AVOID in elderly HF",
+        "back": "NSAIDs (Na/H2O retention), thiazolidinediones (fluid retention), non-dihydropyridine CCBs (negative inotrope in systolic HF), most antiarrhythmics except amiodarone."
+      },
+      {
+        "front": "Orthostatic hypotension assessment",
+        "back": "BP lying → standing at 1 and 3 minutes. Positive: SBP drop ≥20 or DBP drop ≥10. High-yield exam in elderly on HF meds. Predicts falls, syncope, fractures."
+      },
+      {
+        "front": "Value-based care spectrum — risk types",
+        "back": "Upside risk: bonus for quality, no loss liability. Downside risk: must repay losses if quality benchmark not met. Stronger incentive for high-value care but more financial uncertainty."
+      },
+      {
+        "front": "Guided Care model",
+        "back": "RN + 2-5 physicians in primary care. Home assessment, care/action plans, monthly monitoring, self-care promotion, transitional care, caregiver support, community resources. RCT showed improved quality ratings."
+      },
+      {
+        "front": "Depression in HF — prevalence and impact",
+        "back": "Up to 40% prevalence. Worsens adherence, hospitalizations, mortality, quality of life. Screen with PHQ-2 → PHQ-9. Treatable — collaborative care models effective."
+      },
+      {
+        "front": "ACE-I in elderly HF — principles",
+        "back": "Cornerstone therapy. Start low, go slow. Monitor K+ and creatinine. Not automatically contraindicated with CKD. Cough is class effect (switch to ARB). Angioedema rare but serious."
+      },
+      {
+        "front": "Observation units for geriatric patients",
+        "back": "Adults 65+ = >30% of observation admissions. Alternative to hospital admission: evaluate therapeutic response, additional testing, facilitate care transitions."
+      },
+      {
+        "front": "Geriatric emergency care principles",
+        "back": "Focus on syndrome detection (delirium, falls, frailty, polypharmacy), not just disease. EQUiPPED for med safety. Interdisciplinary staffing. Observation units as admission alternative."
       }
     ],
     "mcqs": [
@@ -1803,8 +2833,119 @@
         ],
         "answer": 3,
         "explanation": "Guided Care works within primary care — a nurse works with 2-5 physicians. It provides home assessment, care plans, monthly monitoring, self-care promotion, transitional care, caregiver support, and community resource access."
+      },
+      {
+        "question": "The most appropriate initial imaging for new heart failure diagnosis is:",
+        "options": [
+          "Chest X-ray",
+          "ECG",
+          "Echocardiography",
+          "Cardiac MRI"
+        ],
+        "answer": 2,
+        "explanation": "Echocardiography is first-line to assess ventricular function, valvular disease, and wall motion. Neither CXR nor ECG alone can determine the specific cardiac abnormality causing HF."
+      },
+      {
+        "question": "Radionuclide ventriculography provides accurate measurement of:",
+        "options": [
+          "Valvular abnormalities",
+          "LV and RV ejection fraction",
+          "Coronary artery anatomy",
+          "Pericardial disease"
+        ],
+        "answer": 1,
+        "explanation": "Radionuclide ventriculography accurately measures LV function and RV EF, but CANNOT directly assess valvular abnormalities or cardiac hypertrophy."
+      },
+      {
+        "question": "In frail elderly with HF, functional status assessment is essential because:",
+        "options": [
+          "It determines medication dosing",
+          "It is a summary measure of overall health impact guiding care planning",
+          "It predicts exact ejection fraction",
+          "It's required for billing"
+        ],
+        "answer": 1,
+        "explanation": "Functional status summarizes overall impact of health conditions. Changes should prompt diagnostic evaluation and intervention. Drives care planning including goals of care."
+      },
+      {
+        "question": "Value-based care in geriatrics features all EXCEPT:",
+        "options": [
+          "Financial risk sharing",
+          "Quality measurement",
+          "Care coordination",
+          "Fee-for-service incentivizing excess care"
+        ],
+        "answer": 3,
+        "explanation": "Value-based care features risk sharing, quality measurement, care coordination, and population health management. Fee-for-service incentivizes excess care and is what value-based care aims to replace."
+      },
+      {
+        "question": "Upside risk in value-based care means:",
+        "options": [
+          "Providers lose money for poor outcomes",
+          "Providers can benefit financially for high-value care but aren't liable for losses",
+          "Patients pay more out of pocket",
+          "Insurance premiums increase"
+        ],
+        "answer": 1,
+        "explanation": "Upside (one-sided) risk: providers receive bonuses for meeting quality standards and delivering care under benchmark. No liability for losses. Less uncertainty but more limited gains."
+      },
+      {
+        "question": "ACE inhibitors in elderly heart failure:",
+        "options": [
+          "Are contraindicated over age 80",
+          "Are beneficial and part of standard therapy",
+          "Only work in systolic HF",
+          "Should be avoided with CKD"
+        ],
+        "answer": 1,
+        "explanation": "ACE-I/ARBs are cornerstone of HF therapy. Beneficial across age groups. Start low, go slow in elderly. Monitor potassium and creatinine. Not automatically contraindicated with CKD."
+      },
+      {
+        "question": "NSAIDs should be avoided in elderly HF because they:",
+        "options": [
+          "Lower blood pressure too much",
+          "Promote sodium/water retention worsening HF",
+          "Interact with digoxin only",
+          "Cause arrhythmias"
+        ],
+        "answer": 1,
+        "explanation": "NSAIDs promote sodium and water retention, can worsen HF, counteract diuretics, and may reduce effectiveness of ACE-I. Listed in Beers Criteria for HF patients."
+      },
+      {
+        "question": "The observation unit in geriatric emergency care can:",
+        "options": [
+          "Only admit patients for 24 hours",
+          "Serve as an alternative to hospital admission for evaluation and care transitions",
+          "Replace ICU care",
+          "Only be used for chest pain"
+        ],
+        "answer": 1,
+        "explanation": "Observation units provide time to evaluate therapeutic response, obtain testing/consultations, and facilitate care transitions. Adults 65+ represent >30% of observation admissions."
+      },
+      {
+        "question": "Orthostatic hypotension in elderly HF patients is primarily concerning because:",
+        "options": [
+          "It indicates severe HF only",
+          "It predisposes to falls, syncope, and fractures",
+          "It's always medication-related",
+          "It resolves spontaneously"
+        ],
+        "answer": 1,
+        "explanation": "Orthostatic hypotension from HF medications (diuretics, ACE-I, beta-blockers) increases fall and fracture risk. Postural BP measurement is a high-yield exam element in elderly."
+      },
+      {
+        "question": "Depression screening in heart failure patients is important because depression prevalence is:",
+        "options": [
+          "<5%",
+          "Up to 40%, worsening outcomes",
+          "Only seen in end-stage HF",
+          "Not different from general population"
+        ],
+        "answer": 1,
+        "explanation": "Depression affects up to 40% of HF patients, worsening adherence, outcomes, and quality of life. PHQ-2/PHQ-9 screening recommended. Depression in HF is treatable."
       }
-    ]
+    ],
+    "description": "Heart failure prevalence increases with age. Diagnosis: echocardiography is first-line imaging. Treatment: ACE-I/ARBs, beta-blockers, diuretics, aldosterone antagonists. Avoid NSAIDs. HTN treatment in frail elderly must balance BP targets against orthostatic hypotension and fall risk."
   },
   {
     "topic": "פרקינסון ותסמונות אקסטרה‑פירמידליות",
@@ -1812,6 +2953,42 @@
       {
         "q": "התערבות ראשונית לאחר אבחנה?",
         "a": "פיזיותרפיה, התאמות סביבתיות; Levodopa לפי תגובה."
+      },
+      {
+        "front": "PD non-motor symptoms",
+        "back": "Depression, autonomic dysfunction (constipation, orthostatic hypotension, urinary, sweating), sleep disorders (RBD, daytime somnolence), dementia, psychosis, pain, fatigue."
+      },
+      {
+        "front": "PD hallucination management — stepwise",
+        "back": "1) Stop anticholinergics, 2) Stop amantadine, 3) Reduce dopamine agonists, 4) Reduce levodopa last. If needed: quetiapine (low D2) or pimavanserin (5-HT2A). NEVER haloperidol/risperidone."
+      },
+      {
+        "front": "Melatonin in PD",
+        "back": "Sympathetic denervation of pineal gland → low melatonin. 3mg before bedtime may help sleep. Evidence mixed: may improve sleep perception more than actual measured sleep time."
+      },
+      {
+        "front": "Cholinergic deficiency in PD/DLB/AD",
+        "back": "All three share degeneration of ACh-producing neurons in basal forebrain. Makes patients vulnerable to anticholinergic-induced delirium and cognitive worsening."
+      },
+      {
+        "front": "DLB — delirium vulnerability",
+        "back": "Fluctuating course + visual hallucinations + attentional deficits clinically resemble hyperactive delirium. Patients especially vulnerable to superimposed delirium."
+      },
+      {
+        "front": "Modafinil in PD",
+        "back": "Improves daytime wakefulness in PD with excessive somnolence (SOE=B). Better evidence than gabapentin (SOE=C). Methylphenidate for fatigue, not hypersomnolence."
+      },
+      {
+        "front": "Dopaminergic excess — delirium mimic",
+        "back": "High dopamine (from PD medications) → visual hallucinations, fluctuations, confusion. Mimics delirium. Important differential: reduce medications before treating as infection/metabolic."
+      },
+      {
+        "front": "PD falls — multifactorial",
+        "back": "Postural instability, freezing of gait, orthostatic hypotension (dopaminergic drugs + autonomic dysfunction), impaired proprioception, cognitive impairment. Comprehensive prevention needed."
+      },
+      {
+        "front": "Antipsychotic safety in PD",
+        "back": "SAFE: quetiapine (low D2), pimavanserin (5-HT2A inverse agonist). UNSAFE: haloperidol, risperidone, olanzapine — worsen motor symptoms via D2 blockade."
       }
     ],
     "mcqs": [
@@ -1924,6 +3101,749 @@
         ],
         "answer": 1,
         "explanation": "In older patients, high-yield functional exam elements (standing, walking, postural BP) take precedence over traditional elements. Seeing if a patient can sit up or stand is often more important than heart sounds."
+      },
+      {
+        "question": "Melatonin in Parkinson's disease may help sleep because:",
+        "options": [
+          "PD patients have normal melatonin",
+          "Sympathetic denervation of pineal gland causes low melatonin levels",
+          "It replaces dopamine",
+          "It acts as an antipsychotic"
+        ],
+        "answer": 1,
+        "explanation": "PD causes sympathetic denervation of the pineal gland → low melatonin. Exogenous melatonin (3mg before bedtime) may help these patients sleep."
+      },
+      {
+        "question": "When simplifying PD medications for visual hallucinations, the order of reduction should be:",
+        "options": [
+          "Levodopa first",
+          "Anticholinergics → amantadine → dopamine agonists → levodopa",
+          "All medications simultaneously",
+          "Only the most recently added drug"
+        ],
+        "answer": 1,
+        "explanation": "Stepwise: stop anticholinergics first (highest hallucination risk), then amantadine, then dopamine agonists, and reduce levodopa last as it's most essential for motor function."
+      },
+      {
+        "question": "Dementia with Lewy bodies is particularly vulnerable to delirium because:",
+        "options": [
+          "It doesn't respond to treatment",
+          "Its fluctuating course and attentional deficits resemble hyperactive delirium",
+          "It only affects young patients",
+          "It has no cholinergic deficiency"
+        ],
+        "answer": 1,
+        "explanation": "DLB features fluctuating cognition, visual hallucinations, parkinsonism, and attentional deficits that clinically resemble delirium. Patients are especially vulnerable to superimposed delirium."
+      },
+      {
+        "question": "Cholinergic deficiency in PD dementia is caused by:",
+        "options": [
+          "Medication side effects",
+          "Degeneration of acetylcholine-producing neurons in basal forebrain",
+          "Excessive dopamine treatment",
+          "Normal aging"
+        ],
+        "answer": 1,
+        "explanation": "AD, DLB, and PD dementia all share cholinergic deficiency from basal forebrain degeneration. This makes patients susceptible to anticholinergic-induced delirium."
+      },
+      {
+        "question": "Excess dopamine in PD treatment can cause:",
+        "options": [
+          "Only motor improvement",
+          "A delirium-like state with visual hallucinations, fluctuations, and confusion",
+          "Parkinsonism",
+          "Bradykinesia"
+        ],
+        "answer": 1,
+        "explanation": "Dopaminergic medication excess causes psychosis-like state: visual hallucinations, fluctuating confusion. Important differential from delirium caused by infection or other insults."
+      },
+      {
+        "question": "Constipation in PD is:",
+        "options": [
+          "Rare and unrelated to the disease",
+          "Part of widespread autonomic dysfunction",
+          "Only caused by medications",
+          "A sign of bowel obstruction"
+        ],
+        "answer": 1,
+        "explanation": "PD causes widespread autonomic dysfunction: constipation (often prodromal), orthostatic hypotension, urinary symptoms, impaired sweating, drooling, and sexual dysfunction."
+      },
+      {
+        "question": "Modafinil for PD daytime somnolence improves:",
+        "options": [
+          "Motor symptoms",
+          "Regular daytime wakefulness (SOE=B)",
+          "Nighttime sleep quality",
+          "Tremor severity"
+        ],
+        "answer": 1,
+        "explanation": "Modafinil improves daytime wakefulness in PD with excessive daytime sleepiness (SOE=B). Evidence for gabapentin is weaker. Methylphenidate helps fatigue but not hypersomnolence."
+      },
+      {
+        "question": "New blood-based biomarkers may soon help predict delirium risk by:",
+        "options": [
+          "Measuring drug levels",
+          "Detecting specific dementias (including PD-related) prior to surgery",
+          "Assessing liver function",
+          "Monitoring hydration"
+        ],
+        "answer": 1,
+        "explanation": "Blood-based biomarkers for specific dementias may predict people at risk for delirium before surgery or hospitalization, allowing preventive measures."
+      },
+      {
+        "question": "Haloperidol and risperidone are avoided in PD psychosis because they:",
+        "options": [
+          "Are too expensive",
+          "Worsen motor symptoms via D2 receptor blockade",
+          "Are not effective for hallucinations",
+          "Cause hepatotoxicity"
+        ],
+        "answer": 1,
+        "explanation": "Typical antipsychotics and risperidone/olanzapine block D2 receptors → severe motor worsening in PD. Only quetiapine (low D2 affinity) and pimavanserin (5-HT2A) are appropriate."
+      },
+      {
+        "question": "A previously healthy patient who develops delirium from a minor insult (UTI, elective surgery) should be evaluated for:",
+        "options": [
+          "Anxiety disorder",
+          "Unrecognized underlying neurodegenerative disease",
+          "Malingering",
+          "Drug-seeking behavior"
+        ],
+        "answer": 1,
+        "explanation": "Delirium from minor insults in a previously 'healthy' person suggests unrecognized cerebral disease (neurodegeneration, prior strokes). Delirium is a 'stress test for the brain.'"
+      }
+    ],
+    "description": "Parkinson disease: resting tremor, rigidity, bradykinesia, postural instability. Non-motor symptoms common: depression, autonomic dysfunction, sleep disorders, dementia. Levodopa is mainstay. Avoid anticholinergics in dementia. Visual hallucinations: simplify meds first, then quetiapine/pimavanserin. Falls are multifactorial."
+  },
+  {
+    "topic": "אוסטאופורוזיס ושברים",
+    "description": "Osteoporosis: T-score ≤-2.5 at femoral neck/spine. FRAX calculates 10-year fracture probability. Treatment threshold: hip ≥3% or major osteoporotic ≥20%. Bisphosphonates first-line; denosumab for renal impairment or bisphosphonate intolerance. Osteonecrosis of jaw rare but recognized risk with bisphosphonates and denosumab.",
+    "mcqs": [
+      {
+        "question": "A 71-year-old Asian woman with family history of hip fracture. Without DEXA, her 10-year major osteoporotic fracture risk by FRAX is approximately:",
+        "options": [
+          "<5%",
+          "11%",
+          "25%",
+          "50%"
+        ],
+        "answer": 1,
+        "explanation": "FRAX integrates clinical risk factors including age, sex, BMI, family history. This patient's 10-year risk: 11% major fracture, 4.1% hip (SOE=A). Exceeds 10% treatment threshold."
+      },
+      {
+        "question": "FRAX fracture risk assessment can be performed:",
+        "options": [
+          "Only with DEXA results",
+          "With or without femoral neck BMD",
+          "Only for postmenopausal women",
+          "Only in Caucasian populations"
+        ],
+        "answer": 1,
+        "explanation": "FRAX works with or without BMD. BMD may improve prediction in adults >70 but is not essential. Available for multiple populations."
+      },
+      {
+        "question": "NOF recommends pharmacologic therapy when 10-year hip fracture probability is:",
+        "options": [
+          "≥1%",
+          "≥3%",
+          "≥10%",
+          "≥20%"
+        ],
+        "answer": 1,
+        "explanation": "Treat if: hip/vertebral fracture history, T-score ≤-2.5, OR low bone mass with 10-year hip fracture ≥3% or major osteoporotic fracture ≥20% by FRAX."
+      },
+      {
+        "question": "A postmenopausal woman with T7 compression fracture, CKD (declining GFR), and reflux esophagitis. Best treatment:",
+        "options": [
+          "Oral alendronate",
+          "IV zoledronic acid",
+          "Denosumab",
+          "Raloxifene"
+        ],
+        "answer": 2,
+        "explanation": "Denosumab: safe in renal impairment (SOE=A), no GI effects (unlike oral bisphosphonates), no renal contraindication (unlike IV bisphosphonates). DVT history contraindicates raloxifene."
+      },
+      {
+        "question": "Osteonecrosis of the jaw is a recognized complication of all EXCEPT:",
+        "options": [
+          "Bisphosphonates",
+          "Denosumab",
+          "Teriparatide",
+          "High-dose zoledronic acid for metastases"
+        ],
+        "answer": 2,
+        "explanation": "ONJ reported with bisphosphonates (SOE=A) and denosumab (rare). NOT reported with teriparatide (anabolic agent) or raloxifene or calcitonin."
+      },
+      {
+        "question": "Before starting bisphosphonates or denosumab, patients should:",
+        "options": [
+          "Have cardiac clearance",
+          "Complete dental inspection and necessary invasive procedures",
+          "Stop all other medications",
+          "Have bone biopsy"
+        ],
+        "answer": 1,
+        "explanation": "Visual dental inspection, complete invasive procedures before therapy, avoid dental procedures during therapy. Consider antibiotics if dental procedure needed during treatment."
+      },
+      {
+        "question": "Men on GnRH agonists for prostate cancer should receive:",
+        "options": [
+          "No bone protection",
+          "Bisphosphonate if bone loss documented",
+          "Estrogen replacement",
+          "Calcium only"
+        ],
+        "answer": 1,
+        "explanation": "GnRH agonists cause acute and continued bone loss. Monitor BMD; start bisphosphonate if bone loss documented (SOE=A). IV and oral bisphosphonates prevent GnRH-associated bone loss."
+      },
+      {
+        "question": "Teriparatide is unique among osteoporosis drugs because it:",
+        "options": [
+          "Is the cheapest option",
+          "Is the only anabolic agent (builds bone)",
+          "Has no side effects",
+          "Treats pain"
+        ],
+        "answer": 1,
+        "explanation": "Teriparatide: only FDA-approved anabolic agent for severe osteoporosis. After 2 years, must follow with bisphosphonate to maintain gains. No ONJ risk reported."
+      },
+      {
+        "question": "Excessive calcium supplementation (>1200 mg/day from diet+supplements) may be associated with:",
+        "options": [
+          "Better fracture prevention",
+          "Adverse cardiovascular events and kidney stones",
+          "Improved bone quality",
+          "Reduced fall risk"
+        ],
+        "answer": 1,
+        "explanation": "IOM: RDA 1200 mg for women >50. Most get adequate calcium from diet. Excess supplementation associated with increased cardiovascular events (SOE=C) and kidney stones."
+      },
+      {
+        "question": "Raloxifene in men with prostate cancer on GnRH agonists:",
+        "options": [
+          "Is first-line treatment",
+          "Increased BMD but DVT/PE risk precluded larger studies",
+          "Has no effect on bone",
+          "Is preferred over bisphosphonates"
+        ],
+        "answer": 1,
+        "explanation": "Raloxifene increased hip/spine BMD in men (SOE=C) but adverse effects (DVT, PE risk) precluded larger placebo-controlled studies. Bisphosphonates preferred."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "FRAX — what it calculates",
+        "back": "WHO web-based tool: 10-year probability of hip fracture AND major osteoporotic fracture (spine, forearm, hip, shoulder). Uses clinical risk factors ± femoral neck BMD."
+      },
+      {
+        "front": "NOF treatment thresholds",
+        "back": "Treat if: 1) Hip/vertebral fracture, 2) T-score ≤-2.5, or 3) Low bone mass + FRAX hip ≥3% or major osteoporotic ≥20%."
+      },
+      {
+        "front": "Denosumab — mechanism and advantage",
+        "back": "Monoclonal antibody against RANK-L → inhibits osteoclast formation/function. Safe in renal impairment (unlike bisphosphonates). SC q6 months. Rare ONJ risk."
+      },
+      {
+        "front": "RANK-L / RANK / Osteoprotegerin pathway",
+        "back": "RANK-L (on osteoblasts) binds RANK (on osteoclasts) → activates bone resorption. Osteoprotegerin naturally blocks this. Estrogen loss → increased RANK-L → bone loss. Denosumab mimics OPG."
+      },
+      {
+        "front": "Bisphosphonate mechanism",
+        "back": "Inhibit farnesyl diphosphate synthase → osteoclast inactivation → reduced resorption/turnover → increased bone mass. ONJ is rare but serious adverse effect (SOE=A)."
+      },
+      {
+        "front": "Teriparatide — key facts",
+        "back": "Only FDA-approved anabolic agent. For severe osteoporosis. Max 2 years. Must follow with bisphosphonate. No ONJ risk. Builds new bone rather than just preventing loss."
+      },
+      {
+        "front": "Calcium — IOM recommendations",
+        "back": "RDA 1200 mg for women >50, men >71. Most achieve through diet (3 dairy servings = ~900mg + 300mg dietary). Excess supplements → cardiovascular risk, kidney stones."
+      },
+      {
+        "front": "Vitamin D threshold — IOM",
+        "back": "Serum 25(OH)D ≥20 ng/mL generally achieved with 400 IU/day. Lack of evidence for high-dose supplementation beyond bone health (cancer, CVD, diabetes, cognition)."
+      },
+      {
+        "front": "GnRH agonists and bone",
+        "back": "Men on GnRH agonists: acute bone loss at initiation, continued with prolonged therapy. Monitor BMD; bisphosphonate if bone loss documented (SOE=A). FRAX helps guide treatment."
+      },
+      {
+        "front": "ONJ prevention — dental care protocol",
+        "back": "Before bisphosphonate/denosumab: dental inspection + complete invasive procedures. During therapy: avoid invasive dental work. If needed: consider antibiotics. Not seen with teriparatide/raloxifene/calcitonin."
+      }
+    ]
+  },
+  {
+    "topic": "הפרעות שינה בגיל המבוגר",
+    "description": "Sleep disorders in elderly include insomnia, obstructive sleep apnea, restless legs syndrome, and REM sleep behavior disorder. CBT-I is first-line for insomnia. Benzodiazepines avoided (falls, cognitive impairment). Melatonin: limited evidence except in sympathetic denervation (PD, spinal cord injury). RLS: pramipexole first-line.",
+    "mcqs": [
+      {
+        "question": "First-line treatment for chronic insomnia in older adults, even with comorbid OSA:",
+        "options": [
+          "Clonazepam",
+          "Sertraline",
+          "Cognitive-behavioral therapy (CBT)",
+          "Ramelteon"
+        ],
+        "answer": 2,
+        "explanation": "CBT-I is effective for insomnia with OSA (SOE=A) and can improve CPAP adherence (SOE=B). Benzodiazepines worsen apnea. SSRIs may worsen insomnia. Ramelteon showed only modest benefit."
+      },
+      {
+        "question": "Benzodiazepines are specifically avoided in elderly insomnia with OSA because:",
+        "options": [
+          "They're too expensive",
+          "Their muscle relaxant properties may worsen apnea",
+          "They cause insomnia",
+          "They interact with CPAP"
+        ],
+        "answer": 1,
+        "explanation": "Benzodiazepines' muscle relaxant properties worsen OSA. Eszopiclone and zolpidem may be safer if hypnotic is needed in mild-moderate OSA (SOE=B)."
+      },
+      {
+        "question": "Ramelteon (melatonin receptor agonist) at 8 mg/day in elderly with OSA and insomnia showed:",
+        "options": [
+          "Dramatic improvement",
+          "Only modest objective improvement, no subjective improvement",
+          "Complete resolution",
+          "Worsened OSA"
+        ],
+        "answer": 1,
+        "explanation": "Modest objective sleep improvement, NO subjective improvement (SOE=A). Also doesn't address difficulty STAYING asleep (only sleep onset)."
+      },
+      {
+        "question": "Restless legs syndrome diagnosis requires:",
+        "options": [
+          "EMG confirmation",
+          "Uncomfortable leg sensations at rest, relieved by movement, with circadian pattern",
+          "Neuroimaging",
+          "Blood tests only"
+        ],
+        "answer": 1,
+        "explanation": "Clinical diagnosis: uncomfortable sensations at rest, relieved by movement, worse in evening/night, circadian pattern. Often causes insomnia."
+      },
+      {
+        "question": "First-line treatment for restless legs syndrome:",
+        "options": [
+          "Benzodiazepines",
+          "Pramipexole (dopamine agonist)",
+          "Melatonin",
+          "Gabapentin only"
+        ],
+        "answer": 1,
+        "explanation": "Pramipexole is first-line for RLS. Gabapentin has weaker evidence (SOE=C). Benzodiazepines, SSRIs, trazodone, and zolpidem do not address the underlying pathology."
+      },
+      {
+        "question": "Sedative-hypnotic agents in older adults:",
+        "options": [
+          "Are safe for long-term use",
+          "Help induce sleep but have many adverse effects including falls and cognitive impairment",
+          "Have no effect on cognition",
+          "Should be first-line before behavioral therapy"
+        ],
+        "answer": 1,
+        "explanation": "Sedative-hypnotics cause falls, cognitive impairment, daytime sedation. Should not be used long-term. Behavioral approaches are preferred first-line."
+      },
+      {
+        "question": "Melatonin levels in elderly:",
+        "options": [
+          "Increase with age",
+          "Decrease with age (pineal secretion declines)",
+          "Stay constant",
+          "Are unrelated to sleep"
+        ],
+        "answer": 1,
+        "explanation": "Melatonin (pineal gland) decreases with aging. Studies show mixed results: some improvement in sleep, often in perception rather than actual measured sleep time."
+      },
+      {
+        "question": "Melatonin is most effective for sleep when endogenous levels are:",
+        "options": [
+          "Already high",
+          "Low (during biological daytime or in PD/spinal cord injury)",
+          "Irrelevant",
+          "Suppressed by medication"
+        ],
+        "answer": 1,
+        "explanation": "Melatonin helps when endogenous levels are low: during biological daytime, in DSWPD, or with sympathetic denervation (PD, cervical spinal cord injury). Ineffective when levels already elevated."
+      },
+      {
+        "question": "Sleep hygiene counseling for elderly includes all EXCEPT:",
+        "options": [
+          "Regular sleep-wake schedule",
+          "Avoiding screens before bed",
+          "Taking OTC diphenhydramine nightly",
+          "Limiting daytime naps"
+        ],
+        "answer": 2,
+        "explanation": "Diphenhydramine is anticholinergic — causes falls, confusion, urinary retention in elderly (Beers Criteria). Sleep hygiene: schedule consistency, environment, avoiding stimulants/screens."
+      },
+      {
+        "question": "Valerian for insomnia in older adults:",
+        "options": [
+          "Is highly effective",
+          "Has not been found more effective than placebo",
+          "Is recommended by geriatric guidelines",
+          "Improves deep sleep specifically"
+        ],
+        "answer": 1,
+        "explanation": "Studies have not found valerian more effective than placebo for insomnia treatment. Tai chi, acupressure, and yoga have some supportive evidence."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "CBT-I — first-line for elderly insomnia",
+        "back": "Cognitive-behavioral therapy for insomnia: recognition/alteration of maladaptive habits and beliefs. Also improves sleep scheduling and daytime activity patterns. Effective even with comorbid OSA (SOE=A)."
+      },
+      {
+        "front": "Benzodiazepines in elderly — why avoid",
+        "back": "Falls, cognitive impairment, daytime sedation, respiratory depression. Worsen OSA (muscle relaxation). Beers Criteria: avoid in elderly. If hypnotic needed with mild OSA: eszopiclone or zolpidem (SOE=B)."
+      },
+      {
+        "front": "Restless legs syndrome — diagnosis",
+        "back": "Clinical: uncomfortable sensations at rest, relieved by movement, circadian pattern (worse evening). Often associated with iron deficiency, uremia, pregnancy. Treatment: pramipexole (dopamine agonist)."
+      },
+      {
+        "front": "Melatonin — when it works",
+        "back": "Effective when endogenous levels LOW: biological daytime, delayed sleep phase, sympathetic denervation (PD, spinal cord injury). NOT effective when levels already high (most primary insomnia in elderly)."
+      },
+      {
+        "front": "Sleep changes with normal aging",
+        "back": "Decreased total sleep time, increased sleep onset latency, more frequent awakenings, less deep (stage N3) sleep, earlier circadian phase (earlier bedtime/waketime)."
+      },
+      {
+        "front": "Ramelteon — limitations",
+        "back": "Melatonin receptor agonist. Only addresses sleep ONSET (not maintenance). Modest objective improvement in OSA+insomnia. No subjective benefit at 8mg/day (SOE=A)."
+      },
+      {
+        "front": "Modafinil for daytime somnolence",
+        "back": "Improves wakefulness in PD (SOE=B) and shift-work disorder. Does NOT improve nighttime sleep. Better evidence than methylphenidate for hypersomnolence."
+      },
+      {
+        "front": "Sleep hygiene principles for elderly",
+        "back": "Regular schedule, avoid caffeine/alcohol, limit naps, comfortable environment, exercise (not before bed), avoid screens, relaxation techniques. May improve sleep alone."
+      },
+      {
+        "front": "Complementary therapies for insomnia — evidence",
+        "back": "Tai chi, acupressure: some supportive evidence. Yoga: combines postures + breathing. Valerian: NOT more effective than placebo. Acupuncture: no placebo-controlled evidence."
+      },
+      {
+        "front": "REM sleep behavior disorder",
+        "back": "Acting out dreams during REM (loss of normal atonia). Associated with synucleinopathies (PD, DLB, MSA). May precede motor symptoms by years. Important prodromal marker."
+      }
+    ]
+  },
+  {
+    "topic": "זיהומים ואנטיביוטיקה בקשיש",
+    "description": "Infections in elderly present atypically: absence of fever common, delirium may be only sign. UTI: treat symptomatic only; asymptomatic bacteriuria does NOT require treatment. Pneumonia: most common infectious cause of death. C. difficile: increased risk with antibiotics and hospitalization. Antibiotic stewardship critical to reduce resistance and adverse effects.",
+    "mcqs": [
+      {
+        "question": "Asymptomatic bacteriuria in elderly women:",
+        "options": [
+          "Always requires antibiotics",
+          "Should NOT be treated with antibiotics in absence of acute symptoms",
+          "Indicates need for indwelling catheter",
+          "Requires hospitalization"
+        ],
+        "answer": 1,
+        "explanation": "Asymptomatic bacteriuria is common in elderly women. Treatment does NOT reduce morbidity or mortality and promotes resistance (SOE=A). Only treat symptomatic UTI."
+      },
+      {
+        "question": "The most appropriate initial antibiotic for community-acquired cystitis in elderly women:",
+        "options": [
+          "IV vancomycin",
+          "Oral nitrofurantoin or TMP-SMX",
+          "Oral ciprofloxacin",
+          "IM ceftriaxone"
+        ],
+        "answer": 1,
+        "explanation": "Uncomplicated cystitis: nitrofurantoin or TMP-SMX first-line. Fluoroquinolones reserved for complicated UTI/pyelonephritis to reduce resistance. Nitrofurantoin: avoid if CrCl <30."
+      },
+      {
+        "question": "Cranberry products for UTI prevention in elderly:",
+        "options": [
+          "Strong evidence for prevention",
+          "Limited and inconsistent evidence",
+          "Recommended by all guidelines",
+          "Replace antibiotics entirely"
+        ],
+        "answer": 1,
+        "explanation": "Cranberry juice/supplements have limited, inconsistent evidence for UTI prevention. May reduce recurrence modestly but not a substitute for other prevention strategies."
+      },
+      {
+        "question": "Infections in elderly may present atypically with:",
+        "options": [
+          "High fever always present",
+          "Delirium as the only presenting sign, often without fever",
+          "Localized symptoms only",
+          "Normal white blood cell count excluding infection"
+        ],
+        "answer": 1,
+        "explanation": "Elderly often lack typical inflammatory response. Delirium, functional decline, falls, or anorexia may be the ONLY signs of infection. Absence of fever does not exclude infection."
+      },
+      {
+        "question": "C. difficile infection risk factors in elderly include all EXCEPT:",
+        "options": [
+          "Antibiotic use",
+          "Hospitalization",
+          "Proton pump inhibitors",
+          "Daily exercise"
+        ],
+        "answer": 3,
+        "explanation": "Risk factors: antibiotics (especially fluoroquinolones, clindamycin), hospitalization, PPI use, advanced age, immunosuppression. Exercise is protective, not a risk factor."
+      },
+      {
+        "question": "Pseudomembranous colitis (C. difficile) treatment first-line:",
+        "options": [
+          "Metronidazole for all cases",
+          "Oral vancomycin for initial episode",
+          "IV vancomycin",
+          "Fecal transplant immediately"
+        ],
+        "answer": 1,
+        "explanation": "Current guidelines: oral vancomycin (or fidaxomicin) for initial C. difficile episode. Metronidazole is no longer first-line. Fecal transplant for recurrent episodes."
+      },
+      {
+        "question": "Pneumonia in elderly differs from younger adults because:",
+        "options": [
+          "It's always caused by the same organisms",
+          "Presentation may lack typical fever and productive cough",
+          "Chest X-ray is always normal",
+          "Antibiotics are never needed"
+        ],
+        "answer": 1,
+        "explanation": "Elderly pneumonia often presents with confusion, falls, functional decline rather than classic fever/cough/dyspnea. Atypical presentation delays diagnosis."
+      },
+      {
+        "question": "Fluoroquinolone use in elderly carries specific risks of:",
+        "options": [
+          "Only GI upset",
+          "Tendon rupture, QT prolongation, C. difficile, CNS effects",
+          "No significant risks",
+          "Only renal toxicity"
+        ],
+        "answer": 1,
+        "explanation": "Fluoroquinolones: tendon rupture (especially with steroids), QT prolongation, C. difficile, CNS effects (confusion, seizures), peripheral neuropathy. Reserve for appropriate indications."
+      },
+      {
+        "question": "Antibiotic stewardship in geriatrics aims to:",
+        "options": [
+          "Avoid all antibiotics",
+          "Use narrowest spectrum for shortest effective duration",
+          "Only use IV antibiotics",
+          "Treat all bacteriuria"
+        ],
+        "answer": 1,
+        "explanation": "Stewardship: right drug, right dose, right duration, right route. Avoid unnecessary treatment (asymptomatic bacteriuria), narrow spectrum when possible, shortest effective course."
+      },
+      {
+        "question": "Fever may be absent in infected elderly patients because:",
+        "options": [
+          "They don't get infections",
+          "Blunted thermoregulatory response with aging",
+          "Antibiotics are always started prophylactically",
+          "Thermometers don't work on elderly patients"
+        ],
+        "answer": 1,
+        "explanation": "Age-related blunting of thermoregulatory and immune responses. Baseline temperature often lower. A 'normal' temperature of 37.5°C may represent significant fever in an elderly patient."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "Asymptomatic bacteriuria in elderly",
+        "back": "Common (up to 50% in institutionalized women). Do NOT treat — no mortality/morbidity benefit, promotes resistance (SOE=A). Only treat SYMPTOMATIC UTI."
+      },
+      {
+        "front": "Atypical infection presentation in elderly",
+        "back": "May lack fever, productive cough, localized pain. Instead: delirium, functional decline, falls, anorexia, tachycardia. Low threshold for infection workup in acute change."
+      },
+      {
+        "front": "UTI first-line antibiotics",
+        "back": "Uncomplicated cystitis: nitrofurantoin (avoid CrCl <30) or TMP-SMX. Fluoroquinolones: reserve for complicated UTI/pyelonephritis. Adjust for renal function."
+      },
+      {
+        "front": "C. difficile treatment — current guidelines",
+        "back": "Initial episode: oral vancomycin 125mg QID × 10 days (or fidaxomicin). Metronidazole NO longer first-line. Recurrent: vancomycin taper/pulse or fidaxomicin → fecal transplant."
+      },
+      {
+        "front": "Fluoroquinolone risks in elderly",
+        "back": "Tendon rupture (especially + steroids), QT prolongation, C. difficile, CNS effects (confusion, seizures), peripheral neuropathy, aortic aneurysm risk. Use only when necessary."
+      },
+      {
+        "front": "Fever threshold in elderly",
+        "back": "Baseline temperature often lower. Temperature ≥37.8°C (100°F) or rise ≥1.1°C from baseline may indicate significant infection even if below 'normal' fever threshold."
+      },
+      {
+        "front": "Pneumonia in elderly — unique features",
+        "back": "Most common infectious cause of death. Atypical presentation (confusion > cough). Aspiration common. Consider delirium as presenting sign. Early mobilization prevents complications."
+      },
+      {
+        "front": "Antibiotic stewardship principles",
+        "back": "Right drug, dose, duration, route. Avoid treating asymptomatic bacteriuria. Narrow spectrum preferred. Shortest effective course. De-escalate based on cultures."
+      },
+      {
+        "front": "Cranberry for UTI prevention",
+        "back": "Limited, inconsistent evidence. May modestly reduce recurrence. Not a substitute for other prevention strategies. No harm in use as adjunct."
+      },
+      {
+        "front": "Urosepsis in elderly — key points",
+        "back": "Can present with delirium, hypotension, tachycardia. May lack classic fever/dysuria. Blood cultures + urine culture. Empiric broad-spectrum antibiotics. Fluid resuscitation. High mortality if delayed."
+      }
+    ]
+  },
+  {
+    "topic": "הערכה גריאטרית מקיפה (CGA)",
+    "description": "Comprehensive Geriatric Assessment is a multidimensional, interdisciplinary process to determine medical, psychological, functional, and social capabilities and limitations. Domains: medical, cognitive (MMSE/MoCA), affective (PHQ/GDS), functional (ADL/IADL), social, nutritional, sensory, environmental. Evidence supports improved outcomes in targeted populations.",
+    "mcqs": [
+      {
+        "question": "Geriatric assessment differs from standard medical evaluation by emphasizing:",
+        "options": [
+          "Only disease diagnosis",
+          "Functional status as both a dimension to evaluate AND an outcome to improve",
+          "Specialist referrals only",
+          "Laboratory testing"
+        ],
+        "answer": 1,
+        "explanation": "CGA places high value on functional status as both assessment dimension and outcome to improve/maintain. Includes social, psychological, environmental factors beyond disease."
+      },
+      {
+        "question": "CGA domains include all EXCEPT:",
+        "options": [
+          "Cognitive and affective status",
+          "Functional and social status",
+          "Spiritual and environmental factors",
+          "Stock market performance"
+        ],
+        "answer": 3,
+        "explanation": "CGA domains: medical, cognitive, affective/mood, social, economic, environmental, spiritual, functional, frailty, advance care planning. All patient-centered."
+      },
+      {
+        "question": "The chief complaint in elderly patients has:",
+        "options": [
+          "Increased importance compared to younger patients",
+          "Decreased relevance due to multiple coexisting conditions",
+          "No diagnostic value",
+          "Only medicolegal importance"
+        ],
+        "answer": 1,
+        "explanation": "In elderly with multiple comorbidities, the chief complaint has decreased relevance. Social history becomes paramount. Functional status, cognitive assessment, and mood are critical."
+      },
+      {
+        "question": "Social history in geriatric assessment is of paramount importance because:",
+        "options": [
+          "It determines insurance coverage",
+          "Living arrangements, finances, decision-making capacity, and caregiver support are essential for care planning",
+          "It's required for admission",
+          "It replaces medical history"
+        ],
+        "answer": 1,
+        "explanation": "Knowing living arrangements, financial situation, decision-making preferences, and caregiver support is essential. As impairment increases, identifying surrogate decision-maker becomes critical."
+      },
+      {
+        "question": "During hospital day 5, the most important physical exam element is likely:",
+        "options": [
+          "Cardiac auscultation",
+          "Whether the patient can sit up and stand",
+          "Abdominal palpation",
+          "Pupillary reflexes"
+        ],
+        "answer": 1,
+        "explanation": "In hospitalized elderly, high-yield functional exam (sitting, standing, walking) takes precedence over traditional elements. More clinically relevant than heart sounds on day 5."
+      },
+      {
+        "question": "High-yield physical exam elements in elderly include all EXCEPT:",
+        "options": [
+          "Postural blood pressure",
+          "Cognitive status screening",
+          "Hearing/vision assessment",
+          "Detailed dermatologic survey"
+        ],
+        "answer": 3,
+        "explanation": "High-yield: postural BP, cognitive status, hearing (cerumen check), visual acuity, foot exam, functional mobility assessment. More important than comprehensive skin exam."
+      },
+      {
+        "question": "An early indicator of impending functional disability is:",
+        "options": [
+          "Abnormal blood tests",
+          "Self-perceived difficulty with functional tasks",
+          "Family complaint",
+          "Insurance denial"
+        ],
+        "answer": 1,
+        "explanation": "Self-perceived difficulty performing functional tasks is an early warning sign, preceding measurable disability. Should prompt further evaluation and intervention."
+      },
+      {
+        "question": "Assessment instruments in geriatric care:",
+        "options": [
+          "Replace clinical judgment",
+          "Guide evaluations but do not substitute for clinical skills",
+          "Are only for research",
+          "Are unnecessary if the physician is experienced"
+        ],
+        "answer": 1,
+        "explanation": "Instruments guide comprehensive evaluation and ensure no domains are missed, but they don't substitute for clinical skills including history-taking and physical examination."
+      },
+      {
+        "question": "Barthel Index measures:",
+        "options": [
+          "Cognitive function",
+          "Basic ADL performance (eating, bathing, toileting, transfers, etc.)",
+          "Depression severity",
+          "Fracture risk"
+        ],
+        "answer": 1,
+        "explanation": "Barthel Index: 10-item tool measuring basic ADLs — feeding, bathing, grooming, dressing, bowel/bladder control, toileting, transfers, mobility, stairs. Score 0-100."
+      },
+      {
+        "question": "The 4Ms framework in geriatric care stands for:",
+        "options": [
+          "Medicine, Monitoring, Management, Mortality",
+          "Mentation, Mobility, Medications, what Matters most",
+          "Memory, Meals, Movement, Mood",
+          "Medical, Mental, Mobility, Mortality"
+        ],
+        "answer": 1,
+        "explanation": "Age-Friendly Health Systems 4Ms: Mentation (delirium/dementia/depression), Mobility, Medications, what Matters (goals/preferences). Framework for comprehensive elderly care."
+      }
+    ],
+    "flashcards": [
+      {
+        "front": "CGA — definition and purpose",
+        "back": "Multidimensional, interdisciplinary process determining medical, psychological, functional, social capabilities and limitations. Functional status is both assessment dimension AND outcome goal."
+      },
+      {
+        "front": "CGA domains — complete list",
+        "back": "Medical, cognitive, affective/mood, social, economic, environmental, spiritual, functional status, frailty, advance care planning. Assessment instruments guide but don't replace clinical judgment."
+      },
+      {
+        "front": "4Ms Framework (Age-Friendly Health Systems)",
+        "back": "Mentation (delirium, dementia, depression), Mobility (safe mobility, fall prevention), Medications (optimize, deprescribe), what Matters (patient goals, preferences, advance care planning)."
+      },
+      {
+        "front": "Social history — why paramount in elderly",
+        "back": "Living arrangements, finances, decision-making capacity, caregiver support essential for care planning. As cognitive/functional impairment increases, identifying surrogate decision-maker is critical."
+      },
+      {
+        "front": "Functional status — why it's the 'sixth vital sign'",
+        "back": "Summary measure of overall health impact. Changes prompt diagnostic evaluation. Early indicator: self-perceived difficulty with tasks. Drives care planning and goals of care discussions."
+      },
+      {
+        "front": "High-yield physical exam in elderly",
+        "back": "Postural BP, cognitive screening, hearing (check for cerumen), visual acuity, foot exam, functional mobility (sit, stand, walk). More important than traditional cardiac auscultation on hospital day 5."
+      },
+      {
+        "front": "Barthel Index — what it measures",
+        "back": "Basic ADL independence: feeding, bathing, grooming, dressing, bowel control, bladder control, toileting, transfers, mobility, stairs. Score 0-100. Widely used in rehabilitation."
+      },
+      {
+        "front": "Morse Fall Scale — 6 components",
+        "back": "1) Fall history, 2) Secondary diagnosis, 3) Ambulatory aid, 4) IV/heparin lock, 5) Gait, 6) Mental status. Classifies low/moderate/high fall risk in hospitalized patients."
+      },
+      {
+        "front": "MMSE vs MoCA",
+        "back": "MMSE: 30 points, score <24 suggests impairment. Less sensitive for mild impairment and executive dysfunction. MoCA: 30 points, better at detecting MCI, includes executive/visuospatial tasks."
+      },
+      {
+        "front": "Diagnostic testing challenges in elderly",
+        "back": "Age-related changes affect test interpretation. Multiple comorbidities complicate attribution. Must weigh test burden against benefit. Functional impact often more important than disease staging."
       }
     ]
   }
