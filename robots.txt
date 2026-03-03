@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Block textbook content from search indexing
+Disallow: /hazzards/

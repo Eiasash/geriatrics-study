@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>עוזר קליני AI - Geriatrics Platform</title>
@@ -513,29 +515,39 @@
             input.value = '';
         }
 
+        // Shared escape helper (inline copy for self-contained file)
+        function esc(str) {
+          const d = document.createElement('div');
+          d.textContent = (str == null) ? '' : String(str);
+          return d.innerHTML;
+        }
+
         function addMessage(text, type) {
             const container = document.getElementById('chat-container');
             const isUser = type === 'user';
 
             const messageDiv = document.createElement('div');
-            messageDiv.className = `chat-message flex gap-3 ${isUser ? 'flex-row-reverse' : ''}`;
+            messageDiv.className = 'chat-message flex gap-3' + (isUser ? ' flex-row-reverse' : '');
 
+            // Use DOM API — never innerHTML for user or AI-generated content
             const avatar = document.createElement('div');
-            avatar.className = `w-10 h-10 ${isUser ? 'bg-green-100' : 'bg-blue-100'} rounded-full flex items-center justify-center flex-shrink-0`;
+            avatar.className = 'w-10 h-10 ' + (isUser ? 'bg-green-100' : 'bg-blue-100') +
+              ' rounded-full flex items-center justify-center flex-shrink-0';
             avatar.textContent = isUser ? '👤' : '🤖';
 
             const bubble = document.createElement('div');
-            bubble.className = `${isUser ? 'bg-green-100' : 'bg-white'} p-4 rounded-2xl shadow-sm max-w-md`;
+            bubble.className = (isUser ? 'bg-green-100' : 'bg-white') +
+              ' p-4 rounded-2xl ' + (isUser ? 'rounded-tl-none' : 'rounded-tr-none') +
+              ' shadow-sm max-w-md';
 
             const p = document.createElement('p');
             p.className = 'text-gray-700';
-            p.textContent = text; // safe: no HTML injection
+            p.textContent = text; // textContent never executes markup
 
             bubble.appendChild(p);
             messageDiv.appendChild(avatar);
             messageDiv.appendChild(bubble);
             container.appendChild(messageDiv);
-
             container.scrollTop = container.scrollHeight;
         }
 
@@ -617,43 +629,17 @@
                 return;
             }
 
-            container.innerHTML = '';
-            const wrapper = document.createElement('div');
-            wrapper.className = 'space-y-2';
-
-            chatHistory.slice(0, 10).forEach(item => {
+            container.innerHTML = chatHistory.slice(0, 10).map(item => {
                 const service = aiServices[item.ai];
-                if (!service) return;
-
-                const row = document.createElement('div');
-                row.className = 'flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer';
-
-                const icon = document.createElement('span');
-                icon.textContent = service.icon;
-
-                const body = document.createElement('div');
-                body.className = 'flex-1 truncate';
-
-                const q = document.createElement('p');
-                q.className = 'text-sm text-gray-700 truncate';
-                q.textContent = item.query;
-
-                const date = document.createElement('p');
-                date.className = 'text-xs text-gray-400';
-                date.textContent = new Date(item.timestamp).toLocaleDateString('he-IL');
-
-                body.appendChild(q);
-                body.appendChild(date);
-
-                row.appendChild(icon);
-                row.appendChild(body);
-
-                row.addEventListener('click', () => reuseQuery(item.query));
-
-                wrapper.appendChild(row);
-            });
-
-            container.appendChild(wrapper);
+                const date = new Date(item.timestamp).toLocaleDateString('he-IL');
+                return `
+                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" onclick="reuseQuery('${item.query.replace(/'/g, "\\'")}')">
+                        <span>${service.icon}</span>
+                        <div class="flex-1 truncate text-sm text-gray-700">${item.query}</div>
+                        <span class="text-xs text-gray-400">${date}</span>
+                    </div>
+                `;
+            }).join('');
         }
 
         function reuseQuery(query) {
@@ -671,6 +657,18 @@
         // Initialize
         selectAI('openevidence');
         renderHistory();
+    </script>
+    <script>
+    // Clear patient/session data on demand
+    document.addEventListener('DOMContentLoaded', () => {
+      const clearBtn = document.getElementById('clear-session-btn');
+      if (clearBtn) clearBtn.addEventListener('click', () => {
+        if (confirm('Clear all saved chat history and session data?')) {
+          ['chatHistory','geriatricMeds','geriatricNotes'].forEach(k => localStorage.removeItem(k));
+          location.reload();
+        }
+      });
+    });
     </script>
 </body>
 </html>

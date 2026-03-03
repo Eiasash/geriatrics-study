@@ -1,3 +1,40 @@
+
+// ── Focus trap for modal dialogs ─────────────────────────────────
+function trapFocus(modal) {
+  const focusable = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (!focusable.length) return;
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  modal.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  // Close on Escape
+  modal.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') modal.dispatchEvent(new Event('close-modal'));
+  });
+  first.focus();
+}
+
+function openModal(modal, triggerEl) {
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal._triggerEl = triggerEl;
+  trapFocus(modal);
+}
+
+function closeModal(modal) {
+  if (modal._triggerEl) modal._triggerEl.focus();
+}
+window.trapFocus = trapFocus;
+window.openModal = openModal;
+window.closeModal = closeModal;
+
 // SZMC Geriatrics Presentation Maker - Enhanced Features Module
 
 // ================================

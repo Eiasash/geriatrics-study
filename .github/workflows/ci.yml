@@ -76,15 +76,15 @@ jobs:
       - name: Install dependencies
         working-directory: h5p
         run: |
-          npm ci --prefer-offline --no-audit --ignore-scripts
+          npm ci --prefer-offline --ignore-scripts
           npx patch-package
       
       - name: Run npm audit
         working-directory: h5p
         run: |
-          npm audit --json > audit-report.json || true
-          npx audit-ci --high --json > audit-ci-report.json || true
-        continue-on-error: true
+          npm audit --json > audit-report.json
+          # Fail CI on high/critical vulnerabilities
+          npx audit-ci --high --json > audit-ci-report.json
       
       - name: Upload audit reports
         if: always()
@@ -125,7 +125,7 @@ jobs:
       - name: Install dependencies
         working-directory: h5p
         run: |
-          npm ci --prefer-offline --no-audit --ignore-scripts
+          npm ci --prefer-offline --ignore-scripts
           npx patch-package
       
       - name: Run ESLint
@@ -189,7 +189,7 @@ jobs:
       - name: Install H5P dependencies
         working-directory: h5p
         run: |
-          npm ci --prefer-offline --no-audit --ignore-scripts
+          npm ci --prefer-offline --ignore-scripts
           npx patch-package
       
       # Run builds
@@ -217,13 +217,13 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Download all artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v4
         with:
           pattern: '*-package*'
           path: artifacts
       
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>מנהל תרופות חכם - AI Medication Manager</title>
@@ -160,7 +162,7 @@
                 <span class="text-2xl">⚠️</span>
                 אזהרות והתראות
             </h2>
-            <div id="warnings-content" class="space-y-4"></div>
+            <div id="warnings-content" aria-live="polite" aria-atomic="false" class="space-y-4"></div>
         </div>
 
         <!-- AI Analysis Panel -->
@@ -279,6 +281,22 @@
     </div>
 
     <script>
+        // HTML-escape: always use for user-controlled data in innerHTML
+        function esc(str) {
+          const d = document.createElement('div');
+          d.textContent = (str == null) ? '' : String(str);
+          return d.innerHTML;
+        }
+
+        // Clear patient data helper
+        function clearPatientData() {
+          if (confirm('Clear all medication data for this patient?')) {
+            localStorage.removeItem('geriatricMeds');
+            medications = [];
+            renderMedications();
+          }
+        }
+
         let medications = JSON.parse(localStorage.getItem('geriatricMeds') || '[]');
 
         // Beers Criteria Database (simplified)
@@ -374,19 +392,19 @@
                 const riskClass = beersInfo ? (beersInfo.risk === 'high' ? 'risk-high' : 'risk-medium') : 'risk-low';
 
                 return `
-                    <div class="drug-card bg-gray-50 rounded-lg p-4 ${riskClass}">
+                    <div class="drug-card bg-gray-50 rounded-lg p-4 ${esc(riskClass)}">
                         <div class="flex justify-between items-start">
                             <div>
-                                <div class="font-semibold text-gray-800 text-lg">${med.name}</div>
-                                <div class="text-sm text-gray-600">${med.dose} - ${med.frequency}</div>
-                                ${med.indication ? `<div class="text-sm text-gray-500">התוויה: ${med.indication}</div>` : ''}
+                                <div class="font-semibold text-gray-800 text-lg">${esc(med.name)}</div>
+                                <div class="text-sm text-gray-600">${esc(med.dose)} - ${esc(med.frequency)}</div>
+                                ${med.indication ? `<div class="text-sm text-gray-500">התוויה: ${esc(med.indication)}</div>` : ''}
                                 ${beersInfo ? `
                                     <div class="mt-2 p-2 ${beersInfo.risk === 'high' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'} rounded text-sm">
-                                        <strong>⚠️ Beers:</strong> ${beersInfo.reason}
+                                        <strong>⚠️ Beers:</strong> ${esc(beersInfo.reason)}
                                     </div>
                                 ` : ''}
                             </div>
-                            <button onclick="removeMedication(${med.id})" class="text-red-500 hover:text-red-700 text-xl no-print">×</button>
+                            <button onclick="removeMedication(${Number(med.id)})" class="text-red-500 hover:text-red-700 text-xl no-print" aria-label="הסר ${esc(med.name)}">×</button>
                         </div>
                     </div>
                 `;

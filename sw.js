@@ -3,12 +3,11 @@
  * Enables offline access for the learning platform
  */
 
-const CACHE_NAME = 'geriatrics-study-v2';
+const CACHE_NAME = 'geriatrics-study-v1';
 
 const CACHE_FILES = [
     './',
     './index.html',
-    './offline.html',
     // Clinical tools
     './clinical-tools/ai-assistant.html',
     './clinical-tools/anticoag.html',
@@ -32,12 +31,12 @@ const EXTERNAL_CACHE = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => {
-                console.log('Caching app files');
-                return cache.addAll(CACHE_FILES);
-            })
+            .then((cache) => cache.addAll(CACHE_FILES))
             .then(() => self.skipWaiting())
-            .catch((err) => console.log('Cache install failed:', err))
+            // Note: CDN assets (Font Awesome, Google Fonts) are NOT pre-cached here
+            // because we cannot verify their integrity in a SW context.
+            // They will be cached on first network fetch (stale-while-revalidate below).
+            .catch((err) => { /* non-critical cache failures don't break the SW */ })
     );
 });
 

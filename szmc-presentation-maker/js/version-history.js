@@ -493,7 +493,7 @@ class VersionHistoryManager {
 
         // Open a simple preview
         const previewWindow = window.open('', '_blank', 'width=800,height=600');
-        previewWindow.document.write(`
+        const _previewHtml = `
             <!DOCTYPE html>
             <html>
             <head>
@@ -535,7 +535,11 @@ class VersionHistoryManager {
                 `).join('')}
             </body>
             </html>
-        `);
+        `;
+        const _blob = new Blob([_previewHtml], { type: 'text/html' });
+        const _blobUrl = URL.createObjectURL(_blob);
+        previewWindow.location.href = _blobUrl;
+        previewWindow.onload = () => URL.revokeObjectURL(_blobUrl);
         previewWindow.document.close();
     }
 

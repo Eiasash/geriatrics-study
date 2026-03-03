@@ -299,10 +299,16 @@ class SpeakerNotesManager {
         printContent += '</body></html>';
 
         // Open print window
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write(printContent);
-        printWindow.document.close();
-        printWindow.print();
+                // Use Blob URL instead of document.write — avoids CSP bypass
+        const blob = new Blob([printContent], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        const printWindow2 = window.open(blobUrl);
+        if (printWindow2) {
+          printWindow2.onload = () => {
+            printWindow2.print();
+            URL.revokeObjectURL(blobUrl);
+          };
+        }
     }
 
     /**
