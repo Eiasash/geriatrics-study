@@ -3,7 +3,7 @@
  * Enables offline access for the learning platform
  */
 
-const CACHE_NAME = 'geriatrics-study-v2';
+const CACHE_NAME = 'geriatrics-study-v3';
 
 const CACHE_FILES = [
     './',
