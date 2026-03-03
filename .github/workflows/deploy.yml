@@ -55,6 +55,7 @@ jobs:
           cp sitemap.xml dist/site/ 2>/dev/null || true
           cp manifest.json dist/site/ 2>/dev/null || true
           cp offline.html dist/site/ 2>/dev/null || true
+          touch dist/site/.nojekyll
           # Stamp cache-busting version into service worker
           BUILD_TS=$(date +%Y%m%d%H%M)
           cp sw.js dist/site/sw.js
@@ -103,7 +104,7 @@ jobs:
         run: |
           SITE="https://eiasash.github.io/geriatrics-study"
           sleep 30  # allow Pages CDN to propagate
-          for path in "/" "/clinical-tools/medications.html" "/clinical-tools/ai-assistant.html" "/szmc-presentation-maker/index.html"; do
+          for path in "/" "/clinical-tools/medications.html" "/clinical-tools/ai-assistant.html" "/szmc-presentation-maker/index.html" "/hazzards/" "/h5p/"; do
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${SITE}${path}")
             if [ "$STATUS" != "200" ]; then
               echo "FAIL: ${SITE}${path} returned ${STATUS}"
