@@ -1,3 +1,6 @@
+// HTML-escape helper
+function esc(str){const d=document.createElement('div');d.textContent=(str==null)?'':String(str);return d.innerHTML;}
+
 // SZMC Geriatrics Presentation Maker - Main Application
 
 // Toast Notification System
@@ -819,7 +822,7 @@ function renderAIResultItem(item) {
             <div class="ai-result-message">${escapeHtml(item.message)}</div>
             ${quickFix ? `
                 <div class="ai-result-actions">
-                    <button class="ai-quick-fix" onclick="event.stopPropagation(); executeQuickFix('${item.action}', ${item.slideIndex})">
+                    <button class="ai-quick-fix" data-action="quickfix" data-fix="${esc(String(item.action))}" data-slide="${Number(item.slideIndex)}" onclick="event.stopPropagation()">
                         <i class="fas fa-wrench"></i> ${quickFix.label}
                     </button>
                 </div>
@@ -1019,7 +1022,7 @@ function generateDifferentialToolUI() {
         <div class="ai-tool-input-group">
             <label>Select or enter a clinical presentation:</label>
             <div class="ai-tool-quick-select">
-                ${quickTopics.map(t => `<button class="ai-tool-quick-btn" onclick="generateDifferential('${t}')">${t}</button>`).join('')}
+                ${quickTopics.map(t => `<button class="ai-tool-quick-btn" data-action="differential" data-value="${esc(t)}">${esc(t)}</button>`).join('')}
             </div>
             <input type="text" id="differential-input" placeholder="Or type a presentation (e.g., 'acute confusion', 'recurrent falls')">
         </div>
@@ -1073,7 +1076,7 @@ function generatePearlsToolUI() {
         <div class="ai-tool-input-group">
             <label>Select a topic:</label>
             <div class="ai-tool-quick-select">
-                ${topics.map(t => `<button class="ai-tool-quick-btn" onclick="showClinicalPearls('${t}')">${t}</button>`).join('')}
+                ${topics.map(t => `<button class="ai-tool-quick-btn" data-action="pearls" data-value="${esc(t)}">${esc(t)}</button>`).join('')}
             </div>
         </div>
         <div id="pearls-results">
@@ -1782,3 +1785,17 @@ window.runEvidenceSearch = runEvidenceSearch;
 window.refreshEvidencePrompt = refreshEvidencePrompt;
 window.copyEvidencePrompt = copyEvidencePrompt;
 window.applyEvidenceTemplate = applyEvidenceTemplate;
+
+// Delegated event handler for quick-action buttons (replaces inline onclick)
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const value = btn.dataset.value;
+  if (action === 'differential') { e.stopPropagation(); generateDifferential(value); }
+  else if (action === 'pearls')  { e.stopPropagation(); showClinicalPearls(value); }
+  else if (action === 'quickfix') {
+    e.stopPropagation();
+    executeQuickFix(btn.dataset.fix, parseInt(btn.dataset.slide, 10));
+  }
+});

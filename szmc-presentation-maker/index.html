@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
+
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -924,7 +926,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/templates-extended.js?v=20251201b"></script>
     <script src="js/templates-extra.js?v=20251201b"></script>
     <script src="js/citations.js?v=20251201b"></script>
-    <script src="js/resources.js?v=20251201b"></script>
+    <script src="js/resources.js?v=20251201b" defer></script>
     <script src="js/generator.js?v=20251201b"></script>
     <script src="js/editor.js?v=20251201b"></script>
     <script src="js/presentation.js?v=20251201b"></script>
@@ -932,7 +934,7 @@ Results: Primary outcome occurred in 1.65% vs 2.19%..."
     <script src="js/advanced-export.js?v=20251201b"></script>
     <script src="js/ai-assistant.js?v=20251201b"></script>
     <script src="js/main.js?v=20251201b"></script>
-    <script src="js/mobile.js?v=20251201b"></script>
+    <script src="js/mobile.js?v=20251201b" defer></script>
     <script>
         // Language switching function
         function switchLanguage(lang) {

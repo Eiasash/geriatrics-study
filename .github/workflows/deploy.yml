@@ -4,70 +4,110 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
 jobs:
-  fetch-and-deploy:
+  # ── Build: read-only access ──────────────────────────
+  build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # ← ADD THIS LINE!
-      pages: write     # ← AND THIS!
-      id-token: write  # ← AND THIS!
-    
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
-        run: |
-          pip install requests genanki
-      
-      - name: Create data directory
-        run: mkdir -p data
-      
-      - name: Fetch latest papers (if script exists)
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install requests
+
+      - name: Fetch latest PubMed papers
         run: |
           if [ -f "scripts/pubmed_fetcher.py" ]; then
             python scripts/pubmed_fetcher.py || echo "PubMed fetch failed, continuing..."
-          else
-            echo "PubMed fetcher not found, skipping..."
           fi
-      
-      - name: Create minimal content.json if missing
+
+      - name: Ensure data directory & content.json
         run: |
-          if [ ! -f "data/content.json" ]; then
-            echo '[]' > data/content.json
-          fi
-      
-      - name: Build Anki packages (if script exists)
+          mkdir -p data
+          [ -f data/content.json ] || echo "[]" > data/content.json
+
+      - name: Setup Node.js (for Tailwind CSS build)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build Tailwind CSS
         run: |
-          mkdir -p anki/dist
-          if [ -f "anki/build_apkg_enhanced.py" ]; then
-            cd anki
-            python build_apkg_enhanced.py || echo "Enhanced build failed, continuing..."
-          else
-            echo "Enhanced builder not found, skipping..."
+          npm install -g tailwindcss 2>/dev/null || true
+          if [ -f tailwind.config.js ]; then
+            npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.min.css --minify
           fi
-      
-      - name: Prepare site content for deployment
+
+      - name: Assemble dist/site
         run: |
           mkdir -p dist/site
-          # Copy main site files
-          cp -r index.html dist/site/
-          cp -r szmc-presentation-maker dist/site/ 2>/dev/null || true
+          # Core files
+          cp index.html dist/site/
+          cp 404.html dist/site/ 2>/dev/null || true
+          cp robots.txt dist/site/ 2>/dev/null || true
+          cp sitemap.xml dist/site/ 2>/dev/null || true
+          cp manifest.json dist/site/ 2>/dev/null || true
+          cp offline.html dist/site/ 2>/dev/null || true
+          # Stamp cache-busting version into service worker
+          BUILD_TS=$(date +%Y%m%d%H%M)
+          cp sw.js dist/site/sw.js
+          sed -i "s/geriatrics-study-v[0-9]*/geriatrics-study-${BUILD_TS}/" dist/site/sw.js
+          # Directories
           cp -r clinical-tools dist/site/ 2>/dev/null || true
+          cp -r szmc-presentation-maker dist/site/ 2>/dev/null || true
           cp -r h5p dist/site/ 2>/dev/null || true
-          cp -r anki dist/site/ 2>/dev/null || true
           cp -r data dist/site/ 2>/dev/null || true
-          # Remove node_modules from h5p if present
+          cp -r iv-protocols.html dist/site/ 2>/dev/null || true
+          cp -r hazzards dist/site/ 2>/dev/null || true
+          cp -r gerifellow-assistant dist/site/ 2>/dev/null || true
+          cp -r tracking dist/site/ 2>/dev/null || true
+          # Copy compiled Tailwind if built
+          [ -f dist/tailwind.min.css ] && cp dist/tailwind.min.css dist/site/ || true
+          # Remove node_modules
           rm -rf dist/site/h5p/node_modules 2>/dev/null || true
-          echo "Site content prepared for deployment"
-          ls -la dist/site/
+          echo "=== dist/site contents ===" && ls -la dist/site/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/site
+          path: dist/site
+
+  # ── Deploy: pages-only permissions ───────────────────
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+  # ── Smoke test: verify key pages return 200 ──────────
+  smoke-test:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Smoke test key pages
+        run: |
+          SITE="https://eiasash.github.io/geriatrics-study"
+          sleep 30  # allow Pages CDN to propagate
+          for path in "/" "/clinical-tools/medications.html" "/clinical-tools/ai-assistant.html" "/szmc-presentation-maker/index.html"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${SITE}${path}")
+            if [ "$STATUS" != "200" ]; then
+              echo "FAIL: ${SITE}${path} returned ${STATUS}"
+              exit 1
+            fi
+            echo "OK: ${SITE}${path} → ${STATUS}"
+          done

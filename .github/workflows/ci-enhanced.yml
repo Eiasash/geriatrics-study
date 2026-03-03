@@ -164,7 +164,7 @@ jobs:
     needs: changes
     if: |
       github.event_name == 'workflow_dispatch' ||
-      needs.changes.outputs.anki == 'true' && hashFiles('anki/**') != '' ||
+      needs.changes.outputs.anki == 'true' ||
       needs.changes.outputs.data == 'true'
     strategy:
       fail-fast: false
@@ -182,7 +182,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       
@@ -286,7 +286,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Download coverage artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v4
         with:
           pattern: '*-test-artifacts'
           path: coverage
@@ -342,7 +342,7 @@ jobs:
           
           echo "### 🔍 Changes Detected" >> $GITHUB_STEP_SUMMARY
           echo "- H5P: ${{ needs.changes.outputs.h5p == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Anki: ${{ needs.changes.outputs.anki == 'true' && hashFiles('anki/**') != '' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Anki: ${{ needs.changes.outputs.anki == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
           echo "- Data: ${{ needs.changes.outputs.data == 'true' && '✅ Changed' || '⏭️ Skipped' }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           

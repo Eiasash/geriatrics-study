@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Clinical Decision Support Tools - Geriatrics Fellowship</title>
@@ -60,7 +62,7 @@
                 <button onclick="calculateDeliriumRisk()" class="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
                     Calculate Risk
                 </button>
-                <div id="deliriumResult" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+                <div id="deliriumResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
             </div>
 
             <!-- Polypharmacy Risk Tool -->
@@ -87,7 +89,7 @@
                 <button onclick="assessPolypharmacy()" class="mt-4 w-full px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">
                     Assess Risk
                 </button>
-                <div id="polypharmacyResult" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+                <div id="polypharmacyResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
             </div>
 
             <!-- Admission Decision Tool -->
@@ -116,7 +118,7 @@
                 <button onclick="assessAdmission()" class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                     Assess Disposition
                 </button>
-                <div id="admissionResult" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+                <div id="admissionResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
             </div>
 
             <!-- Code Status Discussion Guide -->
@@ -126,7 +128,7 @@
                     <button onclick="showCodeStatusGuide()" class="w-full px-4 py-2 bg-green-100 text-green-700 rounded hover:bg-green-200">
                         Start Discussion Framework
                     </button>
-                    <div id="codeStatusGuide" class="hidden space-y-2 text-sm">
+                    <div id="codeStatusGuide" aria-live="polite" aria-atomic="true" class="hidden space-y-2 text-sm">
                         <div class="p-2 bg-yellow-50 rounded">
                             <strong>1. Assess understanding:</strong><br>
                             "What is your understanding of your current medical condition?"
@@ -172,7 +174,7 @@
                 <button onclick="assessCapacity()" class="mt-4 w-full px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
                     Evaluate Capacity
                 </button>
-                <div id="capacityResult" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+                <div id="capacityResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
             </div>
 
             <!-- Antibiotic Decision Tool -->
@@ -202,7 +204,7 @@
                 <button onclick="assessUTI()" class="mt-4 w-full px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">
                     Assess Need for Treatment
                 </button>
-                <div id="utiResult" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+                <div id="utiResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
             </div>
         </div>
 

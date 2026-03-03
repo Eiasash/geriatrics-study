@@ -1,78 +1,5 @@
 // SZMC Geriatrics Presentation Maker - Editor Module
 
-
-
-// Basic HTML sanitizer for user-authored content (prevents XSS in exported/rendered slides)
-function sanitizeHTML(dirty) {
-    if (typeof dirty !== 'string') return '';
-    const template = document.createElement('template');
-    template.innerHTML = dirty;
-
-    const ALLOWED_TAGS = new Set([
-        'DIV','P','SPAN','BR','B','I','EM','STRONG','U',
-        'UL','OL','LI',
-        'H1','H2','H3','H4','H5','H6',
-        'IMG'
-    ]);
-
-    const isSafeUrl = (url) => {
-        if (!url) return false;
-        const v = String(url).trim().toLowerCase();
-        if (v.startsWith('javascript:')) return false;
-        // allow http(s), data:image, and relative URLs
-        if (v.startsWith('data:')) return v.startsWith('data:image/');
-        return v.startsWith('http://') || v.startsWith('https://') || v.startsWith('/') || v.startsWith('./') || v.startsWith('../');
-    };
-
-    const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_ELEMENT, null);
-    const toRemove = [];
-
-    while (walker.nextNode()) {
-        const el = walker.currentNode;
-
-        if (!ALLOWED_TAGS.has(el.tagName)) {
-            // Replace disallowed element with its text content
-            const textNode = document.createTextNode(el.textContent || '');
-            el.parentNode && el.parentNode.replaceChild(textNode, el);
-            continue;
-        }
-
-        // Remove event handler attributes and unsafe URLs
-        [...el.attributes].forEach(attr => {
-            const name = attr.name.toLowerCase();
-            const value = attr.value;
-
-            if (name.startsWith('on')) {
-                el.removeAttribute(attr.name);
-                return;
-            }
-
-            if ((name === 'href' || name === 'src') && !isSafeUrl(value)) {
-                el.removeAttribute(attr.name);
-                return;
-            }
-
-            // Keep style but remove CSS expression-like patterns (very basic)
-            if (name === 'style') {
-                const sv = String(value);
-                if (/expression\s*\(|url\s*\(\s*javascript:/i.test(sv)) {
-                    el.removeAttribute('style');
-                }
-            }
-        });
-
-        // Tighten IMG specifically
-        if (el.tagName === 'IMG') {
-            const src = el.getAttribute('src') || '';
-            if (!isSafeUrl(src)) el.removeAttribute('src');
-            el.setAttribute('alt', el.getAttribute('alt') || 'Image');
-        }
-    }
-
-    return template.innerHTML;
-}
-
-
 class PresentationEditor {
     constructor() {
         this.slides = [];
@@ -363,7 +290,7 @@ class PresentationEditor {
         const canvas = document.getElementById('current-slide');
         if (!canvas) return;
 
-        canvas.innerHTML = sanitizeHTML(template.render(currentSlide.data));
+        canvas.innerHTML = template.render(currentSlide.data);
 
         // Use event delegation to avoid memory leaks from accumulated listeners
         // Remove old delegated handler if exists
@@ -426,28 +353,15 @@ class PresentationEditor {
 
             thumbnail.setAttribute('aria-label', `Slide ${index + 1}: ${typeName}${previewText ? ' - ' + previewText : ''}`);
 
-            // Build thumbnail safely (avoid HTML injection from slide content)
-            const numDiv = document.createElement('div');
-            numDiv.className = 'slide-thumbnail-number';
-            numDiv.textContent = String(index + 1);
-
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'slide-thumbnail-content';
-            contentDiv.textContent = typeName;
-
-            const previewDiv = document.createElement('div');
-            previewDiv.className = 'slide-thumbnail-preview';
-            previewDiv.textContent = previewText || '';
-
-            const actionsDiv = document.createElement('div');
-            actionsDiv.className = 'slide-thumbnail-actions';
-            actionsDiv.innerHTML = `
-                <button class="btn btn-icon btn-small" data-action="duplicate" title="Duplicate slide" aria-label="Duplicate slide">⧉</button>
-                <button class="btn btn-icon btn-small" data-action="delete" title="Delete slide" aria-label="Delete slide">🗑</button>
+            thumbnail.innerHTML = `
+                <div class="slide-thumbnail-number">${index + 1}</div>
+                <div class="slide-thumbnail-content">${typeName}</div>
+                <div class="slide-thumbnail-preview">${previewText || ''}</div>
+                <div class="slide-thumbnail-delete" onclick="event.stopPropagation(); editor.deleteSlide(${index})" role="button" aria-label="Delete slide ${index + 1}" tabindex="0">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </div>
+                <div class="drag-handle" title="Drag to reorder" aria-hidden="true"></div>
             `;
-
-            thumbnail.replaceChildren(numDiv, contentDiv, previewDiv, actionsDiv);
-
 
             thumbnail.addEventListener('click', () => this.selectSlide(index));
             thumbnail.addEventListener('keydown', (e) => {
@@ -716,14 +630,7 @@ class PresentationEditor {
     // Image upload handling
     insertImage(imageData, targetElement = null) {
         if (targetElement) {
-            targetElement.innerHTML = '';
-            const img = document.createElement('img');
-            img.src = imageData;
-            img.alt = 'Uploaded image';
-            img.style.maxWidth = '100%';
-            img.style.maxHeight = '100%';
-            img.style.objectFit = 'contain';
-            targetElement.appendChild(img);
+            targetElement.innerHTML = `<img src="${imageData}" alt="Uploaded image" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
         }
         this.isDirty = true;
     }
@@ -893,12 +800,7 @@ function triggerImageUpload() {
                     const contentArea = document.querySelector('#current-slide .content-body');
                     if (contentArea) {
                         const imgWrapper = document.createElement('div');
-                        const img = document.createElement('img');
-                        img.src = imageData;
-                        img.alt = 'Uploaded image';
-                        img.style.maxWidth = '100%';
-                        img.style.margin = '10px 0';
-                        imgWrapper.appendChild(img);
+                        imgWrapper.innerHTML = `<img src="${imageData}" alt="Uploaded image" style="max-width: 100%; margin: 10px 0;">`;
                         contentArea.appendChild(imgWrapper);
                     }
                 }

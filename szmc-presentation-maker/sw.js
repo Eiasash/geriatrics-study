@@ -67,11 +67,9 @@ const EXTERNAL_ASSETS = [
 
 // Install event - cache all files
 self.addEventListener('install', (event) => {
-    console.log('[SW] Installing v2...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('[SW] Caching app files...');
                 // Cache local files
                 const localPromise = Promise.allSettled(
                     CACHE_FILES.map(url =>
@@ -93,7 +91,6 @@ self.addEventListener('install', (event) => {
                 return Promise.all([localPromise, externalPromise]);
             })
             .then(() => {
-                console.log('[SW] Install complete');
                 return self.skipWaiting();
             })
     );
@@ -101,14 +98,12 @@ self.addEventListener('install', (event) => {
 
 // Activate event - clean old caches
 self.addEventListener('activate', (event) => {
-    console.log('[SW] Activating...');
     event.waitUntil(
         caches.keys()
             .then((names) => Promise.all(
                 names.filter(n => n !== CACHE_NAME).map(n => caches.delete(n))
             ))
             .then(() => {
-                console.log('[SW] Now active');
                 return self.clients.claim();
             })
     );
@@ -167,5 +162,4 @@ self.addEventListener('sync', (event) => {
 });
 
 async function syncOfflineSaves() {
-    console.log('[SW] Syncing offline saves...');
 }
