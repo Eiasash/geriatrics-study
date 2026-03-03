@@ -28,23 +28,6 @@ updates:
           - "*prettier*"
           - "*test*"
 
-  # Python dependencies for Anki
-  - package-ecosystem: pip
-    directory: "/anki"
-    schedule:
-      interval: weekly
-      day: monday
-      time: "03:00"
-    open-pull-requests-limit: 5
-    reviewers:
-      - "Eiasash"
-    labels:
-      - "dependencies"
-      - "python"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-
   # GitHub Actions
   - package-ecosystem: github-actions
     directory: "/"

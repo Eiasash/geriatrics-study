@@ -5,10 +5,6 @@
 /h5p/ @Eiasash
 *.h5p @Eiasash
 
-# Anki specific files
-/anki/ @Eiasash
-*.apkg @Eiasash
-
 # Data files
 /data/ @Eiasash
 *.json @Eiasash
@@ -25,4 +21,3 @@ README.md @Eiasash
 # Dependencies
 package.json @Eiasash
 package-lock.json @Eiasash
-requirements.txt @Eiasash
