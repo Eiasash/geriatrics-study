@@ -33,18 +33,6 @@ jobs:
           mkdir -p data
           [ -f data/content.json ] || echo "[]" > data/content.json
 
-      - name: Setup Node.js (for Tailwind CSS build)
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Build Tailwind CSS
-        run: |
-          npm install -g tailwindcss 2>/dev/null || true
-          if [ -f tailwind.config.js ]; then
-            npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.min.css --minify
-          fi
-
       - name: Assemble dist/site
         run: |
           mkdir -p dist/site
@@ -69,8 +57,6 @@ jobs:
           cp -r hazzards dist/site/ 2>/dev/null || true
           cp -r gerifellow-assistant dist/site/ 2>/dev/null || true
           cp -r tracking dist/site/ 2>/dev/null || true
-          # Copy compiled Tailwind if built
-          [ -f dist/tailwind.min.css ] && cp dist/tailwind.min.css dist/site/ || true
           # Remove node_modules
           rm -rf dist/site/h5p/node_modules 2>/dev/null || true
           echo "=== dist/site contents ===" && ls -la dist/site/
