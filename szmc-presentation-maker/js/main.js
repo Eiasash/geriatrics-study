@@ -743,7 +743,7 @@ function updateTimingEstimate(slides) {
     const timingEl = document.getElementById('ai-timing');
 
     if (timingEl) {
-        timingEl.innerHTML = `<i class="fas fa-clock"></i> Est. ${timing.formatted} (${timing.perSlide}s/slide)`;
+        timingEl.innerHTML = `<i class="fas fa-clock"></i> Est. ${esc(timing.formatted)} (${Number(timing.perSlide)}s/slide)`;
     }
 }
 

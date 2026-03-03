@@ -8,6 +8,8 @@ const CACHE_NAME = 'geriatrics-study-v1';
 const CACHE_FILES = [
     './',
     './index.html',
+    './manifest.json',
+    './offline.html',
     // Clinical tools
     './clinical-tools/ai-assistant.html',
     './clinical-tools/anticoag.html',

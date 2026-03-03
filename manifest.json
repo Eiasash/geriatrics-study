@@ -1,0 +1,10 @@
+{
+  "name": "SZMC Geriatrics Hub",
+  "short_name": "Geriatrics",
+  "description": "SZMC Geriatrics clinical tools and educational resources",
+  "start_url": "/geriatrics-study/",
+  "display": "standalone",
+  "background_color": "#1e3a5f",
+  "theme_color": "#1e3a5f",
+  "icons": [{"src": "szmc-presentation-maker/icons/icon.svg","sizes": "any","type": "image/svg+xml","purpose": "any maskable"}]
+}
