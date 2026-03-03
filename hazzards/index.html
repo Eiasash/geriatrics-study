@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a5f">
     <title>Hazzard's Geriatric Medicine 8e - SZMC Geriatrics</title>
+    <link rel="icon" type="image/svg+xml" href="../szmc-presentation-maker/icons/icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -343,5 +344,32 @@
             </div>
         </div>
     </div>
+
+    <!-- Loading overlay for large files -->
+    <div id="loading-overlay" style="display:none; position:fixed; inset:0; background:rgba(15,31,51,0.95); z-index:9999; flex-direction:column; align-items:center; justify-content:center; color:white;">
+        <div style="text-align:center; max-width:400px; padding:20px;">
+            <div style="width:48px; height:48px; border:4px solid rgba(255,255,255,0.2); border-top-color:#f39c12; border-radius:50%; animation:haz-spin 1s linear infinite; margin:0 auto 20px;"></div>
+            <h2 style="font-size:1.25rem; margin-bottom:8px;">Loading content...</h2>
+            <p id="loading-msg" style="opacity:0.7; font-size:0.9rem;">This file is large and may take a moment</p>
+        </div>
+    </div>
+    <style>@keyframes haz-spin { to { transform: rotate(360deg); } }</style>
+    <script>
+    (function() {
+        var overlay = document.getElementById('loading-overlay');
+        var msg = document.getElementById('loading-msg');
+        var isMobile = window.innerWidth <= 768;
+        document.querySelectorAll('.part-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                var num = this.querySelector('.part-number').textContent.trim();
+                var size = num === '3' ? '~3 MB' : '~5 MB';
+                msg.textContent = isMobile
+                    ? 'Loading ' + size + ' file. May be slow on mobile, please wait...'
+                    : 'Loading ' + size + ' file, please wait...';
+                overlay.style.display = 'flex';
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

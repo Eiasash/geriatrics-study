@@ -3,13 +3,14 @@
  * Enables offline access for the learning platform
  */
 
-const CACHE_NAME = 'geriatrics-study-v1';
+const CACHE_NAME = 'geriatrics-study-v2';
 
 const CACHE_FILES = [
     './',
     './index.html',
     './manifest.json',
     './offline.html',
+    './iv-protocols.html',
     // Clinical tools
     './clinical-tools/ai-assistant.html',
     './clinical-tools/anticoag.html',
@@ -21,6 +22,13 @@ const CACHE_FILES = [
     './clinical-tools/medications.html',
     './clinical-tools/oncall.html',
     './clinical-tools/study.html',
+    // Study resources
+    './h5p/index.html',
+    './hazzards/index.html',
+    // Note: Hazzards Part HTML files (4-5MB each) are NOT pre-cached
+    // to avoid excessive storage usage. They cache on first visit instead.
+    // Data
+    './data/content.json',
 ];
 
 // External resources to cache

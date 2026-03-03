@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://eiasash.github.io/geriatrics-study/</loc>
-  </url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/</loc><priority>1.0</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/szmc-presentation-maker/</loc><priority>0.9</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html</loc><priority>0.9</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/assessments.html</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/medications.html</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/anticoag.html</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/decisions.html</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/evidence.html</loc><priority>0.7</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/exam.html</loc><priority>0.7</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/oncall.html</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/study.html</loc><priority>0.7</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/clinical-tools/ai-assistant.html</loc><priority>0.7</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/h5p/</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/hazzards/</loc><priority>0.8</priority></url>
+  <url><loc>https://eiasash.github.io/geriatrics-study/iv-protocols.html</loc><priority>0.7</priority></url>
 </urlset>
