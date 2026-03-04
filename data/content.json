@@ -3328,6 +3328,116 @@
         ],
         "answer": 1,
         "explanation": "Raloxifene increased hip/spine BMD in men (SOE=C) but adverse effects (DVT, PE risk) precluded larger placebo-controlled studies. Bisphosphonates preferred."
+      },
+      {
+        "q": "A 68-year-old woman on alendronate for 5 years has a T-score of -1.8. What is the recommended next step?",
+        "options": [
+          "Continue alendronate indefinitely",
+          "Drug holiday — reassess in 3-5 years",
+          "Switch to teriparatide immediately",
+          "Add calcium carbonate 2g/day"
+        ],
+        "correct": "Drug holiday — reassess in 3-5 years",
+        "explanation": "After 5 years of bisphosphonate therapy, a drug holiday is appropriate for patients whose T-score has improved to above -2.5 and who are not at high fracture risk (ASBMR guidelines)."
+      },
+      {
+        "q": "Atypical femoral fractures associated with bisphosphonates typically occur at:",
+        "options": [
+          "Femoral neck",
+          "Subtrochanteric or diaphyseal shaft",
+          "Distal femur",
+          "Greater trochanter"
+        ],
+        "correct": "Subtrochanteric or diaphyseal shaft",
+        "explanation": "Atypical femoral fractures from bisphosphonate use occur at the subtrochanteric or diaphyseal shaft, often preceded by prodromal thigh pain. Risk increases with duration of use >5 years."
+      },
+      {
+        "q": "80 שנה, גבר, טיפול בפרדניזון 10mg/יום כבר 6 חודשים. מה הצעד הנכון לגבי אוסטאופורוזיס?",
+        "options": [
+          "אין צורך בטיפול — אוסטאופורוזיס שכיח רק בנשים",
+          "התחל ביספוספונט ומטפל בויטמין D + סידן ללא DEXA",
+          "בצע DEXA תחילה ואז החלט",
+          "המתן שנה לפני בדיקה"
+        ],
+        "correct": "התחל ביספוספונט ומטפל בויטמין D + סידן ללא DEXA",
+        "explanation": "קורטיקוסטרואידים במינון ≥7.5mg/יום ≥3 חודשים מצדיקים טיפול מניעתי עם ביספוספונט, סידן ווטמין D ללא תלות ב-DEXA — לפי הנחיות ACR 2017 לאוסטאופורוזיס מושרה קורטיקוסטרואידים."
+      },
+      {
+        "q": "Which finding on DEXA scan indicates osteoporosis (not just osteopenia) according to WHO criteria?",
+        "options": [
+          "T-score between -1.0 and -2.5",
+          "T-score ≤ -2.5",
+          "Z-score < -2.0",
+          "T-score < -1.0"
+        ],
+        "correct": "T-score ≤ -2.5",
+        "explanation": "WHO definition: osteoporosis = T-score ≤ -2.5; osteopenia = T-score between -1.0 and -2.5; normal ≥ -1.0. Z-score compares to age-matched peers, not peak bone mass."
+      },
+      {
+        "q": "Denosumab differs from bisphosphonates in that:",
+        "options": [
+          "It inhibits osteoclast formation via RANK-L pathway and requires continuous use — stopping causes rebound vertebral fractures",
+          "It is stored in bone for years and can be discontinued safely",
+          "It only works in postmenopausal women",
+          "It has no renal contraindications"
+        ],
+        "correct": "It inhibits osteoclast formation via RANK-L pathway and requires continuous use — stopping causes rebound vertebral fractures",
+        "explanation": "Denosumab (anti-RANK-L monoclonal antibody) must be continued long-term; discontinuation causes rapid bone loss and rebound multiple vertebral fractures within 12-18 months. Transition to bisphosphonate is required if stopping."
+      },
+      {
+        "q": "Secondary hyperparathyroidism in elderly causing bone loss is most commonly due to:",
+        "options": [
+          "Primary hyperparathyroidism",
+          "Vitamin D deficiency → low calcium → elevated PTH",
+          "Chronic kidney disease only",
+          "Malignancy"
+        ],
+        "correct": "Vitamin D deficiency → low calcium → elevated PTH",
+        "explanation": "Secondary HPT in elderly is most commonly driven by vitamin D deficiency causing low calcium absorption, stimulating PTH. This causes cortical bone loss. Treatment: vitamin D repletion (target 25-OH-D ≥30 ng/mL)."
+      },
+      {
+        "q": "Zoledronic acid (Zometa/Aclasta) 5mg IV annually is preferred over oral alendronate when:",
+        "options": [
+          "T-score is worse than -3.5",
+          "Patient has GI intolerance, difficulty swallowing, or poor adherence to weekly oral dosing",
+          "Patient is under 65",
+          "CrCl is below 35 mL/min"
+        ],
+        "correct": "Patient has GI intolerance, difficulty swallowing, or poor adherence to weekly oral dosing",
+        "explanation": "IV zoledronate is preferred for patients with upper GI issues, esophageal problems, or documented non-adherence to weekly oral bisphosphonate. It is contraindicated if CrCl <35 mL/min."
+      },
+      {
+        "q": "מה הסיבה השכיחה ביותר לאי-ציות לאלנדרונט (Fosamax) בקשישים?",
+        "options": [
+          "עלות גבוהה",
+          "תופעות לוואי ממערכת העיכול — צרבת, קשיי בליעה, כאבי בטן",
+          "עייפות",
+          "אין — הציות טוב מאוד"
+        ],
+        "correct": "תופעות לוואי ממערכת העיכול — צרבת, קשיי בליעה, כאבי בטן",
+        "explanation": "תופעות לוואי בדרכי העיכול הן הסיבה השכיחה ביותר לאי-ציות לאלנדרונט. הוראות: לקחת עם כוס מים מלאה, בעמידה, 30 דקות לפני אוכל. לחלופין — זולדרונאט IV שנתי."
+      },
+      {
+        "q": "Osteonecrosis of the jaw (ONJ) associated with bisphosphonates is most likely to occur after:",
+        "options": [
+          "6 months of oral alendronate",
+          "Dental extraction or oral surgery in a patient on long-term bisphosphonate or denosumab",
+          "Taking calcium supplements concurrently",
+          "IV bisphosphonate use in osteoporosis (not oncology doses)"
+        ],
+        "correct": "Dental extraction or oral surgery in a patient on long-term bisphosphonate or denosumab",
+        "explanation": "ONJ risk is highest with dental extractions/invasive oral procedures, especially in patients on high-dose IV bisphosphonates for malignancy. Risk is much lower with oral osteoporosis doses but dental review before starting therapy is recommended."
+      },
+      {
+        "q": "FRAX tool for fracture risk estimation does NOT require which input?",
+        "options": [
+          "Age and sex",
+          "BMI",
+          "Prior fragility fracture",
+          "Current blood pressure"
+        ],
+        "correct": "Current blood pressure",
+        "explanation": "FRAX inputs include: age, sex, BMI, prior fracture, parental hip fracture, smoking, glucocorticoids, rheumatoid arthritis, secondary osteoporosis, alcohol ≥3 units/day, and optional femoral neck T-score. Blood pressure is not included."
       }
     ],
     "flashcards": [
@@ -3486,6 +3596,116 @@
         ],
         "answer": 1,
         "explanation": "Studies have not found valerian more effective than placebo for insomnia treatment. Tai chi, acupressure, and yoga have some supportive evidence."
+      },
+      {
+        "q": "The most effective long-term treatment for chronic insomnia in elderly patients, superior to pharmacotherapy, is:",
+        "options": [
+          "Zolpidem 5mg nightly",
+          "Melatonin 3mg",
+          "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
+          "Low-dose trazodone"
+        ],
+        "correct": "Cognitive Behavioral Therapy for Insomnia (CBT-I)",
+        "explanation": "CBT-I is first-line for chronic insomnia in all ages including elderly (SOE=A). It addresses sleep restriction, stimulus control, relaxation, and cognitive restructuring. Effects are more durable than pharmacotherapy with no adverse effects."
+      },
+      {
+        "q": "REM Sleep Behavior Disorder (RBD) in an elderly patient is clinically important because:",
+        "options": [
+          "It indicates severe sleep apnea",
+          "It is a strong prodromal marker for alpha-synucleinopathies (Parkinson's, DLB, MSA) — >80% convert",
+          "It requires immediate benzodiazepine treatment",
+          "It is benign and requires no follow-up"
+        ],
+        "correct": "It is a strong prodromal marker for alpha-synucleinopathies (Parkinson's, DLB, MSA) — >80% convert",
+        "explanation": "Idiopathic RBD (acting out dreams, loss of REM atonia) is the strongest prodromal biomarker of Parkinson's disease and Lewy body dementia; >80% eventually develop a synucleinopathy. Clonazepam or melatonin can reduce injurious behavior."
+      },
+      {
+        "q": "75 שנה, אשה עם נדודי שינה כרוניים 3 חודשים. ביקשה Zolpidem. מה הגישה הנכונה?",
+        "options": [
+          "הרשום Zolpidem 10mg ל-4 שבועות",
+          "הסבר ש-Zolpidem הוא קריטריון Beers ואסור לחלוטין, הפני ל-CBT-I",
+          "שקול Zolpidem במינון נמוך (5mg) בלבד אם CBT-I לא זמין, עם מעקב הדוק על נפילות",
+          "הרשום Diazepam לטווח ארוך"
+        ],
+        "correct": "שקול Zolpidem במינון נמוך (5mg) בלבד אם CBT-I לא זמין, עם מעקב הדוק על נפילות",
+        "explanation": "Zolpidem הוא קריטריון Beers (Z-drug — סיכון נפילות, דליריום) אך לא אסור מוחלט. אם CBT-I לא זמין, ניתן לשקול מינון נמוך לטווח קצר עם הסבר על סיכונים ומעקב. CBT-I עדיפה מאוד."
+      },
+      {
+        "q": "The cardinal feature that distinguishes Obstructive Sleep Apnea (OSA) from Central Sleep Apnea (CSA) is:",
+        "options": [
+          "Presence of snoring",
+          "Apneas with continued respiratory effort (OSA) vs apneas without respiratory effort (CSA)",
+          "Oxygen desaturation below 90%",
+          "Age of onset"
+        ],
+        "correct": "Apneas with continued respiratory effort (OSA) vs apneas without respiratory effort (CSA)",
+        "explanation": "OSA = upper airway obstruction with continued diaphragmatic effort (paradoxical breathing). CSA = absence of respiratory effort, often seen in heart failure (Cheyne-Stokes) or after opioids. Both cause fragmented sleep and hypoxemia."
+      },
+      {
+        "q": "Restless Legs Syndrome (RLS) in elderly is associated with which common deficiency that should be checked first?",
+        "options": [
+          "Vitamin B12",
+          "Iron deficiency (ferritin <50-75 μg/L)",
+          "Folate",
+          "Magnesium"
+        ],
+        "correct": "Iron deficiency (ferritin <50-75 μg/L)",
+        "explanation": "Iron deficiency (ferritin <50-75 μg/L) is the most common secondary cause of RLS and should be checked before initiating dopaminergic therapy. IV iron supplementation significantly improves RLS symptoms if ferritin is low."
+      },
+      {
+        "q": "Melatonin in elderly for sleep: which statement is most accurate?",
+        "options": [
+          "Ineffective in elderly due to receptor downregulation",
+          "Effective for circadian rhythm disorders (jet lag, DSWPD) and as adjunct for sleep onset; preferred over Z-drugs due to Beers criteria",
+          "Causes tolerance and dependence",
+          "Contraindicated in patients on warfarin"
+        ],
+        "correct": "Effective for circadian rhythm disorders (jet lag, DSWPD) and as adjunct for sleep onset; preferred over Z-drugs due to Beers criteria",
+        "explanation": "Melatonin 0.5-5mg is effective for circadian rhythm disorders and as a safer alternative to Z-drugs/BZDs for sleep onset. Not on Beers criteria. Modest effect for sleep maintenance. Ramelteon (melatonin receptor agonist) also appropriate."
+      },
+      {
+        "q": "שינוי תקין בדפוס השינה עם הגיל כולל:",
+        "options": [
+          "עלייה בשנת REM",
+          "הקדמת מחזור השינה-ערות (advanced sleep phase), ירידה בשנת גלים עמוקים (SWS), שינה קלה יותר ומקוטעת יותר",
+          "עלייה במשך השינה הכוללת",
+          "ירידה בזמן ההירדמות"
+        ],
+        "correct": "הקדמת מחזור השינה-ערות (advanced sleep phase), ירידה בשנת גלים עמוקים (SWS), שינה קלה יותר ומקוטעת יותר",
+        "explanation": "עם הגיל: הקדמת שלב השינה (מוקדם לישון ומוקדם להתעורר), ירידה בשנת גלים עמוקים, ירידה ב-REM, שינה קלה ומקוטעת יותר. לא נורמלי: נדודי שינה כרוניים — אלו דורשים הערכה."
+      },
+      {
+        "q": "Sundowning in dementia patients is best managed initially with:",
+        "options": [
+          "Haloperidol 2mg IM",
+          "Bright light therapy in the morning, structured activity, maintaining sleep schedule, low-dose melatonin",
+          "Lorazepam 1mg",
+          "Quetiapine 100mg"
+        ],
+        "correct": "Bright light therapy in the morning, structured activity, maintaining sleep schedule, low-dose melatonin",
+        "explanation": "Non-pharmacological approaches are first-line for sundowning: morning bright light exposure, daytime structured activity, consistent sleep-wake schedule, reducing environmental stimulation in evening. Low-dose melatonin may help. Antipsychotics carry mortality risk in dementia."
+      },
+      {
+        "q": "Which medication used for insomnia has the lowest risk profile in elderly and is NOT on the Beers Criteria?",
+        "options": [
+          "Temazepam",
+          "Diphenhydramine",
+          "Doxepin ≤6mg (Silenor)",
+          "Clonazepam"
+        ],
+        "correct": "Doxepin ≤6mg (Silenor)",
+        "explanation": "Low-dose doxepin ≤6mg is FDA-approved for sleep maintenance insomnia and is the only TCA NOT on Beers criteria at this low dose. It acts as selective H1 antagonist with minimal anticholinergic effects at this dose. BZDs, Z-drugs, and diphenhydramine are all Beers-listed."
+      },
+      {
+        "q": "CPAP therapy for OSA in elderly with cognitive impairment: which statement is correct?",
+        "options": [
+          "Contraindicated due to compliance issues",
+          "Associated with improved cognitive function and reduced delirium risk in hospitalized elderly with OSA",
+          "Only effective if AHI >30",
+          "Does not affect cardiovascular outcomes"
+        ],
+        "correct": "Associated with improved cognitive function and reduced delirium risk in hospitalized elderly with OSA",
+        "explanation": "CPAP improves cognitive function, reduces delirium risk, and improves quality of life in elderly with OSA. Compliance can be challenging — consider auto-titrating CPAP, heated humidifier, and supportive follow-up. Cardiovascular mortality benefit is debated in stable CAD."
       }
     ],
     "flashcards": [
@@ -3644,6 +3864,116 @@
         ],
         "answer": 1,
         "explanation": "Age-related blunting of thermoregulatory and immune responses. Baseline temperature often lower. A 'normal' temperature of 37.5°C may represent significant fever in an elderly patient."
+      },
+      {
+        "q": "The most important reason NOT to treat asymptomatic bacteriuria (ASB) in elderly women is:",
+        "options": [
+          "Antibiotics are too expensive",
+          "Treatment does not reduce morbidity/mortality and selects for resistant organisms",
+          "Bacteria will clear spontaneously in all cases",
+          "Elderly women cannot tolerate antibiotics"
+        ],
+        "correct": "Treatment does not reduce morbidity/mortality and selects for resistant organisms",
+        "explanation": "Multiple RCTs show treating ASB in elderly women provides no clinical benefit and significantly increases antibiotic resistance and adverse effects. Treat only symptomatic UTI. Pyuria alone does not indicate treatment."
+      },
+      {
+        "q": "75 שנה, גבר בבית אבות, קונפוזיה חדשה, חום 37.8°C. בדיקת שתן: לויקוציטוריה, ניטריטים חיוביים. ללא תסמינים אורולוגיים. מה הצעד הנכון?",
+        "options": [
+          "התחל אנטיביוטיקה מיד לזיהום שתן",
+          "חפש מקור אחר לבלבול — בקטריאוריה אינה בהכרח הגורם; שלול דליריום, AMS, סיבות אחרות",
+          "הכנס קתטר שתן לדגימה נקייה יותר",
+          "בצע ניקוז כירורגי"
+        ],
+        "correct": "חפש מקור אחר לבלבול — בקטריאוריה אינה בהכרח הגורם; שלול דליריום, AMS, סיבות אחרות",
+        "explanation": "בלבול בקשיש עם בקטריאוריה: יש לזכור שבקטריאוריה א-תסמינית שכיחה מאוד בקשישים. קונפוזיה חדשה אינה קריטריון מספיק לאבחון UTI. חפש אבחנות אחרות. הלוב קריטריונים דורשים תסמינים אורוגניטליים ספציפיים."
+      },
+      {
+        "q": "CURB-65 score of 3 in community-acquired pneumonia indicates:",
+        "options": [
+          "Outpatient treatment with oral antibiotics",
+          "Consider hospital admission; 14-day mortality ~14%, consider ICU if score 4-5",
+          "Immediate ICU transfer",
+          "No antibiotics needed — likely viral"
+        ],
+        "correct": "Consider hospital admission; 14-day mortality ~14%, consider ICU if score 4-5",
+        "explanation": "CURB-65: Confusion, Urea >7mmol/L, RR ≥30, BP <90/60, Age ≥65. Score 0-1 = low risk (outpatient); Score 2 = intermediate (admit); Score 3-5 = high risk (14-27% mortality, consider ICU). Elderly often score higher due to age criterion alone."
+      },
+      {
+        "q": "First-line treatment for non-severe Clostridioides difficile infection (CDI) in 2024 guidelines is:",
+        "options": [
+          "Metronidazole 500mg TID x10 days",
+          "Vancomycin 125mg QID x10 days OR Fidaxomicin 200mg BID x10 days",
+          "IV metronidazole + oral vancomycin",
+          "Rifaximin alone"
+        ],
+        "correct": "Vancomycin 125mg QID x10 days OR Fidaxomicin 200mg BID x10 days",
+        "explanation": "IDSA/SHEA 2021: metronidazole is no longer first-line for ANY severity CDI. Oral vancomycin or fidaxomicin (preferred for recurrence prevention) are first-line. Fidaxomicin has higher sustained cure rates and lower recurrence."
+      },
+      {
+        "q": "Which vaccine is recommended for ALL adults ≥65 years of age in Israel and should be offered during hospitalization if not previously given?",
+        "options": [
+          "BCG",
+          "Pneumococcal vaccine (PCV15 or PCV20) + annual influenza vaccine",
+          "Hepatitis A",
+          "Typhoid"
+        ],
+        "correct": "Pneumococcal vaccine (PCV15 or PCV20) + annual influenza vaccine",
+        "explanation": "All adults ≥65 should receive pneumococcal conjugate vaccine (PCV15 or PCV20, per 2023 ACIP) and annual influenza vaccine. Hospitalization is an opportunity to update vaccinations. COVID-19 booster also recommended."
+      },
+      {
+        "q": "Herpes zoster (shingles) in elderly: which statement about the recombinant zoster vaccine (Shingrix) is correct?",
+        "options": [
+          "One dose is sufficient and provides lifetime immunity",
+          "Two doses 2-6 months apart, ~97% efficacy in ≥50yo, preferred over live Zostavax",
+          "Contraindicated in immunocompromised patients",
+          "Only indicated after a first episode of shingles"
+        ],
+        "correct": "Two doses 2-6 months apart, ~97% efficacy in ≥50yo, preferred over live Zostavax",
+        "explanation": "Shingrix (recombinant, adjuvanted) requires 2 doses, 2-6 months apart. Efficacy ~97% in adults ≥50. Preferred over live Zostavax (which is no longer available in many countries). Can be given to immunocompromised patients unlike live vaccines."
+      },
+      {
+        "q": "Antibiotic dosing in elderly with CrCl 25 mL/min: which combination requires NO dose adjustment?",
+        "options": [
+          "Vancomycin + Gentamicin",
+          "Amoxicillin-clavulanate for skin infection",
+          "Ciprofloxacin + Metronidazole",
+          "Trimethoprim-sulfamethoxazole"
+        ],
+        "correct": "Ciprofloxacin + Metronidazole",
+        "explanation": "Metronidazole requires no renal dose adjustment (hepatic metabolism). Ciprofloxacin requires dose reduction only at CrCl <30. Vancomycin, aminoglycosides, TMP-SMX, and beta-lactams all require adjustment with CrCl <30-35."
+      },
+      {
+        "q": "זיהום ריאות בקשיש 82 שנה עם דמנציה קשה, חום 38.5°C, ללא לויקוציטוזיס, הסטורציה 94%. מה האתגר האבחנתי?",
+        "options": [
+          "האבחנה פשוטה — X-ray חזה מספיק",
+          "קשישים עם דמנציה לרוב לא מציגים תסמינים קלאסיים של פנאומוניה (שיעול, כאב חזה) — הצגה אטיפית עם בלבול/ירידה תפקודית שכיחה יותר",
+          "חום מעל 38 שולל זיהום בקשיש",
+          "לויקוציטוזיס תמיד נוכח בזיהום חמור"
+        ],
+        "correct": "קשישים עם דמנציה לרוב לא מציגים תסמינים קלאסיים של פנאומוניה (שיעול, כאב חזה) — הצגה אטיפית עם בלבול/ירידה תפקודית שכיחה יותר",
+        "explanation": "הצגה אטיפית של זיהומים בקשישים: ירידה תפקודית, בלבול (דליריום), נפילות, ירידה בתיאבון — לעיתים ללא חום או לויקוציטוזיס. קשישים עם דמנציה במיוחד. חשוב לשמור סף גבוה של חשד."
+      },
+      {
+        "q": "Skin and soft tissue infections in elderly diabetic patients: when is hospitalization and IV antibiotics indicated?",
+        "options": [
+          "Never — all can be treated orally",
+          "When there is systemic toxicity, rapid spread, bullae, crepitus, necrosis, or failure of oral therapy",
+          "Only for MRSA",
+          "For any infection in a diabetic patient"
+        ],
+        "correct": "When there is systemic toxicity, rapid spread, bullae, crepitus, necrosis, or failure of oral therapy",
+        "explanation": "Red flags for admission in SSTI: systemic signs (fever, hypotension, tachycardia), rapidly spreading cellulitis, bullae, crepitus (gas-forming organisms), necrosis (necrotizing fasciitis), or 48h failure of oral antibiotics. IDSA guidelines 2014."
+      },
+      {
+        "q": "C. difficile recurrence risk is highest in elderly patients with which combination?",
+        "options": [
+          "Young age, first episode, no prior antibiotics",
+          "Age >65, continued antibiotic exposure for other infections, third or subsequent CDI episode, proton pump inhibitor use",
+          "Healthy outpatient with first episode",
+          "Immunocompetent patient on short antibiotic course"
+        ],
+        "correct": "Age >65, continued antibiotic exposure for other infections, third or subsequent CDI episode, proton pump inhibitor use",
+        "explanation": "CDI recurrence risk factors: age >65, severe/fulminant disease, continued antibiotics, PPI use, multiple prior episodes, immunosuppression. For 3rd+ recurrence: consider fecal microbiota transplant (FMT) — >90% efficacy."
       }
     ],
     "flashcards": [
@@ -3802,6 +4132,116 @@
         ],
         "answer": 1,
         "explanation": "Age-Friendly Health Systems 4Ms: Mentation (delirium/dementia/depression), Mobility, Medications, what Matters (goals/preferences). Framework for comprehensive elderly care."
+      },
+      {
+        "q": "The Fried Frailty Phenotype requires how many of 5 criteria for diagnosis of frailty (not pre-frailty)?",
+        "options": [
+          "1 criterion",
+          "2 criteria",
+          "3 or more criteria",
+          "All 5 criteria"
+        ],
+        "correct": "3 or more criteria",
+        "explanation": "Fried criteria (2001): unintentional weight loss >4.5kg/year, exhaustion (self-reported), low grip strength, slow gait speed, low physical activity. Pre-frail = 1-2 criteria; Frail = 3+ criteria. Frailty predicts falls, disability, hospitalization, and death."
+      },
+      {
+        "q": "הבדל עיקרי בין ADL לבין IADL בהערכה תפקודית גריאטרית:",
+        "options": [
+          "ADL מתייחסים לפעילויות תפקוד גבוה (קניות, בישול), IADL לפעילויות יסוד",
+          "ADL (Katz/Barthel) מתייחסים לפעילויות בסיסיות (אמבטיה, לבוש, אכילה), IADL לפעילויות מורכבות יותר (קניות, ניהול כספים, תרופות)",
+          "אין הבדל משמעותי",
+          "IADL מתייחסים לניידות בלבד"
+        ],
+        "correct": "ADL (Katz/Barthel) מתייחסים לפעילויות בסיסיות (אמבטיה, לבוש, אכילה), IADL לפעילויות מורכבות יותר (קניות, ניהול כספים, תרופות)",
+        "explanation": "ADL בסיסיים: רחצה, לבוש, ניידות, אכילה, שליטה על סוגרים (Katz 6, Barthel 100). IADL (Lawton): קניות, בישול, ניהול כספים, שימוש בטלפון, תרופות. ירידה ב-IADL קודמת בדרך כלל לירידה ב-ADL."
+      },
+      {
+        "q": "Gait speed as a 'vital sign' in geriatrics: a gait speed below which threshold predicts adverse outcomes (disability, falls, mortality)?",
+        "options": [
+          "Below 1.5 m/s",
+          "Below 1.0 m/s — particularly <0.8 m/s as high-risk threshold",
+          "Below 0.4 m/s only",
+          "Gait speed has no predictive value"
+        ],
+        "correct": "Below 1.0 m/s — particularly <0.8 m/s as high-risk threshold",
+        "explanation": "Usual gait speed <1.0 m/s is associated with increased mortality, disability, and institutionalization. <0.8 m/s identifies high-risk elderly. Gait speed is easy to measure over 4-6 meters and is reproducible. Part of multiple frailty assessments."
+      },
+      {
+        "q": "The Timed Up and Go (TUG) test: which time indicates HIGH fall risk?",
+        "options": [
+          "<10 seconds",
+          "≥12-14 seconds (community dwelling) or ≥20 seconds (high fall risk)",
+          "<5 seconds",
+          "30 seconds exactly"
+        ],
+        "correct": "≥12-14 seconds (community dwelling) or ≥20 seconds (high fall risk)",
+        "explanation": "TUG: time to stand from chair, walk 3m, return, sit. Normal young adult <10s; healthy elderly ≤12s; ≥13.5s indicates fall risk in community dwelling; ≥20s = high fall risk, needs intervention. Simple, validated, widely used."
+      },
+      {
+        "q": "MoCA (Montreal Cognitive Assessment) compared to MMSE: which is more sensitive for mild cognitive impairment?",
+        "options": [
+          "MMSE is more sensitive for MCI",
+          "MoCA is more sensitive for MCI (cutoff ≤25/30) due to inclusion of executive function tests",
+          "Both have identical sensitivity",
+          "Neither is validated in Hebrew"
+        ],
+        "correct": "MoCA is more sensitive for MCI (cutoff ≤25/30) due to inclusion of executive function tests",
+        "explanation": "MoCA detects MCI better than MMSE because it includes executive function (Trail Making, abstraction, verbal fluency) and has a lower ceiling effect. MCI cutoff ≤25/30. MMSE is less sensitive for early MCI and primarily tests memory and orientation."
+      },
+      {
+        "q": "Mini Nutritional Assessment (MNA) score below 17 in an elderly patient indicates:",
+        "options": [
+          "Normal nutritional status",
+          "At risk of malnutrition (score 17-23.5)",
+          "Malnutrition — requires nutritional intervention",
+          "Severe obesity"
+        ],
+        "correct": "Malnutrition — requires nutritional intervention",
+        "explanation": "MNA: <17 = malnutrition; 17-23.5 = at risk of malnutrition; ≥24 = normal. Albumin <3.5 g/dL and pre-albumin are outcome predictors. Nutritional intervention in malnourished elderly reduces complications, LOS, and mortality."
+      },
+      {
+        "q": "CGA in oncology settings: what is its primary clinical utility?",
+        "options": [
+          "To determine tumor staging",
+          "To identify vulnerable older adults who may experience chemotherapy toxicity and guide treatment intensity",
+          "To replace tumor board discussions",
+          "To screen for metastases"
+        ],
+        "correct": "To identify vulnerable older adults who may experience chemotherapy toxicity and guide treatment intensity",
+        "explanation": "CGA in onco-geriatrics predicts chemotherapy toxicity (CARG, CRASH tools), identifies reversible deficits before treatment, and guides decision-making between standard, attenuated, or best supportive care. Endorsed by ASCO and SIOG."
+      },
+      {
+        "q": "Clinical Frailty Scale (CFS): a patient who is 'dependent in IADL but independent in ADL, needs help outdoors but not indoors' scores:",
+        "options": [
+          "CFS 3 (managing well)",
+          "CFS 5 (mildly frail)",
+          "CFS 7 (severely frail)",
+          "CFS 9 (terminally ill)"
+        ],
+        "correct": "CFS 5 (mildly frail)",
+        "explanation": "CFS 1-9: 1=very fit, 3=managing well, 4=vulnerable, 5=mildly frail (dependent in IADLs, independent in ADLs), 6=moderately frail (needs help with ADLs), 7=severely frail (fully dependent). CFS ≥5 predicts poor outcomes, longer LOS, and 90-day mortality in acutely ill elderly."
+      },
+      {
+        "q": "Caregiver burden assessment is a mandatory component of CGA because:",
+        "options": [
+          "It has no clinical relevance",
+          "Caregiver burnout is a leading cause of premature institutionalization and is treatable — Zarit Burden Interview can identify high-risk caregivers",
+          "It is only relevant for social workers",
+          "Medicare requires it"
+        ],
+        "correct": "Caregiver burnout is a leading cause of premature institutionalization and is treatable — Zarit Burden Interview can identify high-risk caregivers",
+        "explanation": "Caregiver burden (Zarit Burden Interview ≥21 = high burden) predicts premature institutionalization, elder abuse, and caregiver morbidity. Interventions: respite care, carer support groups, psychoeducation. Addressing caregiver needs improves patient outcomes."
+      },
+      {
+        "q": "מה מבדיל הערכה גריאטרית מקיפה (CGA) מסקירה רפואית סטנדרטית?",
+        "options": [
+          "CGA קצרה יותר וממוקדת באבחנות בלבד",
+          "CGA היא רב-תחומית (רפואה, סיעוד, סוציאליה, תזונה, פיזיותרפיה), מעריכה תפקוד כמטרה בפני עצמה ולא רק כתסמין, ומובילה לתכנית טיפול מקיפה",
+          "CGA כוללת בדיקות מעבדה בלבד",
+          "CGA מוגבלת לאחוסר-לחץ בלבד"
+        ],
+        "correct": "CGA היא רב-תחומית (רפואה, סיעוד, סוציאליה, תזונה, פיזיותרפיה), מעריכה תפקוד כמטרה בפני עצמה ולא רק כתסמין, ומובילה לתכנית טיפול מקיפה",
+        "explanation": "CGA מבוצעת על ידי צוות רב-תחומי ומעריכה: תפקוד, קוגניציה, מצב רגשי, מצב חברתי, תזונה, תרופות וסביבה. מביאה לשיפור תוצאות: פחות אשפוזים חוזרים, פחות נפילות, שיפור תפקוד."
       }
     ],
     "flashcards": [
