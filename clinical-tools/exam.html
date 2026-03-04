@@ -294,8 +294,44 @@
         let currentQuestionSet = [];
 
         // Initialize
-        function init() {
-            currentQuestionSet = [...questions.english, ...questions.hebrew];
+        // Load from content.json (280 MCQs) — falls back to built-in 13 if fetch fails
+        async function init() {
+            let loadedFromJSON = false;
+            try {
+                const resp = await fetch('../data/content.json');
+                if (resp.ok) {
+                    const data = await resp.json();
+                    // Normalize content.json format to exam format
+                    const jsonQuestions = [];
+                    data.forEach(topic => {
+                        (topic.mcqs || []).forEach((q, idx) => {
+                            if (!q.q || !q.options || q.options.length < 2) return;
+                            const opts = q.options;
+                            const correctIdx = opts.indexOf(q.correct);
+                            if (correctIdx === -1) return; // skip malformed
+                            jsonQuestions.push({
+                                id: `JSON-${topic.topic.substring(0,3)}-${idx}`,
+                                category: topic.topic,
+                                question: q.q,
+                                options: opts,
+                                correct: correctIdx,
+                                explanation: q.explanation || '',
+                                isHebrew: true
+                            });
+                        });
+                    });
+                    if (jsonQuestions.length > 10) {
+                        currentQuestionSet = jsonQuestions;
+                        loadedFromJSON = true;
+                        console.log(`Loaded ${jsonQuestions.length} MCQs from content.json`);
+                    }
+                }
+            } catch(e) { console.warn('content.json load failed, using built-in questions', e); }
+
+            if (!loadedFromJSON) {
+                currentQuestionSet = [...questions.english, ...questions.hebrew];
+            }
+
             shuffleArray(currentQuestionSet);
             document.getElementById('totalQuestions').textContent = currentQuestionSet.length;
             initializeReviewGrid();
@@ -311,7 +347,7 @@
 
         function loadQuestion() {
             const question = currentQuestionSet[currentQuestionIndex];
-            const isHebrew = question.id.startsWith('HEB');
+            const isHebrew = question.isHebrew || question.id?.startsWith('HEB') || false;
 
             document.getElementById('questionLanguage').textContent = isHebrew ? 'עברית' : 'English';
             document.getElementById('questionCategory').textContent = question.category;

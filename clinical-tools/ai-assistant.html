@@ -125,7 +125,8 @@
                             <textarea id="user-input" placeholder="הקלד שאלה קלינית..."
                                 class="flex-1 p-3 border rounded-xl resize-none focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                 rows="2" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendQuery()}" aria-label="הקלד שאלה קלינית"></textarea>
-                            <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium" aria-label="שלח שאלה">
+                            <button onclick="clearChat()" style="min-height:44px" class="px-3 py-2 bg-gray-200 text-gray-600 rounded-lg text-sm hover:bg-gray-300 flex-shrink-0 touch-target" title="נקה שיחה">🗑</button>
+                    <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium" aria-label="שלח שאלה">
                                 שלח
                             </button>
                         </div>
@@ -482,6 +483,29 @@
             document.getElementById('selected-ai-desc').textContent = service.desc;
         }
 
+        // Conversation history — persists for session (multi-turn memory)
+        let conversationHistory = [];
+        let approxTokens = 0;
+
+        function estimateTokens(str) { return Math.ceil(str.length / 4); }
+
+        function updateTokenCounter() {
+            const el = document.getElementById('token-counter');
+            if (!el) return;
+            const pct = Math.min(100, Math.round(approxTokens / 8000 * 100));
+            const color = approxTokens > 6000 ? '#ef4444' : approxTokens > 4000 ? '#f59e0b' : '#10b981';
+            el.textContent = `~${approxTokens} tokens (${pct}%)`;
+            el.style.color = color;
+        }
+
+        function clearChat() {
+            if (!confirm('נקה את כל שיחה זו?')) return;
+            conversationHistory = [];
+            approxTokens = 0;
+            document.getElementById('chat-container').innerHTML = '';
+            updateTokenCounter();
+        }
+
         async function sendQuery() {
             const input = document.getElementById('user-input');
             const query = input.value.trim();
@@ -491,17 +515,18 @@
             saveToHistory(query, 'claude');
             input.value = '';
 
-            // Build context from form fields
+            // Build context from form fields (only inject on first message or if changed)
             const ageSex = document.getElementById('context-age')?.value?.trim() || '';
             const summary = document.getElementById('context-summary')?.value?.trim() || '';
             const meds = document.getElementById('context-meds')?.value?.trim() || '';
             const labs = document.getElementById('context-labs')?.value?.trim() || '';
             const safetyTags = Array.from(document.querySelectorAll('.safety-chip.active')).map(c => c.textContent.trim());
 
-            let systemPrompt = 'אתה עוזר קליני מומחה ברפואה גריאטרית (SZMC). ענה בעברית. השתמש ב-bullets קצרים. אל תאבחן באופן חד-משמעי — הצע אפשרויות וצעדים מעשיים. התייחס להנחיות Beers, STOPP/START, ותפקוד כלייתי/כבדי.';
+            const systemPrompt = 'אתה עוזר קליני מומחה ברפואה גריאטרית (SZMC). ענה בעברית. השתמש ב-bullets קצרים. אל תאבחן באופן חד-משמעי — הצע אפשרויות וצעדים מעשיים. התייחס להנחיות Beers, STOPP/START, ותפקוד כלייתי/כבדי.';
 
             let userContent = query;
-            if (ageSex || summary || meds) {
+            // Inject clinical context into first message of conversation
+            if (conversationHistory.length === 0 && (ageSex || summary || meds)) {
                 const ctxParts = [
                     ageSex && `מטופל: ${ageSex}`,
                     summary && `סיכום: ${summary}`,
@@ -512,11 +537,21 @@
                 userContent = `הקשר קליני:\n${ctxParts.join('\n')}\n\nשאלה: ${query}`;
             }
 
+            // Add to history BEFORE API call
+            conversationHistory.push({ role: 'user', content: userContent });
+            approxTokens += estimateTokens(userContent);
+
+            // Trim history if getting too long (keep last 10 turns = 20 messages)
+            if (conversationHistory.length > 20) {
+                conversationHistory = conversationHistory.slice(-20);
+                approxTokens = conversationHistory.reduce((sum, m) => sum + estimateTokens(m.content), 0);
+            }
+
+            updateTokenCounter();
+
             // Show typing indicator
-            const typingId = 'typing_' + Date.now();
             const container = document.getElementById('chat-container');
             const typingDiv = document.createElement('div');
-            typingDiv.id = typingId;
             typingDiv.className = 'flex gap-3 mb-4';
             typingDiv.innerHTML = '<div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0">🤖</div><div class="bg-gray-100 rounded-2xl px-4 py-3 text-gray-500 text-sm typing-indicator"><span>●</span><span>●</span><span>●</span></div>';
             container.appendChild(typingDiv);
@@ -533,7 +568,7 @@
                         model: 'claude-sonnet-4-20250514',
                         max_tokens: 1000,
                         system: systemPrompt,
-                        messages: [{ role: 'user', content: userContent }]
+                        messages: conversationHistory
                     })
                 });
 
@@ -541,13 +576,21 @@
                 typingDiv.remove();
 
                 if (data.content?.[0]?.text) {
-                    addMessage(data.content[0].text, 'ai');
+                    const aiText = data.content[0].text;
+                    // Add assistant response to history
+                    conversationHistory.push({ role: 'assistant', content: aiText });
+                    approxTokens += estimateTokens(aiText);
+                    updateTokenCounter();
+                    addMessage(aiText, 'ai');
                 } else {
                     addMessage('שגיאה: ' + (data.error?.message || 'תגובה לא תקינה מ-API'), 'ai');
+                    // Remove the failed user message from history
+                    conversationHistory.pop();
                 }
             } catch (err) {
                 typingDiv.remove();
                 addMessage('שגיאת חיבור: ' + err.message, 'ai');
+                conversationHistory.pop();
             }
         }
 
