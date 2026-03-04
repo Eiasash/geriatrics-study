@@ -912,5 +912,62 @@
             });
         }
     </script>
+<script>
+    // ── GeriatricsKnowledge console API (referenced in docs) ──────────────
+    window.GeriatricsKnowledge = {
+        getStatistics: async function() {
+            try {
+                const resp = await fetch('./data/content.json');
+                const data = await resp.json();
+                const stats = {
+                    topics: data.length,
+                    totalMCQs: data.reduce((s,t) => s+(t.mcqs||[]).length, 0),
+                    totalFlashcards: data.reduce((s,t) => s+(t.flashcards||[]).length, 0),
+                    topicBreakdown: data.map(t => ({
+                        topic: t.topic,
+                        mcqs: (t.mcqs||[]).length,
+                        flashcards: (t.flashcards||[]).length
+                    })),
+                    srProgress: (() => {
+                        try { const sr = JSON.parse(localStorage.getItem('gerSR')||'{}');
+                            return { cards: Object.keys(sr).length, dueToday: Object.values(sr).filter(s=>s.dueDate<=new Date().toISOString().split('T')[0]).length }; }
+                        catch(e){ return {}; }
+                    })(),
+                    weakPoints: (() => {
+                        try { return (JSON.parse(localStorage.getItem('gerWeak')||'[]')).length; } catch(e){ return 0; }
+                    })(),
+                    platform: 'geriatrics.netlify.app',
+                    version: '2.1.0',
+                    lastUpdated: new Date().toLocaleDateString('he-IL')
+                };
+                console.table(stats.topicBreakdown);
+                console.log('\n📊 Summary:', {
+                    topics: stats.topics,
+                    totalMCQs: stats.totalMCQs,
+                    totalFlashcards: stats.totalFlashcards,
+                    srCardsTracked: stats.srProgress.cards,
+                    dueToday: stats.srProgress.dueToday,
+                    weakPoints: stats.weakPoints
+                });
+                return stats;
+            } catch(e) { console.error('GeriatricsKnowledge.getStatistics() failed:', e); }
+        }
+    };
+    window.smartStudy = {
+        generatePersonalizedPlan: function(startDate) {
+            const sr = (() => { try { return JSON.parse(localStorage.getItem('gerSR')||'{}'); } catch(e){ return {}; } })();
+            const weak = (() => { try { return JSON.parse(localStorage.getItem('gerWeak')||'[]'); } catch(e){ return []; } })();
+            const today = new Date().toISOString().split('T')[0];
+            const due = Object.values(sr).filter(s=>s.dueDate<=today).length;
+            console.log(`\n📅 Study Plan (from ${startDate || today}):`);
+            console.log(`  Due for review today: ${due} cards`);
+            console.log(`  Weak points tracked: ${weak.length} questions`);
+            console.log(`  Recommendation: ${due>10?'Focus on spaced review first':'Start with weak points, then new topics'}`);
+            console.log(`  👉 Open: https://geriatrics.netlify.app/clinical-tools/study.html`);
+            return { dueToday: due, weakPoints: weak.length };
+        }
+    };
+    console.log('%c🏥 Geriatrics Platform loaded. Try: GeriatricsKnowledge.getStatistics()', 'color:#059669;font-weight:bold');
+</script>
 </body>
 </html>
