@@ -48,10 +48,10 @@
                     <p class="text-blue-200 mt-1">MMSE | Morse Fall Scale | Barthel Index</p>
                 </div>
                 <div class="flex gap-2 no-print">
-                    <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-blue-900 rounded-lg hover:bg-gray-100 text-sm font-medium">
+                    <button id="btn-home" class="px-4 py-2 bg-white text-blue-900 rounded-lg hover:bg-gray-100 text-sm font-medium">
                         דף הבית
                     </button>
-                    <button onclick="window.print()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 text-sm font-medium">
+                    <button id="btn-print" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 text-sm font-medium">
                         הדפס
                     </button>
                 </div>
@@ -60,17 +60,26 @@
 
         <!-- Tab Navigation -->
         <div class="flex flex-wrap gap-2 mb-6 no-print">
-            <button onclick="showTab('mmse')" id="tab-mmse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all tab-active">
+            <button id="tab-mmse" id="tab-mmse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all tab-active">
                 MMSE - מצב קוגניטיבי
             </button>
-            <button onclick="showTab('morse')" id="tab-morse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+            <button id="tab-morse" id="tab-morse" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
                 Morse - סיכון נפילות
             </button>
-            <button onclick="showTab('barthel')" id="tab-barthel" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+            <button id="tab-barthel" id="tab-barthel" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
                 Barthel - עצמאות תפקודית
             </button>
-            <button onclick="showTab('gds')" id="tab-gds" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+            <button id="tab-gds" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
                 GDS-15 - דיכאון
+            </button>
+            <button id="tab-moca" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                MoCA - קוגניציה
+            </button>
+            <button id="tab-frail" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                FRAIL / CFS
+            </button>
+            <button id="tab-cam" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                CAM - דליריום
             </button>
         </div>
 
@@ -309,7 +318,7 @@
                     </div>
                 </div>
 
-                <button onclick="resetMMSE()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                <button id="btn-reset-mmse" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
                     אפס הערכה
                 </button>
             </div>
@@ -456,7 +465,7 @@
                     </div>
                 </div>
 
-                <button onclick="resetMorse()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                <button id="btn-reset-morse" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
                     אפס הערכה
                 </button>
             </div>
@@ -697,7 +706,7 @@
                     </div>
                 </div>
 
-                <button onclick="resetBarthel()" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
+                <button id="btn-reset-barthel" class="mt-4 px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 no-print">
                     אפס הערכה
                 </button>
             </div>
@@ -732,17 +741,117 @@
             </div>
 
             <div class="flex gap-3 mt-6 no-print">
-                <button onclick="calculateGDS()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 touch-target">
+                <button id="btn-calc-gds" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 touch-target">
                     חשב ציון
                 </button>
-                <button onclick="resetGDS()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 touch-target">
+                <button id="btn-reset-gds" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 touch-target">
                     איפוס
                 </button>
-                <button onclick="window.print()" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 touch-target no-print">
+                <button id="btn-print-gds" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 touch-target no-print">
                     הדפס
                 </button>
             </div>
         </div>
+    </div>
+
+
+    <!-- MoCA Section -->
+    <div id="moca-section" class="assessment-section hidden">
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="flex justify-between items-start mb-4">
+          <div><h2 class="text-2xl font-bold text-gray-800">Montreal Cognitive Assessment</h2>
+          <p class="text-gray-600 text-sm">MoCA — הערכה קוגניטיבית (רגיש יותר מ-MMSE ל-MCI)</p></div>
+          <div class="text-center"><div class="text-3xl font-bold text-blue-600" id="moca-score">0</div><div class="text-sm text-gray-500">/ 30</div></div>
+        </div>
+        <div class="bg-blue-50 rounded-lg p-3 mb-4 text-sm text-blue-800">
+          <strong>קיצור:</strong> +1 נקודה אם השכלה ≤12 שנה | MCI: ≤25 | דמנציה קלה: ≤17 | קשה: ≤10
+        </div>
+        <div class="space-y-3" id="moca-items">
+          <!-- Rendered by JS -->
+        </div>
+        <div id="moca-result" class="mt-4 p-4 rounded-xl hidden"></div>
+        <div class="flex gap-3 mt-4 no-print">
+          <button id="btn-calc-moca" class="touch-target px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium">חשב</button>
+          <button id="btn-reset-moca" class="touch-target px-6 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">איפוס</button>
+          <a href="https://www.mocatest.org" target="_blank" rel="noopener noreferrer" class="touch-target px-6 py-2 bg-green-600 text-white rounded-lg text-sm font-medium flex items-center">📄 גרסה מלאה</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAIL + CFS Section -->
+    <div id="frail-section" class="assessment-section hidden">
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-4">
+        <div class="flex justify-between items-start mb-4">
+          <div><h2 class="text-2xl font-bold text-gray-800">FRAIL Scale</h2>
+          <p class="text-gray-600 text-sm">5 קריטריונים — Fatigue, Resistance, Ambulation, Illnesses, Loss of weight</p></div>
+          <div class="text-center"><div class="text-3xl font-bold text-orange-600" id="frail-score">0</div><div class="text-sm text-gray-500">/ 5</div></div>
+        </div>
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer"><input type="checkbox" id="frail-fatigue" class="mt-1 h-5 w-5 flex-shrink-0"><div><strong>Fatigue</strong> — "האם הרגשת עייפות רוב הזמן ב-4 השבועות האחרונים?"</div></label>
+          <label class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer"><input type="checkbox" id="frail-resistance" class="mt-1 h-5 w-5 flex-shrink-0"><div><strong>Resistance</strong> — קושי בעלייה על קומה אחת של מדרגות ללא עזרה</div></label>
+          <label class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer"><input type="checkbox" id="frail-ambulation" class="mt-1 h-5 w-5 flex-shrink-0"><div><strong>Ambulation</strong> — קושי בהליכה 100 מטר ללא עזרה</div></label>
+          <label class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer"><input type="checkbox" id="frail-illness" class="mt-1 h-5 w-5 flex-shrink-0"><div><strong>Illnesses</strong> — יותר מ-5 מחלות כרוניות</div></label>
+          <label class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg cursor-pointer"><input type="checkbox" id="frail-loss" class="mt-1 h-5 w-5 flex-shrink-0"><div><strong>Loss of weight</strong> — ירידה ≥5% במשקל בשנה האחרונה</div></label>
+        </div>
+        <div id="frail-result" class="mt-4 p-4 rounded-xl hidden"></div>
+        <div class="flex gap-3 mt-4 no-print">
+          <button id="btn-calc-frail" class="touch-target px-6 py-2 bg-orange-600 text-white rounded-lg text-sm font-medium">חשב FRAIL</button>
+          <button id="btn-reset-frail" class="touch-target px-6 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">איפוס</button>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-3">Clinical Frailty Scale (CFS)</h2>
+        <p class="text-gray-600 text-sm mb-4">הערכה גלובלית 1-9 — מהיר לשימוש בקבלה</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="cfs-grid">
+          <!-- Rendered by JS -->
+        </div>
+        <div id="cfs-result" class="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-200 hidden"></div>
+      </div>
+    </div>
+
+    <!-- CAM Section -->
+    <div id="cam-section" class="assessment-section hidden">
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="flex justify-between items-start mb-4">
+          <div><h2 class="text-2xl font-bold text-gray-800">Confusion Assessment Method</h2>
+          <p class="text-gray-600 text-sm">CAM — אבחנת דליריום (רגישות 94-100%, סגוליות 90-95%)</p></div>
+          <div id="cam-badge" class="text-center px-4 py-2 rounded-lg bg-gray-100 text-gray-600 font-bold text-sm">ממתין</div>
+        </div>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 text-sm text-yellow-800">
+          <strong>לאבחנת דליריום נדרש:</strong> קריטריון 1 + קריטריון 2 + (קריטריון 3 OR קריטריון 4)
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 border-2 rounded-xl" id="cam1-box" style="border-color:#e5e7eb">
+            <div class="flex items-start gap-3"><span class="bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+            <div class="flex-1"><p class="font-bold text-gray-800">הופעה חריפה ומהלך תנודתי</p>
+            <p class="text-sm text-gray-600 mt-1">שינוי חריף במצב הכרה + תנודות במשך היום</p>
+            <div class="flex gap-3 mt-3"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam1" value="yes" id="cam1-yes"> <span class="text-sm font-medium text-red-700">כן</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam1" value="no" id="cam1-no"> <span class="text-sm font-medium text-green-700">לא</span></label></div></div></div>
+          </div>
+          <div class="p-4 border-2 rounded-xl" id="cam2-box" style="border-color:#e5e7eb">
+            <div class="flex items-start gap-3"><span class="bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+            <div class="flex-1"><p class="font-bold text-gray-800">חוסר קשב</p>
+            <p class="text-sm text-gray-600 mt-1">קושי בריכוז, מוסח בקלות, קשיי מעקב אחרי שיחה</p>
+            <div class="flex gap-3 mt-3"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam2" value="yes" id="cam2-yes"> <span class="text-sm font-medium text-red-700">כן</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam2" value="no" id="cam2-no"> <span class="text-sm font-medium text-green-700">לא</span></label></div></div></div>
+          </div>
+          <div class="p-4 border-2 rounded-xl" id="cam3-box" style="border-color:#e5e7eb">
+            <div class="flex items-start gap-3"><span class="bg-yellow-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+            <div class="flex-1"><p class="font-bold text-gray-800">חשיבה לא מאורגנת</p>
+            <p class="text-sm text-gray-600 mt-1">שיחה מפוזרת, מעבר ללא קשר בין נושאים, לא עוקב אחרי הוראות פשוטות</p>
+            <div class="flex gap-3 mt-3"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam3" value="yes" id="cam3-yes"> <span class="text-sm font-medium text-red-700">כן</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam3" value="no" id="cam3-no"> <span class="text-sm font-medium text-green-700">לא</span></label></div></div></div>
+          </div>
+          <div class="p-4 border-2 rounded-xl" id="cam4-box" style="border-color:#e5e7eb">
+            <div class="flex items-start gap-3"><span class="bg-yellow-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+            <div class="flex-1"><p class="font-bold text-gray-800">שינוי ברמת ההכרה</p>
+            <p class="text-sm text-gray-600 mt-1">מעבר מ-Alert: Vigilant (מגיב יתר), Lethargic (ישנוני), Stupor, או Coma</p>
+            <div class="flex gap-3 mt-3"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam4" value="yes" id="cam4-yes"> <span class="text-sm font-medium text-red-700">כן</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="cam4" value="no" id="cam4-no"> <span class="text-sm font-medium text-green-700">לא</span></label></div></div></div>
+          </div>
+        </div>
+        <div id="cam-result" class="mt-4 p-4 rounded-xl hidden"></div>
+        <div class="flex gap-3 mt-4 no-print">
+          <button id="btn-calc-cam" class="touch-target px-6 py-2 bg-red-600 text-white rounded-lg text-sm font-medium">הערך דליריום</button>
+          <button id="btn-reset-cam" class="touch-target px-6 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium">איפוס</button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -1021,6 +1130,239 @@
         calculateMMSE();
         calculateMorse();
         calculateBarthel();
+
+
+        // ── MoCA ──────────────────────────────────────────────────────
+        const MOCA_ITEMS = [
+            { label: 'Trail Making B (0-1)', max: 1, id: 'moca-trail' },
+            { label: 'Copy cube (0-1)', max: 1, id: 'moca-cube' },
+            { label: 'Draw clock (0-3)', max: 3, id: 'moca-clock' },
+            { label: 'Name animals: lion, rhino, camel (0-3)', max: 3, id: 'moca-name' },
+            { label: 'Memory — immediate recall (no points)', max: 0, id: 'moca-mem0' },
+            { label: 'Attention: digit span fwd/back (0-2)', max: 2, id: 'moca-digit' },
+            { label: 'Attention: vigilance — tap on letter A (0-1)', max: 1, id: 'moca-vigil' },
+            { label: 'Serial 7s (0-3)', max: 3, id: 'moca-serial' },
+            { label: 'Sentence repetition (0-2)', max: 2, id: 'moca-repeat' },
+            { label: 'Verbal fluency — F words (0-1)', max: 1, id: 'moca-fluency' },
+            { label: 'Abstraction (0-2)', max: 2, id: 'moca-abstract' },
+            { label: 'Delayed recall (0-5)', max: 5, id: 'moca-recall' },
+            { label: 'Orientation (0-6)', max: 6, id: 'moca-orient' },
+        ];
+
+        function initMoCA() {
+            const c = document.getElementById('moca-items');
+            if (!c) return;
+            c.innerHTML = '';
+            MOCA_ITEMS.forEach(item => {
+                if (item.max === 0) {
+                    const d = document.createElement('div');
+                    d.className = 'p-2 bg-gray-100 rounded text-sm text-gray-500 italic';
+                    d.textContent = item.label;
+                    c.appendChild(d);
+                    return;
+                }
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg border';
+                const lbl = document.createElement('span');
+                lbl.className = 'text-sm text-gray-700 flex-1';
+                lbl.textContent = item.label;
+                const inp = document.createElement('input');
+                inp.type = 'number'; inp.min = 0; inp.max = item.max;
+                inp.id = item.id; inp.value = 0;
+                inp.className = 'w-16 border rounded p-1 text-center text-sm touch-target';
+                inp.style.minHeight = '44px';
+                inp.addEventListener('input', calculateMoCA);
+                row.appendChild(lbl); row.appendChild(inp);
+                c.appendChild(row);
+            });
+            // Education bonus
+            const bonusRow = document.createElement('div');
+            bonusRow.className = 'flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200';
+            bonusRow.innerHTML = '<label class="text-sm text-blue-700 flex-1 cursor-pointer"><input type="checkbox" id="moca-edu" class="mr-2"> +1 השכלה ≤12 שנה</label>';
+            bonusRow.querySelector('input').addEventListener('change', calculateMoCA);
+            document.getElementById('moca-items').appendChild(bonusRow);
+        }
+
+        function calculateMoCA() {
+            let total = 0;
+            MOCA_ITEMS.forEach(item => {
+                if (item.max === 0) return;
+                const el = document.getElementById(item.id);
+                if (el) total += Math.min(item.max, Math.max(0, parseInt(el.value) || 0));
+            });
+            if (document.getElementById('moca-edu')?.checked) total = Math.min(30, total + 1);
+            document.getElementById('moca-score').textContent = total;
+            const res = document.getElementById('moca-result');
+            res.classList.remove('hidden');
+            let cls, txt;
+            if (total >= 26) { cls = 'bg-green-50 border-green-200 text-green-800'; txt = `ציון ${total}/30 — תקין (≥26). אין עדות לירידה קוגניטיבית.`; }
+            else if (total >= 18) { cls = 'bg-yellow-50 border-yellow-200 text-yellow-800'; txt = `ציון ${total}/30 — MCI או דמנציה קלה (18-25). שקול בדיקות נוספות, מעקב.`; }
+            else if (total >= 10) { cls = 'bg-orange-50 border-orange-200 text-orange-800'; txt = `ציון ${total}/30 — דמנציה בינונית (10-17). הערכה מקיפה, שקול CT/MRI.`; }
+            else { cls = 'bg-red-50 border-red-200 text-red-800'; txt = `ציון ${total}/30 — דמנציה קשה (<10). תכנון טיפול, בטיחות, מינוי אפוטרופוס.`; }
+            res.className = `mt-4 p-4 rounded-xl border ${cls}`;
+            res.textContent = txt;
+        }
+
+        function resetMoCA() {
+            MOCA_ITEMS.forEach(i => { if (i.max > 0) { const el = document.getElementById(i.id); if (el) el.value = 0; } });
+            const edu = document.getElementById('moca-edu'); if (edu) edu.checked = false;
+            document.getElementById('moca-score').textContent = '0';
+            document.getElementById('moca-result').classList.add('hidden');
+        }
+
+        // ── FRAIL + CFS ───────────────────────────────────────────────
+        const CFS_LEVELS = [
+            { score: 1, label: 'Very Fit', color: '#16a34a', desc: 'פעיל, אנרגטי, מתורגל — עצמאי לחלוטין' },
+            { score: 2, label: 'Well', color: '#22c55e', desc: 'ללא מחלות פעילות, אך פחות כושר מ-CFS 1' },
+            { score: 3, label: 'Managing Well', color: '#84cc16', desc: 'מחלות כרוניות מנוהלות — עצמאי, לא פעיל קבוע' },
+            { score: 4, label: 'Vulnerable', color: '#eab308', desc: 'לא תלוי בעזרה, אך מוגבל ועייפות מוגברת' },
+            { score: 5, label: 'Mildly Frail', color: '#f97316', desc: 'תלויות ב-IADL (קניות, כספים, תרופות) — ADL עצמאי' },
+            { score: 6, label: 'Moderately Frail', color: '#ef4444', desc: 'צריך עזרה ב-ADL חיצוניים + מקצת ADL פנימיים' },
+            { score: 7, label: 'Severely Frail', color: '#dc2626', desc: 'תלוי בכל ה-ADL — אינו עצמאי, אך יציב' },
+            { score: 8, label: 'Very Severely Frail', color: '#9f1239', desc: 'תלוי מלא — סף החיים מתקצר' },
+            { score: 9, label: 'Terminally Ill', color: '#4b5563', desc: 'תוחלת חיים <6 חודשים — לא בשל frailty בלבד' },
+        ];
+
+        let selectedCFS = null;
+
+        function initCFS() {
+            const grid = document.getElementById('cfs-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            CFS_LEVELS.forEach(level => {
+                const btn = document.createElement('button');
+                btn.className = 'cfs-btn p-3 rounded-xl border-2 text-right touch-target';
+                btn.style.cssText = `border-color:${level.color}20; background:${level.color}10;`;
+                btn.innerHTML = `<div class="font-bold text-sm" style="color:${level.color}">CFS ${level.score} — ${level.label}</div><div class="text-xs text-gray-600 mt-1">${level.desc}</div>`;
+                btn.addEventListener('click', () => {
+                    selectedCFS = level.score;
+                    document.querySelectorAll('.cfs-btn').forEach(b => b.style.outline = 'none');
+                    btn.style.outline = `3px solid ${level.color}`;
+                    const res = document.getElementById('cfs-result');
+                    res.className = 'mt-4 p-4 rounded-xl border';
+                    res.style.cssText = `background:${level.color}15; border-color:${level.color}40;`;
+                    res.innerHTML = `<strong style="color:${level.color}">CFS ${level.score} — ${level.label}</strong><br><span class="text-sm text-gray-700">${level.desc}</span>${level.score >= 5 ? '<br><span class="text-xs text-red-600 mt-1 block">⚠️ CFS ≥5 — שיקול לתמיכה מוגברת, סיכון גבוה לאשפוז ממושך ותמותה</span>' : ''}`;
+                    res.classList.remove('hidden');
+                });
+                grid.appendChild(btn);
+            });
+        }
+
+        function calculateFRAIL() {
+            const ids = ['frail-fatigue','frail-resistance','frail-ambulation','frail-illness','frail-loss'];
+            const score = ids.filter(id => document.getElementById(id)?.checked).length;
+            document.getElementById('frail-score').textContent = score;
+            const res = document.getElementById('frail-result');
+            res.classList.remove('hidden');
+            let cls, txt;
+            if (score === 0) { cls = 'bg-green-50 border-green-200'; txt = `ציון ${score}/5 — לא שביר (Robust). המשך מעקב שגרתי.`; }
+            else if (score <= 2) { cls = 'bg-yellow-50 border-yellow-200'; txt = `ציון ${score}/5 — Pre-Frail. שקול התערבות: פעילות גופנית, תזונה, סקירת תרופות.`; }
+            else { cls = 'bg-red-50 border-red-200'; txt = `ציון ${score}/5 — Frail (≥3). CGA מלאה, התאם תוכנית טיפול, מניעת נפילות ואשפוז.`; }
+            res.className = `mt-4 p-4 rounded-xl border font-medium ${cls}`;
+            res.textContent = txt;
+        }
+
+        function resetFRAIL() {
+            ['frail-fatigue','frail-resistance','frail-ambulation','frail-illness','frail-loss'].forEach(id => {
+                const el = document.getElementById(id); if (el) el.checked = false;
+            });
+            document.getElementById('frail-score').textContent = '0';
+            document.getElementById('frail-result').classList.add('hidden');
+            selectedCFS = null;
+            document.querySelectorAll('.cfs-btn').forEach(b => b.style.outline = 'none');
+            document.getElementById('cfs-result').classList.add('hidden');
+        }
+
+        // ── CAM ────────────────────────────────────────────────────────
+        function calculateCAM() {
+            const c1 = document.querySelector('input[name="cam1"]:checked')?.value === 'yes';
+            const c2 = document.querySelector('input[name="cam2"]:checked')?.value === 'yes';
+            const c3 = document.querySelector('input[name="cam3"]:checked')?.value === 'yes';
+            const c4 = document.querySelector('input[name="cam4"]:checked')?.value === 'yes';
+
+            const boxes = { 'cam1-box': c1, 'cam2-box': c2, 'cam3-box': c3, 'cam4-box': c4 };
+            Object.entries(boxes).forEach(([id, val]) => {
+                const el = document.getElementById(id);
+                if (el) el.style.borderColor = val ? '#dc2626' : '#d1fae5';
+            });
+
+            const res = document.getElementById('cam-result');
+            const badge = document.getElementById('cam-badge');
+            res.classList.remove('hidden');
+
+            if (!document.querySelector('input[name="cam1"]:checked')) {
+                res.className = 'mt-4 p-4 rounded-xl bg-gray-50 border border-gray-200';
+                res.textContent = 'ענה על כל 4 הקריטריונים להערכה.';
+                badge.className = 'text-center px-4 py-2 rounded-lg bg-gray-100 text-gray-600 font-bold text-sm';
+                badge.textContent = 'ממתין';
+                return;
+            }
+
+            const positive = c1 && c2 && (c3 || c4);
+            if (positive) {
+                res.className = 'mt-4 p-4 rounded-xl bg-red-50 border-2 border-red-500';
+                res.innerHTML = '<strong class="text-red-700 text-lg">🔴 CAM חיובי — דליריום</strong><br><div class="text-sm mt-2 text-gray-700">קיימים קריטריון 1 + 2 + (3 או 4).<br><strong>צעדים מיידיים:</strong> זהה וטפל בגורמים (זיהום, תרופות, כאב, עצירות, אצירת שתן, חסך שינה, חסך חישה). הפעל פרוטוקול HELP. הימנע מהרגעה תרופתית אלא אם בטיחות מסוכנת. מעקב CAM יומי.</div>';
+                badge.className = 'text-center px-4 py-2 rounded-lg bg-red-600 text-white font-bold text-sm';
+                badge.textContent = 'CAM+ דליריום';
+            } else {
+                res.className = 'mt-4 p-4 rounded-xl bg-green-50 border border-green-200';
+                res.innerHTML = '<strong class="text-green-700">✅ CAM שלילי</strong><br><div class="text-sm mt-2 text-gray-600">לא עומד בקריטריונים לדליריום. אם יש חשד — חזור על הבדיקה מאוחר יותר (דליריום תנודתי).</div>';
+                badge.className = 'text-center px-4 py-2 rounded-lg bg-green-100 text-green-700 font-bold text-sm';
+                badge.textContent = 'CAM- תקין';
+            }
+        }
+
+        function resetCAM() {
+            ['cam1','cam2','cam3','cam4'].forEach(n => {
+                document.querySelectorAll(`input[name="${n}"]`).forEach(r => r.checked = false);
+                const box = document.getElementById(`${n}-box`); if (box) box.style.borderColor = '#e5e7eb';
+            });
+            const res = document.getElementById('cam-result'); if (res) res.classList.add('hidden');
+            const badge = document.getElementById('cam-badge');
+            if (badge) { badge.className = 'text-center px-4 py-2 rounded-lg bg-gray-100 text-gray-600 font-bold text-sm'; badge.textContent = 'ממתין'; }
+        }
+
+        // Auto-calculate CAM on radio change
+        document.addEventListener('change', function(e) {
+            if (e.target.name && e.target.name.startsWith('cam')) calculateCAM();
+            if (['frail-fatigue','frail-resistance','frail-ambulation','frail-illness','frail-loss'].includes(e.target.id)) calculateFRAIL();
+        });
+
+        // Wire all buttons — no inline handlers (CSP compliant)
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnHome = document.getElementById('btn-home');
+            if (btnHome) btnHome.addEventListener('click', () => window.location.href = '../index.html');
+            const btnPrint = document.getElementById('btn-print');
+            if (btnPrint) btnPrint.addEventListener('click', () => window.print());
+            const btnPrintGds = document.getElementById('btn-print-gds');
+            if (btnPrintGds) btnPrintGds.addEventListener('click', () => window.print());
+            ['mmse','morse','barthel','gds'].forEach(tab => {
+                const btn = document.getElementById('tab-' + tab);
+                if (btn) btn.addEventListener('click', () => showTab(tab));
+            });
+            const btnResetMMSE = document.getElementById('btn-reset-mmse');
+            if (btnResetMMSE) btnResetMMSE.addEventListener('click', resetMMSE);
+            const btnResetMorse = document.getElementById('btn-reset-morse');
+            if (btnResetMorse) btnResetMorse.addEventListener('click', resetMorse);
+            const btnResetBarthel = document.getElementById('btn-reset-barthel');
+            if (btnResetBarthel) btnResetBarthel.addEventListener('click', resetBarthel);
+            const btnCalcGds = document.getElementById('btn-calc-gds');
+            if (btnCalcGds) btnCalcGds.addEventListener('click', calculateGDS);
+            const btnResetGds = document.getElementById('btn-reset-gds');
+            if (btnResetGds) btnResetGds.addEventListener('click', resetGDS);
+            // New tabs
+            ['moca','frail','cam'].forEach(tab => {
+                const btn = document.getElementById('tab-' + tab);
+                if (btn) btn.addEventListener('click', () => showTab(tab));
+            });
+            const calcMoca = document.getElementById('btn-calc-moca'); if (calcMoca) calcMoca.addEventListener('click', calculateMoCA);
+            const resetMocaBtn = document.getElementById('btn-reset-moca'); if (resetMocaBtn) resetMocaBtn.addEventListener('click', resetMoCA);
+            const calcFrail = document.getElementById('btn-calc-frail'); if (calcFrail) calcFrail.addEventListener('click', calculateFRAIL);
+            const resetFrailBtn = document.getElementById('btn-reset-frail'); if (resetFrailBtn) resetFrailBtn.addEventListener('click', resetFRAIL);
+            const calcCam = document.getElementById('btn-calc-cam'); if (calcCam) calcCam.addEventListener('click', calculateCAM);
+            const resetCamBtn = document.getElementById('btn-reset-cam'); if (resetCamBtn) resetCamBtn.addEventListener('click', resetCAM);
+            initMoCA(); initCFS();
+        });
     </script>
 </body>
 </html>

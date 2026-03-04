@@ -29,7 +29,7 @@
                 <h1 class="text-3xl font-bold text-gray-900">🩺 Clinical Decision Support Tools</h1>
                 <p class="text-gray-600">Evidence-based tools for geriatric care decisions</p>
             </div>
-            <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+            <button id="btn-home" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                 🏠 Home
             </button>
         </header>
@@ -60,7 +60,7 @@
                         <input type="checkbox" class="mr-2" data-points="1"> Infection present
                     </label>
                 </div>
-                <button onclick="calculateDeliriumRisk()" class="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                <button id="btn-delirium" class="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
                     Calculate Risk
                 </button>
                 <div id="deliriumResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
@@ -87,7 +87,7 @@
                         <input type="checkbox" id="fallHistory" class="mr-2"> Fall in past year
                     </label>
                 </div>
-                <button onclick="assessPolypharmacy()" class="mt-4 w-full px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">
+                <button id="btn-poly" class="mt-4 w-full px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">
                     Assess Risk
                 </button>
                 <div id="polypharmacyResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
@@ -116,7 +116,7 @@
                         <input type="checkbox" class="mr-2" data-admit="1"> Failed oral intake
                     </label>
                 </div>
-                <button onclick="assessAdmission()" class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                <button id="btn-admit" class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                     Assess Disposition
                 </button>
                 <div id="admissionResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
@@ -126,7 +126,7 @@
             <div class="tool-card bg-white rounded-lg shadow-lg p-6">
                 <h3 class="text-xl font-bold mb-4 text-green-600">💬 Code Status Discussion Guide</h3>
                 <div class="space-y-3">
-                    <button onclick="showCodeStatusGuide()" class="w-full px-4 py-2 bg-green-100 text-green-700 rounded hover:bg-green-200">
+                    <button id="btn-code" class="w-full px-4 py-2 bg-green-100 text-green-700 rounded hover:bg-green-200">
                         Start Discussion Framework
                     </button>
                     <div id="codeStatusGuide" aria-live="polite" aria-atomic="true" class="hidden space-y-2 text-sm">
@@ -172,7 +172,7 @@
                         <input type="checkbox" class="capacity-check mr-2"> Can express a choice clearly
                     </label>
                 </div>
-                <button onclick="assessCapacity()" class="mt-4 w-full px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
+                <button id="btn-capacity" class="mt-4 w-full px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
                     Evaluate Capacity
                 </button>
                 <div id="capacityResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
@@ -182,27 +182,37 @@
             <div class="tool-card bg-white rounded-lg shadow-lg p-6">
                 <h3 class="text-xl font-bold mb-4 text-indigo-600">🦠 UTI Treatment Decision</h3>
                 <div class="space-y-3">
-                    <h4 class="font-semibold">Symptoms:</h4>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="uti-symptom mr-2"> Dysuria
+                    <p class="text-xs text-gray-500 mb-2">Loeb Criteria — required for treatment</p>
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" id="uti-dysuria" class="mr-2"> Acute dysuria (sufficient alone)
                     </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="uti-symptom mr-2"> Increased frequency
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" id="uti-fever" class="mr-2"> Fever ≥38°C
                     </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="uti-symptom mr-2"> Suprapubic pain
+                    <label class="flex items-center text-sm pl-4">
+                        <input type="checkbox" id="uti-cva" class="mr-2"> CVA tenderness (if fever present)
                     </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="uti-symptom mr-2"> New incontinence
+                    <label class="flex items-center text-sm pl-4">
+                        <input type="checkbox" id="uti-frequency" class="mr-2"> New/increased frequency (if fever)
                     </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="uti-risk mr-2"> Fever > 38°C
+                    <label class="flex items-center text-sm pl-4">
+                        <input type="checkbox" id="uti-urgency" class="mr-2"> New urgency (if fever)
+                    </label>
+                    <label class="flex items-center text-sm pl-4">
+                        <input type="checkbox" id="uti-suprapubic" class="mr-2"> Suprapubic pain (if fever)
+                    </label>
+                    <hr class="my-2">
+                    <label class="flex items-center text-sm">
+                        <input type="checkbox" id="uti-catheter" class="mr-2"> Indwelling catheter (CAUTI)
+                    </label>
+                    <label class="flex items-center text-sm text-yellow-700">
+                        <input type="checkbox" id="uti-delirium" class="mr-2"> ⚠️ Confusion/delirium only (no urogenital sx)
                     </label>
                     <label class="flex items-center">
                         <input type="checkbox" class="uti-risk mr-2"> Cognitive change from baseline
                     </label>
                 </div>
-                <button onclick="assessUTI()" class="mt-4 w-full px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">
+                <button id="btn-uti" class="mt-4 w-full px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">
                     Assess Need for Treatment
                 </button>
                 <div id="utiResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
@@ -393,34 +403,54 @@
         }
 
         function assessUTI() {
-            const symptoms = document.querySelectorAll('.uti-symptom:checked').length;
-            const risks = document.querySelectorAll('.uti-risk:checked').length;
+            // Loeb Criteria for UTI in elderly — acute dysuria OR fever + one urogenital symptom
+            const hasDysuria = document.getElementById('uti-dysuria')?.checked;
+            const hasFever = document.getElementById('uti-fever')?.checked;
+            const hasCVA = document.getElementById('uti-cva')?.checked;
+            const hasFrequency = document.getElementById('uti-frequency')?.checked;
+            const hasUrgency = document.getElementById('uti-urgency')?.checked;
+            const hasSuprapubic = document.getElementById('uti-suprapubic')?.checked;
+            const hasCatheter = document.getElementById('uti-catheter')?.checked;
+            const hasDelirium = document.getElementById('uti-delirium')?.checked;
+
+            const loebMet = hasDysuria || (hasFever && (hasCVA || hasFrequency || hasUrgency || hasSuprapubic));
+            const catheterCriteria = hasCatheter && hasFever && (hasCVA || hasSuprapubic);
 
             const resultDiv = document.getElementById('utiResult');
-            let recommendation = '';
-            let treatment = '';
+            let html = '';
 
-            if (symptoms >= 2 || (symptoms >= 1 && risks >= 1)) {
-                recommendation = '💊 TREAT UTI';
-                treatment = `
-                    <strong>First-line:</strong> Nitrofurantoin 100mg BID x5 days<br>
-                    <strong>If CrCl <30:</strong> Cephalexin 500mg BID x7 days<br>
-                    <strong>If fever/systemic:</strong> Ceftriaxone 1g IV/IM x1, then PO
-                `;
-            } else if (symptoms === 0 && risks === 0) {
-                recommendation = '🚫 DO NOT TREAT';
-                treatment = 'Asymptomatic bacteriuria - no treatment needed in non-pregnant patients';
+            if (loebMet || catheterCriteria) {
+                html = '<div class="p-3 bg-red-50 border border-red-200 rounded"><strong class="text-red-700">💊 TREAT — Loeb Criteria Met</strong><br><div class="text-sm mt-2 text-gray-700">';
+                html += '<strong>Uncomplicated (no fever/CVA):</strong> Nitrofurantoin 100mg BID ×5d (if CrCl ≥30) OR Fosfomycin 3g ×1<br>';
+                html += '<strong>CrCl &lt;30:</strong> Cephalexin 500mg BID ×7d OR Augmentin 875mg BID ×7d<br>';
+                html += '<strong>Pyelonephritis/fever/CVA:</strong> Ceftriaxone 2g IV ×1, then oral by culture<br>';
+                html += '<strong>CAUTI:</strong> Remove/change catheter first; treat 7d if improving</div></div>';
+            } else if (hasDelirium && !loebMet) {
+                html = '<div class="p-3 bg-yellow-50 border border-yellow-200 rounded"><strong class="text-yellow-700">⚠️ DO NOT TREAT FOR UTI</strong><br><div class="text-sm mt-2 text-gray-700">Confusion/delirium alone does NOT meet Loeb criteria for UTI. Bacteriuria in elderly is common (30-50%) and usually incidental.<br><strong>Instead:</strong> Work up delirium (infection elsewhere, metabolic, medications, pain). Do not anchor on urine.</div></div>';
             } else {
-                recommendation = '🔍 MONITOR CLOSELY';
-                treatment = 'Consider UA/UCx. Reassess in 24h. Hydration and hygiene measures.';
+                html = '<div class="p-3 bg-green-50 border border-green-200 rounded"><strong class="text-green-700">🚫 ASB — DO NOT TREAT</strong><br><div class="text-sm mt-2 text-gray-700">Loeb criteria not met. Likely asymptomatic bacteriuria (ASB).<br>Treating ASB: no benefit, increases resistance, causes C. diff and adverse drug effects.<br><strong>Exception:</strong> Pregnant patients or pre-urological procedure.</div></div>';
             }
 
-            resultDiv.innerHTML = `
-                <strong>${recommendation}</strong><br>
-                <div class="mt-2 text-sm">${treatment}</div>
-            `;
+            resultDiv.innerHTML = html;
             resultDiv.classList.remove('hidden');
         }
+
+        // Wire buttons — no inline handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const map = {
+                'btn-home': () => window.location.href = '../index.html',
+                'btn-delirium': calculateDeliriumRisk,
+                'btn-poly': assessPolypharmacy,
+                'btn-admit': assessAdmission,
+                'btn-code': showCodeStatusGuide,
+                'btn-capacity': assessCapacity,
+                'btn-uti': assessUTI,
+            };
+            Object.entries(map).forEach(([id, fn]) => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('click', fn);
+            });
+        });
     </script>
 </body>
 </html>

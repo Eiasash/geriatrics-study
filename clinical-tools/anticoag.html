@@ -39,7 +39,7 @@
                 <h1 class="text-3xl font-bold text-gray-900">💊 Anticoagulation Synthesizer</h1>
                 <p class="text-gray-600">CHA₂DS₂-VASc, HAS-BLED & Renal Dosing Calculator</p>
             </div>
-            <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+            <button data-action="btn_0_window_location_href_____index_html_" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                 🏠 Home
             </button>
         </header>
@@ -194,7 +194,7 @@
                 </div>
 
                 <!-- Export Button -->
-                <button onclick="exportRecommendations()" class="mt-6 w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                <button data-action="btn_1_exportRecommendations__" class="mt-6 w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                     📤 Export Recommendations
                 </button>
             </div>
@@ -464,6 +464,10 @@ Shaare Zedek Medical Center`;
                 document.getElementById('elderlyMeds').checked = true;
             }
             calculateScores();
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-action="btn_0_window_location_href_____index_html_"]').forEach(el => el.addEventListener('click', function() { window.location.href='../index.html'; }));
+            document.querySelectorAll('[data-action="btn_1_exportRecommendations__"]').forEach(el => el.addEventListener('click', function() { exportRecommendations(); }));
         });
     </script>
 </body>

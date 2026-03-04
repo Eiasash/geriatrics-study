@@ -61,22 +61,22 @@
 
         <!-- AI Service Selection -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <button onclick="selectAI('openevidence')" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400" aria-label="בחר OpenEvidence למחקר מבוסס ראיות">
+            <button data-ai="openevidence" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400" aria-label="בחר OpenEvidence למחקר מבוסס ראיות">
                 <div class="text-3xl mb-2" aria-hidden="true">🔬</div>
                 <div class="font-semibold text-gray-800">OpenEvidence</div>
                 <div class="text-xs text-gray-500">מחקר מבוסס ראיות</div>
             </button>
-            <button onclick="selectAI('chatgpt')" id="btn-chatgpt" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-green-400" aria-label="בחר ChatGPT GPT-4">
+            <button data-ai="chatgpt" id="btn-chatgpt" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-green-400" aria-label="בחר ChatGPT GPT-4">
                 <div class="text-3xl mb-2" aria-hidden="true">💚</div>
                 <div class="font-semibold text-gray-800">ChatGPT</div>
                 <div class="text-xs text-gray-500">OpenAI GPT-4</div>
             </button>
-            <button onclick="selectAI('claude')" id="btn-claude" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-orange-400" aria-label="בחר Claude מבית Anthropic">
+            <button data-ai="claude" id="btn-claude" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-orange-400" aria-label="בחר Claude מבית Anthropic">
                 <div class="text-3xl mb-2" aria-hidden="true">🧡</div>
                 <div class="font-semibold text-gray-800">Claude</div>
                 <div class="text-xs text-gray-500">Anthropic AI</div>
             </button>
-            <button onclick="selectAI('perplexity')" id="btn-perplexity" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-purple-400" aria-label="בחר Perplexity לחיפוש AI">
+            <button data-ai="perplexity" id="btn-perplexity" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-purple-400" aria-label="בחר Perplexity לחיפוש AI">
                 <div class="text-3xl mb-2" aria-hidden="true">🔮</div>
                 <div class="font-semibold text-gray-800">Perplexity</div>
                 <div class="text-xs text-gray-500">חיפוש AI</div>
@@ -125,18 +125,18 @@
                             <textarea id="user-input" placeholder="הקלד שאלה קלינית..."
                                 class="flex-1 p-3 border rounded-xl resize-none focus:ring-2 focus:ring-blue-400 focus:outline-none"
                                 rows="2" onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendQuery()}" aria-label="הקלד שאלה קלינית"></textarea>
-                            <button onclick="clearChat()" style="min-height:44px" class="px-3 py-2 bg-gray-200 text-gray-600 rounded-lg text-sm hover:bg-gray-300 flex-shrink-0 touch-target" title="נקה שיחה">🗑</button>
-                    <button onclick="sendQuery()" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium" aria-label="שלח שאלה">
+                            <button id="btn-clear-chat" style="min-height:44px" class="px-3 py-2 bg-gray-200 text-gray-600 rounded-lg text-sm hover:bg-gray-300 flex-shrink-0 touch-target" title="נקה שיחה">🗑</button>
+                    <button id="btn-send" class="px-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all font-medium" aria-label="שלח שאלה">
                                 שלח
                             </button>
                         </div>
                         <div class="flex flex-wrap gap-2 mt-3">
-                            <button onclick="useTemplate('delirium')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דליריום בקשיש</button>
-                            <button onclick="useTemplate('falls')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">הערכת נפילות</button>
-                            <button onclick="useTemplate('polypharmacy')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">פוליפרמציה</button>
-                            <button onclick="useTemplate('dementia')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דמנציה</button>
-                            <button onclick="useTemplate('frailty')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">שבריריות</button>
-                            <button onclick="useTemplate('anticoag')" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">נוגדי קרישה</button>
+                            <button data-tmpl="delirium" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דליריום בקשיש</button>
+                            <button data-tmpl="falls" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">הערכת נפילות</button>
+                            <button data-tmpl="polypharmacy" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">פוליפרמציה</button>
+                            <button data-tmpl="dementia" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">דמנציה</button>
+                            <button data-tmpl="frailty" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">שבריריות</button>
+                            <button data-tmpl="anticoag" class="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">נוגדי קרישה</button>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <label for="symptoms-input" class="sr-only">הקלד תסמינים</label>
                     <textarea id="symptoms-input" placeholder="הקלד תסמינים (מופרדים בפסיקים)..."
                         class="w-full p-3 border rounded-lg text-sm mb-3" rows="3" aria-label="הקלד תסמינים מופרדים בפסיקים"></textarea>
-                    <button onclick="generateDifferential()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium" aria-label="צור אבחנה מבדלת מהתסמינים">
+                    <button id="btn-gen-diff" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium" aria-label="צור אבחנה מבדלת מהתסמינים">
                         צור אבחנה מבדלת
                     </button>
                 </div>
@@ -165,7 +165,7 @@
                             <span class="text-xl">🧠</span>
                             בניית הקשר ל-AI
                         </h3>
-                        <button onclick="resetContextBuilder()" class="text-xs text-blue-700 bg-blue-50 px-3 py-1 rounded-lg hover:bg-blue-100" aria-label="ניקוי השדות בבניית ההקשר">
+                        <button id="btn-reset-ctx" class="text-xs text-blue-700 bg-blue-50 px-3 py-1 rounded-lg hover:bg-blue-100" aria-label="ניקוי השדות בבניית ההקשר">
                             איפוס
                         </button>
                     </div>
@@ -205,11 +205,11 @@
                         <div>
                             <label class="block text-gray-700 mb-1">הדגשות בטיחות</label>
                             <div class="flex flex-wrap gap-2" id="safety-chips">
-                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">פגיעות כלייתית/כבדית</button>
-                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">סיכון לנפילות / סדציה</button>
-                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">תיאום עם רוקחות</button>
-                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">רצף טיפול בקהילה</button>
-                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" onclick="toggleChip(this)">הסכמה מדעת והעדפות</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" data-chip="1">פגיעות כלייתית/כבדית</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" data-chip="1">סיכון לנפילות / סדציה</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" data-chip="1">תיאום עם רוקחות</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" data-chip="1">רצף טיפול בקהילה</button>
+                                <button type="button" class="safety-chip px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-800" data-chip="1">הסכמה מדעת והעדפות</button>
                             </div>
                         </div>
 
@@ -217,13 +217,13 @@
                         <textarea id="context-question" rows="2" class="w-full p-2 border rounded-lg" placeholder="החלטה טיפולית, דיפרנציאל, התאמות תרופה" aria-label="שאלה ל-AI"></textarea>
 
                         <div class="flex flex-wrap gap-2 pt-1">
-                            <button onclick="buildAIPrompt(false)" class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800 font-medium" aria-label="בנה פקודת AI וללא שליחה">
+                            <button data-build="false" class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800 font-medium" aria-label="בנה פקודת AI וללא שליחה">
                                 בנה פניה
                             </button>
-                            <button onclick="buildAIPrompt(true)" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium" aria-label="בנה פקודת AI ושלח">
+                            <button data-build="true" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium" aria-label="בנה פקודת AI ושלח">
                                 בנה ושלח ל-AI
                             </button>
-                            <button onclick="copyPromptPreview()" class="px-3 py-2 bg-white border rounded-lg text-sm hover:bg-gray-50" aria-label="העתקת הפניה המוכנה ללוח">
+                            <button id="btn-copy-prompt" class="px-3 py-2 bg-white border rounded-lg text-sm hover:bg-gray-50" aria-label="העתקת הפניה המוכנה ללוח">
                                 העתק פניה
                             </button>
                         </div>
@@ -233,7 +233,7 @@
                         <div class="bg-gray-50 border rounded-lg p-2">
                             <div class="flex items-center justify-between text-xs text-gray-600 mb-1">
                                 <span>תצוגה מקדימה</span>
-                                <button class="text-blue-700 hover:underline" onclick="buildAIPrompt(false)" aria-label="רענון התצוגה המקדימה">רענון</button>
+                                <button class="text-blue-700 hover:underline" data-build="false" aria-label="רענון התצוגה המקדימה">רענון</button>
                             </div>
                             <pre id="prompt-preview" class="text-xs text-gray-800 whitespace-pre-wrap"></pre>
                         </div>
@@ -249,7 +249,7 @@
                     <label for="drugs-input" class="sr-only">הקלד תרופות</label>
                     <textarea id="drugs-input" placeholder="הקלד תרופות (מופרדות בפסיקים)..."
                         class="w-full p-3 border rounded-lg text-sm mb-3" rows="3" aria-label="הקלד תרופות מופרדות בפסיקים"></textarea>
-                    <button onclick="checkInteractions()" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium" aria-label="בדוק אינטראקציות בין התרופות">
+                    <button id="btn-check-interactions" class="w-full py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium" aria-label="בדוק אינטראקציות בין התרופות">
                         בדוק אינטראקציות
                     </button>
                 </div>
@@ -261,12 +261,12 @@
                         תסמונות גריאטריות
                     </h3>
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="queryGeriatric('delirium')" class="p-2 text-sm bg-yellow-100 hover:bg-yellow-200 rounded-lg text-yellow-800">דליריום</button>
-                        <button onclick="queryGeriatric('dementia')" class="p-2 text-sm bg-blue-100 hover:bg-blue-200 rounded-lg text-blue-800">דמנציה</button>
-                        <button onclick="queryGeriatric('depression')" class="p-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800">דיכאון</button>
-                        <button onclick="queryGeriatric('incontinence')" class="p-2 text-sm bg-purple-100 hover:bg-purple-200 rounded-lg text-purple-800">אי-שליטה</button>
-                        <button onclick="queryGeriatric('malnutrition')" class="p-2 text-sm bg-orange-100 hover:bg-orange-200 rounded-lg text-orange-800">תת-תזונה</button>
-                        <button onclick="queryGeriatric('falls')" class="p-2 text-sm bg-red-100 hover:bg-red-200 rounded-lg text-red-800">נפילות</button>
+                        <button data-query="delirium" class="p-2 text-sm bg-yellow-100 hover:bg-yellow-200 rounded-lg text-yellow-800">דליריום</button>
+                        <button data-query="dementia" class="p-2 text-sm bg-blue-100 hover:bg-blue-200 rounded-lg text-blue-800">דמנציה</button>
+                        <button data-query="depression" class="p-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800">דיכאון</button>
+                        <button data-query="incontinence" class="p-2 text-sm bg-purple-100 hover:bg-purple-200 rounded-lg text-purple-800">אי-שליטה</button>
+                        <button data-query="malnutrition" class="p-2 text-sm bg-orange-100 hover:bg-orange-200 rounded-lg text-orange-800">תת-תזונה</button>
+                        <button data-query="falls" class="p-2 text-sm bg-red-100 hover:bg-red-200 rounded-lg text-red-800">נפילות</button>
                     </div>
                 </div>
 
@@ -304,22 +304,22 @@
                 הנחיות קליניות עם AI
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button onclick="searchGuideline('AGS Beers Criteria')" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all">
+                <button data-guideline="AGS Beers Criteria" class="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all">
                     <div class="text-2xl mb-2">🍺</div>
                     <div class="font-semibold text-gray-800">AGS Beers</div>
                     <div class="text-xs text-gray-500">תרופות לא מתאימות</div>
                 </button>
-                <button onclick="searchGuideline('STOPP START criteria elderly')" class="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl hover:shadow-md transition-all">
+                <button data-guideline="STOPP START criteria elderly" class="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl hover:shadow-md transition-all">
                     <div class="text-2xl mb-2">🛑</div>
                     <div class="font-semibold text-gray-800">STOPP/START</div>
                     <div class="text-xs text-gray-500">קריטריונים לתרופות</div>
                 </button>
-                <button onclick="searchGuideline('frailty assessment CGA')" class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl hover:shadow-md transition-all">
+                <button data-guideline="frailty assessment CGA" class="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl hover:shadow-md transition-all">
                     <div class="text-2xl mb-2">🏥</div>
                     <div class="font-semibold text-gray-800">CGA</div>
                     <div class="text-xs text-gray-500">הערכה גריאטרית מקיפה</div>
                 </button>
-                <button onclick="searchGuideline('delirium prevention hospital elderly')" class="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl hover:shadow-md transition-all">
+                <button data-guideline="delirium prevention hospital elderly" class="p-4 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl hover:shadow-md transition-all">
                     <div class="text-2xl mb-2">⚠️</div>
                     <div class="font-semibold text-gray-800">HELP Protocol</div>
                     <div class="text-xs text-gray-500">מניעת דליריום</div>
@@ -334,7 +334,7 @@
                     <span class="text-2xl">💾</span>
                     היסטוריית שאילתות
                 </h2>
-                <button onclick="clearHistory()" class="text-sm text-red-600 hover:text-red-800">נקה היסטוריה</button>
+                <button id="btn-clear-history" class="text-sm text-red-600 hover:text-red-800">נקה היסטוריה</button>
             </div>
             <div id="history-container" class="space-y-2 max-h-48 overflow-y-auto">
                 <p class="text-gray-500 text-sm">עדיין אין שאילתות שמורות</p>
@@ -522,7 +522,31 @@
             const labs = document.getElementById('context-labs')?.value?.trim() || '';
             const safetyTags = Array.from(document.querySelectorAll('.safety-chip.active')).map(c => c.textContent.trim());
 
-            const systemPrompt = 'אתה עוזר קליני מומחה ברפואה גריאטרית (SZMC). ענה בעברית. השתמש ב-bullets קצרים. אל תאבחן באופן חד-משמעי — הצע אפשרויות וצעדים מעשיים. התייחס להנחיות Beers, STOPP/START, ותפקוד כלייתי/כבדי.';
+            const systemPrompt = `אתה עוזר קליני מומחה ברפואה גריאטרית, עובד עם ד"ר עיאס אשהב - רופא רזידנט בפלואושיפ גריאטריה בשערי צדק (SZMC), ירושלים.
+
+הקשר קליני:
+- מחלקת גריאטריה SZMC — אשפוז חריף, שיקום, ייעוצים, מרפאה
+- תיעוד ב-EMR "קמיליון" — פלט טקסט פשוט בלבד (ללא HTML/טבלאות)
+- תרופות לפי סל הבריאות הישראלי ופורמולריית קופת חולים כללית
+
+כללי תגובה:
+- ענה בעברית (מינוחים רפואיים בעברית + אנגלית בסוגריים)
+- bullets קצרים, מבנה ברור
+- אל תאבחן חד-משמעית — הצע אפשרויות וצעדים מעשיים
+- ציין תמיד: Beers 2023, STOPP/START, התאמת מינון לפי CrCl, אינטראקציות
+
+הנחיות SZMC ספציפיות:
+- סף נמוך לדליריום — CAM בכניסה ויומי
+- מניעת נפילות: Morse >45 = פרוטוקול נפילות
+- ייעוץ תזונה אם MNA <17 או ירידה במשקל >5% ב-3 חודשים
+- יעד לחץ דם בקשיש ≥80: שקול 130-150/70-80 (לא <130)
+- סקירת תרופות: מטרה <5 תרופות, הפסק תרופות מיותרות לפי deprescribing.org
+- שחרור: סידור TAAC (Task, Appointment, Alert, Call) + תיאום קופ"ח
+
+כלים קליניים זמינים:
+- assessments.html: MMSE, Morse, Barthel, GDS-15
+- medications.html: Beers DB, DDI checker, renal dosing
+- anticoag.html: CHA₂DS₂-VASc, HAS-BLED, DOAC dosing`;
 
             let userContent = query;
             // Inject clinical context into first message of conversation
@@ -712,7 +736,7 @@
                 const service = aiServices[item.ai];
                 const date = new Date(item.timestamp).toLocaleDateString('he-IL');
                 return `
-                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" onclick="reuseQuery('${item.query.replace(/'/g, "\\'")}')">
+                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" data-reuse-query="${item.query.replace(/'/g, &quot;&#x27;&quot;)}">
                         <span>${service.icon}</span>
                         <div class="flex-1 truncate text-sm text-gray-700">${item.query}</div>
                         <span class="text-xs text-gray-400">${date}</span>
