@@ -2,304 +2,177 @@
 <html lang="en" dir="ltr">
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Evidence Resources - Geriatrics Quick Reference</title>
+    <title>Evidence and Key Trials — Geriatrics Fellowship</title>
     <link rel="icon" type="image/svg+xml" href="../szmc-presentation-maker/icons/icon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="mobile-fallback.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .resource-card {
-            transition: all 0.3s ease;
-        }
-        .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-        .search-box:focus {
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-        }
+        .trial-card { transition: box-shadow 0.2s; cursor: pointer; }
+        .trial-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .trial-detail { display: none; }
+        .trial-card.open .trial-detail { display: block; }
+        .trial-card.open .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s; display: inline-block; }
+        .filter-btn { transition: all 0.15s; }
+        .filter-btn.active { background: #1e40af; color: white; }
+        .verdict-practice { background: #dcfce7; color: #166534; }
+        .verdict-nuanced { background: #fef9c3; color: #854d0e; }
+        .verdict-negative { background: #fee2e2; color: #991b1b; }
+        .verdict-context { background: #e0f2fe; color: #075985; }
+        @media print { .no-print { display: none; } }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <div class="container mx-auto p-6 max-w-6xl">
-        <!-- Header -->
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">📚 Evidence-Based Resources</h1>
-                <p class="text-gray-600 mt-1">Quick access to OpenEvidence AI, UpToDate & clinical guidelines</p>
-            </div>
-            <button data-action="btn_0_window_location_href_____index_html_" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
-                🏠 Home
-            </button>
-        </header>
-
-        <!-- Quick Search -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 class="text-xl font-semibold mb-4">🔍 Quick Search</h2>
-            <div class="flex flex-col md:flex-row gap-4">
-                <input type="text" id="searchQuery" placeholder="Enter clinical question (e.g., 'delirium treatment in elderly')"
-                    class="search-box flex-1 p-4 border border-gray-300 rounded-lg text-lg focus:border-blue-500 focus:outline-none">
-                <div class="flex gap-2 flex-wrap">
-                    <button data-action="btn_1_searchOpenEvidence__" class="px-6 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 font-medium">
-                        🤖 OpenEvidence AI
-                    </button>
-                    <button data-action="btn_2_searchUpToDate__" class="px-6 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 font-medium">
-                        📖 UpToDate
-                    </button>
-                    <button data-action="btn_3_searchPubMed__" class="px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 font-medium">
-                        🔬 PubMed
-                    </button>
-                </div>
+<div class="container mx-auto p-4 max-w-5xl">
+    <header class="flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900">📚 Evidence and Key Trials</h1>
+            <p class="text-gray-500 text-sm">Landmark trials that shaped geriatric practice — board-relevant</p>
+        </div>
+        <button id="btn-home" class="no-print px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 text-sm">Home</button>
+    </header>
+    <div class="bg-white rounded-xl shadow p-4 mb-5 no-print">
+        <div class="flex flex-col sm:flex-row gap-3">
+            <input type="text" id="searchQuery" placeholder="Search trials or topic (e.g. blood pressure, aspirin)..."
+                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500">
+            <div class="flex gap-2">
+                <button id="btn-search-local" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Filter</button>
+                <button id="btn-pubmed" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">PubMed</button>
+                <button id="btn-uptodate" class="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700">UpToDate</button>
             </div>
         </div>
-
-        <!-- Resource Platforms -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <!-- OpenEvidence AI -->
-            <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="resource-card bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl p-6 text-white">
-                <div class="text-4xl mb-4">🤖</div>
-                <h3 class="text-xl font-bold mb-2">OpenEvidence AI</h3>
-                <p class="text-purple-100 text-sm mb-4">
-                    AI-powered clinical decision support. Ask questions in natural language and get evidence-based answers with citations.
-                </p>
-                <div class="flex items-center text-purple-200 text-sm">
-                    <span>openevidence.com</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </div>
-            </a>
-
-            <!-- UpToDate -->
-            <a href="https://www.uptodate.com" target="_blank" rel="noopener noreferrer" class="resource-card bg-gradient-to-br from-green-500 to-green-700 rounded-xl p-6 text-white">
-                <div class="text-4xl mb-4">📖</div>
-                <h3 class="text-xl font-bold mb-2">UpToDate</h3>
-                <p class="text-green-100 text-sm mb-4">
-                    Comprehensive clinical decision support. Evidence-based recommendations for diagnosis, treatment, and prevention.
-                </p>
-                <div class="flex items-center text-green-200 text-sm">
-                    <span>uptodate.com</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </div>
-            </a>
-
-            <!-- Medscape -->
-            <a href="https://www.medscape.com" target="_blank" rel="noopener noreferrer" class="resource-card bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl p-6 text-white">
-                <div class="text-4xl mb-4">🩺</div>
-                <h3 class="text-xl font-bold mb-2">Medscape</h3>
-                <p class="text-blue-100 text-sm mb-4">
-                    Drug interactions, dosing calculators, and clinical protocols. Free access with registration.
-                </p>
-                <div class="flex items-center text-blue-200 text-sm">
-                    <span>medscape.com</span>
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </div>
-            </a>
-        </div>
-
-        <!-- Geriatric-Specific Quick Links -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 class="text-xl font-semibold mb-4">⚡ Geriatric Quick Links</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <!-- Delirium -->
-                <div class="p-4 bg-red-50 rounded-lg border border-red-200">
-                    <h3 class="font-semibold text-red-800 mb-2">🧠 Delirium</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-red-600 hover:underline">→ OpenEvidence: Delirium Treatment</a>
-                        <a href="https://www.uptodate.com/contents/search?search=delirium+older+adults" target="_blank" rel="noopener noreferrer" class="block text-red-600 hover:underline">→ UpToDate: Delirium in Older Adults</a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=delirium+elderly+prevention" target="_blank" rel="noopener noreferrer" class="block text-red-600 hover:underline">→ PubMed: Delirium Prevention</a>
-                    </div>
-                </div>
-
-                <!-- Falls -->
-                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-                    <h3 class="font-semibold text-yellow-800 mb-2">🤕 Falls Prevention</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-yellow-700 hover:underline">→ OpenEvidence: Fall Prevention</a>
-                        <a href="https://www.uptodate.com/contents/search?search=falls+older+adults+prevention" target="_blank" rel="noopener noreferrer" class="block text-yellow-700 hover:underline">→ UpToDate: Falls in Older Adults</a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=falls+elderly+intervention" target="_blank" rel="noopener noreferrer" class="block text-yellow-700 hover:underline">→ PubMed: Falls Interventions</a>
-                    </div>
-                </div>
-
-                <!-- Dementia -->
-                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                    <h3 class="font-semibold text-purple-800 mb-2">🧩 Dementia</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-purple-600 hover:underline">→ OpenEvidence: Dementia Management</a>
-                        <a href="https://www.uptodate.com/contents/search?search=alzheimer+disease+treatment" target="_blank" rel="noopener noreferrer" class="block text-purple-600 hover:underline">→ UpToDate: Alzheimer's Treatment</a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=dementia+behavioral+symptoms" target="_blank" rel="noopener noreferrer" class="block text-purple-600 hover:underline">→ PubMed: BPSD Management</a>
-                    </div>
-                </div>
-
-                <!-- Polypharmacy -->
-                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <h3 class="font-semibold text-blue-800 mb-2">💊 Polypharmacy</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-blue-600 hover:underline">→ OpenEvidence: Deprescribing</a>
-                        <a href="https://www.uptodate.com/contents/search?search=drug+prescribing+elderly" target="_blank" rel="noopener noreferrer" class="block text-blue-600 hover:underline">→ UpToDate: Drug Prescribing</a>
-                        <a href="https://www.deprescribing.org" target="_blank" rel="noopener noreferrer" class="block text-blue-600 hover:underline">→ Deprescribing.org Resources</a>
-                    </div>
-                </div>
-
-                <!-- Frailty -->
-                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
-                    <h3 class="font-semibold text-green-800 mb-2">🦴 Frailty</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-green-600 hover:underline">→ OpenEvidence: Frailty Management</a>
-                        <a href="https://www.uptodate.com/contents/search?search=frailty+older+adults" target="_blank" rel="noopener noreferrer" class="block text-green-600 hover:underline">→ UpToDate: Frailty Syndrome</a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=frailty+intervention+exercise" target="_blank" rel="noopener noreferrer" class="block text-green-600 hover:underline">→ PubMed: Frailty Interventions</a>
-                    </div>
-                </div>
-
-                <!-- Anticoagulation -->
-                <div class="p-4 bg-pink-50 rounded-lg border border-pink-200">
-                    <h3 class="font-semibold text-pink-800 mb-2">🩸 Anticoagulation</h3>
-                    <div class="space-y-2 text-sm">
-                        <a href="https://www.openevidence.com" target="_blank" rel="noopener noreferrer" class="block text-pink-600 hover:underline">→ OpenEvidence: DOACs in Elderly</a>
-                        <a href="https://www.uptodate.com/contents/search?search=anticoagulation+elderly" target="_blank" rel="noopener noreferrer" class="block text-pink-600 hover:underline">→ UpToDate: Anticoagulation</a>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=DOAC+elderly+safety" target="_blank" rel="noopener noreferrer" class="block text-pink-600 hover:underline">→ PubMed: DOAC Safety</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Clinical Guidelines -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 class="text-xl font-semibold mb-4">📋 Clinical Guidelines</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372" target="_blank" rel="noopener noreferrer" class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <h3 class="font-semibold text-gray-800">AGS Beers Criteria (2023)</h3>
-                    <p class="text-sm text-gray-600">Potentially inappropriate medications in older adults</p>
-                </a>
-                <a href="https://www.geriatricscareonline.org" target="_blank" rel="noopener noreferrer" class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <h3 class="font-semibold text-gray-800">AGS GeriatricsCareOnline</h3>
-                    <p class="text-sm text-gray-600">Comprehensive geriatrics resources and guidelines</p>
-                </a>
-                <a href="https://www.bgs.org.uk/resources" target="_blank" rel="noopener noreferrer" class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <h3 class="font-semibold text-gray-800">British Geriatrics Society</h3>
-                    <p class="text-sm text-gray-600">UK guidelines and best practices</p>
-                </a>
-                <a href="https://www.nice.org.uk/guidance/conditions-and-diseases/mental-health-and-behavioural-conditions/dementia" target="_blank" rel="noopener noreferrer" class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <h3 class="font-semibold text-gray-800">NICE Dementia Guidelines</h3>
-                    <p class="text-sm text-gray-600">UK National Institute for Health and Care Excellence</p>
-                </a>
-            </div>
-        </div>
-
-        <!-- Israeli Resources -->
-        <div class="bg-white rounded-xl shadow-lg p-6">
-            <h2 class="text-xl font-semibold mb-4">🇮🇱 Israeli Resources</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="https://www.health.gov.il" target="_blank" rel="noopener noreferrer" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    <h3 class="font-semibold text-blue-800">משרד הבריאות</h3>
-                    <p class="text-sm text-blue-600">Ministry of Health Guidelines</p>
-                </a>
-                <a href="https://www.ima.org.il" target="_blank" rel="noopener noreferrer" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    <h3 class="font-semibold text-blue-800">הסתדרות הרופאים</h3>
-                    <p class="text-sm text-blue-600">Israel Medical Association</p>
-                </a>
-            </div>
+        <div id="search-clear" class="hidden mt-2">
+            <button id="btn-clear-search" class="text-xs text-blue-600 hover:underline">Clear filter</button>
+            <span id="search-count" class="text-xs text-gray-500 ml-2"></span>
         </div>
     </div>
+    <div class="flex flex-wrap gap-2 mb-5 no-print" id="filter-bar">
+        <button class="filter-btn active px-3 py-1 rounded-full text-sm border border-blue-200 bg-blue-800 text-white" data-cat="all">All</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="bp">Blood Pressure</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="dementia">Dementia</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="cvd">CVD / AF</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="falls">Falls / Frailty</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="meds">Medications</button>
+        <button class="filter-btn px-3 py-1 rounded-full text-sm border border-gray-200 bg-white text-gray-700" data-cat="cancer">Cancer / Prevention</button>
+    </div>
+    <div id="trials-container" class="space-y-3 mb-8"></div>
+    <div class="bg-white rounded-xl shadow p-5 mb-5">
+        <h2 class="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wide">Key Guidelines and Resources</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+            <a href="https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <span class="text-lg">💊</span><div><div class="font-medium">AGS Beers Criteria 2023</div><div class="text-gray-500 text-xs">Potentially inappropriate medications</div></div>
+            </a>
+            <a href="https://www.deprescribing.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <span class="text-lg">📉</span><div><div class="font-medium">Deprescribing.org</div><div class="text-gray-500 text-xs">Algorithms and patient handouts</div></div>
+            </a>
+            <a href="https://www.health.gov.il/UnitsOffice/HD/MTI/Drugs/Pages/default.aspx" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-blue-50 rounded-lg hover:bg-blue-100">
+                <span class="text-lg">🇮🇱</span><div><div class="font-medium">סל הבריאות — משרד הבריאות</div><div class="text-gray-500 text-xs">Israeli drug benefit basket</div></div>
+            </a>
+            <a href="https://www.bgs.org.uk/resources/resource-series/end-of-life-care-in-frailty" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <span class="text-lg">🕊️</span><div><div class="font-medium">BGS End of Life in Frailty</div><div class="text-gray-500 text-xs">British Geriatrics Society</div></div>
+            </a>
+            <a href="https://www.nice.org.uk/guidance/ng97" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <span class="text-lg">🧠</span><div><div class="font-medium">NICE Dementia NG97</div><div class="text-gray-500 text-xs">Diagnosis, assessment, management</div></div>
+            </a>
+            <a href="https://www.geriatricscareonline.org" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+                <span class="text-lg">📖</span><div><div class="font-medium">AGS GeriatricsCareOnline</div><div class="text-gray-500 text-xs">Comprehensive geriatrics resources</div></div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+const TRIALS = [
+    { id:'sprint', cat:'bp', year:2015, name:'SPRINT', full:'Systolic Blood Pressure Intervention Trial', journal:'NEJM 2015', n:'9,361 (28% age 75+)', question:'Intensive SBP target (<120) vs. standard (<140) in high-CV-risk adults without diabetes', result:'Intensive: 25% fewer CV events, 27% lower all-cause mortality. Benefit also in age 75+ subgroup.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Target SBP <130 in most high-risk elderly. BUT: trial excluded diabetics, dementia, prior stroke. Used automated unattended BP (lower than clinic BP by ~10-15 mmHg). Always check for orthostatic hypotension and fall risk before intensifying.', caveat:'CFS 5 or higher / advanced frailty: individualize. Higher AKI and hypotension rates in intensive arm.', pmid:'26551272', tags:['blood pressure','hypertension','cardiovascular','sprint','elderly'] },
+    { id:'hyvet', cat:'bp', year:2008, name:'HYVET', full:'Hypertension in the Very Elderly Trial', journal:'NEJM 2008', n:'3,845 (age 80+)', question:'Indapamide +/- perindopril vs. placebo in adults 80+ with SBP 160+', result:'30% fewer strokes, 21% lower all-cause mortality, 64% fewer HF events. Trial stopped early.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Treating hypertension at age 80+ is clearly beneficial. Use indapamide + perindopril. Target SBP <150. The evidence base for treating octogenarians. Referenced in SZMC geriatrics protocols.', caveat:'Patients were relatively fit — excluded dementia and institutionalized. Evidence weaker in frail elderly.', pmid:'18378519', tags:['blood pressure','hypertension','hyvet','elderly','stroke','very old','octogenarian'] },
+    { id:'accord-bp', cat:'bp', year:2010, name:'ACCORD-BP', full:'Action to Control Cardiovascular Risk in Diabetes — BP arm', journal:'NEJM 2010', n:'4,733 (diabetics)', question:'Intensive SBP <120 vs. standard <140 in type 2 diabetics', result:'No significant reduction in primary CV outcome. Stroke reduced (secondary), but more serious adverse events.', verdict:'nuanced', verdictLabel:'Nuanced', bottomLine:'In diabetics, target SBP <140 is sufficient. Intensive control adds harm without benefit — contrast with SPRINT. Do not apply SPRINT targets to diabetics.', caveat:'Diabetes was excluded from SPRINT. These are fundamentally different populations.', pmid:'20228401', tags:['blood pressure','diabetes','accord','hypertension'] },
+    { id:'finger', cat:'dementia', year:2015, name:'FINGER', full:'Finnish Geriatric Intervention Study to Prevent Cognitive Impairment and Disability', journal:'Lancet 2015', n:'1,260 (age 60-77)', question:'Multidomain lifestyle intervention (diet, exercise, cognitive training, vascular management) vs. general health advice', result:'+25% overall cognitive performance, +83% executive function, +150% processing speed vs. control.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Multidomain lifestyle intervention prevents cognitive decline. Exercise is the strongest component. Tell patients: modifiable risk factors matter — physical activity, vascular control, social engagement. Applies from MCI prevention onward.', caveat:'Did not reduce dementia incidence directly (underpowered for that endpoint). Cognitive performance improved significantly.', pmid:'25771249', tags:['dementia','cognitive','prevention','lifestyle','exercise','finger'] },
+    { id:'sprint-mind', cat:'dementia', year:2019, name:'SPRINT-MIND', full:'SPRINT Memory and Cognition IN Decreased Hypertension', journal:'JAMA 2019', n:'9,361 (SPRINT cohort)', question:'Does intensive BP control (<120) reduce dementia vs. standard (<140)?', result:'MCI reduced 19% (significant). Probable dementia reduced 17% (not significant, p=0.10). Combined MCI+dementia reduced 15% (significant).', verdict:'nuanced', verdictLabel:'Nuanced', bottomLine:'Intensive BP control reduces MCI significantly. Missed significance for dementia alone because trial stopped early (underpowered). Strong signal: treat hypertension to protect cognition, especially in midlife and early-old age.', caveat:'Trial stopped early — underpowered for dementia endpoint. Not definitive for dementia prevention alone.', pmid:'31157198', tags:['dementia','blood pressure','cognitive','sprint','hypertension'] },
+    { id:'lecanemab', cat:'dementia', year:2023, name:'CLARITY AD (Lecanemab)', full:'Phase 3 Trial of Lecanemab in Early Alzheimers Disease', journal:'NEJM 2023', n:'1,795 (early AD, amyloid confirmed)', question:'Anti-amyloid antibody lecanemab vs. placebo in early/mild AD', result:'27% slower cognitive decline on CDR-SB over 18 months. Cleared amyloid on PET. FDA approved July 2023.', verdict:'context', verdictLabel:'Context-dependent', bottomLine:'First meaningful disease-modifying therapy for early AD. Absolute benefit modest (0.45 points on 18-point scale). Requires amyloid confirmation. ARIA (brain edema/microbleeds) in 37%, symptomatic 3%. APOE4 carriers at higher ARIA risk. Not for moderate-severe AD.', caveat:'Anticoagulants are relative contraindication (ARIA + bleeding risk). Only for early/mild stage with confirmed amyloid. Not yet widely available in Israel (2024).', pmid:'36449413', tags:['dementia','alzheimer','lecanemab','amyloid','disease-modifying','aria'] },
+    { id:'aristotle', cat:'cvd', year:2011, name:'ARISTOTLE', full:'Apixaban for Reduction in Stroke and Other Thromboembolic Events in AF', journal:'NEJM 2011', n:'18,201 (AF)', question:'Apixaban vs. warfarin in atrial fibrillation', result:'21% fewer strokes, 31% less major bleeding, 11% lower all-cause mortality. All significant.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Apixaban is superior to warfarin for both efficacy and safety in AF. Now first-line for most elderly with AF and CHA2DS2-VASc 2+. Lower bleeding risk is crucial in elderly. Dose reduce to 2.5mg BID if 2 of: age 80+, weight 60kg or less, Cr 1.5+.', caveat:'Avoid if CrCl <15. Dose reduction criteria different from other DOACs. Apixaban preferred over rivaroxaban in elderly due to lower bleeding.', pmid:'21870978', tags:['af','anticoagulation','apixaban','stroke','atrial fibrillation','doac','warfarin'] },
+    { id:'rocket-af', cat:'cvd', year:2011, name:'ROCKET-AF', full:'Rivaroxaban vs. Warfarin in Atrial Fibrillation', journal:'NEJM 2011', n:'14,264 (AF, higher stroke risk)', question:'Rivaroxaban once daily vs. warfarin in AF', result:'Non-inferior to warfarin for stroke prevention. Fewer intracranial and fatal bleeds.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Rivaroxaban alternative to warfarin with once-daily dosing (compliance advantage). Dose: 20mg/day with evening meal. Reduce to 15mg if CrCl 15-50.', caveat:'Higher GI bleeding vs. warfarin. Once-daily: missed doses matter more (shorter half-life). Apixaban generally preferred in elderly.', pmid:'21830957', tags:['af','anticoagulation','rivaroxaban','stroke','doac'] },
+    { id:'hope3', cat:'cvd', year:2016, name:'HOPE-3', full:'Heart Outcomes Prevention Evaluation-3', journal:'NEJM 2016', n:'12,705 (intermediate CV risk, no prior CVD)', question:'Rosuvastatin +/- candesartan/HCTZ vs. placebo in intermediate-risk adults without prior CVD', result:'Statin alone: 24% fewer CV events. BP lowering alone: no benefit unless SBP 143+. Combined: 30% reduction.', verdict:'nuanced', verdictLabel:'Nuanced', bottomLine:'Statins benefit even intermediate-risk patients for primary prevention. BP treatment only helps if BP is actually elevated. Informs decisions about primary prevention in older adults without established CVD.', caveat:'Does not address very old or frail — benefit in 75+ without prior CVD is uncertain. Always consider life expectancy and frailty status.', pmid:'27040132', tags:['cardiovascular','statin','prevention','hope3','primary prevention'] },
+    { id:'aspree', cat:'falls', year:2018, name:'ASPREE', full:'Aspirin in Reducing Events in the Elderly', journal:'NEJM 2018', n:'19,114 (age 70+, no prior CVD)', question:'Daily aspirin 100mg vs. placebo in healthy elderly for primary prevention', result:'No CV benefit. 38% more major hemorrhage. Trend toward higher mortality (mainly cancer deaths).', verdict:'negative', verdictLabel:'Definitive negative', bottomLine:'STOP aspirin for primary prevention in patients 70+. Harms clearly outweigh benefits. Do not start. Actively review and stop if patient is on aspirin for primary prevention only. This is a major deprescribing target in geriatrics.', caveat:'Secondary prevention (prior MI, stroke, coronary stent) — aspirin is still indicated and this trial does not apply.', pmid:'30221597', tags:['aspirin','prevention','bleeding','elderly','primary prevention','aspree','deprescribing'] },
+    { id:'vida', cat:'falls', year:2022, name:'ViDA + VITAL-D', full:'Vitamin D Assessment Study and VITAL Vitamin D component', journal:'NEJM 2022 / Lancet Diab Endocrinol', n:'25,871 + 5,110', question:'High-dose vitamin D3 vs. placebo for falls, fractures, cancer prevention in replete adults', result:'No reduction in fractures or falls in vitamin D replete adults. No reduction in cancer incidence. Secondary: 13% lower cancer mortality in VITAL.', verdict:'nuanced', verdictLabel:'Nuanced', bottomLine:'Routine high-dose vitamin D (2000 IU/day) does NOT prevent fractures or falls if baseline levels are adequate. But: correct deficiency (25-OH-D <20 ng/mL) — elderly at high risk. Standard 800 IU for osteoporosis co-treatment remains appropriate. Do not stop replacement in deficient patients.', caveat:'Both trials enrolled vitamin D replete adults (mean 30 ng/mL). Results do not apply to deficient patients.', pmid:'35939577', tags:['vitamin d','falls','fractures','prevention','osteoporosis'] },
+    { id:'life', cat:'falls', year:2014, name:'LIFE (Exercise + Disability)', full:'Lifestyle Interventions and Independence for Elders', journal:'JAMA 2014', n:'1,635 (age 70-89, sedentary, at-risk)', question:'Structured physical activity (walking) vs. health education in sedentary at-risk elderly', result:'28% fewer major mobility disability events. 18% less persistent mobility disability.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Exercise prevents disability in frail and pre-frail elderly. Walking program reduces major mobility disability — the most meaningful functional outcome. Prescribe exercise. Strongest trial evidence for exercise in frailty.', caveat:'Program was supervised — real-world adherence lower. Start low, go slow. Even small amounts of activity help.', pmid:'24782135', tags:['frailty','exercise','falls','mobility','disability','life study'] },
+    { id:'senator', cat:'meds', year:2019, name:'SENATOR', full:'Software ENgine for Assessment and optimisation of drug Therapy in Older peRsons', journal:'Lancet 2019', n:'1,537 (hospitalized elderly 65+)', question:'STOPP/START-based software optimization vs. usual care', result:'More appropriate prescribing, 23% fewer adverse drug reactions. No difference in readmission or mortality.', verdict:'nuanced', verdictLabel:'Nuanced', bottomLine:'Systematic STOPP/START review at admission and discharge reduces inappropriate prescribing and ADRs. Use it. But deprescribing alone does not reduce hospitalizations — it must be embedded in full CGA.', caveat:'Software alone is insufficient — needs clinical judgment and patient involvement. Goal is not just removing drugs but optimizing therapy.', pmid:'30738736', tags:['medications','deprescribing','stopp','start','polypharmacy','adverse drug','senator'] },
+    { id:'allhat', cat:'meds', year:2002, name:'ALLHAT', full:'Antihypertensive and Lipid-Lowering Treatment to Prevent Heart Attack Trial', journal:'JAMA 2002', n:'33,357 (hypertension, age 55+)', question:'Chlorthalidone vs. amlodipine vs. lisinopril as first-line BP treatment', result:'Chlorthalidone superior for HF prevention. Similar CV outcomes overall. Doxazosin arm stopped early for worse HF.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Thiazide-like diuretic (chlorthalidone preferred over HCTZ) is first-line for hypertension especially in elderly with HF risk. Alpha-blockers should NOT be used for hypertension (also Beers criteria).', caveat:'Chlorthalidone increases hyponatremia and hypokalemia risk in elderly — monitor electrolytes carefully. Prefer chlorthalidone over HCTZ (longer duration, better outcome data).', pmid:'12479763', tags:['blood pressure','hypertension','medications','diuretic','allhat'] },
+    { id:'aspree-cancer', cat:'cancer', year:2018, name:'ASPREE (Cancer signal)', full:'ASPREE — Cancer mortality finding', journal:'NEJM 2018', n:'19,114 (age 70+)', question:'Does aspirin affect cancer outcomes in primary prevention?', result:'Trend toward higher cancer mortality in aspirin arm (RR 1.31 for cancer death, p=0.03).', verdict:'negative', verdictLabel:'Concerning signal', bottomLine:'Aspirin in primary prevention not only fails to prevent cancer but may increase cancer mortality in elderly. Mechanism unclear (possibly masking early symptoms, or accelerating growth). Reinforces: stop aspirin for primary prevention in 70+.', caveat:'Post-hoc finding. Mechanism debated. Does not change secondary prevention recommendations.', pmid:'30221600', tags:['cancer','aspirin','prevention','elderly','aspree'] },
+    { id:'nlst', cat:'cancer', year:2011, name:'NLST', full:'National Lung Screening Trial', journal:'NEJM 2011', n:'53,454 (smokers age 55-74)', question:'Annual low-dose CT vs. chest X-ray for lung cancer screening in heavy smokers', result:'20% lower lung cancer mortality, 7% lower all-cause mortality with annual LDCT.', verdict:'practice', verdictLabel:'Practice-changing', bottomLine:'Annual LDCT for: age 50-80, 20+ pack-year history, current smoker or quit less than 15 years. In elderly: discuss 24% false-positive rate, invasive follow-up risks, and life expectancy. Stop if life expectancy less than 5-7 years or severe comorbidities.', caveat:'High false-positive rate. Benefits decrease in severe COPD or limited life expectancy. Shared decision-making essential in elderly.', pmid:'21714641', tags:['cancer','lung','screening','smoking','ct','nlst','prevention'] },
+    { id:'plco-psa', cat:'cancer', year:2009, name:'PLCO (PSA screening)', full:'Prostate, Lung, Colorectal, Ovarian Cancer Screening Trial — PSA component', journal:'NEJM 2009', n:'76,693', question:'Annual PSA + DRE vs. usual care for prostate cancer mortality', result:'No significant reduction in prostate cancer mortality. Increased diagnosis of low-risk cancers (overdiagnosis).', verdict:'negative', verdictLabel:'Definitive negative', bottomLine:'Do NOT screen men 70+ with PSA for primary prevention (USPSTF D recommendation). Harms — overdiagnosis, overtreatment, complications — outweigh benefits. If patient asks: shared decision only if life expectancy >10 years. PSA still appropriate for symptomatic patients and cancer surveillance.', caveat:'PSA remains useful for monitoring known prostate cancer and evaluating symptoms. Only routine population screening in elderly is not recommended.', pmid:'19297565', tags:['cancer','prostate','screening','psa','prevention','elderly'] }
+];
 
-    <script>
-        // Simple toast notification function
-        function showToast(message, duration = 3000) {
-            // Remove existing toast if any
-            const existingToast = document.getElementById('toast-notification');
-            if (existingToast) existingToast.remove();
+const verdictColors = { practice:'verdict-practice', nuanced:'verdict-nuanced', negative:'verdict-negative', context:'verdict-context' };
+let activeFilter = 'all';
+let searchTerm = '';
 
-            const toast = document.createElement('div');
-            toast.id = 'toast-notification';
-            toast.textContent = message;
-            toast.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #1f2937;
-                color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
-                font-size: 14px;
-                z-index: 10000;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                animation: fadeIn 0.3s ease-out;
-            `;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => toast.remove(), 300);
-            }, duration);
-        }
+function renderTrials() {
+    const container = document.getElementById('trials-container');
+    const filtered = TRIALS.filter(t => {
+        const catMatch = activeFilter === 'all' || t.cat === activeFilter;
+        const s = searchTerm;
+        const searchMatch = !s || t.tags.some(tag => tag.includes(s)) ||
+            t.name.toLowerCase().includes(s) || t.full.toLowerCase().includes(s) ||
+            t.bottomLine.toLowerCase().includes(s) || t.result.toLowerCase().includes(s);
+        return catMatch && searchMatch;
+    });
+    const clearEl = document.getElementById('search-clear');
+    if (searchTerm) {
+        clearEl.classList.remove('hidden');
+        document.getElementById('search-count').textContent = filtered.length + ' trial' + (filtered.length !== 1 ? 's' : '') + ' found';
+    } else { clearEl.classList.add('hidden'); }
+    container.innerHTML = '';
+    if (!filtered.length) { container.innerHTML = '<div class="text-center py-10 text-gray-400">No trials match.</div>'; return; }
+    filtered.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'trial-card bg-white rounded-xl shadow border border-gray-100 overflow-hidden';
+        card.innerHTML = `
+            <div class="p-4 flex items-start justify-between gap-3 select-none trial-header">
+                <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <span class="font-bold text-gray-900">${t.name}</span>
+                        <span class="text-xs text-gray-400">${t.year} · ${t.journal} · n=${t.n}</span>
+                    </div>
+                    <div class="text-sm text-gray-600">${t.full}</div>
+                    <div class="mt-1.5">
+                        <span class="text-xs font-medium px-2 py-0.5 rounded-full ${verdictColors[t.verdict]}">${t.verdictLabel}</span>
+                    </div>
+                </div>
+                <span class="chevron text-gray-400 text-lg mt-1">▼</span>
+            </div>
+            <div class="trial-detail px-4 pb-4 border-t border-gray-100 pt-3 space-y-3">
+                <div class="text-sm"><span class="font-semibold text-gray-700">Question: </span><span class="text-gray-600">${t.question}</span></div>
+                <div class="text-sm"><span class="font-semibold text-gray-700">Result: </span><span class="text-gray-600">${t.result}</span></div>
+                <div class="p-3 rounded-lg text-sm ${verdictColors[t.verdict]}">
+                    <div class="font-semibold mb-1">Bottom line for geriatrics practice:</div>
+                    <div>${t.bottomLine}</div>
+                </div>
+                ${t.caveat ? '<div class="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600"><span class="font-semibold">Caveat: </span>' + t.caveat + '</div>' : ''}
+                <a href="https://pubmed.ncbi.nlm.nih.gov/' + t.pmid + '" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 hover:underline block pt-1">PubMed ' + t.pmid + '</a>
+            </div>`;
+        card.querySelector('.trial-header').addEventListener('click', () => card.classList.toggle('open'));
+        container.appendChild(card);
+    });
+}
 
-        function searchOpenEvidence() {
-            const query = document.getElementById('searchQuery').value;
-            // OpenEvidence doesn't support deep-linking search URLs
-            // Copy query to clipboard and open main site
-            if (query.trim()) {
-                navigator.clipboard.writeText(query).then(() => {
-                    showToast('Question copied! Paste it in OpenEvidence.');
-                }).catch(() => {
-                    // Clipboard failed, just open the site
-                    showToast('Opening OpenEvidence...');
-                });
-            }
-            window.open('https://www.openevidence.com', '_blank', 'noopener,noreferrer');
-        }
-
-        function searchUpToDate() {
-            const query = document.getElementById('searchQuery').value;
-            if (query.trim()) {
-                window.open(`https://www.uptodate.com/contents/search?search=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
-            } else {
-                window.open('https://www.uptodate.com', '_blank', 'noopener,noreferrer');
-            }
-        }
-
-        function searchPubMed() {
-            const query = document.getElementById('searchQuery').value;
-            if (query.trim()) {
-                window.open(`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
-            } else {
-                window.open('https://pubmed.ncbi.nlm.nih.gov', '_blank', 'noopener,noreferrer');
-            }
-        }
-
-        function searchPerplexity() {
-            const query = document.getElementById('searchQuery').value;
-            if (query.trim()) {
-                window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
-            } else {
-                window.open('https://www.perplexity.ai', '_blank', 'noopener,noreferrer');
-            }
-        }
-
-        // Handle Enter key in search box
-        document.getElementById('searchQuery').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchPubMed(); // Use PubMed as default since it supports deep linking
-            }
-        });
-    </script>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(-50%) translateY(0); }
-            to { opacity: 0; transform: translateX(-50%) translateY(20px); }
-        }
-    </style>
+document.getElementById('filter-bar').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    activeFilter = btn.dataset.cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTrials();
+});
+document.getElementById('btn-search-local').addEventListener('click', () => { searchTerm = document.getElementById('searchQuery').value.toLowerCase().trim(); renderTrials(); });
+document.getElementById('searchQuery').addEventListener('keydown', e => { if (e.key === 'Enter') { searchTerm = e.target.value.toLowerCase().trim(); renderTrials(); } });
+document.getElementById('btn-clear-search').addEventListener('click', () => { searchTerm = ''; document.getElementById('searchQuery').value = ''; renderTrials(); });
+document.getElementById('btn-home').addEventListener('click', () => window.location.href = '../index.html');
+document.getElementById('btn-pubmed').addEventListener('click', () => { const q = document.getElementById('searchQuery').value; window.open(q.trim() ? 'https://pubmed.ncbi.nlm.nih.gov/?term=' + encodeURIComponent(q) : 'https://pubmed.ncbi.nlm.nih.gov', '_blank', 'noopener,noreferrer'); });
+document.getElementById('btn-uptodate').addEventListener('click', () => { const q = document.getElementById('searchQuery').value; window.open(q.trim() ? 'https://www.uptodate.com/contents/search?search=' + encodeURIComponent(q) : 'https://www.uptodate.com', '_blank', 'noopener,noreferrer'); });
+renderTrials();
+</script>
 </body>
 </html>
