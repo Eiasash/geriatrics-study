@@ -109,6 +109,13 @@ const verdictColors = { practice:'verdict-practice', nuanced:'verdict-nuanced', 
 let activeFilter = 'all';
 let searchTerm = '';
 
+function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+}
+
 function renderTrials() {
     const container = document.getElementById('trials-container');
     const filtered = TRIALS.filter(t => {
@@ -124,36 +131,71 @@ function renderTrials() {
         clearEl.classList.remove('hidden');
         document.getElementById('search-count').textContent = filtered.length + ' trial' + (filtered.length !== 1 ? 's' : '') + ' found';
     } else { clearEl.classList.add('hidden'); }
-    container.innerHTML = '';
-    if (!filtered.length) { container.innerHTML = '<div class="text-center py-10 text-gray-400">No trials match.</div>'; return; }
+
+    while (container.firstChild) container.removeChild(container.firstChild);
+
+    if (!filtered.length) {
+        container.appendChild(el('div', 'text-center py-10 text-gray-400', 'No trials match.'));
+        return;
+    }
+
     filtered.forEach(t => {
         const card = document.createElement('div');
         card.className = 'trial-card bg-white rounded-xl shadow border border-gray-100 overflow-hidden';
-        card.innerHTML = `
-            <div class="p-4 flex items-start justify-between gap-3 select-none trial-header">
-                <div class="flex-1 min-w-0">
-                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                        <span class="font-bold text-gray-900">${t.name}</span>
-                        <span class="text-xs text-gray-400">${t.year} · ${t.journal} · n=${t.n}</span>
-                    </div>
-                    <div class="text-sm text-gray-600">${t.full}</div>
-                    <div class="mt-1.5">
-                        <span class="text-xs font-medium px-2 py-0.5 rounded-full ${verdictColors[t.verdict]}">${t.verdictLabel}</span>
-                    </div>
-                </div>
-                <span class="chevron text-gray-400 text-lg mt-1">▼</span>
-            </div>
-            <div class="trial-detail px-4 pb-4 border-t border-gray-100 pt-3 space-y-3">
-                <div class="text-sm"><span class="font-semibold text-gray-700">Question: </span><span class="text-gray-600">${t.question}</span></div>
-                <div class="text-sm"><span class="font-semibold text-gray-700">Result: </span><span class="text-gray-600">${t.result}</span></div>
-                <div class="p-3 rounded-lg text-sm ${verdictColors[t.verdict]}">
-                    <div class="font-semibold mb-1">Bottom line for geriatrics practice:</div>
-                    <div>${t.bottomLine}</div>
-                </div>
-                ${t.caveat ? '<div class="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600"><span class="font-semibold">Caveat: </span>' + t.caveat + '</div>' : ''}
-                <a href="https://pubmed.ncbi.nlm.nih.gov/' + t.pmid + '" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-600 hover:underline block pt-1">PubMed ' + t.pmid + '</a>
-            </div>`;
-        card.querySelector('.trial-header').addEventListener('click', () => card.classList.toggle('open'));
+
+        // Header
+        const header = el('div', 'p-4 flex items-start justify-between gap-3 select-none trial-header');
+        const headerLeft = el('div', 'flex-1 min-w-0');
+
+        const topRow = el('div', 'flex flex-wrap items-center gap-2 mb-1');
+        topRow.appendChild(el('span', 'font-bold text-gray-900', t.name));
+        topRow.appendChild(el('span', 'text-xs text-gray-400', t.year + ' · ' + t.journal + ' · n=' + t.n));
+        headerLeft.appendChild(topRow);
+        headerLeft.appendChild(el('div', 'text-sm text-gray-600', t.full));
+
+        const badgeRow = el('div', 'mt-1');
+        badgeRow.appendChild(el('span', 'text-xs font-medium px-2 py-0.5 rounded-full ' + verdictColors[t.verdict], t.verdictLabel));
+        headerLeft.appendChild(badgeRow);
+
+        header.appendChild(headerLeft);
+        header.appendChild(el('span', 'chevron text-gray-400 text-lg mt-1', '▼'));
+        card.appendChild(header);
+
+        // Detail
+        const detail = el('div', 'trial-detail px-4 pb-4 border-t border-gray-100 pt-3 space-y-3');
+
+        const qRow = el('div', 'text-sm');
+        qRow.appendChild(el('span', 'font-semibold text-gray-700', 'Question: '));
+        qRow.appendChild(el('span', 'text-gray-600', t.question));
+        detail.appendChild(qRow);
+
+        const rRow = el('div', 'text-sm');
+        rRow.appendChild(el('span', 'font-semibold text-gray-700', 'Result: '));
+        rRow.appendChild(el('span', 'text-gray-600', t.result));
+        detail.appendChild(rRow);
+
+        const blBox = el('div', 'p-3 rounded-lg text-sm ' + verdictColors[t.verdict]);
+        blBox.appendChild(el('div', 'font-semibold mb-1', 'Bottom line for geriatrics practice:'));
+        blBox.appendChild(el('div', '', t.bottomLine));
+        detail.appendChild(blBox);
+
+        if (t.caveat) {
+            const cavBox = el('div', 'p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600');
+            cavBox.appendChild(el('span', 'font-semibold', 'Caveat: '));
+            cavBox.appendChild(document.createTextNode(t.caveat));
+            detail.appendChild(cavBox);
+        }
+
+        const link = document.createElement('a');
+        link.href = 'https://pubmed.ncbi.nlm.nih.gov/' + t.pmid;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'text-xs text-blue-600 hover:underline block pt-1';
+        link.textContent = 'PubMed ' + t.pmid;
+        detail.appendChild(link);
+
+        card.appendChild(detail);
+        header.addEventListener('click', () => card.classList.toggle('open'));
         container.appendChild(card);
     });
 }
