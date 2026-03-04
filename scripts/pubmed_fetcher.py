@@ -4,6 +4,7 @@ PubMed Geriatrics Paper Fetcher
 Automatically fetches latest geriatrics research and generates Anki cards
 """
 
+import os
 import requests
 import json
 from datetime import datetime, timedelta
@@ -15,7 +16,7 @@ import hashlib
 class PubMedFetcher:
     def __init__(self):
         self.base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-        self.email = "eiasash@gmail.com"  # Update with your email
+        self.email = os.environ.get("PUBMED_EMAIL", "eiasash@gmail.com")
         
         # Geriatrics-specific search terms
         self.search_queries = {

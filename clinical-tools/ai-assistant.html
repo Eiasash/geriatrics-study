@@ -59,6 +59,20 @@
             </div>
         </header>
 
+        <!-- API Key Settings -->
+        <div class="glass-card rounded-xl p-4 mb-6 shadow-lg border border-yellow-200 bg-yellow-50">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="text-xl">🔑</span>
+                <label for="api-key-input" class="font-semibold text-gray-800 text-sm">מפתח Anthropic API:</label>
+                <input id="api-key-input" type="password" placeholder="sk-ant-..."
+                    class="flex-1 min-w-0 p-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none bg-white"
+                    aria-label="הכנס מפתח Anthropic API"
+                    oninput="saveApiKey(this.value)">
+                <span id="api-key-status" class="text-xs text-gray-500">לא מוגדר</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">המפתח נשמר מקומית בדפדפן בלבד ולא נשלח לשרת. <a href="https://console.anthropic.com/account/keys" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">קבל מפתח</a></p>
+        </div>
+
         <!-- AI Service Selection -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <button data-ai="openevidence" id="btn-openevidence" class="ai-btn glass-card p-4 rounded-xl hover:shadow-lg transition-all border-2 border-transparent hover:border-blue-400" aria-label="בחר OpenEvidence למחקר מבוסס ראיות">
@@ -352,6 +366,30 @@
         let selectedAI = 'openevidence';
         let chatHistory = JSON.parse(localStorage.getItem('aiChatHistory') || '[]');
 
+        function saveApiKey(value) {
+            const trimmed = value.trim();
+            if (trimmed) {
+                localStorage.setItem('anthropic-api-key', trimmed);
+                document.getElementById('api-key-status').textContent = 'מוגדר ✓';
+                document.getElementById('api-key-status').style.color = '#16a34a';
+            } else {
+                localStorage.removeItem('anthropic-api-key');
+                document.getElementById('api-key-status').textContent = 'לא מוגדר';
+                document.getElementById('api-key-status').style.color = '';
+            }
+        }
+
+        // Load saved API key on startup
+        (function loadSavedApiKey() {
+            const saved = localStorage.getItem('anthropic-api-key');
+            if (saved) {
+                const el = document.getElementById('api-key-input');
+                if (el) el.value = saved;
+                const status = document.getElementById('api-key-status');
+                if (status) { status.textContent = 'מוגדר ✓'; status.style.color = '#16a34a'; }
+            }
+        })();
+
         const aiServices = {
             openevidence: {
                 name: 'OpenEvidence AI',
@@ -506,10 +544,21 @@
             updateTokenCounter();
         }
 
+        function getApiKey() {
+            return localStorage.getItem('anthropic-api-key') || '';
+        }
+
         async function sendQuery() {
             const input = document.getElementById('user-input');
             const query = input.value.trim();
             if (!query) return;
+
+            const apiKey = getApiKey();
+            if (!apiKey) {
+                addMessage('שגיאה: מפתח API חסר. הגדר אותו בתיבת ההגדרות למעלה.', 'ai');
+                document.getElementById('api-key-input')?.focus();
+                return;
+            }
 
             addMessage(query, 'user');
             saveToHistory(query, 'claude');
@@ -586,10 +635,12 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'x-api-key': apiKey,
+                        'anthropic-version': '2023-06-01',
                         'anthropic-dangerous-direct-browser-access': 'true'
                     },
                     body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
+                        model: 'claude-sonnet-4-6',
                         max_tokens: 1000,
                         system: systemPrompt,
                         messages: conversationHistory

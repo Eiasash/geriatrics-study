@@ -1,0 +1,124 @@
+name: Tests
+
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - 'h5p/**'
+      - 'data/**'
+      - '.github/workflows/test.yml'
+  pull_request:
+    paths:
+      - 'h5p/**'
+      - 'data/**'
+      - '.github/workflows/test.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: h5p/package-lock.json
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci
+      - name: Run ESLint
+        working-directory: h5p
+        run: npm run lint
+      - name: Check formatting
+        working-directory: h5p
+        run: npm run format:check
+
+  unit-tests:
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: h5p/package-lock.json
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci
+      - name: Run tests with coverage
+        working-directory: h5p
+        run: npm run test:coverage
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-report
+          path: h5p/coverage/
+          retention-days: 7
+
+  validate-content:
+    name: Validate content.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: h5p/package-lock.json
+      - name: Install dependencies
+        working-directory: h5p
+        run: npm ci
+      - name: Validate content
+        working-directory: h5p
+        run: npm run validate
+
+  validate-python:
+    name: Validate Python scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Check syntax (check_files.py)
+        run: python -m py_compile check_files.py
+      - name: Check syntax (pubmed_fetcher.py)
+        run: python -m py_compile scripts/pubmed_fetcher.py
+      - name: Run check_files.py
+        run: |
+          PYTHONIOENCODING=utf-8 python check_files.py
+        continue-on-error: true
+
+  summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: [lint, unit-tests, validate-content, validate-python]
+    if: always()
+    steps:
+      - name: Report
+        run: |
+          echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Lint: ${{ needs.lint.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Unit Tests: ${{ needs.unit-tests.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Content Validation: ${{ needs.validate-content.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Python Scripts: ${{ needs.validate-python.result }}" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ needs.lint.result }}" == "failure" ]] || \
+             [[ "${{ needs.unit-tests.result }}" == "failure" ]] || \
+             [[ "${{ needs.validate-content.result }}" == "failure" ]]; then
+            exit 1
+          fi
