@@ -86,15 +86,38 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Smoke test key pages
+      - name: Smoke test key pages (with retry)
         run: |
           SITE="https://eiasash.github.io/geriatrics-study"
-          sleep 30  # allow Pages CDN to propagate
-          for path in "/" "/clinical-tools/medications.html" "/clinical-tools/ai-assistant.html" "/szmc-presentation-maker/index.html" "/hazzards/" "/h5p/"; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${SITE}${path}")
-            if [ "$STATUS" != "200" ]; then
-              echo "FAIL: ${SITE}${path} returned ${STATUS}"
-              exit 1
-            fi
-            echo "OK: ${SITE}${path} → ${STATUS}"
+          PAGES=(
+            "/"
+            "/clinical-tools/medications.html"
+            "/clinical-tools/ai-assistant.html"
+            "/szmc-presentation-maker/index.html"
+            "/hazzards/"
+            "/h5p/"
+          )
+
+          check_page() {
+            local url="$1"
+            local max_attempts=6
+            local wait=10
+            for attempt in $(seq 1 $max_attempts); do
+              STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$url")
+              if [ "$STATUS" = "200" ]; then
+                echo "OK (attempt $attempt): $url → $STATUS"
+                return 0
+              fi
+              echo "Attempt $attempt/$max_attempts: $url returned $STATUS — retrying in ${wait}s..."
+              sleep $wait
+              wait=$((wait * 2))
+            done
+            echo "FAIL: $url did not return 200 after $max_attempts attempts"
+            return 1
+          }
+
+          FAILED=0
+          for path in "${PAGES[@]}"; do
+            check_page "${SITE}${path}" || FAILED=1
           done
+          exit $FAILED

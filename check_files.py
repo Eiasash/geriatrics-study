@@ -1,8 +1,11 @@
 import os
 import json
+import sys
 from pathlib import Path
 
 print("=== BUILD STATUS REPORT ===\n")
+
+errors = []
 
 # Check H5P dist
 h5p_dist = Path("h5p/dist")
@@ -13,17 +16,18 @@ if h5p_dist.exists():
         # Method 1: os.listdir
         files_os = os.listdir(str(h5p_dist))
         print(f"  os.listdir found: {len(files_os)} files")
-        
+
         # Method 2: Path.glob
         files_glob = list(h5p_dist.glob("*"))
         print(f"  Path.glob found: {len(files_glob)} files")
-        
+
         # Method 3: os.walk
         for root, dirs, files in os.walk(str(h5p_dist)):
             print(f"  os.walk found: {len(files)} files, {len(dirs)} dirs")
             break
     except Exception as e:
         print(f"  Error listing files: {e}")
+        errors.append(f"Failed to list h5p/dist: {e}")
 else:
     print("  Directory does not exist")
 
@@ -40,12 +44,19 @@ if len(h5p_files) > 5:
 # Check content
 data_file = Path("data/content.json")
 if data_file.exists():
-    with open(data_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    print(f"\nContent data loaded:")
-    print(f"  Total topics: {len(data)}")
-    for topic in data[:3]:
-        print(f"    - {topic['topic']} ({len(topic.get('mcqs', []))} MCQs)")
+    try:
+        with open(data_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        print(f"\nContent data loaded:")
+        print(f"  Total topics: {len(data)}")
+        for topic in data[:3]:
+            print(f"    - {topic['topic']} ({len(topic.get('mcqs', []))} MCQs)")
+        if not data:
+            errors.append("data/content.json is empty — no topics found")
+    except json.JSONDecodeError as e:
+        errors.append(f"data/content.json is invalid JSON: {e}")
+else:
+    errors.append("data/content.json not found")
 
 print("\n=== SUMMARY ===")
 if h5p_files:
@@ -53,3 +64,9 @@ if h5p_files:
 else:
     print("⚠ No H5P packages found - run 'cd h5p && npm run build:qset' to build")
 print("\nTo use H5P packages: Upload to any H5P-compatible platform (Moodle, WordPress, etc.)")
+
+if errors:
+    print("\n=== ERRORS ===")
+    for err in errors:
+        print(f"  ✗ {err}")
+    sys.exit(1)
