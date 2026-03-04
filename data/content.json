@@ -3700,6 +3700,46 @@
       {
         "front": "ONJ prevention — dental care protocol",
         "back": "Before bisphosphonate/denosumab: dental inspection + complete invasive procedures. During therapy: avoid invasive dental work. If needed: consider antibiotics. Not seen with teriparatide/raloxifene/calcitonin."
+      },
+      {
+        "q": "מה משך הטיפול המומלץ בביספוספונטים לפני drug holiday?",
+        "a": "5 שנים oral (alendronate/risedronate) או 3 שנים IV (zoledronate). אחר כך הערך: T-score >-2.5 וסיכון נמוך → holiday. T-score <-2.5 או שבר קודם → המשך טיפול."
+      },
+      {
+        "q": "מה ההבדל בין denosumab לביספוספונטים בהפסקת טיפול?",
+        "a": "ביספוספונטים נשארים בעצם שנים — ניתן להפסיק בבטחה. Denosumab מסולק תוך 6 חודשים → ריבאונד ושברים חוליתיים מרובים. חובה transition לביספוספונט לפני הפסקה."
+      },
+      {
+        "q": "מהי T-score המגדירה אוסטאופורוזיס לפי WHO?",
+        "a": "T-score ≤ -2.5. אוסטאופניה: -1.0 עד -2.5. תקין: ≥ -1.0. Z-score <-2.0 = below expected for age (חשד לסיבה שניונית)."
+      },
+      {
+        "q": "מה הטיפול הראשוני ב-GIOP (אוסטאופורוזיס מושרה סטרואידים)?",
+        "a": "סידן 1200mg + ויטמין D 800IU + ביספוספונט. ללא תלות ב-DXA אם: prednisolone ≥7.5mg/יום ≥3 חודשים + גיל >40 (ACR 2017)."
+      },
+      {
+        "q": "מה FRAX ומה הוא מחשב?",
+        "a": "כלי WHO לסיכון 10-שנתי לשבר אוסטאופורוטי. קלט: גיל, מין, BMI, שבר קודם, שבר הורה בירך, עישון, סטרואידים, RA, אלכוהול, DXA אופציונלי. פלט: % שבר עיקרי + % שבר ירך."
+      },
+      {
+        "q": "מתי מועדף teriparatide על ביספוספונטים?",
+        "a": "Anabolic agent: כישלון ביספוספונט עם שברים, T-score <-3.5+שבר, שברים חוליתיים מרובים, GIOP חמורה. מקסימום 24 חודשים. אחריו: ביספוספונט או denosumab לשמור על עצם."
+      },
+      {
+        "q": "מה atypical femoral fracture ואיך מזהים?",
+        "a": "שבר תת-טרוכנטרי/דיאפיזרי אחרי ביספוספונטים ≥5 שנים. סימן מוקדם: כאב ירך פרודרומלי. X-ray: 'beaking' קורטיקלי. בדוק צד שני. הפסק ביספוספונט, שקול teriparatide."
+      },
+      {
+        "q": "מה ה-ONJ ואיך מונעים?",
+        "a": "Osteonecrosis of jaw: רקמה עצם חשופה >8 שבועות. גורמי סיכון: עקירת שן, מינון אונקולוגי IV >> אוסטאופורוזיס. מניעה: בדיקת שיניים + טיפול לפני תחילת ביספוספונט."
+      },
+      {
+        "q": "מה מינון סידן וויטמין D בקשישים?",
+        "a": "סידן: 1000-1200mg/יום (מזון עדיף). תוסף ≤500mg בפעם (ספיגה מוגבלת). ויטמין D: 800-1000 IU/יום. יעד: 25-OH-D ≥30 ng/mL. בדוק ותקן בכניסה לאשפוז."
+      },
+      {
+        "q": "מהי ספיגת סידן מהמזון מול תוספים?",
+        "a": "ספיגה ממזון טובה יותר ולא מוגבלת כמותית. תוספים: calcium carbonate (עם אוכל) vs. calcium citrate (ללא אוכל, עדיף ב-PPI). סידן פחמתי זול ונפוץ. הימנע מ->1500mg/יום תוספים (סיכון CV שנוי במחלוקת)."
       }
     ]
   },
@@ -4188,6 +4228,46 @@
       {
         "front": "REM sleep behavior disorder",
         "back": "Acting out dreams during REM (loss of normal atonia). Associated with synucleinopathies (PD, DLB, MSA). May precede motor symptoms by years. Important prodromal marker."
+      },
+      {
+        "q": "מה CBT-I ומדוע עדיף על תרופות?",
+        "a": "Cognitive Behavioral Therapy for Insomnia: הגבלת שינה, בקרת גירויים, היגיינת שינה, רכיב קוגניטיבי. יעיל ל-80%, עמיד לאורך זמן, ללא תופעות לוואי. First-line בכל גיל — עדיף על Z-drugs/BZDs."
+      },
+      {
+        "q": "מה הקשר בין RBD (REM sleep behavior disorder) לפרקינסון?",
+        "a": ">80% מחולי RBD idiopathic יפתחו alpha-synucleinopathy (פרקינסון, DLB, MSA) תוך 10-20 שנה. הסמן הפרודרומלי החזק ביותר. טיפול: Clonazepam 0.5mg קמ\"ב או Melatonin 3-12mg."
+      },
+      {
+        "q": "אילו תרופות שינה ב-Beers criteria ולמה?",
+        "a": "BZDs (diazepam, lorazepam): נפילות, דליריום, תלות. Z-drugs (zolpidem, zaleplon): נפילות, ER visits. Diphenhydramine: אנטי-כולינרגי, דמנציה. מותר: Melatonin, Ramelteon, Doxepin ≤6mg."
+      },
+      {
+        "q": "מה ה-RLS וטיפול ראשוני?",
+        "a": "Restless Legs: דחף לזוז ברגליים, גרוע בהפסקה ולילה, משתפר בתנועה. ראשית: פריטין <75 → ברזל IV/PO. אם לא מספיק: Pramipexole / Ropinirole (dopamine agonists). סכנת augmentation עם הזמן."
+      },
+      {
+        "q": "מה sundowning ואיך מנהלים?",
+        "a": "בלבול/אגיטציה בשעות אחר הצהריים/ערב בדמנציה. ראשית: אי-תרופתי — אור בוקר, פעילות ביום, לוח זמנים קבוע. Melatonin 0.5-2mg. אנטי-פסיכוטיים מסוכנים (תמותה) — רק אם בטיחות מסוכנת."
+      },
+      {
+        "q": "מה שינויים נורמליים בשינה עם הגיל?",
+        "a": "Advanced sleep phase (מוקדם לישון/לקום), ↓SWS (גלים עמוקים), ↑שינה קלה ומקוטעת, ↑התעוררויות, ↓יעילות שינה, ↑נמנומי יום. לא נורמלי: נדודי שינה כרוניים, עייפות משמעותית ביום."
+      },
+      {
+        "q": "מה OSA vs CSA ואיך מבדילים?",
+        "a": "OSA: חסימת דרכי אוויר עליונות עם מאמץ נשימה נמשך (paradoxical breathing). CSA: היעדר מאמץ נשימה — שכיח ב-CHF (Cheyne-Stokes) ואופיואידים. שניהם: דה-סטורציה, שינה מקוטעת. אבחנה: polysomnography."
+      },
+      {
+        "q": "מה Doxepin ≤6mg ולמה שונה מ-TCA?",
+        "a": "Doxepin ≤6mg (Silenor): פועל כ-H1 antagonist סלקטיבי ללא פעילות אנטי-כולינרגית. FDA approved לתחזוקת שינה. היחיד מ-TCA שאינו ב-Beers Criteria. יעיל במיוחד להתעוררות מוקדמת."
+      },
+      {
+        "q": "מה CPAP ב-OSA ומה הקשר לקוגניציה?",
+        "a": "CPAP טיפול ראשוני ב-OSA. בקשישים: משפר קוגניציה, מפחית סיכון דליריום, משפר QoL. קשה לציות — שקול auto-CPAP + humidifier. קשר לדמנציה: OSA לא מטופל → ↑סיכון AD (beta-amyloid clearance לקוי בשינה)."
+      },
+      {
+        "q": "מה Melatonin בקשיש — מתי ואיך?",
+        "a": "יעיל ל: הפרעות קצב יממה (jet lag, DSWPD), כחלופה ל-Z-drugs, ניהול sundowning בדמנציה. מינון: 0.5-5mg. לא ב-Beers. Ramelteon (agonist מלטונין) אלטרנטיבה. לא הוכח יעיל בנדודי שינה מבניים."
       }
     ]
   },
@@ -4676,6 +4756,46 @@
       {
         "front": "Urosepsis in elderly — key points",
         "back": "Can present with delirium, hypotension, tachycardia. May lack classic fever/dysuria. Blood cultures + urine culture. Empiric broad-spectrum antibiotics. Fluid resuscitation. High mortality if delayed."
+      },
+      {
+        "q": "מה קריטריוני Loeb ל-UTI בקשישים?",
+        "a": "דיזוריה חריפה (לבד מספיק) OR חום ≥38°C + אחד מ: CVA, תדירות חדשה, דחיפות חדשה, כאב סופרפובי. בלבול לבד ≠ UTI. בקטריאוריה א-תסמינית שכיחה ב-30-50% — אל תטפל."
+      },
+      {
+        "q": "מה טיפול ראשוני ב-C. diff (CDI) ב-2024?",
+        "a": "Vancomycin 125mg QID ×10 יום OR Fidaxomicin 200mg BID ×10 יום. מטרונידזול לא first-line לשום חומרה. Fidaxomicin → ↓חזרה. חזרה שלישית → FMT (>90% יעילות)."
+      },
+      {
+        "q": "מה הצגה אטיפית של זיהומים בקשיש?",
+        "a": "ירידה תפקודית, בלבול/דליריום, נפילות, ירידה בתיאבון. לרוב ללא חום (30-50% קשישים עם זיהום חמור — תגובת חום קהה), ללא לויקוציטוזיס. שמור על סף חשד גבוה."
+      },
+      {
+        "q": "מה CURB-65 וסף אשפוז ב-CAP?",
+        "a": "Confusion, Urea>7, RR≥30, BP<90/60, Age≥65. 0-1: outpatient. 2: שקול אשפוז. 3-5: אשפוז (ICU אם ≥4). תמותה: 0-1≈1%, 3-5≈14-27%."
+      },
+      {
+        "q": "מה הסיבה לאי-טיפול ב-ASB?",
+        "a": "טיפול ב-ASB: אין הפחתת תחלואה/תמותה, מעלה עמידות, גורם C. diff, ADRs. שכיחות: 30-50% בקשישות. אבחן UTI רק עם תסמינים ספציפיים (Loeb). Exception: הריון + pre-urological procedure."
+      },
+      {
+        "q": "מה Shingrix ומה יתרונו על Zostavax?",
+        "a": "Recombinant adjuvanted zoster vaccine: 2 מנות (2-6 חודשים הפרש). יעילות: ~97% ב-≥50 שנה. ניתן לאימונוסופרסים (בניגוד ל-Zostavax החי). מחליף Zostavax שנסוג משוק. מומלץ לכל ≥50 שנה."
+      },
+      {
+        "q": "מה התאמת אנטיביוטיקה ב-CrCl<30?",
+        "a": "הימנע: Nitrofurantoin (לא יעיל + רעיל), Aminoglycosides (ototoxicity/nephrotoxicity). הפחת: Vancomycin (moniitor levels), Ciprofloxacin. ללא התאמה: Metronidazole, Azithromycin, Clindamycin (מטבוליזם כבדי)."
+      },
+      {
+        "q": "מה Red flags לאשפוז ב-SSTI (skin/soft tissue infection)?",
+        "a": "סימנים סיסטמיים (חום, tachycardia, hypotension), התפשטות מהירה, בולות, crepitus (גז), נמק, כישלון 48 שעות PO. Necrotizing fasciitis: כאב לא פרופורציונלי, עור שרוף, shock. IDSA 2014."
+      },
+      {
+        "q": "מה גורמי הסיכון לחזרת CDI?",
+        "a": "גיל >65, המשך אנטיביוטיקה אחרת, PPI, אפיזודה חמורה/fulminant, CDI שלישית ומעלה, אימונוסופרסיה. ≥3 חזרות → FMT (>90% הצלחה). שקול Bezlotoxumab (anti-toxin B antibody) למניעת חזרה."
+      },
+      {
+        "q": "מה pneumococcal vaccine בקשיש ומה ה-schedule?",
+        "a": "PCV15 (Vaxneuvance) × 1 → PPV23 בעוד שנה. OR PCV20 (Prevnar 20) × 1 (כיסוי רחב יותר, ללא צורך ב-PPV23). חיסון שנתי שפעת. COVID booster. Tdap אם לא ניתן ב-10 שנים."
       }
     ]
   },
@@ -5164,6 +5284,46 @@
       {
         "front": "Diagnostic testing challenges in elderly",
         "back": "Age-related changes affect test interpretation. Multiple comorbidities complicate attribution. Must weigh test burden against benefit. Functional impact often more important than disease staging."
+      },
+      {
+        "q": "מה 5 קריטריוני Fried ומה הסף לשבריריות?",
+        "a": "1. ירידה במשקל >4.5kg/שנה. 2. עייפות עצמית. 3. כוח אחיזה נמוך (≤ percentile 20). 4. קצב הליכה איטי. 5. פעילות גופנית נמוכה. Pre-frail: 1-2. Frail: ≥3. מנבא נפילות, אשפוז, תמותה."
+      },
+      {
+        "q": "מה ההבדל בין ADL ל-IADL?",
+        "a": "ADL בסיסי: רחצה, לבוש, העברה, שירותים, אכילה, שליטה בסוגרים (Katz/Barthel). IADL מורכב: קניות, בישול, כספים, תרופות, טלפון, תחבורה (Lawton). ירידה IADL → קדם ל-ADL."
+      },
+      {
+        "q": "מה TUG וסף נפילות?",
+        "a": "Timed Up and Go: קם, הולך 3מ', חוזר, יושב. <10שנ'=תקין. ≥12שנ'=סיכון בקהילה. ≥20שנ'=גבוה. פשוט לביצוע ליד המיטה. זוהה כ-predictor עצמאי לנפילות, CGA, אשפוז."
+      },
+      {
+        "q": "מה יתרון MoCA על MMSE ל-MCI?",
+        "a": "MoCA כולל executive function (Trail Making, abstractions, fluency) → רגיש יותר ל-MCI ופחות ceiling effect. Cutoff ≤25/30 ל-MCI. MMSE: cutoff ≤23/30 ל-דמנציה. MoCA זמין חינם ב-mocatest.org."
+      },
+      {
+        "q": "מה CFS≥5 ומשמעותו קלינית?",
+        "a": "CFS 5=Mildly Frail (תלוי IADL). CFS≥5 מנבא: תמותה 90 יום כפולה, LOS ממושך, ↑סיבוכים. שימוש בקבלה לאשפוז חריף, ICU triage, אונקולוגיה (כימותרפיה fitness). מהיר: 2-3 דקות."
+      },
+      {
+        "q": "מה MNA וסכנת תת-תזונה?",
+        "a": "Mini Nutritional Assessment: ≥24=תקין, 17-23.5=סיכון, <17=תת-תזונה. בסיכון: התערבות תזונתית מוקדמת → ↓סיבוכים, ↓LOS, ↓תמותה. אלבומין <3.5g/dL = predictor תוצאות (לא אבחנתי בחריף)."
+      },
+      {
+        "q": "מה עומס מטפל (caregiver burden) ואיך מזהים?",
+        "a": "Zarit Burden Interview ≥21 = עומס גבוה. מוביל לאשפוז מוקדם, עזיבה, התעללות. הערכה שגרתית ב-CGA. התערבות: respite care, קבוצות תמיכה, הפניה לשרות חברתי."
+      },
+      {
+        "q": "מה FRAIL scale ואיך שונה מ-Fried?",
+        "a": "FRAIL (5 שאלות): Fatigue, Resistance (מדרגות), Ambulation (100מ'), Illnesses (>5), Loss of weight (>5%). 0=Robust, 1-2=Pre-frail, ≥3=Frail. מהיר ממוין — פחות מדויק מ-Fried אך מאוד מהיר."
+      },
+      {
+        "q": "מה CGA באונקולוגיה?",
+        "a": "מזהה קשישים פגיעים לפני כימותרפיה. כלים: CARG + CRASH (מנבאים רעילות grade 3-5). מאפשר: מינון מלא vs. מופחת vs. BSC. ASCO 2018: CGA לכל קשיש עם סרטן לפני קבלת החלטת טיפול."
+      },
+      {
+        "q": "מה קצב הליכה כ-vital sign גריאטרי?",
+        "a": "Gait speed ≥1.0 m/s = תקין. <0.8 m/s = סיכון גבוה לנכות/אשפוז/תמותה. כל 0.1 m/s פחות → 12% ↑תמותה. 4-6 מטר, stopwatch, ללא ציוד. Part of Short Physical Performance Battery (SPPB)."
       }
     ]
   }

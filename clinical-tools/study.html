@@ -40,7 +40,7 @@
                 </h1>
                 <p id="content-summary" class="text-green-100 mt-1">טוען תוכן...</p>
             </div>
-            <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-white text-green-700 rounded-lg hover:bg-gray-100 text-sm font-medium">דף הבית</button>
+            <button id="btn-home" class="px-4 py-2 bg-white text-green-700 rounded-lg hover:bg-gray-100 text-sm font-medium">דף הבית</button>
         </div>
         <div class="grid grid-cols-4 gap-3">
             <div class="bg-white/20 rounded-lg p-3 text-center">
@@ -63,11 +63,11 @@
     </header>
 
     <div class="flex flex-wrap gap-2 mb-6">
-        <button onclick="showSection('topics')" id="tab-topics" class="tab-btn px-5 py-2 bg-green-600 text-white rounded-lg font-medium">📚 נושאים</button>
-        <button onclick="showSection('quiz')" id="tab-quiz" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">❓ MCQ</button>
-        <button onclick="showSection('flashcards')" id="tab-flashcards" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🃏 כרטיסיות</button>
-        <button onclick="showSection('ai-tutor')" id="tab-ai-tutor" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🤖 מורה AI</button>
-        <button onclick="showSection('spaced')" id="tab-spaced" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🔁 חזרות</button>
+        <button id="tab-topics" id="tab-topics" class="tab-btn px-5 py-2 bg-green-600 text-white rounded-lg font-medium">📚 נושאים</button>
+        <button id="tab-quiz" id="tab-quiz" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">❓ MCQ</button>
+        <button id="tab-flashcards" id="tab-flashcards" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🃏 כרטיסיות</button>
+        <button id="tab-ai-tutor" id="tab-ai-tutor" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🤖 מורה AI</button>
+        <button id="tab-spaced" id="tab-spaced" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🔁 חזרות</button>
     </div>
 
     <div id="loading-state" class="text-center py-16 text-gray-500">
@@ -97,7 +97,7 @@
                         <option value="random">אקראי</option>
                         <option value="weak">נקודות חלשות</option>
                     </select>
-                    <button onclick="startQuiz()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium">התחל</button>
+                    <button id="btn-start-quiz" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium">התחל</button>
                 </div>
             </div>
             <div id="quiz-content">
@@ -115,31 +115,31 @@
         <div class="bg-white rounded-xl shadow-lg p-6">
             <div class="flex flex-wrap justify-between items-center mb-6 gap-3">
                 <h2 class="text-xl font-bold text-gray-800">כרטיסיות זיכרון</h2>
-                <select id="flashcard-topic" onchange="loadFlashcards()" class="px-3 py-2 border rounded-lg text-sm">
+                <select id="flashcard-topic" id="fc-topic-select" class="px-3 py-2 border rounded-lg text-sm">
                     <option value="all">כל הנושאים</option>
                 </select>
             </div>
             <div class="flex flex-col items-center">
                 <div class="card-flip w-full max-w-lg" style="height:280px">
                     <div id="card-inner" class="card-inner">
-                        <div class="card-front bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" onclick="flipCard()">
+                        <div class="card-front bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" id="card-front-flip">
                             <div id="card-front-content" class="text-lg leading-relaxed">טוען...</div>
                         </div>
-                        <div class="card-back bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" onclick="flipCard()">
+                        <div class="card-back bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" id="card-back-flip">
                             <div id="card-back-content" class="text-sm leading-relaxed"></div>
                         </div>
                     </div>
                 </div>
                 <p class="text-xs text-gray-400 mt-2">לחץ על הכרטיסייה להפיכה</p>
                 <div class="flex gap-4 mt-4">
-                    <button onclick="prevCard()" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm">← הקודם</button>
+                    <button id="btn-prev-card" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm">← הקודם</button>
                     <span id="card-counter" class="px-5 py-2 text-gray-600 font-medium text-sm">1 / ?</span>
-                    <button onclick="nextCard()" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm">הבא →</button>
+                    <button id="btn-next-card" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm">הבא →</button>
                 </div>
                 <div class="flex gap-3 mt-4">
-                    <button onclick="rateCard(1)" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 text-sm">😓 קשה — חזור מחר</button>
-                    <button onclick="rateCard(3)" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 text-sm">🤔 בינוני — 3 ימים</button>
-                    <button onclick="rateCard(5)" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 text-sm">😊 קל — שבוע</button>
+                    <button id="btn-rate-1" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 text-sm">😓 קשה — חזור מחר</button>
+                    <button id="btn-rate-3" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 text-sm">🤔 בינוני — 3 ימים</button>
+                    <button id="btn-rate-5" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 text-sm">😊 קל — שבוע</button>
                 </div>
             </div>
         </div>
@@ -156,14 +156,14 @@
                     <h3 class="font-semibold text-gray-800 mb-2 text-sm">📖 הסבר מושג</h3>
                     <input type="text" id="explain-input" placeholder="CGA, Frailty phenotype, BPSD..." class="w-full p-3 border rounded-lg mb-2 text-sm">
                     <div class="flex gap-2">
-                        <button onclick="aiExplain('simple')" class="flex-1 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 text-sm">פשוט</button>
-                        <button onclick="aiExplain('detailed')" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">מעמיק</button>
+                        <button id="btn-ai-simple" class="flex-1 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 text-sm">פשוט</button>
+                        <button data-explain="detailed" class="flex-1 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">מעמיק</button>
                     </div>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 text-sm">❓ צור שאלות MCQ</h3>
                     <select id="gen-topic" class="w-full p-3 border rounded-lg mb-2 text-sm"></select>
-                    <button onclick="aiGenerateQuestions()" class="w-full py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm">צור 3 שאלות בורד</button>
+                    <button id="btn-ai-gen" class="w-full py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm">צור 3 שאלות בורד</button>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 text-sm">⚖️ השווה בין</h3>
@@ -171,18 +171,18 @@
                         <input type="text" id="compare-a" placeholder="דליריום" class="p-2 border rounded-lg text-sm">
                         <input type="text" id="compare-b" placeholder="דמנציה" class="p-2 border rounded-lg text-sm">
                     </div>
-                    <button onclick="aiCompare()" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm">השווה</button>
+                    <button id="btn-ai-compare" class="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm">השווה</button>
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 text-sm">🏥 ניתוח מקרה</h3>
                     <textarea id="case-input" placeholder="תאר מקרה קליני קצר..." class="w-full p-3 border rounded-lg mb-2 text-sm" rows="3"></textarea>
-                    <button onclick="aiCase()" class="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">נתח עם AI</button>
+                    <button id="btn-ai-case" class="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">נתח עם AI</button>
                 </div>
             </div>
             <div id="ai-response-area" class="hidden border-t pt-4">
                 <div class="flex justify-between items-center mb-2">
                     <h3 class="font-semibold text-gray-800 text-sm">תגובת Claude:</h3>
-                    <button onclick="document.getElementById('ai-response-area').classList.add('hidden')" class="text-xs text-gray-400 hover:text-gray-600">× סגור</button>
+                    <button id="btn-ai-close" class="text-xs text-gray-400 hover:text-gray-600">× סגור</button>
                 </div>
                 <div id="ai-response" class="bg-blue-50 rounded-xl p-4 text-gray-800 text-sm leading-relaxed max-h-96 overflow-y-auto"></div>
             </div>
@@ -402,7 +402,7 @@ function renderQuestion(){
         document.getElementById('quiz-content').innerHTML=
             `<div class="text-center py-12"><div class="text-6xl mb-4">🎉</div><h3 class="text-2xl font-bold text-gray-800">סיימת!</h3>
             <p class="text-gray-500 mt-2">אחוז הצלחה כולל: ${pct}%</p>
-            <button onclick="startQuiz()" class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">התחל שוב</button></div>`;
+            <button data-action="restart-quiz" class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">התחל שוב</button></div>`;
         return;
     }
     const q=currentQuestions[currentQIdx];
@@ -415,7 +415,7 @@ function renderQuestion(){
         <div class="text-lg font-semibold text-gray-800 mb-5 leading-relaxed">${esc(q.question)}</div>
         <div class="space-y-3" id="answer-options">
             ${q.options.map((opt,i)=>`
-                <button onclick="checkAnswer(${i})"
+                <button data-answer="${i}"
                     class="answer-btn w-full p-4 text-right bg-gray-50 hover:bg-blue-50 rounded-xl border border-gray-200 transition-all text-sm font-medium hover:border-blue-300">
                     <span class="font-bold text-gray-400 ml-2">${letters[i]}.</span> ${esc(opt)}
                 </button>`).join('')}
@@ -510,7 +510,7 @@ function loadSpacedReview(){
     renderSRCard(pool, 0);
 }
 
-function renderSRCard(pool, idx){
+function renderSRCard(pool, idx){ window._srCurrentPool = pool;
     if(idx>=pool.length){
         document.getElementById('spaced-content').innerHTML=
             `<div class="text-center py-10"><div class="text-5xl mb-3">🎉</div><p class="font-semibold text-gray-700">סיימת את כל הכרטיסיות להיום!</p></div>`;
@@ -521,19 +521,19 @@ function renderSRCard(pool, idx){
         <p class="text-sm text-gray-500 mb-4">${rem} כרטיסיות נותרו (${idx} / ${pool.length})</p>
         <div class="card-flip w-full max-w-lg mx-auto" style="height:260px">
             <div id="sr-inner" class="card-inner">
-                <div class="card-front bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" onclick="document.getElementById('sr-inner').classList.toggle('flipped')">
+                <div class="card-front bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" data-sr-flip="1">
                     <div class="text-base leading-relaxed">${esc(c.front)}</div>
                 </div>
-                <div class="card-back bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" onclick="document.getElementById('sr-inner').classList.toggle('flipped')">
+                <div class="card-back bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl shadow-xl cursor-pointer flex items-center justify-center p-6 text-white text-center" data-sr-flip="1">
                     <div class="text-sm leading-relaxed">${esc(c.back)}</div>
                 </div>
             </div>
         </div>
         <p class="text-center text-xs text-gray-400 mt-2">לחץ להפיכה</p>
         <div class="flex gap-3 mt-4 justify-center flex-wrap">
-            <button onclick="srRate(event,'${c.id}',${JSON.stringify(pool).replace(/'/g,"\\'")},'${idx}',1)" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm hover:bg-red-200">😓 קשה</button>
-            <button onclick="srRate(event,'${c.id}',${JSON.stringify(pool).replace(/'/g,"\\'")},'${idx}',3)" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm hover:bg-yellow-200">🤔 בינוני</button>
-            <button onclick="srRate(event,'${c.id}',${JSON.stringify(pool).replace(/'/g,"\\'")},'${idx}',5)" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm hover:bg-green-200">😊 קל</button>
+            <button data-sr-rate="1" data-sr-id="${c.id}" data-sr-idx="${idx}" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm hover:bg-red-200">😓 קשה</button>
+            <button data-sr-rate="3" data-sr-id="${c.id}" data-sr-idx="${idx}" class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm hover:bg-yellow-200">🤔 בינוני</button>
+            <button data-sr-rate="5" data-sr-id="${c.id}" data-sr-idx="${idx}" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm hover:bg-green-200">😊 קל</button>
         </div>`;
 }
 

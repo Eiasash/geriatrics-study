@@ -33,10 +33,10 @@
                 <p class="text-gray-600">Hebrew & English Geriatrics Questions</p>
             </div>
             <div class="flex gap-3">
-                <button onclick="switchLanguage()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                <button data-fn="switchLanguage()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
                     🌐 Switch Language
                 </button>
-                <button onclick="window.location.href='../index.html'" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                <button id="btn-home" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                     🏠 Home
                 </button>
             </div>
@@ -80,13 +80,13 @@
             </div>
 
             <div class="flex justify-between mt-6">
-                <button onclick="previousQuestion()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" disabled id="prevBtn">
+                <button data-fn="previousQuestion()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400" disabled id="prevBtn">
                     ← Previous
                 </button>
-                <button onclick="submitAnswer()" id="submitBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                <button data-fn="submitAnswer()" id="submitBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
                     Submit Answer
                 </button>
-                <button onclick="nextQuestion()" id="nextBtn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hidden">
+                <button data-fn="nextQuestion()" id="nextBtn" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hidden">
                     Next →
                 </button>
             </div>
@@ -370,7 +370,7 @@
 
             const optionsHtml = question.options.map((option, index) => `
                 <div class="answer-option p-4 border-2 border-gray-200 rounded-lg ${isHebrew ? 'hebrew' : ''}"
-                     onclick="selectAnswer(${index})" id="option-${index}">
+                     data-ans="${index}" id="option-${index}">
                     <label class="flex items-center cursor-pointer">
                         <input type="radio" name="answer" value="${index}" class="mr-3">
                         <span>${String.fromCharCode(65 + index)}. ${option}</span>
@@ -408,7 +408,8 @@
 
         function submitAnswer() {
             if (selectedAnswer === null) {
-                alert('Please select an answer first');
+                const warn = document.getElementById('exam-warn');
+                if (warn) { warn.classList.remove('hidden'); setTimeout(() => warn.classList.add('hidden'), 2000); } return;
                 return;
             }
 
@@ -520,13 +521,35 @@
 
         function showResults() {
             const score = Math.round((correct / currentQuestionSet.length) * 100);
-            alert(`Exam Complete!\n\nFinal Score: ${score}%\nCorrect: ${correct}\nIncorrect: ${incorrect}\n\n${
-                score >= 70 ? 'Great job! You passed!' : 'Keep studying and try again!'
-            }`);
+            const modal = document.getElementById('exam-complete-modal');
+            if (modal) {
+                document.getElementById('modal-score').textContent = score + '%';
+                document.getElementById('modal-correct').textContent = correct;
+                document.getElementById('modal-incorrect').textContent = incorrect;
+                document.getElementById('modal-verdict').textContent = score >= 70 ? '✅ Great job! You passed!' : '📚 Keep studying and try again!';
+                modal.classList.remove('hidden');
+            } else {
+                document.getElementById('questionContainer').innerHTML = `<div class="text-center p-8"><h2 class="text-3xl font-bold ${score>=70?'text-green-600':'text-red-600'}">${score}%</h2><p class="text-gray-600 mt-2">${correct} correct / ${incorrect} incorrect</p><p class="mt-3 font-medium">${score>=70?'✅ Passed!':'📚 Keep studying!'}</p></div>`;
+            }
         }
 
         // Initialize on load
         window.addEventListener('load', init);
     </script>
+
+    <!-- Exam Warning Banner -->
+    <div id="exam-warn" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-6 py-2 rounded-lg shadow-lg z-50 font-medium">
+        Please select an answer first
+    </div>
+
+    <!-- Exam Complete Modal -->
+    <div id="exam-complete-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full mx-4 text-center">
+            <div class="text-5xl font-bold text-blue-600 mb-2" id="modal-score">0%</div>
+            <p class="text-gray-500 text-sm mb-4"><span id="modal-correct">0</span> correct · <span id="modal-incorrect">0</span> incorrect</p>
+            <p class="font-semibold text-gray-800 mb-6" id="modal-verdict"></p>
+            <button id="btn-modal-close" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">Close</button>
+        </div>
+    </div>
 </body>
 </html>
