@@ -69,6 +69,9 @@
             <button onclick="showTab('barthel')" id="tab-barthel" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
                 Barthel - עצמאות תפקודית
             </button>
+            <button onclick="showTab('gds')" id="tab-gds" class="tab-btn px-6 py-3 rounded-lg font-medium transition-all bg-gray-200 hover:bg-gray-300">
+                GDS-15 - דיכאון
+            </button>
         </div>
 
         <!-- MMSE Section -->
@@ -701,6 +704,47 @@
         </div>
     </div>
 
+    <!-- GDS-15 Section -->
+    <div id="gds-section" class="assessment-section hidden">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">Geriatric Depression Scale</h2>
+                    <p class="text-gray-600">GDS-15 — סולם דיכאון גריאטרי (15 שאלות)</p>
+                </div>
+                <div class="text-left">
+                    <div class="text-3xl font-bold text-blue-600" id="gds-score">0</div>
+                    <div class="text-sm text-gray-500">/ 15</div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 rounded-lg p-4 mb-6 text-sm text-blue-800">
+                <strong>הוראות:</strong> ענה על השאלות הבאות בהתייחס לשבועיים האחרונים. כן / לא.
+            </div>
+
+            <div class="space-y-3" id="gds-questions">
+                <!-- Questions injected by JS -->
+            </div>
+
+            <div id="gds-interpretation" class="mt-6 p-4 rounded-xl bg-gray-50 border hidden">
+                <h3 class="font-bold text-lg mb-2">פרשנות:</h3>
+                <div id="gds-result-text" class="text-gray-700"></div>
+            </div>
+
+            <div class="flex gap-3 mt-6 no-print">
+                <button onclick="calculateGDS()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 touch-target">
+                    חשב ציון
+                </button>
+                <button onclick="resetGDS()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 touch-target">
+                    איפוס
+                </button>
+                <button onclick="window.print()" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 touch-target no-print">
+                    הדפס
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Tab switching
         function showTab(tab) {
@@ -855,6 +899,123 @@
         document.querySelectorAll('.barthel-item').forEach(item => {
             item.addEventListener('change', calculateBarthel);
         });
+
+        // GDS-15
+        const GDS_QUESTIONS = [
+            { q: "1. האם אתה בעצם מרוצה מחייך?", yesIsDepressed: false },
+            { q: "2. האם הפסקת רבות מפעילויותיך ותחביביך?", yesIsDepressed: true },
+            { q: "3. האם אתה מרגיש שחייך ריקים?", yesIsDepressed: true },
+            { q: "4. האם אתה משועמם לעתים קרובות?", yesIsDepressed: true },
+            { q: "5. האם אתה ברוב הזמן במצב רוח טוב?", yesIsDepressed: false },
+            { q: "6. האם אתה מפחד שמשהו רע עומד לקרות לך?", yesIsDepressed: true },
+            { q: "7. האם אתה מרגיש שמח ברוב הזמן?", yesIsDepressed: false },
+            { q: "8. האם אתה מרגיש לעתים קרובות חסר אונים?", yesIsDepressed: true },
+            { q: "9. האם אתה מעדיף להישאר בבית מאשר לצאת ולעשות דברים חדשים?", yesIsDepressed: true },
+            { q: "10. האם אתה מרגיש שיש לך יותר בעיות זיכרון מאשר לרוב האנשים?", yesIsDepressed: true },
+            { q: "11. האם אתה חושב שזה נהדר שאתה עדיין בחיים?", yesIsDepressed: false },
+            { q: "12. האם אתה מרגיש חסר ערך בדרך שבה אתה עכשיו?", yesIsDepressed: true },
+            { q: "13. האם אתה מרגיש מלא אנרגיה?", yesIsDepressed: false },
+            { q: "14. האם אתה מרגיש שמצבך חסר תקווה?", yesIsDepressed: true },
+            { q: "15. האם אתה חושב שרוב האנשים במצב טוב יותר ממך?", yesIsDepressed: true }
+        ];
+
+        function initGDS() {
+            const container = document.getElementById('gds-questions');
+            container.innerHTML = '';
+            GDS_QUESTIONS.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200 gap-4';
+                const label = document.createElement('span');
+                label.className = 'text-sm text-gray-700 flex-1';
+                label.textContent = item.q;
+                const btns = document.createElement('div');
+                btns.className = 'flex gap-2 flex-shrink-0';
+                ['כן','לא'].forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = 'gds-btn px-4 py-2 rounded-lg border text-sm font-medium touch-target';
+                    btn.style.minWidth = '52px';
+                    btn.textContent = opt;
+                    btn.dataset.index = i;
+                    btn.dataset.value = opt === 'כן' ? 'yes' : 'no';
+                    btn.addEventListener('click', () => {
+                        div.querySelectorAll('.gds-btn').forEach(b => {
+                            b.classList.remove('bg-blue-600','text-white','border-blue-600');
+                            b.classList.add('bg-white','text-gray-700','border-gray-300');
+                        });
+                        btn.classList.add('bg-blue-600','text-white','border-blue-600');
+                        btn.classList.remove('bg-white','text-gray-700','border-gray-300');
+                        calculateGDS();
+                    });
+                    btn.classList.add('bg-white','text-gray-700','border-gray-300');
+                    btns.appendChild(btn);
+                });
+                div.appendChild(label);
+                div.appendChild(btns);
+                container.appendChild(div);
+            });
+        }
+
+        function calculateGDS() {
+            let score = 0;
+            let answered = 0;
+            document.querySelectorAll('.gds-btn.bg-blue-600').forEach(btn => {
+                const i = parseInt(btn.dataset.index);
+                const val = btn.dataset.value;
+                answered++;
+                const q = GDS_QUESTIONS[i];
+                if ((val === 'yes' && q.yesIsDepressed) || (val === 'no' && !q.yesIsDepressed)) {
+                    score++;
+                }
+            });
+            // Each question counted once, dedup by question index
+            score = 0;
+            const seen = new Set();
+            document.querySelectorAll('.gds-btn.bg-blue-600').forEach(btn => {
+                const i = parseInt(btn.dataset.index);
+                if (seen.has(i)) return;
+                seen.add(i);
+                const val = btn.dataset.value;
+                const q = GDS_QUESTIONS[i];
+                if ((val === 'yes' && q.yesIsDepressed) || (val === 'no' && !q.yesIsDepressed)) score++;
+            });
+
+            document.getElementById('gds-score').textContent = score;
+            const interp = document.getElementById('gds-interpretation');
+            const result = document.getElementById('gds-result-text');
+            interp.classList.remove('hidden');
+
+            let txt, color;
+            if (score <= 4) {
+                txt = `ציון ${score}/15 — תקין. אין עדות לדיכאון קליני.`;
+                color = 'bg-green-50 border-green-200';
+                interp.querySelector('h3').style.color = '#065f46';
+            } else if (score <= 8) {
+                txt = `ציון ${score}/15 — דיכאון קל. שקול הערכה נוספת, מעקב, והתערבות פסיכוסוציאלית.`;
+                color = 'bg-yellow-50 border-yellow-200';
+                interp.querySelector('h3').style.color = '#92400e';
+            } else if (score <= 11) {
+                txt = `ציון ${score}/15 — דיכאון בינוני. מומלץ הפניה לייעוץ פסיכיאטרי/פסיכולוגי. שקול טיפול תרופתי (SSRI מועדף בקשיש).`;
+                color = 'bg-orange-50 border-orange-200';
+                interp.querySelector('h3').style.color = '#9a3412';
+            } else {
+                txt = `ציון ${score}/15 — דיכאון קשה. הפניה מיידית לפסיכיאטריה מומלצת. שקול אשפוז אם יש מחשבות אובדניות.`;
+                color = 'bg-red-50 border-red-200';
+                interp.querySelector('h3').style.color = '#7f1d1d';
+            }
+            interp.className = `mt-6 p-4 rounded-xl border ${color}`;
+            result.textContent = txt;
+            if (seen.size === 15) {
+                result.textContent += ` (${15 - score} תשובות תקינות)`;
+            }
+        }
+
+        function resetGDS() {
+            initGDS();
+            document.getElementById('gds-score').textContent = '0';
+            document.getElementById('gds-interpretation').classList.add('hidden');
+        }
+
+        initGDS();
 
         // Initialize
         calculateMMSE();
