@@ -305,14 +305,23 @@
                     const jsonQuestions = [];
                     data.forEach(topic => {
                         (topic.mcqs || []).forEach((q, idx) => {
-                            if (!q.q || !q.options || q.options.length < 2) return;
+                            const qText = q.q || q.question;
+                            if (!qText || !q.options || q.options.length < 2) return;
                             const opts = q.options;
-                            const correctIdx = opts.indexOf(q.correct);
-                            if (correctIdx === -1) return; // skip malformed
+                            // Support both correct (string) and answer (int index)
+                            let correctIdx = -1;
+                            if (typeof q.correct === 'string') {
+                                correctIdx = opts.indexOf(q.correct);
+                            } else if (typeof q.answer === 'number') {
+                                correctIdx = q.answer;
+                            } else if (typeof q.correct === 'number') {
+                                correctIdx = q.correct;
+                            }
+                            if (correctIdx === -1 || correctIdx >= opts.length) return;
                             jsonQuestions.push({
                                 id: `JSON-${topic.topic.substring(0,3)}-${idx}`,
                                 category: topic.topic,
-                                question: q.q,
+                                question: qText,
                                 options: opts,
                                 correct: correctIdx,
                                 explanation: q.explanation || '',
