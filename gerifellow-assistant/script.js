@@ -10,10 +10,10 @@ function switchTab(tab) {
 
     if (tab === 'weekly') {
         document.getElementById('weekly-section').style.display = 'block';
-        document.querySelector('.nav-btn:first-child').classList.add('active');
+        document.querySelector('.nav-btn[onclick*="weekly"]').classList.add('active');
     } else {
         document.getElementById('monthly-section').style.display = 'block';
-        document.querySelector('.nav-btn:nth-child(2)').classList.add('active');
+        document.querySelector('.nav-btn[onclick*="monthly"]').classList.add('active');
     }
 }
 
@@ -103,8 +103,12 @@ CONSTRAINTS:
 function copyToClipboard() {
     const copyText = document.getElementById("final-output");
     copyText.select();
-    navigator.clipboard.writeText(copyText.value);
-    flashStatus("Copied to Clipboard!");
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        flashStatus("Copied to Clipboard!");
+    }).catch(() => {
+        document.execCommand('copy');
+        flashStatus("Copied to Clipboard!");
+    });
 }
 
 function flashStatus(msg) {

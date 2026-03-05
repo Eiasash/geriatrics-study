@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.anthropic.com https://eutils.ncbi.nlm.nih.gov https://pubmed.ncbi.nlm.nih.gov; img-src 'self' data: blob:; frame-src 'none';">
-
-<meta http-equiv="refresh" content="0; url=/geriatrics-study/">
-<title>Redirecting...</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page Not Found - SZMC Geriatrics</title>
     <link rel="icon" type="image/svg+xml" href="szmc-presentation-maker/icons/icon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f1f33 0%, #1e3a5f 50%, #2d5a8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        p {
+            opacity: 0.8;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .links a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .links a:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        .links a.primary {
+            background: #3498db;
+        }
+        .links a.primary:hover {
+            background: #2980b9;
+        }
+    </style>
 </head>
-<body>Redirecting...</body>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist or has been moved. Here are some helpful links:</p>
+        <div class="links">
+            <a href="./" class="primary">Home</a>
+            <a href="clinical-tools/dashboard.html">Clinical Tools</a>
+            <a href="clinical-tools/study.html">Board Prep</a>
+            <a href="https://toranot.netlify.app" target="_blank" rel="noopener">Shift Manager</a>
+        </div>
+    </div>
+</body>
 </html>

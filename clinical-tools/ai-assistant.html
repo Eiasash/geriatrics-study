@@ -37,6 +37,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <script src="shared/sanitize.js"></script>
+    <script src="shared/storage.js"></script>
 </head>
 <body class="gradient-bg min-h-screen">
     <div class="container mx-auto p-4 max-w-6xl">
@@ -369,11 +371,11 @@
         function saveApiKey(value) {
             const trimmed = value.trim();
             if (trimmed) {
-                localStorage.setItem('anthropic-api-key', trimmed);
-                document.getElementById('api-key-status').textContent = 'מוגדר ✓';
+                SecureStorage.set('anthropic-api-key', trimmed, 24);
+                document.getElementById('api-key-status').textContent = 'מוגדר ✓ (24h)';
                 document.getElementById('api-key-status').style.color = '#16a34a';
             } else {
-                localStorage.removeItem('anthropic-api-key');
+                SecureStorage.remove('anthropic-api-key');
                 document.getElementById('api-key-status').textContent = 'לא מוגדר';
                 document.getElementById('api-key-status').style.color = '';
             }
@@ -381,7 +383,7 @@
 
         // Load saved API key on startup
         (function loadSavedApiKey() {
-            const saved = localStorage.getItem('anthropic-api-key');
+            const saved = SecureStorage.get('anthropic-api-key');
             if (saved) {
                 const el = document.getElementById('api-key-input');
                 if (el) el.value = saved;
@@ -545,7 +547,7 @@
         }
 
         function getApiKey() {
-            return localStorage.getItem('anthropic-api-key') || '';
+            return SecureStorage.get('anthropic-api-key') || '';
         }
 
         async function sendQuery() {
@@ -669,12 +671,7 @@
             }
         }
 
-        // Shared escape helper (inline copy for self-contained file)
-        function esc(str) {
-          const d = document.createElement('div');
-          d.textContent = (str == null) ? '' : String(str);
-          return d.innerHTML;
-        }
+        // esc() loaded from shared/sanitize.js
 
         function addMessage(text, type) {
             const container = document.getElementById('chat-container');
@@ -787,10 +784,10 @@
                 const service = aiServices[item.ai];
                 const date = new Date(item.timestamp).toLocaleDateString('he-IL');
                 return `
-                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" data-reuse-query="${item.query.replace(/'/g, &quot;&#x27;&quot;)}">
+                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" data-reuse-query="${esc(item.query).replace(/'/g, &quot;&#x27;&quot;)}">
                         <span>${service.icon}</span>
-                        <div class="flex-1 truncate text-sm text-gray-700">${item.query}</div>
-                        <span class="text-xs text-gray-400">${date}</span>
+                        <div class="flex-1 truncate text-sm text-gray-700">${esc(item.query)}</div>
+                        <span class="text-xs text-gray-400">${esc(date)}</span>
                     </div>
                 `;
             }).join('');

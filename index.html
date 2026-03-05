@@ -10,6 +10,9 @@
     <meta name="description" content="SZMC Geriatrics - Clinical tools, presentation maker, and study resources for geriatric medicine">
     <title>SZMC Geriatrics Hub</title>
     <link rel="icon" type="image/svg+xml" href="szmc-presentation-maker/icons/icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -159,6 +162,7 @@
         .tool-icon.study { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
         .tool-icon.h5p { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
         .tool-icon.hazzards { background: linear-gradient(135deg, #f39c12, #d68910); color: white; }
+        .tool-icon.toranot { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; }
 
         .tool-card h3 {
             font-size: 1.35rem;
@@ -605,6 +609,7 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-nav" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:1000;" onfocus="this.style.cssText='position:fixed;top:0;left:0;padding:1rem;background:#1e3a5f;color:#fff;z-index:1000;font-size:1rem;';" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;';">Skip to main content</a>
     <div class="container">
         <header>
             <div class="logo">
@@ -626,6 +631,9 @@
             </a>
             <a href="hazzards/" class="quick-link">
                 <i class="fas fa-book"></i> Hazzard's
+            </a>
+            <a href="https://toranot.netlify.app" class="quick-link" target="_blank" rel="noopener">
+                <i class="fas fa-user-clock"></i> Shift Manager
                 <span class="badge">NEW</span>
             </a>
         </div>
@@ -652,7 +660,7 @@
                 <span class="stat-label">Flashcards</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">11</span>
+                <span class="stat-number">12</span>
                 <span class="stat-label">Clinical Tools</span>
             </div>
             <div class="stat-item">
@@ -664,7 +672,7 @@
         <!-- What's New Banner -->
         <div class="whats-new" style="background: rgba(39, 174, 96, 0.15); border: 1px solid rgba(39, 174, 96, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 32px;">
             <h3 style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">
-                <i class="fas fa-sparkles"></i> Recent Updates
+                <i class="fas fa-bolt"></i> Recent Updates
             </h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
                 <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
@@ -683,10 +691,14 @@
                     <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
                     <span><strong>Spaced Repetition</strong> with SM-2 algorithm for board exam prep</span>
                 </div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
+                    <span><strong>Toranot Shift Manager</strong> integrated — night shift patient tracking, drug safety & AI notes</span>
+                </div>
             </div>
         </div>
 
-        <main>
+        <main id="main-content">
             <h2 class="section-title"><i class="fas fa-star"></i> Main Tools</h2>
             <div class="tools-grid">
                 <a href="szmc-presentation-maker/" class="tool-card">
@@ -711,7 +723,7 @@
                         <i class="fas fa-clipboard-list"></i>
                     </div>
                     <h3>Clinical Tools Suite</h3>
-                    <p>11 clinical tools including geriatric assessments (MMSE, MoCA, Morse, Barthel), Beers criteria medication checker, anticoagulation management, 11 on-call emergency protocols, decision support, and evidence-based guidelines.</p>
+                    <p>12 clinical tools including geriatric assessments (MMSE, MoCA, Morse, Barthel), Beers criteria medication checker, anticoagulation management, 11 on-call emergency protocols, decision support, evidence-based guidelines, and shift management.</p>
                     <div class="tool-features">
                         <span class="feature-tag">Assessments</span>
                         <span class="feature-tag">Medications</span>
@@ -774,6 +786,24 @@
                         Open Hazzard's <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
+
+                <a href="https://toranot.netlify.app" target="_blank" rel="noopener" class="tool-card">
+                    <div class="tool-icon toranot">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3>Toranot - Shift Manager</h3>
+                    <p>Night shift management PWA for on-call doctors. Patient tracking with drug safety alerts (Beers 2023), lab delta monitoring, antibiotic dosing with renal adjustment, AI-powered clinical notes, and OCR patient list import.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">Patient Tracking</span>
+                        <span class="feature-tag">Drug Safety</span>
+                        <span class="feature-tag">Lab Monitoring</span>
+                        <span class="feature-tag">AI Notes</span>
+                        <span class="feature-tag">PWA</span>
+                    </div>
+                    <div class="arrow">
+                        Open Shift Manager <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
             </div>
 
             <h2 class="section-title"><i class="fas fa-tools"></i> Clinical Tools</h2>
@@ -814,13 +844,17 @@
                     <i class="fas fa-robot"></i>
                     <span>AI Assistant</span>
                 </a>
-                <a href="iv-protocols.html" class="clinical-card" style="background: linear-gradient(135deg, #991b1b, #7f1d1d); border-color: #ef4444;">
-                    <i class="fas fa-syringe"></i>
-                    <span>IV Drug Protocols</span>
+                <a href="iv-protocols.html" class="clinical-card" style="background: linear-gradient(135deg, #991b1b, #7f1d1d); color: white;">
+                    <i class="fas fa-syringe" style="color: #fca5a5;"></i>
+                    <span style="color: white;">IV Drug Protocols</span>
                 </a>
-                <a href="gerifellow-assistant/" class="clinical-card" style="background: linear-gradient(135deg, #065f46, #064e3b); border-color: #10b981;">
-                    <i class="fas fa-user-md"></i>
-                    <span>GeriFellow Assistant</span>
+                <a href="gerifellow-assistant/" class="clinical-card" style="background: linear-gradient(135deg, #065f46, #064e3b); color: white;">
+                    <i class="fas fa-user-md" style="color: #6ee7b7;"></i>
+                    <span style="color: white;">GeriFellow Assistant</span>
+                </a>
+                <a href="https://toranot.netlify.app" target="_blank" rel="noopener" class="clinical-card" style="background: linear-gradient(135deg, #0369a1, #075985); color: white;">
+                    <i class="fas fa-user-clock" style="color: #7dd3fc;"></i>
+                    <span style="color: white;">Shift Manager</span>
                 </a>
             </div>
         </main>
@@ -865,6 +899,7 @@
             { title: 'Board Exam Prep', desc: '600+ MCQs, 300+ flashcards, spaced repetition', url: 'clinical-tools/study.html', keywords: ['study', 'board', 'exam', 'mcq', 'flashcard', 'spaced', 'repetition', 'quiz'] },
             { title: 'IV Drug Protocols', desc: 'SZMC IV drug preparation and dosing', url: 'iv-protocols.html', keywords: ['iv', 'insulin', 'propofol', 'fentanyl', 'morphine', 'heparin', 'noradrenaline', 'dopamine', 'amiodarone', 'lidocaine', 'magnesium', 'protocols', 'infusion'] },
             { title: 'GeriFellow Assistant', desc: 'AI-powered geriatric clinical assistant', url: 'gerifellow-assistant/', keywords: ['gerifellow', 'assistant', 'ai', 'geriatric', 'clinical', 'consult', 'diagnosis'] },
+            { title: 'Toranot - Shift Manager', desc: 'Night shift patient tracking, drug safety, lab monitoring, AI notes', url: 'https://toranot.netlify.app', keywords: ['toranot', 'shift', 'night', 'oncall', 'on-call', 'duty', 'patient', 'tracking', 'drug', 'safety', 'beers', 'lab', 'antibiotic', 'dosing', 'ocr'] },
             // Topic-specific search entries
             { title: 'Delirium', desc: 'CAM criteria, prevention, HELP protocol', url: 'clinical-tools/study.html', keywords: ['delirium', 'cam', 'confusion', 'help', 'agitation'] },
             { title: 'Dementia & Alzheimer\'s', desc: 'Diagnosis, staging, cholinesterase inhibitors', url: 'clinical-tools/study.html', keywords: ['dementia', 'alzheimer', 'mmse', 'moca', 'donepezil', 'memantine'] },
@@ -1006,7 +1041,7 @@
                     weakPoints: (() => {
                         try { return (JSON.parse(localStorage.getItem('gerWeak')||'[]')).length; } catch(e){ return 0; }
                     })(),
-                    platform: 'geriatrics.netlify.app',
+                    platform: 'eiasash.github.io/geriatrics-study',
                     version: '2.1.0',
                     lastUpdated: new Date().toLocaleDateString('he-IL')
                 };
@@ -1033,7 +1068,7 @@
             console.log(`  Due for review today: ${due} cards`);
             console.log(`  Weak points tracked: ${weak.length} questions`);
             console.log(`  Recommendation: ${due>10?'Focus on spaced review first':'Start with weak points, then new topics'}`);
-            console.log(`  👉 Open: https://geriatrics.netlify.app/clinical-tools/study.html`);
+            console.log(`  Open: ${window.location.origin}${window.location.pathname.replace(/\/$/,'')+'/clinical-tools/study.html'}`);
             return { dueToday: due, weakPoints: weak.length };
         }
     };

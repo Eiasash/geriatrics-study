@@ -1,10 +1,43 @@
 {
   "name": "SZMC Geriatrics Hub",
   "short_name": "Geriatrics",
-  "description": "SZMC Geriatrics clinical tools and educational resources",
-  "start_url": "/geriatrics-study/",
+  "description": "SZMC Geriatrics - Clinical tools, educational resources, shift management & presentation maker",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#1e3a5f",
   "theme_color": "#1e3a5f",
-  "icons": [{"src": "szmc-presentation-maker/icons/icon.svg","sizes": "any","type": "image/svg+xml","purpose": "any maskable"}]
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "szmc-presentation-maker/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "szmc-presentation-maker/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "szmc-presentation-maker/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "szmc-presentation-maker/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "szmc-presentation-maker/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
