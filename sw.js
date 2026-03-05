@@ -70,7 +70,7 @@ self.addEventListener('fetch', (event) => {
                 }
                 return res;
             }).catch(() => {
-                if (event.request.mode === 'navigate') return caches.match('./index.html');
+                if (event.request.mode === 'navigate') return caches.match('./offline.html');
                 return new Response('Offline', { status: 503 });
             });
         })

@@ -22,6 +22,8 @@
         [dir="rtl"] .alert-low  { border-left: none; border-right: 4px solid #10b981; }
         .modal-overlay { background: rgba(0,0,0,0.5); }
     </style>
+    <script src="shared/sanitize.js"></script>
+    <script src="shared/storage.js"></script>
 </head>
 <body class="text-gray-800">
 
@@ -179,11 +181,7 @@ const T = {
 
 function t(k) { return T[lang][k] || k; }
 
-function esc(s) {
-    const d = document.createElement('div');
-    d.textContent = (s == null) ? '' : String(s);
-    return d.innerHTML;
-}
+// esc() loaded from shared/sanitize.js
 
 function hasBeers(meds) {
     return meds.some(m => BEERS.some(b => m.toLowerCase().includes(b)));
