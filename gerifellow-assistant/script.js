@@ -27,8 +27,8 @@ function generatePrompt(mode) {
         const cga = document.getElementById('wk-cga').value || "No CGA provided";
         contextData = `PATIENT CONTEXT:\n- ID/CC: ${demo}\n- HPI/MEDS: ${hpi}\n- GERIATRIC ASSESSMENT: ${cga}`;
     } else {
-        const overview = document.getElementById('mo-overview').value;
-        const learning = document.getElementById('mo-learning').value;
+        const overview = document.getElementById('mo-overview')?.value || "No overview provided";
+        const learning = document.getElementById('mo-learning')?.value || "No learning goals provided";
         contextData = `MONTHLY CONTEXT:\n- Overview: ${overview}\n- Learning Goals: ${learning}`;
     }
 
