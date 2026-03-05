@@ -5326,5 +5326,2480 @@
         "a": "Gait speed ≥1.0 m/s = תקין. <0.8 m/s = סיכון גבוה לנכות/אשפוז/תמותה. כל 0.1 m/s פחות → 12% ↑תמותה. 4-6 מטר, stopwatch, ללא ציוד. Part of Short Physical Performance Battery (SPPB)."
       }
     ]
+  },
+  {
+    "topic": "פגיעות לחץ (Pressure Injuries)",
+    "flashcards": [
+      {
+        "front": "Braden Scale — 6 subscales and scoring",
+        "back": "Sensory perception, moisture, activity, mobility, nutrition, friction/shear. Score 6-23; ≤18 at risk, ≤12 high risk, ≤9 very high risk. Most validated tool for pressure injury risk."
+      },
+      {
+        "q": "מהם שלבי פגיעת הלחץ לפי NPUAP?",
+        "a": "שלב 1: אודם שאינו מתבהר; שלב 2: אובדן עור חלקי (שלפוחית/שפשוף); שלב 3: אובדן עור מלא (שומן נראה); שלב 4: אובדן עור מלא עם חשיפת גיד/שריר/עצם; Unstageable: כיסוי אשר/נמק; DTPI: שינוי צבע סגול/מרון."
+      },
+      {
+        "front": "Stage 1 vs Stage 2 pressure injury",
+        "back": "Stage 1: Intact skin with non-blanchable erythema. Stage 2: Partial-thickness skin loss with exposed dermis — may present as intact/ruptured blister or shallow open ulcer. No granulation, slough, or eschar."
+      },
+      {
+        "front": "Deep Tissue Pressure Injury (DTPI)",
+        "back": "Intact or non-intact skin with localized persistent non-blanchable deep red, maroon, or purple discoloration, or epidermal separation revealing dark wound bed or blood-filled blister. Evolves rapidly. May be preceded by pain and temperature changes."
+      },
+      {
+        "q": "מה הטיפול התזונתי המומלץ לריפוי פצעי לחץ?",
+        "a": "30-35 קק\"ל/ק\"ג/יום; חלבון 1.25-1.5 גר'/ק\"ג/יום; ויטמין C 250mg x2/יום; אבץ 40mg/יום; נוזלים 1ml/קק\"ל/יום. השלמת חסרים תזונתיים חיונית לריפוי."
+      },
+      {
+        "front": "Repositioning protocol for pressure injury prevention",
+        "back": "Turn every 2 hours in bed (or per individualized schedule). Use 30° lateral tilt to offload sacrum. Avoid positioning directly on trochanter. Elevate heels off bed. Use pressure-redistributing support surface. Chair: reposition every 1 hour, weight shifts every 15 min."
+      },
+      {
+        "front": "Support surfaces classification",
+        "back": "Group 1: Static overlays (foam, gel, air). Group 2: Powered alternating pressure/low-air-loss mattresses. Group 3: Air-fluidized beds (for Stage 3-4, flaps). Reactive: constant low pressure. Active: alternating pressure cycles."
+      },
+      {
+        "q": "מתי יש לשקול ניתוח לסגירת פצע לחץ?",
+        "a": "שלב 3-4 שאינו מגיב לטיפול שמרני >3 חודשים; מועמד ניתוחי טוב; תזונה תקינה; ללא זיהום; יכולת שיתוף פעולה עם פרוטוקול אחרי ניתוח. אפשרויות: דש עורי, דש שרירי-עורי."
+      },
+      {
+        "front": "Wound bed preparation — TIME framework",
+        "back": "T: Tissue non-viable (debridement). I: Infection/Inflammation (antimicrobials). M: Moisture imbalance (dressings). E: Edge non-advancing (reassess/advanced therapies). Sequential approach to optimize wound healing."
+      },
+      {
+        "front": "Dressing selection by wound type",
+        "back": "Dry wound: hydrogel. Moderate exudate: foam/hydrofiber. Heavy exudate: alginate/hydrofiber. Infected: silver-containing. Slough: enzymatic debrider (collagenase). Granulating clean: hydrocolloid or foam. Avoid gauze wet-to-dry."
+      },
+      {
+        "q": "מהם גורמי הסיכון העיקריים לפצעי לחץ בקשישים?",
+        "a": "חוסר ניידות, חוסר תחושה, לחות (אי-שליטה), תת-תזונה, גיל מבוגר, מצב קוגניטיבי ירוד, מחלת כלי דם, סוכרת, היסטוריה של פצעי לחץ קודמים, אשפוז ממושך."
+      },
+      {
+        "front": "Most common pressure injury locations",
+        "back": "Sacrum/coccyx (most common overall), heels (most common in supine), ischial tuberosities (most common in seated/wheelchair users), trochanter, lateral malleolus, occiput (especially in ICU patients)."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו הציון בסולם Braden המעיד על סיכון גבוה לפצע לחץ?",
+        "options": [
+          "≤18",
+          "≤15",
+          "≤12",
+          "≤9"
+        ],
+        "correct": "≤12",
+        "explanation": "ציון ≤12 בסולם Braden מעיד על סיכון גבוה. ≤18=סיכון, ≤15=סיכון בינוני, ≤12=גבוה, ≤9=גבוה מאוד."
+      },
+      {
+        "q": "A Stage 2 pressure injury is characterized by:",
+        "options": [
+          "Non-blanchable erythema of intact skin",
+          "Partial-thickness skin loss with exposed dermis",
+          "Full-thickness skin loss with visible subcutaneous fat",
+          "Full-thickness loss with exposed bone or tendon"
+        ],
+        "correct": "Partial-thickness skin loss with exposed dermis",
+        "explanation": "Stage 2 involves partial-thickness skin loss with exposed dermis. It may present as an intact or ruptured serum-filled blister. No slough or eschar is present."
+      },
+      {
+        "q": "באיזה שלב של פצע לחץ נראה גיד או עצם?",
+        "options": [
+          "שלב 2",
+          "שלב 3",
+          "שלב 4",
+          "Unstageable"
+        ],
+        "correct": "שלב 4",
+        "explanation": "שלב 4 מאופיין באובדן עור מלא עם חשיפת מבנים עמוקים כמו גיד, שריר, או עצם."
+      },
+      {
+        "q": "Which Braden subscale is NOT one of the six components?",
+        "options": [
+          "Sensory perception",
+          "Nutrition",
+          "Cognition",
+          "Friction and shear"
+        ],
+        "correct": "Cognition",
+        "explanation": "The 6 Braden subscales are: sensory perception, moisture, activity, mobility, nutrition, and friction/shear. Cognition is not a separate subscale."
+      },
+      {
+        "q": "The recommended protein intake for healing a Stage 3 pressure injury is:",
+        "options": [
+          "0.8 g/kg/day",
+          "1.0 g/kg/day",
+          "1.25-1.5 g/kg/day",
+          "2.0 g/kg/day"
+        ],
+        "correct": "1.25-1.5 g/kg/day",
+        "explanation": "NPUAP/EPUAP guidelines recommend 1.25-1.5 g/kg/day protein for pressure injury healing, along with 30-35 kcal/kg/day calories."
+      },
+      {
+        "q": "מהו הטיפול הראשוני המומלץ בפצע לחץ שלב 1?",
+        "options": [
+          "חבישה הידרוקולואידית",
+          "הסרת לחץ ומעקב",
+          "דברידמנט כירורגי",
+          "אנטיביוטיקה מקומית"
+        ],
+        "correct": "הסרת לחץ ומעקב",
+        "explanation": "בשלב 1 העור שלם. הטיפול העיקרי הוא הסרת לחץ, מיקום מחדש, הגנה על העור, ומעקב."
+      },
+      {
+        "q": "An unstageable pressure injury is defined as:",
+        "options": [
+          "A wound with purple/maroon discoloration of intact skin",
+          "Full-thickness loss obscured by slough or eschar",
+          "Partial-thickness loss with serous blister",
+          "Stage 4 wound with osteomyelitis"
+        ],
+        "correct": "Full-thickness loss obscured by slough or eschar",
+        "explanation": "Unstageable pressure injuries have full-thickness tissue loss with the wound base covered by slough (yellow/tan) or eschar (black), preventing accurate staging."
+      },
+      {
+        "q": "How often should a bedridden patient be repositioned to prevent pressure injuries?",
+        "options": [
+          "Every 1 hour",
+          "Every 2 hours",
+          "Every 4 hours",
+          "Every 6 hours"
+        ],
+        "correct": "Every 2 hours",
+        "explanation": "Standard recommendation is repositioning every 2 hours in bed. Some patients may need individualized schedules. Use 30° lateral tilt to offload sacrum."
+      },
+      {
+        "q": "מהו המיקום השכיח ביותר לפצעי לחץ?",
+        "options": [
+          "עקב",
+          "טרוכנטר",
+          "סקרום/קוקסיקס",
+          "מלאולוס לטרלי"
+        ],
+        "correct": "סקרום/קוקסיקס",
+        "explanation": "הסקרום/קוקסיקס הוא המיקום השכיח ביותר לפצעי לחץ באופן כללי. העקב הוא השכיח ביותר בשכיבה על הגב."
+      },
+      {
+        "q": "Which dressing is most appropriate for a heavily exudative wound?",
+        "options": [
+          "Hydrogel",
+          "Transparent film",
+          "Alginate",
+          "Hydrocolloid"
+        ],
+        "correct": "Alginate",
+        "explanation": "Alginates absorb 15-20x their weight in fluid, making them ideal for heavily exudative wounds. Hydrogels add moisture (for dry wounds). Films are for minimal exudate."
+      },
+      {
+        "q": "Deep Tissue Pressure Injury (DTPI) initially presents as:",
+        "options": [
+          "Open ulcer with granulation tissue",
+          "Non-blanchable erythema",
+          "Persistent deep red, maroon, or purple discoloration",
+          "Yellow slough covering wound bed"
+        ],
+        "correct": "Persistent deep red, maroon, or purple discoloration",
+        "explanation": "DTPI presents as localized persistent non-blanchable deep red, maroon, or purple discoloration of intact or non-intact skin, or blood-filled blister."
+      },
+      {
+        "q": "מה תפקיד ויטמין C בריפוי פצעי לחץ?",
+        "options": [
+          "בניית קולגן ותיקון רקמות",
+          "ויסות סוכר בדם",
+          "ספיגת ברזל בלבד",
+          "מניעת זיהום ויראלי"
+        ],
+        "correct": "בניית קולגן ותיקון רקמות",
+        "explanation": "ויטמין C חיוני לסינתזת קולגן ולתפקוד מערכת החיסון. מומלץ 250mg x2/יום לריפוי פצעי לחץ."
+      },
+      {
+        "q": "The TIME framework for wound bed preparation — what does 'I' stand for?",
+        "options": [
+          "Irrigation",
+          "Infection/Inflammation",
+          "Incision",
+          "Integration"
+        ],
+        "correct": "Infection/Inflammation",
+        "explanation": "TIME: Tissue non-viable, Infection/Inflammation, Moisture imbalance, Edge non-advancing. The 'I' addresses bacterial burden and inflammatory mediators."
+      },
+      {
+        "q": "Which support surface is most appropriate for a patient with a Stage 4 sacral pressure injury post-flap repair?",
+        "options": [
+          "Standard hospital mattress",
+          "Static foam overlay",
+          "Alternating pressure mattress",
+          "Air-fluidized bed"
+        ],
+        "correct": "Air-fluidized bed",
+        "explanation": "Air-fluidized beds (Group 3) provide the highest level of pressure redistribution and are indicated for post-flap repair and Stage 3-4 pressure injuries."
+      },
+      {
+        "q": "איזו שיטת דברידמנט מתאימה לפצע עם אשר יבש ויציב בעקב?",
+        "options": [
+          "דברידמנט כירורגי מיידי",
+          "דברידמנט אוטוליטי",
+          "אין לבצע דברידמנט – לעקוב",
+          "דברידמנט מכני wet-to-dry"
+        ],
+        "correct": "אין לבצע דברידמנט – לעקוב",
+        "explanation": "אשר יבש ויציב בעקב ללא אודם/תנודתיות/ניקוז משמש כ'כיסוי ביולוגי' ואין להסירו. יש לעקוב אחר סימני זיהום."
+      },
+      {
+        "q": "A 78-year-old with a Stage 3 sacral wound has yellow slough in the wound bed. The best debridement method is:",
+        "options": [
+          "Autolytic with moisture-retentive dressing",
+          "Sharp/surgical debridement",
+          "Enzymatic with collagenase",
+          "All of the above are appropriate"
+        ],
+        "correct": "All of the above are appropriate",
+        "explanation": "Multiple debridement methods can be used for slough. Sharp is fastest. Autolytic (hydrogel/hydrocolloid) is gentle. Enzymatic (collagenase/Santyl) is selective. Choice depends on clinical context."
+      },
+      {
+        "q": "מהו הסימן הקליני הראשון של פצע לחץ בשלב 1?",
+        "options": [
+          "שלפוחית מלאת נוזל",
+          "אודם שאינו מתבהר בלחיצה",
+          "פצע פתוח שטחי",
+          "שינוי צבע סגול"
+        ],
+        "correct": "אודם שאינו מתבהר בלחיצה",
+        "explanation": "שלב 1 מוגדר כאודם שאינו מתבהר (non-blanchable erythema) בעור שלם. בעור כהה ייתכנו שינויי צבע, חום, או בצקת."
+      },
+      {
+        "q": "The Braden Scale is most appropriately administered:",
+        "options": [
+          "Only on admission",
+          "Weekly throughout hospitalization",
+          "On admission and every 24-48 hours during acute illness",
+          "Only when a pressure injury is identified"
+        ],
+        "correct": "On admission and every 24-48 hours during acute illness",
+        "explanation": "Braden Scale should be assessed on admission and regularly reassessed (typically every 24-48 hours in acute care, weekly in long-term care) as risk factors can change rapidly."
+      },
+      {
+        "q": "Which micronutrient deficiency most impairs wound healing in elderly patients?",
+        "options": [
+          "Vitamin D",
+          "Zinc",
+          "Vitamin B12",
+          "Iron"
+        ],
+        "correct": "Zinc",
+        "explanation": "Zinc is critical for cell division, immune function, and collagen synthesis in wound healing. Zinc supplementation (40mg/day) is recommended for pressure injury patients with deficiency."
+      },
+      {
+        "q": "מהו ההבדל בין משטח תגובתי (reactive) למשטח פעיל (active)?",
+        "options": [
+          "תגובתי מתנפח באוויר, פעיל מקצף",
+          "תגובתי מפחית לחץ קבוע, פעיל מחליף לחץ מחזורית",
+          "אין הבדל",
+          "פעיל זול יותר"
+        ],
+        "correct": "תגובתי מפחית לחץ קבוע, פעיל מחליף לחץ מחזורית",
+        "explanation": "משטח תגובתי (reactive) מספק הפחתת לחץ קבועה (קצף, ג'ל). משטח פעיל (active) מחליף לחץ מחזורית (alternating pressure)."
+      },
+      {
+        "q": "Negative Pressure Wound Therapy (NPWT) is contraindicated in:",
+        "options": [
+          "Clean Stage 3 wounds",
+          "Wounds with exposed blood vessels",
+          "Diabetic foot ulcers",
+          "Post-surgical wound dehiscence"
+        ],
+        "correct": "Wounds with exposed blood vessels",
+        "explanation": "NPWT is contraindicated with exposed blood vessels (hemorrhage risk), untreated osteomyelitis, malignancy in wound, necrotic tissue with eschar, and non-enteric/unexplored fistulas."
+      },
+      {
+        "q": "כמה אחוזים מפצעי הלחץ ניתנים למניעה?",
+        "options": [
+          "30-40%",
+          "50-60%",
+          "70-80%",
+          "95% ומעלה"
+        ],
+        "correct": "95% ומעלה",
+        "explanation": "על פי ספרות, מעל 95% מפצעי הלחץ ניתנים למניעה באמצעות הערכת סיכון, מיקום מחדש, משטחי הפחתת לחץ, ותזונה מתאימה."
+      },
+      {
+        "q": "The Kennedy terminal ulcer is characterized by:",
+        "options": [
+          "Rapid onset pear-shaped sacral wound near end of life",
+          "Chronic non-healing heel wound",
+          "Bilateral trochanteric wounds in wheelchair users",
+          "Pressure injury at surgical site"
+        ],
+        "correct": "Rapid onset pear-shaped sacral wound near end of life",
+        "explanation": "Kennedy terminal ulcers appear suddenly (often pear/butterfly-shaped) on the sacrum in the final days-weeks of life, reflecting skin failure from multi-organ failure. They are not considered preventable."
+      },
+      {
+        "q": "Which laboratory value best reflects nutritional status for wound healing assessment?",
+        "options": [
+          "Albumin",
+          "Prealbumin",
+          "Total protein",
+          "Transferrin"
+        ],
+        "correct": "Prealbumin",
+        "explanation": "Prealbumin (transthyretin) has a half-life of 2 days, making it more responsive to acute nutritional changes than albumin (half-life 20 days). However, both are negative acute-phase reactants."
+      },
+      {
+        "q": "באיזה מקרה יש להפנות לניתוח פלסטי לסגירת פצע לחץ?",
+        "options": [
+          "כל פצע שלב 3",
+          "פצע שלב 3-4 שלא השתפר ב-3 חודשי טיפול שמרני",
+          "כל פצע עם אשר",
+          "פצע שלב 2 חוזר"
+        ],
+        "correct": "פצע שלב 3-4 שלא השתפר ב-3 חודשי טיפול שמרני",
+        "explanation": "הפניה לניתוח מתאימה לפצעי שלב 3-4 שאינם מגיבים לטיפול שמרני לאחר כ-3 חודשים, בתנאי שהמטופל מועמד ניתוחי מתאים."
+      }
+    ]
+  },
+  {
+    "topic": "שיקום גריאטרי (Geriatric Rehabilitation)",
+    "flashcards": [
+      {
+        "front": "FIM (Functional Independence Measure) — structure and scoring",
+        "back": "18 items across 6 domains: self-care, sphincter control, transfers, locomotion, communication, social cognition. Score 1 (total assist) to 7 (complete independence). Max=126. Motor subscale (13 items, max 91) + Cognitive subscale (5 items, max 35)."
+      },
+      {
+        "q": "מהם הקריטריונים לקבלה לשיקום חריף (acute rehab) לעומת SNF?",
+        "a": "שיקום חריף: מסוגל ל-3 שעות טיפול/יום, צורך ב-2+ דיסציפלינות, פוטנציאל שיפור תפקודי, יציבות רפואית. SNF: פחות מ-3 שעות/יום, צורך בהשגחה סיעודית, קצב שיפור איטי יותר."
+      },
+      {
+        "front": "Barthel Index — what it measures",
+        "back": "10-item ADL assessment: feeding, bathing, grooming, dressing, bowel control, bladder control, toilet use, transfers, mobility, stairs. Score 0-100. ≥60: some independence, ≤40: severe dependence. Simple, widely used, but ceiling effect."
+      },
+      {
+        "front": "Post-hip fracture rehabilitation — key principles",
+        "back": "Early mobilization (within 24h if stable). Weight-bearing as tolerated (most surgeries). PT: gait training, strengthening, balance. OT: ADL retraining, home safety. Falls prevention program. Bone health optimization. Target: pre-fracture mobility level."
+      },
+      {
+        "q": "מהי תסמונת הדה-קונדישנינג ומה השפעותיה?",
+        "a": "ירידה תפקודית מהירה בעקבות חוסר פעילות/מרבצנות. 1-1.5% אובדן כוח שריר ליום; 10-15% ירידה ב-VO2max ב-10 ימים; אובדן צפיפות עצם; ירידה בנפח פלזמה; ירידה קוגניטיבית."
+      },
+      {
+        "front": "PT vs OT roles in geriatric rehabilitation",
+        "back": "PT: mobility, gait, balance, strength, endurance, transfers, stairs, pain management. OT: ADLs (dressing, bathing, eating), upper extremity function, cognition-based tasks, home modifications, adaptive equipment, return-to-driving evaluation."
+      },
+      {
+        "front": "Exercise prescription for elderly — FITT principle",
+        "back": "Frequency: 3-5x/week. Intensity: moderate (RPE 5-6/10). Time: 150 min/week aerobic + 2x/week strength. Type: combination of aerobic, resistance, balance, flexibility. Start low, progress slow. Include balance training for fall prevention."
+      },
+      {
+        "q": "מהם עקרונות השיקום לאחר שבץ מוחי בקשיש?",
+        "a": "התחלה מוקדמת (24-48 שעות); אינטנסיביות מותאמת; גישה רב-מקצועית; שיקום קוגניטיבי ודיבור; מניעת סיבוכים (DVT, כתף כואבת, דיכאון); תכנון שחרור; מעקב ארוך טווח."
+      },
+      {
+        "front": "Discharge planning from rehabilitation — key considerations",
+        "back": "Home safety assessment, caregiver availability/training, equipment needs (walker, wheelchair, hospital bed), community services (home health, day rehab), medication management, follow-up appointments, fall prevention plan, ongoing therapy needs."
+      },
+      {
+        "front": "Balance training evidence in elderly",
+        "back": "Tai Chi: 35-47% reduction in falls (strongest evidence). Otago Exercise Program: 35% fall reduction (home-based, individualized). Group balance classes also effective. Should include progressive challenge to balance, ≥3 hours/week for best outcomes."
+      },
+      {
+        "q": "מהו SPPB ומה המרכיבים שלו?",
+        "a": "Short Physical Performance Battery: 1) מבחן שיווי משקל (side-by-side, semi-tandem, tandem); 2) מהירות הליכה 4 מטר; 3) קימה מכיסא 5 פעמים. ציון 0-12. ≤6 = סיכון גבוה לנכות."
+      },
+      {
+        "front": "Prehabilitation concept in geriatrics",
+        "back": "Preoperative optimization of physical function before elective surgery. Includes exercise training, nutritional optimization, psychological preparation. Can reduce postoperative complications, shorten hospital stay, and improve recovery in frail elderly patients."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו הציון המקסימלי ב-FIM?",
+        "options": [
+          "100",
+          "126",
+          "140",
+          "56"
+        ],
+        "correct": "126",
+        "explanation": "FIM כולל 18 פריטים, כל אחד מדורג 1-7. ציון מקסימלי = 18 × 7 = 126."
+      },
+      {
+        "q": "A patient can participate in 3 hours of therapy per day and needs PT, OT, and speech therapy. The most appropriate rehabilitation setting is:",
+        "options": [
+          "Home health",
+          "Skilled nursing facility",
+          "Acute inpatient rehabilitation",
+          "Outpatient therapy"
+        ],
+        "correct": "Acute inpatient rehabilitation",
+        "explanation": "Acute inpatient rehab criteria: ability to tolerate 3 hours/day of therapy, need for ≥2 therapy disciplines, medical supervision needs, and reasonable expectation for functional improvement."
+      },
+      {
+        "q": "כמה כוח שריר מאבד מבוגר מרותק למיטה ליום?",
+        "options": [
+          "0.1-0.5%",
+          "1-1.5%",
+          "3-5%",
+          "10%"
+        ],
+        "correct": "1-1.5%",
+        "explanation": "מבוגרים מאבדים 1-1.5% מכוח השריר ליום במנוחה מוחלטת במיטה. לאחר 10 ימים, אובדן של 10-15% מ-VO2max."
+      },
+      {
+        "q": "The Barthel Index score indicating severe dependence is:",
+        "options": [
+          "≤20",
+          "≤40",
+          "≤60",
+          "≤80"
+        ],
+        "correct": "≤40",
+        "explanation": "Barthel Index: 0-20=total dependence, 21-40=severe dependence, 41-60=moderate dependence, 61-99=mild dependence, 100=independent."
+      },
+      {
+        "q": "After hip fracture surgery, when should mobilization ideally begin?",
+        "options": [
+          "After 1 week of bed rest",
+          "Within 24 hours",
+          "After 48-72 hours",
+          "When pain is completely resolved"
+        ],
+        "correct": "Within 24 hours",
+        "explanation": "Early mobilization within 24 hours post-hip fracture repair is recommended. Weight-bearing as tolerated is appropriate for most surgical fixations. Delays increase deconditioning and complications."
+      },
+      {
+        "q": "מהי התוכנית הביתית המבוססת ביותר למניעת נפילות?",
+        "options": [
+          "הליכה יומית 30 דקות",
+          "תוכנית Otago",
+          "יוגה",
+          "רכיבה על אופני כושר"
+        ],
+        "correct": "תוכנית Otago",
+        "explanation": "תוכנית Otago היא תוכנית ביתית מותאמת אישית הכוללת חיזוק רגליים ואימון שיווי משקל. הוכחה ב-RCTs להפחתת 35% בנפילות בקשישים."
+      },
+      {
+        "q": "Which exercise modality has the strongest evidence for fall prevention in elderly?",
+        "options": [
+          "Aerobic walking",
+          "Resistance training alone",
+          "Tai Chi",
+          "Water aerobics"
+        ],
+        "correct": "Tai Chi",
+        "explanation": "Tai Chi has the strongest evidence for fall prevention (35-47% reduction). It combines balance, strength, flexibility, and proprioceptive training in a low-impact format."
+      },
+      {
+        "q": "The role of OT in geriatric rehabilitation primarily focuses on:",
+        "options": [
+          "Gait training and mobility",
+          "Activities of daily living and adaptive strategies",
+          "Cardiovascular endurance",
+          "Wound care management"
+        ],
+        "correct": "Activities of daily living and adaptive strategies",
+        "explanation": "OT focuses on ADLs (dressing, bathing, eating), IADLs, adaptive equipment, home modifications, cognitive-based tasks, and upper extremity function."
+      },
+      {
+        "q": "מהו ציון SPPB המעיד על סיכון גבוה לנכות?",
+        "options": [
+          "≤3",
+          "≤6",
+          "≤9",
+          "≤10"
+        ],
+        "correct": "≤6",
+        "explanation": "SPPB ≤6 מ-12 מעיד על סיכון גבוה לנכות, צורך בעזרה, ואשפוז. כולל שיווי משקל, מהירות הליכה, וקימה מכיסא."
+      },
+      {
+        "q": "Deconditioning from 10 days of bed rest results in approximately what decrease in VO2max?",
+        "options": [
+          "5%",
+          "10-15%",
+          "25-30%",
+          "50%"
+        ],
+        "correct": "10-15%",
+        "explanation": "Ten days of bed rest leads to 10-15% decrease in VO2max. Recovery takes longer than the period of immobility, especially in elderly patients."
+      },
+      {
+        "q": "What is the recommended weekly aerobic exercise for older adults?",
+        "options": [
+          "60 minutes",
+          "90 minutes",
+          "150 minutes",
+          "300 minutes"
+        ],
+        "correct": "150 minutes",
+        "explanation": "WHO/ACSM recommend 150 minutes/week of moderate-intensity aerobic exercise for older adults, plus muscle-strengthening activities 2+ days/week and balance training."
+      },
+      {
+        "q": "מהו היתרון העיקרי של פרה-הביליטציה בקשישים לפני ניתוח?",
+        "options": [
+          "הפחתת עלות הניתוח",
+          "שיפור כושר גופני טרום-ניתוחי והפחתת סיבוכים",
+          "קיצור זמן ההרדמה",
+          "מניעת DVT"
+        ],
+        "correct": "שיפור כושר גופני טרום-ניתוחי והפחתת סיבוכים",
+        "explanation": "פרה-הביליטציה כוללת אימון גופני, אופטימיזציה תזונתית, והכנה פסיכולוגית לפני ניתוח, ומפחיתה סיבוכים ומקצרת אשפוז."
+      },
+      {
+        "q": "Which component is NOT part of the SPPB?",
+        "options": [
+          "Balance testing",
+          "4-meter gait speed",
+          "5x sit-to-stand",
+          "Grip strength"
+        ],
+        "correct": "Grip strength",
+        "explanation": "SPPB includes: balance testing (side-by-side, semi-tandem, tandem), 4-meter gait speed, and 5x sit-to-stand. Grip strength is measured separately (often for sarcopenia assessment)."
+      },
+      {
+        "q": "A frail 82-year-old is being discharged after hip fracture rehabilitation. Which is the MOST important discharge planning element?",
+        "options": [
+          "Prescribing calcium supplements",
+          "Home safety assessment and fall prevention plan",
+          "Scheduling a bone density scan",
+          "Arranging transportation to follow-up"
+        ],
+        "correct": "Home safety assessment and fall prevention plan",
+        "explanation": "Home safety assessment identifies environmental hazards and equipment needs, directly preventing recurrent falls. It is the most critical element for safe discharge of hip fracture patients."
+      },
+      {
+        "q": "מהו FIM motor subscale ומה הציון המקסימלי שלו?",
+        "options": [
+          "13 פריטים, ציון מקסימלי 91",
+          "18 פריטים, ציון מקסימלי 126",
+          "5 פריטים, ציון מקסימלי 35",
+          "10 פריטים, ציון מקסימלי 70"
+        ],
+        "correct": "13 פריטים, ציון מקסימלי 91",
+        "explanation": "FIM motor subscale כולל 13 פריטים (טיפול עצמי, סוגרים, העברות, ניידות) × 7 = ציון מקסימלי 91."
+      },
+      {
+        "q": "Post-stroke rehabilitation should ideally begin:",
+        "options": [
+          "After 1 week",
+          "Within 24-48 hours if medically stable",
+          "After 2 weeks",
+          "Only after complete neurological recovery"
+        ],
+        "correct": "Within 24-48 hours if medically stable",
+        "explanation": "Early mobilization (24-48 hours) after stroke improves outcomes. Very early (<24h) aggressive mobilization may be harmful (AVERT trial). Intensity should be graded and individualized."
+      },
+      {
+        "q": "Which is a contraindication to acute inpatient rehabilitation?",
+        "options": [
+          "Age over 90",
+          "Need for 2 therapy disciplines",
+          "Inability to tolerate 3 hours/day of therapy",
+          "History of multiple falls"
+        ],
+        "correct": "Inability to tolerate 3 hours/day of therapy",
+        "explanation": "The key criterion for acute inpatient rehab is ability to participate in 3 hours/day of therapy. Age alone is not a contraindication. Those unable to tolerate intensity should go to SNF-level rehab."
+      },
+      {
+        "q": "Sarcopenic obesity in elderly is best addressed with:",
+        "options": [
+          "Caloric restriction alone",
+          "Aerobic exercise alone",
+          "Combined resistance training and adequate protein intake",
+          "Weight loss medications"
+        ],
+        "correct": "Combined resistance training and adequate protein intake",
+        "explanation": "Sarcopenic obesity requires resistance training to preserve/build muscle mass combined with adequate protein (1.0-1.2 g/kg/day). Caloric restriction alone worsens sarcopenia."
+      },
+      {
+        "q": "מהי shoulder subluxation לאחר שבץ ומה הטיפול?",
+        "options": [
+          "נקע מלא - ניתוח",
+          "תת-פריקה מחוסר טונוס - תמיכה ופיזיותרפיה",
+          "שבר - גבס",
+          "דלקת גידים - NSAIDs"
+        ],
+        "correct": "תת-פריקה מחוסר טונוס - תמיכה ופיזיותרפיה",
+        "explanation": "Shoulder subluxation שכיח בצד הפלגי. נגרם מחולשת שרירי rotator cuff. טיפול: תמיכה (sling), positioning, ES (electrical stimulation), PT הדרגתי."
+      },
+      {
+        "q": "The Timed Up and Go (TUG) test cutoff for fall risk is:",
+        "options": [
+          ">8 seconds",
+          ">12 seconds",
+          ">20 seconds",
+          ">30 seconds"
+        ],
+        "correct": ">12 seconds",
+        "explanation": "TUG >12 seconds indicates increased fall risk. The test measures time to rise from chair, walk 3 meters, turn, walk back, and sit. It assesses mobility, balance, and gait."
+      },
+      {
+        "q": "Which is NOT a component of the comprehensive geriatric rehabilitation team?",
+        "options": [
+          "Physiatrist",
+          "Social worker",
+          "Radiologist",
+          "Speech-language pathologist"
+        ],
+        "correct": "Radiologist",
+        "explanation": "The rehab team includes: physiatrist/geriatrician, PT, OT, SLP, social worker, psychologist, nursing, dietitian, and case manager. Radiologists provide consultative imaging but are not core team members."
+      },
+      {
+        "q": "מהי הגישה המומלצת לאימון כוח בקשישים שבריריים?",
+        "options": [
+          "אין לאמן כוח בשבריריים",
+          "עומסים כבדים מההתחלה",
+          "התחלה בעומס נמוך עם העלאה הדרגתית",
+          "אימון אירובי בלבד"
+        ],
+        "correct": "התחלה בעומס נמוך עם העלאה הדרגתית",
+        "explanation": "אימון כוח בשבריריים: התחלה בעצימות נמוכה, העלאה הדרגתית, 2-3 פעמים/שבוע, 8-12 חזרות, שילוב עם תזונה חלבונית. אימון כוח הוכח כיעיל גם בשבריריים מאוד."
+      },
+      {
+        "q": "Goal setting in geriatric rehabilitation should be:",
+        "options": [
+          "Set exclusively by the medical team",
+          "Patient-centered and collaboratively determined",
+          "Based only on standardized assessments",
+          "Focused solely on discharge disposition"
+        ],
+        "correct": "Patient-centered and collaboratively determined",
+        "explanation": "Person-centered goal setting improves motivation, adherence, and outcomes. Goals should be SMART (Specific, Measurable, Achievable, Relevant, Time-bound) and developed collaboratively with the patient and family."
+      }
+    ]
+  },
+  {
+    "topic": "התעללות בקשישים (Elder Abuse)",
+    "flashcards": [
+      {
+        "front": "Five types of elder abuse",
+        "back": "1) Physical abuse, 2) Emotional/psychological abuse, 3) Financial exploitation, 4) Neglect (most common), 5) Sexual abuse. Self-neglect is also recognized but distinct. Often multiple types coexist."
+      },
+      {
+        "q": "מהם גורמי הסיכון להתעללות בקשישים?",
+        "a": "גורמי קורבן: תלות תפקודית, דמנציה, בידוד חברתי, נשים, גיל מתקדם. גורמי מתעלל: שימוש בחומרים, מחלת נפש, תלות כלכלית בקורבן, סטרס של מטפל, היסטוריה של אלימות."
+      },
+      {
+        "front": "Elder Abuse Suspicion Index (EASI)",
+        "back": "6-question screening tool for cognitively intact elderly. 5 questions to patient + 1 to clinician. Questions address feeling unsafe, being prevented from getting needs met, and being taken advantage of. Sensitivity ~47%, specificity ~75%."
+      },
+      {
+        "front": "Mandatory reporting of elder abuse",
+        "back": "Varies by jurisdiction. In most US states: all healthcare providers are mandated reporters. Report to Adult Protective Services (APS). In Israel: mandatory reporting under Prevention of Abuse law. Patient consent NOT required for reporting. Document thoroughly."
+      },
+      {
+        "q": "מה השכיחות המשוערת של התעללות בקשישים?",
+        "a": "כ-10% מקשישים בקהילה חווים התעללות בשנה נתונה. הזנחה היא הסוג השכיח ביותר (58%). רק 1 מכל 14 מקרים מדווח. שכיחות גבוהה יותר במוסדות ובקרב קשישים עם דמנציה."
+      },
+      {
+        "front": "Clinical signs of physical elder abuse",
+        "back": "Bruises in unusual locations (inner arms, back, face), patterned injuries, burns (cigarette, immersion), fractures inconsistent with mechanism, delay in seeking care, conflicting histories between patient and caregiver, poor hygiene despite adequate resources."
+      },
+      {
+        "front": "Financial exploitation — red flags",
+        "back": "Sudden changes in banking/spending, unexplained transfers, new 'friends' managing finances, unpaid bills despite adequate income, changes to will/power of attorney, missing valuables, caregiver controlling finances, signatures on documents patient doesn't understand."
+      },
+      {
+        "q": "מהו תפקיד הרופא בחשד להתעללות?",
+        "a": "תיעוד מדויק (תמונות, ציטוטים); הערכת בטיחות מיידית; ראיון המטופל בנפרד מהמטפל; הערכת כשירות; דיווח לגורמים מוסמכים; התייעצות עם עו\"ס; תכנון בטיחות."
+      },
+      {
+        "front": "Capacity assessment in suspected elder abuse",
+        "back": "Assess 4 abilities: understanding relevant information, appreciating situation and consequences, reasoning about options, expressing a consistent choice. Capacity is decision-specific, not global. Even patients with dementia may have capacity for some decisions."
+      },
+      {
+        "front": "Self-neglect in elderly",
+        "back": "Most common form reported to APS (~40% of cases). Failure to provide for own basic needs (food, hygiene, medical care, safe living conditions). Associated with depression, dementia, executive dysfunction, substance abuse. Distinct from other forms — no perpetrator."
+      },
+      {
+        "q": "מהם החסמים לזיהוי התעללות בקשישים?",
+        "a": "חסמי קורבן: בושה, פחד מנקמה, תלות במתעלל, בידוד, חוסר מודעות. חסמי מערכת: זמן מוגבל, חוסר הכשרה, חוסר פרוטוקולים, חשש מפגיעה ביחסים. חסמי מתעלל: הכחשה, הסוואה."
+      },
+      {
+        "front": "APS (Adult Protective Services) referral process",
+        "back": "Report suspicion — don't need proof. Include patient demographics, type of abuse, evidence/observations, risk level, perpetrator info if known. APS investigates within 24h-14 days based on risk. They arrange services, safety planning, legal intervention if needed."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו סוג ההתעללות השכיח ביותר בקשישים?",
+        "options": [
+          "פיזית",
+          "מינית",
+          "הזנחה",
+          "כלכלית"
+        ],
+        "correct": "הזנחה",
+        "explanation": "הזנחה היא הסוג השכיח ביותר של התעללות בקשישים, מהווה כ-58% מהמקרים המדווחים ל-APS."
+      },
+      {
+        "q": "Which finding is MOST suspicious for physical elder abuse?",
+        "options": [
+          "Hip fracture from a witnessed fall",
+          "Bruises on shins",
+          "Bilateral upper arm bruises in a pattern",
+          "Skin tear on forearm"
+        ],
+        "correct": "Bilateral upper arm bruises in a pattern",
+        "explanation": "Patterned bruises in unusual locations (inner arms, trunk, face) are highly suspicious for abuse. Shin bruises and forearm skin tears are common accidental injuries in elderly."
+      },
+      {
+        "q": "כמה ממקרי ההתעללות בקשישים מדווחים?",
+        "options": [
+          "1 מתוך 3",
+          "1 מתוך 7",
+          "1 מתוך 14",
+          "1 מתוך 24"
+        ],
+        "correct": "1 מתוך 14",
+        "explanation": "מחקרים מראים שרק 1 מכל 14 מקרי התעללות מדווח לרשויות. דיווח חסר נובע מבושה, פחד, תלות, ובידוד."
+      },
+      {
+        "q": "The Elder Abuse Suspicion Index (EASI) consists of:",
+        "options": [
+          "10 physical examination items",
+          "6 questions (5 to patient, 1 to clinician)",
+          "A 30-minute structured interview",
+          "Laboratory and imaging screening"
+        ],
+        "correct": "6 questions (5 to patient, 1 to clinician)",
+        "explanation": "EASI is a brief 6-question screening tool. Five questions are directed to the patient about feeling unsafe or being taken advantage of, plus one clinician assessment question."
+      },
+      {
+        "q": "Which is NOT one of the four components of capacity assessment?",
+        "options": [
+          "Understanding",
+          "Appreciation",
+          "Reasoning",
+          "Memory"
+        ],
+        "correct": "Memory",
+        "explanation": "The 4 components of capacity: Understanding information, Appreciating situation, Reasoning about options, Expressing a choice. Memory deficits may affect capacity but are not a separate assessed component."
+      },
+      {
+        "q": "מהו גורם הסיכון המשמעותי ביותר מצד המתעלל?",
+        "options": [
+          "גיל מבוגר",
+          "שימוש באלכוהול/סמים",
+          "רמת השכלה נמוכה",
+          "מגורים בכפר"
+        ],
+        "correct": "שימוש באלכוהול/סמים",
+        "explanation": "שימוש בחומרים ממכרים הוא מגורם הסיכון המשמעותיים ביותר מצד המתעלל. גורמים נוספים: מחלת נפש, תלות כלכלית, וסטרס."
+      },
+      {
+        "q": "Self-neglect differs from other forms of elder abuse because:",
+        "options": [
+          "It only occurs in nursing homes",
+          "There is no external perpetrator",
+          "It is never reportable to APS",
+          "It only involves financial issues"
+        ],
+        "correct": "There is no external perpetrator",
+        "explanation": "Self-neglect is the individual's failure to provide for their own basic needs. It is distinct because there is no external perpetrator, though it is still reportable to APS and requires intervention."
+      },
+      {
+        "q": "A physician suspects elder abuse. The patient denies it and asks the physician not to report. The physician should:",
+        "options": [
+          "Respect the patient's wishes and not report",
+          "Report to APS — mandatory reporting overrides patient refusal",
+          "Wait for the patient to change their mind",
+          "Report only if there is physical evidence"
+        ],
+        "correct": "Report to APS — mandatory reporting overrides patient refusal",
+        "explanation": "In most jurisdictions, healthcare providers are mandated reporters. The duty to report suspected abuse does not require patient consent or conclusive proof."
+      },
+      {
+        "q": "מהי הגישה הנכונה לראיון מטופל עם חשד להתעללות?",
+        "options": [
+          "לראיין בנוכחות המטפל",
+          "לראיין את המטופל לבד ובשפה פשוטה",
+          "לראיין רק את המטפל",
+          "לחכות לביקור הבא"
+        ],
+        "correct": "לראיין את המטופל לבד ובשפה פשוטה",
+        "explanation": "יש לראיין את המטופל בנפרד מהמטפל/חשוד בסביבה בטוחה, בשפה פשוטה, ללא שיפוטיות, עם שאלות פתוחות וישירות."
+      },
+      {
+        "q": "Which type of elder abuse has the strongest association with caregiver burnout?",
+        "options": [
+          "Sexual abuse",
+          "Financial exploitation",
+          "Neglect",
+          "Physical abuse by stranger"
+        ],
+        "correct": "Neglect",
+        "explanation": "Neglect is most strongly associated with caregiver burnout and stress. Overwhelmed caregivers may fail to provide adequate care, food, medication, or supervision."
+      },
+      {
+        "q": "Financial exploitation red flags include all EXCEPT:",
+        "options": [
+          "Sudden changes in bank accounts",
+          "New person accompanying patient to bank",
+          "Patient buying groceries weekly",
+          "Unpaid bills despite adequate income"
+        ],
+        "correct": "Patient buying groceries weekly",
+        "explanation": "Regular grocery shopping is normal activity. Red flags include sudden financial changes, new people managing money, unpaid bills, and changes to legal documents."
+      },
+      {
+        "q": "מהו אחוז הקשישים בקהילה שחווים התעללות?",
+        "options": [
+          "1%",
+          "5%",
+          "10%",
+          "25%"
+        ],
+        "correct": "10%",
+        "explanation": "כ-10% מהקשישים בקהילה חווים צורה כלשהי של התעללות בשנה נתונה. השכיחות גבוהה יותר במוסדות ובקרב קשישים עם דמנציה (עד 50%)."
+      },
+      {
+        "q": "APS investigations should begin within what timeframe for high-risk cases?",
+        "options": [
+          "1 hour",
+          "24 hours",
+          "72 hours",
+          "14 days"
+        ],
+        "correct": "24 hours",
+        "explanation": "High-risk/emergency cases require APS investigation initiation within 24 hours. Lower-risk cases may be investigated within 3-14 days depending on jurisdiction."
+      },
+      {
+        "q": "The most common perpetrator of elder abuse is:",
+        "options": [
+          "Paid caregiver",
+          "Adult child",
+          "Spouse/partner",
+          "Stranger"
+        ],
+        "correct": "Adult child",
+        "explanation": "Adult children are the most common perpetrators of elder abuse (approximately 50% of cases), followed by spouses/partners. Paid caregivers and strangers account for smaller proportions."
+      },
+      {
+        "q": "מהו ההבדל בין התעללות רגשית להזנחה רגשית?",
+        "options": [
+          "אין הבדל",
+          "התעללות = פעולה אקטיבית; הזנחה = מחדל",
+          "הזנחה חמורה יותר",
+          "התעללות קורית רק במוסדות"
+        ],
+        "correct": "התעללות = פעולה אקטיבית; הזנחה = מחדל",
+        "explanation": "התעללות רגשית כוללת פעולות אקטיביות (השפלה, איומים, בידוד). הזנחה רגשית היא מחדל — אי-מתן תשומת לב, חום, ותמיכה רגשית."
+      },
+      {
+        "q": "Which documentation practice is MOST important when elder abuse is suspected?",
+        "options": [
+          "Brief note in chart",
+          "Detailed objective documentation with quotes and photographs",
+          "Verbal report to charge nurse only",
+          "Noting suspicion in discharge summary only"
+        ],
+        "correct": "Detailed objective documentation with quotes and photographs",
+        "explanation": "Document objectively: exact quotes, detailed injury description (size, location, color, shape), photographs with consent, body diagrams, patient's affect, and any discrepancies in history."
+      },
+      {
+        "q": "Cognitive impairment increases elder abuse risk primarily because:",
+        "options": [
+          "It causes aggressive behavior",
+          "It increases dependency and impairs ability to report",
+          "It is always associated with wealth",
+          "It makes patients physically stronger"
+        ],
+        "correct": "It increases dependency and impairs ability to report",
+        "explanation": "Dementia increases vulnerability through increased dependency, inability to recognize/report abuse, behavioral symptoms that stress caregivers, and impaired decision-making capacity."
+      },
+      {
+        "q": "מהו הצעד הראשון כשמטופל חושף התעללות?",
+        "options": [
+          "להתקשר למשטרה מיד",
+          "להקשיב, להאמין, לתעד, ולהעריך בטיחות",
+          "לפנות את המטפל ולהתעלם",
+          "לחכות לאישור מהנהלת בית החולים"
+        ],
+        "correct": "להקשיב, להאמין, לתעד, ולהעריך בטיחות",
+        "explanation": "הצעד הראשון: הקשבה אמפתית, אמונה במטופל, תיעוד מדויק, הערכת בטיחות מיידית, ואז דיווח לגורמים מתאימים."
+      },
+      {
+        "q": "Which screening approach is recommended for elder abuse in clinical settings?",
+        "options": [
+          "Universal screening of all elderly patients",
+          "Screening only when abuse is suspected",
+          "No validated screening exists",
+          "Screening only in emergency departments"
+        ],
+        "correct": "Screening only when abuse is suspected",
+        "explanation": "USPSTF found insufficient evidence for universal screening (I statement). Current practice: screen when clinical suspicion arises based on signs/symptoms. EASI and HS-EAST are available tools."
+      },
+      {
+        "q": "An elderly patient with dementia has unexplained weight loss, poor hygiene, and medication non-adherence. The caregiver appears overwhelmed. This presentation most suggests:",
+        "options": [
+          "Physical abuse",
+          "Financial exploitation",
+          "Caregiver neglect",
+          "Self-neglect"
+        ],
+        "correct": "Caregiver neglect",
+        "explanation": "This scenario suggests neglect by an overwhelmed caregiver: unmet basic needs (nutrition, hygiene, medications) in a dependent patient. An overwhelmed caregiver needs support and resources."
+      },
+      {
+        "q": "מהם הסימנים הפיזיים המחשידים להתעללות מינית בקשיש?",
+        "options": [
+          "כאבי גב תחתון",
+          "חבורות או דימום באזור הגניטלי, STIs",
+          "שבר בירך",
+          "כאבי ראש"
+        ],
+        "correct": "חבורות או דימום באזור הגניטלי, STIs",
+        "explanation": "סימנים מחשידים: חבורות/פציעות באזור גניטלי, דימום וגינלי/רקטלי, STIs, קרעים, שינוי התנהגותי פתאומי (פחד, נסיגה)."
+      },
+      {
+        "q": "The ethical principle most in tension when an elderly patient with capacity refuses intervention for ongoing abuse is:",
+        "options": [
+          "Justice vs beneficence",
+          "Autonomy vs beneficence",
+          "Non-maleficence vs justice",
+          "Veracity vs fidelity"
+        ],
+        "correct": "Autonomy vs beneficence",
+        "explanation": "When a competent patient refuses help despite ongoing abuse, autonomy (patient's right to make decisions) conflicts with beneficence (physician's duty to protect). Mandatory reporting still applies, but forced removal may not."
+      },
+      {
+        "q": "Institutional elder abuse is most commonly perpetrated by:",
+        "options": [
+          "Physicians",
+          "Direct care staff (CNAs/aides)",
+          "Administrative staff",
+          "Visiting family members"
+        ],
+        "correct": "Direct care staff (CNAs/aides)",
+        "explanation": "Direct care workers (CNAs, aides) are the most common perpetrators in institutional settings due to highest contact hours, burnout, inadequate training, low wages, and understaffing."
+      },
+      {
+        "q": "Which intervention has shown the most promise in preventing elder abuse?",
+        "options": [
+          "Criminal prosecution",
+          "Caregiver support and respite programs",
+          "Mandatory institutionalization",
+          "Financial guardianship"
+        ],
+        "correct": "Caregiver support and respite programs",
+        "explanation": "Caregiver support (education, respite, counseling, support groups) addresses key risk factors: stress, burnout, and lack of knowledge. Multifaceted approaches including social support are most effective."
+      }
+    ]
+  },
+  {
+    "topic": "ראייה ושמיעה בגיל המבוגר (Vision & Hearing)",
+    "flashcards": [
+      {
+        "front": "Age-related macular degeneration (AMD) — dry vs wet",
+        "back": "Dry (90%): drusen, RPE changes, geographic atrophy. Slow progression. Wet (10%): choroidal neovascularization, sudden vision loss. Treatment: anti-VEGF injections (ranibizumab, bevacizumab, aflibercept). AREDS2 supplements slow dry→wet progression."
+      },
+      {
+        "q": "מהם סוגי הגלאוקומה ומהו הטיפול?",
+        "a": "זווית פתוחה (שכיח): אובדן הדרגתי של שדה ראייה היקפי, טיפול בטיפות (prostaglandins, beta-blockers), לייזר, ניתוח. זווית סגורה (חירום): כאב חד, עין אדומה, ראיית הילות, טיפול מיידי (pilocarpine, mannitol, iridotomy)."
+      },
+      {
+        "front": "Presbycusis — characteristics",
+        "back": "Age-related sensorineural hearing loss. Bilateral, symmetrical, high-frequency loss first. Affects speech discrimination (consonants). Most common cause of hearing loss in elderly. Cochlear hair cell degeneration. Gradual onset. Affects 30-35% of adults 65-75, >50% over 75."
+      },
+      {
+        "front": "Cataracts — types and management",
+        "back": "Nuclear sclerotic (most common age-related): yellowing, may cause 'second sight' (myopic shift). Cortical: spoke-like opacities, glare. Posterior subcapsular: rapid onset, near vision/glare affected, associated with steroids. Surgery: phacoemulsification with IOL implant when functional impairment occurs."
+      },
+      {
+        "q": "מהו Whispered Voice Test?",
+        "a": "בדיקת סינון פשוטה לירידת שמיעה. הבוחן עומד 60 ס\"מ מאחורי המטופל, חוסם אוזן אחת, לוחש 3 מילים/מספרים. אם לא שומע 2 מתוך 3 - כשלון. רגישות 90-100%, ספציפיות 70-87%. מומלץ לסינון שנתי בקשישים."
+      },
+      {
+        "front": "Dual sensory impairment in elderly",
+        "back": "Combined vision + hearing loss. Affects 9-21% of adults ≥70. Independently associated with: 2x fall risk, depression, cognitive decline, social isolation, functional dependence, reduced quality of life. Screening both senses is essential in geriatric assessment."
+      },
+      {
+        "front": "Hearing aid types and candidacy",
+        "back": "Behind-the-ear (BTE): most versatile, all severities. In-the-ear (ITE): mild-severe, easier handling. Completely-in-canal (CIC): cosmetic, mild-moderate. Candidacy: audiogram showing aidable loss, motivation, manual dexterity for handling. OTC hearing aids available since 2022 for mild-moderate loss."
+      },
+      {
+        "q": "מהי ההשפעה של ירידת ראייה על סיכון לנפילות?",
+        "a": "ירידת חדות ראייה, שדה ראייה מוגבל, ורגישות לניגודיות ירודה מכפילים את סיכון הנפילות. עדשות מולטיפוקל מגבירות סיכון בהליכה על מדרגות. בדיקת ראייה חיונית בהערכת נפילות."
+      },
+      {
+        "front": "Cerumen impaction in elderly",
+        "back": "Affects 30-65% of elderly. Causes conductive hearing loss up to 30-40dB. Risk factors: hearing aid use, narrow/hairy canals, cotton swab use. Treatment: cerumenolytics (hydrogen peroxide, mineral oil), irrigation (not if TM perforation), manual removal. Check after removal — may reveal other pathology."
+      },
+      {
+        "front": "Diabetic retinopathy screening in elderly",
+        "back": "Annual dilated eye exam for all diabetics. Non-proliferative (microaneurysms, hemorrhages, cotton-wool spots). Proliferative (neovascularization — requires urgent laser/anti-VEGF). Diabetic macular edema at any stage. Good glycemic control (HbA1c <7%) slows progression."
+      },
+      {
+        "q": "מהן ההמלצות לסינון ראייה ושמיעה בקשישים?",
+        "a": "ראייה: בדיקת Snellen שנתית, או בכל הערכה גריאטרית. שמיעה: Whispered Voice Test או שאלון (HHIE-S) שנתי. הפניה לאודיולוג/רופא עיניים בהתאם. USPSTF: insufficient evidence for universal screening but recommended by AGS."
+      },
+      {
+        "front": "Low vision rehabilitation",
+        "back": "For patients with best-corrected VA ≤20/70. Includes: magnification devices (handheld, stand, electronic), large-print materials, high-contrast adaptations, lighting optimization, eccentric viewing training (for AMD), occupational therapy, community resources (talking books, transportation)."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהי הסיבה השכיחה ביותר לאובדן ראייה בקשישים?",
+        "options": [
+          "גלאוקומה",
+          "קטרקט",
+          "ניוון מקולרי",
+          "רטינופתיה סוכרתית"
+        ],
+        "correct": "קטרקט",
+        "explanation": "קטרקט (עכירות עדשה) היא הסיבה השכיחה ביותר לאובדן ראייה הפיך בקשישים. ניוון מקולרי הוא הסיבה השכיחה ביותר לעיוורון בלתי הפיך מעל גיל 65."
+      },
+      {
+        "q": "Presbycusis primarily affects which frequency range?",
+        "options": [
+          "Low frequencies first",
+          "High frequencies first",
+          "Mid-range frequencies",
+          "All frequencies equally"
+        ],
+        "correct": "High frequencies first",
+        "explanation": "Presbycusis is characterized by bilateral symmetrical high-frequency sensorineural hearing loss. This affects consonant discrimination (s, sh, th, f, p) more than vowels."
+      },
+      {
+        "q": "איזו תרופה עלולה להאיץ יצירת קטרקט?",
+        "options": [
+          "מטפורמין",
+          "סטרואידים סיסטמיים",
+          "אומפרזול",
+          "אמלודיפין"
+        ],
+        "correct": "סטרואידים סיסטמיים",
+        "explanation": "שימוש ממושך בסטרואידים (סיסטמיים ומקומיים) מאיץ יצירת קטרקט, בעיקר posterior subcapsular. גם גלאוקומה עלולה להחמיר."
+      },
+      {
+        "q": "Wet AMD is treated with:",
+        "options": [
+          "AREDS2 supplements only",
+          "Anti-VEGF intravitreal injections",
+          "Topical antibiotics",
+          "Oral prednisone"
+        ],
+        "correct": "Anti-VEGF intravitreal injections",
+        "explanation": "Wet AMD is treated with anti-VEGF injections (ranibizumab/Lucentis, bevacizumab/Avastin, aflibercept/Eylea) to inhibit choroidal neovascularization. AREDS2 is for slowing dry AMD progression."
+      },
+      {
+        "q": "The Whispered Voice Test is considered failed when the patient misses:",
+        "options": [
+          "1 out of 3 items",
+          "2 out of 3 items",
+          "All 3 items",
+          "1 out of 6 items"
+        ],
+        "correct": "2 out of 3 items",
+        "explanation": "The test fails if the patient cannot repeat at least 2 of 3 whispered words/numbers. The examiner stands 2 feet behind, occludes one ear, and whispers at end-expiration."
+      },
+      {
+        "q": "מהו אחוז הקשישים מעל גיל 75 עם ירידת שמיעה?",
+        "options": [
+          "10%",
+          "25%",
+          "מעל 50%",
+          "80%"
+        ],
+        "correct": "מעל 50%",
+        "explanation": "למעלה מ-50% מהמבוגרים מעל גיל 75 סובלים מירידת שמיעה משמעותית. 30-35% בגיל 65-75."
+      },
+      {
+        "q": "Dual sensory impairment (vision + hearing) in elderly is associated with all EXCEPT:",
+        "options": [
+          "Increased fall risk",
+          "Improved cognitive function",
+          "Depression",
+          "Social isolation"
+        ],
+        "correct": "Improved cognitive function",
+        "explanation": "Dual sensory impairment is associated with increased falls, depression, cognitive decline, social isolation, and functional dependence. It does NOT improve cognitive function."
+      },
+      {
+        "q": "Open-angle glaucoma initially affects:",
+        "options": [
+          "Central vision",
+          "Peripheral vision",
+          "Color vision",
+          "Near vision only"
+        ],
+        "correct": "Peripheral vision",
+        "explanation": "Open-angle glaucoma causes gradual loss of peripheral visual fields, progressing to tunnel vision. Central vision is preserved until late stages. Often asymptomatic initially."
+      },
+      {
+        "q": "מהו הטיפול בחסימת שעוה (cerumen impaction)?",
+        "options": [
+          "אנטיביוטיקה",
+          "חומרים מרככים ו/או שטיפה",
+          "ניתוח",
+          "סטרואידים"
+        ],
+        "correct": "חומרים מרככים ו/או שטיפה",
+        "explanation": "טיפול: חומרים מרככי שעוה (מי חמצן, שמן מינרלי), שטיפה (לא בנקב עור התוף), הסרה ידנית עם כלי מתאים. יש לבדוק לאחר הסרה."
+      },
+      {
+        "q": "Which cataract type is most commonly associated with aging?",
+        "options": [
+          "Posterior subcapsular",
+          "Nuclear sclerotic",
+          "Cortical",
+          "Traumatic"
+        ],
+        "correct": "Nuclear sclerotic",
+        "explanation": "Nuclear sclerotic cataract is the most common age-related type. It causes gradual yellowing/hardening of the lens nucleus. May cause a 'second sight' phenomenon (temporary improvement in near vision due to myopic shift)."
+      },
+      {
+        "q": "Multifocal/progressive lenses increase fall risk because:",
+        "options": [
+          "They are too heavy",
+          "They impair depth perception and peripheral vision at the lower lens",
+          "They cause headaches",
+          "They reduce color perception"
+        ],
+        "correct": "They impair depth perception and peripheral vision at the lower lens",
+        "explanation": "Multifocal lenses blur the lower visual field (used for viewing the ground while walking) and impair depth perception on stairs. Single-vision distance glasses recommended for outdoor walking."
+      },
+      {
+        "q": "AREDS2 supplements include all EXCEPT:",
+        "options": [
+          "Lutein and zeaxanthin",
+          "Vitamin C and E",
+          "Zinc",
+          "Vitamin D"
+        ],
+        "correct": "Vitamin D",
+        "explanation": "AREDS2: lutein (10mg), zeaxanthin (2mg), vitamin C (500mg), vitamin E (400IU), zinc (80mg), copper (2mg). Original AREDS had beta-carotene (removed due to lung cancer risk in smokers)."
+      },
+      {
+        "q": "מהי acute angle-closure glaucoma ומה הטיפול החירומי?",
+        "options": [
+          "אובדן הדרגתי של שדה ראייה - טיפות",
+          "כאב עיניים חד עם ראיית הילות - pilocarpine ו-iridotomy",
+          "ראייה מטושטשת - משקפיים",
+          "עיניים יבשות - דמעות מלאכותיות"
+        ],
+        "correct": "כאב עיניים חד עם ראיית הילות - pilocarpine ו-iridotomy",
+        "explanation": "גלאוקומה חריפה בזווית סגורה: כאב חד, עין אדומה, ראיית הילות, בחילה. טיפול חירומי: pilocarpine טיפות, mannitol IV, ו-laser iridotomy."
+      },
+      {
+        "q": "Hearing loss in elderly is independently associated with:",
+        "options": [
+          "Accelerated cognitive decline",
+          "Improved balance",
+          "Better social engagement",
+          "Increased physical activity"
+        ],
+        "correct": "Accelerated cognitive decline",
+        "explanation": "Hearing loss is independently associated with accelerated cognitive decline and increased dementia risk (2x for mild, 3x for moderate, 5x for severe). Mechanisms include cognitive load, brain atrophy, and social isolation."
+      },
+      {
+        "q": "OTC (over-the-counter) hearing aids are appropriate for:",
+        "options": [
+          "Severe hearing loss",
+          "Mild to moderate hearing loss in adults",
+          "Children with hearing impairment",
+          "Conductive hearing loss"
+        ],
+        "correct": "Mild to moderate hearing loss in adults",
+        "explanation": "Since 2022, OTC hearing aids are available in the US for adults ≥18 with perceived mild to moderate hearing loss. They don't require audiologic evaluation, fitting, or prescription."
+      },
+      {
+        "q": "מהו הקשר בין ירידת שמיעה לדמנציה?",
+        "options": [
+          "אין קשר",
+          "ירידת שמיעה קלה מכפילה את הסיכון לדמנציה",
+          "ירידת שמיעה מגינה מדמנציה",
+          "הקשר קיים רק בגברים"
+        ],
+        "correct": "ירידת שמיעה קלה מכפילה את הסיכון לדמנציה",
+        "explanation": "ירידת שמיעה קלה - סיכון כפול, בינונית - פי 3, חמורה - פי 5 לדמנציה. מנגנונים: עומס קוגניטיבי, ניוון מוחי, בידוד חברתי. תיקון שמיעה עשוי להאט ירידה קוגניטיבית (ACHIEVE trial)."
+      },
+      {
+        "q": "Diabetic retinopathy screening in an elderly Type 2 diabetic should include:",
+        "options": [
+          "Visual acuity testing only",
+          "Annual dilated fundoscopic exam",
+          "Eye exam every 5 years",
+          "Screening only if symptomatic"
+        ],
+        "correct": "Annual dilated fundoscopic exam",
+        "explanation": "All diabetic patients should have annual dilated fundoscopic examination to screen for retinopathy. Good glycemic control (HbA1c <7%) and BP control slow progression."
+      },
+      {
+        "q": "A 78-year-old notices sudden distortion of straight lines and a dark spot in central vision. The most likely diagnosis is:",
+        "options": [
+          "Nuclear cataract",
+          "Wet age-related macular degeneration",
+          "Open-angle glaucoma",
+          "Presbyopia"
+        ],
+        "correct": "Wet age-related macular degeneration",
+        "explanation": "Sudden metamorphopsia (distortion of straight lines) and central scotoma are classic for wet AMD with choroidal neovascularization. Requires urgent referral for anti-VEGF treatment."
+      },
+      {
+        "q": "מהי low vision rehabilitation ומתי היא מומלצת?",
+        "options": [
+          "משקפיים חדשים לכל מטופל",
+          "שיקום למטופלים עם חדות ראייה ≤20/70 לאחר תיקון מיטבי",
+          "ניתוח עיניים חוזר",
+          "טיפול תרופתי בלבד"
+        ],
+        "correct": "שיקום למטופלים עם חדות ראייה ≤20/70 לאחר תיקון מיטבי",
+        "explanation": "שיקום low vision מיועד למטופלים עם ראייה ≤20/70 שאינה ניתנת לתיקון נוסף. כולל מכשירי הגדלה, התאמות סביבתיות, אימון, וריפוי בעיסוק."
+      },
+      {
+        "q": "The HHIE-S (Hearing Handicap Inventory for the Elderly — Screening) is:",
+        "options": [
+          "An audiometric test",
+          "A 10-item self-report questionnaire",
+          "A physical examination tool",
+          "A genetic screening test"
+        ],
+        "correct": "A 10-item self-report questionnaire",
+        "explanation": "HHIE-S is a validated 10-item self-report screening tool for hearing handicap in elderly. Score >8 suggests hearing handicap warranting audiologic referral."
+      },
+      {
+        "q": "Cerumen impaction affects what percentage of elderly nursing home residents?",
+        "options": [
+          "5-10%",
+          "15-20%",
+          "30-65%",
+          "80-90%"
+        ],
+        "correct": "30-65%",
+        "explanation": "Cerumen impaction affects 30-65% of elderly, especially nursing home residents. It can cause up to 30-40dB conductive hearing loss and is a reversible cause of hearing impairment."
+      },
+      {
+        "q": "מהו 'Second Sight' phenomenon?",
+        "options": [
+          "שיפור ראייה בגלאוקומה",
+          "שיפור זמני בראייה קרובה בקטרקט גרעיני בגלל שינוי מיופי",
+          "ראייה כפולה",
+          "ראיית צבעים חדשים"
+        ],
+        "correct": "שיפור זמני בראייה קרובה בקטרקט גרעיני בגלל שינוי מיופי",
+        "explanation": "Second Sight מתרחש בקטרקט גרעיני: שינוי בשבירת העדשה יוצר myopic shift שזמנית משפר ראייה קרובה. מטופלים מפסיקים להזדקק למשקפי קריאה."
+      },
+      {
+        "q": "Which visual field defect pattern is characteristic of glaucoma?",
+        "options": [
+          "Central scotoma",
+          "Arcuate scotoma progressing to tunnel vision",
+          "Homonymous hemianopia",
+          "Bitemporal hemianopia"
+        ],
+        "correct": "Arcuate scotoma progressing to tunnel vision",
+        "explanation": "Glaucoma causes arcuate (Bjerrum) scotomas following the nerve fiber layer pattern, progressing to nasal step, then generalized constriction (tunnel vision). Central vision preserved until late."
+      }
+    ]
+  },
+  {
+    "topic": "נהיגה וכשירות (Driving & Competency)",
+    "flashcards": [
+      {
+        "front": "Fitness to drive assessment — key domains",
+        "back": "Vision (acuity ≥20/40, fields ≥120°), cognition (attention, processing speed, visuospatial, executive function), motor function (strength, ROM, reaction time), medical conditions (seizures, syncope, sleep apnea), medications (sedatives, opioids, anticholinergics)."
+      },
+      {
+        "q": "מהם הכלים הקוגניטיביים לסינון כושר נהיגה?",
+        "a": "Trail Making Test B (>180 sec = סיכון), Clock Drawing Test, MMSE (<24 = סיכון), MoCA, Useful Field of View (UFOV). שום מבחן קוגניטיבי בודד אינו מספיק לפסילת נהיגה."
+      },
+      {
+        "front": "Trail Making Test B and driving risk",
+        "back": "TMT-B >180 seconds: significant concern for unsafe driving. Measures executive function, visual scanning, divided attention, mental flexibility. TMT-A >60 sec also concerning. However, no single cutoff determines fitness to drive."
+      },
+      {
+        "front": "Medical conditions that impair driving",
+        "back": "Dementia (moderate+), seizure disorder (varies by jurisdiction, typically 3-12 month seizure-free), uncontrolled diabetes (hypoglycemia risk), syncope, severe sleep apnea (untreated), stroke (recent), Parkinson's (advanced), severe vision/hearing loss, substance abuse."
+      },
+      {
+        "q": "מהי חובת הדיווח של רופא על נהג לא כשיר?",
+        "a": "משתנה לפי מדינה/מדינה. בישראל: חובת דיווח לרופא מוסמך של מכון הרישוי. בארה\"ב: mandatory reporting ב-6 מדינות, voluntary בשאר. תיעוד השיחה עם המטופל חשוב. יידוע המטופל על ההמלצה להפסיק לנהוג."
+      },
+      {
+        "front": "Clock Drawing Test for driving fitness",
+        "back": "Errors in clock drawing (especially visuospatial errors, planning deficits) correlate with driving impairment. Not sufficient alone but useful screening. Assesses visuospatial skills, executive function, and abstract thinking — all critical for driving."
+      },
+      {
+        "front": "On-road driving assessment",
+        "back": "Gold standard for fitness to drive. Conducted by certified driving rehabilitation specialist. Tests real-world driving skills in controlled and traffic conditions. Assesses route finding, lane keeping, gap acceptance, speed control, mirror use. Results: safe, conditional (with adaptations), or unsafe."
+      },
+      {
+        "q": "מהן ההתאמות האפשריות לנהגים מבוגרים?",
+        "a": "הגבלת נהיגה בלילה, מרחק מבית, כבישים מוכרים בלבד, לא בכבישים מהירים, לא בשעות עומס. התאמות לרכב: מראות מורחבות, פדלים מותאמים, היגוי עזר, בקרת מהירות."
+      },
+      {
+        "front": "Medications that significantly impair driving",
+        "back": "Benzodiazepines (most evidence), opioids, sedating antihistamines, anticholinergics, muscle relaxants, some antidepressants (TCAs, trazodone), antipsychotics, anticonvulsants. Risk increases with polypharmacy and new prescriptions. Black box warnings on some medications."
+      },
+      {
+        "front": "Pepper Visual Skills for Driving Test (PVSDT)",
+        "back": "Assesses visual recognition skills needed for driving: road signs, traffic signals, and common driving symbols at varying distances and contrasts. Scored 0-19 errors; ≥7 errors suggests need for comprehensive driving evaluation."
+      },
+      {
+        "q": "מה ההנחיות להפסקת נהיגה בדמנציה?",
+        "a": "CDR 0.5 (MCI): מעקב צמוד, הערכת נהיגה. CDR 1 (דמנציה קלה): רבים אינם בטוחים, הערכה פרטנית. CDR ≥2: יש להפסיק נהיגה. AAN: דמנציה ברמת CDR 1 מהווה סיכון כפול לתאונות."
+      },
+      {
+        "front": "Approach to the driving discussion with patients",
+        "back": "Start early, before impairment is severe. Frame as safety concern. Discuss alternatives (family, taxi, public transport, ride services). Offer gradual restrictions before complete cessation. Address emotional impact (independence, identity). Document discussion. Involve family."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו ציון Trail Making Test B שמעלה חשש לנהיגה לא בטוחה?",
+        "options": [
+          ">60 שניות",
+          ">90 שניות",
+          ">120 שניות",
+          ">180 שניות"
+        ],
+        "correct": ">180 שניות",
+        "explanation": "TMT-B מעל 180 שניות מעלה חשש משמעותי לנהיגה לא בטוחה. עם זאת, אין ציון בודד שפוסל נהיגה — נדרשת הערכה מקיפה."
+      },
+      {
+        "q": "The gold standard assessment for fitness to drive is:",
+        "options": [
+          "MMSE score",
+          "Clinical judgment alone",
+          "On-road driving evaluation",
+          "Trail Making Test B"
+        ],
+        "correct": "On-road driving evaluation",
+        "explanation": "An on-road driving evaluation by a certified driving rehabilitation specialist is the gold standard. No office-based test alone can definitively determine driving fitness."
+      },
+      {
+        "q": "איזו קבוצת תרופות מעלה את הסיכון לתאונות דרכים ביותר?",
+        "options": [
+          "NSAIDs",
+          "בנזודיאזפינים",
+          "סטטינים",
+          "ACE inhibitors"
+        ],
+        "correct": "בנזודיאזפינים",
+        "explanation": "בנזודיאזפינים הם קבוצת התרופות עם הראיות החזקות ביותר לפגיעה ביכולת נהיגה. במיוחד בנזודיאזפינים ארוכי טווח בקשישים."
+      },
+      {
+        "q": "At what CDR (Clinical Dementia Rating) score should driving be stopped?",
+        "options": [
+          "CDR 0.5",
+          "CDR 1",
+          "CDR 2 or higher",
+          "CDR 3 only"
+        ],
+        "correct": "CDR 2 or higher",
+        "explanation": "CDR ≥2 (moderate dementia): driving should cease. CDR 1 (mild): individualized assessment needed, many are unsafe. CDR 0.5 (MCI): close monitoring and periodic reassessment."
+      },
+      {
+        "q": "Minimum visual acuity requirement for driving in most jurisdictions is:",
+        "options": [
+          "20/20",
+          "20/40",
+          "20/70",
+          "20/100"
+        ],
+        "correct": "20/40",
+        "explanation": "Most US states require binocular visual acuity of 20/40 or better (with correction) for unrestricted driving. Some allow 20/70 with restrictions. Visual field requirement is typically ≥120°."
+      },
+      {
+        "q": "מהו UFOV (Useful Field of View)?",
+        "options": [
+          "בדיקת שדה ראייה סטנדרטית",
+          "מבחן ממוחשב לקשב חזותי ומהירות עיבוד",
+          "בדיקת עיניים באופתלמוסקופ",
+          "מבחן זיכרון חזותי"
+        ],
+        "correct": "מבחן ממוחשב לקשב חזותי ומהירות עיבוד",
+        "explanation": "UFOV מודד קשב חזותי, מהירות עיבוד, וקשב מפוצל. ירידה של 40%+ ב-UFOV מעלה סיכון לתאונות פי 2. מהכלים הטובים ביותר לחיזוי כושר נהיגה."
+      },
+      {
+        "q": "Which cognitive domain is MOST critical for safe driving?",
+        "options": [
+          "Verbal memory",
+          "Executive function and attention",
+          "Language fluency",
+          "Emotional regulation"
+        ],
+        "correct": "Executive function and attention",
+        "explanation": "Executive function (planning, judgment, divided attention, mental flexibility) is most critical for safe driving. This is why TMT-B and UFOV are the best cognitive predictors of driving performance."
+      },
+      {
+        "q": "An 80-year-old with mild dementia asks about driving. The best initial approach is:",
+        "options": [
+          "Immediately revoke driving privileges",
+          "Refer for on-road driving evaluation",
+          "Tell family to hide the car keys",
+          "Prescribe a driving simulator test"
+        ],
+        "correct": "Refer for on-road driving evaluation",
+        "explanation": "Mild dementia (CDR 1) does not automatically disqualify driving. An on-road evaluation by a certified specialist provides objective assessment. Some individuals with mild dementia can still drive safely with restrictions."
+      },
+      {
+        "q": "כמה מדינות בארה\"ב מחייבות דיווח חובה של רופא על נהג לא כשיר?",
+        "options": [
+          "כל 50",
+          "6",
+          "25",
+          "אף אחת"
+        ],
+        "correct": "6",
+        "explanation": "רק 6 מדינות (CA, DE, NJ, NV, OR, PA) מחייבות דיווח חובה. בשאר — voluntary. בכולן, הרופא מוגן מתביעה בדיווח בתום לב."
+      },
+      {
+        "q": "Driving adaptations for elderly drivers include all EXCEPT:",
+        "options": [
+          "Hand controls for pedals",
+          "Wide-angle mirrors",
+          "Self-driving vehicle mode",
+          "Restricted driving to daytime only"
+        ],
+        "correct": "Self-driving vehicle mode",
+        "explanation": "Legitimate adaptations include hand controls, spinner knobs, wide mirrors, left foot accelerator, and driving restrictions (daytime, familiar routes, no highways). Fully autonomous driving is not yet a standard adaptation."
+      },
+      {
+        "q": "The MMSE score that raises concern about driving fitness is:",
+        "options": [
+          "<28",
+          "<26",
+          "<24",
+          "<20"
+        ],
+        "correct": "<24",
+        "explanation": "MMSE <24 raises concern for unsafe driving but alone is insufficient to determine fitness. Must be combined with other assessments. Many with MMSE 20-24 may still drive safely."
+      },
+      {
+        "q": "מהו Pepper Visual Skills for Driving Test?",
+        "options": [
+          "בדיקת שדה ראייה היקפי",
+          "מבחן זיהוי תמרורים ואותות תנועה",
+          "בדיקת ראייה בלילה",
+          "מבחן תגובה לבלימה"
+        ],
+        "correct": "מבחן זיהוי תמרורים ואותות תנועה",
+        "explanation": "PVSDT בודק יכולת זיהוי חזותית של תמרורים, רמזורים, וסימני דרך במרחקים וניגודיות שונים. ≥7 שגיאות מחייב הערכת נהיגה מקיפה."
+      },
+      {
+        "q": "After a stroke, driving should typically be restricted for at least:",
+        "options": [
+          "1 week",
+          "1 month",
+          "3-6 months",
+          "Permanently"
+        ],
+        "correct": "3-6 months",
+        "explanation": "Post-stroke: typically 3-6 month driving restriction depending on severity and recovery. Formal driving evaluation recommended before resuming. Visual field defects and neglect are key concerns."
+      },
+      {
+        "q": "Which seizure-free interval is most commonly required before driving is permitted?",
+        "options": [
+          "1 month",
+          "3 months",
+          "6-12 months",
+          "5 years"
+        ],
+        "correct": "6-12 months",
+        "explanation": "Most jurisdictions require 6-12 months seizure-free before driving. Varies: 3 months (UK for provoked seizures) to 12 months (many US states for unprovoked). Must also be on stable medication."
+      },
+      {
+        "q": "מהי הגישה המומלצת לשיחה על הפסקת נהיגה עם מטופל קשיש?",
+        "options": [
+          "להודיע על פסילה מיידית",
+          "להתחיל מוקדם, לדון בחלופות, להציע הגבלות הדרגתיות",
+          "להתעלם אם אין תלונות",
+          "להטיל על המשפחה לטפל"
+        ],
+        "correct": "להתחיל מוקדם, לדון בחלופות, להציע הגבלות הדרגתיות",
+        "explanation": "הגישה המומלצת: שיחה מוקדמת וכנה, הצעת חלופות תחבורה, הגבלות הדרגתיות, מעורבות משפחה, התייחסות להשפעה הרגשית (עצמאות, זהות), תיעוד."
+      },
+      {
+        "q": "An elderly patient with untreated obstructive sleep apnea (OSA) and driving:",
+        "options": [
+          "OSA has no effect on driving",
+          "Untreated severe OSA significantly increases crash risk",
+          "Only mild OSA affects driving",
+          "OSA only affects night driving"
+        ],
+        "correct": "Untreated severe OSA significantly increases crash risk",
+        "explanation": "Untreated severe OSA increases motor vehicle crash risk 2-7x due to excessive daytime sleepiness. CPAP treatment reduces risk to near-baseline. Commercial drivers require documentation of treatment compliance."
+      },
+      {
+        "q": "The Clock Drawing Test assesses which driving-relevant skill?",
+        "options": [
+          "Auditory processing",
+          "Visuospatial and executive function",
+          "Physical strength",
+          "Color vision"
+        ],
+        "correct": "Visuospatial and executive function",
+        "explanation": "CDT assesses visuospatial ability, planning/executive function, and abstract thinking — all critical for driving tasks like judging distances, navigating intersections, and route planning."
+      },
+      {
+        "q": "שלילת רישיון נהיגה בקשישים קשורה ל:",
+        "options": [
+          "שיפור בבריאות",
+          "דיכאון, בידוד חברתי, ותלות",
+          "חיסכון כלכלי",
+          "שיפור בכושר גופני"
+        ],
+        "correct": "דיכאון, בידוד חברתי, ותלות",
+        "explanation": "הפסקת נהיגה קשורה לדיכאון, בידוד חברתי, ירידה בניידות ועצמאות, ואף תמותה מוגברת. יש לתכנן חלופות תחבורה ותמיכה."
+      },
+      {
+        "q": "Which statement about elderly drivers is TRUE?",
+        "options": [
+          "They have the highest crash rate per mile driven",
+          "They are the safest drivers overall",
+          "They never cause fatal crashes",
+          "Their crash rate per mile is lowest of all ages"
+        ],
+        "correct": "They have the highest crash rate per mile driven",
+        "explanation": "Elderly drivers have the highest crash rate per mile driven (though not per licensed driver). They are overrepresented in intersection crashes, left-turn crashes, and crashes with fatal outcomes due to frailty."
+      },
+      {
+        "q": "Polypharmacy affects driving primarily through:",
+        "options": [
+          "Drug interactions causing sedation and impaired cognition",
+          "Pill burden reducing grip strength",
+          "Medication costs causing financial distress",
+          "Need for frequent pharmacy visits"
+        ],
+        "correct": "Drug interactions causing sedation and impaired cognition",
+        "explanation": "Polypharmacy increases driving risk through cumulative sedation, anticholinergic effects, drug interactions, and impaired cognition/reaction time. Risk is greatest with new medications and dose changes."
+      },
+      {
+        "q": "מהו הכלי הטוב ביותר לחיזוי כושר נהיגה מבחינה קוגניטיבית?",
+        "options": [
+          "MMSE בלבד",
+          "UFOV (Useful Field of View)",
+          "GDS (Geriatric Depression Scale)",
+          "Mini-Cog"
+        ],
+        "correct": "UFOV (Useful Field of View)",
+        "explanation": "UFOV הוא הכלי הממוחשב עם הראיות החזקות ביותר לחיזוי כושר נהיגה. מודד קשב חזותי, מהירות עיבוד, וקשב מפוצל — כולם קריטיים לנהיגה."
+      },
+      {
+        "q": "A patient with epilepsy well-controlled on medication for 2 years wants to resume driving. You should:",
+        "options": [
+          "Refuse to allow driving permanently",
+          "Clear for driving after confirming jurisdiction-specific seizure-free interval is met",
+          "Recommend driving only with a passenger",
+          "Order an EEG before clearing"
+        ],
+        "correct": "Clear for driving after confirming jurisdiction-specific seizure-free interval is met",
+        "explanation": "With documented seizure-free interval (varies by jurisdiction, typically 6-12 months), stable medication, and physician clearance, driving can resume. Document the discussion and clearance."
+      }
+    ]
+  },
+  {
+    "topic": "חיסונים בקשיש (Immunizations in Elderly)",
+    "flashcards": [
+      {
+        "front": "Pneumococcal vaccine recommendations for adults ≥65",
+        "back": "PCV20 (Prevnar20) single dose — preferred. OR PCV15 followed by PPSV23 (≥1 year later). If previously received PPSV23 only: give PCV20 ≥1 year after. Immunosenescence reduces response, but still significantly reduces invasive pneumococcal disease."
+      },
+      {
+        "q": "מהי המלצת החיסון נגד שפעת בקשישים?",
+        "a": "חיסון שנתי לכל מבוגר ≥65. מועדף: high-dose (Fluzone HD, 4x antigen) או adjuvanted (Fluad). יעילות: 24-40% בהפחתת מחלה סימפטומטית, 40-60% בהפחתת אשפוזים ותמותה. לחסן באוקטובר-נובמבר."
+      },
+      {
+        "front": "Shingrix (recombinant zoster vaccine) — key facts",
+        "back": "2 doses, 2-6 months apart. For adults ≥50 or immunocompromised ≥19. Efficacy: >90% across all age groups (vs Zostavax 51% which was discontinued). Can give regardless of prior Zostavax or prior shingles. Most common SE: injection site pain, myalgia, fatigue."
+      },
+      {
+        "front": "Tdap/Td in elderly",
+        "back": "One-time Tdap (Boostrix) if never received, regardless of interval since last Td. Then Td or Tdap booster every 10 years. Wound management: Tdap/Td if >5 years since last dose for dirty wounds. Tdap also recommended for grandparents in contact with infants (cocooning)."
+      },
+      {
+        "q": "מהן ההמלצות לחיסון COVID-19 בקשישים?",
+        "a": "חיסון מעודכן שנתי מומלץ לכל מבוגר ≥65 (ACIP). קשישים בסיכון גבוה יותר לתחלואה קשה. מרווח ≥2 חודשים ממנה אחרונה. ניתן לתת עם חיסון שפעת באותו ביקור."
+      },
+      {
+        "front": "Hepatitis B vaccine in elderly",
+        "back": "Universal HepB vaccination now recommended for all adults 19-59. For ≥60: shared clinical decision-making. Options: Heplisav-B (2 doses, 1 month apart — preferred, higher immunogenicity) or Engerix-B/Recombivax (3 doses over 6 months). Check anti-HBs after vaccination in immunocompromised."
+      },
+      {
+        "front": "Immunosenescence and vaccine response",
+        "back": "Aging immune system: decreased naive T/B cells, reduced antibody affinity, impaired dendritic cell function, chronic low-grade inflammation (inflammaging). Impacts: lower vaccine efficacy, shorter duration of protection. Strategies: higher antigen doses, adjuvants, booster doses."
+      },
+      {
+        "q": "מהן התוויות נגד לחיסון בקשישים?",
+        "a": "מוחלטות: אנפילקסיס למרכיב של החיסון, מחלה חריפה חמורה. יחסיות: דיכוי חיסוני חמור (חיסונים חיים בלבד — לא רלוונטי כיום). חיסון אינו אקטיבי = לא מכיל וירוס חי (Shingrix, PCV, שפעת מושבת)."
+      },
+      {
+        "front": "Vaccine co-administration in elderly",
+        "back": "Most vaccines can be given simultaneously at different anatomic sites. Flu + COVID at same visit: safe and recommended. PCV + Shingrix at same visit: acceptable if needed (may increase side effects). Space live vaccines ≥4 weeks apart (rarely relevant in elderly)."
+      },
+      {
+        "q": "מהו חיסון RSV בקשישים?",
+        "a": "Arexvy (GSK) ו-Abrysvo (Pfizer) אושרו למבוגרים ≥60. מנה בודדת. ACIP: shared clinical decision-making (לא המלצה אוניברסלית). יעילות: 83-94% נגד מחלת RSV תחתונה. RSV גורם ל-6,000-10,000 מקרי מוות/שנה בקשישים בארה\"ב."
+      },
+      {
+        "front": "High-dose influenza vaccine rationale",
+        "back": "Contains 4x the antigen of standard dose (60μg vs 15μg per strain). 24% more effective than standard dose in preventing lab-confirmed flu in ≥65. Overcomes immunosenescence-related reduced antibody response. Preferred by ACIP for adults ≥65."
+      },
+      {
+        "front": "Catch-up vaccination schedule for elderly",
+        "back": "Assess at every visit: flu (annual), COVID (annual), pneumococcal (PCV20 if not received), Shingrix (if ≥50 and no prior), Tdap (if never received), HepB (shared decision if ≥60). Use immunization information systems (IIS) to verify history."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו חיסון הפנאומוקוק המומלץ למבוגר ≥65 שלא חוסן בעבר?",
+        "options": [
+          "PPSV23 בלבד",
+          "PCV13 בלבד",
+          "PCV20 מנה בודדת",
+          "PCV13 + PPSV23 ביחד"
+        ],
+        "correct": "PCV20 מנה בודדת",
+        "explanation": "ACIP ממליץ PCV20 מנה בודדת כאופציה המועדפת למבוגרים ≥65 שלא חוסנו בעבר. חלופה: PCV15 ואחריו PPSV23 (≥1 שנה)."
+      },
+      {
+        "q": "Shingrix vaccine efficacy in adults ≥70 is approximately:",
+        "options": [
+          "51%",
+          "70%",
+          ">90%",
+          "30%"
+        ],
+        "correct": ">90%",
+        "explanation": "Shingrix maintains >90% efficacy across all age groups including ≥70, unlike Zostavax which had only 38% efficacy in ≥70. This is a major advantage of the recombinant adjuvanted formulation."
+      },
+      {
+        "q": "איזה חיסון שפעת מועדף למבוגרים ≥65?",
+        "options": [
+          "חיסון שפעת סטנדרטי",
+          "חיסון high-dose או adjuvanted",
+          "חיסון חי מוחלש (FluMist)",
+          "אין עדיפות"
+        ],
+        "correct": "חיסון high-dose או adjuvanted",
+        "explanation": "ACIP ממליץ על חיסון high-dose (Fluzone HD) או adjuvanted (Fluad) למבוגרים ≥65. High-dose מכיל פי 4 אנטיגן ויעיל ב-24% יותר מהסטנדרטי."
+      },
+      {
+        "q": "Hepatitis B vaccination for adults ≥60 is recommended as:",
+        "options": [
+          "Universal for all",
+          "Shared clinical decision-making",
+          "Only for healthcare workers",
+          "Not recommended at any age over 60"
+        ],
+        "correct": "Shared clinical decision-making",
+        "explanation": "ACIP recommends universal HepB vaccination for ages 19-59. For ≥60, it's shared clinical decision-making based on risk factors (healthcare exposure, diabetes, sexual risk, travel, liver disease)."
+      },
+      {
+        "q": "How many doses of Shingrix are required?",
+        "options": [
+          "1 dose",
+          "2 doses, 2-6 months apart",
+          "3 doses over 6 months",
+          "Annual booster"
+        ],
+        "correct": "2 doses, 2-6 months apart",
+        "explanation": "Shingrix requires 2 doses, with the second dose given 2-6 months after the first. Both doses are needed for optimal protection. Can be given regardless of prior Zostavax or shingles history."
+      },
+      {
+        "q": "מהי immunosenescence?",
+        "options": [
+          "חיסון חדש לקשישים",
+          "הזדקנות מערכת החיסון וירידה בתפקודה",
+          "אלרגיה לחיסונים",
+          "חיסון מוחלש"
+        ],
+        "correct": "הזדקנות מערכת החיסון וירידה בתפקודה",
+        "explanation": "Immunosenescence: הזדקנות מערכת החיסון הכוללת ירידה בתאי T/B naïve, ירידה בזיקת נוגדנים, ודלקת כרונית ברמה נמוכה (inflammaging). מפחיתה יעילות חיסונים."
+      },
+      {
+        "q": "A 70-year-old received PPSV23 two years ago. What pneumococcal vaccine should be given now?",
+        "options": [
+          "Repeat PPSV23",
+          "PCV20 (≥1 year after PPSV23)",
+          "No further pneumococcal vaccine needed",
+          "PCV13 only"
+        ],
+        "correct": "PCV20 (≥1 year after PPSV23)",
+        "explanation": "If previously received PPSV23 only, give PCV20 at least 1 year after PPSV23. PCV20 provides broader conjugate coverage and better immune memory than polysaccharide alone."
+      },
+      {
+        "q": "Which vaccine is contraindicated in severely immunocompromised elderly?",
+        "options": [
+          "Shingrix",
+          "PCV20",
+          "High-dose influenza",
+          "None of the above — all are inactivated/recombinant"
+        ],
+        "correct": "None of the above — all are inactivated/recombinant",
+        "explanation": "Shingrix (recombinant), PCV20 (conjugate), and high-dose flu (inactivated) are all non-live vaccines safe in immunocompromised patients. Live vaccines (varicella, MMR, live flu) are contraindicated."
+      },
+      {
+        "q": "כמה מקרי מוות גורם RSV בקשישים בארה\"ב בשנה?",
+        "options": [
+          "100-500",
+          "1,000-2,000",
+          "6,000-10,000",
+          "50,000"
+        ],
+        "correct": "6,000-10,000",
+        "explanation": "RSV גורם ל-60,000-160,000 אשפוזים ו-6,000-10,000 מקרי מוות בשנה בקשישים בארה\"ב. חיסוני RSV חדשים (Arexvy, Abrysvo) אושרו למבוגרים ≥60."
+      },
+      {
+        "q": "Tdap booster is specifically recommended for elderly who:",
+        "options": [
+          "Have chronic heart disease",
+          "Are grandparents in close contact with infants",
+          "Take immunosuppressive medications",
+          "Have a history of tetanus"
+        ],
+        "correct": "Are grandparents in close contact with infants",
+        "explanation": "Tdap is recommended for all adults who haven't received it, and especially for grandparents/caregivers of infants (cocooning strategy) to prevent pertussis transmission to vulnerable newborns."
+      },
+      {
+        "q": "Can influenza and COVID-19 vaccines be given at the same visit?",
+        "options": [
+          "No, must wait 2 weeks",
+          "Yes, at different anatomic sites",
+          "Only if patient is over 75",
+          "No, must wait 4 weeks"
+        ],
+        "correct": "Yes, at different anatomic sites",
+        "explanation": "Co-administration of flu and COVID vaccines at the same visit is safe and recommended by ACIP. Give in different arms to distinguish local reactions."
+      },
+      {
+        "q": "מהו היתרון של Heplisav-B על פני חיסוני הפטיטיס B מסורתיים?",
+        "options": [
+          "זול יותר",
+          "מנה בודדת",
+          "2 מנות בלבד עם אימונוגניות גבוהה יותר",
+          "אין צורך בהזרקה"
+        ],
+        "correct": "2 מנות בלבד עם אימונוגניות גבוהה יותר",
+        "explanation": "Heplisav-B דורש רק 2 מנות (חודש מרווח) במקום 3, עם אימונוגניות גבוהה יותר בקשישים ובסוכרתיים. מכיל אדג'ובנט CpG 1018."
+      },
+      {
+        "q": "The strategy to overcome immunosenescence in vaccination includes all EXCEPT:",
+        "options": [
+          "Higher antigen doses",
+          "Adjuvanted formulations",
+          "Giving more vaccines simultaneously",
+          "Booster doses"
+        ],
+        "correct": "Giving more vaccines simultaneously",
+        "explanation": "Strategies to overcome immunosenescence: higher antigen doses (high-dose flu), adjuvants (Fluad, Shingrix), recombinant technology, booster doses. Giving more vaccines simultaneously doesn't address immune aging."
+      },
+      {
+        "q": "A patient received Zostavax 3 years ago. Should they receive Shingrix?",
+        "options": [
+          "No, Zostavax provides lifelong protection",
+          "Yes, Shingrix can be given ≥2 months after Zostavax",
+          "Only if they develop shingles",
+          "Wait 10 years"
+        ],
+        "correct": "Yes, Shingrix can be given ≥2 months after Zostavax",
+        "explanation": "Shingrix is recommended regardless of prior Zostavax. Wait ≥2 months after Zostavax (or ≥2 months after a shingles episode) before giving Shingrix. Shingrix provides superior, longer-lasting protection."
+      },
+      {
+        "q": "מהי עדיפות החיסון הפנאומוקוקלי PCV על פני PPSV?",
+        "options": [
+          "PPSV יעיל יותר",
+          "PCV יוצר זיכרון חיסוני טוב יותר (T-cell dependent)",
+          "PCV זול יותר",
+          "אין הבדל"
+        ],
+        "correct": "PCV יוצר זיכרון חיסוני טוב יותר (T-cell dependent)",
+        "explanation": "PCV (conjugate) יוצר תגובה T-cell dependent עם זיכרון חיסוני ארוך טווח, BoI חיסוני מוגבר, והפחתת נשאות. PPSV (polysaccharide) יוצר תגובה T-cell independent חלשה יותר."
+      },
+      {
+        "q": "Which influenza vaccine formulation is live attenuated?",
+        "options": [
+          "Fluzone High-Dose",
+          "Fluad",
+          "FluMist (LAIV)",
+          "Flublok"
+        ],
+        "correct": "FluMist (LAIV)",
+        "explanation": "FluMist (LAIV) is the only live attenuated flu vaccine. It is NOT recommended for adults ≥50 or immunocompromised. Elderly should receive inactivated: high-dose (Fluzone HD), adjuvanted (Fluad), or recombinant (Flublok)."
+      },
+      {
+        "q": "RSV vaccine for elderly is recommended by ACIP as:",
+        "options": [
+          "Universal for all ≥60",
+          "Shared clinical decision-making for ≥60",
+          "Only for nursing home residents",
+          "Not yet recommended"
+        ],
+        "correct": "Shared clinical decision-making for ≥60",
+        "explanation": "ACIP recommends RSV vaccination for adults ≥60 through shared clinical decision-making (not universal). Consider for those with chronic lung/heart disease, immunocompromised, and nursing home residents."
+      },
+      {
+        "q": "מהו המרווח המינימלי בין PCV15 ל-PPSV23?",
+        "options": [
+          "4 שבועות",
+          "8 שבועות",
+          "שנה",
+          "5 שנים"
+        ],
+        "correct": "שנה",
+        "explanation": "ACIP ממליץ על מרווח של שנה לפחות בין PCV15 ל-PPSV23. מרווח מינימלי של 8 שבועות אפשרי במקרים של סיכון גבוה (למשל דיכוי חיסוני)."
+      },
+      {
+        "q": "The most common side effect of Shingrix is:",
+        "options": [
+          "Anaphylaxis",
+          "Injection site pain and myalgia",
+          "Fever >40°C",
+          "Rash"
+        ],
+        "correct": "Injection site pain and myalgia",
+        "explanation": "Shingrix is highly reactogenic: injection site pain (~78%), myalgia (~44%), fatigue (~44%). These are self-limiting (2-3 days). Serious adverse events are rare. The strong reactogenicity reflects the potent adjuvant system."
+      },
+      {
+        "q": "An 85-year-old asks if they are 'too old' for vaccines. Your response should be:",
+        "options": [
+          "Agree — vaccines are less effective at this age",
+          "Recommend flu only",
+          "Explain that vaccines still provide meaningful protection and review the full schedule",
+          "Defer vaccination until they are healthier"
+        ],
+        "correct": "Explain that vaccines still provide meaningful protection and review the full schedule",
+        "explanation": "No age is too old for vaccination. While immunosenescence reduces efficacy, vaccines still significantly reduce hospitalization, complications, and death. Review and update the full recommended schedule."
+      },
+      {
+        "q": "חיסון שפעת יש לתת באופן אידיאלי בחודשים:",
+        "options": [
+          "ינואר-פברואר",
+          "ספטמבר-אוקטובר",
+          "מרץ-אפריל",
+          "יולי-אוגוסט"
+        ],
+        "correct": "ספטמבר-אוקטובר",
+        "explanation": "החיסון מומלץ בספטמבר-אוקטובר, לפני תחילת עונת השפעת. חיסון מוקדם מדי (יולי-אוגוסט) עלול להוביל לירידת חסינות בסוף העונה, במיוחד בקשישים."
+      },
+      {
+        "q": "Which vaccine was discontinued and replaced by Shingrix?",
+        "options": [
+          "Pneumovax",
+          "Zostavax",
+          "Gardasil",
+          "Prevnar"
+        ],
+        "correct": "Zostavax",
+        "explanation": "Zostavax (live attenuated zoster vaccine) was discontinued in the US in November 2020, replaced by Shingrix (recombinant). Shingrix has >90% efficacy vs Zostavax's 51%, doesn't wane as rapidly, and is safe in immunocompromised."
+      }
+    ]
+  },
+  {
+    "topic": "דמנציה וסקולרית ו-DLB (Vascular Dementia & DLB)",
+    "flashcards": [
+      {
+        "front": "Hachinski Ischemic Score",
+        "back": "13-item clinical scale differentiating vascular from degenerative dementia. Score ≥7: vascular, ≤4: degenerative (Alzheimer's), 5-6: mixed. Items: abrupt onset (+2), stepwise deterioration (+1), somatic complaints (+1), emotional incontinence (+1), HTN history (+1), stroke history (+2), focal neuro signs (+2), focal symptoms (+2), fluctuating course (+2), nocturnal confusion (+1), relative preservation of personality (+1), depression (+1), atherosclerosis evidence (+1)."
+      },
+      {
+        "q": "מהם קריטריוני NINDS-AIREN לדמנציה וסקולרית?",
+        "a": "1) דמנציה; 2) מחלת כלי דם מוחיים (סימנים פוקליים + הדמיה); 3) קשר בין 1 ל-2 (דמנציה תוך 3 חודשים משבץ, או הידרדרות פתאומית/תנודתית). Probable: כל 3. Possible: דמנציה + סימנים פוקליים ללא הדמיה, או ללא קשר זמני ברור."
+      },
+      {
+        "front": "Strategic infarct dementia",
+        "back": "Single infarct in critical location causing disproportionate cognitive impairment. Key locations: angular gyrus (aphasia, alexia, agraphia), thalamus (amnesia, apathy), caudate (executive dysfunction, behavioral changes), hippocampus (memory), PCA territory (visual agnosia)."
+      },
+      {
+        "front": "Binswanger disease (subcortical arteriosclerotic encephalopathy)",
+        "back": "Chronic progressive subcortical vascular dementia. Features: extensive white matter disease, lacunar infarcts, executive dysfunction (more than memory), gait apraxia, urinary incontinence, pseudobulbar palsy. MRI: periventricular white matter hyperintensities. Associated with chronic hypertension."
+      },
+      {
+        "q": "מהן 4 התכונות הליבה של DLB?",
+        "a": "1) תנודתיות קוגניטיבית (fluctuating cognition); 2) הזיות חזותיות חוזרות ומפורטות; 3) פרקינסוניזם ספונטני; 4) הפרעת התנהגות שנת REM. 2 תכונות ליבה = probable DLB; 1 = possible."
+      },
+      {
+        "front": "McKeith criteria for DLB (2017 revision)",
+        "back": "Core features (need 2 for probable, 1 for possible): fluctuating cognition, visual hallucinations, RBD, parkinsonism. Indicative biomarkers: reduced DAT uptake (DaTscan), polysomnographic RBD, low MIBG cardiac uptake. Supportive: neuroleptic sensitivity, falls, syncope, autonomic dysfunction, hypersomnia, depression."
+      },
+      {
+        "front": "1-Year Rule: DLB vs PDD",
+        "back": "If dementia onset within 1 year of parkinsonism → DLB. If parkinsonism established ≥1 year before dementia → PDD (Parkinson's Disease Dementia). Both are Lewy body spectrum disorders with similar pathology. The distinction is primarily clinical/research convention."
+      },
+      {
+        "q": "מדוע נוירולפטיקה מסוכנים ב-DLB?",
+        "a": "רגישות קיצונית לנוירולפטיקה (neuroleptic sensitivity): תגובות חמורות ב-30-50% מהמטופלים. כוללת: הידרדרות קוגניטיבית חדה, פרקינסוניזם חמור, NMS, sedation, ותמותה מוגברת. גם atypicals (olanzapine, risperidone) מסוכנים. אם חייבים — quetiapine במינון נמוך מאוד."
+      },
+      {
+        "front": "Cholinesterase inhibitors in DLB",
+        "back": "More effective in DLB than in Alzheimer's. Rivastigmine has strongest evidence (improves hallucinations, cognition, behavioral symptoms). Donepezil also used. May improve fluctuations and visual hallucinations specifically. Start low, go slow. Monitor for bradycardia (DLB patients have autonomic dysfunction)."
+      },
+      {
+        "front": "DAT scan (DaTscan/ioflupane SPECT)",
+        "back": "Images dopamine transporter in striatum. Reduced uptake in DLB and PDD (dopaminergic degeneration). Normal in Alzheimer's. Helps distinguish DLB from AD when clinical picture is unclear. Sensitivity 78%, specificity 90% for DLB. One of the indicative biomarkers in McKeith criteria."
+      },
+      {
+        "q": "מהי הפרעת התנהגות שנת REM (RBD)?",
+        "a": "אובדן אטוניית שרירים בשנת REM → המטופל 'מבצע' חלומות (בעיטות, צעקות, מכות). מאובחן בפוליסומנוגרפיה. מקדים DLB/PDD ב-10+ שנים ב-80% מהמקרים (פרודרום). קשור גם ל-MSA. טיפול: melatonin (קו ראשון), clonazepam (קו שני)."
+      },
+      {
+        "front": "Vascular cognitive impairment — prevention and treatment",
+        "back": "Prevention: control HTN (most important), diabetes, dyslipidemia, smoking cessation, exercise, Mediterranean diet. Treatment: no approved cognitive enhancers. ChEIs have modest benefit in mixed dementia. Memantine may help. Focus on vascular risk factor management and rehabilitation."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהו ציון Hachinski המצביע על דמנציה וסקולרית?",
+        "options": [
+          "≤4",
+          "5-6",
+          "≥7",
+          "≥10"
+        ],
+        "correct": "≥7",
+        "explanation": "ציון Hachinski ≥7 מצביע על דמנציה וסקולרית. ≤4 = דגנרטיבית (אלצהיימר). 5-6 = מעורבת."
+      },
+      {
+        "q": "The 1-year rule distinguishes DLB from PDD: dementia within 1 year of parkinsonism suggests:",
+        "options": [
+          "Parkinson's Disease Dementia",
+          "Dementia with Lewy Bodies",
+          "Alzheimer's disease",
+          "Vascular dementia"
+        ],
+        "correct": "Dementia with Lewy Bodies",
+        "explanation": "If cognitive impairment develops within 1 year of parkinsonism onset → DLB. If parkinsonism is well-established (≥1 year) before dementia → PDD."
+      },
+      {
+        "q": "איזו תכונה אינה חלק מתכונות הליבה של DLB?",
+        "options": [
+          "הזיות חזותיות",
+          "תנודתיות קוגניטיבית",
+          "אובדן זיכרון מוקדם",
+          "פרקינסוניזם ספונטני"
+        ],
+        "correct": "אובדן זיכרון מוקדם",
+        "explanation": "תכונות ליבה של DLB: תנודתיות קוגניטיבית, הזיות חזותיות, פרקינסוניזם, RBD. אובדן זיכרון בולט מוקדם אופייני יותר לאלצהיימר."
+      },
+      {
+        "q": "Neuroleptic sensitivity in DLB affects approximately what percentage of patients?",
+        "options": [
+          "5-10%",
+          "15-20%",
+          "30-50%",
+          "80-90%"
+        ],
+        "correct": "30-50%",
+        "explanation": "30-50% of DLB patients develop severe neuroleptic sensitivity reactions including worsened cognition, severe parkinsonism, NMS-like syndrome, and increased mortality. Even atypical antipsychotics can trigger this."
+      },
+      {
+        "q": "The most effective pharmacologic treatment for visual hallucinations in DLB is:",
+        "options": [
+          "Haloperidol",
+          "Rivastigmine",
+          "Memantine",
+          "Olanzapine"
+        ],
+        "correct": "Rivastigmine",
+        "explanation": "Cholinesterase inhibitors (rivastigmine has strongest evidence) are first-line for DLB hallucinations. They improve hallucinations, cognition, and behavior. Antipsychotics should be avoided due to neuroleptic sensitivity."
+      },
+      {
+        "q": "מהו הטיפול הראשון בהפרעת התנהגות שנת REM?",
+        "options": [
+          "בנזודיאזפינים",
+          "מלטונין",
+          "SSRI",
+          "נוירולפטיקה"
+        ],
+        "correct": "מלטונין",
+        "explanation": "מלטונין (3-12mg) הוא קו ראשון ל-RBD: בטוח, פחות תופעות לוואי. Clonazepam (0.25-2mg) קו שני. RBD מקדים DLB/PDD ב-80% מהמקרים."
+      },
+      {
+        "q": "DaTscan is useful in distinguishing DLB from:",
+        "options": [
+          "Parkinson's disease",
+          "Alzheimer's disease",
+          "Vascular dementia",
+          "Frontotemporal dementia"
+        ],
+        "correct": "Alzheimer's disease",
+        "explanation": "DaTscan shows reduced dopamine transporter uptake in DLB (and PDD) but is normal in Alzheimer's. It helps when the clinical picture is unclear between DLB and AD. It cannot distinguish DLB from PD/PDD."
+      },
+      {
+        "q": "Strategic infarct dementia most commonly involves which location?",
+        "options": [
+          "Frontal lobe cortex",
+          "Thalamus or angular gyrus",
+          "Cerebellum",
+          "Spinal cord"
+        ],
+        "correct": "Thalamus or angular gyrus",
+        "explanation": "Strategic infarcts in thalamus (amnesia, apathy), angular gyrus (Gerstmann syndrome), caudate, or hippocampus cause disproportionate cognitive impairment from a single small infarct."
+      },
+      {
+        "q": "Binswanger disease is characterized by all EXCEPT:",
+        "options": [
+          "Extensive white matter disease",
+          "Gait apraxia",
+          "Cortical ribbon sign on MRI",
+          "Executive dysfunction greater than memory loss"
+        ],
+        "correct": "Cortical ribbon sign on MRI",
+        "explanation": "Cortical ribbon sign (DWI hyperintensity of cortex) is characteristic of CJD, not Binswanger. Binswanger shows periventricular white matter hyperintensities and lacunar infarcts."
+      },
+      {
+        "q": "מהו גורם הסיכון החשוב ביותר למניעת דמנציה וסקולרית?",
+        "options": [
+          "שמירה על משקל תקין",
+          "שליטה ביתר לחץ דם",
+          "ויטמין E",
+          "פעילות קוגניטיבית"
+        ],
+        "correct": "שליטה ביתר לחץ דם",
+        "explanation": "יתר לחץ דם הוא גורם הסיכון המשמעותי ביותר לדמנציה וסקולרית. טיפול ביתר לחץ דם מפחית את הסיכון משמעותית (SPRINT-MIND, PROGRESS)."
+      },
+      {
+        "q": "REM Sleep Behavior Disorder (RBD) precedes DLB/PDD onset by:",
+        "options": [
+          "1-2 months",
+          "1-2 years",
+          "10+ years",
+          "It doesn't precede — it occurs simultaneously"
+        ],
+        "correct": "10+ years",
+        "explanation": "RBD is a prodromal marker of synucleinopathies. It precedes DLB/PDD by 10+ years in ~80% of cases. >80% of idiopathic RBD patients eventually develop a synucleinopathy (DLB, PDD, or MSA)."
+      },
+      {
+        "q": "If an antipsychotic is absolutely necessary in DLB, the safest option is:",
+        "options": [
+          "Haloperidol",
+          "Risperidone",
+          "Quetiapine at lowest possible dose",
+          "Olanzapine"
+        ],
+        "correct": "Quetiapine at lowest possible dose",
+        "explanation": "Quetiapine has the lowest D2 receptor binding among atypical antipsychotics, making it the 'least worst' option in DLB. Start at very low doses (12.5-25mg). Even quetiapine carries risk — use only when non-pharmacologic measures fail."
+      },
+      {
+        "q": "NINDS-AIREN criteria for probable vascular dementia require dementia onset within how long after a stroke?",
+        "options": [
+          "1 week",
+          "1 month",
+          "3 months",
+          "1 year"
+        ],
+        "correct": "3 months",
+        "explanation": "NINDS-AIREN criteria for probable vascular dementia require dementia developing within 3 months of a recognized stroke, OR sudden cognitive deterioration, OR fluctuating stepwise progression."
+      },
+      {
+        "q": "מהן ההזיות האופייניות ב-DLB?",
+        "options": [
+          "שמיעתיות בלבד",
+          "חזותיות מפורטות ומעוצבות (formed visual hallucinations)",
+          "ריחניות",
+          "מישושיות"
+        ],
+        "correct": "חזותיות מפורטות ומעוצבות (formed visual hallucinations)",
+        "explanation": "הזיות DLB: חזותיות, מפורטות, מעוצבות (אנשים, חיות, ילדים). חוזרות. המטופל לעתים מודע שהן לא אמיתיות. שונות מהזיות שמיעתיות של סכיזופרניה."
+      },
+      {
+        "q": "MIBG cardiac scintigraphy in DLB shows:",
+        "options": [
+          "Increased uptake",
+          "Reduced uptake (cardiac sympathetic denervation)",
+          "Normal uptake",
+          "Uptake only in left ventricle"
+        ],
+        "correct": "Reduced uptake (cardiac sympathetic denervation)",
+        "explanation": "DLB patients have cardiac sympathetic denervation shown by reduced MIBG uptake. This is an indicative biomarker in McKeith criteria. Normal in AD. Also reduced in PDD."
+      },
+      {
+        "q": "The most common cognitive pattern in vascular dementia is:",
+        "options": [
+          "Prominent amnesia",
+          "Executive dysfunction and processing speed impairment",
+          "Isolated aphasia",
+          "Visual agnosia"
+        ],
+        "correct": "Executive dysfunction and processing speed impairment",
+        "explanation": "Subcortical vascular dementia typically presents with executive dysfunction (planning, organization, mental flexibility) and slowed processing speed, rather than the prominent amnesia of AD."
+      },
+      {
+        "q": "מהי lacunar state (état lacunaire)?",
+        "options": [
+          "אוטם בודד גדול",
+          "מצב של אוטמים לקונריים מרובים עם דמנציה, פרקינסוניזם, ופסאודובולברי",
+          "שבץ דימומי",
+          "TIA חוזר"
+        ],
+        "correct": "מצב של אוטמים לקונריים מרובים עם דמנציה, פרקינסוניזם, ופסאודובולברי",
+        "explanation": "État lacunaire: הצטברות של אוטמים לקונריים מרובים (בסיס גנגליה, תלמוס, גשר) הגורמת לדמנציה תת-קורטיקלית, parkinsonism, pseudobulbar palsy, ואי שליטה רגשית."
+      },
+      {
+        "q": "Which cholinesterase inhibitor has the strongest evidence base in DLB?",
+        "options": [
+          "Donepezil",
+          "Rivastigmine",
+          "Galantamine",
+          "Tacrine"
+        ],
+        "correct": "Rivastigmine",
+        "explanation": "Rivastigmine has the strongest RCT evidence in DLB, showing significant improvement in hallucinations, cognition, and behavioral symptoms. Donepezil also has evidence but less robust."
+      },
+      {
+        "q": "A key differentiating feature between DLB and AD on neuropsychological testing is:",
+        "options": [
+          "DLB has worse visuospatial and attention deficits; AD has worse episodic memory",
+          "AD has worse visuospatial deficits",
+          "Both have identical cognitive profiles",
+          "DLB only affects language"
+        ],
+        "correct": "DLB has worse visuospatial and attention deficits; AD has worse episodic memory",
+        "explanation": "DLB characteristically shows disproportionate visuospatial/visuoconstructional deficits and attentional/executive dysfunction, while memory may be relatively preserved early. AD shows prominent episodic memory loss from the start."
+      },
+      {
+        "q": "מהו הממצא האופייני ב-MRI של דמנציה וסקולרית?",
+        "options": [
+          "ניוון היפוקמפלי בלבד",
+          "הפרעות בחומר הלבן ואוטמים לקונריים",
+          "ניוון מוחי כללי ללא ממצא פוקלי",
+          "גידול"
+        ],
+        "correct": "הפרעות בחומר הלבן ואוטמים לקונריים",
+        "explanation": "MRI בדמנציה וסקולרית: white matter hyperintensities, lacunar infarcts, ואוטמים טריטוריאליים. Fazekas scale מדרג חומרת שינויי חומר לבן (0-3)."
+      },
+      {
+        "q": "Fluctuating cognition in DLB is characterized by:",
+        "options": [
+          "Gradual decline over months",
+          "Spontaneous variations in alertness and attention over minutes to hours",
+          "Cognitive changes only with medications",
+          "Fluctuations only during sleep"
+        ],
+        "correct": "Spontaneous variations in alertness and attention over minutes to hours",
+        "explanation": "DLB fluctuations involve spontaneous, unpredictable variations in cognition, alertness, and attention — from near-normal to severely confused within minutes to hours. Can mimic delirium."
+      },
+      {
+        "q": "Mixed dementia (AD + vascular) is estimated to account for what proportion of all dementia?",
+        "options": [
+          "5%",
+          "10-20%",
+          "30-40%",
+          "60%"
+        ],
+        "correct": "30-40%",
+        "explanation": "Autopsy studies suggest 30-40% of dementia cases have mixed pathology (AD + vascular). Pure vascular dementia is less common (~10-15%). Mixed pathology is especially common in the oldest-old."
+      },
+      {
+        "q": "מהו Capgras syndrome וכיצד הוא קשור ל-DLB?",
+        "options": [
+          "הזיות שמיעתיות",
+          "אשליה שאדם מוכר הוחלף בכפיל",
+          "אובדן ראייה",
+          "פרקינסוניזם"
+        ],
+        "correct": "אשליה שאדם מוכר הוחלף בכפיל",
+        "explanation": "Capgras delusion (אדם מוכר הוחלף בכפיל) שכיח במיוחד ב-DLB (עד 17%). קשור לניתוק בין זיהוי פנים לתגובה רגשית. גם misidentification delusions אחרים שכיחים ב-DLB."
+      }
+    ]
+  },
+  {
+    "topic": "אתיקה וקבלת החלטות (Ethics & Decision Making)",
+    "flashcards": [
+      {
+        "front": "Four components of decision-making capacity",
+        "back": "1) Understanding: comprehend relevant information. 2) Appreciation: apply information to own situation. 3) Reasoning: weigh options and consequences logically. 4) Expressing a choice: communicate a consistent decision. All 4 must be assessed; capacity is decision-specific, not global."
+      },
+      {
+        "q": "מהם העקרונות הארבעה של אתיקה רפואית?",
+        "a": "1) אוטונומיה — כיבוד זכות המטופל להחליט; 2) Beneficence — עשיית טוב; 3) Non-maleficence — לא להזיק; 4) צדק — חלוקה הוגנת של משאבים. כל העקרונות שווי ערך — אין היררכיה קבועה."
+      },
+      {
+        "front": "Advance directives — types",
+        "back": "1) Living Will: written instructions for care preferences (usually end-of-life). 2) Durable Power of Attorney for Healthcare (DPAHC)/Healthcare Proxy: designates a surrogate decision-maker. 3) POLST/MOLST: physician orders based on patient preferences. Best practice: both living will + healthcare proxy."
+      },
+      {
+        "front": "POLST vs Advance Directive",
+        "back": "POLST: physician orders, actionable immediately (EMS must follow), for seriously ill patients, portable across settings, specific (CPR, intubation, antibiotics, feeding). Advance Directive: patient instructions, requires interpretation, for all adults, activated only when patient lacks capacity. POLST complements but doesn't replace AD."
+      },
+      {
+        "q": "מהו חוק זכויות החולה הישראלי (1996)?",
+        "a": "מעגן זכות מטופל למידע, הסכמה מדעת, סירוב טיפול, פרטיות, וכבוד. מאפשר מינוי מיופה כוח רפואי. חוק החולה הנוטה למות (2005): מבחין בין מטופל סופני (צפוי למות תוך 6 חודשים) לחשוכ מרפא. מתיר הימנעות מטיפול אך אוסר המתת חסד פעילה."
+      },
+      {
+        "front": "Surrogate decision-making hierarchy",
+        "back": "1) Designated healthcare proxy/agent (DPAHC). 2) Court-appointed guardian. 3) Default hierarchy (varies by state): spouse → adult children → parents → siblings → other relatives. Surrogate should use: substituted judgment (what patient would want) > best interest standard (if wishes unknown)."
+      },
+      {
+        "front": "Informed consent — essential elements",
+        "back": "1) Disclosure of diagnosis, treatment, risks, benefits, alternatives. 2) Patient understanding of information. 3) Voluntariness (no coercion). 4) Decision-making capacity. 5) Consent/refusal. Exceptions: emergency, therapeutic privilege (rare), waiver by patient."
+      },
+      {
+        "q": "מהו ההבדל בין הימנעות מטיפול (withholding) להפסקת טיפול (withdrawing)?",
+        "a": "אתית — אין הבדל. שניהם מותרים כשהטיפול אינו מועיל או כשהמטופל/מיופה כוח מסרב. מבחינה פסיכולוגית, הפסקה קשה יותר לצוות. חוק ישראלי: מבחין ביניהם — הפסקת טיפול מצילי חיים דורשת ועדת אתיקה."
+      },
+      {
+        "front": "Futility in medical care",
+        "back": "Quantitative futility: <1% chance of benefit. Qualitative futility: treatment won't achieve patient's goals. No universal definition. When physician believes treatment is futile: discuss with family, ethics committee consultation, consider transfer. Unilateral withholding is controversial and jurisdiction-dependent."
+      },
+      {
+        "front": "Guardianship (אפוטרופסות)",
+        "back": "Court-appointed legal authority over person and/or property of incapacitated individual. Types: full (all decisions), limited (specific decisions). Should be last resort — least restrictive alternative principle. Requires legal proceedings with evidence of incapacity. Alternatives: healthcare proxy, POA, supported decision-making."
+      },
+      {
+        "q": "מהו DNR/DNI ומה המשמעות?",
+        "a": "DNR: Do Not Resuscitate — אין לבצע CPR בדום לב. DNI: Do Not Intubate — אין לבצע אינטובציה. חשוב: DNR/DNI אינו אומר 'אל תטפל'. כל טיפול אחר (אנטיביוטיקה, IV, ניטור) יינתן אלא אם צוין אחרת. יש לחדש דיון בכל שינוי מצב."
+      },
+      {
+        "front": "Palliative sedation",
+        "back": "Proportional reduction of consciousness to relieve refractory suffering at end of life. Ethical when: symptoms are truly refractory, patient is terminally ill, consent obtained, proportional to symptom burden. Distinct from euthanasia: intent is symptom relief (not death), uses titrated sedation (not lethal doses). Principle of double effect applies."
+      }
+    ],
+    "mcqs": [
+      {
+        "q": "מהם ארבעת המרכיבים של כשירות לקבלת החלטות?",
+        "options": [
+          "הבנה, הערכה, היגיון, הבעת בחירה",
+          "זיכרון, קשב, שפה, תפקוד ביצועי",
+          "אוריינטציה, חישוב, העתקה, שינון",
+          "קריאה, כתיבה, הבנת נשמע, דיבור"
+        ],
+        "correct": "הבנה, הערכה, היגיון, הבעת בחירה",
+        "explanation": "4 מרכיבי כשירות (Appelbaum): Understanding, Appreciation, Reasoning, Expressing a choice. כל מרכיב נבדק בנפרד. כשירות היא ספציפית להחלטה ולא גלובלית."
+      },
+      {
+        "q": "Decision-making capacity is:",
+        "options": [
+          "A legal determination by a judge",
+          "A clinical assessment by a physician",
+          "Determined by MMSE score",
+          "The same as competency"
+        ],
+        "correct": "A clinical assessment by a physician",
+        "explanation": "Capacity is a clinical determination made by physicians. Competency is a legal determination made by courts. A patient may lack capacity for complex decisions but retain it for simple ones."
+      },
+      {
+        "q": "מהו ההבדל בין substituted judgment ל-best interest?",
+        "options": [
+          "אין הבדל",
+          "Substituted judgment = מה המטופל היה רוצה; Best interest = מה הטוב ביותר אובייקטיבית",
+          "Best interest עדיף תמיד",
+          "Substituted judgment משמש רק בילדים"
+        ],
+        "correct": "Substituted judgment = מה המטופל היה רוצה; Best interest = מה הטוב ביותר אובייקטיבית",
+        "explanation": "Substituted judgment מועדף: מחליט מה המטופל היה בוחר. Best interest: כשרצון המטופל לא ידוע. היררכיה: הנחיות מקדימות > substituted judgment > best interest."
+      },
+      {
+        "q": "POLST/MOLST differs from an advance directive in that it:",
+        "options": [
+          "Is only for young adults",
+          "Is a physician order that is immediately actionable",
+          "Replaces the need for a healthcare proxy",
+          "Is not legally binding"
+        ],
+        "correct": "Is a physician order that is immediately actionable",
+        "explanation": "POLST is a physician order (not just patient instructions) that is immediately actionable by EMS and healthcare providers. It's for seriously ill patients and translates patient wishes into specific medical orders."
+      },
+      {
+        "q": "The principle of double effect justifies palliative sedation because:",
+        "options": [
+          "The intent is to cause death",
+          "The intent is to relieve suffering, with foreseeable but unintended hastening of death",
+          "Sedation always cures the disease",
+          "It's the same as euthanasia"
+        ],
+        "correct": "The intent is to relieve suffering, with foreseeable but unintended hastening of death",
+        "explanation": "Double effect: the action (sedation) has a good intended effect (symptom relief) and a foreseeable but unintended bad effect (possible hastening of death). The intent distinguishes palliative sedation from euthanasia."
+      },
+      {
+        "q": "בהתאם לחוק החולה הנוטה למות בישראל, מהו מטופל 'סופני'?",
+        "options": [
+          "כל מטופל עם מחלה כרונית",
+          "מטופל שצפוי למות תוך 6 חודשים",
+          "מטופל מעל גיל 90",
+          "מטופל מחוסר הכרה"
+        ],
+        "correct": "מטופל שצפוי למות תוך 6 חודשים",
+        "explanation": "חוק החולה הנוטה למות (2005): 'חולה סופני' = צפוי למות תוך 6 חודשים. החוק מאפשר הימנעות מטיפול ומתווה תנאים להפסקת טיפול באמצעות timer."
+      },
+      {
+        "q": "A competent 85-year-old patient refuses life-saving surgery. The physician should:",
+        "options": [
+          "Override the refusal for the patient's benefit",
+          "Respect the patient's autonomous decision after ensuring informed consent",
+          "Consult the family to override the patient",
+          "Obtain a court order for treatment"
+        ],
+        "correct": "Respect the patient's autonomous decision after ensuring informed consent",
+        "explanation": "A competent patient has the right to refuse any treatment, including life-saving treatment. The physician must ensure informed consent (understanding of risks of refusal) but must respect autonomy."
+      },
+      {
+        "q": "Which is the preferred standard for surrogate decision-making?",
+        "options": [
+          "Best interest standard",
+          "Substituted judgment",
+          "Medical team's recommendation",
+          "Family consensus"
+        ],
+        "correct": "Substituted judgment",
+        "explanation": "Substituted judgment (what the patient would have wanted) is preferred over best interest (objective best outcome). Surrogates should decide based on known patient values and prior expressed wishes."
+      },
+      {
+        "q": "מתי יש צורך במינוי אפוטרופוס?",
+        "options": [
+          "בכל מקרה של דמנציה",
+          "כשאין מיופה כוח ואין כשירות לקבלת החלטות חשובות",
+          "רק בגיל 90+",
+          "רק למטופלים מאושפזים"
+        ],
+        "correct": "כשאין מיופה כוח ואין כשירות לקבלת החלטות חשובות",
+        "explanation": "אפוטרופסות היא מוצא אחרון כשהמטופל חסר כשירות, אין מיופה כוח, ויש צורך בהחלטות משמעותיות. עקרון: החלופה הפחות מגבילה."
+      },
+      {
+        "q": "Withholding treatment and withdrawing treatment are:",
+        "options": [
+          "Ethically different — withholding is acceptable but withdrawing is not",
+          "Ethically equivalent — both are acceptable when treatment is unwanted or non-beneficial",
+          "Both are always unethical",
+          "Legally the same everywhere"
+        ],
+        "correct": "Ethically equivalent — both are acceptable when treatment is unwanted or non-beneficial",
+        "explanation": "Major medical ethics bodies (AMA, BMA) consider withholding and withdrawing ethically equivalent. Both are permissible when treatment is unwanted or non-beneficial. Legal treatment may vary by jurisdiction."
+      },
+      {
+        "q": "DNR order means:",
+        "options": [
+          "Do not provide any medical treatment",
+          "Do not attempt CPR in cardiac arrest, but continue all other appropriate care",
+          "Do not admit to hospital",
+          "Comfort care only"
+        ],
+        "correct": "Do not attempt CPR in cardiac arrest, but continue all other appropriate care",
+        "explanation": "DNR specifically means no CPR/chest compressions/defibrillation in cardiac arrest. It does NOT mean 'do nothing' — all other treatments (antibiotics, surgery, ICU care) continue unless separately limited."
+      },
+      {
+        "q": "מהו therapeutic privilege?",
+        "options": [
+          "זכות הרופא לא לטפל",
+          "חריג נדיר להסכמה מדעת כשגילוי מידע יזיק למטופל",
+          "זכות הרופא לרשום תרופות ניסיוניות",
+          "זכות המטופל לסודיות"
+        ],
+        "correct": "חריג נדיר להסכמה מדעת כשגילוי מידע יזיק למטופל",
+        "explanation": "Therapeutic privilege: חריג נדיר להסכמה מדעת המאפשר לרופא להימנע מגילוי מלא כשהמידע עצמו יגרום נזק חמור. שנוי במחלוקת ומשמש לעתים רחוקות."
+      },
+      {
+        "q": "An ethics consultation should be considered when:",
+        "options": [
+          "Only when there is a legal dispute",
+          "When there is conflict between healthcare team and family about goals of care",
+          "Only when the patient requests it",
+          "Only in ICU settings"
+        ],
+        "correct": "When there is conflict between healthcare team and family about goals of care",
+        "explanation": "Ethics consultations are appropriate for: team-family conflicts, unclear patient wishes, questions of futility, complex capacity determinations, resource allocation dilemmas, and moral distress among staff."
+      },
+      {
+        "q": "מהי הסכמה מדעת (informed consent) ומתי ניתן לחרוג ממנה?",
+        "options": [
+          "הסכמת המטופל בלבד, ללא חריגים",
+          "הסכמה לאחר קבלת מידע, עם חריגים: חירום, ויתור, therapeutic privilege",
+          "הסכמת המשפחה בלבד",
+          "לא נדרשת בקשישים"
+        ],
+        "correct": "הסכמה לאחר קבלת מידע, עם חריגים: חירום, ויתור, therapeutic privilege",
+        "explanation": "הסכמה מדעת כוללת: מידע, הבנה, רצון חופשי, כשירות, והסכמה. חריגים: חירום (פיקוח נפש), ויתור מצד המטופל, therapeutic privilege (נדיר)."
+      },
+      {
+        "q": "The 'sliding scale' model of capacity assessment means:",
+        "options": [
+          "Using the Glasgow Coma Scale",
+          "Higher risk decisions require higher levels of demonstrated capacity",
+          "Capacity decreases linearly with age",
+          "All decisions require the same level of capacity"
+        ],
+        "correct": "Higher risk decisions require higher levels of demonstrated capacity",
+        "explanation": "The sliding scale model: the threshold for demonstrated capacity should be proportional to the risk of the decision. Refusing low-risk treatment requires less demonstration of capacity than refusing life-saving surgery."
+      },
+      {
+        "q": "A family demands 'everything be done' for a 95-year-old with end-stage dementia and multi-organ failure. The most appropriate first step is:",
+        "options": [
+          "Comply with all family requests",
+          "Unilaterally limit treatment",
+          "Explore family understanding of prognosis and patient's values through a family meeting",
+          "Discharge the patient"
+        ],
+        "correct": "Explore family understanding of prognosis and patient's values through a family meeting",
+        "explanation": "First step: structured family meeting to explore understanding, expectations, and the patient's known values/wishes. Often, conflict stems from inadequate communication or unrealistic expectations, not genuine value differences."
+      },
+      {
+        "q": "מהו עקרון ה-least restrictive alternative?",
+        "options": [
+          "לתת את הטיפול הזול ביותר",
+          "להשתמש בפתרון המגביל הכי פחות את חירותו של המטופל",
+          "לשחרר מטופלים מוקדם ככל האפשר",
+          "להימנע מכל טיפול"
+        ],
+        "correct": "להשתמש בפתרון המגביל הכי פחות את חירותו של המטופל",
+        "explanation": "עקרון ההגבלה המינימלית: יש להשתמש באמצעי הפחות מגביל. למשל: supported decision-making > POA > limited guardianship > full guardianship."
+      },
+      {
+        "q": "Physician-assisted death (PAD) in Israel:",
+        "options": [
+          "Is legal and widely practiced",
+          "Is prohibited — the Dying Patient Act prohibits active euthanasia",
+          "Is available only for cancer patients",
+          "Is decided by ethics committee alone"
+        ],
+        "correct": "Is prohibited — the Dying Patient Act prohibits active euthanasia",
+        "explanation": "Israeli law (Dying Patient Act 2005) prohibits active euthanasia and physician-assisted death. It allows withholding treatment and uses a timer mechanism for certain life-sustaining treatments. Palliative care is supported."
+      },
+      {
+        "q": "Moral distress in healthcare providers is:",
+        "options": [
+          "A sign of incompetence",
+          "Distress when one knows the right action but is constrained from taking it",
+          "Only experienced by nurses",
+          "The same as burnout"
+        ],
+        "correct": "Distress when one knows the right action but is constrained from taking it",
+        "explanation": "Moral distress occurs when a healthcare provider knows the ethically appropriate action but is unable to act due to institutional, legal, or team constraints. Common in end-of-life care. Addressed through ethics support and debriefing."
+      },
+      {
+        "q": "מהי ועדת האתיקה ומהו תפקידה?",
+        "options": [
+          "ועדה שמחליטה על טיפול במקום הרופא",
+          "גוף מייעץ שמסייע בהחלטות אתיות מורכבות, מפשר בין צדדים, ומגן על זכויות המטופל",
+          "ועדה שפוסלת רופאים",
+          "ועדה שמאשרת מחקרים בלבד"
+        ],
+        "correct": "גוף מייעץ שמסייע בהחלטות אתיות מורכבות, מפשר בין צדדים, ומגן על זכויות המטופל",
+        "explanation": "ועדת אתיקה: מייעצת (לא מחליטה), מפשרת בין צוות/משפחה/מטופל, מספקת ניתוח אתי, מלמדת, ומעצבת מדיניות. הרכב: רופאים, אחיות, עו\"ס, משפטן, נציג ציבור, אתיקן."
+      },
+      {
+        "q": "Which statement about capacity assessment is FALSE?",
+        "options": [
+          "Capacity is decision-specific",
+          "A patient with dementia may still have capacity for some decisions",
+          "Refusing treatment always indicates lack of capacity",
+          "Capacity can fluctuate over time"
+        ],
+        "correct": "Refusing treatment always indicates lack of capacity",
+        "explanation": "Refusing treatment does NOT indicate lack of capacity. A competent patient has every right to refuse treatment, even life-saving treatment. Capacity must be assessed based on the 4 components, not on the decision itself."
+      },
+      {
+        "q": "The concept of 'proportionate treatment' in end-of-life care means:",
+        "options": [
+          "All patients get the same treatment",
+          "Treatment burden should be proportionate to expected benefit",
+          "Treatment should be proportionate to the patient's wealth",
+          "Only proportionate doses of medication"
+        ],
+        "correct": "Treatment burden should be proportionate to expected benefit",
+        "explanation": "Proportionate treatment: the burdens of treatment (pain, side effects, cost, indignity) should be weighed against expected benefits. Disproportionate treatment (burdens far exceed benefits) may ethically be declined or withheld."
+      },
+      {
+        "q": "מהו supported decision-making?",
+        "options": [
+          "אפוטרופסות מלאה",
+          "מודל שבו אנשים עם מוגבלות מקבלים תמיכה לקבל החלטות בעצמם",
+          "החלטה של בית משפט",
+          "ייעוץ פסיכולוגי"
+        ],
+        "correct": "מודל שבו אנשים עם מוגבלות מקבלים תמיכה לקבל החלטות בעצמם",
+        "explanation": "Supported decision-making: חלופה לאפוטרופסות שבה אנשים עם מוגבלות קוגניטיבית מקבלים עזרה (מסביר, מלווה, ממליץ) אך מקבלים את ההחלטה הסופית בעצמם. מכבד אוטונומיה מקסימלית."
+      }
+    ]
   }
 ]

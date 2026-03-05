@@ -1,7 +1,7 @@
 /**
- * Geriatrics Study Platform - Service Worker v4
+ * Geriatrics Study Platform - Service Worker v5
  */
-const CACHE_NAME = 'geriatrics-study-v5';
+const CACHE_NAME = 'geriatrics-study-v6';
 
 const CACHE_FILES = [
     './',
