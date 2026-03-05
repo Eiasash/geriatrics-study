@@ -9,7 +9,7 @@ function showDebug(msg) {
         debugEl.style.cssText = 'position:fixed;top:10px;left:10px;right:10px;background:rgba(255,0,0,0.9);color:white;padding:10px;font-size:12px;z-index:999999;border-radius:8px;max-height:40vh;overflow:auto;';
         document.body.appendChild(debugEl);
     }
-    debugEl.innerHTML += msg + '<br>';
+    debugEl.insertAdjacentHTML('beforeend', msg + '<br>');
 }
 
 class PresentationMode {

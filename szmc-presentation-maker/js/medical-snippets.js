@@ -846,7 +846,7 @@ class MedicalSnippetsLibrary {
         // Find the active editable element in the slide
         const slideCanvas = document.getElementById('current-slide');
         if (!slideCanvas) {
-            alert('Please select a slide first');
+            showToast('Please select a slide first', 'warning');
             return;
         }
 
@@ -872,7 +872,7 @@ class MedicalSnippetsLibrary {
                 selection.addRange(range);
             } else {
                 // Fallback: append to end
-                editableArea.innerHTML += content;
+                editableArea.insertAdjacentHTML('beforeend', content);
             }
             
             // Mark editor as dirty
@@ -891,7 +891,7 @@ class MedicalSnippetsLibrary {
             // Try to find any content area
             const contentBody = slideCanvas.querySelector('.content-body, .slide-body, [data-field]');
             if (contentBody) {
-                contentBody.innerHTML += content;
+                contentBody.insertAdjacentHTML('beforeend', content);
                 
                 if (window.editor) {
                     window.editor.isDirty = true;
@@ -903,7 +903,7 @@ class MedicalSnippetsLibrary {
 
                 this.closeModal();
             } else {
-                alert('Unable to insert content. Please ensure you have a content area selected.');
+                showToast('Unable to insert content. Please ensure you have a content area selected.', 'warning');
             }
         }
     }

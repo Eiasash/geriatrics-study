@@ -153,7 +153,7 @@ async function exportToPDF() {
         // Content slides
         const slides = presentation.slides || [];
         slides.forEach((slide, index) => {
-            container.innerHTML += `
+            container.insertAdjacentHTML('beforeend', `
                 <div style="page-break-after: always; padding: 20px 0;">
                     <div style="background: #1e3a5f; color: white; padding: 10px 20px; margin-bottom: 20px;">
                         <h2 style="margin: 0; font-size: 24px;">${slide.title || `Slide ${index + 1}`}</h2>
@@ -693,11 +693,11 @@ function saveCloudConfig(provider) {
         const clientId = document.getElementById('google-client-id').value;
         const apiKey = document.getElementById('google-api-key').value;
         CloudSave.googleDrive.init(clientId, apiKey);
-        localStorage.setItem('google_config', JSON.stringify({ clientId, apiKey }));
+        sessionStorage.setItem('google_config', JSON.stringify({ clientId, apiKey }));
     } else {
         const token = document.getElementById('dropbox-token').value;
         CloudSave.dropbox.accessToken = token;
-        localStorage.setItem('dropbox_token', token);
+        sessionStorage.setItem('dropbox_token', token);
     }
     document.querySelector('.cloud-setup-modal').remove();
     showToast('Cloud config saved!', 'success');
@@ -734,13 +734,13 @@ function getPresentationData() {
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
     // Load saved cloud configs
-    const googleConfig = localStorage.getItem('google_config');
+    const googleConfig = sessionStorage.getItem('google_config');
     if (googleConfig) {
         const { clientId, apiKey } = JSON.parse(googleConfig);
         CloudSave.googleDrive.init(clientId, apiKey);
     }
 
-    const dropboxToken = localStorage.getItem('dropbox_token');
+    const dropboxToken = sessionStorage.getItem('dropbox_token');
     if (dropboxToken) {
         CloudSave.dropbox.accessToken = dropboxToken;
     }

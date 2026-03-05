@@ -222,7 +222,7 @@ class SpeakerNotesManager {
      */
     printNotes() {
         if (!window.editor || !window.editor.slides) {
-            alert('No presentation loaded');
+            showToast('No presentation loaded', 'warning');
             return;
         }
 

@@ -24,7 +24,7 @@ class PresentationExporter {
         try {
             await this.loadPptxGenJS();
         } catch (error) {
-            alert('Failed to load PowerPoint export library. Please check your internet connection.');
+            showToast('Failed to load PowerPoint export library. Please check your internet connection.', 'error');
             return;
         }
 
@@ -1773,7 +1773,7 @@ function loadPresentation() {
             if (typeof showToast === 'function') {
                 showToast(errorMsg + error.message, 'error');
             } else {
-                alert(errorMsg + error.message);
+                showToast(errorMsg + error.message, 'error');
             }
         }
     };
@@ -1800,7 +1800,7 @@ function convertJSONToHTML() {
                 showToast('HTML report generated!');
             }
         } catch (error) {
-            alert('Error converting file: ' + error.message);
+            showToast('Error converting file: ' + error.message, 'error');
         }
     };
 

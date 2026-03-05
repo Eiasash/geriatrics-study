@@ -961,7 +961,7 @@ function generateFromText() {
     const themeSelect = document.getElementById('gen-theme-select');
 
     if (!textInput || !textInput.value.trim()) {
-        alert('Please paste some text to generate a presentation.');
+        showToast('Please paste some text to generate a presentation.', 'warning');
         return;
     }
 
