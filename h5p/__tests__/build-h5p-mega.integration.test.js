@@ -200,7 +200,10 @@ describe('build-h5p-mega.js integration', () => {
     test('should wrap questions in RTL div', async () => {
       mockFs.readFile.mockResolvedValue(
         JSON.stringify([
-          { topic: 'Topic 1', mcqs: [{ q: 'Hebrew question?', options: ['A', 'B'], correct: 'A' }] },
+          {
+            topic: 'Topic 1',
+            mcqs: [{ q: 'Hebrew question?', options: ['A', 'B'], correct: 'A' }],
+          },
         ])
       );
 

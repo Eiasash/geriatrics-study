@@ -28,22 +28,22 @@ class ProgressBar {
     const percentage = Math.floor((current / this.total) * 100);
     const filled = Math.floor((current / this.total) * this.barLength);
     const empty = this.barLength - filled;
-    
+
     // Use ASCII characters for better terminal compatibility
     const bar = '#'.repeat(filled) + '-'.repeat(empty);
     const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
-    
+
     // Clear line and write progress
     process.stdout.write('\r');
     process.stdout.write(
       `${colors.cyan}${this.title}${colors.reset} ` +
-      `[${colors.green}${bar}${colors.reset}] ` +
-      `${colors.bright}${percentage}%${colors.reset} ` +
-      `(${current}/${this.total}) ` +
-      `${colors.dim}${label}${colors.reset} ` +
-      `${colors.dim}${elapsed}s${colors.reset}`
+        `[${colors.green}${bar}${colors.reset}] ` +
+        `${colors.bright}${percentage}%${colors.reset} ` +
+        `(${current}/${this.total}) ` +
+        `${colors.dim}${label}${colors.reset} ` +
+        `${colors.dim}${elapsed}s${colors.reset}`
     );
-    
+
     if (current === this.total) {
       process.stdout.write('\n');
     }
@@ -74,14 +74,14 @@ function formatBytes(bytes) {
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+  return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
 }
 
 function formatDuration(ms) {
   const seconds = Math.floor(ms / 1000);
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  
+
   if (minutes > 0) {
     return `${minutes}m ${remainingSeconds}s`;
   }

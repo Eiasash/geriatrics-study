@@ -118,9 +118,7 @@ describe('renderDialogCards', () => {
     });
 
     test('should handle special characters in title', () => {
-      const result = renderDialogCards('Test: Topic (With Special) <chars>', [
-        { q: 'Q', a: 'A' },
-      ]);
+      const result = renderDialogCards('Test: Topic (With Special) <chars>', [{ q: 'Q', a: 'A' }]);
 
       expect(result.title).toBe('Test: Topic (With Special) <chars>');
     });

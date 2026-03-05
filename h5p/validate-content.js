@@ -47,7 +47,9 @@ function validateMCQ(mcq, topicName, index) {
   if (!Array.isArray(mcq.options) || mcq.options.length < 2) {
     issues.push(`Question ${index + 1}: Must have at least 2 options`);
   } else if (mcq.options.length < 4) {
-    issues.push(`Question ${index + 1}: Should have 4 options for best practice (has ${mcq.options.length})`);
+    issues.push(
+      `Question ${index + 1}: Should have 4 options for best practice (has ${mcq.options.length})`
+    );
   }
 
   // Support both 'correct' (string) and 'correctAnswer' (number)
@@ -81,7 +83,9 @@ function validateMCQ(mcq, topicName, index) {
 
   // Check question length
   if (questionText && questionText.length > 500) {
-    issues.push(`Question ${index + 1}: Question text is very long (${questionText.length} chars) - consider splitting`);
+    issues.push(
+      `Question ${index + 1}: Question text is very long (${questionText.length} chars) - consider splitting`
+    );
   }
 
   return issues;
@@ -121,7 +125,9 @@ function validateFlashcard(flashcard, topicName, index) {
   }
 
   if (definition && definition.length > 1000) {
-    issues.push(`Flashcard ${index + 1}: Answer/definition is very long (${definition.length} chars)`);
+    issues.push(
+      `Flashcard ${index + 1}: Answer/definition is very long (${definition.length} chars)`
+    );
   }
 
   return issues;
@@ -234,7 +240,11 @@ function validateContent() {
       log.success(`${topicName}: No issues found`);
     } else {
       issues.forEach((issue) => {
-        if (issue.includes('recommend') || issue.includes('should') || issue.includes('very long')) {
+        if (
+          issue.includes('recommend') ||
+          issue.includes('should') ||
+          issue.includes('very long')
+        ) {
           log.warning(`  ${issue}`);
           warningCount++;
         } else {

@@ -18,7 +18,7 @@ module.exports = [
         module: 'writable',
         process: 'readonly',
         require: 'readonly',
-        
+
         // Timer globals
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
@@ -29,7 +29,7 @@ module.exports = [
         document: 'readonly',
         window: 'readonly',
         navigator: 'readonly',
-        
+
         // Jest globals
         describe: 'readonly',
         test: 'readonly',
@@ -43,15 +43,15 @@ module.exports = [
       },
     },
     rules: {
-      'indent': ['warn', 2],
+      indent: ['warn', 2],
       'linebreak-style': ['warn', 'unix'],
-      'quotes': ['warn', 'single'],
-      'semi': ['warn', 'always'],
+      quotes: ['warn', 'single'],
+      semi: ['warn', 'always'],
       'no-unused-vars': ['warn'],
       'no-console': 'off',
       'no-undef': 'warn',
-      'eqeqeq': ['warn', 'always'],
-      'curly': ['warn', 'all'],
+      eqeqeq: ['warn', 'always'],
+      curly: ['warn', 'all'],
     },
   },
   {

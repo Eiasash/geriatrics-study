@@ -78,9 +78,7 @@ describe('renderQuestionSet', () => {
     });
 
     test('should mark correct answer properly', () => {
-      const mcqs = [
-        { q: 'Test', options: ['Wrong', 'Correct', 'Wrong2'], correct: 'Correct' },
-      ];
+      const mcqs = [{ q: 'Test', options: ['Wrong', 'Correct', 'Wrong2'], correct: 'Correct' }];
       const result = renderQuestionSet('Test', mcqs);
 
       const answers = result.content.questionSet[0].params.answers;
