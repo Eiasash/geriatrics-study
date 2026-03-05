@@ -7,6 +7,7 @@
   "display": "standalone",
   "background_color": "#1e3a5f",
   "theme_color": "#1e3a5f",
+  "id": "szmc-geriatrics-hub",
   "orientation": "any",
   "icons": [
     {
