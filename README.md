@@ -43,6 +43,7 @@
 | **Clinical Dashboard** | Geriatric assessments, medications & decision tools | [Open →](https://eiasash.github.io/geriatrics-study/clinical-tools/dashboard.html) |
 | **H5P Study Mode** | Interactive quizzes and flashcards | [Open →](https://eiasash.github.io/geriatrics-study/h5p/) |
 | **Hazzard's 8e** | Comprehensive geriatric medicine study materials | [Open →](https://eiasash.github.io/geriatrics-study/hazzards/) |
+| **Toranot Shift Manager** | Night shift patient tracking, drug safety alerts, AI clinical notes | [Open →](https://toranot.netlify.app) |
 
 ---
 
@@ -105,6 +106,14 @@ geriatrics-study/
 - **Hazzard's 8e**: Complete textbook content searchable
 - **H5P Quizzes**: Interactive board exam preparation
 - **Flashcards**: Spaced repetition learning
+
+### Shift Management ([Toranot](https://toranot.netlify.app))
+- **Patient Tracking**: Night shift patient list with acuity scoring
+- **Drug Safety**: Beers 2023 criteria, drug interaction screening
+- **Lab Monitoring**: KDIGO AKI and hemoglobin delta alerts
+- **Antibiotic Dosing**: 19 antibiotics with renal adjustment
+- **AI Clinical Notes**: Claude and Gemini-powered documentation
+- **OCR Import**: Scan patient lists with camera
 
 ---
 
