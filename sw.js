@@ -28,6 +28,7 @@ const CACHE_FILES = [
     './clinical-tools/mobile-fallback.css',
     './clinical-tools/shared/sanitize.js',
     './clinical-tools/shared/storage.js',
+    './clinical-tools/shared/toast.js',
     './data/content.json',
 ];
 
