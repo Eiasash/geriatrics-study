@@ -41,6 +41,8 @@ const CACHE_FILES = [
     './js/features.js',
 
     // JavaScript - New Features
+    './js/dark-mode.js',
+    './js/ai-i18n.js',
     './js/speaker-notes.js',
     './js/medical-snippets.js',
     './js/search.js',
@@ -49,7 +51,9 @@ const CACHE_FILES = [
     './js/analytics.js',
     './js/pwa-install.js',
 
-    // CSS - PWA
+    // CSS - Additional
+    './css/dark-mode.css',
+    './css/ai-assistant.css',
     './css/pwa-install.css',
 
     // Icons
@@ -154,12 +158,3 @@ self.addEventListener('message', (event) => {
     }
 });
 
-// Background sync for offline saves
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'sync-saves') {
-        event.waitUntil(syncOfflineSaves());
-    }
-});
-
-async function syncOfflineSaves() {
-}

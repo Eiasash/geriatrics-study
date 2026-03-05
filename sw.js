@@ -1,5 +1,5 @@
 /**
- * Geriatrics Study Platform - Service Worker v5
+ * Geriatrics Study Platform - Service Worker v7
  */
 const CACHE_NAME = 'geriatrics-study-v7';
 
