@@ -224,6 +224,7 @@ function topicKey(s){ return s.replace(/[\s\-\/]+/g,'_').replace(/[^\w\u0590-\u0
 async function loadContent(){
     try{
         const r=await fetch('../data/content.json');
+        if(!r.ok) throw new Error(`HTTP ${r.status}`);
         contentData=await r.json();
         buildIndexes();
         initUI();

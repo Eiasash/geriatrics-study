@@ -333,7 +333,7 @@
                     if (jsonQuestions.length > 10) {
                         currentQuestionSet = jsonQuestions;
                         loadedFromJSON = true;
-                        console.log(`Loaded ${jsonQuestions.length} MCQs from content.json`);
+                        // content.json loaded successfully
                     }
                 }
             } catch(e) { console.warn('content.json load failed, using built-in questions', e); }
