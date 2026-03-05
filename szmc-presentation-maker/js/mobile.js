@@ -480,7 +480,7 @@ class MobileManager {
             if (typeof showToast === 'function') {
                 showToast(msg, 'warning');
             } else {
-                alert(msg);
+                showToast(msg, 'warning');
             }
         }
     }

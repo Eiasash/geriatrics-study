@@ -2,7 +2,6 @@
  * Integration tests for validate-content.js validateContent function
  */
 
-const path = require('path');
 const fs = require('fs');
 
 // Store original fs functions
@@ -11,7 +10,6 @@ const originalReadFileSync = fs.readFileSync;
 
 describe('validateContent integration', () => {
   let consoleSpy;
-  let validateContent;
 
   beforeEach(() => {
     jest.resetModules();

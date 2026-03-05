@@ -283,7 +283,7 @@
         </header>
 
         <div class="parts-grid">
-            <a href="#" onclick="alert('Full text removed — access via Clalit library portal.');return false;" class="part-card">
+            <a href="#" onclick="showToast('Full text removed — access via Clalit library portal.', 'warning');return false;" class="part-card">
                 <div class="part-number">1</div>
                 <div class="part-info">
                     <h3>Part 1: Principles of Geriatric Medicine</h3>
@@ -296,7 +296,7 @@
                 <i class="fas fa-chevron-right arrow"></i>
             </a>
 
-            <a href="#" onclick="alert('Full text removed — access via Clalit library portal.');return false;" class="part-card">
+            <a href="#" onclick="showToast('Full text removed — access via Clalit library portal.', 'warning');return false;" class="part-card">
                 <div class="part-number">2</div>
                 <div class="part-info">
                     <h3>Part 2: Geriatric Syndromes</h3>
@@ -309,7 +309,7 @@
                 <i class="fas fa-chevron-right arrow"></i>
             </a>
 
-            <a href="#" onclick="alert('Full text removed — access via Clalit library portal.');return false;" class="part-card">
+            <a href="#" onclick="showToast('Full text removed — access via Clalit library portal.', 'warning');return false;" class="part-card">
                 <div class="part-number">3</div>
                 <div class="part-info">
                     <h3>Part 3: Organ System Diseases</h3>
@@ -347,6 +347,7 @@
         </div>
     </div>
     <style>@keyframes haz-spin { to { transform: rotate(360deg); } }</style>
+    <script src="../clinical-tools/shared/toast.js"></script>
     <script>
     (function() {
         var overlay = document.getElementById('loading-overlay');

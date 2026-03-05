@@ -2,8 +2,6 @@
  * Integration tests for build-h5p.js main function
  */
 
-const path = require('path');
-
 // Mock child_process before requiring the module
 jest.mock('child_process', () => ({
   execSync: jest.fn(),
@@ -18,8 +16,6 @@ const mockFs = {
   rename: jest.fn().mockResolvedValue(),
 };
 jest.mock('fs-extra', () => mockFs);
-
-const { execSync } = require('child_process');
 
 describe('build-h5p.js integration', () => {
   let buildH5p;

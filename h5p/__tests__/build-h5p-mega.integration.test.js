@@ -2,7 +2,7 @@
  * Integration tests for build-h5p-mega.js main function
  */
 
-const path = require('path');
+// path is available via jest environment
 
 // Mock child_process before requiring the module
 jest.mock('child_process', () => ({

@@ -411,7 +411,7 @@ function searchFromPanel(resourceKey) {
     const input = document.getElementById('resource-search-input');
     const query = input ? input.value.trim() : '';
     if (!query) {
-        alert('Please enter a search term');
+        showToast('Please enter a search term', 'warning');
         return;
     }
     const resource = MedicalResources[resourceKey];
@@ -471,10 +471,10 @@ async function addCitationFromPMID(pmid) {
     const citation = await fetchPubMedCitation(pmid);
     if (citation) {
         const num = citationManager.addCitation(citation);
-        alert(`Citation added as reference [${num}]`);
+        showToast(`Citation added as reference [${num}]`);
         return num;
     } else {
-        alert('Could not fetch citation. Please check the PMID.');
+        showToast('Could not fetch citation. Please check the PMID.', 'error');
         return null;
     }
 }

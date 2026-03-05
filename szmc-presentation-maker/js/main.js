@@ -90,7 +90,7 @@ function savePresentation() {
     editor.exportToJSON();
 
     editor.isDirty = false;
-    alert('Presentation saved successfully!');
+    showToast('Presentation saved successfully!');
 }
 
 async function loadPresentation() {

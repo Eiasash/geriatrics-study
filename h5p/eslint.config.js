@@ -19,6 +19,12 @@ module.exports = [
         process: 'readonly',
         require: 'readonly',
         
+        // Timer globals
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+
         // Browser globals
         document: 'readonly',
         window: 'readonly',

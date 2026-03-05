@@ -84,7 +84,7 @@ class PresentationEditor {
 
     deleteSlide(index) {
         if (this.slides.length <= 1) {
-            alert('Cannot delete the last slide');
+            showToast('Cannot delete the last slide', 'warning');
             return;
         }
 
