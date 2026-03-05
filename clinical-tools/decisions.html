@@ -219,6 +219,133 @@
             </div>
         </div>
 
+        <!-- NEW: Falls Risk Tool -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="tool-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-teal-600">🦶 Falls Risk Assessment</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Age > 80
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="2"> Fall in past 12 months
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> >4 medications
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Visual impairment
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Gait/balance problem
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Cognitive impairment
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Orthostatic hypotension
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="falls-check mr-2" data-fpts="1"> Psychoactive medications
+                    </label>
+                </div>
+                <button id="btn-falls" class="mt-4 w-full px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600">
+                    Assess Falls Risk
+                </button>
+                <div id="fallsResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+            </div>
+
+            <!-- Frailty Screen (FRAIL) -->
+            <div class="tool-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-pink-600">🏥 FRAIL Scale (Quick Frailty Screen)</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="frail-check mr-2"> <strong>F</strong>atigue — Are you fatigued?
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="frail-check mr-2"> <strong>R</strong>esistance — Can't climb 1 flight of stairs?
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="frail-check mr-2"> <strong>A</strong>mbulation — Can't walk 1 block?
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="frail-check mr-2"> <strong>I</strong>llness — >5 comorbidities?
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="frail-check mr-2"> <strong>L</strong>oss of weight — >5% in past year?
+                    </label>
+                </div>
+                <button id="btn-frail" class="mt-4 w-full px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">
+                    Screen for Frailty
+                </button>
+                <div id="frailResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+            </div>
+
+            <!-- Pressure Injury Risk (Braden) -->
+            <div class="tool-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-amber-600">🩹 Pressure Injury Risk (Braden)</h3>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Sensory Perception:</label>
+                        <select id="braden-sensory" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Completely limited</option>
+                            <option value="2">2 - Very limited</option>
+                            <option value="3" selected>3 - Slightly limited</option>
+                            <option value="4">4 - No impairment</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Moisture:</label>
+                        <select id="braden-moisture" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Constantly moist</option>
+                            <option value="2">2 - Very moist</option>
+                            <option value="3" selected>3 - Occasionally moist</option>
+                            <option value="4">4 - Rarely moist</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Activity:</label>
+                        <select id="braden-activity" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Bedfast</option>
+                            <option value="2">2 - Chairfast</option>
+                            <option value="3" selected>3 - Walks occasionally</option>
+                            <option value="4">4 - Walks frequently</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Mobility:</label>
+                        <select id="braden-mobility" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Completely immobile</option>
+                            <option value="2">2 - Very limited</option>
+                            <option value="3" selected>3 - Slightly limited</option>
+                            <option value="4">4 - No limitation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nutrition:</label>
+                        <select id="braden-nutrition" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Very poor</option>
+                            <option value="2">2 - Probably inadequate</option>
+                            <option value="3" selected>3 - Adequate</option>
+                            <option value="4">4 - Excellent</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Friction/Shear:</label>
+                        <select id="braden-friction" class="w-full p-2 border rounded text-sm">
+                            <option value="1">1 - Problem</option>
+                            <option value="2">2 - Potential problem</option>
+                            <option value="3" selected>3 - No apparent problem</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="btn-braden" class="mt-4 w-full px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600">
+                    Calculate Braden Score
+                </button>
+                <div id="bradenResult" aria-live="polite" aria-atomic="true" class="mt-4 p-3 bg-gray-100 rounded hidden"></div>
+            </div>
+        </div>
+
         <!-- Quick Reference Protocols -->
         <div class="bg-white rounded-lg shadow-lg p-6">
             <h2 class="text-2xl font-bold mb-4">⚡ Quick Reference Protocols</h2>
@@ -261,6 +388,50 @@
                         <li>3. Add: Senna 2 tabs QHS</li>
                         <li>4. If no BM x3 days: Bisacodyl supp</li>
                         <li>5. Severe: Consider lactulose or enema</li>
+                    </ol>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded">
+                    <h3 class="font-bold text-yellow-900 mb-2">Pain Management in Elderly</h3>
+                    <ol class="text-sm space-y-1">
+                        <li>1. Assess: pain scale, location, timing</li>
+                        <li>2. First line: Paracetamol 1g QID (max 3g if liver disease)</li>
+                        <li>3. Topical NSAIDs for MSK (safer than oral)</li>
+                        <li>4. Avoid oral NSAIDs if possible (GI, renal, cardiac)</li>
+                        <li>5. Weak opioids: Tramadol 25mg (serotonin risk)</li>
+                        <li>6. Strong opioids: start low, go slow (morphine 2.5mg)</li>
+                    </ol>
+                </div>
+                <div class="p-4 bg-teal-50 rounded">
+                    <h3 class="font-bold text-teal-900 mb-2">Insomnia in Elderly</h3>
+                    <ol class="text-sm space-y-1">
+                        <li>1. Sleep hygiene education (first line)</li>
+                        <li>2. CBT-I (cognitive behavioral therapy)</li>
+                        <li>3. Avoid: benzodiazepines, Z-drugs (Beers criteria)</li>
+                        <li>4. Consider: low-dose trazodone 25-50mg</li>
+                        <li>5. Melatonin 0.5-3mg (limited evidence)</li>
+                        <li>6. Address: pain, nocturia, depression, medications</li>
+                    </ol>
+                </div>
+                <div class="p-4 bg-indigo-50 rounded">
+                    <h3 class="font-bold text-indigo-900 mb-2">AKI in Elderly</h3>
+                    <ol class="text-sm space-y-1">
+                        <li>1. Assess volume status (prerenal most common)</li>
+                        <li>2. Stop nephrotoxins: NSAIDs, ACEi/ARB, aminoglycosides</li>
+                        <li>3. Urinary catheter if obstruction suspected</li>
+                        <li>4. IV fluids if prerenal (cautious in HF)</li>
+                        <li>5. Renal ultrasound if no clear cause</li>
+                        <li>6. Nephrology if: K+ >6, acidosis, oliguria, Cr rising</li>
+                    </ol>
+                </div>
+                <div class="p-4 bg-rose-50 rounded">
+                    <h3 class="font-bold text-rose-900 mb-2">DVT Prophylaxis in Hospital</h3>
+                    <ol class="text-sm space-y-1">
+                        <li>1. Assess VTE risk: Padua score ≥4 = high risk</li>
+                        <li>2. Assess bleeding risk before anticoagulation</li>
+                        <li>3. Mechanical: SCDs for all immobile patients</li>
+                        <li>4. Pharmacological: enoxaparin 40mg SC daily</li>
+                        <li>5. Reduce dose if CrCl <30: enoxaparin 20mg SC daily</li>
+                        <li>6. Early mobilization is key prevention</li>
                     </ol>
                 </div>
             </div>
@@ -435,6 +606,72 @@
             resultDiv.classList.remove('hidden');
         }
 
+        function assessFalls() {
+            const checks = document.querySelectorAll('.falls-check');
+            let score = 0;
+            checks.forEach(cb => { if (cb.checked) score += parseInt(cb.dataset.fpts); });
+            const resultDiv = document.getElementById('fallsResult');
+            let risk, rec;
+            if (score <= 2) {
+                risk = 'LOW RISK';
+                rec = 'Annual fall screening. Exercise program (balance + strength). Review medications at each visit.';
+            } else if (score <= 5) {
+                risk = 'MODERATE RISK';
+                rec = 'Multifactorial fall assessment recommended:\n- Medication review (especially psychoactives)\n- Vision assessment\n- Home safety evaluation\n- Exercise program (Otago or tai chi)\n- Orthostatic BP check\n- Vitamin D 800-1000 IU daily';
+            } else {
+                risk = 'HIGH RISK';
+                rec = 'URGENT multifactorial intervention:\n- Comprehensive medication review\n- PT/OT referral\n- Home safety assessment\n- Assistive device evaluation\n- Consider bone density scan\n- Hip protectors if recurrent falls\n- Address all modifiable risk factors';
+            }
+            resultDiv.innerHTML = '<strong>Falls Risk: ' + risk + '</strong><br><strong>Score: ' + score + '/9</strong><br><strong>Recommendations:</strong><br><div class="mt-2 text-sm">' + rec.replace(/\n/g, '<br>') + '</div>';
+            resultDiv.classList.remove('hidden');
+        }
+
+        function assessFrailty() {
+            const checks = document.querySelectorAll('.frail-check');
+            let score = 0;
+            checks.forEach(cb => { if (cb.checked) score++; });
+            const resultDiv = document.getElementById('frailResult');
+            let status, rec;
+            if (score === 0) {
+                status = 'ROBUST (0/5)';
+                rec = 'No frailty detected. Continue preventive care, exercise, and nutrition optimization.';
+            } else if (score <= 2) {
+                status = 'PRE-FRAIL (' + score + '/5)';
+                rec = 'Pre-frailty identified — early intervention can prevent progression:\n- Structured exercise (resistance + balance)\n- Nutritional assessment (protein 1.2-1.5g/kg/day)\n- Social engagement\n- Medication review\n- Monitor for progression';
+            } else {
+                status = 'FRAIL (' + score + '/5)';
+                rec = 'Frailty confirmed — comprehensive approach needed:\n- CGA (Comprehensive Geriatric Assessment)\n- Tailored exercise program\n- Nutritional support + protein supplementation\n- Polypharmacy review (deprescribing)\n- Goals of care discussion\n- Consider geriatric consultation\n- Prehabilitation before any surgery';
+            }
+            resultDiv.innerHTML = '<strong>FRAIL Scale: ' + status + '</strong><br><div class="mt-2 text-sm">' + rec.replace(/\n/g, '<br>') + '</div>';
+            resultDiv.classList.remove('hidden');
+        }
+
+        function assessBraden() {
+            const ids = ['braden-sensory','braden-moisture','braden-activity','braden-mobility','braden-nutrition','braden-friction'];
+            let total = 0;
+            ids.forEach(id => { total += parseInt(document.getElementById(id).value); });
+            const resultDiv = document.getElementById('bradenResult');
+            let risk, rec;
+            if (total <= 9) {
+                risk = 'VERY HIGH RISK (Score: ' + total + '/23)';
+                rec = 'Intensive prevention protocol:\n- Reposition q2h with 30° tilt\n- Pressure redistribution mattress\n- Skin assessment every shift\n- Nutrition consult (protein, calories, vitamin C, zinc)\n- Moisture management\n- Minimize friction (draw sheets, heel elevation)';
+            } else if (total <= 12) {
+                risk = 'HIGH RISK (Score: ' + total + '/23)';
+                rec = 'Active prevention:\n- Reposition q2h\n- Consider pressure mattress\n- Nutritional optimization\n- Skin checks twice daily\n- Address incontinence';
+            } else if (total <= 14) {
+                risk = 'MODERATE RISK (Score: ' + total + '/23)';
+                rec = 'Standard prevention:\n- Regular repositioning\n- Adequate nutrition\n- Skin inspection daily\n- Mobility encouragement';
+            } else if (total <= 18) {
+                risk = 'MILD RISK (Score: ' + total + '/23)';
+                rec = 'Basic prevention: skin checks, encourage mobility, maintain nutrition.';
+            } else {
+                risk = 'NO SIGNIFICANT RISK (Score: ' + total + '/23)';
+                rec = 'Continue standard care. Reassess if condition changes.';
+            }
+            resultDiv.innerHTML = '<strong>Braden Score: ' + risk + '</strong><br><div class="mt-2 text-sm">' + rec.replace(/\n/g, '<br>') + '</div>';
+            resultDiv.classList.remove('hidden');
+        }
+
         // Wire buttons — no inline handlers
         document.addEventListener('DOMContentLoaded', function() {
             const map = {
@@ -445,6 +682,9 @@
                 'btn-code': showCodeStatusGuide,
                 'btn-capacity': assessCapacity,
                 'btn-uti': assessUTI,
+                'btn-falls': assessFalls,
+                'btn-frail': assessFrailty,
+                'btn-braden': assessBraden,
             };
             Object.entries(map).forEach(([id, fn]) => {
                 const el = document.getElementById(id);

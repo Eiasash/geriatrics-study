@@ -1,7 +1,7 @@
 /**
- * Geriatrics Study Platform - Service Worker v4
+ * Geriatrics Study Platform - Service Worker v5
  */
-const CACHE_NAME = 'geriatrics-study-v4';
+const CACHE_NAME = 'geriatrics-study-v6';
 
 const CACHE_FILES = [
     './',
@@ -23,6 +23,11 @@ const CACHE_FILES = [
     './hazzards/index.html',
     './szmc-presentation-maker/index.html',
     './gerifellow-assistant/index.html',
+    './gerifellow-assistant/style.css',
+    './gerifellow-assistant/script.js',
+    './clinical-tools/mobile-fallback.css',
+    './clinical-tools/shared/sanitize.js',
+    './clinical-tools/shared/storage.js',
     './data/content.json',
 ];
 

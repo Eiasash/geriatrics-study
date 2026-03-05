@@ -63,11 +63,11 @@
     </header>
 
     <div class="flex flex-wrap gap-2 mb-6">
-        <button id="tab-topics" id="tab-topics" class="tab-btn px-5 py-2 bg-green-600 text-white rounded-lg font-medium">📚 נושאים</button>
-        <button id="tab-quiz" id="tab-quiz" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">❓ MCQ</button>
-        <button id="tab-flashcards" id="tab-flashcards" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🃏 כרטיסיות</button>
-        <button id="tab-ai-tutor" id="tab-ai-tutor" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🤖 מורה AI</button>
-        <button id="tab-spaced" id="tab-spaced" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🔁 חזרות</button>
+        <button id="tab-topics" class="tab-btn px-5 py-2 bg-green-600 text-white rounded-lg font-medium">📚 נושאים</button>
+        <button id="tab-quiz" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">❓ MCQ</button>
+        <button id="tab-flashcards" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🃏 כרטיסיות</button>
+        <button id="tab-ai-tutor" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🤖 מורה AI</button>
+        <button id="tab-spaced" class="tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">🔁 חזרות</button>
     </div>
 
     <div id="loading-state" class="text-center py-16 text-gray-500">
@@ -115,7 +115,7 @@
         <div class="bg-white rounded-xl shadow-lg p-6">
             <div class="flex flex-wrap justify-between items-center mb-6 gap-3">
                 <h2 class="text-xl font-bold text-gray-800">כרטיסיות זיכרון</h2>
-                <select id="flashcard-topic" id="fc-topic-select" class="px-3 py-2 border rounded-lg text-sm">
+                <select id="flashcard-topic" class="px-3 py-2 border rounded-lg text-sm">
                     <option value="all">כל הנושאים</option>
                 </select>
             </div>
@@ -537,20 +537,35 @@ function renderSRCard(pool, idx){ window._srCurrentPool = pool;
         </div>`;
 }
 
-// Use data attributes to avoid inline JSON issues
+// Global delegated click handler for SR rating and quiz answers
 document.addEventListener('click', e=>{
-    const btn=e.target.closest('[data-sr-rate]');
-    if(btn){
-        const id=btn.dataset.srId, quality=+btn.dataset.srRate, idx=+btn.dataset.srIdx;
-        // handled inline for simplicity
+    // Spaced repetition rating buttons
+    const srBtn=e.target.closest('[data-sr-rate]');
+    if(srBtn){
+        const id=srBtn.dataset.srId, quality=+srBtn.dataset.srRate, idx=+srBtn.dataset.srIdx;
+        sm2Update(id, quality);
+        updateDueCount();
+        renderSRCard(window._srCurrentPool, idx+1);
+        return;
+    }
+    // SR card flip
+    if(e.target.closest('[data-sr-flip]')){
+        const inner=document.getElementById('sr-inner');
+        if(inner) inner.classList.toggle('flipped');
+        return;
+    }
+    // Quiz answer buttons
+    const ansBtn=e.target.closest('[data-answer]');
+    if(ansBtn && !ansBtn.disabled){
+        checkAnswer(parseInt(ansBtn.dataset.answer));
+        return;
+    }
+    // Restart quiz
+    if(e.target.closest('[data-action="restart-quiz"]')){
+        startQuiz();
+        return;
     }
 });
-
-function srRate(evt, cardId, pool, idx, quality){
-    sm2Update(cardId, quality);
-    updateDueCount();
-    renderSRCard(pool, +idx+1);
-}
 
 // ──────────────────────────────────────────────
 // AI TUTOR
@@ -622,6 +637,33 @@ function updateDueCount(){
     const n=allCards.filter(c=>{ const s=srState[c.id]; return s&&s.dueDate<=today; }).length;
     document.getElementById('stat-due').textContent=n;
 }
+
+// ──────────────────────────────────────────────
+// EVENT WIRING
+// ──────────────────────────────────────────────
+document.getElementById('tab-topics').addEventListener('click', ()=>showSection('topics'));
+document.getElementById('tab-quiz').addEventListener('click', ()=>showSection('quiz'));
+document.getElementById('tab-flashcards').addEventListener('click', ()=>showSection('flashcards'));
+document.getElementById('tab-ai-tutor').addEventListener('click', ()=>showSection('ai-tutor'));
+document.getElementById('tab-spaced').addEventListener('click', ()=>showSection('spaced'));
+document.getElementById('btn-home').addEventListener('click', ()=>{ window.location.href='../index.html'; });
+document.getElementById('btn-start-quiz').addEventListener('click', startQuiz);
+document.getElementById('flashcard-topic').addEventListener('change', loadFlashcards);
+document.getElementById('card-front-flip').addEventListener('click', flipCard);
+document.getElementById('card-back-flip').addEventListener('click', flipCard);
+document.getElementById('btn-prev-card').addEventListener('click', prevCard);
+document.getElementById('btn-next-card').addEventListener('click', nextCard);
+document.getElementById('btn-rate-1').addEventListener('click', ()=>rateCard(1));
+document.getElementById('btn-rate-3').addEventListener('click', ()=>rateCard(3));
+document.getElementById('btn-rate-5').addEventListener('click', ()=>rateCard(5));
+document.getElementById('btn-ai-simple').addEventListener('click', ()=>aiExplain('simple'));
+document.querySelector('[data-explain="detailed"]').addEventListener('click', ()=>aiExplain('detailed'));
+document.getElementById('btn-ai-gen').addEventListener('click', aiGenerateQuestions);
+document.getElementById('btn-ai-compare').addEventListener('click', aiCompare);
+document.getElementById('btn-ai-case').addEventListener('click', aiCase);
+document.getElementById('btn-ai-close').addEventListener('click', ()=>{
+    document.getElementById('ai-response-area').classList.add('hidden');
+});
 
 loadContent();
 </script>
