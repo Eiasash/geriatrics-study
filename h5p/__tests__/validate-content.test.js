@@ -49,13 +49,13 @@ describe('Content Validation', () => {
     test('flashcards have question and answer', () => {
       content.forEach((topic) => {
         topic.flashcards.forEach((flashcard) => {
-          const question = flashcard.q || flashcard.term;
-          const answer = flashcard.a || flashcard.definition;
-          
+          const question = flashcard.q || flashcard.term || flashcard.front;
+          const answer = flashcard.a || flashcard.definition || flashcard.back;
+
           expect(question).toBeDefined();
           expect(typeof question).toBe('string');
           expect(question.length).toBeGreaterThan(0);
-          
+
           expect(answer).toBeDefined();
           expect(typeof answer).toBe('string');
           expect(answer.length).toBeGreaterThan(0);
@@ -66,9 +66,9 @@ describe('Content Validation', () => {
     test('flashcards are not too short', () => {
       content.forEach((topic) => {
         topic.flashcards.forEach((flashcard) => {
-          const question = flashcard.q || flashcard.term;
-          const answer = flashcard.a || flashcard.definition;
-          
+          const question = flashcard.q || flashcard.term || flashcard.front;
+          const answer = flashcard.a || flashcard.definition || flashcard.back;
+
           expect(question.length).toBeGreaterThan(2);
           expect(answer.length).toBeGreaterThan(5);
         });

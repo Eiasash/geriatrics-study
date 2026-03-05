@@ -28,8 +28,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
   },
-  // Ensure mocks directory is picked up for fs-extra
-  moduleDirectories: ['node_modules', '.'],
+  moduleDirectories: ['node_modules'],
   verbose: true,
   bail: false,
   errorOnDeprecated: true,
