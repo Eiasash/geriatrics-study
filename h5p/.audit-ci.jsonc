@@ -1,7 +1,4 @@
 {
   "high": true,
-  "allowlist": [
-    // multer DoS via uncontrolled recursion — no fix available, transitive dep of h5p-cli
-    "GHSA-5528-5vmv-3xc2"
-  ]
+  "allowlist": []
 }

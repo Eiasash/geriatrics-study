@@ -2,7 +2,13 @@
  * Tests for validate-content.js validation functions
  */
 
-const { validateMCQ, validateFlashcard, validateTopic, colors, log } = require('../validate-content.js');
+const {
+  validateMCQ,
+  validateFlashcard,
+  validateTopic,
+  colors,
+  log,
+} = require('../validate-content.js');
 
 describe('validateMCQ', () => {
   describe('question text validation', () => {

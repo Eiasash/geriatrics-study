@@ -107,41 +107,31 @@ describe('log', () => {
 
   test('log.info should log with blue info symbol', () => {
     log.info('Test message');
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining(colors.blue)
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(colors.blue));
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Test message'));
   });
 
   test('log.success should log with green check symbol', () => {
     log.success('Success message');
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining(colors.green)
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(colors.green));
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Success message'));
   });
 
   test('log.warning should log with yellow warning symbol', () => {
     log.warning('Warning message');
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining(colors.yellow)
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(colors.yellow));
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Warning message'));
   });
 
   test('log.error should log with red error symbol', () => {
     log.error('Error message');
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining(colors.red)
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(colors.red));
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Error message'));
   });
 
   test('log.section should log section header with cyan color', () => {
     log.section('Section Header');
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining(colors.cyan)
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining(colors.cyan));
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Section Header'));
   });
 
@@ -309,9 +299,7 @@ describe('BuildTimer', () => {
     const timer = new BuildTimer('Test Build');
     timer.end();
 
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Test Build completed')
-    );
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Test Build completed'));
   });
 
   test('should return duration in milliseconds', () => {

@@ -144,7 +144,10 @@ async function main() {
     // Rename .zip to .h5p
     await fs.rename(`${outFile}.zip`, outFile);
   } else {
-    execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, { stdio: 'inherit', timeout: EXEC_TIMEOUT_MS });
+    execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, {
+      stdio: 'inherit',
+      timeout: EXEC_TIMEOUT_MS,
+    });
   }
 
   await fs.remove(tmpDir);

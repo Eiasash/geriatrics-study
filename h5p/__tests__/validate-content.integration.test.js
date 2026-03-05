@@ -189,8 +189,12 @@ describe('validateContent integration', () => {
       validateContent();
 
       expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Content Statistics'));
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Average questions per topic'));
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Average flashcards per topic'));
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Average questions per topic')
+      );
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Average flashcards per topic')
+      );
     });
   });
 

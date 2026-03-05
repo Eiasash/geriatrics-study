@@ -31,7 +31,7 @@ describe('Content Validation', () => {
         expect(topic.topic).toBeDefined();
         expect(typeof topic.topic).toBe('string');
         expect(topic.topic.length).toBeGreaterThan(0);
-        
+
         expect(Array.isArray(topic.flashcards)).toBe(true);
         expect(Array.isArray(topic.mcqs)).toBe(true);
       });
@@ -81,14 +81,14 @@ describe('Content Validation', () => {
       content.forEach((topic) => {
         topic.mcqs.forEach((mcq) => {
           const question = mcq.q || mcq.question;
-          
+
           expect(question).toBeDefined();
           expect(typeof question).toBe('string');
           expect(question.length).toBeGreaterThan(0);
-          
+
           expect(Array.isArray(mcq.options)).toBe(true);
           expect(mcq.options.length).toBeGreaterThanOrEqual(2);
-          
+
           const correctAnswer = mcq.correct || mcq.correctAnswer;
           expect(correctAnswer).toBeDefined();
         });
@@ -107,7 +107,7 @@ describe('Content Validation', () => {
       content.forEach((topic) => {
         topic.mcqs.forEach((mcq) => {
           const correctAnswer = mcq.correct || mcq.correctAnswer;
-          
+
           if (typeof correctAnswer === 'string') {
             expect(mcq.options).toContain(correctAnswer);
           } else if (typeof correctAnswer === 'number') {
@@ -129,7 +129,7 @@ describe('Content Validation', () => {
 
     test('MCQs have explanations', () => {
       let missingExplanations = 0;
-      
+
       content.forEach((topic) => {
         topic.mcqs.forEach((mcq) => {
           if (!mcq.explanation || mcq.explanation.trim() === '') {
@@ -137,11 +137,11 @@ describe('Content Validation', () => {
           }
         });
       });
-      
+
       // Allow some questions to not have explanations
       const totalQuestions = content.reduce((sum, topic) => sum + topic.mcqs.length, 0);
       const explainedPercentage = ((totalQuestions - missingExplanations) / totalQuestions) * 100;
-      
+
       expect(explainedPercentage).toBeGreaterThan(70); // At least 70% should have explanations
     });
   });
@@ -154,7 +154,7 @@ describe('Content Validation', () => {
     test('average questions per topic is reasonable', () => {
       const totalQuestions = content.reduce((sum, topic) => sum + topic.mcqs.length, 0);
       const avgQuestions = totalQuestions / content.length;
-      
+
       expect(avgQuestions).toBeGreaterThan(3); // At least 3 questions per topic on average
     });
 
@@ -162,7 +162,7 @@ describe('Content Validation', () => {
       const totalFlashcards = content.reduce((sum, topic) => sum + topic.flashcards.length, 0);
       const totalQuestions = content.reduce((sum, topic) => sum + topic.mcqs.length, 0);
       const totalContent = totalFlashcards + totalQuestions;
-      
+
       expect(totalContent).toBeGreaterThan(50); // At least 50 items total
     });
   });
@@ -173,7 +173,7 @@ describe('Content Validation', () => {
         // Check if topic name contains Hebrew characters
         return /[\u0590-\u05FF]/.test(topic.topic);
       });
-      
+
       expect(hasHebrew).toBe(true);
     });
   });
