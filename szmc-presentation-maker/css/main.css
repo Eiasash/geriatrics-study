@@ -496,6 +496,18 @@ select:focus {
     color: var(--accent);
 }
 
+.version-badge {
+    font-size: 0.625rem;
+    font-weight: 600;
+    background: var(--accent, #4ecdc4);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    line-height: 1.6;
+}
+
 .header-center {
     flex: 1;
     max-width: 400px;
