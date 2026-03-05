@@ -24,6 +24,7 @@
         .modal-overlay { background: rgba(0,0,0,0.5); }
     </style>
     <script src="shared/sanitize.js"></script>
+    <script src="shared/toast.js"></script>
     <script src="shared/storage.js"></script>
 </head>
 <body class="text-gray-800">
@@ -260,7 +261,7 @@ function closeModal() {
 function savePatient() {
     const room = document.getElementById('p-room').value.trim();
     const initials = document.getElementById('p-initials').value.trim();
-    if (!room || !initials) return alert(lang === 'he' ? 'נא למלא חדר וראשי תיבות' : 'Room and initials required');
+    if (!room || !initials) return showToast(lang === 'he' ? 'נא למלא חדר וראשי תיבות' : 'Room and initials required', 'warning');
 
     const id = document.getElementById('p-id').value;
     const p = {
@@ -306,7 +307,7 @@ function markAllCompleted() {
 }
 
 function exportReport() {
-    if (!patients.length) return alert(t('noExport'));
+    if (!patients.length) return showToast(t('noExport'), 'warning');
     const date = new Date().toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-US');
     let txt = `${t('exportTitle')}\n${date}\n${'─'.repeat(40)}\n\n`;
     patients.forEach(p => {
@@ -320,7 +321,7 @@ function exportReport() {
     txt += `\n${t('total')}: ${patients.length} | ${t('high')}: ${patients.filter(p => getRisk(p) >= 7).length} | ${t('pending')}: ${patients.filter(p => !p.completed).length}`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(txt).then(() => alert(t('copied'))).catch(() => fallbackCopy(txt));
+        navigator.clipboard.writeText(txt).then(() => showToast(t('copied'))).catch(() => fallbackCopy(txt));
     } else { fallbackCopy(txt); }
 }
 
@@ -331,7 +332,7 @@ function fallbackCopy(txt) {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    alert(t('copied'));
+    showToast(t('copied'));
 }
 
 function render() {

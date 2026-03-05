@@ -17,6 +17,7 @@
         @media print { .no-print { display: none !important; } }
     </style>
     <script src="shared/sanitize.js"></script>
+    <script src="shared/toast.js"></script>
 </head>
 <body class="bg-gray-100 min-h-screen text-gray-800">
 <div class="max-w-6xl mx-auto p-4 md:p-6">
@@ -324,7 +325,7 @@ function checkAllWarnings() {
 
     if (!all.length) {
         panel.classList.add('hidden');
-        alert('✅ לא נמצאו התראות אינטראקציה או מינון משמעותיות.');
+        showToast('לא נמצאו התראות אינטראקציה או מינון משמעותיות.');
         return;
     }
 
@@ -340,7 +341,7 @@ function checkAllWarnings() {
 }
 
 function exportReport() {
-    if (!medications.length) return alert('אין תרופות לייצוא');
+    if (!medications.length) return showToast('אין תרופות לייצוא', 'warning');
     const name = document.getElementById('patient-name').value || 'חסוי';
     const age = document.getElementById('patient-age').value || '';
     const date = new Date().toLocaleDateString('he-IL');
@@ -357,7 +358,7 @@ function exportReport() {
     if (beersCount) txt += ` | ${beersCount} תרופות Beers`;
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(txt).then(() => alert('הדוח הועתק ללוח. מוכן להדבקה בקמיליון.'));
+        navigator.clipboard.writeText(txt).then(() => showToast('הדוח הועתק ללוח. מוכן להדבקה בקמיליון.'));
     } else {
         const ta = document.createElement('textarea');
         ta.value = txt;
@@ -365,7 +366,7 @@ function exportReport() {
         ta.select();
         document.execCommand('copy');
         document.body.removeChild(ta);
-        alert('הדוח הועתק ללוח.');
+        showToast('הדוח הועתק ללוח.');
     }
 }
 
@@ -374,7 +375,7 @@ document.getElementById('btn-home').addEventListener('click', () => window.locat
 document.getElementById('btn-export').addEventListener('click', exportReport);
 document.getElementById('btn-add-med').addEventListener('click', () => {
     const name = document.getElementById('drug-name').value.trim();
-    if (!name) return alert('נא להזין שם תרופה');
+    if (!name) return showToast('נא להזין שם תרופה', 'warning');
     medications.push({
         id: Date.now(),
         name,

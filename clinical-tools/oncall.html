@@ -139,6 +139,7 @@
         </div>
     </div>
 
+    <script src="shared/toast.js"></script>
     <script>
         const protocols = {
             delirium: {
@@ -871,7 +872,7 @@
         function showScenario(scenarioKey) {
             const protocol = protocols[scenarioKey];
             if (!protocol) {
-                alert('Protocol not found');
+                showToast('Protocol not found', 'error');
                 return;
             }
 

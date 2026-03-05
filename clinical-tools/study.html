@@ -29,6 +29,7 @@
         .section.hidden { display: none; }
     </style>
     <script src="shared/sanitize.js"></script>
+    <script src="shared/toast.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen">
 <div class="container mx-auto p-4 max-w-6xl">
@@ -599,7 +600,7 @@ async function callClaude(prompt){
 
 function aiExplain(level){
     const c=document.getElementById('explain-input').value.trim();
-    if(!c) return alert('נא להזין מושג');
+    if(!c) return showToast('נא להזין מושג', 'warning');
     callClaude(level==='simple'
         ?`הסבר את "${c}" ברפואה גריאטרית ב-3-4 משפטים פשוטים. מה חשוב לזכור לבחינת בורד?`
         :`הסבר לעומק את "${c}" ברפואה גריאטרית: הגדרה, שכיחות, פתופיזיולוגיה, הצגה קלינית, בירור, טיפול, נקודות בורד חשובות.`);
@@ -613,13 +614,13 @@ function aiGenerateQuestions(){
 
 function aiCompare(){
     const a=document.getElementById('compare-a').value.trim(), b=document.getElementById('compare-b').value.trim();
-    if(!a||!b) return alert('נא למלא שני שדות');
+    if(!a||!b) return showToast('נא למלא שני שדות', 'warning');
     callClaude(`השווה בין "${a}" ל-"${b}" ברפואה גריאטרית. טבלת השוואה: הגדרה, הצגה, אבחון, טיפול, פרוגנוזה. הדגש הבדלים לבורד.`);
 }
 
 function aiCase(){
     const t=document.getElementById('case-input').value.trim();
-    if(!t) return alert('נא לתאר מקרה');
+    if(!t) return showToast('נא לתאר מקרה', 'warning');
     callClaude(`ניתוח מקרה גריאטרי:\n${t}\n\nספק:\n1. אבחנה מבדלת (3-4)\n2. בירור ממוקד\n3. גישה טיפולית\n4. שיקולים גריאטריים ספציפיים`);
 }
 
