@@ -351,15 +351,24 @@ const CloudSave = {
             return Object.keys(localStorage)
                 .filter(k => k.startsWith('presentation_'))
                 .map(k => {
-                    const data = JSON.parse(localStorage.getItem(k));
-                    return { key: k, title: data.title, savedAt: data.savedAt };
+                    try {
+                        const data = JSON.parse(localStorage.getItem(k));
+                        return { key: k, title: data.title, savedAt: data.savedAt };
+                    } catch (e) {
+                        return null;
+                    }
                 })
+                .filter(Boolean)
                 .sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt));
         },
 
         load(key) {
             const data = localStorage.getItem(key);
-            return data ? JSON.parse(data) : null;
+            try {
+                return data ? JSON.parse(data) : null;
+            } catch (e) {
+                return null;
+            }
         }
     }
 };
@@ -670,12 +679,12 @@ function showCloudSetupModal(provider) {
                     </div>
                     <div class="form-group">
                         <label>API Key:</label>
-                        <input type="text" id="google-api-key" placeholder="your-api-key">
+                        <input type="password" id="google-api-key" placeholder="your-api-key">
                     </div>
                 ` : `
                     <div class="form-group">
                         <label>Dropbox Access Token:</label>
-                        <input type="text" id="dropbox-token" placeholder="your-access-token">
+                        <input type="password" id="dropbox-token" placeholder="your-access-token">
                     </div>
                 `}
                 <div class="modal-actions">
@@ -736,8 +745,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load saved cloud configs
     const googleConfig = sessionStorage.getItem('google_config');
     if (googleConfig) {
-        const { clientId, apiKey } = JSON.parse(googleConfig);
-        CloudSave.googleDrive.init(clientId, apiKey);
+        try {
+            const { clientId, apiKey } = JSON.parse(googleConfig);
+            CloudSave.googleDrive.init(clientId, apiKey);
+        } catch (e) { /* corrupted config, ignore */ }
     }
 
     const dropboxToken = sessionStorage.getItem('dropbox_token');

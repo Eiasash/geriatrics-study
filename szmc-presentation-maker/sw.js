@@ -151,8 +151,9 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Message handler
+// Message handler - only accept messages from same origin
 self.addEventListener('message', (event) => {
+    if (event.origin && event.origin !== self.location.origin) return;
     if (event.data?.type === 'SKIP_WAITING') {
         self.skipWaiting();
     }
