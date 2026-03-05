@@ -439,6 +439,9 @@ document.getElementById('modal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('modal')) closeModal();
 });
 
+// Home button
+document.getElementById('btn-home').addEventListener('click', () => { window.location.href = '../index.html'; });
+
 // Init
 const savedLang = localStorage.getItem('dashLang') || 'en';
 setLang(savedLang);

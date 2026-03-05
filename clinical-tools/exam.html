@@ -533,6 +533,10 @@
             }
         }
 
+        // Home button
+        const btnHome = document.getElementById('btn-home');
+        if (btnHome) btnHome.addEventListener('click', () => window.location.href = '../index.html');
+
         // Initialize on load
         window.addEventListener('load', init);
     </script>

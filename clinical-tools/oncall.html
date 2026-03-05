@@ -66,10 +66,54 @@
             </button>
         </div>
 
+        <!-- More Quick Actions -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <button data-action="btn_uti" class="urgent protocol-card bg-yellow-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">🦠</div>
+                <h3 class="font-bold text-sm">UTI / Sepsis</h3>
+                <p class="text-yellow-200 text-xs">Fever workup in elderly</p>
+            </button>
+            <button data-action="btn_hyper_k" class="emergency protocol-card bg-red-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">⚡</div>
+                <h3 class="font-bold text-sm">Hyperkalemia</h3>
+                <p class="text-red-200 text-xs">K+ >5.5, ECG changes</p>
+            </button>
+            <button data-action="btn_hypo" class="emergency protocol-card bg-red-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">🍬</div>
+                <h3 class="font-bold text-sm">Hypoglycemia</h3>
+                <p class="text-red-200 text-xs">Glucose <70 mg/dL</p>
+            </button>
+            <button data-action="btn_stroke" class="emergency protocol-card bg-red-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">🧠</div>
+                <h3 class="font-bold text-sm">Acute Stroke</h3>
+                <p class="text-red-200 text-xs">Time-critical protocol</p>
+            </button>
+            <button data-action="btn_gib" class="urgent protocol-card bg-yellow-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">🩸</div>
+                <h3 class="font-bold text-sm">GI Bleed</h3>
+                <p class="text-yellow-200 text-xs">Upper & lower GI bleeding</p>
+            </button>
+            <button data-action="btn_resp" class="emergency protocol-card bg-red-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">🫁</div>
+                <h3 class="font-bold text-sm">Resp Distress</h3>
+                <p class="text-red-200 text-xs">Dyspnea, desaturation</p>
+            </button>
+            <button data-action="btn_syncope" class="urgent protocol-card bg-yellow-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">💫</div>
+                <h3 class="font-bold text-sm">Syncope</h3>
+                <p class="text-yellow-200 text-xs">Loss of consciousness</p>
+            </button>
+            <button data-action="btn_agitation" class="urgent protocol-card bg-yellow-800 rounded-lg p-3 text-left">
+                <div class="text-xl mb-1">😤</div>
+                <h3 class="font-bold text-sm">Acute Agitation</h3>
+                <p class="text-yellow-200 text-xs">BPSD, sundowning</p>
+            </button>
+        </div>
+
         <!-- All Protocols -->
         <div class="bg-gray-800 rounded-lg shadow-lg">
             <div class="p-6 border-b border-gray-700">
-                <h2 class="text-xl font-semibold">Emergency Protocols</h2>
+                <h2 class="text-xl font-semibold">All Emergency Protocols</h2>
                 <p class="text-gray-300">Click on any scenario for step-by-step guidance</p>
             </div>
             <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4" id="protocolList">
@@ -296,10 +340,482 @@
             }
         };
 
+        // ── Additional protocols ──
+        protocols['uti-sepsis'] = {
+            title: "🦠 UTI / Sepsis in Elderly",
+            severity: "urgent",
+            steps: [
+                { title: "1. INITIAL ASSESSMENT", content: `<strong>🔍 Fever Workup in Elderly:</strong>
+• Temperature may be blunted — even 37.5°C can be significant
+• Check: HR, BP, RR, O2 sat, mental status change
+• Elderly sepsis often presents ATYPICALLY: confusion, falls, weakness
+
+<strong>⚠️ qSOFA for Sepsis (≥2 = high risk):</strong>
+• Altered mental status (GCS <15)
+• Respiratory rate ≥22
+• Systolic BP ≤100 mmHg` },
+                { title: "2. DOES THIS NEED ANTIBIOTICS?", content: `<strong>💊 Loeb Criteria for UTI (must meet before treating):</strong>
+• Acute dysuria alone → TREAT
+• Fever ≥38°C PLUS one urogenital symptom → TREAT
+• Positive urine culture ALONE → DO NOT TREAT (ASB in 30-50%)
+
+<strong>🚫 Common Pitfalls:</strong>
+• Confusion alone is NOT a UTI — work up other causes first
+• Foul-smelling urine is NOT an indication to treat
+• Cloudy urine is NOT an indication to treat` },
+                { title: "3. WORKUP", content: `<strong>🧪 Labs (STAT):</strong>
+• CBC with differential, CRP/procalcitonin
+• Blood cultures ×2 (BEFORE antibiotics)
+• Urinalysis + urine culture
+• BMP (lactate if sepsis suspected)
+• CXR if respiratory symptoms
+
+<strong>📍 Source Search:</strong>
+• Lungs (cough, crackles) — most common in elderly
+• Urinary (dysuria, suprapubic pain, CVA tenderness)
+• Skin (cellulitis, pressure ulcers, wounds)
+• Abdomen (cholecystitis, diverticulitis, C. diff)` },
+                { title: "4. EMPIRIC TREATMENT", content: `<strong>💊 UTI Treatment:</strong>
+• Uncomplicated: Nitrofurantoin 100mg BID ×5d (if CrCl ≥30)
+• CrCl <30: Cephalexin 500mg BID ×7d
+• Pyelonephritis: Ceftriaxone 2g IV daily
+
+<strong>💊 Sepsis (start within 1 hour):</strong>
+• IV fluids: 30mL/kg crystalloid (cautious in HF)
+• Empiric: Piperacillin-tazobactam 4.5g IV OR Ceftriaxone 2g IV
+• Add vancomycin if MRSA risk
+• Target MAP ≥65 mmHg — vasopressors if fluids insufficient` }
+            ]
+        };
+
+        protocols['hyperkalemia'] = {
+            title: "⚡ Hyperkalemia Management",
+            severity: "emergency",
+            steps: [
+                { title: "1. CONFIRM AND ASSESS", content: `<strong>🔍 Is it real?</strong>
+• Rule out hemolysis (repeat if suspicious)
+• Check ECG IMMEDIATELY if K+ >5.5
+
+<strong>📊 ECG Changes (progressive):</strong>
+• Peaked T waves (earliest sign)
+• Prolonged PR interval
+• Widened QRS
+• Sine wave → VF/asystole (EMERGENCY)
+
+<strong>Common Causes in Elderly:</strong>
+• AKI / CKD progression
+• ACEi/ARB, spironolactone, trimethoprim
+• K+ supplements, NSAIDs
+• Metabolic acidosis, tissue breakdown` },
+                { title: "2. STABILIZE MYOCARDIUM", content: `<strong>💊 If ECG Changes Present:</strong>
+• Calcium gluconate 10% — 10mL IV over 2-3 min
+• Protects heart but doesn't lower K+
+• Can repeat in 5 min if ECG still abnormal
+• Use calcium chloride (central line) if arrest imminent
+
+<strong>⚠️ Digoxin Patients:</strong>
+• Use calcium with EXTREME caution
+• Can precipitate fatal arrhythmia
+• Consider alternative: hypertonic saline` },
+                { title: "3. SHIFT K+ INTO CELLS", content: `<strong>💊 Insulin + Glucose (most reliable):</strong>
+• Regular insulin 10 units IV + D50W 25g IV
+• MONITOR glucose q30min ×4h (hypoglycemia risk HIGH in elderly)
+• Onset: 15-30 min, Duration: 4-6h
+
+<strong>💊 Salbutamol Nebulizer:</strong>
+• 10-20mg nebulized (4-8× standard dose)
+• Additive effect with insulin
+• Caution in cardiac patients (tachycardia)
+
+<strong>💊 Sodium Bicarbonate:</strong>
+• Only if concurrent metabolic acidosis
+• 50-100 mEq IV over 5 min` },
+                { title: "4. REMOVE K+ FROM BODY", content: `<strong>💊 Definitive Removal:</strong>
+• Kayexalate (SPS) 15-30g PO — slow onset (hours)
+• Patiromer (Veltassa) 8.4g PO — better tolerated
+• Furosemide 40-80mg IV (if adequate renal function)
+• Dialysis if: K+ >6.5 refractory, ECG changes persist, oliguric AKI
+
+<strong>📋 Medication Review:</strong>
+• STOP: ACEi/ARB, spironolactone, trimethoprim, NSAIDs
+• Reduce or hold K+ supplements
+• Adjust doses for renal function` }
+            ]
+        };
+
+        protocols['hypoglycemia'] = {
+            title: "🍬 Hypoglycemia in Elderly",
+            severity: "emergency",
+            steps: [
+                { title: "1. RECOGNIZE (Often Atypical in Elderly)", content: `<strong>🚨 Classic vs Elderly Presentation:</strong>
+• Classic: tremor, sweating, palpitations
+• Elderly: confusion, falls, weakness, slurred speech
+• Often MISTAKEN for stroke or delirium
+
+<strong>⚡ Immediate Action:</strong>
+• Fingerstick glucose STAT
+• If <70 mg/dL → treat immediately
+• If <54 mg/dL → clinically significant hypoglycemia` },
+                { title: "2. TREAT", content: `<strong>💊 Conscious Patient:</strong>
+• 15-20g fast-acting glucose (3-4 glucose tablets, juice 120mL)
+• Recheck glucose in 15 min
+• Repeat if still <70 mg/dL
+• Follow with complex carbohydrate snack
+
+<strong>💊 Unconscious / Cannot Swallow:</strong>
+• D50W 25mL (12.5g glucose) IV push
+• OR Glucagon 1mg IM/SC if no IV access
+• Recheck q15 min
+• Start D10W infusion if recurrent
+
+<strong>⚠️ Sulfonylurea Hypoglycemia:</strong>
+• Can last 24-72 hours — MUST admit and monitor
+• Octreotide 50mcg SC q6-8h to prevent recurrence` },
+                { title: "3. INVESTIGATE CAUSE", content: `<strong>📋 Common Causes in Elderly:</strong>
+• Sulfonylureas (glipizide, glyburide) — #1 cause
+• Insulin dose errors / stacking
+• Skipped meals / reduced oral intake
+• Acute kidney injury (impaired drug clearance)
+• Drug interactions (trimethoprim, fluoroquinolones)
+• Adrenal insufficiency (less common)
+
+<strong>🧪 Labs if Unexplained:</strong>
+• BMP (renal function), LFTs
+• Cortisol if suspected adrenal insufficiency
+• C-peptide, insulin level if recurrent unexplained` },
+                { title: "4. PREVENT RECURRENCE", content: `<strong>📋 Medication Adjustments:</strong>
+• Reduce/stop sulfonylurea (switch to safer agent)
+• Glyburide → NEVER use in elderly (long-acting, Beers list)
+• Prefer: metformin, DPP-4i, GLP-1 RA, SGLT2i
+• Adjust insulin doses (reduce by 20% after episode)
+
+<strong>🎯 Targets in Elderly:</strong>
+• A1C <7.5% if healthy, <8.0-8.5% if frail/limited life expectancy
+• Avoid A1C <6.5% in elderly (hypoglycemia risk)
+• Less strict fasting glucose targets (100-150 mg/dL)` }
+            ]
+        };
+
+        protocols['acute-stroke'] = {
+            title: "🧠 Acute Stroke Protocol",
+            severity: "emergency",
+            steps: [
+                { title: "1. FAST ASSESSMENT", content: `<strong>🚨 BE-FAST Screening:</strong>
+• Balance: sudden loss of balance
+• Eyes: vision loss / double vision
+• Face: facial droop (ask to smile)
+• Arms: arm drift (raise both arms)
+• Speech: slurred or unable to speak
+• Time: NOTE exact symptom onset time
+
+<strong>⚡ Atypical Stroke in Elderly:</strong>
+• May present as: falls, confusion, general weakness
+• Posterior stroke: vertigo, nausea, ataxia (often missed)` },
+                { title: "2. IMMEDIATE ACTIONS", content: `<strong>📊 STAT Orders:</strong>
+• Non-contrast CT head (rule out hemorrhage)
+• Blood glucose (exclude hypoglycemia mimic)
+• CBC, BMP, PT/INR, troponin
+• 12-lead ECG (AF screening)
+• NPO — dysphagia screen before any oral intake
+
+<strong>⏱️ TIME IS BRAIN:</strong>
+• tPA window: 0-4.5 hours from onset
+• Thrombectomy window: up to 24 hours (large vessel)
+• Call stroke team IMMEDIATELY — do not wait for labs` },
+                { title: "3. ACUTE MANAGEMENT", content: `<strong>💊 If Ischemic (no hemorrhage on CT):</strong>
+• tPA (alteplase 0.9mg/kg, max 90mg): if within 4.5h
+• Contraindications: recent surgery, active bleeding, INR >1.7, plt <100K
+• BP target: <185/110 before tPA, <180/105 after
+• Monitor: neuro checks q15 min ×2h, then q30 min
+
+<strong>💊 If Hemorrhagic:</strong>
+• Reverse anticoagulation URGENTLY
+• Warfarin: IV vitamin K + PCC (4-factor)
+• DOAC: specific reversal agent (idarucizumab for dabigatran, andexanet for Xa inhibitors)
+• Neurosurgery consult` },
+                { title: "4. POST-ACUTE CARE (First 24-48h)", content: `<strong>🏥 Secondary Prevention:</strong>
+• Aspirin 325mg within 24-48h (NOT if tPA given <24h)
+• Statin: high-intensity (atorvastatin 40-80mg)
+• BP management: cautious lowering after 24h
+• DVT prophylaxis (SCDs, then heparin when stable)
+
+<strong>🎯 Geriatric-Specific Considerations:</strong>
+• Early mobilization (reduce deconditioning)
+• Dysphagia screen before oral meds/food
+• Delirium prevention bundle
+• Falls risk assessment
+• Rehab assessment within 24h
+• Goals of care discussion if severe stroke` }
+            ]
+        };
+
+        protocols['gi-bleed'] = {
+            title: "🩸 GI Bleed in Elderly",
+            severity: "urgent",
+            steps: [
+                { title: "1. ASSESS SEVERITY", content: `<strong>🔍 Presentation Clues:</strong>
+• Upper GIB: hematemesis, coffee-ground emesis, melena
+• Lower GIB: hematochezia (bright red), maroon stool
+• Occult: iron-deficiency anemia, positive FOBT
+
+<strong>📊 Hemodynamic Assessment:</strong>
+• Tachycardia (may be absent if on beta-blocker!)
+• Orthostatic hypotension (drop >20 systolic)
+• Signs of shock: cold, clammy, altered mental status
+
+<strong>⚠️ Elderly Considerations:</strong>
+• Blunted tachycardic response (meds, aging)
+• Lower threshold for ICU monitoring
+• NSAIDs + anticoagulants = highest risk combo` },
+                { title: "2. RESUSCITATE", content: `<strong>💊 Immediate:</strong>
+• 2 large-bore IVs (18G or larger)
+• IV crystalloid bolus (cautious in HF)
+• Type & crossmatch, hold 2-4 units PRBCs
+• Transfuse if Hb <7 (or <8 if cardiac disease)
+• NPO
+
+<strong>🧪 STAT Labs:</strong>
+• CBC, BMP, coagulation (PT/INR, PTT)
+• Liver function tests
+• Lactate
+• Blood type + crossmatch` },
+                { title: "3. MANAGE ANTICOAGULATION", content: `<strong>💊 Anticoagulant Reversal:</strong>
+• Warfarin: IV vitamin K 10mg + PCC (if life-threatening)
+• DOACs: specific reversal agents if available
+• Antiplatelets: platelet transfusion generally NOT recommended
+• Discuss with hematology re: resumption timing
+
+<strong>📋 High-Risk Medications:</strong>
+• NSAIDs — STOP immediately
+• Aspirin — hold, discuss risk/benefit
+• Dual antiplatelet — cardiology input needed
+• Anticoagulants — balance bleed vs thromboembolic risk` },
+                { title: "4. DEFINITIVE MANAGEMENT", content: `<strong>🏥 Upper GI Bleed:</strong>
+• IV PPI: pantoprazole 80mg bolus then 8mg/h infusion
+• Endoscopy within 24h (within 12h if high-risk)
+• Erythromycin 250mg IV 30 min pre-scope (prokinetic)
+
+<strong>🏥 Lower GI Bleed:</strong>
+• Most resolve spontaneously (80%)
+• Colonoscopy after bowel prep (timing controversial)
+• CT angiography if brisk active bleeding
+• IR embolization or surgery if refractory
+
+<strong>🎯 Post-Bleed:</strong>
+• PPI if peptic ulcer
+• H. pylori testing and treatment
+• Medication reconciliation (avoid NSAIDs long-term)
+• Consider when to resume anticoagulation (usually 7-14 days)` }
+            ]
+        };
+
+        protocols['respiratory-distress'] = {
+            title: "🫁 Respiratory Distress",
+            severity: "emergency",
+            steps: [
+                { title: "1. RAPID ASSESSMENT", content: `<strong>🔍 ABCs:</strong>
+• Airway patent? Stridor? Secretions?
+• Respiratory rate, O2 saturation, work of breathing
+• Accessory muscle use, tripod positioning
+• Ability to speak in full sentences?
+
+<strong>📊 Common Causes in Elderly:</strong>
+• Heart failure exacerbation (most common)
+• Pneumonia / aspiration
+• COPD exacerbation
+• Pulmonary embolism
+• Pleural effusion
+• Pneumothorax (rare but critical)` },
+                { title: "2. IMMEDIATE INTERVENTIONS", content: `<strong>💊 All Patients:</strong>
+• Sit upright (30-45°)
+• Supplemental O2 to target SpO2 92-96% (88-92% if COPD)
+• IV access, cardiac monitor
+• Portable CXR, 12-lead ECG, ABG/VBG
+
+<strong>💊 If CHF Suspected:</strong>
+• Furosemide 40-80mg IV (double home dose)
+• Nitroglycerin SL/IV if SBP >100
+• BiPAP if severe (reduces intubation need)
+
+<strong>💊 If COPD Exacerbation:</strong>
+• Ipratropium + albuterol nebulizer
+• Methylprednisolone 125mg IV
+• Antibiotics if purulent sputum` },
+                { title: "3. TARGETED WORKUP", content: `<strong>🧪 Labs:</strong>
+• BNP / NT-proBNP (CHF vs non-cardiac)
+• Troponin (ACS precipitant?)
+• D-dimer (if PE suspected, use age-adjusted cutoff: age ×10)
+• CBC, BMP, lactate
+• ABG if severe (or VBG for screening)
+
+<strong>📸 Imaging:</strong>
+• CXR (infiltrate, effusion, pneumothorax, cardiomegaly)
+• CT-PA if PE suspected (Wells score)
+• Bedside echo if available (EF, RV strain, effusion)` },
+                { title: "4. ESCALATION CRITERIA", content: `<strong>🚨 Call ICU / Rapid Response if:</strong>
+• SpO2 <88% despite 15L NRB
+• RR >30, accessory muscle use worsening
+• Altered mental status
+• Hemodynamic instability
+• Need for BiPAP/CPAP or intubation
+
+<strong>🎯 Goals of Care:</strong>
+• Consider advance directives EARLY
+• DNR/DNI does NOT mean "do not treat"
+• Aggressive symptom management even if comfort-focused
+• Morphine 1-2mg IV for severe dyspnea (evidence-based)` }
+            ]
+        };
+
+        protocols['syncope'] = {
+            title: "💫 Syncope Evaluation",
+            severity: "urgent",
+            steps: [
+                { title: "1. INITIAL ASSESSMENT", content: `<strong>🔍 Key Questions:</strong>
+• Witnessed? Prodrome? Duration?
+• Position (standing, sitting, supine)?
+• Activity at time (exertional = cardiac until proven otherwise)
+• Medications (antihypertensives, alpha-blockers, nitrates)
+• Associated symptoms (chest pain, palpitations, neuro deficits)
+
+<strong>⚡ HIGH RISK Features — Admit:</strong>
+• Exertional syncope
+• Syncope while supine
+• Associated chest pain or dyspnea
+• New neurological deficit
+• Known structural heart disease
+• Family history of sudden death` },
+                { title: "2. WORKUP", content: `<strong>📊 All Patients:</strong>
+• 12-lead ECG (arrhythmia, long QT, Brugada, HCM)
+• Orthostatic vitals (lying → standing at 1 & 3 min)
+• Fingerstick glucose
+• CBC, BMP
+
+<strong>📊 If Cardiac Suspected:</strong>
+• Troponin
+• Echocardiogram
+• Telemetry monitoring (24-48h)
+• Consider Holter or event monitor
+
+<strong>📊 If Neurologic Suspected:</strong>
+• CT head (if head injury or focal deficits)
+• EEG only if seizure suspected (NOT routine for syncope)
+• Carotid duplex NOT indicated for syncope (common mistake)` },
+                { title: "3. COMMON CAUSES IN ELDERLY", content: `<strong>💊 Orthostatic Hypotension (most common):</strong>
+• Medications: diuretics, alpha-blockers, nitrates, antidepressants
+• Dehydration, post-prandial
+• Autonomic neuropathy (diabetes, Parkinson's)
+• Management: review meds, hydrate, compression stockings, midodrine
+
+<strong>❤️ Cardiac (most dangerous):</strong>
+• Arrhythmia (bradycardia, tachycardia, heart block)
+• Structural (aortic stenosis, HCM, PE)
+• Require admission and cardiology input
+
+<strong>🧠 Vasovagal (common but diagnosis of exclusion in elderly):</strong>
+• Situational triggers
+• Less common in elderly than young — always rule out cardiac first` },
+                { title: "4. DISPOSITION", content: `<strong>🏥 Admit if ANY of:</strong>
+• Abnormal ECG (new arrhythmia, ischemia)
+• Structural heart disease
+• Exertional or recurrent syncope
+• Significant injury from fall
+• Unable to identify clear benign cause
+
+<strong>🏠 Discharge Criteria (ALL must be met):</strong>
+• Normal ECG
+• Normal orthostatic vitals
+• No concerning features
+• Identified benign trigger
+• Adequate home support
+• Follow-up arranged within 1-2 weeks` }
+            ]
+        };
+
+        protocols['agitation'] = {
+            title: "😤 Acute Agitation / BPSD",
+            severity: "urgent",
+            steps: [
+                { title: "1. SAFETY FIRST", content: `<strong>🛡️ Ensure Safety:</strong>
+• Staff safety — do not approach alone if violent
+• Remove dangerous objects from reach
+• Speak calmly, approach from front, at eye level
+• Do NOT argue, correct, or restrain unless imminent danger
+
+<strong>🔍 Rapid Assessment:</strong>
+• New vs chronic behavior?
+• Pain assessment (non-verbal pain scales: PAINAD)
+• Vitals, glucose, O2 sat
+• Medication review (recent changes?)
+• Urinary retention, constipation, infection?` },
+                { title: "2. NON-PHARMACOLOGICAL (FIRST LINE)", content: `<strong>✅ De-escalation Techniques:</strong>
+• Calm voice, simple sentences, one instruction at a time
+• Identify and address underlying cause (pain, fear, hunger, toileting)
+• Familiar objects, family presence, music therapy
+• Reduce environmental stimulation (noise, lights, crowds)
+• One-to-one nursing if available
+• Offer snack, drink, comfort measures
+
+<strong>🎯 Address Reversible Causes (THINK):</strong>
+• Toxic/drugs (new meds, anticholinergics)
+• Hypoxia, Hypoglycemia
+• Infection (UTI, pneumonia — but don't anchor)
+• Non-pharmacological needs (pain, constipation, retention)
+• K (electrolytes) / metabolic derangement` },
+                { title: "3. PHARMACOLOGICAL (LAST RESORT)", content: `<strong>💊 If patient is danger to self/others:</strong>
+
+<strong>For Delirium-Related Agitation:</strong>
+• Haloperidol 0.25-0.5mg PO/IM (start LOW)
+• May repeat ×1 after 30 min
+• Monitor QTc (hold if >500ms)
+• AVOID in Parkinson's / Lewy body
+
+<strong>For Dementia-Related BPSD:</strong>
+• Risperidone 0.25-0.5mg PO (only if psychotic features)
+• Quetiapine 12.5-25mg PO (if Parkinson's/LBD)
+• Trazodone 25-50mg PO (if anxiety/agitation)
+
+<strong>🚫 NEVER Use:</strong>
+• Benzodiazepines in elderly with dementia (paradoxical worsening)
+• Physical restraints as first-line (↑ injury, ↑ agitation, ↑ mortality)
+• Antipsychotics long-term without review (FDA black box warning)` },
+                { title: "4. DOCUMENTATION & FOLLOW-UP", content: `<strong>📋 Must Document:</strong>
+• Precipitating factors identified
+• Non-pharmacological measures tried first
+• Indication for pharmacological intervention
+• Informed consent / emergency administration rationale
+• Monitoring plan (vitals q15min ×1h post medication)
+
+<strong>🎯 Next Steps:</strong>
+• Review and address underlying cause
+• Behavioral care plan for nursing
+• Consider geriatric psychiatry consult if persistent
+• Reassess antipsychotic need within 48-72h
+• Family meeting if BPSD affecting care` }
+            ]
+        };
+
         function init() {
             updateTime();
             setInterval(updateTime, 1000);
             renderProtocols();
+
+            // Wire up new quick action buttons
+            const quickActions = {
+                'btn_uti': 'uti-sepsis',
+                'btn_hyper_k': 'hyperkalemia',
+                'btn_hypo': 'hypoglycemia',
+                'btn_stroke': 'acute-stroke',
+                'btn_gib': 'gi-bleed',
+                'btn_resp': 'respiratory-distress',
+                'btn_syncope': 'syncope',
+                'btn_agitation': 'agitation'
+            };
+            Object.entries(quickActions).forEach(([action, key]) => {
+                document.querySelectorAll(`[data-action="${action}"]`).forEach(el => {
+                    el.addEventListener('click', () => showScenario(key));
+                });
+            });
         }
 
         function updateTime() {
@@ -322,20 +838,30 @@
                 'routine': 'bg-green-700 text-green-100'
             };
 
-            const protocolCards = Object.keys(protocols).map(key => {
+            protocolList.innerHTML = '';
+            Object.keys(protocols).forEach(key => {
                 const protocol = protocols[key];
-                return `
-                    <div data-action="btn_5_showScenario____key___" class="protocol-card ${protocol.severity} bg-gray-700 rounded-lg p-4 hover:bg-gray-600">
-                        <h3 class="font-bold text-lg mb-2">${protocol.title}</h3>
-                        <span class="px-2 py-1 rounded-full text-xs font-medium ${severityClass[protocol.severity]}">
-                            ${protocol.severity.toUpperCase()}
-                        </span>
-                        <p class="text-gray-300 text-sm mt-2">${protocol.steps.length} step protocol</p>
-                    </div>
-                `;
-            }).join('');
+                const card = document.createElement('div');
+                card.className = `protocol-card ${protocol.severity} bg-gray-700 rounded-lg p-4 hover:bg-gray-600 cursor-pointer`;
 
-            protocolList.innerHTML = protocolCards;
+                const title = document.createElement('h3');
+                title.className = 'font-bold text-lg mb-2';
+                title.textContent = protocol.title;
+
+                const badge = document.createElement('span');
+                badge.className = `px-2 py-1 rounded-full text-xs font-medium ${severityClass[protocol.severity]}`;
+                badge.textContent = protocol.severity.toUpperCase();
+
+                const desc = document.createElement('p');
+                desc.className = 'text-gray-300 text-sm mt-2';
+                desc.textContent = protocol.steps.length + ' step protocol';
+
+                card.appendChild(title);
+                card.appendChild(badge);
+                card.appendChild(desc);
+                card.addEventListener('click', () => showScenario(key));
+                protocolList.appendChild(card);
+            });
         }
 
         function showScenario(scenarioKey) {
@@ -394,7 +920,6 @@
             document.querySelectorAll('[data-action="btn_2_showScenario__fall__"]').forEach(el => el.addEventListener('click', function() { showScenario('fall'); }));
             document.querySelectorAll('[data-action="btn_3_showScenario__chest_pain__"]').forEach(el => el.addEventListener('click', function() { showScenario('chest-pain'); }));
             document.querySelectorAll('[data-action="btn_4_closeProtocolModal__"]').forEach(el => el.addEventListener('click', function() { closeProtocolModal(); }));
-            document.querySelectorAll('[data-action="btn_5_showScenario____key___"]').forEach(el => el.addEventListener('click', function() { showScenario('${key}'); }));
         });
     </script>
 </body>

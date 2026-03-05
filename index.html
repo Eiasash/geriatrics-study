@@ -640,20 +640,49 @@
         <!-- Stats Section -->
         <div class="stats-section">
             <div class="stat-item">
-                <span class="stat-number">25+</span>
-                <span class="stat-label">Slide Templates</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">12</span>
+                <span class="stat-number" id="stat-topics">24</span>
                 <span class="stat-label">Geriatrics Topics</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">88</span>
-                <span class="stat-label">Practice Questions</span>
+                <span class="stat-number" id="stat-mcqs">600+</span>
+                <span class="stat-label">Practice MCQs</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">10+</span>
+                <span class="stat-number" id="stat-cards">300+</span>
+                <span class="stat-label">Flashcards</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">11</span>
                 <span class="stat-label">Clinical Tools</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">11</span>
+                <span class="stat-label">On-Call Protocols</span>
+            </div>
+        </div>
+
+        <!-- What's New Banner -->
+        <div class="whats-new" style="background: rgba(39, 174, 96, 0.15); border: 1px solid rgba(39, 174, 96, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 32px;">
+            <h3 style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">
+                <i class="fas fa-sparkles"></i> Recent Updates
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px;">
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
+                    <span><strong>24 Board Topics</strong> with 600+ MCQs and 300+ flashcards</span>
+                </div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
+                    <span><strong>11 On-Call Protocols</strong> — delirium, falls, stroke, sepsis, hyperkalemia & more</span>
+                </div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
+                    <span><strong>New Topics:</strong> Pressure injuries, elder abuse, immunizations, rehab, driving</span>
+                </div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; display: flex; align-items: start; gap: 8px;">
+                    <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 2px;"></i>
+                    <span><strong>Spaced Repetition</strong> with SM-2 algorithm for board exam prep</span>
+                </div>
             </div>
         </div>
 
@@ -681,13 +710,14 @@
                     <div class="tool-icon clinical">
                         <i class="fas fa-clipboard-list"></i>
                     </div>
-                    <h3>Patient Dashboard</h3>
-                    <p>Quick access to geriatric assessments, medication references, evidence-based guidelines, and clinical decision support tools.</p>
+                    <h3>Clinical Tools Suite</h3>
+                    <p>11 clinical tools including geriatric assessments (MMSE, MoCA, Morse, Barthel), Beers criteria medication checker, anticoagulation management, 11 on-call emergency protocols, decision support, and evidence-based guidelines.</p>
                     <div class="tool-features">
                         <span class="feature-tag">Assessments</span>
                         <span class="feature-tag">Medications</span>
-                        <span class="feature-tag">Anticoagulation</span>
                         <span class="feature-tag">On-Call</span>
+                        <span class="feature-tag">Decisions</span>
+                        <span class="feature-tag">Evidence</span>
                     </div>
                     <div class="arrow">
                         Open Clinical Tools <i class="fas fa-arrow-right"></i>
@@ -699,11 +729,29 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Interactive Study Mode</h3>
-                    <p>H5P-powered interactive learning content with quizzes, flashcards, and self-assessment tools for board exam preparation.</p>
+                    <p>H5P-powered interactive learning with quizzes, flashcards, and timed self-assessment for board exam preparation across all geriatric topics.</p>
                     <div class="tool-features">
                         <span class="feature-tag">Quizzes</span>
                         <span class="feature-tag">Flashcards</span>
+                        <span class="feature-tag">Timer</span>
                         <span class="feature-tag">Self-Assessment</span>
+                    </div>
+                    <div class="arrow">
+                        Start Studying <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <a href="clinical-tools/study.html" class="tool-card">
+                    <div class="tool-icon study">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Board Exam Prep</h3>
+                    <p>600+ MCQs and 300+ flashcards across 24 geriatric topics with spaced repetition (SM-2), AI tutor powered by Claude, weak-point tracking, and progress analytics.</p>
+                    <div class="tool-features">
+                        <span class="feature-tag">600+ MCQs</span>
+                        <span class="feature-tag">Flashcards</span>
+                        <span class="feature-tag">Spaced Repetition</span>
+                        <span class="feature-tag">AI Tutor</span>
                     </div>
                     <div class="arrow">
                         Start Studying <i class="fas fa-arrow-right"></i>
@@ -760,7 +808,7 @@
                 </a>
                 <a href="clinical-tools/study.html" class="clinical-card">
                     <i class="fas fa-graduation-cap"></i>
-                    <span>Study Resources</span>
+                    <span>Board Exam Prep</span>
                 </a>
                 <a href="clinical-tools/ai-assistant.html" class="clinical-card">
                     <i class="fas fa-robot"></i>
@@ -804,17 +852,28 @@
         const searchData = [
             { title: 'Presentation Maker', desc: 'Create medical presentations', url: 'szmc-presentation-maker/', keywords: ['presentation', 'slides', 'pptx', 'case', 'journal', 'club'] },
             { title: 'Clinical Tools Dashboard', desc: 'Geriatric assessments and tools', url: 'clinical-tools/dashboard.html', keywords: ['clinical', 'tools', 'assessments', 'medications'] },
-            { title: 'Geriatric Assessments', desc: 'MMSE, MoCA, GDS, ADL/IADL', url: 'clinical-tools/assessments.html', keywords: ['mmse', 'moca', 'gds', 'adl', 'iadl', 'assessment'] },
-            { title: 'Medication Reference', desc: 'Beers criteria, drug interactions', url: 'clinical-tools/medications.html', keywords: ['medications', 'drugs', 'beers', 'criteria', 'interactions'] },
-            { title: 'Anticoagulation Management', desc: 'CHADS-VASc, HAS-BLED, reversal', url: 'clinical-tools/anticoag.html', keywords: ['anticoagulation', 'warfarin', 'doac', 'chads', 'hasbled'] },
+            { title: 'Geriatric Assessments', desc: 'MMSE, MoCA, GDS, ADL/IADL, Morse, Barthel', url: 'clinical-tools/assessments.html', keywords: ['mmse', 'moca', 'gds', 'adl', 'iadl', 'assessment', 'morse', 'barthel', 'katz', 'tug'] },
+            { title: 'Medication Reference', desc: 'Beers 2023, drug interactions, STOPP/START', url: 'clinical-tools/medications.html', keywords: ['medications', 'drugs', 'beers', 'criteria', 'interactions', 'stopp', 'start', 'deprescribing'] },
+            { title: 'Anticoagulation Management', desc: 'CHADS-VASc, HAS-BLED, reversal protocols', url: 'clinical-tools/anticoag.html', keywords: ['anticoagulation', 'warfarin', 'doac', 'chads', 'hasbled', 'reversal', 'apixaban', 'rivaroxaban'] },
             { title: 'H5P Study Mode', desc: 'Interactive quizzes and flashcards', url: 'h5p/', keywords: ['h5p', 'quiz', 'flashcards', 'study', 'questions'] },
-            { title: 'Hazzard\'s 8e', desc: 'Geriatric medicine textbook', url: 'hazzards/', keywords: ['hazzards', 'textbook', 'reference', 'geriatric medicine'] },
-            { title: 'AI Assistant', desc: 'Clinical decision support', url: 'clinical-tools/ai-assistant.html', keywords: ['ai', 'assistant', 'clinical', 'decision', 'support'] },
-            { title: 'On-Call Reference', desc: 'Quick reference for on-call', url: 'clinical-tools/oncall.html', keywords: ['oncall', 'on-call', 'emergency', 'reference'] },
-            { title: 'Physical Exam', desc: 'Geriatric physical examination', url: 'clinical-tools/exam.html', keywords: ['exam', 'physical', 'examination', 'geriatric'] },
-            { title: 'Evidence Search', desc: 'Guidelines and literature', url: 'clinical-tools/evidence.html', keywords: ['evidence', 'guidelines', 'literature', 'search'] },
+            { title: 'Hazzard\'s 8e', desc: 'Geriatric medicine textbook - searchable', url: 'hazzards/', keywords: ['hazzards', 'textbook', 'reference', 'geriatric medicine'] },
+            { title: 'AI Assistant', desc: 'Claude-powered clinical decision support', url: 'clinical-tools/ai-assistant.html', keywords: ['ai', 'assistant', 'clinical', 'decision', 'support', 'claude'] },
+            { title: 'On-Call Reference', desc: '11 emergency protocols for geriatrics', url: 'clinical-tools/oncall.html', keywords: ['oncall', 'on-call', 'emergency', 'reference', 'delirium', 'fall', 'chest pain', 'uti', 'sepsis', 'hyperkalemia', 'hypoglycemia', 'stroke', 'gi bleed', 'respiratory', 'syncope', 'agitation'] },
+            { title: 'Physical Exam', desc: 'Geriatric physical examination reference', url: 'clinical-tools/exam.html', keywords: ['exam', 'physical', 'examination', 'geriatric'] },
+            { title: 'Evidence Search', desc: 'Landmark trials and clinical guidelines', url: 'clinical-tools/evidence.html', keywords: ['evidence', 'guidelines', 'literature', 'search', 'trials'] },
+            { title: 'Clinical Decisions', desc: 'Delirium risk, polypharmacy, capacity, UTI, admission', url: 'clinical-tools/decisions.html', keywords: ['decision', 'delirium', 'polypharmacy', 'capacity', 'uti', 'loeb', 'admission', 'code status'] },
+            { title: 'Board Exam Prep', desc: '600+ MCQs, 300+ flashcards, spaced repetition', url: 'clinical-tools/study.html', keywords: ['study', 'board', 'exam', 'mcq', 'flashcard', 'spaced', 'repetition', 'quiz'] },
             { title: 'IV Drug Protocols', desc: 'SZMC IV drug preparation and dosing', url: 'iv-protocols.html', keywords: ['iv', 'insulin', 'propofol', 'fentanyl', 'morphine', 'heparin', 'noradrenaline', 'dopamine', 'amiodarone', 'lidocaine', 'magnesium', 'protocols', 'infusion'] },
             { title: 'GeriFellow Assistant', desc: 'AI-powered geriatric clinical assistant', url: 'gerifellow-assistant/', keywords: ['gerifellow', 'assistant', 'ai', 'geriatric', 'clinical', 'consult', 'diagnosis'] },
+            // Topic-specific search entries
+            { title: 'Delirium', desc: 'CAM criteria, prevention, HELP protocol', url: 'clinical-tools/study.html', keywords: ['delirium', 'cam', 'confusion', 'help', 'agitation'] },
+            { title: 'Dementia & Alzheimer\'s', desc: 'Diagnosis, staging, cholinesterase inhibitors', url: 'clinical-tools/study.html', keywords: ['dementia', 'alzheimer', 'mmse', 'moca', 'donepezil', 'memantine'] },
+            { title: 'Falls Prevention', desc: 'Risk assessment, multifactorial intervention', url: 'clinical-tools/study.html', keywords: ['falls', 'fall', 'tug', 'balance', 'gait', 'prevention'] },
+            { title: 'Frailty', desc: 'Fried criteria, CFS, prehabilitation', url: 'clinical-tools/study.html', keywords: ['frailty', 'fried', 'sarcopenia', 'cfs', 'prehabilitation'] },
+            { title: 'Osteoporosis', desc: 'DEXA, bisphosphonates, fracture prevention', url: 'clinical-tools/study.html', keywords: ['osteoporosis', 'dexa', 'bisphosphonate', 'fracture', 'frax', 'calcium', 'vitamin d'] },
+            { title: 'Pressure Injuries', desc: 'Staging, Braden scale, prevention', url: 'clinical-tools/study.html', keywords: ['pressure', 'ulcer', 'decubitus', 'braden', 'wound', 'staging'] },
+            { title: 'Elder Abuse', desc: 'Screening, types, mandatory reporting', url: 'clinical-tools/study.html', keywords: ['abuse', 'elder', 'neglect', 'exploitation', 'reporting'] },
+            { title: 'Immunizations', desc: 'PCV20, Shingrix, flu, COVID vaccines', url: 'clinical-tools/study.html', keywords: ['vaccine', 'immunization', 'flu', 'pneumococcal', 'shingrix', 'covid', 'tdap'] },
         ];
 
         const searchBox = document.getElementById('searchBox');
@@ -898,6 +957,17 @@
             isDark = !isDark;
             applyTheme(isDark);
         });
+
+        // Dynamic stats from content.json
+        fetch('./data/content.json').then(r=>r.json()).then(data=>{
+            const topics = data.length;
+            const mcqs = data.reduce((s,t)=>s+(t.mcqs||[]).length,0);
+            const cards = data.reduce((s,t)=>s+(t.flashcards||[]).length,0);
+            const el = (id, val) => { const e=document.getElementById(id); if(e) e.textContent=val; };
+            el('stat-topics', topics);
+            el('stat-mcqs', mcqs+'+');
+            el('stat-cards', cards+'+');
+        }).catch(()=>{});
 
         // Service Worker Registration for PWA
         if ('serviceWorker' in navigator) {
