@@ -13,7 +13,7 @@ function renderDialogCards(title, pairs) {
     mainLibrary: 'H5P.Dialogcards',
     preloadedDependencies: [{ machineName: 'H5P.Dialogcards', majorVersion: 1, minorVersion: 8 }],
     content: {
-      cards: pairs.map((p) => ({ text: p.q, answer: p.a })),
+      cards: pairs.map((p) => ({ text: p.q || p.front, answer: p.a || p.back })),
       behaviour: { randomizeCards: true, scaleText: false, disableBack: false },
     },
   };

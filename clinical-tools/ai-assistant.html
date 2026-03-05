@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>עוזר קליני AI - Geriatrics Platform</title>
+    <meta name="description" content="AI clinical assistant for geriatric medicine - Claude, OpenEvidence, and medical AI tools">
     <link rel="icon" type="image/svg+xml" href="../szmc-presentation-maker/icons/icon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="mobile-fallback.css">
@@ -447,7 +448,7 @@
             const question = document.getElementById('context-question').value.trim();
 
             if (!question) {
-                alert('נא להוסיף את השאלה שתרצו לשאול את ה-AI');
+                addMessage('נא להוסיף את השאלה שתרצו לשאול את ה-AI', 'ai');
                 return;
             }
 
@@ -484,14 +485,14 @@
         function copyPromptPreview() {
             const prompt = document.getElementById('prompt-preview').textContent.trim();
             if (!prompt) {
-                alert('אין פניה להעתקה. בנו פניה קודם.');
+                addMessage('אין פניה להעתקה. בנו פניה קודם.', 'ai');
                 return;
             }
 
             navigator.clipboard.writeText(prompt).then(() => {
                 addMessage('הפניה הועתקה ללוח.', 'ai');
             }).catch(() => {
-                alert('העתקה נכשלה, נסו שוב.');
+                addMessage('העתקה נכשלה, נסו שוב.', 'ai');
             });
         }
 
@@ -709,7 +710,7 @@
         function generateDifferential() {
             const symptoms = document.getElementById('symptoms-input').value.trim();
             if (!symptoms) {
-                alert('נא להזין תסמינים');
+                addMessage('נא להזין תסמינים', 'ai');
                 return;
             }
 
@@ -721,14 +722,14 @@
         function checkInteractions() {
             const drugs = document.getElementById('drugs-input').value.trim();
             if (!drugs) {
-                alert('נא להזין תרופות');
+                addMessage('נא להזין תרופות', 'ai');
                 return;
             }
 
             // Open Drugs.com interaction checker
             const drugList = drugs.split(',').map(d => d.trim()).filter(d => d);
             if (drugList.length < 2) {
-                alert('נא להזין לפחות 2 תרופות לבדיקת אינטראקציות');
+                addMessage('נא להזין לפחות 2 תרופות לבדיקת אינטראקציות', 'ai');
                 return;
             }
 

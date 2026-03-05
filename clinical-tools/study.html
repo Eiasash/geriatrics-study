@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>עוזר למידה - Geriatric Board Prep</title>
+    <meta name="description" content="Spaced repetition study tool for geriatric medicine board exam preparation">
     <link rel="icon" type="image/svg+xml" href="../szmc-presentation-maker/icons/icon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="mobile-fallback.css">
@@ -223,6 +224,7 @@ function topicKey(s){ return s.replace(/[\s\-\/]+/g,'_').replace(/[^\w\u0590-\u0
 async function loadContent(){
     try{
         const r=await fetch('../data/content.json');
+        if(!r.ok) throw new Error(`HTTP ${r.status}`);
         contentData=await r.json();
         buildIndexes();
         initUI();

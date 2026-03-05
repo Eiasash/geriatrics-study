@@ -104,6 +104,8 @@
     </div>
 
     <script>
+        function esc(s){var d=document.createElement('div');d.textContent=(s==null)?'':String(s);return d.innerHTML;}
+
         function tryReconnect() {
             window.location.reload();
         }
@@ -136,17 +138,25 @@
                 .sort((a, b) => new Date(b.date) - new Date(a.date))
                 .slice(0, 5)
                 .map(s => `
-                    <div class="saved-item" onclick="loadPresentation('${s.key}')">
-                        <div class="title">${s.title}</div>
-                        <div class="date">${new Date(s.date).toLocaleDateString()}</div>
+                    <div class="saved-item" data-key="${esc(s.key)}">
+                        <div class="title">${esc(s.title)}</div>
+                        <div class="date">${esc(new Date(s.date).toLocaleDateString())}</div>
                     </div>
                 `).join('');
+
+            container.querySelectorAll('.saved-item').forEach(el => {
+                el.addEventListener('click', () => loadPresentation(el.dataset.key));
+            });
         }
 
         function loadPresentation(key) {
             // Store the key to load when back online
             sessionStorage.setItem('loadOnReconnect', key);
-            alert('This presentation will be loaded when you reconnect.');
+            document.querySelector('.no-saves')?.remove();
+            const msg = document.createElement('p');
+            msg.textContent = 'This presentation will be loaded when you reconnect.';
+            msg.style.cssText = 'opacity:0.8;margin-top:10px';
+            document.getElementById('saved-list').appendChild(msg);
         }
 
         loadSavedPresentations();
