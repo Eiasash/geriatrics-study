@@ -7,19 +7,35 @@ print("=== BUILD STATUS REPORT ===\n")
 
 errors = []
 
-# Check H5P dist
-h5p_dist = Path("h5p/dist")
+# Determine where to look for H5P files.
+# In the CI validate step, artifacts are downloaded to artifacts/ subdirs.
+# Locally (or in the site-audit workflow), files are built into h5p/dist/.
+h5p_dist_env = os.environ.get("H5P_DIST_PATH")
+if h5p_dist_env:
+    h5p_dist = Path(h5p_dist_env)
+    h5p_glob_pattern = "**/*.h5p"
+elif Path("h5p/dist").exists():
+    h5p_dist = Path("h5p/dist")
+    h5p_glob_pattern = "*.h5p"
+elif Path("artifacts").exists():
+    # CI validate step: artifacts downloaded to artifacts/<name>/*.h5p
+    h5p_dist = Path("artifacts")
+    h5p_glob_pattern = "**/*.h5p"
+else:
+    h5p_dist = Path("h5p/dist")
+    h5p_glob_pattern = "*.h5p"
+
 print(f"H5P dist directory: {h5p_dist.absolute()}")
 if h5p_dist.exists():
     # Try different methods to list files
     try:
         # Method 1: os.listdir
         files_os = os.listdir(str(h5p_dist))
-        print(f"  os.listdir found: {len(files_os)} files")
+        print(f"  os.listdir found: {len(files_os)} entries")
 
         # Method 2: Path.glob
         files_glob = list(h5p_dist.glob("*"))
-        print(f"  Path.glob found: {len(files_glob)} files")
+        print(f"  Path.glob found: {len(files_glob)} entries")
 
         # Method 3: os.walk
         for root, dirs, files in os.walk(str(h5p_dist)):
@@ -27,14 +43,14 @@ if h5p_dist.exists():
             break
     except Exception as e:
         print(f"  Error listing files: {e}")
-        errors.append(f"Failed to list h5p/dist: {e}")
+        errors.append(f"Failed to list {h5p_dist}: {e}")
 else:
     print("  Directory does not exist")
-    errors.append("h5p/dist directory does not exist — build artifacts are missing")
+    errors.append(f"{h5p_dist} directory does not exist — build artifacts are missing")
 
 # Check H5P files
 print(f"\nH5P packages:")
-h5p_files = list(h5p_dist.glob("*.h5p")) if h5p_dist.exists() else []
+h5p_files = list(h5p_dist.glob(h5p_glob_pattern)) if h5p_dist.exists() else []
 print(f"  H5P files: {len(h5p_files)}")
 for f in h5p_files[:5]:  # Show first 5
     size_kb = f.stat().st_size / 1024
@@ -64,7 +80,7 @@ if h5p_files:
     print(f"✓ {len(h5p_files)} H5P packages built successfully")
 else:
     print("⚠ No H5P packages found - run 'cd h5p && npm run build:all' to build")
-    errors.append("No built H5P packages found in h5p/dist")
+    errors.append(f"No built H5P packages found in {h5p_dist}")
 print("\nTo use H5P packages: Upload to any H5P-compatible platform (Moodle, WordPress, etc.)")
 
 if errors:
