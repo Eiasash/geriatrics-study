@@ -30,6 +30,7 @@ if h5p_dist.exists():
         errors.append(f"Failed to list h5p/dist: {e}")
 else:
     print("  Directory does not exist")
+    errors.append("h5p/dist directory does not exist — build artifacts are missing")
 
 # Check H5P files
 print(f"\nH5P packages:")
@@ -62,7 +63,8 @@ print("\n=== SUMMARY ===")
 if h5p_files:
     print(f"✓ {len(h5p_files)} H5P packages built successfully")
 else:
-    print("⚠ No H5P packages found - run 'cd h5p && npm run build:qset' to build")
+    print("⚠ No H5P packages found - run 'cd h5p && npm run build:all' to build")
+    errors.append("No built H5P packages found in h5p/dist")
 print("\nTo use H5P packages: Upload to any H5P-compatible platform (Moodle, WordPress, etc.)")
 
 if errors:

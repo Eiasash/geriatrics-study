@@ -1662,11 +1662,11 @@ function buildEvidencePrompt(context = '') {
         `Clinical question: ${question}`,
         picoLines.length ? `Structured PICO -> ${picoLines.join(' | ')}` : 'PICO -> not provided; infer from question if needed.',
         'Search instructions: prioritize PubMed, Cochrane, AGS/BGS guidelines, geriatric pharmacology, and adverse effect data in older adults.',
-        'Output:
+        `Output:
 - 2-3 bullet takeaway answers with numeric effect sizes where possible
 - Cite 2-4 key references with PMID/DOI and year
 - Note evidence level (Oxford/GRADE) and relevance to frailty, polypharmacy, renal/hepatic dosing
-- Flag contraindications or deprescribing opportunities',
+- Flag contraindications or deprescribing opportunities`,
         contextLine
     ].filter(Boolean).join('\n');
 }

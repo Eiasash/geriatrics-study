@@ -673,6 +673,14 @@
         }
 
         // esc() loaded from shared/sanitize.js
+        function escapeAttribute(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#x27;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
 
         function addMessage(text, type) {
             const container = document.getElementById('chat-container');
@@ -785,11 +793,11 @@
                 const service = aiServices[item.ai];
                 const date = new Date(item.timestamp).toLocaleDateString('he-IL');
                 return `
-                    <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer" data-reuse-query="${esc(item.query).replace(/'/g, &quot;&#x27;&quot;)}">
+                    <button type="button" class="flex w-full items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 text-right cursor-pointer" data-reuse-query="${escapeAttribute(item.query)}" aria-label="טען מחדש את השאילתה ${escapeAttribute(item.query)}">
                         <span>${service.icon}</span>
                         <div class="flex-1 truncate text-sm text-gray-700">${esc(item.query)}</div>
                         <span class="text-xs text-gray-400">${esc(date)}</span>
-                    </div>
+                    </button>
                 `;
             }).join('');
         }
@@ -807,6 +815,15 @@
         }
 
         // Initialize
+        const historyContainer = document.getElementById('history-container');
+        if (historyContainer) {
+            historyContainer.addEventListener('click', (event) => {
+                const trigger = event.target.closest('[data-reuse-query]');
+                if (!trigger) return;
+                reuseQuery(trigger.getAttribute('data-reuse-query') || '');
+            });
+        }
+
         selectAI('openevidence');
         renderHistory();
     </script>

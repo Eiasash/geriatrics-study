@@ -431,12 +431,48 @@
       });
     }
     
+    function showDownloadStatus(message, isError = false) {
+      let banner = document.getElementById('download-status');
+      if (!banner) {
+        banner = document.createElement('div');
+        banner.id = 'download-status';
+        banner.style.cssText = 'position: sticky; top: 12px; z-index: 20; max-width: 960px; margin: 0 auto 1rem; padding: 0.9rem 1.1rem; border-radius: 12px; font-weight: 600; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);';
+        const hero = document.querySelector('.hero') || document.body.firstElementChild;
+        if (hero && hero.parentNode) {
+          hero.parentNode.insertBefore(banner, hero.nextSibling);
+        } else {
+          document.body.prepend(banner);
+        }
+      }
+      banner.textContent = message;
+      banner.style.background = isError ? '#fee2e2' : '#dcfce7';
+      banner.style.color = isError ? '#991b1b' : '#166534';
+      clearTimeout(window.downloadStatusTimer);
+      window.downloadStatusTimer = setTimeout(() => {
+        if (banner) banner.remove();
+      }, 5000);
+    }
+
     // Download function
-    function downloadPackage(filename) {
-      const link = document.createElement('a');
-      link.href = `dist/${filename}`;
-      link.download = filename;
-      link.click();
+    async function downloadPackage(filename) {
+      const url = `dist/${filename}`;
+      try {
+        const response = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Package not found (${response.status})`);
+        }
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        showDownloadStatus(`מוריד את ${filename}`);
+      } catch (error) {
+        console.error('H5P download error:', error);
+        showDownloadStatus('חבילת ה-H5P אינה זמינה כרגע. הפעילו build מחדש או בדקו את תהליך ה-deploy.', true);
+      }
     }
     
     function downloadMega() {

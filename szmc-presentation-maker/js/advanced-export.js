@@ -163,7 +163,7 @@ async function exportToPDF() {
                     </div>
                     ${slide.notes ? `<div style="margin-top: 30px; padding: 15px; background: #f5f5f5; border-left: 4px solid #1e3a5f;"><strong>Notes:</strong><br>${slide.notes}</div>` : ''}
                 </div>
-            `;
+            `);
         });
 
         document.body.appendChild(container);

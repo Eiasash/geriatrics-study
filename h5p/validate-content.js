@@ -97,9 +97,9 @@ function validateMCQ(mcq, topicName, index) {
 function validateFlashcard(flashcard, topicName, index) {
   const issues = [];
 
-  // Support both formats: 'q'/'a' and 'term'/'definition'
-  const term = flashcard.q || flashcard.term;
-  const definition = flashcard.a || flashcard.definition;
+  // Support all flashcard formats used in the repo: 'q'/'a', 'term'/'definition', and 'front'/'back'
+  const term = flashcard.q || flashcard.term || flashcard.front;
+  const definition = flashcard.a || flashcard.definition || flashcard.back;
 
   // Required fields
   if (!term || term.trim() === '') {

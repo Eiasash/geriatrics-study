@@ -1,0 +1,72 @@
+name: Site Audit
+
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - 'index.html'
+      - '404.html'
+      - 'offline.html'
+      - 'manifest.json'
+      - 'sw.js'
+      - 'clinical-tools/**'
+      - 'h5p/**'
+      - 'hazzards/**'
+      - 'gerifellow-assistant/**'
+      - 'szmc-presentation-maker/**'
+      - 'scripts/audit_site.py'
+      - 'check_files.py'
+      - '.github/workflows/site-audit.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - '404.html'
+      - 'offline.html'
+      - 'manifest.json'
+      - 'sw.js'
+      - 'clinical-tools/**'
+      - 'h5p/**'
+      - 'hazzards/**'
+      - 'gerifellow-assistant/**'
+      - 'szmc-presentation-maker/**'
+      - 'scripts/audit_site.py'
+      - 'check_files.py'
+      - '.github/workflows/site-audit.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Static site audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: h5p/package-lock.json
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install H5P dependencies
+        working-directory: h5p
+        run: npm ci
+
+      - name: Build H5P packages
+        working-directory: h5p
+        run: npm run build:all
+
+      - name: Check build outputs
+        run: PYTHONIOENCODING=utf-8 python check_files.py
+
+      - name: Run static site audit
+        run: python scripts/audit_site.py

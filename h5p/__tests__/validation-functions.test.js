@@ -282,6 +282,17 @@ describe('validateFlashcard', () => {
       expect(issues.filter((i) => i.includes('question/term'))).toHaveLength(0);
     });
 
+
+    test('should pass with valid front/back format', () => {
+      const flashcard = {
+        front: 'Delirium',
+        back: 'Acute confusional state',
+      };
+      const issues = validateFlashcard(flashcard, 'Test Topic', 0);
+      expect(issues.filter((i) => i.includes('question/term'))).toHaveLength(0);
+      expect(issues.filter((i) => i.includes('answer/definition'))).toHaveLength(0);
+    });
+
     test('should fail with missing question/term', () => {
       const flashcard = {
         a: 'Some answer',

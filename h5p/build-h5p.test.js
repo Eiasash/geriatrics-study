@@ -60,10 +60,12 @@ describe('H5P Build Scripts', () => {
     test('should have valid flashcard structure', () => {
       if (contentData && contentData[0].flashcards.length > 0) {
         const flashcard = contentData[0].flashcards[0];
-        expect(flashcard).toHaveProperty('q');
-        expect(flashcard).toHaveProperty('a');
-        expect(typeof flashcard.q).toBe('string');
-        expect(typeof flashcard.a).toBe('string');
+        const prompt = flashcard.q || flashcard.term || flashcard.front;
+        const answer = flashcard.a || flashcard.definition || flashcard.back;
+        expect(typeof prompt).toBe('string');
+        expect(typeof answer).toBe('string');
+        expect(prompt.length).toBeGreaterThan(0);
+        expect(answer.length).toBeGreaterThan(0);
       }
     });
 
