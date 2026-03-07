@@ -101,18 +101,23 @@ async function main() {
 
     // Create H5P package (zip file) using PowerShell on Windows, or zip on Unix
     const EXEC_TIMEOUT_MS = 30000;
-    if (process.platform === 'win32') {
-      execSync(
-        `powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`,
-        { stdio: 'inherit', timeout: EXEC_TIMEOUT_MS }
-      );
-      // Rename .zip to .h5p
-      await fs.rename(`${outFile}.zip`, outFile);
-    } else {
-      execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, {
-        stdio: 'inherit',
-        timeout: EXEC_TIMEOUT_MS,
-      });
+    try {
+      if (process.platform === 'win32') {
+        execSync(
+          `powershell -Command "Compress-Archive -Path '${tmpDir}\\*' -DestinationPath '${outFile}.zip' -Force"`,
+          { stdio: 'inherit', timeout: EXEC_TIMEOUT_MS }
+        );
+        // Rename .zip to .h5p
+        await fs.rename(`${outFile}.zip`, outFile);
+      } else {
+        execSync(`cd "${tmpDir}" && zip -r "${outFile}" .`, {
+          stdio: 'inherit',
+          timeout: EXEC_TIMEOUT_MS,
+        });
+      }
+    } catch (err) {
+      await fs.remove(tmpDir).catch(() => {});
+      throw new Error(`Failed to create H5P package for "${safeTitle}": ${err.message}`);
     }
 
     await fs.remove(tmpDir);
